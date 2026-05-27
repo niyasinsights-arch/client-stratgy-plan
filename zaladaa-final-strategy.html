@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaladaa — Growth Partnership · Speakerbox</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Google Sans',sans-serif;background-color:#111111;color:#E5E7EB;}
+  h1,h2,h3,h4,h5,h6{font-weight:700;color:#FFFFFF;letter-spacing:-0.025em;}
+
+  /* Form elements */
+  .form-input,.form-select,.form-textarea,.form-password{
+    background-color:#222;border:1px solid #444;color:#fff;border-radius:0.5rem;padding:0.75rem;width:100%;transition:all 0.3s;
+  }
+  .form-input:focus,.form-select:focus,.form-textarea:focus,.form-password:focus{
+    outline:none;border-color:#F97316;box-shadow:0 0 0 2px #F9731630;
+  }
+  ::placeholder{color:#777;}
+
+  /* Plan card */
+  .plan-card{
+    background-color:#1F2937;border:2px solid #374151;border-radius:1rem;padding:2rem;transition:all 0.3s ease-in-out;display:flex;flex-direction:column;
+  }
+  .plan-card.recommended{
+    border-color:#F97316;transform:scale(1.02);box-shadow:0 10px 30px -15px rgba(249,115,22,0.3);
+  }
+
+  /* Feature list */
+  .feature-list{list-style:none;padding-left:0;}
+  .feature-list li{position:relative;padding-left:32px;margin-bottom:12px;display:flex;align-items:center;line-height:1.5;}
+  .feature-list li::before{position:absolute;left:0;font-size:1.25rem;font-weight:bold;top:0;}
+  .feature-list li.included::before{content:'✓';color:#F97316;}
+  .feature-list li.excluded::before{content:'✗';color:#4B5563;}
+  .feature-list li.excluded{color:#6B7280;}
+
+  /* Accordion */
+  .accordion>summary{
+    list-style:none;cursor:pointer;padding:1.25rem;background-color:#222;border:1px solid #444;border-radius:0.5rem;transition:background-color 0.3s;display:flex;justify-content:space-between;align-items:center;font-weight:500;color:#fff;
+  }
+  .accordion>summary::-webkit-details-marker{display:none;}
+  .accordion>summary:hover{background-color:#2a2a2a;}
+  .accordion[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:transparent;}
+  .accordion-content{padding:1.5rem;border:1px solid #444;border-top:none;border-bottom-left-radius:0.5rem;border-bottom-right-radius:0.5rem;background-color:#1a1a1a;}
+  .accordion-arrow{transition:transform 0.3s;display:inline-block;}
+  .accordion[open] .accordion-arrow{transform:rotate(90deg);}
+
+  /* Section tabs */
+  .tab-nav{background-color:#1a1a1a;border-bottom:1px solid #374151;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-btn{flex-shrink:0;padding:14px 20px;font-size:11px;font-weight:700;letter-spacing:0.5px;cursor:pointer;background:none;border:none;color:#6B7280;border-bottom:2px solid transparent;transition:all 0.2s;text-transform:uppercase;white-space:nowrap;font-family:'Google Sans',sans-serif;}
+  .tab-btn:hover{color:#E5E7EB;}
+  .tab-btn.active{color:#F97316;border-bottom-color:#F97316;}
+
+  /* Section visibility */
+  .section{display:none;}
+  .section.active{display:block;}
+
+  /* Section header */
+  .section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid #374151;}
+  .section-num{font-size:48px;font-weight:900;color:#F97316;line-height:1;opacity:0.4;}
+  .section-title{font-size:32px;font-weight:700;line-height:1.1;color:#fff;}
+  .section-subtitle{display:block;font-size:14px;font-weight:400;color:#9CA3AF;margin-top:6px;letter-spacing:0;}
+
+  /* Highlight box */
+  .highlight-box{
+    background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(249,115,22,0.02));
+    border:1px solid rgba(249,115,22,0.30);
+    border-radius:0.75rem;
+    padding:20px 24px;
+    margin-bottom:24px;
+    font-size:15px;
+    color:#E5E7EB;
+    line-height:1.7;
+  }
+  .highlight-box span{color:#F97316;font-weight:700;}
+  .highlight-box em{color:#F97316;font-style:italic;font-weight:600;}
+
+  /* Quote block */
+  .quote-block{
+    background-color:#1F2937;
+    border-left:3px solid #F97316;
+    padding:20px 24px;
+    margin:20px 0;
+    font-size:15px;
+    line-height:1.7;
+    color:#E5E7EB;
+    border-radius:0 0.5rem 0.5rem 0;
+  }
+  .quote-block strong{color:#F97316;}
+
+  /* Hook box */
+  .hook-box{
+    background-color:#1F2937;
+    border:1px solid #374151;
+    border-left:3px solid #F97316;
+    border-radius:0.75rem;
+    padding:22px 26px;
+    margin-bottom:14px;
+    position:relative;
+  }
+  .hook-num{position:absolute;top:18px;right:24px;font-size:32px;font-weight:900;color:#F97316;opacity:0.35;line-height:1;}
+  .hook-label{font-size:10px;font-weight:700;color:#F97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+  .hook-text{font-size:16px;font-weight:600;color:#fff;line-height:1.55;margin-bottom:12px;}
+  .hook-text em{color:#F97316;font-style:italic;}
+  .hook-meta{font-size:13px;color:#9CA3AF;line-height:1.65;}
+  .hook-meta strong{color:#E5E7EB;}
+  .hook-why{font-size:12px;color:#6B7280;line-height:1.6;margin-top:10px;padding-top:10px;border-top:1px solid #374151;font-style:italic;}
+
+  /* Tag pills */
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:0.25rem;margin-right:6px;}
+  .tag-orange{background-color:rgba(249,115,22,0.15);color:#F97316;}
+  .tag-muted{background-color:#374151;color:#9CA3AF;}
+
+  /* Funnel stage */
+  .funnel-stage{margin-bottom:8px;border-radius:0.5rem;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;background-color:#1F2937;border:1px solid #374151;border-left:3px solid #F97316;}
+  .funnel-stage h4{font-size:14px;font-weight:700;color:#fff;}
+  .funnel-stage p{font-size:13px;color:#9CA3AF;margin-top:3px;line-height:1.5;}
+  .funnel-num{font-size:32px;font-weight:900;color:#F97316;opacity:0.5;flex-shrink:0;line-height:1;}
+
+  /* Table */
+  .data-table{width:100%;border-collapse:collapse;font-size:13px;background-color:#1F2937;border-radius:0.5rem;overflow:hidden;}
+  .data-table th{background-color:#222;color:#9CA3AF;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:1px solid #374151;font-size:11px;}
+  .data-table td{padding:13px 16px;border-bottom:1px solid #374151;color:#E5E7EB;vertical-align:top;line-height:1.55;}
+  .data-table tr:last-child td{border-bottom:none;}
+  .data-table tr:hover td{background-color:#222;}
+  .data-table .num{color:#F97316;font-weight:700;font-variant-numeric:tabular-nums;}
+  .data-table .stage{color:#F97316;font-weight:700;}
+
+  /* Stat row */
+  .stat-row{display:grid;gap:12px;margin-bottom:24px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+  .stat-badge{background-color:#1F2937;border:1px solid #374151;border-left:3px solid #F97316;border-radius:0.5rem;padding:16px 22px;}
+  .stat-val{font-size:32px;font-weight:900;color:#F97316;line-height:1;letter-spacing:-0.02em;}
+  .stat-label{font-size:12px;color:#9CA3AF;margin-top:6px;}
+
+  /* Impact row */
+  .impact-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background-color:#1F2937;border:1px solid #374151;border-radius:0.75rem;overflow:hidden;margin:18px 0 24px;}
+  .impact-cell{padding:14px 20px;border-right:1px solid #374151;}
+  .impact-cell:last-child{border-right:none;}
+  .impact-cell h5{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;margin-bottom:6px;}
+  .impact-cell p{font-size:13px;color:#E5E7EB;line-height:1.55;}
+  .impact-cell.priority p{color:#F97316;font-weight:700;}
+
+  /* N-list (numbered list) */
+  .n-list{list-style:none;counter-reset:items;padding:0;}
+  .n-list li{counter-increment:items;font-size:14px;color:#9CA3AF;padding:14px 0 14px 42px;position:relative;border-bottom:1px solid #374151;line-height:1.65;}
+  .n-list li:last-child{border-bottom:none;}
+  .n-list li::before{content:counter(items);position:absolute;left:0;background-color:#F97316;color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;top:14px;}
+  .n-list li strong{color:#E5E7EB;}
+  .n-list li em{color:#F97316;font-style:normal;font-weight:600;}
+
+  /* Section heading */
+  .sh{font-size:18px;font-weight:700;color:#fff;margin:28px 0 16px;letter-spacing:-0.01em;}
+  .sh .tag{vertical-align:middle;}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#111111 0%,#1a0d05 50%,#111111 100%);border-bottom:2px solid #F97316;padding:56px 40px 48px;position:relative;overflow:hidden;text-align:center;}
+  .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 70%);pointer-events:none;}
+  .hero-badge{display:inline-block;background-color:#F97316;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:0.25rem;margin-bottom:18px;text-transform:uppercase;}
+  .hero h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:#fff;position:relative;z-index:1;}
+  .hero h1 span{color:#F97316;}
+  .hero-tag{font-size:12px;font-weight:700;color:#F97316;letter-spacing:3px;margin-top:18px;text-transform:uppercase;}
+  .hero-sub{margin-top:18px;color:#9CA3AF;font-size:15px;line-height:1.7;max-width:720px;margin-left:auto;margin-right:auto;position:relative;z-index:1;}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;justify-content:center;position:relative;z-index:1;}
+  .pill{background-color:#1F2937;border:1px solid #374151;color:#E5E7EB;font-size:11px;padding:5px 14px;border-radius:9999px;font-weight:600;letter-spacing:0.3px;}
+  .pill.accent{border-color:#F97316;color:#F97316;}
+
+  /* Brand bar */
+  .brand-bar{padding:20px 24px;background-color:#000;border-bottom:1px solid #374151;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand-bar .meta{font-size:11px;color:#6B7280;letter-spacing:1px;text-transform:uppercase;font-weight:600;}
+
+  /* Footer */
+  .footer{padding:48px 24px;text-align:center;border-top:1px solid #374151;background-color:#0a0a0a;margin-top:40px;}
+  .footer h2{font-size:28px;font-weight:900;color:#F97316;margin-bottom:14px;letter-spacing:-0.02em;}
+  .footer p{color:#9CA3AF;font-size:13px;max-width:640px;margin:0 auto 8px;line-height:1.7;}
+  .footer .footer-mark{display:flex;align-items:center;justify-content:center;gap:10px;margin:24px auto 12px;}
+  .footer .sig{margin-top:14px;color:#6B7280;font-size:11px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;}
+
+  @media(max-width:640px){
+    .impact-row{grid-template-columns:1fr;}
+    .impact-cell{border-right:none;border-bottom:1px solid #374151;}
+    .impact-cell:last-child{border-bottom:none;}
+    .funnel-stage{flex-direction:column;align-items:flex-start;}
+    .hero{padding:36px 20px 32px;}
+    .section-header{flex-direction:column;align-items:flex-start;gap:4px;}
+    .section-num{font-size:36px;}
+    .section-title{font-size:24px;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer" class="logo-mark">
+    <img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox" class="h-8">
+  </a>
+  <span class="meta">Client Strategy · Zaladaa · HSR Layout, Bangalore</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">STRATEGY DOCUMENT · INSTAGRAM-LED GROWTH</div>
+  <h1>ZALADAA — THE<br><span>FRESH HABIT</span> OF HSR</h1>
+  <div class="hero-tag">PREMIUM HEALTHY · HSR-NATIVE · SUBSCRIPTION-LED</div>
+  <p class="hero-sub">Zaladaa is not competing on salads. Zaladaa is competing for the daily lunch slot of a 28-year-old Helios product manager who already pays ₹400 for Swiggy and doesn't trust the bowl on the other side. The strategy below is what turns Zaladaa into <em style="color:#F97316;font-style:italic;">the default healthy lunch of HSR</em> — before it ever tries to be the default lunch of Bangalore.</p>
+  <div class="hero-pills">
+    <span class="pill accent">90-DAY ROADMAP</span>
+    <span class="pill accent">25 STRATEGIC MODULES</span>
+    <span class="pill">HSR-FIRST</span>
+    <span class="pill">REELS-LED</span>
+    <span class="pill">SUBSCRIPTION ENGINE</span>
+    <span class="pill">FOUNDER-FORWARD</span>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showSection('s0',this)">00 · Overview</button>
+  <button class="tab-btn" onclick="showSection('s1',this)">01 · The Market</button>
+  <button class="tab-btn" onclick="showSection('s2',this)">02 · Foundation</button>
+  <button class="tab-btn" onclick="showSection('s3',this)">03 · Content Engine</button>
+  <button class="tab-btn" onclick="showSection('s4',this)">04 · The Funnel</button>
+  <button class="tab-btn" onclick="showSection('s5',this)">05 · Paid &amp; Influence</button>
+  <button class="tab-btn" onclick="showSection('s6',this)">06 · HSR Domination</button>
+  <button class="tab-btn" onclick="showSection('s7',this)">07 · Retention</button>
+  <button class="tab-btn" onclick="showSection('s8',this)">08 · 90-Day Plan</button>
+  <button class="tab-btn" onclick="showSection('s9',this)">09 · Next 7 Days</button>
+</div>
+
+<div class="max-w-6xl mx-auto px-6 py-12">
+
+<!-- S0 — OVERVIEW -->
+<div id="s0" class="section active">
+  <div class="section-header">
+    <div class="section-num">00</div>
+    <div>
+      <div class="section-title">Executive Overview</div>
+      <span class="section-subtitle">Read this first — the strategic bet, the levers, the 90-day landing zone</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The core strategic truth: <span>Zaladaa is not selling salads — Zaladaa is selling the daily lunch habit of a 1.2-km radius around HSR Layout Sector 3.</span> Premium positioning, subscription-led economics, founder-visible storytelling, and a content engine built for HSR's specific psychology — tech professionals, fitness-aware millennials, weekend couples — are the four structural moves nobody in this category is making well in this exact postcode. The plan below turns each one into traction, <em>foundation first, then fuel.</em>
+  </div>
+
+  <div class="quote-block">
+    This document lays out exactly what gets built in the first 30 days, what the recurring content and growth engine looks like, and a 90-day trajectory ending in <strong>10,000–15,000 followers, 80–120 active subscribers, and ₹6L–₹9L in monthly Instagram-attributable revenue.</strong> The scope is fixed. What changes month to month is the brand's grip on its neighbourhood.
+  </div>
+
+  <h3 class="sh">The Four Strategic Pillars</h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 01</p>
+      <h3 class="text-xl mb-3">🍃 HSR-First Positioning</h3>
+      <p class="text-sm text-gray-400">Own a 1.2-km radius before chasing a city. Every reel, every collab, every story should make an HSR resident feel like Zaladaa is <em style="color:#F97316;">their</em> spot — not a brand on Instagram. National scale is a Month 7 problem.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 02</p>
+      <h3 class="text-xl mb-3">📅 Subscription as Habit Engine</h3>
+      <p class="text-sm text-gray-400">₹249 / ₹449 / ₹649 per day plans are the moat. They convert a one-time bowl into 22 lunches a month and reframe Zaladaa from "restaurant" to <em style="color:#F97316;">infrastructure</em>. Every funnel terminates here, not at single-order checkout.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 03</p>
+      <h3 class="text-xl mb-3">🎬 Founder-Led Storytelling</h3>
+      <p class="text-sm text-gray-400">In a category where every brand looks the same in the feed, the founder's face is the cheapest, fastest trust signal Zaladaa owns. Building a recognisable founder is a 90-day project that pays back for 5 years.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 04</p>
+      <h3 class="text-xl mb-3">💪 Healthy Without Being Preachy</h3>
+      <p class="text-sm text-gray-400">The category's biggest tonal mistake is talking like a dietician. Zaladaa wins by talking like a <em style="color:#F97316;">friend who happens to know food</em> — macros where useful, cravings where honest, never a lecture.</p>
+    </div>
+  </div>
+
+  <h3 class="sh">The 90-Day Landing Zone</h3>
+  <div class="stat-row">
+    <div class="stat-badge">
+      <div class="stat-val">10–15K</div>
+      <div class="stat-label">Followers by Day 90 (HSR + tech-corridor weighted)</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">80–120</div>
+      <div class="stat-label">Active subscribers across the three tiers</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">₹6–9L</div>
+      <div class="stat-label">Monthly IG-attributable revenue by Month 3</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">3.5x</div>
+      <div class="stat-label">Target Meta ROAS on subscription-led campaigns</div>
+    </div>
+  </div>
+
+  <h3 class="sh">How to Read This Document</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">📚 The Structure</h3>
+      <p class="text-sm text-gray-400">Ten sections, ordered the way the work actually happens — the market read, the brand foundation, the content engine, the funnel mechanics, paid amplification, hyperlocal domination, retention systems, the 90-day roadmap, and what has to be in place inside 7 days for execution to begin.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">⚡ The Execution Rule</h3>
+      <p class="text-sm text-gray-400"><em style="color:#F97316;">Hyperlocal before national. Habit before reach.</em> Every metric below — followers, subscribers, ROAS — is measured against the HSR corridor first. A reel that goes viral in Hyderabad and dies in HSR is, by this document's standard, a failed reel.</p>
+    </div>
+  </div>
+</div>
+
+<!-- S1 — THE MARKET -->
+<div id="s1" class="section">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">The Market &amp; The Competition</div>
+      <span class="section-subtitle">What the top three are doing, where the gap is, and why HSR is the opening</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The Bangalore healthy-food category looks crowded from the outside and is genuinely empty inside one specific cut: <span>premium, hyperlocal, subscription-led, founder-visible.</span> Salad Days has scale but no neighbourhood. Eat.fit has reach but no premium pull. The Whole Truth has branding but no kitchen. <em>The HSR-first, subscription-anchored, founder-led position is unclaimed</em> — and the three competitors below explain why.
+  </div>
+
+  <h3 class="sh">The Top Three — Deep Read</h3>
+
+  <details class="accordion mb-3" open>
+    <summary>
+      <span>🥗 Salad Days — The Premium Incumbent</span>
+      <span class="accordion-arrow">›</span>
+    </summary>
+    <div class="accordion-content">
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">POSITIONING</p>
+          <p class="text-sm text-gray-400">Premium urban salads, multi-city footprint (BLR, MUM, GGN, HYD). Sells "wholesome made beautiful" but the brand is intentionally calm — almost editorial. Pricing parity with Zaladaa.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">CONTENT PILLARS</p>
+          <p class="text-sm text-gray-400">Studio food photography, menu drops, recipe-style reels, occasional founder shots. Heavily reliant on aspirational stillness — not personality.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHAT THEY DO WELL</p>
+          <p class="text-sm text-gray-400">Visual consistency, menu discipline, packaging photography. The grid looks like a coffee table book.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHERE THEY'RE WEAK</p>
+          <p class="text-sm text-gray-400">No founder, no neighbourhood, no community. Feels like a brand. Subscription mechanics are buried. Comments-to-followers ratio &lt; 0.4% — they're being watched, not loved.</p>
+        </div>
+      </div>
+      <div class="quote-block mt-4">
+        <strong>Zaladaa's opening:</strong> Salad Days is what you order. Zaladaa should be who you know. Out-personality them in HSR and the premium-but-warm slot is yours.
+      </div>
+    </div>
+  </details>
+
+  <details class="accordion mb-3">
+    <summary>
+      <span>📦 The Whole Truth Foods — The Branding Class Act</span>
+      <span class="accordion-arrow">›</span>
+    </summary>
+    <div class="accordion-content">
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">POSITIONING</p>
+          <p class="text-sm text-gray-400">D2C packaged healthy food (bars, shakes, peanut butter). Sells "no bullshit" as both ingredient claim and brand voice. Not a direct competitor — but the brand to learn from.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">CONTENT PILLARS</p>
+          <p class="text-sm text-gray-400">Founder Shashank reels, label-reading explainers, industry call-outs, customer DM screenshots. Tone is sharp, opinionated, sometimes confrontational.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHAT THEY DO WELL</p>
+          <p class="text-sm text-gray-400">Founder-as-brand. Educational + entertaining. Convert outrage into trust. <em>Highest save rate</em> in the Indian healthy-food category.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHERE THEY'RE WEAK</p>
+          <p class="text-sm text-gray-400">Packaged-only, no kitchen, no fresh, no local presence. Cannot serve the "today's lunch" moment Zaladaa owns by default.</p>
+        </div>
+      </div>
+      <div class="quote-block mt-4">
+        <strong>Zaladaa's borrow:</strong> Steal their founder-led format. Adapt the "label-reading" energy to a "Swiggy menu vs Zaladaa menu" series. The tone is the lesson — the category is yours.
+      </div>
+    </div>
+  </details>
+
+  <details class="accordion mb-3">
+    <summary>
+      <span>🏋️ Eat.fit (Cult.fit) — The Scaled Subscription Operator</span>
+      <span class="accordion-arrow">›</span>
+    </summary>
+    <div class="accordion-content">
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">POSITIONING</p>
+          <p class="text-sm text-gray-400">Healthy meals as utility — sold inside the Cult ecosystem. Subscription-first, calorie-counted, mass-premium. Massive volume, ~₹220 average plate.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">CONTENT PILLARS</p>
+          <p class="text-sm text-gray-400">In-app push notifications do most of their work. IG is utility-grade: menu of the week, macro callouts, occasional reels. Personality is flat by design.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHAT THEY DO WELL</p>
+          <p class="text-sm text-gray-400">Subscription economics. Operational rigour. Cross-sell with gym memberships. They know the math of repeat better than anyone in this category.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">WHERE THEY'RE WEAK</p>
+          <p class="text-sm text-gray-400">Tastes like a Cult subscription, not a meal you'd recommend. Zero local feel. Reviews skew "fine, not great". Premium audience defects fast.</p>
+        </div>
+      </div>
+      <div class="quote-block mt-4">
+        <strong>Zaladaa's wedge:</strong> Eat.fit subscribers churn looking for "something nicer". Position Zaladaa as <em style="color:#F97316;">the upgrade after Eat.fit gets boring</em> — same convenience, twice the taste, half the corporate.
+      </div>
+    </div>
+  </details>
+
+  <h3 class="sh">Side-by-Side <span class="tag tag-orange">Strategic Read</span></h3>
+  <table class="data-table mb-6">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Salad Days</th>
+        <th>Whole Truth</th>
+        <th>Eat.fit</th>
+        <th>Zaladaa Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="stage">Founder Visibility</td>
+        <td>Low</td>
+        <td><span class="num">Very High</span></td>
+        <td>None</td>
+        <td><span class="num">High (to build)</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Hyperlocal Feel</td>
+        <td>None</td>
+        <td>None</td>
+        <td>None</td>
+        <td><span class="num">High (HSR-first)</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Subscription Pull</td>
+        <td>Weak</td>
+        <td>N/A (packaged)</td>
+        <td><span class="num">Very High</span></td>
+        <td><span class="num">High (₹249/449/649)</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Content Personality</td>
+        <td>Calm / Editorial</td>
+        <td><span class="num">Sharp / Opinionated</span></td>
+        <td>Utility / Flat</td>
+        <td><span class="num">Warm / Crave-led</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Community Loop</td>
+        <td>Weak</td>
+        <td>Strong (DM-based)</td>
+        <td>Weak</td>
+        <td><span class="num">Strong (HSR-IRL)</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Premium Perception</td>
+        <td>Strong</td>
+        <td>Strong</td>
+        <td>Mid</td>
+        <td><span class="num">Strong (to defend)</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Empty Slot</h5><p>Premium · Hyperlocal · Subscription · Founder-led — no national brand sits here.</p></div>
+    <div class="impact-cell"><h5>Time Window</h5><p>12–18 months before a well-funded player tries to copy this exact wedge.</p></div>
+    <div class="impact-cell priority"><h5>The Mandate</h5><p>Dominate HSR before competitors notice it's the position.</p></div>
+  </div>
+</div>
+
+<!-- S2 — THE FOUNDATION -->
+<div id="s2" class="section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">Brand Foundation</div>
+      <span class="section-subtitle">Positioning, founder, functional health, emotional story — the four pieces that must be locked before content scales</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Content without a brand position is just food photography on a feed. <span>Four foundational pieces lock in before any reel-heavy content sprint begins:</span> the positioning sentence, the functional-health frame, the founder's on-camera identity, and the emotional thesis behind every reel. <em>Build these once, ride them for 18 months.</em>
+  </div>
+
+  <h3 class="sh">01 · The Positioning Sentence <span class="tag tag-orange">Module 01</span></h3>
+  <div class="quote-block">
+    <strong>"Zaladaa is the fresh habit of HSR — premium healthy food, made daily for the people who live and work here."</strong>
+  </div>
+  <p class="text-sm text-gray-400 mb-4">Every bio, ad creative, founder intro, packaging tagline, and reel caption pulls from this one line. The four operative words — <em style="color:#F97316;">fresh, habit, HSR, daily</em> — are the only words the brand needs to repeat for 12 months. Habit beats novelty. Daily beats occasion. HSR beats Bangalore.</p>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-8">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">What Zaladaa Is</h3>
+      <ul class="feature-list">
+        <li class="included">Premium</li>
+        <li class="included">Daily</li>
+        <li class="included">Warm</li>
+        <li class="included">HSR-rooted</li>
+        <li class="included">Founder-visible</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">What Zaladaa Is Not</h3>
+      <ul class="feature-list">
+        <li class="excluded">Diet food</li>
+        <li class="excluded">Discount-led</li>
+        <li class="excluded">Preachy</li>
+        <li class="excluded">Anonymous</li>
+        <li class="excluded">Cloud kitchen-coded</li>
+      </ul>
+    </div>
+    <div class="plan-card recommended">
+      <h3 class="text-lg mb-3">The Brand Vibe</h3>
+      <p class="text-sm text-gray-400">Like a friend in HSR who happens to make the cleanest bowl in your radius — and who you'd actually text to ask <em style="color:#F97316;">"what's good today?"</em></p>
+    </div>
+  </div>
+
+  <h3 class="sh">02 · Functional Health Without The Lecture <span class="tag tag-orange">Module 19</span></h3>
+  <p class="text-sm text-gray-400 mb-4">The category's default sin is sounding like a nutritionist's clinic. Zaladaa speaks health the way HSR's audience actually thinks about it — <em style="color:#F97316;">in passing, in numbers when it matters, never in slogans.</em></p>
+
+  <ol class="n-list mb-6">
+    <li><strong>Macro callouts, not macro lectures.</strong> "<em>28g protein, 14g fibre, ₹275</em>" overlay on a bowl reel works. A 30-second explainer about the importance of fibre doesn't.</li>
+    <li><strong>Functional triggers, not generic "healthy".</strong> Speak to specific outcomes the audience is searching for — <em>post-gym recovery, 1 pm crash-free lunch, late-meeting fuel, weekend reset bowl.</em></li>
+    <li><strong>Ingredient honesty, not ingredient theatre.</strong> "We use cold-pressed oil because it's what we'd eat" beats "Cold-pressed oil is scientifically proven to…"</li>
+    <li><strong>Permission to indulge.</strong> A monthly dessert reel — chocolate, dates, almond — signals Zaladaa understands cravings. It's the rule-breaker that proves the rest of the rules are real.</li>
+    <li><strong>Anti-claims.</strong> Never use <em>"guilt-free", "cheat meal", "skinny", "detox"</em>. These are the words the category overuses and the audience has stopped trusting.</li>
+  </ol>
+
+  <h3 class="sh">03 · The Founder On Camera <span class="tag tag-orange">Module 09</span></h3>
+  <div class="highlight-box">
+    The single highest-leverage move in the next 90 days is <span>making the founder the most recognised face in HSR Layout's food scene.</span> Not nationally famous. <em>HSR-famous</em>. The moment a tech professional walking past the store says "oh, that's the Zaladaa guy" — the brand has built something no ad budget can replicate.
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🎬 What The Founder Posts</h3>
+      <ul class="feature-list">
+        <li class="included">2 reels a week, face on camera</li>
+        <li class="included">Behind-the-counter footage at 7am prep</li>
+        <li class="included">"Why we made this bowl" 20-sec explainers</li>
+        <li class="included">DM stories — answering one customer question publicly</li>
+        <li class="included">One vulnerable post a month — what's hard about running this</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🎙️ The Founder's Voice</h3>
+      <ul class="feature-list">
+        <li class="included">First-person, conversational, never corporate</li>
+        <li class="included">Talks about food the way a chef talks to a friend</li>
+        <li class="included">Names customers in stories when they consent</li>
+        <li class="included">Comfortable saying "we got this wrong, here's the fix"</li>
+        <li class="excluded">Never sells in caption — sells in product</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sh">04 · The Emotional Story Behind Every Reel <span class="tag tag-orange">Module 18</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Healthy food brands lose because their content sells <em>food</em>. Zaladaa wins by selling the <em style="color:#F97316;">moment</em> the food sits inside. Each reel anchors to one of the five emotional moments below — never a generic "premium bowl, order now."</p>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🌅 The Monday Reset</h3>
+      <p class="text-sm text-gray-400">The bowl you eat to feel like you've got the week handled. Targets working professionals on Sunday night.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🏋️ Post-Gym, Pre-Standup</h3>
+      <p class="text-sm text-gray-400">The 10am protein bowl after a Cult class. Targets fitness-aware professionals who already optimise.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">💻 The 3pm Save</h3>
+      <p class="text-sm text-gray-400">When the post-lunch crash hits and you remember you ate the burger from the office canteen. Cold-pressed juice, smoothie bowl moment.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">💑 The Weekend Bowl-For-Two</h3>
+      <p class="text-sm text-gray-400">Saturday brunch with the partner — the one healthy meal that doesn't feel like a punishment. Targets couples, ages 27–34.</p>
+    </div>
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>The Sentence</h5><p>"The fresh habit of HSR" — non-negotiable across every surface.</p></div>
+    <div class="impact-cell"><h5>The Face</h5><p>Founder visible in ≥40% of monthly content output.</p></div>
+    <div class="impact-cell priority"><h5>The Moment</h5><p>Every reel maps to one of the four emotional anchors — no orphan content.</p></div>
+  </div>
+</div>
+
+<!-- S3 — CONTENT ENGINE -->
+<div id="s3" class="section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">The Content Engine</div>
+      <span class="section-subtitle">Reels-first. Hook in two seconds. Save-worthy by default. The 12 viral concepts and the 5 pillars that power them.</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Reels do 80% of the lift on a new healthy-food brand in Bangalore. <span>Single posts are for credibility, not reach.</span> Stories are for community, not conversion. The content engine below is built around a 2-reels-per-week minimum with a fixed 5-pillar rotation — and twelve specific scripted concepts ready to shoot inside the first 30 days. <em>Hooks earn the watch. Saves earn the algorithm. Founder earns the trust.</em>
+  </div>
+
+  <h3 class="sh">The 5 Content Pillars <span class="tag tag-orange">Weekly Rotation</span></h3>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 01 — 40%</p>
+      <h3 class="text-lg mb-3">🤤 Craving Content</h3>
+      <p class="text-sm text-gray-400 mb-3">Cinematic close-ups, slow pours, ASMR-grade plating. Designed for the 1pm "what should I eat" scroll.</p>
+      <p class="text-xs text-gray-500"><strong style="color:#F97316;">Goal:</strong> Same-day orders.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 02 — 20%</p>
+      <h3 class="text-lg mb-3">🧠 Educational</h3>
+      <p class="text-sm text-gray-400 mb-3">"Why we use this oil, not that one." Label-read explainers, macro callouts, ingredient honesty. Save-driven.</p>
+      <p class="text-xs text-gray-500"><strong style="color:#F97316;">Goal:</strong> Saves &amp; shares.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 03 — 20%</p>
+      <h3 class="text-lg mb-3">🎙️ Founder &amp; Story</h3>
+      <p class="text-sm text-gray-400 mb-3">Founder POV, behind-the-counter, kitchen morning, customer interactions. Builds the parasocial layer.</p>
+      <p class="text-xs text-gray-500"><strong style="color:#F97316;">Goal:</strong> Follow + trust.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 04 — 10%</p>
+      <h3 class="text-lg mb-3">💬 Community &amp; UGC</h3>
+      <p class="text-sm text-gray-400 mb-3">Customer reels, repost-with-permission, "spotted in HSR" content. Free social proof, costs ₹0 to produce.</p>
+      <p class="text-xs text-gray-500"><strong style="color:#F97316;">Goal:</strong> Social proof.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">PILLAR 05 — 10%</p>
+      <h3 class="text-lg mb-3">🛒 Conversion</h3>
+      <p class="text-sm text-gray-400 mb-3">Subscription explainers, "what ₹449 a day gets you", carousel walkthroughs. Direct sell — but never more than 1 in 10 posts.</p>
+      <p class="text-xs text-gray-500"><strong style="color:#F97316;">Goal:</strong> DM &amp; clicks.</p>
+    </div>
+    <div class="plan-card recommended">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">FORMAT MIX</p>
+      <h3 class="text-lg mb-3">📊 Output Cadence</h3>
+      <ul class="feature-list">
+        <li class="included">8–10 reels / month</li>
+        <li class="included">4 carousels / month</li>
+        <li class="included">3–5 stories / day</li>
+        <li class="included">1 Live / month (founder)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sh">12 Viral Reel Concepts — Ready To Shoot <span class="tag tag-orange">Modules 04, 08, 10, 17</span></h3>
+  <p class="text-sm text-gray-400 mb-6">Each concept includes the hook (first 2 seconds), the visual flow, and why it works. These are not ideas — they are scripts you can shoot this week.</p>
+
+  <div class="hook-box">
+    <div class="hook-num">01</div>
+    <div class="hook-label">CRAVING · POV</div>
+    <div class="hook-text">"POV: You're a 28-year-old PM in HSR and you've eaten <em>biryani three days in a row</em>…"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Quick cuts of greasy lunches → slow reveal of a Zaladaa bowl arriving on a desk at Helios → first bite. <strong>Audio:</strong> Trending lo-fi reset track.</div>
+    <div class="hook-why">Why it works: hyper-specific to the HSR tech audience, identifies a real food guilt loop, ends with the solution. Save + share-bait.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">02</div>
+    <div class="hook-label">EDUCATIONAL · COMPARISON</div>
+    <div class="hook-text">"What ₹275 buys you on Swiggy vs at Zaladaa. <em>The protein difference is criminal.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Split-screen — Swiggy paneer roll (12g protein) vs Zaladaa quinoa bowl (28g protein). Founder voiceover. <strong>Macro overlay</strong> on both sides.</div>
+    <div class="hook-why">Why it works: turns a price-justification objection into a value-display moment. Saves are guaranteed because the math is shareable.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">03</div>
+    <div class="hook-label">FOUNDER · 7AM PREP</div>
+    <div class="hook-text">"It's <em>6:47am</em> in HSR. This is what goes into your 1pm bowl."</div>
+    <div class="hook-meta"><strong>Visual:</strong> Time-lapse of kitchen prep — vegetables being washed, quinoa boiling, dressings whisked. Founder in apron, no script, just doing the work. <strong>Audio:</strong> Soft instrumental.</div>
+    <div class="hook-why">Why it works: founder-led + transparency + craving build. The "before-the-customer-sees-it" angle most brands skip.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">04</div>
+    <div class="hook-label">REACTION · STREET</div>
+    <div class="hook-text">"Asked 10 HSR tech employees: <em>what did you eat for lunch today?</em> The answers are bleak."</div>
+    <div class="hook-meta"><strong>Visual:</strong> Mic-in-hand street walk through Mantri Sarovar / Helios / 27th Main. Real responses — Maggi, biryani, "I skipped it". Cut to a Zaladaa bowl as the answer.</div>
+    <div class="hook-why">Why it works: hyperlocal, builds community recognition, makes Zaladaa feel like the obvious next step.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">05</div>
+    <div class="hook-label">CRAVING · ASMR</div>
+    <div class="hook-text">"No talking. Just <em>22 seconds of a Mediterranean bowl being made.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Overhead 4K — hummus dollop, falafel drop, olive scatter, oil drizzle. Crisp sound design. No voiceover. Caption sells the bowl name + price.</div>
+    <div class="hook-why">Why it works: ASMR food reels have the highest re-watch rate of any format. Algorithmically supercharged.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">06</div>
+    <div class="hook-label">EDUCATIONAL · LABEL READ</div>
+    <div class="hook-text">"Why your 'healthy' smoothie from XYZ café has <em>more sugar than a Coke.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Founder reading a competitor smoothie label on camera, doing the sugar math. Cut to Zaladaa cold-pressed juice with full ingredient transparency.</div>
+    <div class="hook-why">Why it works: Whole Truth's signature format adapted. Polarising, save-worthy, builds the "ingredient honest" position.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">07</div>
+    <div class="hook-label">SUBSCRIPTION · MATH</div>
+    <div class="hook-text">"₹449 a day for healthy lunch + dinner. <em>That's less than your Saturday biryani order.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Founder doing the math on whiteboard / iPad. Real Swiggy receipts shown. Subscription value made obvious.</div>
+    <div class="hook-why">Why it works: directly converts curious followers to subscribers. Conversion-pillar workhorse.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">08</div>
+    <div class="hook-label">CUSTOMER · UGC</div>
+    <div class="hook-text">"This is <em>Day 14</em> of Riya's Zaladaa subscription. Her lunch desk now looks like this."</div>
+    <div class="hook-meta"><strong>Visual:</strong> Real subscriber (with permission), real desk shot at her tech office. Walk through what she ate this week. Quote what changed.</div>
+    <div class="hook-why">Why it works: pure social proof in a category where audience needs to see "real people like me" eating this daily.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">09</div>
+    <div class="hook-label">FOUNDER · VULNERABLE</div>
+    <div class="hook-text">"We almost ran out of avocados yesterday. Here's what happened in the kitchen."</div>
+    <div class="hook-meta"><strong>Visual:</strong> Founder talking direct to camera, no edit theatrics. Shows the chaos, shows the fix. Ends with "this is what running a fresh kitchen actually looks like."</div>
+    <div class="hook-why">Why it works: vulnerability is the fastest trust-builder for a small brand. Differentiates from cloud-kitchen anonymity.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">10</div>
+    <div class="hook-label">CRAVING · DESSERT</div>
+    <div class="hook-text">"Healthy doesn't mean punishment. Meet our <em>date &amp; dark chocolate bowl.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Slow molten chocolate drip, dates being halved, almond crumble. Caption: "Yes, this is on the Zaladaa menu. No, it won't wreck your day."</div>
+    <div class="hook-why">Why it works: breaks category orthodoxy that healthy = boring. Permission-to-indulge content has the highest share rate.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">11</div>
+    <div class="hook-label">REACTION · GYM</div>
+    <div class="hook-text">"I gave a Cult HSR class their post-workout fuel. <em>The reactions broke me.</em>"</div>
+    <div class="hook-meta"><strong>Visual:</strong> Founder outside a Cult / Anytime Fitness / F45 in HSR. Hands out post-gym protein bowls. Real first-bite reactions. End: "Try one — DM us for the gym partner code."</div>
+    <div class="hook-why">Why it works: combines reaction format + gym audience + community sampling. Engineered for shares.</div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-num">12</div>
+    <div class="hook-label">EDUCATIONAL · MYTH BREAK</div>
+    <div class="hook-text">"<em>'Salads aren't filling'</em> — said by people who've only had iceberg lettuce. Here's what 600 cal of Zaladaa looks like."</div>
+    <div class="hook-meta"><strong>Visual:</strong> Side-by-side — sad iceberg salad vs Zaladaa Mediterranean bowl with quinoa, falafel, hummus, feta, olives. Macros overlaid. Founder voiceover.</div>
+    <div class="hook-why">Why it works: addresses the #1 unspoken objection in the healthy-food category. Converts skeptics.</div>
+  </div>
+
+  <h3 class="sh">Story Strategy <span class="tag tag-orange">Module 14</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Stories are not promotional dumps. Stories are the <em style="color:#F97316;">community feed</em> — where Zaladaa shows up daily without selling.</p>
+  <ol class="n-list">
+    <li><strong>3 stories minimum, 5 ideal, per day.</strong> Mix: kitchen behind-scenes, customer reposts, polls, daily-special, founder POV.</li>
+    <li><strong>One poll a day.</strong> "Quinoa or millet base today?" — builds participation, lifts story view-through, surfaces preferences.</li>
+    <li><strong>The 'today at Zaladaa' anchor.</strong> First story every day is a kitchen shot or a bowl-of-the-day with a single line of warmth. Builds daily-check habit.</li>
+    <li><strong>Subscriber-only stickers.</strong> Once a week, a "secret menu" or "subscriber preview" — visible to all, but only redeemable by subscribers. Drives FOMO into subscription.</li>
+    <li><strong>Repost UGC within 4 hours.</strong> Any customer tag gets reposted same day. Trains the audience that tagging Zaladaa = recognition.</li>
+  </ol>
+</div>
+
+<!-- S4 — THE FUNNEL -->
+<div id="s4" class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">The Instagram Funnel</div>
+      <span class="section-subtitle">From hook view to monthly subscriber — the four-stage path every reel is being measured against</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Most healthy-food brands run Instagram like a portfolio site. <span>Zaladaa runs it like a funnel.</span> Every reel, every story, every DM has a known job inside the four stages below. The funnel terminates at <em>subscription</em>, not single-order — because that's where the unit economics break in Zaladaa's favour, not on a one-time ₹350 bowl.
+  </div>
+
+  <h3 class="sh">The Four-Stage Funnel <span class="tag tag-orange">Modules 05, 13</span></h3>
+
+  <div class="funnel-stage">
+    <div class="funnel-num">01</div>
+    <div class="flex-1">
+      <h4>HOOK · 2-second watch</h4>
+      <p>Reels with HSR-coded openers (Mantri Sarovar shot, Cult class, "POV: 28-yr-old PM"). <strong style="color:#F97316;">Job:</strong> earn 25% retention to second 5.</p>
+    </div>
+  </div>
+
+  <div class="funnel-stage">
+    <div class="funnel-num">02</div>
+    <div class="flex-1">
+      <h4>INTEREST · Profile visit + follow</h4>
+      <p>Bio reads as a clear promise ("Premium healthy food · HSR · Subscriptions from ₹249/day"). Pinned reels show range. <strong style="color:#F97316;">Job:</strong> convert 6–10% of hook-watchers to followers.</p>
+    </div>
+  </div>
+
+  <div class="funnel-stage">
+    <div class="funnel-num">03</div>
+    <div class="flex-1">
+      <h4>CONSIDERATION · DM, save, Story tap</h4>
+      <p>Saves on macro-overlay reels, DM enquiries on subscription, story replies on polls. <strong style="color:#F97316;">Job:</strong> 1 in 20 followers initiates a DM conversation within 14 days.</p>
+    </div>
+  </div>
+
+  <div class="funnel-stage">
+    <div class="funnel-num">04</div>
+    <div class="flex-1">
+      <h4>CONVERSION · First order or subscription</h4>
+      <p>DM-to-Swiggy-link, story-CTA to website, "trial day" offers, subscription pitch via WhatsApp. <strong style="color:#F97316;">Job:</strong> 25%+ of DMs convert to a first order; 15% of first-orders to subscription within 30 days.</p>
+    </div>
+  </div>
+
+  <h3 class="sh">CTA Framework — 6 Tiers <span class="tag tag-orange">Module 20</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Different content types deserve different CTAs. A craving reel ending with "subscribe now" is wasted energy. A founder reel ending with "DM us" works. Map every content piece to one of the six below:</p>
+
+  <ol class="n-list mb-6">
+    <li><strong>Tier 1 — Soft Follow.</strong> Craving content. CTA: <em>"Follow for daily bowl drops in HSR."</em> Low-friction, builds top-of-funnel.</li>
+    <li><strong>Tier 2 — Save This.</strong> Educational, macro, label-read content. CTA: <em>"Save this for the next time you're choosing lunch."</em> Save rate is the algorithm's favourite signal.</li>
+    <li><strong>Tier 3 — DM Trigger.</strong> Subscription, founder, behind-scenes. CTA: <em>"DM 'PLAN' for the subscription breakdown."</em> Captures intent, opens a conversation.</li>
+    <li><strong>Tier 4 — Link-In-Bio Click.</strong> Menu drops, new launches. CTA: <em>"Tap the link in bio to order."</em> Use sparingly — 1 in 8 posts.</li>
+    <li><strong>Tier 5 — Trial Offer.</strong> Conversion reels. CTA: <em>"₹199 first-day trial for HSR — DM to claim."</em> Friction-reducing, time-bound.</li>
+    <li><strong>Tier 6 — Subscriber-Only.</strong> Reposts, community content. CTA: <em>"Subscribers got this bowl first this week."</em> Builds FOMO into the subscription pull.</li>
+  </ol>
+
+  <h3 class="sh">DM-As-Sales-Floor <span class="tag tag-orange">Module 05</span></h3>
+  <p class="text-sm text-gray-400 mb-4">In a category where 70% of conversion conversations happen in the inbox, treating DMs as a customer-support cost is a strategic miss. Zaladaa's DM playbook treats it as a <em style="color:#F97316;">commissioned sales floor</em>:</p>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">⚡ Response SLA</h3>
+      <ul class="feature-list">
+        <li class="included">&lt; 15 min response, 9am–9pm</li>
+        <li class="included">First message includes a question + the menu link</li>
+        <li class="included">Photo replies, not text walls</li>
+        <li class="included">Founder personally handles subscription DMs Week 1–4</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🎯 Auto-Reply Triggers</h3>
+      <ul class="feature-list">
+        <li class="included">"PLAN" → subscription tiers carousel</li>
+        <li class="included">"MENU" → today's bowl drop + price</li>
+        <li class="included">"TRIAL" → ₹199 first-day offer + WhatsApp link</li>
+        <li class="included">"HSR" → delivery radius + ETA confirmation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>The North Star</h5><p>Subscriber count — not follower count, not reach.</p></div>
+    <div class="impact-cell"><h5>The Conversion Rate</h5><p>15% of first-time customers to subscribers within 30 days.</p></div>
+    <div class="impact-cell priority"><h5>The Discipline</h5><p>Every reel ends with one CTA from the six tiers. No orphan posts.</p></div>
+  </div>
+</div>
+
+<!-- S5 — PAID & INFLUENCE -->
+<div id="s5" class="section">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">Paid &amp; Influence</div>
+      <span class="section-subtitle">Meta ads tuned for HSR's exact 4-km bullseye, plus the influencer math that beats macro budgets</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Paid traffic does not run until the funnel is honest. Once it does, <span>the geography is the cheat code.</span> Targeting a 4-km radius around HSR Layout Sector 3, layered with the right interest stacks, gets Zaladaa in front of the exact 28–40 lakh population that walks past the store every week. The influencer play is even cheaper and more local: <em>five tier-3 HSR creators beat one tier-1 Bangalore name every time.</em>
+  </div>
+
+  <h3 class="sh">Meta Ads — Budget Tiers <span class="tag tag-orange">Module 15</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Three tiers, three different jobs. Start at ₹30K/month for the first 6 weeks while creatives prove. Scale to ₹50K once the winning creative is identified. Move to ₹75K only after ROAS clears 3x.</p>
+
+  <table class="data-table mb-6">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Monthly Spend</th>
+        <th>Allocation</th>
+        <th>Primary Goal</th>
+        <th>Expected ROAS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="stage">Foundation</td>
+        <td><span class="num">₹30,000</span></td>
+        <td>60% awareness · 30% traffic · 10% retargeting</td>
+        <td>Reach + creative validation</td>
+        <td><span class="num">1.5–2.0x</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Scale</td>
+        <td><span class="num">₹50,000</span></td>
+        <td>40% awareness · 35% conversion · 25% retargeting</td>
+        <td>Subscription leads + first orders</td>
+        <td><span class="num">2.5–3.0x</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Compound</td>
+        <td><span class="num">₹75,000+</span></td>
+        <td>30% reach · 40% conversion · 30% retargeting</td>
+        <td>Subscriber acquisition at CAC &lt; ₹400</td>
+        <td><span class="num">3.5x+</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Targeting Stack — HSR Bullseye</h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">📍 Geography</h3>
+      <ul class="feature-list">
+        <li class="included">4-km radius around HSR Sector 3 (primary)</li>
+        <li class="included">Layered: Koramangala, Bellandur, Sarjapur (secondary)</li>
+        <li class="excluded">No city-wide targeting until Month 4</li>
+        <li class="excluded">No tier-2 city overflow</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🎯 Interest Stacks</h3>
+      <ul class="feature-list">
+        <li class="included">Cult.fit, Cure.fit, Anytime Fitness, F45</li>
+        <li class="included">Healthifyme, MyFitnessPal users</li>
+        <li class="included">Swiggy / Zomato heavy users</li>
+        <li class="included">Tech employees — Microsoft, Flipkart, Razorpay</li>
+        <li class="included">Whole Truth, Yoga Bar, RAGE Coffee followers</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">👥 Custom Audiences</h3>
+      <ul class="feature-list">
+        <li class="included">Instagram engagers — last 30 days</li>
+        <li class="included">Video watchers — 75%+ completion</li>
+        <li class="included">Website visitors — 7 day window</li>
+        <li class="included">Existing customer list — for lookalikes</li>
+      </ul>
+    </div>
+    <div class="plan-card recommended">
+      <h3 class="text-lg mb-3">🔁 Retargeting Sequence</h3>
+      <ul class="feature-list">
+        <li class="included">Day 1–3: subscription explainer reel</li>
+        <li class="included">Day 4–7: ₹199 trial offer</li>
+        <li class="included">Day 8–14: subscriber testimonial UGC</li>
+        <li class="included">Day 15+: founder DM-trigger ad</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sh">Influencer Strategy <span class="tag tag-orange">Module 12</span></h3>
+  <div class="quote-block">
+    <strong>The rule:</strong> Five HSR-resident creators with 5K–25K followers will out-perform one Bangalore foodie with 200K every single time. Locality is the currency Instagram trusts in 2026 — and Zaladaa's price-per-collab drops by 80% in the bargain.
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-8">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">TIER A — NANO</p>
+      <h3 class="text-lg mb-3">5K–15K · ₹0–₹3K + meals</h3>
+      <p class="text-sm text-gray-400">HSR-resident gym creators, mom bloggers, work-from-cafe types. Highest trust, lowest cost. <em style="color:#F97316;">Target: 8 collabs/month.</em></p>
+    </div>
+    <div class="plan-card recommended">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">TIER B — MICRO</p>
+      <h3 class="text-lg mb-3">15K–75K · ₹5K–₹15K</h3>
+      <p class="text-sm text-gray-400">Bangalore lifestyle creators, fitness coaches, couple accounts. Sweet spot for ROI. <em style="color:#F97316;">Target: 3 collabs/month.</em></p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">TIER C — STRATEGIC</p>
+      <h3 class="text-lg mb-3">75K+ · ₹20K–₹50K</h3>
+      <p class="text-sm text-gray-400">One per quarter, only when there's a launch worth amplifying. Used for credibility, not volume. <em style="color:#F97316;">Target: 1 collab/quarter.</em></p>
+    </div>
+  </div>
+
+  <h3 class="sh">Collab Format Playbook</h3>
+  <ol class="n-list">
+    <li><strong>"What I ate in a day in HSR" reels.</strong> Creator orders Zaladaa for one meal, films their full day. Builds context, avoids ad-like feel.</li>
+    <li><strong>Founder x Creator sit-downs.</strong> 90-second reel — creator interviews founder about why this bowl, why this neighbourhood. Mutual audience hand-off.</li>
+    <li><strong>Pre-workout + post-workout giveaways.</strong> Cult / Anytime trainer creators give away Zaladaa bowls to their class. Pure social proof.</li>
+    <li><strong>The subscription challenge.</strong> Creator commits to a 7-day Zaladaa subscription, documents the daily reality. Honesty is the asset — works only if creator is told to be honest.</li>
+    <li><strong>Local-spot reposts.</strong> Find creators who already post about HSR cafés. DM with a free bowl + permission-to-post. Zero-cost UGC engine.</li>
+  </ol>
+</div>
+
+<!-- S6 — HSR DOMINATION -->
+<div id="s6" class="section">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">HSR Domination</div>
+      <span class="section-subtitle">The hyperlocal playbook — tech parks, gyms, residential clusters, and the community that turns followers into regulars</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The fastest way to own Bangalore's healthy-food category is to <span>not try to own Bangalore yet.</span> Owning HSR Layout means owning roughly 280,000 residents, 12+ tech parks, 40+ premium gyms, and 18 high-rise residential clusters inside a 4-km square. <em>Win this square first. Everything after is replicable.</em>
+  </div>
+
+  <h3 class="sh">The HSR Map — Where The Audience Actually Lives <span class="tag tag-orange">Module 11</span></h3>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-8">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🏢 Tech Parks &amp; Offices</h3>
+      <ul class="feature-list">
+        <li class="included">Mantri Sarovar — Sector 7</li>
+        <li class="included">Helios Business Park</li>
+        <li class="included">Saaketa Vasanth Centre</li>
+        <li class="included">RGA Tech Park</li>
+        <li class="included">Outer Ring Rd corridor (Bellandur side)</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-3"><strong style="color:#F97316;">Play:</strong> Weekly office-sampling drops. Free 50-bowl distribution at one park per Friday.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🏋️ Gyms &amp; Fitness Studios</h3>
+      <ul class="feature-list">
+        <li class="included">Cult.fit — HSR 1st, 5th, 7th Sector</li>
+        <li class="included">Anytime Fitness — 27th Main</li>
+        <li class="included">Body Bandits — HSR Sector 6</li>
+        <li class="included">F45 — Koramangala edge</li>
+        <li class="included">Studio cycle / pilates studios in Sector 7</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-3"><strong style="color:#F97316;">Play:</strong> Trainer partnerships, post-class sampling, "show your gym tag for ₹50 off".</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🏠 Residential Clusters</h3>
+      <ul class="feature-list">
+        <li class="included">Sobha Garnet, Sobha Onyx</li>
+        <li class="included">Brigade Northridge / Meadows</li>
+        <li class="included">Sector 1 &amp; 2 apartments</li>
+        <li class="included">27th Main residential bands</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-3"><strong style="color:#F97316;">Play:</strong> RWA tie-ups, weekend healthy-eating workshops, building-specific subscription codes.</p>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">☕ Co-existing Cafés &amp; Studios</h3>
+      <ul class="feature-list">
+        <li class="included">Third Wave Coffee (Sector 7)</li>
+        <li class="included">Blue Tokai (HSR + Koramangala)</li>
+        <li class="included">Cure Studio · Yoga House · Lumos Pilates</li>
+        <li class="included">Pet cafés &amp; co-working spaces</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-3"><strong style="color:#F97316;">Play:</strong> Non-competing cross-promo. Co-host a "Healthy Saturday" pop-up monthly.</p>
+    </div>
+  </div>
+
+  <h3 class="sh">Community Building <span class="tag tag-orange">Module 16</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Community is not a Telegram group. Community is the answer to: <em style="color:#F97316;">"Why would 200 people in HSR feel they belong to Zaladaa?"</em> Five mechanisms build that answer in the first 90 days:</p>
+
+  <ol class="n-list mb-6">
+    <li><strong>The "Fresh Habit Club" — subscriber-only.</strong> A WhatsApp broadcast list for active subscribers. Weekly menu preview, occasional ₹0 add-ons, founder voice notes. Closed group = belonging signal.</li>
+    <li><strong>Monthly in-store community brunches.</strong> Last Saturday of every month. 30 subscribers, founder hosts, free bowls. Build the in-person muscle paid ads cannot replicate.</li>
+    <li><strong>HSR Run Club partnerships.</strong> Tie up with existing run clubs in Agara Lake / Madiwala Lake. Post-run bowls at 8am Sundays. Two-way audience flow.</li>
+    <li><strong>Customer-of-the-week reposts.</strong> Every Monday, one subscriber gets featured on the grid. Builds the "I want to be next" social loop.</li>
+    <li><strong>Open-kitchen Fridays.</strong> 4pm–6pm every Friday, customers can walk in and see prep for the next day. Transparency as community ritual.</li>
+  </ol>
+
+  <h3 class="sh">Engagement Mechanics <span class="tag tag-orange">Module 24</span></h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">💬 Comment Activation</h3>
+      <ul class="feature-list">
+        <li class="included">Reply to every comment within 2 hours</li>
+        <li class="included">Pin one customer comment per post</li>
+        <li class="included">Use first names — "Hi Riya, …"</li>
+        <li class="included">Founder personally replies to 1 comment/post in Week 1–8</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">📊 The 3 Metrics That Matter</h3>
+      <ul class="feature-list">
+        <li class="included">Save rate &gt; 8% on educational reels</li>
+        <li class="included">Share rate &gt; 4% on craving reels</li>
+        <li class="included">DM rate &gt; 2% on founder reels</li>
+        <li class="excluded">Like count (vanity)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>The Geography</h5><p>4-km radius. 12 tech parks. 40+ gyms. Win all of them.</p></div>
+    <div class="impact-cell"><h5>The Ritual</h5><p>Monthly subscriber brunch, open-kitchen Friday, run-club Sunday.</p></div>
+    <div class="impact-cell priority"><h5>The Test</h5><p>By Day 90, ask 50 random HSR residents about Zaladaa — 30+ should know it.</p></div>
+  </div>
+</div>
+
+<!-- S7 — RETENTION -->
+<div id="s7" class="section">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <div class="section-title">The Retention Engine</div>
+      <span class="section-subtitle">Subscription mechanics, first-30-days retention, and the repeat-order math that makes Zaladaa unkillable</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Acquisition is expensive. Retention is invisible. <span>Brands that survive in this category survive on Month 3 customer behaviour, not Month 1.</span> The subscription engine is Zaladaa's structural advantage — but only if the first 30 days of every subscriber's experience are engineered, not improvised. <em>One bad bowl in Week 2 kills six months of upside.</em>
+  </div>
+
+  <h3 class="sh">Subscription Tiers — As Designed <span class="tag tag-orange">Module 06</span></h3>
+  <table class="data-table mb-6">
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>Per Day</th>
+        <th>Monthly (22 days)</th>
+        <th>Includes</th>
+        <th>Equivalent Swiggy Spend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="stage">Solo Lunch</td>
+        <td><span class="num">₹249</span></td>
+        <td><span class="num">₹5,478</span></td>
+        <td>1 bowl + juice or smoothie</td>
+        <td><span class="num">₹7,500+</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Twin Pack</td>
+        <td><span class="num">₹449</span></td>
+        <td><span class="num">₹9,878</span></td>
+        <td>Lunch + dinner bowl set</td>
+        <td><span class="num">₹14,000+</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Full Plate</td>
+        <td><span class="num">₹649</span></td>
+        <td><span class="num">₹14,278</span></td>
+        <td>Breakfast + lunch + dinner</td>
+        <td><span class="num">₹21,000+</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="quote-block">
+    The pricing already does the work. The job of marketing is to <strong>make the comparison visible.</strong> Most prospects don't compare ₹449 to a Zaladaa bowl — they compare it to nothing. Force the comparison and the math sells itself.
+  </div>
+
+  <h3 class="sh">First 30 Days of A Subscriber — Designed <span class="tag tag-orange">Module 07</span></h3>
+  <ol class="n-list mb-6">
+    <li><strong>Day 0 — Welcome WhatsApp.</strong> Founder voice note (90 seconds), week's menu preview, name of their dedicated delivery rider, two questions ("any allergies? any flavour preferences?").</li>
+    <li><strong>Day 1 — First bowl includes a handwritten card.</strong> Cost: ₹0. Impact: shared to Instagram by 1 in 4 subscribers in Week 1.</li>
+    <li><strong>Day 5 — Mid-week check-in DM.</strong> Single message, single question: <em>"How are the bowls hitting? Anything we should switch?"</em></li>
+    <li><strong>Day 10 — Surprise add-on.</strong> Free smoothie or dessert with that day's bowl. Unannounced. Designed to be photographed.</li>
+    <li><strong>Day 15 — Feedback Friday.</strong> 60-second voice note from founder asking for honest input on the week's bowls. Builds the audit muscle, deepens the relationship.</li>
+    <li><strong>Day 22 — Renewal nudge.</strong> "Your plan renews in 8 days — anything to change?" Frictionless renewal, no surprise charge.</li>
+    <li><strong>Day 30 — Public thank-you.</strong> Repost something the subscriber tagged you in. Tag back. Treat the milestone as a milestone.</li>
+  </ol>
+
+  <h3 class="sh">Repeat-Order Mechanics <span class="tag tag-orange">Module 25</span></h3>
+  <p class="text-sm text-gray-400 mb-4">For non-subscribers, the goal is converting a one-time bowl into a 3rd, 5th, 8th order — the threshold beyond which a customer effectively becomes a subscriber-in-waiting.</p>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-8">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">ORDER 01 → 02</p>
+      <h3 class="text-lg mb-3">First-Repeat Window</h3>
+      <p class="text-sm text-gray-400">Within 72 hours of first order, send a WhatsApp with <em style="color:#F97316;">"the bowl we'd recommend next based on what you tried."</em> Personal, not promotional.</p>
+    </div>
+    <div class="plan-card recommended">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">ORDER 03 → 05</p>
+      <h3 class="text-lg mb-3">The Subscription Pitch</h3>
+      <p class="text-sm text-gray-400">After 3 orders in 14 days, founder DM with <em style="color:#F97316;">subscription math.</em> "You've spent ₹925 this week. Our ₹249 plan would have been ₹747." Math, not pressure.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">ORDER 05+</p>
+      <h3 class="text-lg mb-3">Soft VIP Tier</h3>
+      <p class="text-sm text-gray-400">Unannounced add-on every 4th order. No card, no system — just the kitchen knowing this person matters. Generates the highest-loyalty cohort.</p>
+    </div>
+  </div>
+
+  <h3 class="sh">Loyalty Mechanics That Don't Feel Like Loyalty Programs</h3>
+  <ol class="n-list">
+    <li><strong>Names on the order.</strong> Bowl labels say "Riya's Bowl, Wed" — not "Bowl #00472". Personalisation at zero cost.</li>
+    <li><strong>The founder voice note for milestone subscribers.</strong> Day 30, Day 60, Day 90 — a 30-second personal message. Most powerful retention tool the brand owns.</li>
+    <li><strong>Friend-of-Zaladaa pricing.</strong> Subscribers can give one friend a ₹199 first-day trial with a personal code. Built-in referral, zero friction.</li>
+    <li><strong>The 'pause it, don't cancel it' option.</strong> Subscribers can pause for travel up to 14 days/quarter. Drops cancellation rate by ~40% — a feature competitors don't bother to build.</li>
+    <li><strong>Subscriber-first menu drops.</strong> New bowls launch on the subscriber app 48 hours before the public Instagram drop. Creates an in-group worth being inside.</li>
+  </ol>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Subscription Target</h5><p>80–120 active subscribers by Day 90. 15% conversion from first-order.</p></div>
+    <div class="impact-cell"><h5>Repeat Rate</h5><p>3+ orders in 30 days for 25% of first-time customers.</p></div>
+    <div class="impact-cell priority"><h5>The Math</h5><p>One subscriber ≈ 6 single-order customers in revenue. Where the engine compounds.</p></div>
+  </div>
+</div>
+
+<!-- S8 — 90-DAY PLAN -->
+<div id="s8" class="section">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <div class="section-title">The 90-Day Roadmap</div>
+      <span class="section-subtitle">Weekly content cadence, the 30/60/90 phase plan, and the KPIs we measure against — every Monday</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span>Scope stays constant. Traction compounds.</span> The deliverables below repeat every week and every month — what changes is the brand's grip on its audience. The phase plan below is the trajectory the brand walks, not a moving scope. <em>Discipline in cadence is what separates Month 3 from Month 1.</em>
+  </div>
+
+  <h3 class="sh">Weekly Content Cadence <span class="tag tag-orange">Module 21</span></h3>
+  <table class="data-table mb-6">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Primary Post</th>
+        <th>Pillar</th>
+        <th>Stories</th>
+        <th>CTA Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="stage">Monday</td>
+        <td>Customer-of-the-week reel</td>
+        <td>Community / UGC</td>
+        <td>Today's bowl, kitchen prep</td>
+        <td><span class="num">Tier 1 — Follow</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Tuesday</td>
+        <td>Macro-overlay educational reel</td>
+        <td>Educational</td>
+        <td>Poll + behind-scenes</td>
+        <td><span class="num">Tier 2 — Save</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Wednesday</td>
+        <td>Founder POV reel</td>
+        <td>Founder</td>
+        <td>DM screenshots, customer reposts</td>
+        <td><span class="num">Tier 3 — DM</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Thursday</td>
+        <td>Craving close-up / ASMR reel</td>
+        <td>Craving</td>
+        <td>Today's bowl, run-out alerts</td>
+        <td><span class="num">Tier 4 — Link</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Friday</td>
+        <td>Carousel — menu / subscription</td>
+        <td>Conversion</td>
+        <td>Open-kitchen Friday</td>
+        <td><span class="num">Tier 5 — Trial</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Saturday</td>
+        <td>Couples / weekend bowl reel</td>
+        <td>Craving</td>
+        <td>Customer reposts, polls</td>
+        <td><span class="num">Tier 1 — Follow</span></td>
+      </tr>
+      <tr>
+        <td class="stage">Sunday</td>
+        <td>Monday-reset bowl reel</td>
+        <td>Craving</td>
+        <td>Next week menu preview</td>
+        <td><span class="num">Tier 4 — Link</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">The 30 / 60 / 90 Phase Plan <span class="tag tag-orange">Module 22</span></h3>
+  <div class="grid md:grid-cols-3 gap-4 mb-8">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">DAYS 1–30</p>
+      <h3 class="text-xl mb-3">Foundation</h3>
+      <ul class="feature-list">
+        <li class="included">Brand sentence locked + bio rewritten</li>
+        <li class="included">First 8 reels shot &amp; published</li>
+        <li class="included">Founder-on-camera muscle built</li>
+        <li class="included">3 nano-creator collabs executed</li>
+        <li class="included">DM auto-replies + WhatsApp setup</li>
+        <li class="included">Meta Pixel + CAPI installed and tested</li>
+      </ul>
+      <p class="text-sm text-gray-400 mt-4"><strong style="color:#F97316;">Goal:</strong> 3,000 followers · 15 subscribers · IG-attributable revenue ₹1.5–2L</p>
+    </div>
+    <div class="plan-card recommended">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">DAYS 31–60</p>
+      <h3 class="text-xl mb-3">Scale What Works</h3>
+      <ul class="feature-list">
+        <li class="included">Winning reel format scaled 3x</li>
+        <li class="included">Meta budget moves ₹30K → ₹50K</li>
+        <li class="included">First micro-creator collab live</li>
+        <li class="included">First in-store subscriber brunch</li>
+        <li class="included">Retargeting sequence active</li>
+        <li class="included">First UGC pipeline producing 2 reels/week</li>
+      </ul>
+      <p class="text-sm text-gray-400 mt-4"><strong style="color:#F97316;">Goal:</strong> 7,000 followers · 45 subscribers · revenue ₹4–5L</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">DAYS 61–90</p>
+      <h3 class="text-xl mb-3">Retain &amp; Compound</h3>
+      <ul class="feature-list">
+        <li class="included">Subscription renewal flows mature</li>
+        <li class="included">Meta budget moves ₹50K → ₹75K (if ROAS clears 3x)</li>
+        <li class="included">Tier-C influencer launch executed</li>
+        <li class="included">Open-kitchen Friday + Run Club ritual locked</li>
+        <li class="included">Referral program live for subscribers</li>
+        <li class="included">First "we ran out" reel — supply demand signal</li>
+      </ul>
+      <p class="text-sm text-gray-400 mt-4"><strong style="color:#F97316;">Goal:</strong> 12K followers · 100 subscribers · revenue ₹7–9L</p>
+    </div>
+  </div>
+
+  <h3 class="sh">KPI Tracking — The Weekly Monday Review <span class="tag tag-orange">Module 23</span></h3>
+  <p class="text-sm text-gray-400 mb-4">Every Monday morning, these eight numbers are reviewed before any creative decision is made. Live numbers replace estimates after Week 2.</p>
+
+  <div class="stat-row">
+    <div class="stat-badge">
+      <div class="stat-val">Reach</div>
+      <div class="stat-label">Weekly accounts reached. Target 40K+ by Week 8.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">Saves</div>
+      <div class="stat-label">Per-reel save rate. Target 8%+ on educational.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">Shares</div>
+      <div class="stat-label">Per-reel share rate. Target 4%+ on craving.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">DM Rate</div>
+      <div class="stat-label">DMs initiated per 1K reach. Target 2%+.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">CTR</div>
+      <div class="stat-label">Link-in-bio CTR. Target 1.8%+ by Week 6.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">First Orders</div>
+      <div class="stat-label">Weekly IG-attributable first orders.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">Subs</div>
+      <div class="stat-label">Net new subscribers per week.</div>
+    </div>
+    <div class="stat-badge">
+      <div class="stat-val">ROAS</div>
+      <div class="stat-label">Meta ROAS, blended. Target 3.5x by Week 12.</div>
+    </div>
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Cadence</h5><p>Reports every Monday. Creative refresh bi-weekly. Strategy call monthly.</p></div>
+    <div class="impact-cell"><h5>The Discipline</h5><p>No creative is killed before 14 days of data. No creative survives if it can't clear save threshold.</p></div>
+    <div class="impact-cell priority"><h5>The Compound</h5><p>By Day 90, organic should carry 60%+ of monthly subscriber acquisition.</p></div>
+  </div>
+</div>
+
+<!-- S9 — NEXT 7 DAYS -->
+<div id="s9" class="section">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div>
+      <div class="section-title">The Next 7 Days</div>
+      <span class="section-subtitle">What must be in place for execution to begin — before Day 1 of the 90-day clock starts</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Day 1 of the 90-day clock starts the moment six things are in place — <span>not the moment the strategy is signed off.</span> The week below is unsexy, operational, and the single highest-leverage week in the engagement. <em>Speed here is the cheapest hour Zaladaa will ever buy.</em>
+  </div>
+
+  <ol class="n-list mb-6">
+    <li><strong>Founder content interview booked.</strong> 90-minute session — origin story, why HSR, why salads, the moments that nearly broke the kitchen. Becomes the raw material for the first month of founder-led reels.</li>
+    <li><strong>Brand sentence approved &amp; locked.</strong> "The fresh habit of HSR" — confirmed across bio, packaging, ad creative, founder script. No deviation for 12 months.</li>
+    <li><strong>Access granted.</strong> Meta Business Manager, Instagram, WhatsApp Business, Pixel, website backend, customer database. Without access there is no work.</li>
+    <li><strong>Photography &amp; reel shoot day scheduled.</strong> One full-day shoot in Week 1 — 8 reels, 30 product stills, founder b-roll. Covers content for Days 1–14.</li>
+    <li><strong>Subscription explainer carousel + ₹199 trial offer landing page live.</strong> The two conversion assets every DM needs to point at.</li>
+    <li><strong>Day 1 launches.</strong> Foundation work in Days 1–30 begins. Paid ads turn on Day 16 — not before.</li>
+  </ol>
+
+  <div class="quote-block">
+    Six steps. One week. <strong>One outcome.</strong> Zaladaa starts owning HSR while every other healthy-food brand in Bangalore is still arguing about logo colours.
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Engagement Start</h5><p>Day 1 begins once all six are in place.</p></div>
+    <div class="impact-cell"><h5>Ad Spend Start</h5><p>Day 16 — after foundation has earned the traffic.</p></div>
+    <div class="impact-cell priority"><h5>Target Landing</h5><p>12K followers · 100 subscribers · ₹7–9L monthly revenue by Day 90.</p></div>
+  </div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h2>HABIT BEATS NOVELTY. HSR BEATS BANGALORE.</h2>
+  <p>Zaladaa has the kitchen, the menu, the pricing, and the neighbourhood — four assets most healthy-food brands in this category have to build for years before they can compete on them. The next 90 days are about putting that reality in front of the right 30,000 people in HSR Layout without anything in the way of it.</p>
+  <p style="color:#F97316;font-weight:600;margin-top:8px;">Nothing in this document promises a number that can't be defended — what it commits to is the work, the cadence, and the discipline to spend Zaladaa's audience attention the way we'd spend our own.</p>
+  <div class="footer-mark">
+    <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer">
+      <img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox" class="h-7">
+    </a>
+  </div>
+  <div class="sig">Prepared for Zaladaa · HSR Layout, Bangalore · 2026</div>
+</div>
+
+<script>
+  function showSection(id, btn){
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
