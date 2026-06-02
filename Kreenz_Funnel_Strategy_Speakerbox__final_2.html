@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreenz Wellness — Revenue Funnel Architecture · Speakerbox</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Google Sans',sans-serif;background-color:#111111;color:#E5E7EB;}
+  h1,h2,h3,h4,h5,h6{font-weight:700;color:#FFFFFF;letter-spacing:-0.025em;}
+
+  .form-input,.form-select,.form-textarea,.form-password{background-color:#222;border:1px solid #444;color:#fff;border-radius:0.5rem;padding:0.75rem;width:100%;transition:all 0.3s;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus,.form-password:focus{outline:none;border-color:#F97316;box-shadow:0 0 0 2px #F9731630;}
+  ::placeholder{color:#777;}
+
+  .plan-card{background-color:#1F2937;border:2px solid #374151;border-radius:1rem;padding:2rem;transition:all 0.3s ease-in-out;display:flex;flex-direction:column;}
+  .plan-card.recommended{border-color:#F97316;transform:scale(1.02);box-shadow:0 10px 30px -15px rgba(249,115,22,0.3);}
+
+  .feature-list{list-style:none;padding-left:0;}
+  .feature-list li{position:relative;padding-left:32px;margin-bottom:12px;display:flex;align-items:center;line-height:1.5;}
+  .feature-list li::before{position:absolute;left:0;font-size:1.25rem;font-weight:bold;top:0;}
+  .feature-list li.included::before{content:'✓';color:#F97316;}
+  .feature-list li.excluded::before{content:'✗';color:#4B5563;}
+  .feature-list li.excluded{color:#6B7280;}
+
+  .accordion>summary{list-style:none;cursor:pointer;padding:1.25rem;background-color:#222;border:1px solid #444;border-radius:0.5rem;transition:background-color 0.3s;display:flex;justify-content:space-between;align-items:center;font-weight:500;color:#fff;}
+  .accordion>summary::-webkit-details-marker{display:none;}
+  .accordion>summary:hover{background-color:#2a2a2a;}
+  .accordion[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:transparent;}
+  .accordion-content{padding:1.5rem;border:1px solid #444;border-top:none;border-bottom-left-radius:0.5rem;border-bottom-right-radius:0.5rem;background-color:#1a1a1a;}
+  .accordion-arrow{transition:transform 0.3s;display:inline-block;}
+  .accordion[open] .accordion-arrow{transform:rotate(90deg);}
+
+  .tab-nav{background-color:#1a1a1a;border-bottom:1px solid #374151;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;}
+  .tab-nav::-webkit-scrollbar{display:none;}
+  .tab-btn{flex-shrink:0;padding:14px 20px;font-size:11px;font-weight:700;letter-spacing:0.5px;cursor:pointer;background:none;border:none;color:#6B7280;border-bottom:2px solid transparent;transition:all 0.2s;text-transform:uppercase;white-space:nowrap;font-family:'Google Sans',sans-serif;}
+  .tab-btn:hover{color:#E5E7EB;}
+  .tab-btn.active{color:#F97316;border-bottom-color:#F97316;}
+
+  .section{display:none;}
+  .section.active{display:block;}
+
+  .section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid #374151;}
+  .section-num{font-size:48px;font-weight:900;color:#F97316;line-height:1;opacity:0.4;}
+  .section-title{font-size:32px;font-weight:700;line-height:1.1;color:#fff;}
+  .section-subtitle{display:block;font-size:14px;font-weight:400;color:#9CA3AF;margin-top:6px;letter-spacing:0;}
+
+  .highlight-box{background:linear-gradient(135deg,rgba(249,115,22,0.08),rgba(249,115,22,0.02));border:1px solid rgba(249,115,22,0.30);border-radius:0.75rem;padding:20px 24px;margin-bottom:24px;font-size:15px;color:#E5E7EB;line-height:1.7;}
+  .highlight-box span{color:#F97316;font-weight:700;}
+  .highlight-box em{color:#F97316;font-style:italic;font-weight:600;}
+
+  .quote-block{background-color:#1F2937;border-left:3px solid #F97316;padding:20px 24px;margin:20px 0;font-size:15px;line-height:1.7;color:#E5E7EB;border-radius:0 0.5rem 0.5rem 0;}
+  .quote-block strong{color:#F97316;}
+
+  .hook-box{background-color:#1F2937;border:1px solid #374151;border-left:3px solid #F97316;border-radius:0.75rem;padding:22px 26px;margin-bottom:14px;position:relative;}
+  .hook-num{position:absolute;top:18px;right:24px;font-size:32px;font-weight:900;color:#F97316;opacity:0.35;line-height:1;}
+  .hook-label{font-size:10px;font-weight:700;color:#F97316;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+  .hook-text{font-size:16px;font-weight:600;color:#fff;line-height:1.55;margin-bottom:12px;}
+  .hook-text em{color:#F97316;font-style:italic;}
+  .hook-meta{font-size:13px;color:#9CA3AF;line-height:1.65;}
+  .hook-meta strong{color:#E5E7EB;}
+  .hook-why{font-size:12px;color:#6B7280;line-height:1.6;margin-top:10px;padding-top:10px;border-top:1px solid #374151;font-style:italic;}
+
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:0.25rem;margin-right:6px;}
+  .tag-orange{background-color:rgba(249,115,22,0.15);color:#F97316;}
+  .tag-muted{background-color:#374151;color:#9CA3AF;}
+
+  .funnel-stage{margin-bottom:8px;border-radius:0.5rem;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;background-color:#1F2937;border:1px solid #374151;border-left:3px solid #F97316;}
+  .funnel-stage h4{font-size:14px;font-weight:700;color:#fff;}
+  .funnel-stage p{font-size:13px;color:#9CA3AF;margin-top:3px;line-height:1.5;}
+  .funnel-num{font-size:32px;font-weight:900;color:#F97316;opacity:0.5;flex-shrink:0;line-height:1;}
+
+  .data-table{width:100%;border-collapse:collapse;font-size:13px;background-color:#1F2937;border-radius:0.5rem;overflow:hidden;}
+  .data-table th{background-color:#222;color:#9CA3AF;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:1px solid #374151;font-size:11px;}
+  .data-table td{padding:13px 16px;border-bottom:1px solid #374151;color:#E5E7EB;vertical-align:top;line-height:1.55;}
+  .data-table tr:last-child td{border-bottom:none;}
+  .data-table tr:hover td{background-color:#222;}
+  .data-table .num{color:#F97316;font-weight:700;font-variant-numeric:tabular-nums;}
+  .data-table .stage{color:#F97316;font-weight:700;}
+
+  .stat-row{display:grid;gap:12px;margin-bottom:24px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+  .stat-badge{background-color:#1F2937;border:1px solid #374151;border-left:3px solid #F97316;border-radius:0.5rem;padding:16px 22px;}
+  .stat-val{font-size:32px;font-weight:900;color:#F97316;line-height:1;letter-spacing:-0.02em;}
+  .stat-label{font-size:12px;color:#9CA3AF;margin-top:6px;}
+
+  .impact-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background-color:#1F2937;border:1px solid #374151;border-radius:0.75rem;overflow:hidden;margin:18px 0 24px;}
+  .impact-cell{padding:14px 20px;border-right:1px solid #374151;}
+  .impact-cell:last-child{border-right:none;}
+  .impact-cell h5{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;margin-bottom:6px;}
+  .impact-cell p{font-size:13px;color:#E5E7EB;line-height:1.55;}
+  .impact-cell.priority p{color:#F97316;font-weight:700;}
+
+  .n-list{list-style:none;counter-reset:items;padding:0;}
+  .n-list li{counter-increment:items;font-size:14px;color:#9CA3AF;padding:14px 0 14px 42px;position:relative;border-bottom:1px solid #374151;line-height:1.65;}
+  .n-list li:last-child{border-bottom:none;}
+  .n-list li::before{content:counter(items);position:absolute;left:0;background-color:#F97316;color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;top:14px;}
+  .n-list li strong{color:#E5E7EB;}
+  .n-list li em{color:#F97316;font-style:normal;font-weight:600;}
+
+  .sh{font-size:18px;font-weight:700;color:#fff;margin:28px 0 16px;letter-spacing:-0.01em;}
+  .sh .tag{vertical-align:middle;}
+
+  .hero{background:linear-gradient(135deg,#111111 0%,#1a0d05 50%,#111111 100%);border-bottom:2px solid #F97316;padding:56px 40px 48px;position:relative;overflow:hidden;text-align:center;}
+  .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(249,115,22,0.18) 0%,transparent 70%);pointer-events:none;}
+  .hero-badge{display:inline-block;background-color:#F97316;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:0.25rem;margin-bottom:18px;text-transform:uppercase;}
+  .hero h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:#fff;position:relative;z-index:1;}
+  .hero h1 span{color:#F97316;}
+  .hero-tag{font-size:12px;font-weight:700;color:#F97316;letter-spacing:3px;margin-top:18px;text-transform:uppercase;}
+  .hero-sub{margin-top:18px;color:#9CA3AF;font-size:15px;line-height:1.7;max-width:760px;margin-left:auto;margin-right:auto;position:relative;z-index:1;}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;justify-content:center;position:relative;z-index:1;}
+  .pill{background-color:#1F2937;border:1px solid #374151;color:#E5E7EB;font-size:11px;padding:5px 14px;border-radius:9999px;font-weight:600;letter-spacing:0.3px;}
+  .pill.accent{border-color:#F97316;color:#F97316;}
+
+  .brand-bar{padding:20px 24px;background-color:#000;border-bottom:1px solid #374151;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand-bar .meta{font-size:11px;color:#6B7280;letter-spacing:1px;text-transform:uppercase;font-weight:600;}
+
+  .footer{padding:48px 24px;text-align:center;border-top:1px solid #374151;background-color:#0a0a0a;margin-top:40px;}
+  .footer h2{font-size:28px;font-weight:900;color:#F97316;margin-bottom:14px;letter-spacing:-0.02em;}
+  .footer p{color:#9CA3AF;font-size:13px;max-width:680px;margin:0 auto 8px;line-height:1.7;}
+  .footer .footer-mark{display:flex;align-items:center;justify-content:center;gap:10px;margin:24px auto 12px;}
+  .footer .sig{margin-top:14px;color:#6B7280;font-size:11px;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;}
+
+  @media(max-width:640px){
+    .impact-row{grid-template-columns:1fr;}
+    .impact-cell{border-right:none;border-bottom:1px solid #374151;}
+    .impact-cell:last-child{border-bottom:none;}
+    .funnel-stage{flex-direction:column;align-items:flex-start;}
+    .hero{padding:36px 20px 32px;}
+    .section-header{flex-direction:column;align-items:flex-start;gap:4px;}
+    .section-num{font-size:36px;}
+    .section-title{font-size:24px;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer" class="logo-mark">
+    <img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox" class="h-8">
+  </a>
+  <span class="meta">Client Strategy · Kreenz Wellness · Hand &amp; Host LLP · Ernakulam</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Strategy Document · Revenue-Focused Funnel Architecture</div>
+  <h1>KREENZ — THE GUMMY<br>YOU <span>ACTUALLY FINISH</span></h1>
+  <div class="hero-tag">Consistency-Led · Compliant by Design · Retention-First</div>
+  <p class="hero-sub">Every competitor in Indian wellness gummies is weakest at the same thing — getting a customer to finish the bottle and come back. So this funnel deliberately over-invests in the back half. Kreenz doesn't win by shouting louder than the fear-driven brands; it wins by being <em>the gummy you actually finish</em> — honest copy, an effortless reorder, and a retention engine the category forgot to build.</p>
+  <div class="hero-pills">
+    <span class="pill accent">90-Day Roadmap</span>
+    <span class="pill accent">₹12K/mo Meta</span>
+    <span class="pill">5-Stage Funnel</span>
+    <span class="pill">Subscription Engine</span>
+    <span class="pill">WhatsApp-First</span>
+    <span class="pill">Compliant by Design</span>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showSection('s0',this)">00 · Overview</button>
+  <button class="tab-btn" onclick="showSection('s1',this)">01 · The Funnel</button>
+  <button class="tab-btn" onclick="showSection('s2',this)">02 · Awareness Levels</button>
+  <button class="tab-btn" onclick="showSection('s3',this)">03 · Journey Map</button>
+  <button class="tab-btn" onclick="showSection('s4',this)">04 · Offers</button>
+  <button class="tab-btn" onclick="showSection('s5',this)">05 · Meta Ads</button>
+  <button class="tab-btn" onclick="showSection('s6',this)">06 · Landing &amp; CRO</button>
+  <button class="tab-btn" onclick="showSection('s7',this)">07 · Automation</button>
+  <button class="tab-btn" onclick="showSection('s8',this)">08 · Content System</button>
+  <button class="tab-btn" onclick="showSection('s9',this)">09 · 90-Day Plan</button>
+  <button class="tab-btn" onclick="showSection('s10',this)">10 · Website Audit</button>
+  <button class="tab-btn" onclick="showSection('s11',this)">11 · Content Calendar</button>
+  <button class="tab-btn" onclick="showSection('s12',this)">12 · Ad Copy</button>
+  <button class="tab-btn" onclick="showSection('s13',this)">13 · Lifecycle Copy</button>
+</div>
+
+<div class="max-w-6xl mx-auto px-6 py-12">
+
+<!-- S0 — OVERVIEW -->
+<div id="s0" class="section active">
+  <div class="section-header">
+    <div class="section-num">00</div>
+    <div>
+      <div class="section-title">Executive Overview</div>
+      <span class="section-subtitle">The locked facts, the compliance frame, the bet, and what's still missing</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The core strategic truth: <span>every competitor scores weakest on retention and community.</span> So this architecture over-invests in the back half of the funnel — retention and referral — rather than only chasing reach. Kreenz's defensible position is <em>honest wellness</em>: plain-spoken copy and compliance discipline as a differentiator, while fear-driven brands over-claim. The line that runs through everything: consistency is the active ingredient.
+  </div>
+
+  <div class="quote-block">
+    This is a plan for a <strong>validated, measurable machine — not a revenue promise.</strong> The ₹12,000/month Meta budget is a signal-builder, not a scaler. Its job for 90 days is to season the pixel, prove a winning creative angle, and feed retention. Judge it on blended performance and repeat rate, never on cold prospecting ROAS alone.
+  </div>
+
+  <h3 class="sh">Locked Source-of-Truth Values</h3>
+  <div class="stat-row">
+    <div class="stat-badge"><div class="stat-val">₹729</div><div class="stat-label">Sleep Gummies · Melatonin 6 mg + 7 actives · MRP ₹899</div></div>
+    <div class="stat-badge"><div class="stat-val">₹829</div><div class="stat-label">Biotin / Hair Gummies · Biotin + multivitamin + Zinc · MRP ₹1,099</div></div>
+    <div class="stat-badge"><div class="stat-val">₹799</div><div class="stat-label">Metabolism Gummies · ACV 500 mg + superfoods · MRP ₹949</div></div>
+  </div>
+  <table class="data-table mb-6">
+    <thead><tr><th>SKU</th><th>Selling price</th><th>MRP anchor</th><th>Discount shown</th><th>Pack</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Sleep (Mixed Berry)</td><td class="num">₹729</td><td>₹899</td><td>19% off</td><td>60 ct ≈ 1 month</td></tr>
+      <tr><td class="stage">Biotin / Hair (Strawberry)</td><td class="num">₹829</td><td>₹1,099</td><td>25% off</td><td>60 ct ≈ 1 month</td></tr>
+      <tr><td class="stage">Metabolism (Green Apple)</td><td class="num">₹799</td><td>₹949</td><td>16% off</td><td>60 ct ≈ 1 month</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Compliance Frame <span class="tag tag-orange">Non-Negotiable</span></h3>
+  <div class="highlight-box">
+    Food supplements, not medicines. <span>No disease / treatment, "clinical," "fat-burning," "cortisol-reduction," or therapeutic claims.</span> Support framing only — "supports / helps maintain / part of your routine." Metabolism is the highest-risk SKU and carries extra guardrails in the ads and content sections.
+  </div>
+
+  <h3 class="sh">Two Open Dependencies</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Dependency 01</p>
+      <h3 class="text-xl mb-3">👅 Taste Confirmation</h3>
+      <p class="text-sm text-gray-400">The entire retention / consistency engine — <em style="color:#F97316;">"the gummy you actually finish"</em> — assumes the product tastes good enough that people <em style="color:#F97316;">want</em> the daily habit. If taste is weak, the retention numbers below won't hold and subscription gets de-prioritised.</p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Dependency 02</p>
+      <h3 class="text-xl mb-3">📊 Your Real Numbers</h3>
+      <p class="text-sm text-gray-400">No actual CAC, gross margin, or repeat rate yet. Every figure tagged <em style="color:#F97316;">(benchmark)</em> is an India D2C wellness planning placeholder — replace it with real data the moment it exists, especially before scaling ad spend.</p>
+    </div>
+  </div>
+</div>
+
+<!-- S1 — THE FUNNEL -->
+<div id="s1" class="section">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Full Funnel Architecture</div>
+      <span class="section-subtitle">Five stages, weighted toward the back half where competitors are weakest</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    Built around the brand's actual competitive white space: every competitor is weakest on <span>retention and community.</span> So this architecture deliberately over-invests in the back half — <em>retention and referral</em> — rather than only the front.
+  </div>
+
+  <div class="funnel-stage"><div><h4>Awareness — get found by the right person feeling the right problem</h4><p>Stop the scroll, build relevance. No product pitch here (pain-first rule).</p></div><div class="funnel-num">01</div></div>
+  <div class="funnel-stage"><div><h4>Consideration — teach why the usual fix falls short</h4><p>Introduce the category reframe: single ingredient → complete system.</p></div><div class="funnel-num">02</div></div>
+  <div class="funnel-stage"><div><h4>Conversion — make buying the obvious, low-risk next step</h4><p>First purchase, ideally prepaid, ideally a bundle or subscription.</p></div><div class="funnel-num">03</div></div>
+  <div class="funnel-stage"><div><h4>Retention — turn one box into a finished box, then a refill</h4><p>Consumption, satisfaction, reorder around day 25–30. The biggest opportunity.</p></div><div class="funnel-num">04</div></div>
+  <div class="funnel-stage"><div><h4>Referral — let satisfied finishers bring the next customer</h4><p>Convert trust into word-of-mouth and UGC; lower blended CAC.</p></div><div class="funnel-num">05</div></div>
+
+  <h3 class="sh">Channels &amp; Metrics by Stage</h3>
+  <table class="data-table">
+    <thead><tr><th>Stage</th><th>Channels</th><th>Message</th><th>Primary metric</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Awareness</td><td>IG Reels (primary organic), Meta prospecting, Facebook, SEO-light blog</td><td>The audience's problem in their words — "Lying awake at 2am with your brain still running?"</td><td>Reach, 3-sec views, cost per ThruPlay, profile visits, follower growth</td></tr>
+      <tr><td class="stage">Consideration</td><td>IG carousels + saved Reels, retargeting, email/WhatsApp nurture, landing-page education</td><td>"Why melatonin alone isn't enough." Product as the logical answer, not the headline</td><td>Landing-page views, ATC rate, opt-ins, time-on-page, save/share rate</td></tr>
+      <tr><td class="stage">Conversion</td><td>Product/landing pages, cart, WhatsApp + email recovery, conversion ads</td><td>Lead with the product — the 7-in-1 system, transparency, certs, offer, risk-reversal</td><td>CVR, AOV, CAC <em>(benchmark)</em>, prepaid share, COD-to-delivered rate</td></tr>
+      <tr><td class="stage">Retention</td><td>WhatsApp + email lifecycle, subscription, packaging insert, community</td><td>"Consistency is the active ingredient." Routine, check-ins, replenishment, subscribe-and-save</td><td>30/60/90-day repeat rate, subscription take-rate &amp; churn, LTV, time-to-second-order</td></tr>
+      <tr><td class="stage">Referral</td><td>Post-purchase WhatsApp/email, packaging insert, IG UGC re-share, referral offer</td><td>"Know someone who'd sleep better? Give ₹100, get ₹100." Asked at the satisfaction peak (~day 20–25)</td><td>Referral share of orders, review volume/rating, UGC submissions, % revenue from advocates</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- S2 — AWARENESS LEVELS -->
+<div id="s2" class="section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">Customer Awareness Levels</div>
+      <span class="section-subtitle">Eugene Schwartz's five levels, applied to Kreenz — drives ad creative &amp; content sequencing</span>
+    </div>
+  </div>
+
+  <table class="data-table mb-6">
+    <thead><tr><th>Level</th><th>What they're thinking</th><th>Message job</th><th>Best format</th><th>Sleep example</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Unaware</td><td>No problem named; just tired/scrolling</td><td>Name the problem; make them feel seen</td><td>Reels, prospecting video</td><td>"You're not 'a bad sleeper.' Your wind-down is broken."</td></tr>
+      <tr><td class="stage">Problem Aware</td><td>"I sleep badly / my hair's falling / I feel bloated"</td><td>Validate + explain why it happens</td><td>Carousels, educational Reels</td><td>"Why your mind races the second your head hits the pillow."</td></tr>
+      <tr><td class="stage">Solution Aware</td><td>"Maybe a supplement could help"</td><td>Reframe the category: system &gt; single ingredient</td><td>Education + comparison, email nurture</td><td>"Melatonin gets you to sleep. Staying asleep needs more."</td></tr>
+      <tr><td class="stage">Product Aware</td><td>"I'm comparing gummies / brands"</td><td>Differentiate: formulation, transparency, certs, honesty</td><td>PDP, comparison block, retargeting, reviews</td><td>"8 actives vs the usual melatonin-only gummy — here's the full label."</td></tr>
+      <tr><td class="stage">Most Aware</td><td>"I'm ready, just need a reason now"</td><td>Offer + risk reversal + honest urgency</td><td>Offer ads, cart recovery, subscribe nudge</td><td>"Your first month at ₹729, free shipping, easy reorder."</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <span>Spend logic for a new brand at low budget:</span> most of your addressable audience is <em>Unaware → Problem Aware.</em> Organic content does the heavy lifting at the top; paid budget concentrates on Solution / Product / Most Aware — warmer, cheaper to convert — via retargeting, plus a small cold prospecting test.
+  </div>
+</div>
+
+<!-- S3 — JOURNEY MAP -->
+<div id="s3" class="section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">Customer Journey Map</div>
+      <span class="section-subtitle">One realistic path — Sleep SKU, "tired professional" — stage by stage</span>
+    </div>
+  </div>
+
+  <table class="data-table mb-6">
+    <thead><tr><th>Stage</th><th>Touchpoint</th><th>What she feels</th><th>Friction / objection</th><th>Kreenz's job</th><th>Asset</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Trigger</td><td>Scrolls IG at 1am, can't sleep</td><td>"This is literally me"</td><td>None yet</td><td>Mirror the problem</td><td>Pain-led Reel (no product)</td></tr>
+      <tr><td class="stage">Explore</td><td>Watches 2–3 Reels, visits profile</td><td>Curious, slightly hopeful</td><td>"Is this just another gummy?"</td><td>Educate, show honesty</td><td>Carousel: "why melatonin alone isn't enough"</td></tr>
+      <tr><td class="stage">Evaluate</td><td>Clicks to site / retargeted</td><td>Interested, cautious</td><td>"Will it work? Is it safe? Who makes this?"</td><td>Prove formulation + transparency + certs</td><td>PDP system breakdown, full label, certs block</td></tr>
+      <tr><td class="stage">Decide</td><td>On PDP / cart</td><td>Tempted, hesitant on spend</td><td>"₹729 for something I'm unsure about"</td><td>Reduce risk, sweeten offer</td><td>Reviews, FAQ, free prepaid shipping, subscribe option</td></tr>
+      <tr><td class="stage">Purchase</td><td>Checkout</td><td>Committed but watchful</td><td>COD habit, shipping doubt, trust</td><td>Easy checkout, prepaid nudge, confirmation</td><td>WhatsApp order + COD address confirm</td></tr>
+      <tr><td class="stage">Onboard</td><td>Box arrives</td><td>Excited, then "now what?"</td><td>Forgetting to take it nightly</td><td>Build the habit</td><td>Insert card + WhatsApp "how to use" + day-3 email</td></tr>
+      <tr><td class="stage">Consume</td><td>Days 1–25</td><td>Hopeful, watching for change</td><td>"Not sure it's doing anything"</td><td>Set realistic expectations, encourage consistency</td><td>Day-7/14 check-ins; "give it the full month"</td></tr>
+      <tr><td class="stage">Reorder</td><td>Day 25–30</td><td>Box running low</td><td>"Do I reorder or drop it?"</td><td>Make refill effortless + rewarding</td><td>Replenishment WhatsApp/email + subscribe-and-save</td></tr>
+      <tr><td class="stage">Advocate</td><td>Day 20–40</td><td>Satisfied (if taste + result land)</td><td>"I'll leave a review later"</td><td>Ask at the peak, make sharing easy</td><td>Review request + referral offer + UGC prompt</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <span>Design implication:</span> the two highest-leverage, currently-missing moments are <em>onboarding (habit formation)</em> and <em>reorder.</em> Both are cheap to build — WhatsApp + email + an insert card — and directly attack the competitor white space.
+  </div>
+</div>
+
+<!-- S4 — OFFERS -->
+<div id="s4" class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">Offer Engineering</div>
+      <span class="section-subtitle">Every price computed from the locked selling prices — real arithmetic, not rounded promises</span>
+    </div>
+  </div>
+
+  <h3 class="sh">Hero Offer <span class="tag tag-orange">Front Door</span></h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-2">
+    <div class="plan-card recommended">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Lead SKU</p>
+      <h3 class="text-2xl mb-1">Sleep Gummies — ₹729</h3>
+      <p class="text-sm text-gray-400 mb-4">Anchored against ₹899 · free shipping on prepaid orders</p>
+      <ul class="feature-list mt-auto">
+        <li class="included">Clearest, most universal pain</li>
+        <li class="included">Fastest-growing sub-segment</li>
+        <li class="included">Broad, gender-neutral audience</li>
+        <li class="included">Easy "system vs melatonin-only" demo</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Risk Reversal</p>
+      <h3 class="text-xl mb-3">🛡️ De-risk the first buy</h3>
+      <p class="text-sm text-gray-400">Prominent certifications, transparent full label, easy reorder, responsive WhatsApp support. <em style="color:#F97316;">Avoid "money-back guarantee on results"</em> — that edges into outcome promises. A satisfaction / replacement policy is safer and still reassuring.</p>
+    </div>
+  </div>
+
+  <h3 class="sh">Bundle Offers <span class="tag tag-muted">AOV Lift</span></h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Bundle</th><th>Contents</th><th>Sum of singles</th><th>Bundle price</th><th>You save</th><th>Positioning</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Daily Wellness Stack</td><td>All 3 SKUs</td><td>₹2,357</td><td class="num">₹1,999</td><td>₹358 (15.2%)</td><td>"Your full day, sorted — night, beauty, gut."</td></tr>
+      <tr><td class="stage">Day &amp; Night Duo</td><td>Sleep + Metabolism</td><td>₹1,528</td><td class="num">₹1,349</td><td>₹179 (11.7%)</td><td>Morning metabolism support + night recovery</td></tr>
+      <tr><td class="stage">Beauty &amp; Gut Duo</td><td>Biotin + Metabolism</td><td>₹1,628</td><td class="num">₹1,449</td><td>₹179 (11%)</td><td>"Glow starts in the gut" (routine framing)</td></tr>
+      <tr><td class="stage">Rest &amp; Glow Duo</td><td>Sleep + Biotin</td><td>₹1,558</td><td class="num">₹1,399</td><td>₹159 (10.2%)</td><td>"Beauty sleep, literally — your night + beauty routine"</td></tr>
+    </tbody>
+  </table>
+  <div class="quote-block">Keep bundle discounts modest (10–15%). A new brand training the market to expect deep discounts <strong>erodes margin and perceived quality.</strong> The bundle's job is AOV and habit-stacking, not price-cutting.</div>
+
+  <h3 class="sh">Subscribe &amp; Save <span class="tag tag-orange">Retention Engine</span></h3>
+  <table class="data-table mb-3">
+    <thead><tr><th>SKU</th><th>One-time</th><th>Subscription (15% off)</th><th>Monthly saving</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Sleep</td><td>₹729</td><td class="num">₹619</td><td>₹110</td></tr>
+      <tr><td class="stage">Biotin</td><td>₹829</td><td class="num">₹705</td><td>₹124</td></tr>
+      <tr><td class="stage">Metabolism</td><td>₹799</td><td class="num">₹679</td><td>₹120</td></tr>
+    </tbody>
+  </table>
+  <p class="text-sm text-gray-400 mb-2">15% off + free shipping, auto-ship every 30 days, cancel/skip anytime. Pitch on the PDP as the <em style="color:#F97316;font-style:normal;font-weight:600;">default-smart</em> choice: "60 ct lasts one month. Subscribe so you never run out — and save 15%." This closes the "no reorder mechanic" gap from the site audit.</p>
+  <div class="quote-block"><strong>Flag:</strong> confirm your Shopify payment gateway supports recurring billing in India (UPI Autopay / card mandates have specific rules) before promising auto-renew.</div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">⬆️ Upsells</h3>
+      <ul class="feature-list">
+        <li class="included"><span class="text-sm text-gray-300">In-cart: "Add the matching daytime gummy" at the duo delta</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Post-purchase one-click: "Add a second month, lock today's price" or upgrade to subscription</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Threshold: free-shipping/gift framing if a higher prepaid threshold is set later</span></li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">↔️ Cross-sells (by entry SKU)</h3>
+      <ul class="feature-list">
+        <li class="included"><span class="text-sm text-gray-300">Sleep buyer → Metabolism (daytime half) or Biotin (beauty sleep)</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Biotin buyer → Sleep (skin repairs while you rest) or Metabolism (glow + gut)</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Where: post-purchase email #3, WhatsApp day-15, "complete your routine" PDP block</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sh">Shipping &amp; COD Policy <span class="tag tag-muted">India Reality</span></h3>
+  <div class="highlight-box">
+    Default: <span>free shipping on all prepaid orders; ₹49 fee on COD.</span> This nudges prepaid (better cash flow, far lower RTO risk) while still allowing COD for trust-cautious first-timers. Confirm COD address via WhatsApp before dispatch to cut <em>RTO (return-to-origin)</em> — the silent margin-killer for new Indian D2C brands. Keep the shipping rule identical everywhere; the audit flagged inconsistent free-shipping messaging.
+  </div>
+</div>
+
+<!-- S5 — META ADS -->
+<div id="s5" class="section">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">Meta Ads Strategy</div>
+      <span class="section-subtitle">₹12,000/month (~₹400/day) — a signal-building budget, deployed by concentration</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <span>Blunt reality first.</span> At ₹400/day you cannot run cold prospecting across 3 SKUs <em>and</em> full retargeting <em>and</em> expect Meta to gather the ~50 conversions/week per ad set it wants on "Purchase." Spreading this budget = no campaign ever exits the learning phase. So the strategy is <em>concentration</em>: one hero SKU for cold, everything else carried by organic + retargeting, and early optimisation on a cheaper signal than Purchase.
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-badge"><div class="stat-val">₹12K</div><div class="stat-label">Monthly budget</div></div>
+    <div class="stat-badge"><div class="stat-val">~₹400</div><div class="stat-label">Per day</div></div>
+    <div class="stat-badge"><div class="stat-val">68%</div><div class="stat-label">Prospecting (Sleep only)</div></div>
+    <div class="stat-badge"><div class="stat-val">32%</div><div class="stat-label">Retargeting (all SKUs)</div></div>
+  </div>
+
+  <h3 class="sh">Campaign Structure</h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Campaign</th><th>Budget/day</th><th>~Monthly</th><th>Objective</th><th>Optimisation event</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">C1 — Prospecting (Sleep)</td><td class="num">₹270</td><td>₹8,160</td><td>Sales</td><td>Start on Add to Cart (or Advantage+ Shopping); move to Purchase once ~50/wk is realistic</td></tr>
+      <tr><td class="stage">C2 — Retargeting (all SKUs)</td><td class="num">₹130</td><td>₹3,840</td><td>Sales</td><td>Purchase</td></tr>
+    </tbody>
+  </table>
+  <ul class="n-list mb-6">
+    <li>Use <strong>CBO / Advantage campaign budget</strong> or a single ABO ad set per campaign — do not fragment into many ad sets at this budget.</li>
+    <li>Consider <strong>Advantage+ Shopping (ASC)</strong> for prospecting: it suits small budgets and limited creative volume and lets Meta find buyers without slicing tiny audiences.</li>
+  </ul>
+
+  <h3 class="sh">Targeting</h3>
+  <ul class="n-list mb-6">
+    <li><strong>C1 Prospecting:</strong> broad / Advantage detailed targeting <em>on</em> — at this budget, broad + good creative beats narrow stacks, which starve. Optional test stack: sleep, meditation, wellness, mindfulness, working professionals, new parents (24–45, India metros + tier-2, all genders).</li>
+    <li><strong>No lookalikes at launch</strong> — no pixel base yet. Build a 1% Purchase/ATC LLA after ~100 pixel events accumulate.</li>
+    <li><strong>C2 Retargeting (one stacked ad set):</strong> video viewers (3-sec+ / 50%+), page/profile engagers (365d), site visitors (180d), ATC no-purchase (30d), product viewers. Pool is tiny at first, grows as organic + C1 feed it; becomes the efficient workhorse by week 6–8.</li>
+  </ul>
+
+  <h3 class="sh">Creative Angles <span class="tag tag-muted">5 to Test</span></h3>
+  <div class="hook-box"><div class="hook-num">01</div><div class="hook-label">Awareness · Pain-led UGC</div><div class="hook-text">Real-person to-camera, the "2am brain" sleep problem — <em>no product in the first 3 seconds.</em></div></div>
+  <div class="hook-box"><div class="hook-num">02</div><div class="hook-label">Trust · Ingredient Transparency</div><div class="hook-text">"Here's everything in one Kreenz Sleep gummy" — full label on screen. Builds trust, differentiates on honesty.</div></div>
+  <div class="hook-box"><div class="hook-num">03</div><div class="hook-label">Education · System Reframe</div><div class="hook-text">"Melatonin gets you to sleep. <em>Staying asleep needs more.</em>" → the 8-active system.</div></div>
+  <div class="hook-box"><div class="hook-num">04</div><div class="hook-label">Authority · Founder / Origin</div><div class="hook-text">Why we built this — honesty and clean-label angle; humanises a new brand.</div></div>
+  <div class="hook-box"><div class="hook-num">05</div><div class="hook-label">Conversion · Offer + Reorder Ease</div><div class="hook-text">Price, free prepaid shipping, "subscribe so you never run out."</div></div>
+
+  <div class="quote-block"><strong>Creative rules:</strong> hook in 1.5s, captions burned in (sound-off), 9:16 placements, 1–3 fresh creatives every 2 weeks (fatigue is the #1 killer at small budgets). <strong>Compliance:</strong> no before/after bodies, no "cure/treat," no implied disease. <strong>Metabolism specifically</strong> — Meta restricts weight-loss creative: no idealised bodies, no "lose X kg," nothing implying negative self-image. Keep it to "metabolism &amp; gut support, part of your routine." Expect tighter review — another reason Sleep leads cold spend.</div>
+
+  <h3 class="sh">KPIs <span class="tag tag-muted">Benchmarks to Validate</span></h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Metric</th><th>Benchmark target (India D2C wellness, cold)</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">CPM</td><td class="num">₹150–₹350</td><td>Varies by audience/placement</td></tr>
+      <tr><td class="stage">Link CTR</td><td class="num">0.8–1.5%</td><td>&lt;0.8% = weak hook, refresh creative</td></tr>
+      <tr><td class="stage">CPC</td><td class="num">₹6–₹15</td><td>—</td></tr>
+      <tr><td class="stage">Landing-page CVR</td><td class="num">1–2.5%</td><td>Cold, new brand; improves with CRO + warm traffic</td></tr>
+      <tr><td class="stage">Retargeting CVR</td><td class="num">3–6%</td><td>—</td></tr>
+      <tr><td class="stage">Prospecting ROAS</td><td class="num">often &lt;1.0 early</td><td>Judge on blended + retention, not cold ROAS alone</td></tr>
+      <tr><td class="stage">Blended ROAS (build toward)</td><td class="num">1.5–2.5x</td><td>As retargeting + email/WhatsApp + repeat kick in</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box"><span>Honest expectation-setting:</span> ₹12k/month is a learning and signal-building budget, not a scaling budget. Its real job for 60–90 days is to season the pixel, prove which angle works, and feed retargeting + retention. <em>Scaling decisions wait until you have real CAC and repeat-rate data.</em></div>
+</div>
+
+<!-- S6 — LANDING & CRO -->
+<div id="s6" class="section">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">Landing Page Strategy</div>
+      <span class="section-subtitle">Sleep SKU as the template — built to fix the specific site-audit weaknesses</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">Fixes the weaknesses surfaced in the site audit: <span>dual-branding confusion, broken certifications block, thin social proof, no reorder mechanic, inconsistent shipping messaging.</span></div>
+
+  <h3 class="sh">Section-by-Section Wireframe</h3>
+  <ul class="n-list mb-6">
+    <li><strong>Sticky header</strong> — Kreenz logo (brand-forward), nav, cart, persistent "Free shipping on prepaid" strip. <em>Lead with Kreenz; "by Hand &amp; Host LLP" lives small in trust/footer.</em></li>
+    <li><strong>Hero</strong> — pain→promise headline ("Sleep through the night — naturally supported."), product shot, ₹729 (strike ₹899), primary CTA "Add to Cart," secondary "Subscribe &amp; Save 15%." One trust cue above the fold.</li>
+    <li><strong>Problem → reframe</strong> — "Melatonin alone gets you <em>to</em> sleep. Staying asleep needs more." Sets up the system.</li>
+    <li><strong>The system (differentiator)</strong> — the 8 actives grouped by job (induce / calm / relax / recover). The moat; keep it skimmable.</li>
+    <li><strong>Full label / transparency block</strong> — the entire ingredient panel, openly shown. Honesty <em>is</em> the brand.</li>
+    <li><strong>Certifications block</strong> — FSSAI, GMP, ISO/HACCP, Halal, gluten-free, GMO-free as clean icons. Fix the broken block; verify every icon is substantiable.</li>
+    <li><strong>Social proof</strong> — reviews with names + context ("Priya, 34, Bengaluru"), rating, count. Seed honestly; do not fabricate.</li>
+    <li><strong>How to use / habit</strong> — "1 gummy, 30 min before bed." Reinforces the easy daily ritual.</li>
+    <li><strong>Offer / subscribe</strong> — single-vs-subscribe toggle; subscription framed as default-smart.</li>
+    <li><strong>FAQ</strong> — safety, non-habit-forming (factual, no over-claim), pregnancy/medication caution, shipping, returns, COD.</li>
+    <li><strong>Risk reversal + mandatory disclaimer</strong> — satisfaction/support promise + the FSSAI disclaimer verbatim.</li>
+    <li><strong>Final CTA + trust footer</strong> — repeat offer, identical shipping wording, contact/WhatsApp, "Marketed &amp; fulfilled by Hand &amp; Host LLP."</li>
+  </ul>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">⚙️ CRO Recommendations</h3>
+      <ul class="feature-list">
+        <li class="included"><span class="text-sm text-gray-300">One primary CTA colour, repeated; remove competing buttons</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Mobile-first; test thumb-reach CTA placement</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Page speed: compress + lazy-load images</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Subscription as visual default (don't hide one-time)</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Sticky add-to-cart bar on mobile scroll</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Exit-intent capture with first-order incentive</span></li>
+        <li class="included"><span class="text-sm text-gray-300">Consistent shipping + price messaging sitewide</span></li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">🧠 Conversion Psychology (used honestly)</h3>
+      <ul class="feature-list">
+        <li class="included"><span class="text-sm text-gray-300"><strong>Anchoring:</strong> ₹899 strike-through vs ₹729</span></li>
+        <li class="included"><span class="text-sm text-gray-300"><strong>Transparency-as-trust:</strong> the full label disarms skepticism</span></li>
+        <li class="included"><span class="text-sm text-gray-300"><strong>Authority:</strong> certifications, plain-language science</span></li>
+        <li class="included"><span class="text-sm text-gray-300"><strong>Loss aversion:</strong> "never run out" subscription framing</span></li>
+        <li class="included"><span class="text-sm text-gray-300"><strong>Social proof:</strong> specific, named, contextual reviews</span></li>
+        <li class="included"><span class="text-sm text-gray-300"><strong>Commitment:</strong> "consistency is the active ingredient" primes subscribe</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- S7 — AUTOMATION -->
+<div id="s7" class="section">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <div class="section-title">Lifecycle Automation</div>
+      <span class="section-subtitle">WhatsApp (India-first, highest-ROI) + Email (long-form education &amp; margin-friendly retention)</span>
+    </div>
+  </div>
+
+  <div class="highlight-box"><span>India is WhatsApp-first; read rates dwarf email.</span> Setup: WhatsApp Business API via a provider (AiSensy / Interakt / Wati). <em>Compliance flag:</em> promotional messages require opt-in and pre-approved templates; respect 24-hour session windows and opt-out. Keep tone supportive, never medical.</div>
+
+  <h3 class="sh">WhatsApp Flows <span class="tag tag-orange">WhatsApp</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Flow</th><th>Trigger / timing</th><th>Message job</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Lead capture</td><td>Website widget, IG "DM SLEEP", checkout consent, exit-intent</td><td>Instant value + "find your routine" prompt; tag by interest (sleep/beauty/metabolism)</td></tr>
+      <tr><td class="stage">Cart recovery #1</td><td>+30 min</td><td>"Still thinking it over? Your Kreenz cart is saved." + link</td></tr>
+      <tr><td class="stage">Cart recovery #2</td><td>+6 hr</td><td>Address the top objection (trust/ingredients) + 1 review</td></tr>
+      <tr><td class="stage">Cart recovery #3</td><td>+24 hr</td><td>Gentle nudge + free-prepaid-shipping reminder (small incentive only if needed)</td></tr>
+      <tr><td class="stage">Post-purchase</td><td>On order / dispatch / delivery</td><td>Order + COD address confirm (RTO cut) → tracking → "how to use, give it the full month"</td></tr>
+      <tr><td class="stage">Check-ins</td><td>Day 7 &amp; Day 14</td><td>Habit reinforcement, realistic expectations</td></tr>
+      <tr><td class="stage">Repeat purchase</td><td>Day ~25 (low) → Day ~32 (lapsed)</td><td>"Reorder in one tap" + subscribe-and-save → light win-back. Cross-sell at ~day 15</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Email Flows <span class="tag tag-muted">Email</span></h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Sequence</th><th>Timing</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Welcome (4)</td><td>Immediate · +1d · +3d · +5d</td><td>Welcome + promise → category reframe → transparency (full label) → social proof + offer</td></tr>
+      <tr><td class="stage">Abandoned cart (3)</td><td>+1 hr · +24 hr · +48 hr</td><td>"You left something behind" → objection-handling → final nudge + shipping reminder</td></tr>
+      <tr><td class="stage">Post-purchase (3–4)</td><td>Confirm · delivery · +7d · +15d</td><td>What's next + how to use → habit-building → usage tips → gentle cross-sell</td></tr>
+      <tr><td class="stage">Review collection (1–2)</td><td>~Day 18–22 (+5d reminder)</td><td>One-click star widget; small loyalty credit, never cash-for-positive-reviews</td></tr>
+      <tr><td class="stage">Repeat / replenishment</td><td>~Day 25 · ~Day 35 · quarterly</td><td>Reorder/subscribe → win-back (reason, not just discount) → "complete the routine" cross-sell</td></tr>
+    </tbody>
+  </table>
+  <div class="quote-block"><strong>Email KPIs (benchmarks):</strong> open 30–45% · click 2–5% · abandoned-cart recovery 5–12% · flows typically drive 20–30%+ of total email revenue for D2C.</div>
+</div>
+
+<!-- S8 — CONTENT SYSTEM -->
+<div id="s8" class="section">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <div class="section-title">Content System</div>
+      <span class="section-subtitle">Five buckets mapped to the funnel and the pain-first rule</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">Mapped to the funnel and the <span>pain-first rule</span> — awareness leads with the problem; product enters only at conversion. At launch, weight toward Problem-Awareness + Education + Trust to establish the repositioning. <em>Always label the SKU and stage internally before posting.</em></div>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Bucket 01 · Top of funnel</p>
+      <h3 class="text-xl mb-3">😩 Problem Awareness <span class="text-xs text-gray-500">(NO product)</span></h3>
+      <p class="text-sm text-gray-400">Sleep: "The 2am mind-race," "Why you wake up tired after 7 hours." Biotin: "Hair on the pillow," "Why your hair feels thinner this year." Metabolism: "Heavy after meals," "The afternoon crash."<br><span class="text-gray-500 text-xs">Format: short pain-led Reels, relatable POV, "is this you?" hooks.</span></p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Bucket 02</p>
+      <h3 class="text-xl mb-3">📚 Educational</h3>
+      <p class="text-sm text-gray-400">"Why melatonin alone isn't enough." "Why biotin is sold as a big number — and why that's not the point." "ACV isn't magic — here's what metabolism support actually means."<br><span class="text-gray-500 text-xs">Format: carousels, explainer Reels, blog posts (SEO).</span></p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Bucket 03</p>
+      <h3 class="text-xl mb-3">🔬 Authority</h3>
+      <p class="text-sm text-gray-400">Ingredient deep-dives, the science behind the system (plain-language, no over-claim), "how we formulate," sourcing/clean-label.<br><span class="text-gray-500 text-xs">Format: founder/expert talking-head Reels, long-form carousels, FAQs.</span></p>
+    </div>
+    <div class="plan-card">
+      <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Bucket 04</p>
+      <h3 class="text-xl mb-3">🤝 Trust Building</h3>
+      <p class="text-sm text-gray-400">Full-label transparency, certifications explained, behind-the-scenes, honest "what this can and can't do," real customer stories.<br><span class="text-gray-500 text-xs">Format: label close-ups, certification posts, UGC re-shares, testimonial cards (named, true).</span></p>
+    </div>
+  </div>
+  <div class="plan-card mb-4">
+    <p class="text-xs font-bold tracking-widest text-orange-500 uppercase mb-2">Bucket 05 · Bottom of funnel</p>
+    <h3 class="text-xl mb-3">🛒 Conversion Content</h3>
+    <p class="text-sm text-gray-400">Product hero, the "7-in-1 system" visual, offer/bundle/subscribe, reviews, "how to use," reorder-ease. <span class="text-gray-500 text-xs">Format: product Reels, offer carousels, story sequences with CTA stickers, retargeting ads.</span></p>
+  </div>
+
+  <div class="quote-block"><strong>Cadence (one founder/small team):</strong> ~4–5 posts/week — roughly 2 problem/education, 1 authority, 1 trust, 1 conversion. Repurpose every Reel into a carousel and a story. Save winners to feed retargeting.</div>
+</div>
+
+<!-- S9 — 90-DAY PLAN -->
+<div id="s9" class="section">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div>
+      <div class="section-title">90-Day Execution Roadmap</div>
+      <span class="section-subtitle">Fix the leaks before pouring in traffic — foundation, then engine, then scale</span>
+    </div>
+  </div>
+
+  <div class="highlight-box"><span>Priority logic: fix the leaks before pouring in traffic.</span> Spending on ads while the site, reorder, and recovery flows are broken wastes the budget. Phase 1 is foundation, Phase 2 is engine, Phase 3 is scale &amp; retention.</div>
+
+  <h3 class="sh">Phase 1 — Foundation &amp; Fix the Leaks <span class="tag tag-orange">Weeks 1–4</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Week</th><th>Actions</th><th>Target / KPI (benchmark)</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Fix site audit issues (Kreenz-forward branding, certs block, consistent shipping/price). Install Meta Pixel + CAPI, GA4. Confirm taste internally.</td><td>Pixel firing on all events; clean PDP live</td></tr>
+      <tr><td class="num">2</td><td>Rebuild Sleep PDP/landing page. Set up WhatsApp API + opt-in widget + order/COD-confirm flow. Set up ESP + welcome + abandoned-cart flows.</td><td>Landing CVR baseline captured; flows live &amp; tested</td></tr>
+      <tr><td class="num">3</td><td>Launch subscription (Sleep first) + free-prepaid-shipping/COD-fee policy. Build review-collection flow. Produce first 8–10 content pieces.</td><td>Subscribe option live; ≥8 posts banked</td></tr>
+      <tr><td class="num">4</td><td>Soft-launch Meta C1 prospecting (Sleep, ₹270/day) + C2 retargeting (₹130/day) on Add-to-Cart. Begin daily organic posting.</td><td>CPM/CTR/CPC baselines; pixel seasoning begun</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Phase 2 — Build the Engine <span class="tag tag-muted">Weeks 5–8</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Week</th><th>Actions</th><th>Target / KPI (benchmark)</th></tr></thead>
+    <tbody>
+      <tr><td class="num">5</td><td>Read first ad data; kill weak creative, double down on the winner. Add post-purchase + day-7/14 WhatsApp + email onboarding.</td><td>CTR ≥0.8–1%; first purchases attributed</td></tr>
+      <tr><td class="num">6</td><td>Refresh creative (3 new). Retargeting pools now meaningful — push reviews + offer. Launch bundles + in-cart upsell.</td><td>Retargeting CVR 3%+; AOV lift from bundles</td></tr>
+      <tr><td class="num">7</td><td>Expand content to authority + trust. Roll out Biotin PDP + flows (organic/retargeting, not cold spend).</td><td>Email flows ≥15% of email revenue</td></tr>
+      <tr><td class="num">8</td><td>First reorder window for week-4 buyers → activate day-25 reorder + subscribe nudges. Launch review requests.</td><td>First repeat orders; first reviews collected</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Phase 3 — Optimise, Retain &amp; Prep to Scale <span class="tag tag-muted">Weeks 9–12</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Week</th><th>Actions</th><th>Target / KPI (benchmark)</th></tr></thead>
+    <tbody>
+      <tr><td class="num">9</td><td>Build 1% Purchase/ATC lookalike (pixel seasoned); test vs broad. Roll out Metabolism PDP + flows (extra-compliant creative).</td><td>LLA vs broad read; blended ROAS trending up</td></tr>
+      <tr><td class="num">10</td><td>Launch referral offer + UGC engine. Cross-sell flows live (day-15).</td><td>Referral/UGC share of new orders begins</td></tr>
+      <tr><td class="num">11</td><td>CRO round 2: test hero headline, subscribe-default, social-proof placement. Tighten win-back flows.</td><td>Landing CVR improvement vs week-4 baseline</td></tr>
+      <tr><td class="num">12</td><td>Full-funnel review: compute real CAC, AOV, 30-day repeat, subscription take-rate, blended ROAS. Decide scale plan.</td><td>Real numbers replace all benchmarks; go/no-go on budget</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Priority Order (if forced to cut)</h3>
+  <ul class="n-list mb-6">
+    <li>Site/PDP + certifications + shipping fixes — <em>don't send traffic to a leaky page.</em></li>
+    <li>WhatsApp order/COD confirmation + abandoned-cart — cheapest, highest-ROI in India.</li>
+    <li>Subscription + reorder flows — the competitive white space.</li>
+    <li>Organic content engine — compounding, free reach.</li>
+    <li>Meta ads — only once the above can convert and retain what they bring.</li>
+  </ul>
+
+  <div class="highlight-box"><span>What success looks like by Day 90:</span> not a revenue promise — a validated, measurable machine. A converting landing page, seasoned pixel, a proven winning ad angle, live retention flows, your first repeat customers and reviews, and — most importantly — <em>your own real CAC / AOV / repeat-rate data</em> to replace every benchmark here and make the scale decision on facts.</div>
+
+  <h3 class="sh">Open Items Blocking Full Execution</h3>
+  <ul class="n-list">
+    <li><strong>Taste confirmation</strong> — gates the entire consistency/subscription thesis.</li>
+    <li><strong>Real CAC, gross margin, repeat rate</strong> — needed to set true KPI targets and any scale decision.</li>
+    <li><strong>Instagram Insights</strong> — still outstanding; needed to ground audience/content targeting in real data.</li>
+    <li><strong>Subscription billing check</strong> — confirm the Shopify gateway supports recurring mandates (UPI Autopay/card) in India.</li>
+    <li><strong>Brand decision</strong> — keep or white-label the Speakerbox branding on this deck.</li>
+  </ul>
+</div>
+
+<!-- S10 — WEBSITE AUDIT -->
+<div id="s10" class="section">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <div class="section-title">Website Audit</div>
+      <span class="section-subtitle">handandhost.com — conversion · UX · trust · SEO · revenue optimisation</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    The site has a <span>strong visual foundation</span> — but several conversion blockers are reducing sales potential. <strong>65 issues</strong> identified across nine areas; the six critical ones below carry direct revenue impact and come first. <em>The fix-impact figures in this section are projections, not guarantees — treat them as planning estimates to validate against your own analytics.</em>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-badge"><div class="stat-val">65</div><div class="stat-label">Total issues identified</div></div>
+    <div class="stat-badge"><div class="stat-val">6</div><div class="stat-label">🔴 Critical (revenue impact)</div></div>
+    <div class="stat-badge"><div class="stat-val">6</div><div class="stat-label">🟠 High</div></div>
+    <div class="stat-badge"><div class="stat-val">8</div><div class="stat-label">🟡 Medium</div></div>
+  </div>
+
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Current score</h5><p>6.5 / 10 — solid visuals, leaking conversions.</p></div>
+    <div class="impact-cell"><h5>Potential after fixes</h5><p>8.8 / 10 <span style="color:#6B7280">(projected)</span></p></div>
+    <div class="impact-cell priority"><h5>Fix first</h5><p>Hero CTA, trust badges, product-page fixes.</p></div>
+  </div>
+
+  <h3 class="sh">Areas Reviewed</h3>
+  <p class="text-sm text-gray-400 mb-4">Header &amp; navigation · homepage experience · product pages · trust &amp; social proof · cart &amp; checkout · contact &amp; support · SEO &amp; technical · policy pages · conversion optimisation.</p>
+
+  <h3 class="sh">Critical Issues <span class="tag tag-orange">Revenue Impact · Fix Now</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>#</th><th>Issue</th><th>Why it costs you</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td class="stage">No CTA on hero banner</td><td>Visitors see products but can't take immediate action.</td></tr>
+      <tr><td class="num">2</td><td class="stage">No CTA on promotional banners</td><td>Revenue opportunities are being missed at the point of interest.</td></tr>
+      <tr><td class="num">3</td><td class="stage">Add-to-Cart hierarchy issue</td><td>"Buy Now" dominates while "Add to Cart" reads as secondary — friction for browsers not ready to one-click buy.</td></tr>
+      <tr><td class="num">4</td><td class="stage">Missing trust badges</td><td>No reassurance at the purchase-decision stage, exactly where doubt kills the sale.</td></tr>
+      <tr><td class="num">5</td><td class="stage">Blank testimonial avatars</td><td>Empty avatars reduce credibility — proof that looks fake is worse than no proof.</td></tr>
+      <tr><td class="num">6</td><td class="stage">Product description formatting errors</td><td>Broken styling and backend/metadata visible to customers — reads as unfinished and untrustworthy.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Findings by Area</h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Area</th><th>Current issues</th><th>Recommendations</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Homepage</td><td>No compelling above-the-fold headline · no urgency/scarcity · no visible Shop Now · generic section titles · weak product discovery.</td><td>Clear CTA buttons · honest urgency messaging · problem-solution headlines · highlight a best-seller · benefit-focused copy.</td></tr>
+      <tr><td class="stage">Navigation &amp; header</td><td>Duplicate pages ("About Us" &amp; "Our Story") · Orders link in primary nav · no WhatsApp support · no quick contact · unnecessary Wishlist icon.</td><td>Merge duplicate pages · WhatsApp CTA · phone number · Shop Now button · simplify nav.</td></tr>
+      <tr><td class="stage">Product pages</td><td>Vendor name shown · long titles · no urgency · no FAQ · no subscription · no bundle pricing · only one review per product.</td><td>FAQ section · trust badges · subscription model · bundle offers · improve review visibility.</td></tr>
+      <tr><td class="stage">Trust &amp; credibility</td><td>Blank testimonial photos · weak review presentation · certifications unverified · missing FSSAI visibility · no trust badges near CTA.</td><td>Real customer images · verified-buyer badges · FSSAI licence display · certification verification · trust icons below the CTA.</td></tr>
+      <tr><td class="stage">Contact &amp; support</td><td>Phone mandatory · no response time stated · no WhatsApp support.</td><td>Make phone optional · "Replies within 24 hours" · WhatsApp button · live-chat integration.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Conversion Rate Optimisation <span class="tag tag-muted">Missing Elements</span></h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-4">
+    <div class="plan-card">
+      <h3 class="text-lg mb-3">❌ Currently missing</h3>
+      <ul class="feature-list">
+        <li class="excluded"><span class="text-sm">Exit-intent popup</span></li>
+        <li class="excluded"><span class="text-sm">Lead capture system</span></li>
+        <li class="excluded"><span class="text-sm">Free-shipping progress bar</span></li>
+        <li class="excluded"><span class="text-sm">Product recommendations</span></li>
+        <li class="excluded"><span class="text-sm">Bundle offers</span></li>
+        <li class="excluded"><span class="text-sm">Scarcity triggers</span></li>
+      </ul>
+    </div>
+    <div class="plan-card recommended">
+      <h3 class="text-lg mb-3">✅ Recommended features</h3>
+      <ul class="feature-list">
+        <li class="included"><span class="text-sm">Exit popup with a first-order incentive</span></li>
+        <li class="included"><span class="text-sm">Email capture funnel</span></li>
+        <li class="included"><span class="text-sm">Bundle &amp; Save offers</span></li>
+        <li class="included"><span class="text-sm">Frequently Bought Together</span></li>
+        <li class="included"><span class="text-sm">Countdown timers</span></li>
+        <li class="included"><span class="text-sm">Abandoned-cart recovery</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="quote-block"><strong>Compliance note:</strong> scarcity and countdown tactics must be <strong>genuine</strong> — real stock counts, real deadlines. Fake urgency (timers that reset, "only 2 left" that never changes) is an ASCI red flag and erodes the honest-wellness positioning. Keep the mechanic, keep it true.</div>
+
+  <h3 class="sh">SEO Audit</h3>
+  <table class="data-table mb-3">
+    <thead><tr><th>Key issues</th><th>Recommended strategy</th></tr></thead>
+    <tbody>
+      <tr><td>No blog section · duplicate content pages · image-only promotional content · long title tags · weak product descriptions.</td><td>Launch a blog targeting: benefits of melatonin · hair support with biotin · sleep-improvement guide · metabolism-support tips · wellness-gummy basics. <em>(Keep all blog copy in compliant support framing.)</em></td></tr>
+    </tbody>
+  </table>
+  <p class="text-sm text-gray-400 mb-6"><span style="color:#F97316;font-weight:600;">Expected result:</span> higher organic traffic and lower ad dependency over time.</p>
+
+  <h3 class="sh">Revenue Growth Opportunities</h3>
+  <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="plan-card"><h3 class="text-lg mb-2">📦 Bundle pricing</h3><p class="text-sm text-gray-400">1 pack ₹829 · 2 pack save 10% · 3 pack save 15%. <span class="text-gray-500 text-xs">(Aligns with the modest 10–15% bundle discounts in the Offers tab.)</span></p></div>
+    <div class="plan-card"><h3 class="text-lg mb-2">🔁 Subscribe &amp; Save</h3><p class="text-sm text-gray-400">Monthly subscription discount — the reorder mechanic the site currently lacks.</p></div>
+    <div class="plan-card"><h3 class="text-lg mb-2">↔️ Cross-selling</h3><p class="text-sm text-gray-400">Sleep Gummies + Metabolism Gummies as a day/night routine pairing.</p></div>
+    <div class="plan-card"><h3 class="text-lg mb-2">✉️ Email marketing</h3><p class="text-sm text-gray-400">Abandoned-cart recovery · post-purchase follow-up · review-collection automation.</p></div>
+  </div>
+
+  <h3 class="sh">Implementation Roadmap</h3>
+  <table class="data-table mb-3">
+    <thead><tr><th>Phase</th><th>Focus &amp; actions</th><th>Projected impact</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Phase 1 · Week 1</td><td>Critical fixes: hero CTA buttons · trust badges · description formatting · remove metadata errors · fix testimonials.</td><td class="num">+15–25% CVR*</td></tr>
+      <tr><td class="stage">Phase 2 · Week 2</td><td>CRO: WhatsApp integration · exit popup · product bundles · FAQ section · review optimisation.</td><td class="num">+10–20% CVR*</td></tr>
+      <tr><td class="stage">Phase 3 · Month 1</td><td>Growth &amp; SEO: blog setup · email automation · subscription model · SEO optimisation · content strategy.</td><td class="num">Long-term organic growth</td></tr>
+    </tbody>
+  </table>
+  <p class="text-xs text-gray-500 mb-6">*Projected conversion improvement — estimates to validate against your own before/after analytics, not guarantees.</p>
+
+  <h3 class="sh">Priority Matrix</h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Priority</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">🔴 Critical</td><td>Hero CTA · trust badges · product fixes</td></tr>
+      <tr><td class="stage">🟠 High</td><td>WhatsApp · testimonials · certifications</td></tr>
+      <tr><td class="stage">🟡 Medium</td><td>Bundles · FAQ · subscription</td></tr>
+      <tr><td class="stage">🟢 Low</td><td>Blog · content marketing</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Conclusion</h3>
+  <div class="impact-row">
+    <div class="impact-cell"><h5>Current score</h5><p>6.5 / 10</p></div>
+    <div class="impact-cell"><h5>After fixes (projected)</h5><p>8.8 / 10</p></div>
+    <div class="impact-cell priority"><h5>Outcome</h5><p>Higher conversions · more revenue · stronger trust · sustainable growth.</p></div>
+  </div>
+  <div class="highlight-box">Biggest opportunities: <span>conversion-rate optimisation, trust building, WhatsApp integration, bundle offers, email automation, and an SEO content strategy.</span> Each maps onto a section already in this deck — the audit is the "fix the leaks" half of the 90-Day Plan made concrete.</div>
+</div>
+
+<!-- S11 — CONTENT CALENDAR -->
+<div id="s11" class="section">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div>
+      <div class="section-title">Content Calendar &amp; Scripts</div>
+      <span class="section-subtitle">30-day launch plan + shoot-ready reel scripts — awareness leads with pain, never product</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">5 posts/week, ~22 in 30 days. Launch weighting: heavy on <span>Problem-Awareness + Education + Trust</span> to establish the repositioning before pushing product. <em>Every awareness post leads with the pain — no product in the hook.</em></div>
+
+  <h3 class="sh">30-Day Launch Calendar</h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Day</th><th>SKU</th><th>Stage</th><th>Format</th><th>Hook / topic</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td class="stage">Sleep</td><td>Awareness</td><td>Reel</td><td>"The 2am mind-race" — body tired, brain won't stop</td></tr>
+      <tr><td class="num">2</td><td class="stage">Brand</td><td>Trust</td><td>Carousel</td><td>"Why we started Kreenz: honest wellness, no hype"</td></tr>
+      <tr><td class="num">3</td><td class="stage">Biotin</td><td>Awareness</td><td>Reel</td><td>"More hair in the brush than you'd like lately?"</td></tr>
+      <tr><td class="num">4</td><td class="stage">Sleep</td><td>Education</td><td>Carousel</td><td>"Why melatonin alone isn't enough" (the 8-active system)</td></tr>
+      <tr><td class="num">5</td><td class="stage">Metabolism</td><td>Awareness</td><td>Reel</td><td>"Heavy and sluggish after every meal?"</td></tr>
+      <tr><td class="num">8</td><td class="stage">Biotin</td><td>Education</td><td>Carousel</td><td>"Why a big biotin number isn't the point"</td></tr>
+      <tr><td class="num">9</td><td class="stage">Sleep</td><td>Authority</td><td>Talking-head</td><td>"What's actually in your Kreenz Sleep gummy" (full label)</td></tr>
+      <tr><td class="num">10</td><td class="stage">Metabolism</td><td>Education</td><td>Carousel</td><td>"ACV isn't magic — what metabolism support really means"</td></tr>
+      <tr><td class="num">11</td><td class="stage">Brand</td><td>Trust</td><td>Reel</td><td>Certifications explained: FSSAI, GMP, ISO/HACCP, Halal</td></tr>
+      <tr><td class="num">12</td><td class="stage">Sleep</td><td>Conversion</td><td>Reel</td><td>The night routine + offer (₹729, free prepaid shipping)</td></tr>
+      <tr><td class="num">15</td><td class="stage">Biotin</td><td>Trust</td><td>Carousel</td><td>"Hair, skin &amp; nails — one routine" (label transparency)</td></tr>
+      <tr><td class="num">16</td><td class="stage">Sleep</td><td>Awareness</td><td>Reel</td><td>"You're not a bad sleeper — your wind-down is broken"</td></tr>
+      <tr><td class="num">17</td><td class="stage">Metabolism</td><td>Authority</td><td>Talking-head</td><td>The superfood blend: ACV + beetroot + pomegranate</td></tr>
+      <tr><td class="num">18</td><td class="stage">Biotin</td><td>Conversion</td><td>Reel</td><td>Product hero + offer (₹829) + subscribe-and-save</td></tr>
+      <tr><td class="num">19</td><td class="stage">Brand</td><td>Trust</td><td>Carousel</td><td>"What our gummies can — and can't — do" (honesty post)</td></tr>
+      <tr><td class="num">22</td><td class="stage">Sleep</td><td>Education</td><td>Reel</td><td>"Falling asleep vs staying asleep — they're different jobs"</td></tr>
+      <tr><td class="num">23</td><td class="stage">Metabolism</td><td>Conversion</td><td>Reel</td><td>Daytime routine + offer (₹799) — gut &amp; metabolism support</td></tr>
+      <tr><td class="num">24</td><td class="stage">Brand</td><td>Trust</td><td>UGC</td><td>First customer story (named, real, time-anchored)</td></tr>
+      <tr><td class="num">25</td><td class="stage">All</td><td>Conversion</td><td>Carousel</td><td>Bundles: Day &amp; Night Duo, Daily Wellness Stack</td></tr>
+      <tr><td class="num">29</td><td class="stage">Sleep</td><td>Retention</td><td>Reel</td><td>"Consistency is the active ingredient" — the habit story</td></tr>
+      <tr><td class="num">30</td><td class="stage">Brand</td><td>Trust</td><td>Carousel</td><td>Month-1 recap + "join the routine"</td></tr>
+    </tbody>
+  </table>
+  <div class="quote-block"><strong>Repurpose rule:</strong> every Reel → also cut a 3-slide carousel and a story with a CTA sticker. Save winners; they become your retargeting creative.</div>
+
+  <h3 class="sh">Reel Scripts <span class="tag tag-muted">Sample of 9 · Full Set in Pack</span></h3>
+  <div class="hook-box"><div class="hook-num">01</div><div class="hook-label">Sleep · Awareness · No Product</div><div class="hook-text">"It's 2am. Your body's exhausted. Your brain? <em>Still writing emails.</em>"</div><div class="hook-meta"><strong>Beats:</strong> bed/phone-glow b-roll → "You did everything right, and you're still here" → <strong>"You're not a bad sleeper. Your wind-down is broken."</strong> → Follow CTA. No product, no pitch.</div></div>
+  <div class="hook-box"><div class="hook-num">02</div><div class="hook-label">Sleep · Education · System Reframe</div><div class="hook-text">"Melatonin gets you <em>to</em> sleep. It doesn't keep you there."</div><div class="hook-meta"><strong>Beats:</strong> "that's why you wake at 3am" → induce / calm / relax / recover → "a complete wind-down supports all four" → Save CTA.</div></div>
+  <div class="hook-box"><div class="hook-num">03</div><div class="hook-label">Sleep · Conversion · Product + Offer</div><div class="hook-text">"8 actives. 1 gummy. 30 minutes before bed."</div><div class="hook-meta"><strong>Beats:</strong> label in hand → "the full label's on the pack, no hidden anything" → <strong>₹729 · free prepaid shipping · easy reorder</strong> → Link in bio.</div></div>
+  <div class="hook-box"><div class="hook-num">04</div><div class="hook-label">Metabolism · Awareness · Extra-Careful</div><div class="hook-text">"Bloated and heavy after meals — <em>no matter how clean you ate?</em>"</div><div class="hook-meta"><strong>Beats:</strong> "the answer isn't another extreme diet" → "gut + metabolism are a system; support the system, not a symptom" → Follow. No weight-loss language anywhere.</div></div>
+  <p class="text-sm text-gray-400">+ 5 more (Biotin awareness/education/conversion, Metabolism education, Brand trust) — all written out in the Execution Pack.</p>
+</div>
+
+<!-- S12 — AD COPY -->
+<div id="s12" class="section">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div>
+      <div class="section-title">Meta Ad Copy</div>
+      <span class="section-subtitle">Ready-to-paste copy + creative briefs — Sleep is the cold hero, retargeting carries the rest</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">Each ad: <span>primary text · headline · description · CTA button.</span> All compliant — no cure/treat/prevent, no fake urgency, Metabolism kept out of cold prospecting (tighter Meta review).</div>
+
+  <h3 class="sh">Cold / Prospecting — Sleep</h3>
+  <div class="hook-box"><div class="hook-num">A</div><div class="hook-label">Pain-led</div><div class="hook-text">It's 2am. Your body's exhausted — but your brain won't switch off. You're not a bad sleeper; your wind-down is broken. Kreenz Sleep pairs melatonin with 7 calming botanicals to support a proper night-time routine. One gummy, 30 min before bed.</div><div class="hook-meta"><strong>Headline:</strong> Wind down the way your body wants · <strong>Desc:</strong> 8 actives · Mixed Berry · FSSAI-approved · <strong>CTA:</strong> Shop Now</div></div>
+  <div class="hook-box"><div class="hook-num">B</div><div class="hook-label">System Reframe</div><div class="hook-text">Melatonin gets you to sleep. It doesn't keep you there. That's why most "sleep gummies" leave you wide awake at 3am. Kreenz Sleep is built around the full wind-down — melatonin plus valerian, chamomile, ashwagandha, tart cherry and more.</div><div class="hook-meta"><strong>Headline:</strong> More than melatonin · <strong>Desc:</strong> The complete night routine · ₹729 · <strong>CTA:</strong> Learn More</div></div>
+  <div class="hook-box"><div class="hook-num">C</div><div class="hook-label">Transparency / Trust</div><div class="hook-text">Most brands won't show you the label. We lead with it. Every Kreenz Sleep gummy: melatonin + 7 botanicals, no refined sugar, no artificial colours. FSSAI-approved, GMP, Halal, gluten-free.</div><div class="hook-meta"><strong>Headline:</strong> See exactly what's inside · <strong>Desc:</strong> Clean-label · transparent · ₹729 · <strong>CTA:</strong> Shop Now</div></div>
+  <div class="hook-box"><div class="hook-num">D</div><div class="hook-label">Founder / Origin</div><div class="hook-text">We built Kreenz because we were tired of wellness that shouts. No miracle claims, no fear-mongering — just balanced formulas and an honest label. Kreenz Sleep is where we started.</div><div class="hook-meta"><strong>Headline:</strong> Wellness without the hype · <strong>Desc:</strong> Made in India · honest by design · <strong>CTA:</strong> Shop Now</div></div>
+  <div class="hook-box"><div class="hook-num">E</div><div class="hook-label">Offer + Reorder Ease</div><div class="hook-text">Better nights, made simple. Kreenz Sleep — ₹729, free shipping on prepaid orders, subscribe-and-save so you never run out. One gummy, 30 minutes before bed. That's the whole routine.</div><div class="hook-meta"><strong>Headline:</strong> ₹729 · free prepaid shipping · <strong>Desc:</strong> Subscribe &amp; save 15% · <strong>CTA:</strong> Shop Now</div></div>
+
+  <h3 class="sh">Retargeting <span class="tag tag-muted">Warm</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Audience</th><th>Copy angle</th><th>Headline / CTA</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Video viewers / engagers</td><td>"Still thinking about better sleep? Here's what makes Kreenz different — the full label's on the pack."</td><td>The complete wind-down · Learn More</td></tr>
+      <tr><td class="stage">Site / product viewers</td><td>"You looked — here's why people stay." + named review + offer.</td><td>See why they reorder · Shop Now</td></tr>
+      <tr><td class="stage">ATC, no purchase</td><td>"Your cart's still saved. Free prepaid shipping, subscribe so it just shows up monthly."</td><td>Your Kreenz cart is waiting · Shop Now</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Creative Briefs <span class="tag tag-muted">What to Shoot</span></h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Angle</th><th>Visual</th><th>Length</th><th>Key rule</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Pain-led UGC</td><td>Real person, bedroom, low light, to-camera</td><td>18–22s</td><td>No product in first 3s</td></tr>
+      <tr><td class="stage">Transparency</td><td>Macro of label + gummy, clean BG</td><td>12–16s</td><td>Real, readable label</td></tr>
+      <tr><td class="stage">System reframe</td><td>Text-motion + night-routine b-roll</td><td>20–25s</td><td>Group 8 actives by job</td></tr>
+      <tr><td class="stage">Founder</td><td>Founder to-camera, natural light</td><td>20–30s</td><td>Honest, unscripted tone</td></tr>
+      <tr><td class="stage">Offer / reorder</td><td>Product hero + price + "subscribe" overlay</td><td>12–15s</td><td>Price + shipping accurate</td></tr>
+    </tbody>
+  </table>
+  <div class="quote-block"><strong>Compliance — all creatives:</strong> no before/after bodies, no cure/treat/prevent, no "doctor recommended" without proof. <strong>Metabolism:</strong> no idealised/weight-loss bodies, no "lose X kg" — keep to "metabolism &amp; gut support, part of your routine." Refresh 1–3 creatives every 2 weeks.</div>
+</div>
+
+<!-- S13 — LIFECYCLE COPY -->
+<div id="s13" class="section">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div>
+      <div class="section-title">Lifecycle Copy</div>
+      <span class="section-subtitle">WhatsApp + email written out — the retention engine, ready to load</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">All WhatsApp copy is written to pass template review: <span>no medical claims, supportive tone, clear opt-out.</span> Merge fields in {curly braces}. <em>Confirm recurring-billing support before any "auto-renew" promise.</em></div>
+
+  <h3 class="sh">WhatsApp Flows <span class="tag tag-orange">WhatsApp</span></h3>
+  <table class="data-table mb-6">
+    <thead><tr><th>Flow / timing</th><th>Message</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Lead capture</td><td>"Hi {first_name}! 🌿 You're in — occasional honest tips + order updates, nothing spammy. Reply SLEEP, HAIR or GUT so we keep it relevant. STOP anytime to opt out."</td></tr>
+      <tr><td class="stage">Cart recovery +30m</td><td>"Your Kreenz cart is saved 🛒 Want to finish up? {cart_link} — free shipping on prepaid orders."</td></tr>
+      <tr><td class="stage">Cart recovery +6h</td><td>"Still deciding? Fair. The full ingredient label is on the product page — see exactly what's inside before you buy. {cart_link}"</td></tr>
+      <tr><td class="stage">Cart recovery +24h</td><td>"Last nudge — your cart's still here 🌙 Prepaid ships free, and you can reorder in one tap later. {cart_link}"</td></tr>
+      <tr><td class="stage">Order + COD confirm</td><td>"Order #{order_id} confirmed 🎉 Quick check — is this address correct? {address} Reply YES or send the fix. {COD: this is a CoD order for ₹{amount}.}"</td></tr>
+      <tr><td class="stage">Dispatch</td><td>"On its way 🚚 Track: {tracking_link}. Arriving around {eta}."</td></tr>
+      <tr><td class="stage">Delivered + how-to</td><td>"Delivered! 📦 {usage_line}. Consistency is the active ingredient — give it the full month. Questions? Reply here."</td></tr>
+      <tr><td class="stage">Day-7 check-in</td><td>"One week in! How's it going? 🌿 Daily &amp; consistent beats occasional — keep it in the same spot so you don't forget."</td></tr>
+      <tr><td class="stage">Day-14 tip</td><td>"Two weeks down 👏 Pair your gummy with something you already do daily — that's how routines stick."</td></tr>
+      <tr><td class="stage">Day-15 cross-sell</td><td>"Loving your {product}? Many pair it with {complementary_SKU} for the other half of their routine — {reason}. {link}"</td></tr>
+      <tr><td class="stage">Day-25 reorder</td><td>"Your month's nearly up ⏳ Reorder in one tap: {reorder_link}. Or subscribe &amp; save 15% so it just arrives {pending billing}. Never run out."</td></tr>
+      <tr><td class="stage">Day-32 win-back</td><td>"We miss you in the routine 🌿 If something wasn't right, tell us — we read every reply. Ready for round two? {reorder_link}"</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sh">Email Sequences <span class="tag tag-muted">Email</span></h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>Sequence</th><th>Emails &amp; timing</th><th>Subject lines</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Welcome (4)</td><td>Immediate · +1d · +3d · +5d</td><td>"Welcome to honest wellness 🌿" → "Why one ingredient is never enough" → "What's actually inside (the whole label)" → "Real people, honest results"</td></tr>
+      <tr><td class="stage">Abandoned cart (3)</td><td>+1h · +24h · +48h</td><td>"You left something behind 🛒" → "Honest answers to the usual questions" → "Last call on your cart"</td></tr>
+      <tr><td class="stage">Post-purchase (4)</td><td>Confirm · delivery · +7d · +15d</td><td>"You're in 🎉" → "It's here — let's build the habit" → "How's week one?" → "Complete your routine"</td></tr>
+      <tr><td class="stage">Review (2)</td><td>~Day 18–22 · +5d</td><td>"How's it going, honestly?" → "30 seconds? 🌿"</td></tr>
+      <tr><td class="stage">Repeat (3)</td><td>~Day 25 · ~Day 35 · quarterly</td><td>"Your month's almost up" → "We saved your spot" → "Complete the routine"</td></tr>
+    </tbody>
+  </table>
+  <div class="quote-block"><strong>Full email bodies, subscription/reorder copy, packaging-insert lines, and the Give ₹100 / Get ₹100 referral copy are all written out in the Execution Pack.</strong></div>
+
+  <h3 class="sh">Subscription &amp; Reorder Pricing</h3>
+  <table class="data-table mb-4">
+    <thead><tr><th>SKU</th><th>One-time</th><th>Subscribe (15% off)</th><th>Monthly saving</th></tr></thead>
+    <tbody>
+      <tr><td class="stage">Sleep</td><td>₹729</td><td class="num">₹619</td><td>₹110</td></tr>
+      <tr><td class="stage">Biotin</td><td>₹829</td><td class="num">₹705</td><td>₹124</td></tr>
+      <tr><td class="stage">Metabolism</td><td>₹799</td><td class="num">₹679</td><td>₹120</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">Status after this pack: <span>Content ~90% · Meta Ads ~85% · Retention ~90%.</span> Remaining gaps are inputs only you can close — shooting creative, the live pixel, real CAC for targets, WhatsApp template approval, billing confirmation, and taste sign-off.</div>
+</div>
+
+</div><!-- /max-w-6xl -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <h2>Consistency is the active ingredient.</h2>
+  <p>Kreenz wins the category not by shouting louder, but by being the gummy people actually finish — honest copy, an effortless reorder, and the retention engine every competitor forgot to build. Fix the leaks, build the engine, then scale on real numbers.</p>
+  <div class="footer-mark">
+    <img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox" class="h-7">
+  </div>
+  <div class="sig">Strategy by Speakerbox · Kreenz Wellness · Revenue Funnel Architecture</div>
+</div>
+
+<script>
+  function showSection(id, btn){
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
