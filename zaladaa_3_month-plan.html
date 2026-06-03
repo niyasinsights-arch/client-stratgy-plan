@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaladaa — 3-Month Instagram Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #111111;
+  --card: #1F2937;
+  --card-2: #182230;
+  --border: #374151;
+  --text: #E5E7EB;
+  --text-soft: #9CA3AF;
+  --text-dim: #6B7280;
+  --accent: #F97316;
+  --accent-soft: rgba(249, 115, 22, 0.12);
+  --accent-border: rgba(249, 115, 22, 0.35);
+  --success: #10B981;
+  --info: #38BDF8;
+  --purple: #A78BFA;
+  --danger: #EF4444;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Google Sans Text', 'Google Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Google Sans', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 28px 80px; }
+
+/* NAV */
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(17,17,17,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topnav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 20px; overflow-x: auto;
+}
+.brand-dot { font-weight:700; color:var(--accent); margin-right:14px; white-space:nowrap; font-family:'Google Sans'; }
+.navbtn {
+  background: transparent; border: 1px solid transparent;
+  color: var(--text-soft); font-size: 13px; font-weight: 500;
+  font-family: 'Google Sans Text'; padding: 8px 14px; border-radius: 8px;
+  cursor: pointer; white-space: nowrap; transition: all .15s;
+}
+.navbtn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.navbtn.active { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-border); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--card) 0%, var(--card-2) 100%);
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 52px 44px; margin-bottom: 36px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%); pointer-events:none;
+}
+.hero-tag {
+  display:inline-block; background:var(--accent-soft); color:var(--accent);
+  font-size:12px; font-weight:700; padding:6px 14px; border-radius:999px;
+  letter-spacing:0.06em; text-transform:uppercase; margin-bottom:18px; border:1px solid var(--accent-border);
+}
+.hero h1 { font-size: 40px; line-height: 1.15; margin-bottom: 14px; }
+.hero h1 .accent { color: var(--accent); }
+.hero-sub { color: var(--text-soft); font-size: 16px; max-width: 720px; margin-bottom: 24px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; }
+.meta-pill { background: rgba(17,17,17,0.6); border:1px solid var(--border); padding:8px 14px; border-radius:8px; font-size:13px; color:var(--text-soft); }
+.meta-pill strong { color:var(--text); font-weight:500; }
+
+/* SECTIONS */
+.tab { display:none; }
+.tab.active { display:block; animation: fade .25s ease; }
+@keyframes fade { from { opacity:0; transform: translateY(6px);} to {opacity:1; transform:none;} }
+.section-label { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:8px; }
+.section-title { font-size:26px; margin-bottom:10px; }
+.section-intro { color:var(--text-soft); margin-bottom:24px; max-width:840px; }
+
+/* CARDS / GRID */
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px; margin-bottom:16px; }
+.card h3 { font-size:18px; margin-bottom:12px; }
+.card p { color:var(--text-soft); margin-bottom:10px; }
+.card p:last-child { margin-bottom:0; }
+.card strong { color:var(--text); font-weight:500; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media (max-width:820px){ .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; } }
+
+/* STAT */
+.stat { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; text-align:center; }
+.stat .num { font-family:'Google Sans'; font-size:34px; font-weight:700; color:var(--accent); line-height:1; }
+.stat .lab { font-size:12px; color:var(--text-soft); margin-top:8px; text-transform:uppercase; letter-spacing:0.06em; }
+
+/* BARS */
+.bar-row { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.bar-row .name { width:160px; font-size:14px; color:var(--text); flex-shrink:0; }
+.bar-track { flex:1; height:12px; background:rgba(255,255,255,0.05); border-radius:999px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:999px; }
+.bar-row .pct { width:48px; text-align:right; font-size:13px; color:var(--text-soft); }
+
+/* CALLOUT */
+.callout { background:var(--accent-soft); border:1px solid var(--accent-border); border-left:3px solid var(--accent); padding:18px 22px; border-radius:10px; margin:20px 0; }
+.callout-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:6px; }
+.callout p { color:var(--text); margin:0; }
+
+/* WEEK HEADER */
+.week-head { display:flex; align-items:baseline; gap:14px; margin:34px 0 16px; padding-bottom:12px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.week-head .wk { font-family:'Google Sans'; font-size:13px; font-weight:700; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; }
+.week-head .wt { font-family:'Google Sans'; font-size:20px; font-weight:700; }
+.week-head .wd { font-size:13px; color:var(--text-dim); margin-left:auto; }
+
+/* DAY CARD */
+.day { background:var(--card); border:1px solid var(--border); border-radius:14px; margin-bottom:12px; overflow:hidden; }
+.day-sum { padding:18px 22px; cursor:pointer; display:flex; align-items:flex-start; gap:16px; list-style:none; }
+.day-sum::-webkit-details-marker { display:none; }
+.day-num { flex-shrink:0; width:44px; height:44px; border-radius:10px; background:var(--accent-soft); border:1px solid var(--accent-border); display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.day-num .d { font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; line-height:1; }
+.day-num .n { font-family:'Google Sans'; font-size:18px; font-weight:700; color:var(--accent); line-height:1.1; }
+.day-main { flex:1; min-width:0; }
+.day-topic { font-family:'Google Sans'; font-weight:700; font-size:15.5px; margin-bottom:6px; }
+.day-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.tag { font-size:11px; padding:3px 9px; border-radius:6px; font-weight:500; border:1px solid; }
+.tag.pillar { background:rgba(167,139,250,0.1); color:var(--purple); border-color:rgba(167,139,250,0.3); }
+.tag.fmt-reel { background:rgba(249,115,22,0.1); color:var(--accent); border-color:var(--accent-border); }
+.tag.fmt-carousel { background:rgba(56,189,248,0.1); color:var(--info); border-color:rgba(56,189,248,0.3); }
+.tag.fmt-static { background:rgba(156,163,175,0.1); color:var(--text-soft); border-color:var(--border); }
+.tag.funnel { background:rgba(16,185,129,0.1); color:var(--success); border-color:rgba(16,185,129,0.3); }
+.tag.goal { background:rgba(255,255,255,0.04); color:var(--text-soft); border-color:var(--border); }
+.day-chev { flex-shrink:0; color:var(--accent); font-size:22px; font-weight:300; transition:transform .2s; margin-top:8px; }
+.day[open] .day-chev { transform:rotate(45deg); }
+.day-body { padding:0 22px 22px 22px; border-top:1px solid rgba(55,65,81,0.5); margin-top:2px; }
+.field { margin-top:16px; }
+.field-label { font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:6px; }
+.field p { color:var(--text-soft); font-size:14px; margin:0; }
+.hook-box { background:rgba(17,17,17,0.5); border:1px solid var(--accent-border); border-left:3px solid var(--accent); border-radius:8px; padding:12px 16px; }
+.hook-box p { color:var(--text); font-style:italic; font-size:14.5px; }
+.outline-list { list-style:none; padding:0; margin:0; }
+.outline-list li { color:var(--text-soft); font-size:14px; padding:5px 0 5px 22px; position:relative; }
+.outline-list li::before { content:'→'; position:absolute; left:0; color:var(--accent); }
+.blueprint { background:var(--card-2); border:1px solid var(--border); border-radius:10px; padding:18px; margin-top:18px; }
+.blueprint .bp-title { font-family:'Google Sans'; font-size:13px; font-weight:700; color:var(--text); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.bp-badge { font-size:10px; padding:2px 8px; border-radius:5px; background:var(--accent); color:#111; font-weight:700; letter-spacing:0.04em; }
+.cta-pill { display:inline-block; background:var(--success); color:#062b1f; font-weight:700; font-size:13px; padding:6px 14px; border-radius:8px; }
+
+/* MINI TABLE for slides */
+.slides { list-style:none; padding:0; margin:0; counter-reset:s; }
+.slides li { display:flex; gap:12px; padding:8px 0; border-bottom:1px solid rgba(55,65,81,0.4); font-size:14px; color:var(--text-soft); }
+.slides li:last-child { border-bottom:none; }
+.slides li .sn { flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--accent-soft); color:var(--accent); font-weight:700; font-size:12px; display:flex; align-items:center; justify-content:center; }
+.slides li strong { color:var(--text); font-weight:500; }
+
+/* STORY / HIGHLIGHT */
+.story-week { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; }
+.story-week h4 { font-size:15px; margin-bottom:14px; color:var(--accent); }
+.story-list { list-style:none; padding:0; }
+.story-list li { font-size:14px; color:var(--text-soft); padding:7px 0 7px 26px; position:relative; border-bottom:1px solid rgba(55,65,81,0.35); }
+.story-list li:last-child { border-bottom:none; }
+.story-list li::before { content:''; position:absolute; left:4px; top:14px; width:8px; height:8px; border-radius:50%; background:var(--accent); }
+.hl-pill { background:var(--card); border:1px solid var(--border); border-radius:999px; padding:10px 18px; text-align:center; font-size:13px; font-weight:500; }
+.hl-pill span { display:block; font-size:11px; color:var(--text-dim); font-weight:400; margin-top:2px; }
+.hl-wrap { display:flex; flex-wrap:wrap; gap:10px; }
+
+footer { text-align:center; color:var(--text-dim); font-size:13px; margin-top:40px; padding-top:24px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <span class="brand-dot">Zaladaa</span>
+    <button class="navbtn active" data-tab="overview">Overview</button>
+    <button class="navbtn" data-tab="calendar">3-Month Plan</button>
+    <button class="navbtn" data-tab="stories">Stories &amp; Highlights</button>
+    <button class="navbtn" data-tab="menuintro">Menu Intro</button>
+    <button class="navbtn" data-tab="challenge">Challenge Campaign</button>
+    <button class="navbtn" data-tab="sunday">Sunday Swap</button>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ============ OVERVIEW ============ -->
+<section class="tab active" id="overview">
+  <div class="hero">
+    <span class="hero-tag">3-Month Instagram Strategy</span>
+    <h1>The Fresh Habit of HSR,<br><span class="accent">turned into 3 months of content.</span></h1>
+    <p class="hero-sub">A reels-first, save-worthy, conversion-focused content calendar engineered to make Zaladaa the default healthy-lunch decision for HSR &amp; Koramangala — built around your real menu, real macros, and the people who actually order at 1 PM.</p>
+    <div class="hero-meta">
+      <span class="meta-pill"><strong>30</strong> planned posts</span>
+      <span class="meta-pill"><strong>18</strong> reels</span>
+      <span class="meta-pill"><strong>7</strong> carousels</span>
+      <span class="meta-pill"><strong>5</strong> static</span>
+      <span class="meta-pill">4-week arc · <strong>HSR-first</strong></span>
+    </div>
+  </div>
+
+  <div class="grid-4" style="margin-bottom:28px;">
+    <div class="stat"><div class="num">+1.2K</div><div class="lab">Follower target</div></div>
+    <div class="stat"><div class="num">3–5%</div><div class="lab">Save-rate goal</div></div>
+    <div class="stat"><div class="num">25%</div><div class="lab">Order lift target</div></div>
+    <div class="stat"><div class="num">~10</div><div class="lab">Posts / month</div></div>
+  </div>
+
+  <div class="card">
+    <h3>The strategic arc — why this order</h3>
+    <p>The plan is sequenced as a <strong>relationship, not a broadcast</strong>. You earn attention before you ask for the order. Each month graduates a stranger one step closer to becoming a repeat subscriber.</p>
+    <div class="grid-3" style="margin-top:14px;">
+      <div class="card" style="margin:0;background:var(--card-2);">
+        <h3 style="font-size:15px;">Month 1 — Awareness &amp; Early Education</h3>
+        <p style="font-size:13.5px;">Name the pain (3 PM crashes, the Swiggy fast-food loop, low desk energy) and start teaching. You're not hard-selling yet — you're making them feel seen. <strong>Funnel: Awareness.</strong></p>
+      </div>
+      <div class="card" style="margin:0;background:var(--card-2);">
+        <h3 style="font-size:15px;">Month 2 — Education &amp; Brand Trust</h3>
+        <p style="font-size:13.5px;">Become the smartest healthy-food account they follow, then earn belief — macro transparency, founder, kitchen, sourcing, real customers. <strong>Funnel: Consideration.</strong></p>
+      </div>
+      <div class="card" style="margin:0;background:var(--card-2);">
+        <h3 style="font-size:15px;">Month 3 — Offers, Reviews &amp; Conversion</h3>
+        <p style="font-size:13.5px;">Now you ask. Subscription push, office-lunch targeting, comparisons, guilt-free dessert, community recap. <strong>Funnel: Conversion.</strong></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Content pillar mix</h3>
+      <div class="bar-row"><span class="name">Education</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--info);"></div></div><span class="pct">30%</span></div>
+      <div class="bar-row"><span class="name">Problem Awareness</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--purple);"></div></div><span class="pct">25%</span></div>
+      <div class="bar-row"><span class="name">Trust Building</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--success);"></div></div><span class="pct">20%</span></div>
+      <div class="bar-row"><span class="name">Conversion</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--accent);"></div></div><span class="pct">15%</span></div>
+      <div class="bar-row"><span class="name">Authority</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:#fbbf24;"></div></div><span class="pct">10%</span></div>
+    </div>
+    <div class="card">
+      <h3>Format mix</h3>
+      <div class="bar-row"><span class="name">Reels</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--accent);"></div></div><span class="pct">60%</span></div>
+      <div class="bar-row"><span class="name">Carousels</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--info);"></div></div><span class="pct">25%</span></div>
+      <div class="bar-row"><span class="name">Static</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--text-soft);"></div></div><span class="pct">15%</span></div>
+      <div class="callout" style="margin-bottom:0;">
+        <div class="callout-label">Why reels-first</div>
+        <p style="font-size:13.5px;">Reach lives in reels; <strong>saves and shares</strong> live in carousels; <strong>trust</strong> lives in static + stories. Reels bring strangers in, carousels make them stay, conversion posts close.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Hero format to lean on — recipe-style reels</h3>
+    <p>This style of video builds curiosity and keeps the audience watching until the end. Showing the ingredients, preparation, and final dish in a quick, satisfying way makes the salad feel <strong>fresh, premium, and worth trying</strong>.</p>
+    <div class="callout" style="margin:14px 0;">
+      <div class="callout-label">Strategy line</div>
+      <p>Use recipe-style videos to spark curiosity, highlight freshness, and make viewers want to try the dish themselves.</p>
+    </div>
+    <div class="field"><div class="field-label">Why it works</div>
+      <ul class="outline-list">
+        <li>It shows the food being made live</li>
+        <li>It makes the dish feel fresh and real</li>
+        <li>It adds a "final reveal" moment</li>
+        <li>It increases watch time and interest</li>
+        <li>It helps the audience remember the dish name, calories, and protein</li>
+      </ul>
+    </div>
+    <div class="field"><div class="field-label">Client-deck one-liners</div>
+      <ul class="outline-list">
+        <li><strong>Short:</strong> This content format builds curiosity by showing the preparation process, ingredient freshness, and final dish reveal, making the audience more likely to engage and order.</li>
+        <li><strong>Even shorter:</strong> This video style creates curiosity, increases watch time, and makes the salad feel more desirable and premium.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The one rule for every post</div>
+    <p>If a post doesn't earn a <strong>save</strong>, a <strong>share</strong>, or an <strong>order</strong> — it doesn't go up. Vanity reach is a side effect, never the goal. We're building the go-to fresh habit of HSR, one genuinely useful post at a time.</p>
+  </div>
+</section>
+
+<!-- ============ CALENDAR ============ -->
+<section class="tab" id="calendar">
+  <div class="section-label">The Plan</div>
+  <h2 class="section-title">3-Month Content Plan</h2>
+  <p class="section-intro">30 posts rolled out across three months — roughly 10 per month, a sustainable 2–3 posts a week rather than daily pressure. Tap any post to expand the full brief: hook, on-screen text, B-roll direction, caption angle, CTA, funnel stage and goal. Reels include a shot blueprint; carousels include slide-by-slide structure.</p>
+  <div id="calendar-render"></div>
+</section>
+
+<!-- ============ STORIES & HIGHLIGHTS ============ -->
+<section class="tab" id="stories">
+  <div class="section-label">Daily Layer</div>
+  <h2 class="section-title">Stories &amp; Highlights Strategy</h2>
+  <p class="section-intro">Feed builds reputation; stories build relationship. Run 3–5 story frames daily — at least one interactive sticker per day to feed the algorithm engagement signals and keep you top-of-mind at lunchtime.</p>
+
+  <div class="grid-2">
+    <div class="story-week">
+      <h4>Week 1 · Awareness &amp; Hooks</h4>
+      <ul class="story-list">
+        <li><strong>Poll</strong> — "What's your biggest food challenge?" (3 PM crash / no time / no healthy options)</li>
+        <li><strong>This or That</strong> — Greasy biryani box vs Zaladaa Cajun Quinoa Salad</li>
+        <li><strong>Healthy habit quiz</strong> — "How many days this week did you eat fresh?"</li>
+        <li><strong>BTS clip</strong> — 6 AM greens wash + cold-press in motion</li>
+        <li><strong>Countdown</strong> — to the day-1 reel drop to prime reach</li>
+      </ul>
+    </div>
+    <div class="story-week">
+      <h4>Week 2 · Education &amp; Authority</h4>
+      <ul class="story-list">
+        <li><strong>Nutrition fact card</strong> — "31g protein in our Zesty Pepper Chicken Salad"</li>
+        <li><strong>Ingredient spotlight</strong> — red/black/white quinoa, why three colours</li>
+        <li><strong>Q&amp;A sticker</strong> — "Ask me anything about eating healthy at a desk job"</li>
+        <li><strong>Salad-building process</strong> — time-lapse of a bowl coming together</li>
+        <li><strong>Quiz</strong> — "Which juice has zero added sugar?" (answer: all of them)</li>
+      </ul>
+    </div>
+    <div class="story-week">
+      <h4>Week 3 · Trust &amp; People</h4>
+      <ul class="story-list">
+        <li><strong>Customer reviews</strong> — screenshot reposts with reaction</li>
+        <li><strong>Team intro</strong> — face + name + favourite bowl</li>
+        <li><strong>Kitchen walkthrough</strong> — handheld, unedited, hygiene-forward</li>
+        <li><strong>Founder story</strong> — talking-head fragment + "ask me anything"</li>
+        <li><strong>UGC reshare</strong> — tag-back loop to encourage more</li>
+      </ul>
+    </div>
+    <div class="story-week">
+      <h4>Week 4 · Offers &amp; Conversion</h4>
+      <ul class="story-list">
+        <li><strong>Limited offer countdown</strong> — subscription / first-order deal</li>
+        <li><strong>Testimonial screenshots</strong> — stack 3–4 in sequence</li>
+        <li><strong>Order-process demo</strong> — "From phone to desk in 30 min" swipe-up</li>
+        <li><strong>Link sticker</strong> — direct to Ownly subscription + Swiggy/Zomato</li>
+        <li><strong>Poll</strong> — "Subscribe for 5 days or 7?" to surface plan demand</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h3>Highlight architecture</h3>
+    <p>Set covers in your cream/green/orange palette with simple line icons. A first-time visitor should understand the whole brand from these tiles in 10 seconds.</p>
+    <div class="hl-wrap" style="margin-top:14px;">
+      <div class="hl-pill">Menu<span>Signature bowls &amp; macros</span></div>
+      <div class="hl-pill">Reviews<span>Social proof</span></div>
+      <div class="hl-pill">About Us<span>Founder &amp; mission</span></div>
+      <div class="hl-pill">Delivery<span>Swiggy · Zomato · Ownly</span></div>
+      <div class="hl-pill">Offers<span>Subscription &amp; deals</span></div>
+      <div class="hl-pill">Fresh Ingredients<span>Sourcing &amp; prep</span></div>
+      <div class="hl-pill">Events<span>Pop-ups &amp; community</span></div>
+      <div class="hl-pill">FAQs<span>Allergens, timing, areas</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============ CHALLENGE CAMPAIGN ============ -->
+<section class="tab" id="challenge">
+  <div class="hero">
+    <span class="hero-tag">Experiential Campaign</span>
+    <h1>The <span class="accent">Zaladaa Healthy Challenge</span></h1>
+    <p class="hero-sub">A public fitness game taken to where the crowds already are — parks, beaches, walking tracks, colleges, IT parks and malls. Anyone can play, win a reward, and — most importantly — film it. It turns ordinary foot traffic into shop visitors, your neighbourhood into content creators, and "The Fresh Habit" into something people physically <em>do</em>, not just scroll past.</p>
+    <div class="hero-meta">
+      <span class="meta-pill">More <strong>shop visitors</strong></span>
+      <span class="meta-pill">More <strong>UGC reels</strong></span>
+      <span class="meta-pill">Stronger <strong>brand recall</strong></span>
+      <span class="meta-pill">Low cost · <strong>high shareability</strong></span>
+    </div>
+  </div>
+
+  <div class="section-label">The Concept</div>
+  <h2 class="section-title">Move a little, win a bowl</h2>
+  <p class="section-intro">Run a public health-challenge activity in high-footfall locations where people are already out and active. They join a simple game, complete a quick task, and instantly win a reward. The genius is inclusivity: "100 pull-ups" excludes 95% of people, but a 30-second plank or 10 squats invites everyone — which means more participants, more laughter, and far more footage worth posting.</p>
+  <div class="callout" style="margin-top:0;">
+    <div class="callout-label">Where to set up</div>
+    <p>Target high-footfall public spaces: <strong>parks, beaches, walking tracks, colleges, IT parks, malls, and busy public stretches</strong>. Match the spot to the audience — IT parks &amp; malls at lunch for working professionals, walking tracks &amp; parks in the morning/evening for the fitness crowd, colleges for young UGC creators. Carry a banner + QR so onlookers who don't play can still find you. (Quick check: confirm any permission needed for the specific public spot before setting up.)</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Pick-your-challenge menu</h3>
+      <p>Let people choose their level so no one feels left out — or let a spin-the-wheel assign the task for extra fun.</p>
+      <ul class="outline-list">
+        <li><strong>Easy</strong> — 10 squats</li>
+        <li><strong>Easy</strong> — 20 jumping jacks</li>
+        <li><strong>Medium</strong> — 30-second plank</li>
+        <li><strong>Anyone</strong> — a mini "healthy habit" challenge (name 3 fresh ingredients, swap a soda for a juice)</li>
+        <li><strong>Finale</strong> — spin-the-wheel for the reward <em>after</em> completing the task</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Reward ideas</h3>
+      <p>Everyone wins something — the variable reward is what makes it addictive and re-postable. Load the wheel with:</p>
+      <ul class="outline-list">
+        <li>10% off coupon</li>
+        <li>Free add-on / topping</li>
+        <li>Buy 1 Get 1 on select items</li>
+        <li>Free healthy drink with lunch</li>
+        <li>Special combo-meal offer</li>
+        <li>Voucher for the next visit (drives the return trip)</li>
+        <li>Instagram feature + surprise gift for the best participant</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Campaign name</div>
+    <p style="font-family:'Google Sans';font-size:18px;font-weight:700;">The Zaladaa Healthy Challenge</p>
+  </div>
+
+  <div class="section-label" style="margin-top:36px;">Run of Show</div>
+  <h2 class="section-title">How to actually run it</h2>
+  <p class="section-intro">Keep it tight so the line keeps moving and the energy stays high. One host with a phone can run the whole thing.</p>
+  <div class="day" open style="border-color:var(--accent-border);">
+    <div class="day-body" style="border-top:none;padding-top:22px;">
+      <div class="field" style="margin-top:0;"><div class="field-label">1 · The hook</div><p>A standee / chalkboard at your public spot: "Do 10 squats. Win lunch. 👀" — curiosity stops passers-by mid-walk. Keep a QR banner visible so onlookers can find you too.</p></div>
+      <div class="field"><div class="field-label">2 · The challenge</div><p>Person picks or spins for a task (squats / jumping jacks / plank / habit question). 30–45 seconds, max.</p></div>
+      <div class="field"><div class="field-label">3 · The film</div><p>Host films it vertically (with their OK) — fun, energetic, reaction-led. This footage is the real product of the campaign.</p></div>
+      <div class="field"><div class="field-label">4 · The reward</div><p>Spin the wheel → instant win. Hand over the coupon/voucher with a genuine "come see us for lunch."</p></div>
+      <div class="field"><div class="field-label">5 · The loop</div><p>Ask them to tag <strong>@zaladaa</strong> and use a campaign hashtag when they post. Reshare every tag to your story — that public reshare is what pulls the next person in.</p></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:36px;">Why It Works</div>
+  <h2 class="section-title">The strategic payoff</h2>
+  <div class="grid-3">
+    <div class="card"><h3 style="font-size:16px;">More shop visitors</h3><p style="font-size:13.5px;">A free, fun reason to engage — and a voucher that pulls the visit to the shop.</p></div>
+    <div class="card"><h3 style="font-size:16px;">More UGC content</h3><p style="font-size:13.5px;">Every participant becomes a content creator. You harvest a week of reels in one session.</p></div>
+    <div class="card"><h3 style="font-size:16px;">Reels &amp; stories</h3><p style="font-size:13.5px;">Movement + reward + reaction is inherently watchable — exactly the format the algorithm rewards.</p></div>
+    <div class="card"><h3 style="font-size:16px;">Page engagement</h3><p style="font-size:13.5px;">Tags, reshares and the hashtag loop spike comments, shares and profile visits.</p></div>
+    <div class="card"><h3 style="font-size:16px;">Brand recall</h3><p style="font-size:13.5px;">People remember what they <em>did</em>, not what they read. The Fresh Habit becomes a physical memory.</p></div>
+    <div class="card"><h3 style="font-size:16px;">Community proof</h3><p style="font-size:13.5px;">Crowds seeing others play signals "this is a brand people love" — the trust shortcut.</p></div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">How it plugs into your 3-month plan</div>
+    <p>This isn't a standalone stunt — it <strong>fuels the feed</strong>. Tease it in early stories ("something fun is coming"), run the activation mid-plan, then the footage feeds your <strong>Post 19 (real customer)</strong> and <strong>Post 20 (community)</strong> trust posts, plus a string of UGC reels and a story highlight under <strong>"Events."</strong> Add a geo-targeted Meta boost to the best participant reel for cheap, high-relevance reach.</p>
+  </div>
+</section>
+
+
+<!-- ============ SUNDAY SWAP / PROTEIN MENU DROP ============ -->
+<section class="tab" id="sunday">
+  <div class="hero">
+    <span class="hero-tag">Experiential Campaign</span>
+    <h1>Swap Your Sunday <span class="accent">with Zaladaa</span></h1>
+    <p class="hero-sub">A surprise-invitation campaign. Coupons are dropped in public, high-footfall areas around the city — and each one gives access to a special protein menu at Zaladaa. The coupon feels like a hidden pass, not a regular discount, creating curiosity that pulls people into the store to try the menu.</p>
+    <div class="hero-meta">
+      <span class="meta-pill">Core: <strong>Protein Menu Drop</strong></span>
+      <span class="meta-pill">Offline <strong>surprise</strong></span>
+      <span class="meta-pill">Exclusive <strong>menu access</strong></span>
+      <span class="meta-pill">Weekend <strong>habit</strong></span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Final Brand Line</div>
+    <p style="font-family:'Google Sans';font-size:22px;font-weight:700;line-height:1.3;">Swap Your Sunday with Zaladaa.<br><span style="color:var(--accent);">Find the Coupon. Unlock the Protein Menu.</span></p>
+    <p style="margin-top:12px;font-size:13px;color:var(--text-soft);">Alternate: <em>Swap Your Sunday. Choose Healthy. Choose Zaladaa.</em></p>
+  </div>
+
+  <div class="section-label">Strategy Goal</div>
+  <h2 class="section-title">What this campaign is built to do</h2>
+  <p class="section-intro">Increase shop visits, trial orders, and repeat customers by making Zaladaa feel like a fun, healthy, and shareable food brand. The campaign creates curiosity in public spaces, brings people into the store, and turns the brand into a healthy weekend food habit.</p>
+
+  <div class="card">
+    <h3>Core Campaign — Protein Menu Drop</h3>
+    <p>This campaign works like a surprise invitation. You place or drop coupons in public or high-footfall areas around the city, and each coupon gives access to a special protein menu at Zaladaa.</p>
+    <p>The coupon should feel like a <strong>hidden pass</strong> rather than a regular discount. This creates curiosity and encourages people to visit the shop and try the menu.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Big Idea</div>
+    <p style="font-family:'Google Sans';font-size:18px;font-weight:700;">Swap Your Sunday for a Healthy Sunday.</p>
+    <p style="margin-top:10px;color:var(--text);">This positions Zaladaa as the place where people replace heavy weekend meals with a fresh, protein-rich option. It works especially well because weekend food choices are more flexible, and people are often open to trying something new.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Campaign Structure</h3>
+      <ul class="outline-list">
+        <li>Drop coupons in public or high-footfall locations</li>
+        <li>Make the coupon look like an exclusive healthy invitation</li>
+        <li>Offer a protein menu / exclusive menu available only to coupon holders</li>
+        <li>Clearly display the protein value on the menu — such as 20g, 25g, or 30g of protein</li>
+        <li>Provide a small reward or free add-on for customers who redeem the coupon</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Offer Design</h3>
+      <p>Simple and attractive:</p>
+      <ul class="outline-list">
+        <li>Special protein bowl</li>
+        <li>Healthy Sunday menu</li>
+        <li>Free add-on with coupon</li>
+        <li>Limited-time weekend offer</li>
+        <li>Next-visit coupon for customers who redeem the offer</li>
+      </ul>
+      <p style="margin-top:10px;">The menu should feel premium yet easy to understand — customers should instantly recognise it's healthy, protein-packed, and worth trying.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Content Plan</h3>
+      <p>The campaign should generate content at every stage:</p>
+      <ul class="outline-list">
+        <li>Show the coupon drop in Reels or Stories</li>
+        <li>Record people finding or receiving the coupon</li>
+        <li>Capture customer reactions when they visit the shop</li>
+        <li>Film the food being prepared and served</li>
+        <li>Repost customer Stories and UGC to build social proof</li>
+      </ul>
+      <p style="margin-top:10px;">This lets the campaign work twice — once for increasing footfall, again for expanding social-media reach.</p>
+    </div>
+    <div class="card">
+      <h3>Visual Direction</h3>
+      <p>Fresh, clean, and healthy:</p>
+      <ul class="outline-list">
+        <li>Use green, white, and natural food colours</li>
+        <li>Showcase protein bowls and fresh ingredients clearly</li>
+        <li>Keep the coupon design simple yet premium</li>
+        <li>Use bold typography for protein quantities</li>
+        <li>Include Sunday / weekend visual cues to feel timely and relevant</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:36px;">Customer Funnel</div>
+  <h2 class="section-title">From street to repeat visit</h2>
+  <div class="card" style="padding-top:8px;padding-bottom:8px;">
+    <div class="field" style="margin-top:16px;"><div class="field-label">1 · Attention</div><p>Generate awareness through public coupon drops.</p></div>
+    <div class="field"><div class="field-label">2 · Curiosity</div><p>Create intrigue by making the coupon feel like a hidden invitation.</p></div>
+    <div class="field"><div class="field-label">3 · Visit</div><p>Encourage customers to visit the store and redeem the special menu.</p></div>
+    <div class="field"><div class="field-label">4 · Conversion</div><p>Convert visitors through the protein meal offer.</p></div>
+    <div class="field"><div class="field-label">5 · Retention</div><p>Drive repeat visits through a return coupon or next-visit reward.</p></div>
+    <div class="field" style="padding-bottom:14px;"><div class="field-label">6 · Amplification</div><p>Increase reach through UGC, shares, and reposts.</p></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Best Positioning</h3>
+      <p>Zaladaa should be positioned as:</p>
+      <ul class="outline-list">
+        <li>A healthy weekend food destination</li>
+        <li>A protein-focused salad brand</li>
+        <li>A fun and unique lunch choice</li>
+        <li>A brand that makes healthy eating exciting</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Why This Will Work</h3>
+      <p>It combines:</p>
+      <ul class="outline-list">
+        <li>Offline surprise</li>
+        <li>Exclusive menu access</li>
+        <li>Healthy food positioning</li>
+        <li>Social content potential</li>
+        <li>Repeat-visit incentives</li>
+      </ul>
+      <p style="margin-top:10px;">This is more than just an offer — it's an <strong>experience</strong>. That makes it more memorable than a traditional discount campaign.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ MENU INTRODUCTION CAMPAIGN ============ -->
+<section class="tab" id="menuintro">
+  <div class="hero">
+    <span class="hero-tag">Content Strategy</span>
+    <h1>Menu Introduction <span class="accent">Campaign</span></h1>
+    <p class="hero-sub">Turn each menu item into its own content piece instead of posting generic food photos. This makes every dish feel special, clear, and worth trying.</p>
+    <div class="hero-meta">
+      <span class="meta-pill">One item = <strong>one post</strong></span>
+      <span class="meta-pill">Builds <strong>curiosity</strong></span>
+      <span class="meta-pill">Improves <strong>saves &amp; shares</strong></span>
+    </div>
+  </div>
+
+  <div class="section-label">Structure</div>
+  <h2 class="section-title">How the campaign is built</h2>
+  <div class="grid-3">
+    <div class="card"><h3 style="font-size:16px;">New Menu Drop</h3><p style="font-size:13.5px;">Launch the menu like a fresh release.</p></div>
+    <div class="card"><h3 style="font-size:16px;">One Item = One Post</h3><p style="font-size:13.5px;">Create a reel or carousel for each dish.</p></div>
+    <div class="card"><h3 style="font-size:16px;">Show the Food Clearly</h3><p style="font-size:13.5px;">Use: dish name, ingredients, protein/calorie value, who it is for, and a call to action.</p></div>
+  </div>
+
+  <div class="section-label" style="margin-top:36px;">Content Series</div>
+  <h2 class="section-title">Four series to rotate</h2>
+  <div class="grid-2">
+    <div class="card"><h3>Meet The Menu</h3><p>Introduce each item one by one.</p></div>
+    <div class="card"><h3>Why We Made This</h3><p>Explain the taste, ingredients, and health value.</p></div>
+    <div class="card"><h3>Build Your Bowl</h3><p>Show the full preparation process.</p></div>
+    <div class="card"><h3>Healthy vs Heavy</h3><p>Compare your bowls with junk food or heavy meals.</p></div>
+  </div>
+
+  <div class="section-label" style="margin-top:36px;">Example Format</div>
+  <h2 class="section-title">The 5-slide structure</h2>
+  <div class="card">
+    <ul class="slides">
+      <li><span class="sn">1</span><span><strong>Dish name</strong> and hero image.</span></li>
+      <li><span class="sn">2</span><span>What's inside.</span></li>
+      <li><span class="sn">3</span><span>Protein and calories.</span></li>
+      <li><span class="sn">4</span><span>Who should try it.</span></li>
+      <li><span class="sn">5</span><span>CTA to visit or order.</span></li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Worked example (illustrative — using your live menu)</div>
+    <p style="color:var(--text);"><strong>1.</strong> "Zesty Pepper Chicken Salad" + hero shot &nbsp;·&nbsp; <strong>2.</strong> Pepper-spiced chicken, crisp lettuce, broccoli, red radish, Egyptian orange, light sunshine vinaigrette &nbsp;·&nbsp; <strong>3.</strong> 31.2g protein · 290 kcal &nbsp;·&nbsp; <strong>4.</strong> For the gym crowd who want max protein, low calories &nbsp;·&nbsp; <strong>5.</strong> "Order via link in bio."</p>
+  </div>
+
+  <div class="card">
+    <h3>Why It Works</h3>
+    <p>This approach helps the audience understand each menu item more clearly and builds curiosity to try it. It also:</p>
+    <ul class="outline-list">
+      <li>Builds curiosity</li>
+      <li>Makes the menu easier to understand</li>
+      <li>Helps every item get attention</li>
+      <li>Improves saves, shares, and order interest</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Simple Line</div>
+    <p style="font-family:'Google Sans';font-size:20px;font-weight:700;">Each dish becomes its own story.</p>
+  </div>
+</section>
+
+<footer>
+  Zaladaa — The Fresh Habit of HSR · 3-Month Instagram Content Plan · Built around the live menu &amp; real macros
+</footer>
+
+</div>
+
+<script>
+// ---- TAB SWITCHING ----
+const btns = document.querySelectorAll('.navbtn');
+const tabs = document.querySelectorAll('.tab');
+btns.forEach(b => b.addEventListener('click', () => {
+  btns.forEach(x => x.classList.remove('active'));
+  tabs.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}));
+
+// ---- CALENDAR DATA ----
+const DAYS = [
+ // WEEK 1 — Healthy Eating Awareness
+ {day:1,wk:1,pillar:"Problem Awareness",fmt:"Reel",topic:"The 3 PM crash isn't you — it's your lunch",
+  hook:"\"If you're falling asleep at your desk by 3 PM, it's not laziness. It's what you ate at 1.\"",
+  outline:["Open on tired professional slumped at desk, blue-grey tone","Cut to greasy takeout box → energy-line graphic nosedives","Cut to bright Zaladaa Cajun Quinoa Salad → energy line stays flat & high","End on same person, energised, back at work"],
+  cta:"Save this for your next office-lunch decision.",funnel:"Awareness",goal:"Reach",
+  bp:{grabber:"Slumped-at-desk frame + bold text in first 2s",onscreen:["3PM you 😴","It's not you.","It's the lunch."],broll:["Desk slump (warm-to-cold grade)","Oily takeout close-up","Salad hero close-up, natural light","Energised return to work"],caption:"That post-lunch coma has a cause — and a fix. Real food = real energy. #HSRLayout #HealthyLunchBangalore"}},
+
+ {day:2,wk:1,pillar:"Education",fmt:"Carousel",topic:"What actually counts as protein at lunch",
+  hook:"\"Your 'high-protein' lunch probably isn't. Swipe before you order today.\"",
+  outline:["Slide 1: the hook","Debunk: rice-heavy bowls ≠ protein","Show what 30g looks like","Tie to real menu items"],
+  cta:"Save it. Check your next lunch against this.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'Your high-protein lunch probably isn't'","The protein illusion — why most bowls fail","What 30g of protein actually looks like (visual)","Zaladaa proof: Cajun Roasted Chicken Salad = 30.4g protein","Zesty Pepper Chicken Salad = 31.2g protein, 290 kcal","CTA slide: 'Save this. Order protein that's actually printed.'"],saveWhy:"A reusable mental checklist they'll reopen at lunch",ctaSlide:"Save + follow for the macros most places hide"}},
+
+ {day:3,wk:1,pillar:"Problem Awareness",fmt:"Reel",topic:"POV: the same oily lunch, again",
+  hook:"\"POV: it's 1 PM in HSR and you're about to order the same oily lunch for the 4th time this week.\"",
+  outline:["Relatable POV shot of swiping the same delivery app","Same brown takeout box hitting the desk, again","Slight regret beat","Soft reveal of a fresher alternative — no hard sell"],
+  cta:"Comment your most-repeated lunch order 👇",funnel:"Awareness",goal:"Engagement",
+  bp:{grabber:"First-person phone screen swiping delivery app",onscreen:["Same order.","Again.","HSR, we need to talk."],broll:["POV phone swipe","Takeout box on cluttered desk","Sigh / regret micro-moment","Fresh bowl tease"],caption:"Be honest — what's the order you're stuck in a loop on? 👇 #HSRLayout #BangaloreFood"}},
+
+ {day:4,wk:1,pillar:"Trust Building",fmt:"Static",topic:"6 AM at Zaladaa — before you're even awake",
+  hook:"\"This is what 6 AM looks like here, so your 1 PM is fresh.\"",
+  outline:["Single cinematic static: morning greens wash / prep","Caption carries the trust story","Establish 'fresh, made daily' as a brand value"],
+  cta:"Order today's fresh batch — link in bio.",funnel:"Consideration",goal:"Engagement",
+  bp:null},
+
+ {day:5,wk:1,pillar:"Education",fmt:"Carousel",topic:"How to build a bowl that's actually balanced",
+  hook:"\"Most 'healthy' bowls are just rice with extra guilt. Here's the formula.\"",
+  outline:["The balanced-bowl formula","Greens + grain + protein + healthy fat + dressing logic","Map it onto a real Zaladaa bowl","Save-worthy framework"],
+  cta:"Save this formula for your next bowl.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'Most healthy bowls are just rice with guilt'","The 5-part balanced bowl formula","Greens + grain + protein + fat + dressing","Mapped onto our Red Pepper Pesto Cottage Cheese Bowl (23g protein)","Why dressing choice makes or breaks it","CTA: 'Save this — build yours, or let us'"],saveWhy:"A framework they'll screenshot and reuse",ctaSlide:"Save + order the bowl that already follows the formula"}},
+
+ {day:6,wk:1,pillar:"Conversion",fmt:"Reel",topic:"Signature showcase — Zesty Pepper Chicken Salad",
+  hook:"\"31 grams of protein. 290 calories. Zero compromise.\"",
+  outline:["Slow cinematic build of the salad, layer by layer","Macro stats appear as text overlays","Dressing pour in slow-mo (sound on)","Final hero shot, fork pull"],
+  cta:"Order it now — Swiggy, Zomato or subscribe via Ownly.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Extreme close-up dressing pour, ASMR sound",onscreen:["31g protein","290 kcal","Zero compromise"],broll:["Ingredient layering","Slow-mo dressing pour","Top-down hero","Fork pull / texture shot"],caption:"The Zesty Pepper Chicken Salad — peppery, fresh, 31g protein. This is what 'healthy' should taste like. Order via link in bio. #HSRLayout"}},
+
+ {day:7,wk:1,pillar:"Problem Awareness",fmt:"Static",topic:"One clean meal won't fix the week — a habit will",
+  hook:"\"One salad isn't a personality. A fresh habit is.\"",
+  outline:["Bold typographic static introducing 'The Fresh Habit'","Plant the positioning anchor","Set up the subscription idea softly"],
+  cta:"Follow for the daily fresh habit of HSR.",funnel:"Awareness",goal:"Reach",
+  bp:null},
+
+ // WEEK 2 — Nutrition Education
+ {day:8,wk:2,pillar:"Education",fmt:"Reel",topic:"The salad trap — when 'healthy' isn't",
+  hook:"\"Salads aren't automatically healthy. Here's the trap most people fall into.\"",
+  outline:["Quick myth set-up","Show how creamy dressings + croutons blow up calories","Contrast with a genuinely balanced bowl","Quick, punchy, save-worthy"],
+  cta:"Save this before your next 'healthy' order.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Bold text: 'Your salad might not be healthy'",onscreen:["The salad trap","It's the dressing.","And the hidden carbs."],broll:["Heavy dressing pour (the 'bad' example)","Calorie text overlay","Clean Zaladaa bowl contrast"],caption:"Not all salads are equal. Read the macros — or eat from a place that prints them. #NutritionTips #BangaloreFood"}},
+
+ {day:9,wk:2,pillar:"Authority",fmt:"Carousel",topic:"We print every macro. Most don't. Here's why.",
+  hook:"\"Every Zaladaa item shows calories, protein, carbs, fibre, fat. Here's why that matters.\"",
+  outline:["Transparency as a brand stance","Show real macro labels from the menu","Why hidden macros = hidden sugar/oil","Position as the trustworthy choice"],
+  cta:"Follow for food you can actually trust.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'We print every macro. Most don't.'","Why transparency is rare in food","Real label: Morning Sunshine juice — 148 kcal, no added sugar","Real label: Cottage Cheese Chipotle Salad — 17.9g protein","What hidden numbers usually hide","CTA: 'Follow — eat with the full picture'"],saveWhy:"Builds authority + trust in one swipe",ctaSlide:"Follow for the brand that shows its numbers"}},
+
+ {day:10,wk:2,pillar:"Education",fmt:"Reel",topic:"Your 'healthy juice' might be sugar water",
+  hook:"\"That bottled 'health juice'? Often closer to soda. Here's the difference.\"",
+  outline:["Call out added-sugar bottled juices","Show cold-press process / Morning Sunshine","148 kcal, no added sugar, no preservatives","Educational + craving"],
+  cta:"Try Morning Sunshine — link in bio.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Pouring vivid cold-pressed juice, sound on",onscreen:["Sugar water?","Or this.","148 kcal · 0 added sugar"],broll:["Bottled-juice label close-up","Cold-press in action","Morning Sunshine pour","Fresh produce flatlay"],caption:"Pineapple, apple, carrot, orange, mint. No added sugar, no preservatives. That's what cold-pressed should mean. #HSRLayout"}},
+
+ {day:11,wk:2,pillar:"Problem Awareness",fmt:"Carousel",topic:"How to read any menu like a nutritionist",
+  hook:"\"You don't need a nutritionist. You need 5 things to look for on any menu.\"",
+  outline:["5-point menu-reading checklist","Protein, hidden sugar, portion, dressing, processing","Empower the audience","Subtly show Zaladaa already passes all 5"],
+  cta:"Save this checklist — use it everywhere.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'Read any menu like a nutritionist'","1 — Find the protein number","2 — Spot hidden sugar words","3 — Check the dressing","4 — Watch the portion math","5 — Whole vs processed","CTA: 'Save it. We already pass all 5.'"],saveWhy:"A pocket tool they'll keep",ctaSlide:"Save + see a menu that's built to pass"}},
+
+ {day:12,wk:2,pillar:"Authority",fmt:"Reel",topic:"What 25g of protein actually looks like",
+  hook:"\"This is exactly what 25 grams of real protein looks like.\"",
+  outline:["Visual breakdown of Post-Workout Protein Shake ingredients","Banana, peanut butter, granola, Greek yogurt","25g protein call-out","Authority + post-gym hero"],
+  cta:"Refuel post-workout — order now.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Ingredients dropping into blender, slow-mo",onscreen:["25g protein","Real food.","No powder."],broll:["Ingredient drops","Blend swirl","Thick pour into glass","Post-gym sip moment"],caption:"Post-Workout Protein Shake — banana, peanut butter, Greek yogurt, granola. 25g of real protein, no synthetic powder. #GymBangalore #HSRLayout"}},
+
+ {day:13,wk:2,pillar:"Education",fmt:"Static",topic:"Pre vs post-workout: what to actually eat",
+  hook:"\"Eating wrong around your workout undoes half of it. Here's the simple rule.\"",
+  outline:["Clean static graphic: pre = light energy, post = protein","Map Zaladaa items to each","Shareable in gym WhatsApp groups"],
+  cta:"Share this with your gym buddy.",funnel:"Consideration",goal:"Engagement",
+  bp:null},
+
+ {day:14,wk:2,pillar:"Conversion",fmt:"Reel",topic:"The lunch combo that actually fills you up",
+  hook:"\"A salad that keeps you full till evening + a juice that doesn't spike you. The combo.\"",
+  outline:["Pair a protein salad + cold-pressed juice","Show as the complete desk-lunch","Value + satiety angle","Clear order CTA"],
+  cta:"Order the combo — link in bio.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Two-hands reveal: salad + juice landing on desk",onscreen:["Full till 7 PM.","No 3PM crash.","One combo."],broll:["Combo unboxing on desk","Salad fork pull","Juice sip","Satisfied back-to-work beat"],caption:"Cajun Roasted Chicken Salad + Pineapple Punch = the desk lunch that actually lasts. Order via link in bio. #HSRLayout #OfficeLunch"}},
+
+ // WEEK 3 — Trust & Brand Story
+ {day:15,wk:3,pillar:"Trust Building",fmt:"Reel",topic:"Founder story — why Zaladaa exists",
+  hook:"\"I started Zaladaa because I was tired of choosing between tasty and healthy.\"",
+  outline:["Founder talking-head, warm natural light","The origin frustration → the mission","Cut-ins of food + kitchen","Human, unpolished, real"],
+  cta:"Follow the journey — this is day one.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Founder direct-to-camera, first line is the hook",onscreen:["Why I started Zaladaa","The fresh habit of HSR"],broll:["Founder talking head","Hands plating a bowl","Early-morning kitchen","Customer receiving order"],caption:"Every brand starts with a frustration. Ours was simple: why is eating well in HSR this hard? So we fixed it. #FounderStory #HSRLayout"}},
+
+ {day:16,wk:3,pillar:"Trust Building",fmt:"Reel",topic:"Would you eat here if you saw the kitchen?",
+  hook:"\"Most places hide their kitchen. Watch ours — start to finish.\"",
+  outline:["Handheld, honest kitchen walkthrough","Hygiene, fresh produce, prep stations","No over-editing — authenticity is the point","Trust close"],
+  cta:"Order with full confidence — link in bio.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Push through kitchen doors, POV reveal",onscreen:["No hidden kitchen.","Just this.","Made fresh, watched openly."],broll:["Walk-through POV","Produce wash","Prep station detail","Final plating"],caption:"Transparency isn't a campaign for us — it's the standard. Here's our kitchen, no filter. #FoodHygiene #HSRLayout"}},
+
+ {day:17,wk:3,pillar:"Trust Building",fmt:"Carousel",topic:"Where your greens actually come from",
+  hook:"\"Fresh isn't a label we print. Here's where your food actually starts.\"",
+  outline:["Sourcing story, swipe by swipe","Suppliers, daily delivery, no-preservative stance","Builds the 'fresh, daily' trust pillar","Save-worthy brand story"],
+  cta:"Save it — then taste the difference.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'Where your greens actually come from'","Daily-sourced produce, not warehoused","No added preservatives — across the menu","Cold-pressed, never bottled-and-stored","Made the morning you order it","CTA: 'Taste the freshness — order today'"],saveWhy:"Proof points worth keeping",ctaSlide:"Save + order this morning's fresh batch"}},
+
+ {day:18,wk:3,pillar:"Education",fmt:"Reel",topic:"The healthy sandwich swap nobody talks about",
+  hook:"\"You don't have to give up sandwiches to eat clean. Here's the swap.\"",
+  outline:["Show the Fine Falafel / Avocado Pesto Feta sandwich","Why baguette + falafel + tzatziki beats fried fast food","Craving + education hybrid","Soft sell"],
+  cta:"Try it — link in bio.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Sandwich pull-apart, cheese/tzatziki stretch",onscreen:["Sandwich ≠ junk","Meet the swap","24.5g protein"],broll:["Pull-apart shot","Ingredient layering","Bite + crunch sound","Hero on board"],caption:"Fine Falafel — crisp baguette, falafel, pickled veg, tzatziki. Proof healthy doesn't mean boring. #HealthySwap #HSRLayout"}},
+
+ {day:19,wk:3,pillar:"Trust Building",fmt:"Reel",topic:"Real customer, real reason they keep coming back",
+  hook:"\"'I order from Zaladaa 4 times a week now' — here's why.\"",
+  outline:["Short customer testimonial clip / UGC","Their genuine reason (energy, taste, convenience)","Authentic, not scripted","Community proof"],
+  cta:"Tag us in your next order to be featured.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Customer mid-sentence saying the hook line",onscreen:["Real customer","4x a week","Here's why"],broll:["Customer talking","Their actual order","Desk / gym context","Order being eaten"],caption:"Nothing we say matters more than this. Tag us in your Zaladaa order — you might be next. #ZaladaaCommunity #HSRLayout"}},
+
+ {day:20,wk:3,pillar:"Trust Building",fmt:"Reel",topic:"Meet the people who make your lunch",
+  hook:"\"You see the bowl. Meet the people behind it.\"",
+  outline:["Quick team intro montage","Each member + name + their favourite item","Humanise the brand","Warm, fast-paced"],
+  cta:"Follow to get to know the team.",funnel:"Consideration",goal:"Engagement",
+  bp:{grabber:"Team wave / smile, upbeat cut",onscreen:["The team","behind your bowl"],broll:["Each member quick intro","In-action prep","Group shot","Plating handoff"],caption:"Great food is made by real people who care. Meet the Zaladaa team. 🧡 #HSRLayout #MeetTheTeam"}},
+
+ {day:21,wk:3,pillar:"Conversion",fmt:"Reel",topic:"Craving showcase — Red Pepper Pesto Cottage Cheese Bowl",
+  hook:"\"The bowl that ruined every other lunch for me.\"",
+  outline:["Cinematic build of the signature quinoa grain bowl","Grilled cottage cheese + red pepper pesto reveal","23g protein call-out","Pure craving + order CTA"],
+  cta:"Order it now — link in bio.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Red pepper pesto spoon-drag over the bowl",onscreen:["23g protein","526 kcal","Dangerously good"],broll:["Grain base","Avocado + salsa layer","Grilled cottage cheese","Pesto finish + top-down hero"],caption:"Red Pepper Pesto Cottage Cheese Bowl — grains, avocado, grilled paneer, pesto. 23g protein, all flavour. Order via link in bio. #HSRLayout"}},
+
+ // WEEK 4 — Offers, Reviews & Conversion
+ {day:22,wk:4,pillar:"Conversion",fmt:"Reel",topic:"Make it a habit — the subscription drop",
+  hook:"\"Eating healthy once is willpower. Eating healthy daily is a system. Here's ours.\"",
+  outline:["Introduce the daily subscription via Ownly","Show the convenience: fresh meal, every day, no decisions","Limited launch offer","Strong subscribe CTA"],
+  cta:"Subscribe this week — link in bio (offer ends Sunday).",funnel:"Conversion",goal:"Leads",
+  bp:{grabber:"Calendar of meals appearing day by day",onscreen:["Willpower fails.","Systems don't.","Subscribe → done."],broll:["Daily delivery montage","Different bowls each day","Phone showing subscription","Happy routine moment"],caption:"Stop deciding what's for lunch. Subscribe to the fresh habit and we handle the rest. Offer ends Sunday — link in bio. #HSRLayout"}},
+
+ {day:23,wk:4,pillar:"Education",fmt:"Carousel",topic:"What our reviews quietly teach about healthy eating",
+  hook:"\"We read every review. The same lesson keeps showing up — and it's not about us.\"",
+  outline:["Frame real testimonials around the consistency insight","Social proof + soft education","'The people who feel best ordered repeatedly'","Lead into subscription logic"],
+  cta:"Save it — then start your own streak.",funnel:"Consideration",goal:"Engagement",
+  bp:{slides:["Hook: 'What our reviews quietly teach'","Review 1 — energy difference within a week","Review 2 — convenience changed their habit","The pattern: consistency beats intensity","Why one good meal < a daily good habit","CTA: 'Start your streak — subscribe'"],saveWhy:"Social proof framed as a lesson, not a brag",ctaSlide:"Save + subscribe to start your own streak"}},
+
+ {day:24,wk:4,pillar:"Problem Awareness",fmt:"Reel",topic:"HSR teams: end the lunch group-order chaos",
+  hook:"\"Every HSR office has the same 12:45 PM problem. Here's the fix.\"",
+  outline:["Relatable office scene: 8 people, 8 apps, no decision","Position corporate / bulk plans as the solution","B2B lead angle","DM/WhatsApp CTA"],
+  cta:"DM 'OFFICE' for corporate plans.",funnel:"Conversion",goal:"Leads",
+  bp:{grabber:"Chaotic office lunch-decision scene",onscreen:["8 people.","8 apps.","0 decisions.","We fixed it."],broll:["Office lunch chaos","Group ordering frustration","Zaladaa bulk delivery arriving","Team eating happily together"],caption:"The daily HSR office lunch standoff ends here. Corporate &amp; bulk plans built for teams. DM 'OFFICE'. #HSRLayout #CorporateLunch"}},
+
+ {day:25,wk:4,pillar:"Education",fmt:"Carousel",topic:"Decision fatigue is real — a meal habit fixes it",
+  hook:"\"You make ~35,000 decisions a day. 'What's for lunch?' shouldn't be one.\"",
+  outline:["Explain decision fatigue simply","Position subscription as a cognitive-load fix, not just food","Premium psychological angle","Subscribe CTA"],
+  cta:"Subscribe and delete one decision forever.",funnel:"Conversion",goal:"Leads",
+  bp:{slides:["Hook: '35,000 decisions a day'","What decision fatigue does to you by 1 PM","Why willpower is gone exactly when lunch hits","The fix: remove the decision entirely","How the daily subscription works","CTA: 'Subscribe — one less decision, daily'"],saveWhy:"A genuinely useful psychology insight",ctaSlide:"Subscribe via Ownly — link in bio"}},
+
+ {day:26,wk:4,pillar:"Problem Awareness",fmt:"Static",topic:"Your usual takeout vs a Zaladaa bowl",
+  hook:"\"Same price. Same delivery time. Wildly different afternoon.\"",
+  outline:["Side-by-side static comparison","Calories / protein / how-you-feel-after","Make the better choice obvious","Order CTA"],
+  cta:"Choose the better afternoon — order now.",funnel:"Conversion",goal:"Sales",
+  bp:null},
+
+ {day:27,wk:4,pillar:"Authority",fmt:"Reel",topic:"5 'healthy' foods that aren't",
+  hook:"\"5 foods you think are healthy — that are quietly working against you.\"",
+  outline:["Fast-paced myth-busting list","Flavoured yogurt, granola bars, bottled juice, etc.","Authority + high-share format","Establish expertise"],
+  cta:"Follow for the truth most brands won't tell you.",funnel:"Consideration",goal:"Reach",
+  bp:{grabber:"Number '5' big on screen + bold claim",onscreen:["5 'healthy' lies","#1...","#2...","Save before #5"],broll:["Each food quick cut","Sugar/label reveals","Zaladaa honest alternative"],caption:"The wellness aisle is full of marketing, not nutrition. Here are 5 to rethink. Follow for more. #NutritionMyths #HSRLayout"}},
+
+ {day:28,wk:4,pillar:"Conversion",fmt:"Reel",topic:"Dessert that fits your goals",
+  hook:"\"Dessert and discipline aren't enemies. Proof:\"",
+  outline:["Cinematic dessert reveal — New York Cheesecake / Tiramisu Euphoria","Craving-driven, premium visuals","Position as the guilt-free treat","Add-to-order CTA"],
+  cta:"Add it to your next order — link in bio.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Fork through creamy cheesecake, slow-mo",onscreen:["Dessert ≠ guilt","Tiramisu Euphoria","Earn it. Enjoy it."],broll:["Cheesecake fork-through","Tiramisu layer reveal","Coffee-hazelnut texture","Satisfied bite"],caption:"You ate clean all week. This is allowed. New York Cheesecake &amp; Tiramisu Euphoria — add to any order. #HSRLayout #HealthyDessert"}},
+
+ {day:29,wk:4,pillar:"Problem Awareness",fmt:"Static",topic:"Community recap — the fresh habit is catching on",
+  hook:"\"3 months. One growing habit across HSR. You did this.\"",
+  outline:["Community-celebration static (UGC grid / numbers)","Reinforce belonging — community over followers","Set up the final conversion push"],
+  cta:"Share your bowl &amp; tag us to join the wall.",funnel:"Awareness",goal:"Engagement",
+  bp:null},
+
+ {day:30,wk:4,pillar:"Conversion",fmt:"Reel",topic:"3 months of fresh — make it a habit",
+  hook:"\"3 months ago this was a feed. Now it's a habit. Here's how to keep it.\"",
+  outline:["Fast recap montage of the month's best moments","Reframe the whole journey as 'the fresh habit'","Final, confident subscription + order push","Brand-defining close"],
+  cta:"Subscribe and make HSR's fresh habit yours — link in bio.",funnel:"Conversion",goal:"Sales",
+  bp:{grabber:"Rapid montage of best hero shots, music swell",onscreen:["3 months.","One habit.","Make it yours."],broll:["Best clips of the quarter","Range of bowls/juices","Happy customers","Subscription end-card"],caption:"The Fresh Habit of HSR isn't a tagline — it's a choice you make daily. Start yours. Subscribe via link in bio. 🧡 #HSRLayout #TheFreshHabit"}},
+];
+
+const MONTHS = {
+ 1:{title:"Awareness &amp; Early Education", range:"Posts 1–10"},
+ 2:{title:"Education &amp; Brand Trust", range:"Posts 11–20"},
+ 3:{title:"Offers, Reviews &amp; Conversion", range:"Posts 21–30"},
+};
+function monthOf(day){ return day<=10 ? 1 : day<=20 ? 2 : 3; }
+
+function fmtClass(f){ return f==="Reel"?"fmt-reel":f==="Carousel"?"fmt-carousel":"fmt-static"; }
+
+function renderBlueprint(d){
+  if(!d.bp) return "";
+  if(d.fmt==="Carousel"){
+    let s = d.bp.slides.map((x,i)=>`<li><span class="sn">${i+1}</span><span>${x}</span></li>`).join("");
+    return `<div class="blueprint">
+      <div class="bp-title"><span class="bp-badge">CAROUSEL</span> Slide-by-slide structure</div>
+      <ul class="slides">${s}</ul>
+      <div class="field"><div class="field-label">Why it's save-worthy</div><p>${d.bp.saveWhy}</p></div>
+      <div class="field"><div class="field-label">CTA slide</div><p>${d.bp.ctaSlide}</p></div>
+    </div>`;
+  } else {
+    let os = d.bp.onscreen.map(x=>`"${x}"`).join(" · ");
+    let br = d.bp.broll.map(x=>`<li>${x}</li>`).join("");
+    return `<div class="blueprint">
+      <div class="bp-title"><span class="bp-badge">REEL</span> Shot blueprint</div>
+      <div class="field"><div class="field-label">3-second grabber</div><p>${d.bp.grabber}</p></div>
+      <div class="field"><div class="field-label">On-screen text</div><p>${os}</p></div>
+      <div class="field"><div class="field-label">B-roll shot list</div><ul class="outline-list">${br}</ul></div>
+      <div class="field"><div class="field-label">Caption angle</div><p>${d.bp.caption}</p></div>
+    </div>`;
+  }
+}
+
+function renderDay(d){
+  let outline = d.outline.map(o=>`<li>${o}</li>`).join("");
+  return `<details class="day">
+    <summary class="day-sum">
+      <div class="day-num"><span class="d">Post</span><span class="n">${d.day}</span></div>
+      <div class="day-main">
+        <div class="day-topic">${d.topic}</div>
+        <div class="day-tags">
+          <span class="tag pillar">${d.pillar}</span>
+          <span class="tag ${fmtClass(d.fmt)}">${d.fmt}</span>
+          <span class="tag funnel">${d.funnel}</span>
+          <span class="tag goal">Goal: ${d.goal}</span>
+        </div>
+      </div>
+      <span class="day-chev">+</span>
+    </summary>
+    <div class="day-body">
+      <div class="field"><div class="field-label">Scroll-stopping hook</div><div class="hook-box"><p>${d.hook}</p></div></div>
+      <div class="field"><div class="field-label">Content outline</div><ul class="outline-list">${outline}</ul></div>
+      <div class="field"><div class="field-label">Call to action</div><p><span class="cta-pill">${d.cta}</span></p></div>
+      ${renderBlueprint(d)}
+    </div>
+  </details>`;
+}
+
+let html = "";
+[1,2,3].forEach(m=>{
+  html += `<div class="week-head"><span class="wk">Month ${m}</span><span class="wt">${MONTHS[m].title}</span><span class="wd">${MONTHS[m].range}</span></div>`;
+  html += DAYS.filter(d=>monthOf(d.day)===m).map(renderDay).join("");
+});
+document.getElementById("calendar-render").innerHTML = html;
+</script>
+</body>
+</html>
