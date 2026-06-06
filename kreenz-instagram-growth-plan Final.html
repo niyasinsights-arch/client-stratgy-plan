@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kreenz Wellness — Instagram Growth Plan 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --card-2:#172131;
+    --accent:#F97316; --accent-soft:rgba(249,115,22,0.12);
+    --border:#374151; --text:#E5E7EB; --muted:#9CA3AF;
+    --green:#34D399; --red:#F87171; --blue:#60A5FA;
+    --font:'Google Sans','Google Sans Text',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;font-size:15px}
+  a{color:var(--accent);text-decoration:none}
+  /* layout */
+  .shell{display:flex;max-width:1400px;margin:0 auto}
+  nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;width:248px;flex-shrink:0;
+    border-right:1px solid var(--border);padding:26px 18px;overflow-y:auto;background:#0d0d0d}
+  nav.side .brand{font-weight:700;font-size:18px;letter-spacing:-.3px;margin-bottom:2px}
+  nav.side .brand span{color:var(--accent)}
+  nav.side .tag{font-size:11px;color:var(--muted);margin-bottom:22px;text-transform:uppercase;letter-spacing:1px}
+  nav.side a{display:block;color:var(--muted);font-size:13.5px;padding:8px 10px;border-radius:8px;margin-bottom:2px;transition:.15s}
+  nav.side a:hover{background:var(--card);color:var(--text)}
+  nav.side a .num{display:inline-block;width:22px;color:var(--accent);font-weight:700}
+  main{flex:1;min-width:0;padding:46px 52px 120px}
+  /* header */
+  header.hero{margin-bottom:48px;padding-bottom:34px;border-bottom:1px solid var(--border)}
+  header.hero .kicker{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+  header.hero h1{font-size:40px;line-height:1.1;margin:10px 0 14px;letter-spacing:-1px}
+  header.hero p.lead{color:var(--muted);max-width:760px;font-size:16px}
+  .pillbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .pill{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--text)}
+  .pill b{color:var(--accent)}
+  /* sections */
+  section{margin-bottom:64px;scroll-margin-top:24px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-head .sno{color:var(--accent);font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+  .sec-head h2{font-size:27px;letter-spacing:-.5px}
+  .sec-sub{color:var(--muted);margin-bottom:26px;max-width:820px}
+  h3{font-size:18px;margin:30px 0 12px;letter-spacing:-.2px}
+  h4{font-size:15px;margin:18px 0 8px;color:var(--accent)}
+  p{margin-bottom:12px}
+  ul,ol{margin:0 0 14px 20px}
+  li{margin-bottom:6px}
+  /* cards */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:980px){.g2,.g3{grid-template-columns:1fr}}
+  .card.good{border-left:3px solid var(--green)}
+  .card.bad{border-left:3px solid var(--red)}
+  .card.fix{border-left:3px solid var(--accent)}
+  .card h4{margin-top:0}
+  .tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+  .objtag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:6px}
+  .o-aware{background:rgba(96,165,250,.15);color:var(--blue)}
+  .o-engage{background:rgba(52,211,153,.15);color:var(--green)}
+  .o-lead{background:var(--accent-soft);color:var(--accent)}
+  .o-sale{background:rgba(248,113,113,.15);color:var(--red)}
+  /* tables */
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin-bottom:18px}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  th{background:var(--card-2);text-align:left;padding:11px 13px;color:var(--accent);font-weight:700;
+    text-transform:uppercase;font-size:11px;letter-spacing:.6px;border-bottom:1px solid var(--border)}
+  td{padding:11px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  /* idea blocks */
+  .idea{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0;margin-bottom:18px;overflow:hidden}
+  .idea .ihead{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:16px 22px;background:var(--card-2);border-bottom:1px solid var(--border)}
+  .idea .ihead .iname{font-weight:700;font-size:16px}
+  .idea .ihead .iname .ix{color:var(--accent);margin-right:8px}
+  .idea .ibody{padding:18px 22px}
+  .idea .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:9px 0;border-bottom:1px dashed var(--border)}
+  .idea .row:last-child{border-bottom:none}
+  .idea .row .k{color:var(--accent);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding-top:2px}
+  .idea .row .v{font-size:14px}
+  .hash{color:var(--blue);font-size:13px}
+  .script{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px;white-space:pre-line;color:#d8dde6}
+  /* reel columns */
+  .reelcols{columns:2;column-gap:24px}
+  @media(max-width:900px){.reelcols{columns:1}}
+  .reellist{counter-reset:r;list-style:none;margin-left:0}
+  .reellist li{counter-increment:r;padding:8px 0 8px 34px;border-bottom:1px solid var(--border);position:relative;break-inside:avoid;font-size:13.5px;margin-bottom:0}
+  .reellist li::before{content:counter(r);position:absolute;left:0;top:8px;color:var(--accent);font-weight:700;font-size:12px;
+    background:var(--accent-soft);width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+  /* misc */
+  .callout{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:16px 20px;margin:18px 0;font-size:14px}
+  .callout b{color:var(--accent)}
+  .kpinum{font-size:30px;font-weight:700;color:var(--accent);letter-spacing:-1px}
+  .kpilabel{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+  .pillarbar{height:8px;border-radius:4px;background:var(--accent);margin-top:8px}
+  .footer{border-top:1px solid var(--border);padding-top:24px;color:var(--muted);font-size:13px}
+  /* visual calendar (Section 04) */
+  .calphases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 18px}
+  @media(max-width:760px){.calphases{grid-template-columns:1fr 1fr}}
+  .cphase{border:1px solid var(--border);border-radius:11px;padding:11px 14px;background:var(--card)}
+  .cphase .pw{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+  .cphase .pn{font-weight:700;font-size:14px;margin-top:2px}
+  .cphase.cs{border-left:3px solid #818CF8} .cphase.cs .pn{color:#818CF8}
+  .cphase.ch{border-left:3px solid #34D399} .cphase.ch .pn{color:#34D399}
+  .cphase.cst{border-left:3px solid #F97316} .cphase.cst .pn{color:#F97316}
+  .cphase.cm{border-left:3px solid #F472B6} .cphase.cm .pn{color:#F472B6}
+  .calwrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:var(--card-2);padding:14px;margin-bottom:16px}
+  .cal{min-width:840px}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px}
+  .dow div{text-align:center;color:var(--accent);font-weight:700;font-size:11px;letter-spacing:1px;padding:6px 0}
+  .cdays{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .cell{background:var(--card);border:1px solid var(--border);border-radius:11px;min-height:116px;padding:9px;display:flex;flex-direction:column;position:relative;border-top:3px solid var(--border)}
+  .cell.cs{border-top-color:#818CF8} .cell.ch{border-top-color:#34D399} .cell.cst{border-top-color:#F97316} .cell.cm{border-top-color:#F472B6}
+  .cell .dnum{position:absolute;top:7px;left:9px;font-size:12px;font-weight:700;color:#fff}
+  .cell .cicon{margin:22px auto 6px;width:30px;height:30px;display:flex;align-items:center;justify-content:center}
+  .cell .cicon svg{width:28px;height:28px;fill:var(--accent)}
+  .cell .cfmt{text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.8px;color:var(--accent);text-transform:uppercase}
+  .cell .cidea{text-align:center;font-size:10.5px;color:var(--text);margin-top:5px;line-height:1.3}
+  .callegend{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+  @media(max-width:760px){.callegend{grid-template-columns:1fr}}
+  .cleg{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+  .cleg svg{width:30px;height:30px;fill:var(--accent);flex-shrink:0;margin-top:2px}
+  .cleg .lt{font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.5px}
+  .cleg .ld{font-size:12.5px;color:var(--muted)}
+  .cmonth{display:flex;align-items:center;gap:11px;margin:26px 0 12px;flex-wrap:wrap}
+  .cmonth .mno{background:var(--accent);color:#111;font-weight:700;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .cmonth .mt{font-weight:700;font-size:17px;letter-spacing:-.2px}
+  .cmonth .mfocus{color:var(--muted);font-size:12.5px;margin-left:auto}
+  .cell.rest{background:#161d28;border-style:dashed;opacity:.62;border-top-color:var(--border)}
+  .cell .restlbl{margin:auto;text-align:center;color:var(--muted);font-size:10px;letter-spacing:.4px;line-height:1.3}
+  strong{color:#fff}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="side">
+  <div class="brand">Kreenz <span>Wellness</span></div>
+  <div class="tag">IG Growth Plan · 2026</div>
+  <a href="#pillars"><span class="num">01</span>Content Pillars</a>
+  <a href="#calendar"><span class="num">02</span>3-Month Calendar</a>
+  <a href="#reels"><span class="num">03</span>Reel Strategy (100)</a>
+  <a href="#stories"><span class="num">04</span>Story Strategy</a>
+  <a href="#growth"><span class="num">05</span>Growth Strategy</a>
+  <a href="#conversion"><span class="num">06</span>Conversion Strategy</a>
+  <a href="#competitor"><span class="num">07</span>Competitor Gap</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="kicker">Senior Growth Strategy · Wellness D2C</div>
+  <h1>Kreenz Wellness — The 2026 Instagram Growth Plan</h1>
+  <p class="lead">A full-funnel content, engagement, and conversion system for Sleep, Hair &amp; Strength gummies — built on your existing content ideas, re-sequenced for the 2026 algorithm (saves &amp; shares &gt; likes), and written to stay inside FSSAI / ASCI / Drugs &amp; Magic Remedies Act guardrails.</p>
+  <div class="pillbar">
+    <span class="pill"><b>3</b> SKUs</span>
+    <span class="pill"><b>7</b> content pillars</span>
+    <span class="pill"><b>3-month</b> calendar</span>
+    <span class="pill"><b>100</b> reel concepts</span>
+    <span class="pill">Compliance-safe copy</span>
+  </div>
+</header>
+
+<!-- ============ COMPLIANCE NOTE ============ -->
+<div class="callout">
+  <b>Compliance guardrail (read once, apply everywhere):</b> Gummies are food supplements, not medicine. Across every script and caption below, use <b>"supports / helps / may aid / part of a routine"</b> — never <b>"cures / treats / stops / guarantees."</b> No before/after that implies a medical outcome, no naming diseases as something the product "fixes," and any results visual carries a light <em>"results vary"</em> note. This keeps you safe under ASCI's influencer &amp; advertising code and the Drugs &amp; Magic Remedies Act while still selling hard.
+</div>
+
+<!-- ============ 2. CONTENT PILLARS ============ -->
+<section id="pillars">
+  <div class="sec-head"><span class="sno">01</span><h2>Content Pillars</h2></div>
+  <p class="sec-sub">Seven pillars, weighted by how much they drive 2026 reach vs. revenue. Each pillar maps to a funnel stage so you always know <em>why</em> a post exists. Use the weekly mix as your posting recipe.</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Pillar</th><th>Funnel stage</th><th>What it does</th><th>Weekly mix</th><th>Example from your list</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Educational</strong></td><td>TOFU — Reach</td><td>Teaches the audience something useful → drives saves &amp; shares (the #1 reach signal in 2026)</td><td>25%</td><td>Sleep problems: reasons &amp; solutions · Foods for hair growth</td></tr>
+      <tr><td><strong>Product Awareness</strong></td><td>MOFU — Consideration</td><td>Shows what the gummies are, what's inside, how to use them</td><td>15%</td><td>Sleepy gummy intro · 3-in-1 carousel</td></tr>
+      <tr><td><strong>Engagement</strong></td><td>TOFU — Reach</td><td>Relatable/POV/interactive content that pulls comments &amp; DMs → algorithm boost</td><td>20%</td><td>Midnight cartoon · Which gummy matches your goal?</td></tr>
+      <tr><td><strong>Lifestyle</strong></td><td>MOFU — Aspiration</td><td>Positions gummies inside an aspirational routine; sells the identity, not the SKU</td><td>10%</td><td>Customer lifestyle routine · Daily habits for strength</td></tr>
+      <tr><td><strong>Trust Building</strong></td><td>MOFU/BOFU — Credibility</td><td>Ingredients, testing, founder, transparency — the missing pillar in your list</td><td>15%</td><td><em>(new)</em> "What's actually in your gummy" · FSSAI/quality content</td></tr>
+      <tr><td><strong>Community</strong></td><td>All — Retention</td><td>UGC, reposts, replies, polls — makes followers feel seen, lowers churn</td><td>8%</td><td>Public sleep campaign · UGC reposts</td></tr>
+      <tr><td><strong>Conversion</strong></td><td>BOFU — Sales</td><td>Offers, bundles, reviews, urgency — the direct ask</td><td>7%</td><td>Comparison reel · Product intros · Bundle offers</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><b>The recipe:</b> Out of ~10 posts/week, aim for roughly <b>5 reach posts</b> (Educational + Engagement), <b>3 consideration posts</b> (Product + Lifestyle + Trust), and <b>2 conversion-adjacent posts</b> (Community + Conversion). Reach pillars feed the funnel; never let conversion posts outnumber them.</p></div>
+</section>
+
+<!-- ============ 4. 3-MONTH CALENDAR ============ -->
+<section id="calendar">
+  <div class="sec-head"><span class="sno">02</span><h2>3-Month Content Calendar (90 Days)</h2></div>
+  <p class="sec-sub">Rebuilt to be <strong>problem-led, not product-led</strong>, and trust-heavy. Allocation runs roughly <strong>40% Education · 30% Trust · 20% Engagement · 10% Promotion</strong>, sequenced through the funnel — Month 1 earns attention with relatable problems &amp; myths, Month 2 builds trust with ingredients, FAQs &amp; proof, Month 3 converts and retains. AI is used only as a hook; the rest is human. 14 posts/month (8 Reels + 3 Carousels + 3 Static); in-between days run Stories. Colour-bar = SKU theme.</p>
+
+  <div class="calphases">
+    <div class="cphase cs"><div class="pw">Month 1</div><div class="pn">🌙 Awareness</div></div>
+    <div class="cphase ch"><div class="pw">Month 2</div><div class="pn">🤝 Trust</div></div>
+    <div class="cphase cst"><div class="pw">Month 3</div><div class="pn">🛒 Convert &amp; Retain</div></div>
+    <div class="cphase cm"><div class="pw">Mix</div><div class="pn">40 · 30 · 20 · 10</div></div>
+  </div>
+
+  <div class="cmonth"><span class="mno">1</span><span class="mt">Month 1 — Awareness &amp; Education</span><span class="mfocus">8 Reels · 3 Carousels · 3 Static</span></div>
+  <div class="calwrap"><div class="cal">
+    <div class="dow"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="cdays">
+    <div class="cell rest"><span class="dnum">1</span><div class="restlbl">Stories<br>kickoff</div></div>
+    <div class="cell cs"><span class="dnum">2</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Why you wake up at 3 AM every night</div></div>
+    <div class="cell rest"><span class="dnum">3</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell ch"><span class="dnum">4</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Stress or shampoo? What's really causing hair fall</div></div>
+    <div class="cell rest"><span class="dnum">5</span><div class="restlbl">Stories</div></div>
+    <div class="cell cs"><span class="dnum">6</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">5 signs your sleep quality is poor</div></div>
+    <div class="cell cm"><span class="dnum">7</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Sleep score: comment yours 1–10 👇</div></div>
+    <div class="cell rest"><span class="dnum">8</span><div class="restlbl">Stories<br>+ Q&amp;A</div></div>
+    <div class="cell cst"><span class="dnum">9</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Why your energy crashes after 30</div></div>
+    <div class="cell rest"><span class="dnum">10</span><div class="restlbl">Stories</div></div>
+    <div class="cell cs"><span class="dnum">11</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">What midnight scrolling does to your brain</div></div>
+    <div class="cell rest"><span class="dnum">12</span><div class="restlbl">Stories</div></div>
+    <div class="cell cst"><span class="dnum">13</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">5 energy mistakes people make daily</div></div>
+    <div class="cell rest"><span class="dnum">14</span><div class="restlbl">Stories<br>BTS</div></div>
+    <div class="cell rest"><span class="dnum">15</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">16</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Team Night Owl 🌙 vs Early Bird ☀️?</div></div>
+    <div class="cell rest"><span class="dnum">17</span><div class="restlbl">Stories</div></div>
+    <div class="cell ch"><span class="dnum">18</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Monsoon hair-fall myths, busted</div></div>
+    <div class="cell rest"><span class="dnum">19</span><div class="restlbl">Stories</div></div>
+    <div class="cell cst"><span class="dnum">20</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Leg pain after workouts: what it's telling you</div></div>
+    <div class="cell rest"><span class="dnum">21</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell rest"><span class="dnum">22</span><div class="restlbl">Stories</div></div>
+    <div class="cell ch"><span class="dnum">23</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">Foods your hair actually needs</div></div>
+    <div class="cell rest"><span class="dnum">24</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">25</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">What's keeping you awake tonight? 👇</div></div>
+    <div class="cell rest"><span class="dnum">26</span><div class="restlbl">Stories<br>teaser</div></div>
+    <div class="cell cm"><span class="dnum">27</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Coffee after 6 PM: yes or no? (the science)</div></div>
+    <div class="cell rest"><span class="dnum">28</span><div class="restlbl">Stories</div></div>
+    <div class="cell rest"><span class="dnum">29</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">30</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Meet the brand: why we started Kreenz</div></div>
+    </div>
+  </div></div>
+  <div class="cmonth"><span class="mno">2</span><span class="mt">Month 2 — Trust &amp; Consideration</span><span class="mfocus">8 Reels · 3 Carousels · 3 Static</span></div>
+  <div class="calwrap"><div class="cal">
+    <div class="dow"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="cdays">
+    <div class="cell rest"><span class="dnum">1</span><div class="restlbl">Stories<br>kickoff</div></div>
+    <div class="cell cs"><span class="dnum">2</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">What's actually inside our Sleep Gummies</div></div>
+    <div class="cell rest"><span class="dnum">3</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell cst"><span class="dnum">4</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">Ingredient spotlight: what supports energy</div></div>
+    <div class="cell rest"><span class="dnum">5</span><div class="restlbl">Stories</div></div>
+    <div class="cell ch"><span class="dnum">6</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Why we chose biotin for hair support</div></div>
+    <div class="cell cm"><span class="dnum">7</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">FAQ: your top questions before buying</div></div>
+    <div class="cell rest"><span class="dnum">8</span><div class="restlbl">Stories<br>+ Q&amp;A</div></div>
+    <div class="cell cm"><span class="dnum">9</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">How our gummies are made (behind the batch)</div></div>
+    <div class="cell rest"><span class="dnum">10</span><div class="restlbl">Stories</div></div>
+    <div class="cell cs"><span class="dnum">11</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">How melatonin works in your body</div></div>
+    <div class="cell rest"><span class="dnum">12</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">13</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">Myth vs Fact: wellness edition</div></div>
+    <div class="cell rest"><span class="dnum">14</span><div class="restlbl">Stories<br>BTS</div></div>
+    <div class="cell rest"><span class="dnum">15</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">16</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Our certifications &amp; quality, explained</div></div>
+    <div class="cell rest"><span class="dnum">17</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">18</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Founder's why: gummies over pills</div></div>
+    <div class="cell rest"><span class="dnum">19</span><div class="restlbl">Stories</div></div>
+    <div class="cell ch"><span class="dnum">20</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Real customer hair story</div></div>
+    <div class="cell rest"><span class="dnum">21</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell rest"><span class="dnum">22</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">23</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">FAQ carousel: dosage, timing &amp; safety</div></div>
+    <div class="cell rest"><span class="dnum">24</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">25</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Screenshot reviews: what customers say</div></div>
+    <div class="cell rest"><span class="dnum">26</span><div class="restlbl">Stories<br>teaser</div></div>
+    <div class="cell cst"><span class="dnum">27</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Routine vs no-routine: the honest difference</div></div>
+    <div class="cell rest"><span class="dnum">28</span><div class="restlbl">Stories</div></div>
+    <div class="cell rest"><span class="dnum">29</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">30</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Stop buying gummies until you check these 3 things</div></div>
+    </div>
+  </div></div>
+  <div class="cmonth"><span class="mno">3</span><span class="mt">Month 3 — Conversion &amp; Retention</span><span class="mfocus">8 Reels · 3 Carousels · 3 Static</span></div>
+  <div class="calwrap"><div class="cal">
+    <div class="dow"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="cdays">
+    <div class="cell rest"><span class="dnum">1</span><div class="restlbl">Stories<br>kickoff</div></div>
+    <div class="cell cm"><span class="dnum">2</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Which gummy matches your goal?</div></div>
+    <div class="cell rest"><span class="dnum">3</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell ch"><span class="dnum">4</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Customer experience: 60 days in</div></div>
+    <div class="cell rest"><span class="dnum">5</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">6</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">The whole range: which 2 do you need?</div></div>
+    <div class="cell cm"><span class="dnum">7</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Bundle offer: save with the trio</div></div>
+    <div class="cell rest"><span class="dnum">8</span><div class="restlbl">Stories<br>+ Q&amp;A</div></div>
+    <div class="cell cs"><span class="dnum">9</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Night wind-down routine (with Sleep)</div></div>
+    <div class="cell rest"><span class="dnum">10</span><div class="restlbl">Stories</div></div>
+    <div class="cell cst"><span class="dnum">11</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Morning energy routine (with Strength)</div></div>
+    <div class="cell rest"><span class="dnum">12</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">13</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">Best time to take each gummy</div></div>
+    <div class="cell rest"><span class="dnum">14</span><div class="restlbl">Stories<br>BTS</div></div>
+    <div class="cell rest"><span class="dnum">15</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">16</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">Comment your goal — we'll match your gummy 👇</div></div>
+    <div class="cell rest"><span class="dnum">17</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">18</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">Product demo: how to take them</div></div>
+    <div class="cell rest"><span class="dnum">19</span><div class="restlbl">Stories</div></div>
+    <div class="cell ch"><span class="dnum">20</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">A hair routine that actually sticks</div></div>
+    <div class="cell rest"><span class="dnum">21</span><div class="restlbl">Stories<br>+ poll</div></div>
+    <div class="cell rest"><span class="dnum">22</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">23</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg></div><div class="cfmt">Carousel</div><div class="cidea">How to build a habit that lasts 90 days</div></div>
+    <div class="cell rest"><span class="dnum">24</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">25</span><div class="cicon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg></div><div class="cfmt">Post</div><div class="cidea">🎁 Limited offer: the trio bundle</div></div>
+    <div class="cell rest"><span class="dnum">26</span><div class="restlbl">Stories<br>teaser</div></div>
+    <div class="cell cm"><span class="dnum">27</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">UGC: real people, real routines</div></div>
+    <div class="cell rest"><span class="dnum">28</span><div class="restlbl">Stories</div></div>
+    <div class="cell rest"><span class="dnum">29</span><div class="restlbl">Stories</div></div>
+    <div class="cell cm"><span class="dnum">30</span><div class="cicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg></div><div class="cfmt">Video</div><div class="cidea">This-or-that: which goal first? + recap</div></div>
+    </div>
+  </div></div>
+
+  <div class="callegend">
+    <div class="cleg"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7" y="7" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="11" width="10" height="1.7" rx="1" fill="#111"/><rect x="7" y="15" width="6" height="1.7" rx="1" fill="#111"/></svg><div><div class="lt">Post</div><div class="ld">Share ideas, tips, or quick value · 3/mo</div></div></div>
+    <div class="cleg"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 8l6 4-6 4z" fill="#111"/></svg><div><div class="lt">Video</div><div class="ld">Teach, explain, or storytelling (Reel) · 8/mo</div></div></div>
+    <div class="cleg"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><rect x="8" y="3" width="13" height="14" rx="2" opacity=".55"/></svg><div><div class="lt">Carousel</div><div class="ld">Step-by-step, lists, or deep dives · 3/mo</div></div></div>
+  </div>
+
+  <div class="callout"><b>What changed &amp; why:</b> product "introductions" are replaced with the <em>problems they solve</em> ("Why you wake up at 3 AM", "Stress or shampoo?"); a full Trust block (ingredient spotlights, how-it's-made, FAQ, founder, reviews, certifications) now anchors Month 2; engagement formats (polls, this-or-that, myth vs fact, comment-bait) are woven throughout; AI is hooks-only; and every claim uses "supports / helps / may aid" — never "stops / guarantees / results in 7 days." Day 1 = Sunday; shift to your audience's most active hours.</div>
+</section>
+
+<!-- ============ 5. REEL STRATEGY ============ -->
+<section id="reels">
+  <div class="sec-head"><span class="sno">03</span><h2>Instagram Reel Strategy — 100 Concepts</h2></div>
+  <p class="sec-sub">A 100-idea bank: 30 viral hooks, 30 educational reels, 20 storytelling reels, 20 engagement reels. Pull from here whenever the calendar needs filling. Hooks are first-line scripts — say or show them in the opening 2 seconds.</p>
+
+  <h3>🔥 30 Viral Hook Ideas <span style="font-size:13px;color:var(--muted)">(use as opening lines)</span></h3>
+  <div class="reelcols"><ol class="reellist">
+    <li>"POV: it's 3am and your brain wants to discuss your entire life."</li>
+    <li>"Be honest — when did you last sleep a full 8 hours?"</li>
+    <li>"Stop scrolling if your hair is on your pillow every morning."</li>
+    <li>"Nobody talks about how exhausting being tired is."</li>
+    <li>"You're not lazy. You might just be running on empty."</li>
+    <li>"5 things wrecking your sleep that you do every single night."</li>
+    <li>"Your gym progress is stuck for ONE boring reason."</li>
+    <li>"If you take supplements, you're probably wasting them. Here's why."</li>
+    <li>"This is what 'fixing your sleep' actually looks like."</li>
+    <li>"Indians average 6 hrs of sleep. That explains a lot."</li>
+    <li>"The most underrated wellness upgrade costs 10 seconds a day."</li>
+    <li>"Your hair eats what you eat — and you're starving it."</li>
+    <li>"Reading your supplement label like a nutritionist would."</li>
+    <li>"That 3pm crash isn't normal. It's a signal."</li>
+    <li>"What I take before bed that changed my mornings."</li>
+    <li>"Stop buying gummies until you've watched this."</li>
+    <li>"Monsoon hair fall is a scam — sort of. Let me explain."</li>
+    <li>"We asked 50 strangers one question. The answers were wild."</li>
+    <li>"Tell me your struggle, I'll tell you your gummy."</li>
+    <li>"The version of you that sleeps 8 hours is built different."</li>
+    <li>"Gym bros hate this one boring habit."</li>
+    <li>"Things that age you faster than your birthday."</li>
+    <li>"If your supplement tastes like medicine, you'll quit in a week."</li>
+    <li>"The 2-second night routine I'll never skip again."</li>
+    <li>"Day-after-leg-day stairs. We don't talk about it enough."</li>
+    <li>"You don't need 12 products. You need 3 you'll actually use."</li>
+    <li>"What 'glowing from within' actually means (it's not a serum)."</li>
+    <li>"The sleep mistake 90% of working professionals make."</li>
+    <li>"Your future self is begging you to fix this now."</li>
+    <li>"I tracked my energy for 7 days. Here's what drained it."</li>
+  </ol></div>
+
+  <h3>🎓 30 Educational Reel Ideas</h3>
+  <div class="reelcols"><ol class="reellist">
+    <li>The science of why you wake at 3am (cortisol, simply explained).</li>
+    <li>Blue light &amp; melatonin — what screens do to your sleep.</li>
+    <li>Caffeine half-life: why your 4pm coffee ruins 11pm sleep.</li>
+    <li>The sleep-hygiene checklist (10 fixes, ranked by impact).</li>
+    <li>What "supports sleep" ingredients actually do (melatonin, chamomile, etc.).</li>
+    <li>Why naps over 30 mins backfire.</li>
+    <li>Hair growth cycle 101 — why patience matters.</li>
+    <li>7 nutrients your hair needs (and where to get them).</li>
+    <li>Biotin explained without the hype.</li>
+    <li>Why monsoon/seasonal hair fall happens.</li>
+    <li>Hard water &amp; your hair — what to actually do.</li>
+    <li>Protein &amp; hair: the connection no one explains.</li>
+    <li>How long before hair supplements "show" anything (honest answer).</li>
+    <li>Pre vs post-workout nutrition basics.</li>
+    <li>Why recovery > more reps for strength.</li>
+    <li>Hydration &amp; energy: the simplest fix you ignore.</li>
+    <li>Reading a supplement label: 5 things to check.</li>
+    <li>FSSAI &amp; what a "licensed" supplement means for you.</li>
+    <li>Gummies vs capsules vs powders — pros &amp; cons.</li>
+    <li>Why "more dose" doesn't mean "more results."</li>
+    <li>The 3 pillars of energy: sleep, food, movement.</li>
+    <li>Micronutrient gaps in the average Indian diet.</li>
+    <li>Vitamin D &amp; why most of us are low.</li>
+    <li>Magnesium &amp; sleep — the underrated mineral.</li>
+    <li>How stress quietly affects hair, sleep AND strength.</li>
+    <li>Myth-busting: "sugar-free" vs "no added sugar."</li>
+    <li>How to build a habit that survives past week 2.</li>
+    <li>Morning vs night: when to take which supplement.</li>
+    <li>What "clinically studied ingredient" really means.</li>
+    <li>How to spot a fake wellness claim online.</li>
+  </ol></div>
+
+  <h3>📖 20 Storytelling Reel Ideas</h3>
+  <div class="reelcols"><ol class="reellist">
+    <li>Founder's "why" — the moment we decided to build Kreenz.</li>
+    <li>"How we chose our ingredients" (the boring, honest version).</li>
+    <li>A day in the life of a Kreenz order (warehouse → doorstep).</li>
+    <li>The first 100 customers — what they taught us.</li>
+    <li>"Why gummies, not pills" — the decision story.</li>
+    <li>A customer's routine, in their own words (UGC story).</li>
+    <li>The night-shift worker's sleep struggle (relatable narrative).</li>
+    <li>New-mom energy crash story (without medical claims).</li>
+    <li>The "I ignored my hair fall for a year" story.</li>
+    <li>The gym-quitter who found consistency through routine.</li>
+    <li>What our packaging went through before launch.</li>
+    <li>A mistake we made early &amp; how we fixed it (transparency = trust).</li>
+    <li>"Behind a single batch" — quality &amp; testing story.</li>
+    <li>The team's own wellness routines.</li>
+    <li>A 30-day "build the habit" diary (real, not before/after).</li>
+    <li>Customer DM that made the whole team emotional.</li>
+    <li>Why we picked these 3 SKUs and nothing else (focus story).</li>
+    <li>The corporate professional who fixed their 3pm crash.</li>
+    <li>Festival-season story: gifting wellness.</li>
+    <li>"One year of Kreenz" milestone recap.</li>
+  </ol></div>
+
+  <h3>💬 20 Engagement Reel Ideas</h3>
+  <div class="reelcols"><ol class="reellist">
+    <li>"Comment your sleep hours, I'll reply with one fix."</li>
+    <li>"This or that: chai or sleep?"</li>
+    <li>"Tag the friend who's always tired."</li>
+    <li>"Which gummy are you? (choose your fighter)."</li>
+    <li>"Rate your sleep 1–10 in the comments."</li>
+    <li>"Myth or fact: cutting hair makes it grow faster."</li>
+    <li>"Finish the sentence: I'd sleep better if ______."</li>
+    <li>"Guess the ingredient" mini-quiz reel.</li>
+    <li>"POV: your alarm vs your motivation."</li>
+    <li>"Caption this tired moment 😂."</li>
+    <li>"Drop a 🌙 if you're a night owl, ☀️ if early bird."</li>
+    <li>"Which struggle is worse: hair fall or no energy?"</li>
+    <li>"Comment GUIDE for the free routine checklist."</li>
+    <li>"Vote: gummies or capsules — which would you pick?"</li>
+    <li>"Tell us your wellness goal, we'll suggest a start."</li>
+    <li>"Tag someone who needs to hear this today."</li>
+    <li>"What's your non-negotiable self-care habit?"</li>
+    <li>"Comment your city — we'll check delivery 😄."</li>
+    <li>"Spot the difference: routine vs no routine."</li>
+    <li>"Save this if you'll actually try it 🔖."</li>
+  </ol></div>
+</section>
+
+<!-- ============ 6. STORY STRATEGY ============ -->
+<section id="stories">
+  <div class="sec-head"><span class="sno">04</span><h2>Instagram Story Strategy</h2></div>
+  <p class="sec-sub">Stories are your daily relationship-builder and your softest selling tool. Aim for <strong>3–5 frames/day</strong>, always closing the loop with an interactive sticker. Stickers are the cheapest reach signal Instagram gives you in 2026 — use one in nearly every frame.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>Daily Story Rhythm (repeatable)</h4>
+      <ul>
+        <li><strong>Frame 1 — Hook/Mood:</strong> "Good morning, who's running on 4 hrs today? 😅" + poll</li>
+        <li><strong>Frame 2 — Value:</strong> a micro-tip (one line, one visual)</li>
+        <li><strong>Frame 3 — Product/BTS:</strong> packing orders, a gummy close-up, a label</li>
+        <li><strong>Frame 4 — Interactive:</strong> quiz / question / slider</li>
+        <li><strong>Frame 5 — Soft CTA:</strong> "Tap to shop" link / "DM 'TRIO' for the bundle"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Poll Ideas</h4>
+      <ul>
+        <li>"Sleep tonight: 8 hrs vs one more episode 👀"</li>
+        <li>"Gummies: love the taste or just here for results?"</li>
+        <li>"Which should we restock first — Sleep / Hair / Strength?"</li>
+        <li>"Do you take your vitamins consistently? (be honest)"</li>
+        <li>"Morning person ☀️ or night owl 🌙?"</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Quiz Ideas</h4>
+      <ul>
+        <li>"Which nutrient supports hair? A) Biotin B) Vit C C) Both"</li>
+        <li>"True/False: napping 2 hrs fixes a bad night."</li>
+        <li>"How long does the hair growth cycle take? (multiple choice)"</li>
+        <li>"Best time to take a sleep gummy? (test their knowledge)"</li>
+        <li>"Spot the myth among these 3 wellness 'facts'."</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Question Sticker Prompts</h4>
+      <ul>
+        <li>"Ask me anything about sleep / hair / energy 👇"</li>
+        <li>"What's your #1 wellness struggle right now?"</li>
+        <li>"What content do you want more of?"</li>
+        <li>"Tell me one habit you're trying to build this month."</li>
+        <li>"Got a question about our ingredients? Fire away."</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>Product Education Story Sequences (5-frame mini-series)</h4>
+  <div class="card">
+    <ul>
+      <li><strong>"Read the label with me":</strong> swipe through each ingredient + what it supports (compliant language) → ends on "any questions? DM us."</li>
+      <li><strong>"How to take it":</strong> dose, timing, consistency, what NOT to expect overnight → builds realistic trust.</li>
+      <li><strong>"Myth vs fact":</strong> 4 frames busting common wellness myths → frame 5 = your gummy as the honest option.</li>
+      <li><strong>"From our DMs":</strong> screenshot real (permission-given) questions/reviews → social proof.</li>
+      <li><strong>"Behind the batch":</strong> sourcing, testing, FSSAI licensing → quality trust without claims.</li>
+    </ul>
+  </div>
+  <div class="callout"><b>Highlight everything.</b> Every story series above should be saved into a permanent Highlight (see Conversion → Highlight structure) so new visitors get the full trust journey on day one.</div>
+</section>
+
+<!-- ============ 7. GROWTH STRATEGY ============ -->
+<section id="growth">
+  <div class="sec-head"><span class="sno">05</span><h2>Growth Strategy</h2></div>
+  <p class="sec-sub">Follower growth in 2026 is won by reach pillars (saves + shares) feeding a warm, interactive community. Here's the roadmap, plus the collab, UGC and giveaway machinery to accelerate it.</p>
+
+  <h3>📈 90-Day Follower Growth Roadmap</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Phase</th><th>Focus</th><th>Tactics</th><th>Goal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Days 1–30<br>Foundation</strong></td><td>Reach + identity</td><td>Nail bio &amp; highlights · post 5–7×/week, reach-heavy (educational + relatable) · 3 trial reels/week · reply to every comment within 1 hr · daily stories</td><td>Establish niche, baseline reach, first 500–1k net follows</td></tr>
+      <tr><td><strong>Days 31–60<br>Momentum</strong></td><td>Reach + trust</td><td>Double down on top 3 performing formats · launch UGC asks · 2–3 micro-influencer seedings · first collab reels · introduce broadcast channel</td><td>Compounding reach, trust pillar live, engagement rate climbing</td></tr>
+      <tr><td><strong>Days 61–90<br>Scale + Convert</strong></td><td>Reach + revenue</td><td>Giveaway campaign · bundle pushes · whitelist top influencer content into ads · retarget engagers · DM funnel automation</td><td>Follower spike via giveaway, first attributable IG-driven sales scaling</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>🤝 Community Engagement Strategy</h4>
+      <ul>
+        <li><strong>The 1-hour rule:</strong> reply to every comment in the first 60 mins of a post — it's the single biggest early-reach signal.</li>
+        <li><strong>Reply with questions</strong> to extend comment threads ("how many hours do you get?").</li>
+        <li><strong>DM engagers</strong> who comment your keyword (GUIDE, TRIO) — turns engagement into 1:1 conversations.</li>
+        <li><strong>Engage outward 15 min/day</strong> on sleep/fitness/haircare creators &amp; hashtags before you post.</li>
+        <li><strong>Launch a Broadcast Channel</strong> ("Kreenz Wellness Club") for tips, drops &amp; early offers.</li>
+        <li><strong>Feature your community</strong> weekly (repost UGC, answer their questions on-camera).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🌟 Influencer Collaboration Ideas</h4>
+      <ul>
+        <li><strong>Micro &gt; mega:</strong> 5–15k nano/micro creators in sleep, fitness, haircare, mom-life — higher trust, lower cost, better ROI for D2C.</li>
+        <li><strong>"30-day routine" series</strong> with 3–5 creators documenting their honest habit-build (no fake before/after).</li>
+        <li><strong>Collab Reels</strong> (co-authored posts) — you both get the reach; great for cross-audience growth.</li>
+        <li><strong>Niche experts:</strong> a nutritionist or trichologist for credibility content (they explain, you supply the product context).</li>
+        <li><strong>Seeding boxes</strong> with a personalised note → organic unboxing UGC.</li>
+        <li><strong>Whitelist/Spark Ads:</strong> run your best creator content as ads from their handle.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📸 UGC Strategy</h4>
+      <ul>
+        <li><strong>Make it easy:</strong> branded prompt cards in every package ("Tag @kreenz, we repost the best").</li>
+        <li><strong>Branded hashtag</strong> (e.g. #MyKreenzRoutine) to collect &amp; resurface UGC.</li>
+        <li><strong>UGC ladder:</strong> repost stories → feature in reels → invite top fans to a creator program.</li>
+        <li><strong>Incentivise honestly:</strong> small discount/credit for a genuine review reel (disclose per ASCI).</li>
+        <li><strong>Repurpose UGC into ads</strong> — UGC consistently outperforms polished brand creative for D2C.</li>
+        <li><strong>Always get written permission</strong> before reposting; keep a simple consent log.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. CONVERSION STRATEGY ============ -->
+<section id="conversion">
+  <div class="sec-head"><span class="sno">06</span><h2>Conversion Strategy</h2></div>
+  <p class="sec-sub">Followers don't pay rent — customers do. This is the machinery that turns reach into revenue, built for India D2C (WhatsApp, COD, link-in-bio, abandoned-cart reality).</p>
+
+  <h3>Turning Followers Into Customers — the path</h3>
+  <div class="card">
+    <p><strong>Stranger → Follower → Engager → Lead → Customer → Repeat buyer.</strong> Every piece of content should move someone one step right:</p>
+    <ul>
+      <li><strong>Stranger→Follower:</strong> reach reels (educational/relatable) + a bio that instantly says who it's for.</li>
+      <li><strong>Follower→Engager:</strong> polls, comment-keywords, "which gummy are you" interactives.</li>
+      <li><strong>Engager→Lead:</strong> keyword-triggered DM ("comment GUIDE") delivering a free checklist + soft offer.</li>
+      <li><strong>Lead→Customer:</strong> DM funnel + story selling + a frictionless link-in-bio with COD &amp; WhatsApp support.</li>
+      <li><strong>Customer→Repeat:</strong> post-purchase DM sequence, UGC ask, subscribe-and-save nudge, refill reminders.</li>
+    </ul>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>📌 Highlight Structure (in this order)</h4>
+      <ol>
+        <li><strong>START HERE</strong> — who you're for + the 3 SKUs in 5 frames</li>
+        <li><strong>SLEEP 🌙</strong> — problem, ingredients, how-to</li>
+        <li><strong>HAIR 💇</strong> — problem, ingredients, how-to</li>
+        <li><strong>STRENGTH 💪</strong> — problem, ingredients, how-to</li>
+        <li><strong>REVIEWS ⭐</strong> — UGC, DM screenshots, testimonials</li>
+        <li><strong>INGREDIENTS 🔬</strong> — transparency, FSSAI, testing</li>
+        <li><strong>FAQ ❓</strong> — dosage, safety, delivery, COD</li>
+        <li><strong>SHOP 🛒</strong> — how to order + offers + WhatsApp</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>💬 DM Funnel</h4>
+      <ul>
+        <li><strong>Trigger:</strong> comment keyword (GUIDE / TRIO / SLEEP) on a reel auto-replies in DM.</li>
+        <li><strong>Frame 1:</strong> deliver the promised value (checklist/match) — give before you ask.</li>
+        <li><strong>Frame 2:</strong> a soft qualifying question ("what's your main goal — sleep, hair or energy?").</li>
+        <li><strong>Frame 3:</strong> recommend the right SKU + a first-order incentive + direct buy link / WhatsApp.</li>
+        <li><strong>Abandoned-cart save:</strong> follow up via WhatsApp with COD reassurance &amp; a gentle nudge.</li>
+        <li>Keep it human — automation for the trigger, real replies for objections.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🛍️ Story Selling Strategy</h4>
+      <ul>
+        <li><strong>Tease → educate → prove → offer → urgency</strong> across a 5-frame sequence, 2–3×/week.</li>
+        <li>Use the <strong>link sticker</strong> on offer frames; use <strong>"DM us"</strong> when you want a conversation.</li>
+        <li><strong>Social proof first:</strong> show a review, THEN the buy link — proof lowers the click's friction.</li>
+        <li><strong>Time-boxed offers</strong> ("today only / first 50 orders") create real urgency.</li>
+        <li><strong>Countdown stickers</strong> for drops &amp; giveaway deadlines.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. COMPETITOR GAP ============ -->
+<section id="competitor">
+  <div class="sec-head"><span class="sno">07</span><h2>Competitor Gap Analysis</h2></div>
+  <p class="sec-sub">The Indian wellness-gummy space (think the well-known D2C nutraceutical players) is crowded but predictable. Their sameness is your opening.</p>
+
+  <div class="grid g3">
+    <div class="card">
+      <h4>What wellness brands commonly post</h4>
+      <ul>
+        <li>Polished, over-produced product shots</li>
+        <li>Heavy before/after &amp; bold results claims (often claim-risky)</li>
+        <li>Repetitive "benefits" reels with stock-music voiceovers</li>
+        <li>Influencer drops with little context</li>
+        <li>Discount-led, sale-after-sale feeds</li>
+        <li>Generic "self-care" aesthetic with no real personality</li>
+      </ul>
+    </div>
+    <div class="card bad">
+      <h4>What they're missing</h4>
+      <ul>
+        <li><strong>Real education</strong> — most "teach" nothing, they just sell</li>
+        <li><strong>Radical ingredient transparency</strong> &amp; honest "results take time" messaging</li>
+        <li><strong>Genuine personality &amp; humour</strong> — the feeds feel like catalogues</li>
+        <li><strong>Community feel</strong> — little UGC, weak comment replies</li>
+        <li><strong>Compliance discipline</strong> — many over-claim, which erodes trust</li>
+        <li><strong>Relatable, low-fi content</strong> — everything's too polished to feel human</li>
+      </ul>
+    </div>
+    <div class="card fix">
+      <h4>Kreenz's unique opportunities</h4>
+      <ul>
+        <li><strong>Be the honest, educational brand</strong> — "we'll tell you what gummies can AND can't do."</li>
+        <li><strong>Transparency as a brand pillar</strong> — label-reading, testing, FSSAI front-and-centre.</li>
+        <li><strong>Personality + relatability</strong> — the 3am club, leg-day humour, real human voice.</li>
+        <li><strong>Community-first</strong> — fast replies, UGC features, a broadcast channel.</li>
+        <li><strong>The "3 you'll actually use" focus</strong> — clarity vs competitors' overwhelming ranges.</li>
+        <li><strong>Routine, not magic</strong> — own the "it's a habit" narrative competitors avoid.</li>
+        <li><strong>Bilingual/local angle</strong> — culturally-rooted content (e.g. monsoon, festive, regional) most national brands ignore.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><b>One-line positioning to own:</b> "The wellness gummy brand that actually teaches you something — and never over-promises." In a category drowning in hype, honesty is the differentiator nobody's claimed.</div>
+</section>
+
+  <div class="footer">
+    <p><strong>Kreenz Wellness — Instagram Growth Plan 2026.</strong> Built on your content ideas, re-sequenced for reach-led growth and India D2C conversion. All copy is written to stay inside FSSAI / ASCI / Drugs &amp; Magic Remedies Act guardrails — verify ingredient-specific claims against your actual approved label before publishing. Prepared for Niyas · Speakerbox.</p>
+  </div>
+
+</main>
+</div>
+</body>
+</html>
