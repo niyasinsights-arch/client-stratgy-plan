@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marshalway — 90-Day Meta Marketing Strategy | Speakerbox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111111; --card:#1F2937; --accent:#F97316; --border:#374151;
+  --text:#E5E7EB; --muted:#9CA3AF; --soft:#374151;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Google Sans','Product Sans',Inter,-apple-system,sans-serif;line-height:1.6;font-size:15.5px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+header{border-bottom:1px solid var(--border);padding:20px 0;position:sticky;top:0;background:rgba(17,17,17,.94);backdrop-filter:blur(8px);z-index:50}
+.hrow{display:flex;align-items:center;justify-content:space-between}
+.hrow img{height:26px}
+.hrow .tag{color:var(--muted);font-size:13px}
+.hero{padding:72px 0 48px}
+.eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(30px,4.5vw,46px);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+h1 span{color:var(--accent)}
+.hero p.sub{color:var(--muted);font-size:17px;max-width:760px;margin-top:16px}
+.meta-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{background:var(--card);border:1px solid var(--border);border-radius:99px;padding:7px 16px;font-size:13px;color:var(--text)}
+.chip b{color:var(--accent)}
+section{padding:44px 0;border-top:1px solid var(--border)}
+.secnum{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:.12em;margin-bottom:8px}
+h2{font-size:27px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.lede{color:var(--muted);max-width:820px;margin-bottom:26px}
+h3{font-size:18px;font-weight:700;margin:30px 0 12px}
+h3 .dot{color:var(--accent)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px;margin:14px 0}
+thead th{background:#16202e;color:var(--accent);text-align:left;padding:12px 14px;font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--border)}
+td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text)}
+tbody tr:last-child td{border-bottom:none}
+td b{color:#fff}
+.tablewrap{overflow-x:auto;border-radius:12px}
+.grid{display:grid;gap:16px;margin:16px 0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.card.recommended{border-color:var(--accent);position:relative}
+.card.recommended::before{content:"PRIMARY";position:absolute;top:-10px;left:18px;background:var(--accent);color:#111;font-size:10.5px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:99px}
+.card h4{font-size:16.5px;font-weight:700;margin-bottom:4px}
+.card .role{color:var(--accent);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.card ul{list-style:none}
+.card ul li{padding:5px 0 5px 22px;position:relative;color:var(--muted);font-size:14px}
+.card ul li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.card ul li.x::before{content:"✗";color:#EF4444}
+.stage{display:inline-block;border-radius:99px;padding:2px 10px;font-size:11.5px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.s-tofu{background:rgba(59,130,246,.16);color:#60A5FA}
+.s-mofu{background:rgba(249,115,22,.16);color:#FB923C}
+.s-bofu{background:rgba(34,197,94,.16);color:#4ADE80}
+.s-ret{background:rgba(168,85,247,.16);color:#C084FC}
+.callout{background:linear-gradient(135deg,rgba(249,115,22,.10),rgba(249,115,22,.03));border:1px solid rgba(249,115,22,.4);border-radius:14px;padding:20px 22px;margin:20px 0}
+.callout b{color:var(--accent)}
+.kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.kpi .v{font-size:24px;font-weight:800;color:var(--accent)}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px}
+footer{border-top:1px solid var(--border);padding:34px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer a{color:var(--accent);text-decoration:none}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:24px}
+.toc a{display:block;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);text-decoration:none;font-size:13.5px;transition:border-color .15s}
+.toc a:hover{border-color:var(--accent)}
+.toc a b{color:var(--accent);margin-right:8px}
+@media(max-width:640px){.wrap{padding:0 18px}td,thead th{padding:10px}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap hrow">
+  <img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox">
+  <span class="tag">Meta Strategy · Prepared June 2026</span>
+</div></header>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">90-Day Meta Marketing Strategy · Facebook + Instagram</div>
+  <h1>Marshalway — Owning the <span>"Never Iron Again"</span> Category in India</h1>
+  <p class="sub">Marshalway is launching India's first premium automatic ironing + drying machine into a market that has never seen the category. This is not a "grow the page" plan — it is a category-creation funnel: make India believe the product exists, prove it works, then convert with payback math and urgency.</p>
+  <div class="meta-chips">
+    <span class="chip"><b>Brand:</b> @marshalwayofficial · marshalway.com</span>
+    <span class="chip"><b>Stage:</b> Cold-start launch (27 followers)</span>
+    <span class="chip"><b>Market:</b> Metro India first</span>
+    <span class="chip"><b>Model:</b> D2C website purchase</span>
+  </div>
+  <div class="callout" style="margin-top:28px">
+    <b>Working assumptions (confirm before ad launch):</b> Price band ₹19,990–29,990 with EMI available · single hero SKU · Shopify/website checkout live with Pixel + CAPI · ad budget ~₹22,000/month (strategy includes splits for ₹18K and ₹25K). If price or AOV differs materially, budget pacing and CAC targets shift — copy and funnel stay valid.
+  </div>
+  <div class="toc">
+    <a href="#s1"><b>01</b>Audience Research</a>
+    <a href="#s2"><b>02</b>Meta Funnel Strategy</a>
+    <a href="#s3"><b>03</b>Content Pillars</a>
+    <a href="#s4"><b>04</b>12 Content Ideas</a>
+    <a href="#s5"><b>05</b>Meta Ads Strategy</a>
+    <a href="#s6"><b>06</b>Retargeting Stack</a>
+    <a href="#s7"><b>07</b>Influencer & UGC</a>
+    <a href="#s8"><b>08</b>Budget Allocation</a>
+    <a href="#s9"><b>09</b>90-Day Action Plan</a>
+  </div>
+</div>
+
+<section id="s1">
+<div class="secnum">SECTION 01</div>
+<h2>Target Audience Research</h2>
+<p class="lede">Marshalway's real competitor is not another appliance — it's the ₹10 istri-wala, the domestic help, and "I'll just wear it slightly wrinkled." Every audience decision below is built around displacing a cheap, habitual alternative with time, control, and premium finish.</p>
+
+<h3><span class="dot">●</span> Primary Audience</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Dimension</th><th>Definition</th></tr></thead>
+<tbody>
+<tr><td><b>Who</b></td><td>Urban working professionals, 28–45, in Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, Kochi. Wear formals/smart-casuals 4–6 days a week. Household income ₹15L+.</td></tr>
+<tr><td><b>Household</b></td><td>Dual-income couples and nuclear families in apartments/gated communities; limited balcony drying space; currently dependent on istri-wala, dry cleaning, or domestic help.</td></tr>
+<tr><td><b>Behavioural signals</b></td><td>Premium appliance buyers (dishwasher, robot vacuum, air purifier owners), Amazon/Flipkart premium shoppers, frequent EMI users, engaged with home-upgrade content.</td></tr>
+<tr><td><b>Mindset</b></td><td>"My time is worth more than ₹10 a shirt." Already converted on convenience appliances — Marshalway is the next logical upgrade, not a leap.</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Secondary Audiences</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Segment</th><th>Why they matter</th><th>Angle</th></tr></thead>
+<tbody>
+<tr><td><b>Dual-income parents (30–45)</b></td><td>Highest pain density: school uniforms + office wear + monsoon drying chaos. Strong household purchase authority.</td><td>"One machine, the whole family's mornings fixed."</td></tr>
+<tr><td><b>Festive & wedding gifters (35–55)</b></td><td>India's premium appliance sales spike on gifting moments — weddings, Diwali, Onam, housewarming. High AOV tolerance.</td><td>"The gift they'll use every single day."</td></tr>
+<tr><td><b>Gadget early adopters (24–34)</b></td><td>First buyers of any new category. Generate organic reviews, Reels saves, and word-of-mouth that primary audience trusts.</td><td>"You've never seen a machine do this."</td></tr>
+<tr><td><b>B2B-lite (later phase)</b></td><td>Airbnb hosts, boutique hotels, salons, men's grooming studios. Small volume, strong margin, zero-discount buyers. Activate Month 3+ via lead forms.</td><td>"Guest-ready shirts in 8 minutes, no staff."</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Buyer Personas</h3>
+<div class="grid g2">
+<div class="card recommended">
+  <h4>Arjun, 32 — "The Crisp-Shirt Professional"</h4>
+  <div class="role">Bangalore · Sales/Consulting · ₹22L</div>
+  <ul>
+    <li>5–6 ironed shirts a week; client-facing, appearance = credibility</li>
+    <li>Istri-wala loses buttons, delays before Monday meetings, burns one shirt a quarter</li>
+    <li>Spends ₹800–1,500/month on pressing + dry cleaning</li>
+    <li>Buys on EMI without hesitation if payback math is shown</li>
+    <li class="x">Won't buy on lifestyle alone — needs demo proof + warranty clarity</li>
+  </ul>
+</div>
+<div class="card">
+  <h4>Meera & Rohan, 36/38 — "The Time-Starved Household"</h4>
+  <div class="role">Mumbai · Dual income + 2 kids · ₹35L household</div>
+  <ul>
+    <li>Mornings are a war: uniforms, office wear, no help on Sundays</li>
+    <li>Monsoon = clothes that never dry, damp smell, last-minute hairdryer fixes</li>
+    <li>Already own dishwasher + robot vacuum — appliance-upgrade believers</li>
+    <li>Meera is the researcher; Rohan approves spend — target both</li>
+    <li class="x">Objection: "Where does it fit in a Mumbai flat?" — size content essential</li>
+  </ul>
+</div>
+<div class="card">
+  <h4>Lakshmi, 48 — "The Premium Gifter"</h4>
+  <div class="role">Kochi / NRI family · Homemaker · High discretionary spend</div>
+  <ul>
+    <li>Buys statement gifts for weddings, housewarmings, children abroad/in metros</li>
+    <li>Trusts brands that look established — polished feed and reviews matter</li>
+    <li>Responds to festive framing (Onam, Diwali) and "first in your family circle" prestige</li>
+    <li class="x">Won't navigate complex checkout — needs WhatsApp order support</li>
+  </ul>
+</div>
+<div class="card">
+  <h4>Rahul, 27 — "The Early Adopter"</h4>
+  <div class="role">Gurgaon · Tech/Product · ₹18L</div>
+  <ul>
+    <li>Watches gadget reviews before any purchase >₹10K; reads comments religiously</li>
+    <li>Lives alone, hates ironing, currently rewears or steams badly</li>
+    <li>Will post unboxing/review content unprompted — seed him deliberately</li>
+    <li class="x">Objection: "Is this a gimmick?" — needs third-party reviewer validation</li>
+  </ul>
+</div>
+</div>
+
+<h3><span class="dot">●</span> Pain Points</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Pain</th><th>Reality today</th><th>Marshalway message</th></tr></thead>
+<tbody>
+<tr><td><b>Time tax</b></td><td>15–20 min of ironing daily, or trips to the istri stand and waiting on his schedule</td><td>"8 minutes, hands-free, while you have your coffee."</td></tr>
+<tr><td><b>Monsoon drying</b></td><td>Clothes hang damp for 2 days; musty smell; fans and hairdryers as workarounds</td><td>"Dries AND irons in one cycle — monsoon-proof mornings." (India's killer angle)</td></tr>
+<tr><td><b>Istri-wala risk</b></td><td>Burns, shine marks on dark fabrics, lost garments, coal-iron residue, unpredictable timing</td><td>"Gentle hot air, not a 200° metal plate. Your shirts, never leaving your home."</td></tr>
+<tr><td><b>Help dependency</b></td><td>Maid absent = wrinkled week; quality inconsistent</td><td>"The one chore that no longer depends on anyone."</td></tr>
+<tr><td><b>Delicates anxiety</b></td><td>Silk, linen, premium shirts ruined by direct iron heat</td><td>"Tension + warm air, not pressure + heat. Safe for what you actually care about."</td></tr>
+<tr><td><b>Last-minute crisis</b></td><td>Interview/meeting/function in 30 minutes, shirt is a mess</td><td>"From washing machine to wearable in under 10 minutes."</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Purchase Triggers</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Trigger</th><th>Moment</th><th>How we exploit it</th></tr></thead>
+<tbody>
+<tr><td><b>Monsoon onset</b></td><td>June–September (live NOW for this 90-day window)</td><td>Monsoon-drying creative leads Month 1–2; seasonal urgency in copy</td></tr>
+<tr><td><b>Istri failure moment</b></td><td>Burnt shirt, missed delivery, important meeting ruined</td><td>Relatable "the day my istri-wala ghosted me" Reels — agitate then resolve</td></tr>
+<tr><td><b>New home / move</b></td><td>Housewarming, first premium appliance basket</td><td>Gifting + "complete your smart home" retargeting angle</td></tr>
+<tr><td><b>Payback realisation</b></td><td>Sees dry-cleaning/pressing annual spend laid out</td><td>"Pays for itself in X months" calculator content + ad</td></tr>
+<tr><td><b>Festive gifting</b></td><td>Onam (Aug–Sep, Kerala), Diwali ramp from Month 3</td><td>Gift-framed creative, festive offer in Month 3 conversion push</td></tr>
+<tr><td><b>Social proof tipping</b></td><td>Sees a peer/creator using it</td><td>Seeded micro-influencer reviews land Weeks 5–8, retarget their viewers</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Customer Objections & Counters</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Objection</th><th>What they're really asking</th><th>Counter (use in content + ad copy + FAQ)</th></tr></thead>
+<tbody>
+<tr><td><b>"₹25K? My istri charges ₹10."</b></td><td>Justify the gap</td><td>Reframe to time + total annual spend + garment damage. "₹1,000/month on pressing = the machine pays for itself in ~2 years, your time pays it back in 2 months."</td></tr>
+<tr><td><b>"Does it actually iron like a press?"</b></td><td>Proof of finish quality</td><td>Close-up before/after on collars, cuffs, plackets. Unedited single-take demos. Third-party reviewer footage.</td></tr>
+<tr><td><b>"Will it ruin my clothes?"</b></td><td>Fabric safety</td><td>Education pillar: warm air + tension vs 200°C metal plate. Fabric-by-fabric demo series (cotton, linen, silk).</td></tr>
+<tr><td><b>"Where's the space in my flat?"</b></td><td>Footprint anxiety</td><td>Show it next to recognisable objects; collapsed/storage shots; "smaller than your ironing board" framing.</td></tr>
+<tr><td><b>"What about service & warranty in India?"</b></td><td>Post-purchase trust</td><td>Warranty terms upfront in ads, service promise highlight, founder-face accountability content.</td></tr>
+<tr><td><b>"Electricity bill?"</b></td><td>Running cost</td><td>Per-cycle cost in rupees vs one istri visit. Make it a static infographic — highly saveable.</td></tr>
+<tr><td><b>"Never heard of this brand."</b></td><td>Category + brand trust (biggest barrier)</td><td>This is the whole Month 1 job: demo volume, reviews, founder story, press/creator validation before any hard sell.</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section id="s2">
+<div class="secnum">SECTION 02</div>
+<h2>Meta Funnel Strategy</h2>
+<p class="lede">Category-creation rule: nobody is searching for an "automatic ironing machine" — demand must be manufactured top-down. The funnel front-loads education and proof, and only asks for the sale once a viewer has seen the machine work at least twice.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Stage</th><th>Goal</th><th>Content & Ads</th><th>Audience</th><th>Primary KPI</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="stage s-tofu">AWARENESS</span></td>
+<td>Make metro India know this machine exists and believe the demo</td>
+<td>Hero demo Reels, "what is this thing" hooks, monsoon problem content, founder intro · Video Views + Reach campaigns</td>
+<td>Broad metro 25–45 + premium appliance interest stacks</td>
+<td>3-sec views, ThruPlays, CPM, video retention >25%</td>
+</tr>
+<tr>
+<td><span class="stage s-mofu">CONSIDERATION</span></td>
+<td>Move "interesting" → "I might actually buy this"</td>
+<td>Payback math, fabric safety series, objection-killer carousels, creator reviews · Engagement + Traffic + Lead campaigns</td>
+<td>Video viewers, IG engagers, site visitors</td>
+<td>CTR >1.2%, landing page views, leads, saves/shares</td>
+</tr>
+<tr>
+<td><span class="stage s-bofu">CONVERSION</span></td>
+<td>Purchase on marshalway.com (or WhatsApp-assisted order)</td>
+<td>Offer + EMI framing, urgency, testimonial stack, demo-to-checkout ads · Sales campaigns, Advantage+ from Month 3</td>
+<td>Warm retargeting + 1–3% lookalikes of purchasers/ATC</td>
+<td>Purchases, CAC, ROAS, ATC→purchase rate</td>
+</tr>
+<tr>
+<td><span class="stage s-ret">RETENTION</span></td>
+<td>Reviews, referrals, UGC, accessory/cross-sell later</td>
+<td>Onboarding content, care tips, "tag us" prompts, referral incentive · Customer-list campaigns (small, always-on)</td>
+<td>Purchaser custom audience + WhatsApp list</td>
+<td>Review rate, UGC volume, referral orders</td>
+</tr>
+</tbody>
+</table></div>
+
+<div class="callout"><b>Funnel logic for a ₹25K considered purchase:</b> expect 7–14 day decision cycles, not impulse buys. The system is built so a person sees: demo (TOFU) → math/objection answer (MOFU) → testimonial + offer (BOFU). Attribution: use 7-day click / 1-day view, and judge Month 1 on engagement cost-efficiency, not ROAS.</div>
+</section>
+
+<section id="s3">
+<div class="secnum">SECTION 03</div>
+<h2>Content Pillars</h2>
+<p class="lede">Seven pillars. The first three do 80% of the commercial work; the rest build the brand world that justifies a premium price.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Pillar</th><th>Purpose</th><th>Content angles</th><th>Feed share</th></tr></thead>
+<tbody>
+<tr><td><b>1. Watch It Work</b><br><span class="stage s-tofu">Demo / Proof</span></td><td>The category-creation engine. Nobody believes it until they see it.</td><td>Single-take demos, before/after collar close-ups, timer-on-screen cycles, wet-shirt-to-wearable, fabric-by-fabric tests</td><td>25%</td></tr>
+<tr><td><b>2. The Ironing Problem</b><br><span class="stage s-tofu">Pain / Agitation</span></td><td>Make the status quo feel absurd before presenting the fix.</td><td>Istri-wala horror stories, monsoon damp-clothes pain, Monday-morning crisis skits, "the chore nobody renegotiated since 1995"</td><td>15%</td></tr>
+<tr><td><b>3. The Math</b><br><span class="stage s-mofu">Value / Payback</span></td><td>Convert desire into justification — the spouse-approval content.</td><td>Annual pressing-spend reveal, time-saved calculator, per-cycle electricity cost, EMI vs monthly istri spend</td><td>15%</td></tr>
+<tr><td><b>4. The Marshalway Home</b><br><span class="stage s-tofu">Lifestyle / Aspiration</span></td><td>Premium placement — matches the brand's existing visual world ("Designed to simplify, built to feel").</td><td>Calm-morning routines, the machine in beautiful Indian homes, slow-living aesthetic, design close-ups</td><td>15%</td></tr>
+<tr><td><b>5. Fabric & Care IQ</b><br><span class="stage s-mofu">Education</span></td><td>Kills the "will it ruin my clothes" objection; earns saves.</td><td>Warm air vs metal plate explainer, silk/linen/cotton guides, why shine marks happen, garment-care myths</td><td>10%</td></tr>
+<tr><td><b>6. Proof & People</b><br><span class="stage s-mofu">Trust / UGC</span></td><td>Borrowed credibility for an unknown brand.</td><td>Creator reviews, customer unboxings, founder story, behind-the-brand, warranty & service promise</td><td>12%</td></tr>
+<tr><td><b>7. Moment Marketing</b><br><span class="stage s-bofu">Seasonal / Offer</span></td><td>Converts attention into orders on India's calendar.</td><td>Monsoon survival series, Onam gifting, festive offers, wedding-season prep, launch milestones</td><td>8%</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section id="s4">
+<div class="secnum">SECTION 04</div>
+<h2>Content Strategy — 12 High-Performing Ideas</h2>
+<p class="lede">Built to be shot in 2 batch production days. Ideas 1–4 are also your ad creatives — design them for sound-off viewing with on-screen text.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Hook (first 2 seconds)</th><th>Format</th><th>Objective</th><th>CTA</th><th>Stage</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>"This machine just ended ironing in India."</b> Wrinkled shirt slides on → inflates → timer speedrun → crisp finish, one take, no cuts.</td><td>Reel (hero demo)</td><td>Category awareness; the single most important asset of the launch</td><td>"See how it works → link in bio"</td><td><span class="stage s-tofu">TOFU</span></td></tr>
+<tr><td>2</td><td><b>"POV: It's July in Mumbai and your shirt has been 'drying' for 3 days."</b> Damp-clothes montage → Marshalway dries + irons in one cycle.</td><td>Reel (skit)</td><td>Monsoon-trigger relatability; shares</td><td>"Monsoon-proof your mornings"</td><td><span class="stage s-tofu">TOFU</span></td></tr>
+<tr><td>3</td><td><b>"I calculated what my istri-wala actually costs me per year."</b> Receipt-style number reveal → vs machine price → payback line.</td><td>Reel (talking head + graphics)</td><td>Payback justification; saves</td><td>"Do your own math — calculator on site"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>4</td><td><b>"Iron: 200°C metal plate. Marshalway: warm air."</b> Side-by-side on a silk shirt — one shines/scorches risk, one finishes clean.</td><td>Reel (comparison demo)</td><td>Fabric-safety objection kill</td><td>"Safe for what you actually care about"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>5</td><td><b>"6 things your istri-wala will never tell you."</b> Burns, shine marks, lost shirts, coal residue, delays, mixed loads.</td><td>Carousel</td><td>Problem agitation; comment bait ("which one happened to you?")</td><td>"There's a better way → profile"</td><td><span class="stage s-tofu">TOFU</span></td></tr>
+<tr><td>6</td><td><b>"From washing machine to meeting-ready in 9 minutes."</b> Real-time morning routine: wet shirt in, coffee made, shirt on.</td><td>Reel (routine vlog)</td><td>Use-case visualisation for professionals</td><td>"Reclaim your mornings"</td><td><span class="stage s-tofu">TOFU</span></td></tr>
+<tr><td>7</td><td><b>"Does it fit in a 2BHK? We measured."</b> Machine vs ironing board vs suitcase footprint, storage shot.</td><td>Carousel</td><td>Space-objection kill; high save rate</td><td>"Full dimensions on marshalway.com"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>8</td><td><b>"We gave it to a man who has ironed his own shirts for 20 years."</b> Skeptical dad/uncle reacts to first cycle.</td><td>Reel (reaction)</td><td>Trust via skeptic conversion; shares across generations</td><td>"Watch the full reaction"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>9</td><td><b>"What one cycle costs in electricity: ₹__."</b> Clean infographic — cycle cost vs istri visit vs dry cleaning.</td><td>Static (infographic)</td><td>Running-cost objection kill; saveable reference</td><td>"Save this for the family debate"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>10</td><td><b>"Why we built Marshalway for India first."</b> Founder face-to-camera: monsoons, istri culture, the gap nobody solved.</td><td>Reel (founder story)</td><td>Brand trust for an unknown name; warranty/service promise</td><td>"Follow the journey"</td><td><span class="stage s-mofu">MOFU</span></td></tr>
+<tr><td>11</td><td><b>"30 days, zero ironing: what customers are saying."</b> Testimonial stack — DMs, review screenshots, customer clips.</td><td>Carousel</td><td>Social proof for warm audiences</td><td>"Join them → order on marshalway.com"</td><td><span class="stage s-bofu">BOFU</span></td></tr>
+<tr><td>12</td><td><b>"This Onam, gift them mornings."</b> Premium gifting frame — unboxing, ribbon, family moment + launch-window offer.</td><td>Reel (gifting)</td><td>Seasonal conversion; festive urgency</td><td>"Order before [date] for Onam delivery"</td><td><span class="stage s-bofu">BOFU</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="callout"><b>Cadence:</b> 4 posts/week organic (2 Reels, 1 Carousel, 1 Static) + 3–4 Stories/week (polls, "guess the cycle time", behind-the-scenes, FAQ stickers). Every Reel ends with a verbal + on-screen CTA. Pin ideas #1, #3, and #11 to the grid.</div>
+</section>
+
+<section id="s5">
+<div class="secnum">SECTION 05</div>
+<h2>Meta Ads Strategy</h2>
+<p class="lede">Five-campaign architecture, launched in sequence (not all on Day 1). Pixel + CAPI + WhatsApp integration are pre-flight requirements. All campaigns Advantage placements, IG-Reels-led creative.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Campaign</th><th>Objective</th><th>Target Audience</th><th>Creative Angle</th><th>Ad Copy Direction</th><th>KPI</th></tr></thead>
+<tbody>
+<tr>
+<td><b>C1 · Awareness</b><br><span class="stage s-tofu">Launch Week 1</span></td>
+<td>Video Views (ThruPlay) + Reach layer</td>
+<td>Broad: Metro cities, 25–45, interest stacks — premium appliances, robot vacuums, smart home, business attire, frequent travellers. Advantage+ audience ON.</td>
+<td>Hero demo Reel (#1) + monsoon skit (#2). Pure spectacle — the machine working, zero selling.</td>
+<td>Curiosity-first: "India, meet the machine that irons your shirt while you have breakfast." No price, no offer. On-screen captions for sound-off.</td>
+<td>CPM &lt;₹120, ThruPlay &lt;₹2, 25%+ retention, 100K+ 3-sec viewers banked for retargeting</td>
+</tr>
+<tr>
+<td><b>C2 · Engagement</b><br><span class="stage s-tofu">Week 2+</span></td>
+<td>Engagement (post + profile)</td>
+<td>Same broad stack + 1% lookalike of video viewers once seeded</td>
+<td>Comment-bait carousels (#5 istri confessions, #7 size check) + skeptic-reaction Reel (#8)</td>
+<td>Question-led: "Which of these has your istri-wala done to you?" Drive comments, saves, follows — feeds the warm pool and the algorithm.</td>
+<td>Cost per engagement &lt;₹3, save rate, follower growth 27 → 2,500+ by Day 45</td>
+</tr>
+<tr>
+<td><b>C3 · Lead Generation</b><br><span class="stage s-mofu">Week 3+</span></td>
+<td>Leads — Instant Form + Click-to-WhatsApp split test</td>
+<td>Warm: 25%+ video viewers, IG engagers 90d, site visitors. Cold layer: premium-appliance lookalike stack.</td>
+<td>"Get the launch price + demo video on WhatsApp" / "Book a video demo call" — low-friction ask for a considered purchase</td>
+<td>Value exchange framing: launch-window pricing, payback calculator, demo access. Qualify with one form question: "How do you iron today?" (istri / self / dry clean).</td>
+<td>Cost per lead &lt;₹150 (form) / &lt;₹100 (WhatsApp), lead→conversation rate &gt;40%</td>
+</tr>
+<tr>
+<td><b>C4 · Conversion</b><br><span class="stage s-bofu">Week 5+</span></td>
+<td>Sales — website purchase (CAPI verified)</td>
+<td>Warm only at first: leads, WhatsApp engagers, site visitors 30d, ATC 14d. Expand to 1–3% purchase lookalike + Advantage+ Shopping in Month 3.</td>
+<td>Testimonial-led demo (#11), payback math (#3), EMI framing, launch-offer urgency</td>
+<td>Direct: "₹__/month on EMI — less than your monthly pressing bill. Free delivery, [X]-year warranty, [X]-day trial." Stack risk-reversal hard; it's the unlock for an unknown brand.</td>
+<td>CAC &lt;₹3,500–4,500 (vs ₹22.5K AOV ≈ 5–6x ROAS), ATC→purchase &gt;15%</td>
+</tr>
+<tr>
+<td><b>C5 · Retargeting</b><br><span class="stage s-ret">Week 4+ always-on</span></td>
+<td>Sales + Engagement hybrid, frequency-capped</td>
+<td>Sequenced warm audiences (full stack in Section 06)</td>
+<td>Objection-sequenced: viewer who didn't click gets the math; visitor who didn't ATC gets fabric-safety; ATC abandoner gets offer + scarcity</td>
+<td>Each ad answers ONE objection. "Still thinking about it? Here's what the electricity actually costs." Dynamic countdown for offer windows.</td>
+<td>ROAS &gt;8x on retargeting layer, frequency &lt;4/week, 30%+ of total revenue</td>
+</tr>
+</tbody>
+</table></div>
+
+<div class="callout"><b>Compliance & creative rules:</b> No "never iron again forever" absolute guarantees in ad copy without substantiation — use "cuts ironing time", "hands-free finish". Show real cycle times honestly (Meta + ASCI safe). Minimum 3 creative variants per ad set; kill anything below benchmark after ₹2,000 spend.</div>
+</section>
+
+<section id="s6">
+<div class="secnum">SECTION 06</div>
+<h2>Retargeting Strategy — Audience Stack</h2>
+<p class="lede">Build every audience from Day 1 even if it activates later. The sequencing is the strategy: each warm segment gets the next objection answered, not the same ad repeated.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Audience</th><th>Definition</th><th>Window</th><th>Message they get</th><th>Activates</th></tr></thead>
+<tbody>
+<tr><td><b>Video Viewers — Light</b></td><td>3-sec viewers of demo Reels</td><td>30 days</td><td>More demo angles + monsoon hook (re-spark)</td><td>Week 3</td></tr>
+<tr><td><b>Video Viewers — Heavy</b></td><td>50–75%+ viewers of hero demos</td><td>60 days</td><td>The Math (#3) + skeptic reaction (#8) → lead ad</td><td>Week 3</td></tr>
+<tr><td><b>Instagram Engagers</b></td><td>Profile visits, saves, shares, comments, DM openers</td><td>90 days</td><td>Founder story + testimonials → "questions? WhatsApp us"</td><td>Week 4</td></tr>
+<tr><td><b>Website Visitors</b></td><td>All marshalway.com visitors, excl. purchasers; split product-page viewers separately</td><td>30 days</td><td>Objection killers: size (#7), electricity (#9), warranty — then offer</td><td>Week 4</td></tr>
+<tr><td><b>Add-to-Cart Abandoners</b></td><td>ATC or initiated checkout, no purchase</td><td>14 days</td><td>Risk reversal + EMI + launch-offer deadline. Highest-bid segment in the account.</td><td>Week 5</td></tr>
+<tr><td><b>Leads / WhatsApp openers</b></td><td>Instant-form leads + CTWA conversations</td><td>30 days</td><td>Demo recap + "your launch price expires [date]" — paired with manual WhatsApp follow-up at 24h and 72h</td><td>Week 4</td></tr>
+<tr><td><b>Existing Customers</b></td><td>Purchase event + uploaded order list</td><td>180 days</td><td>EXCLUDE from all acquisition. Serve: care tips, review request, referral offer (₹___ off for friend orders), accessories later</td><td>Week 6</td></tr>
+<tr><td><b>Lookalikes (fed by above)</b></td><td>1% LAL of heavy viewers → leads → purchasers as each seed matures past ~500 events</td><td>—</td><td>Top-funnel demo creative</td><td>Weeks 4 / 6 / 9</td></tr>
+</tbody>
+</table></div>
+</section>
+
+<section id="s7">
+<div class="secnum">SECTION 07</div>
+<h2>Influencer & UGC Strategy</h2>
+<p class="lede">An unknown brand selling a never-seen category needs borrowed trust faster than ads alone can build it. Budget here buys credibility, not reach.</p>
+
+<div class="grid g3">
+<div class="card recommended">
+  <h4>Micro Influencers (10K–100K)</h4>
+  <div class="role">8–10 collabs over 90 days</div>
+  <ul>
+    <li><b>Tech/gadget reviewers</b> (Hindi + English) — the "is it a gimmick" validators</li>
+    <li><b>Working-professional lifestyle</b> creators (corporate vlogs, GRWM-for-office)</li>
+    <li><b>Home & organisation</b> creators, mom creators (monsoon + uniform angle)</li>
+    <li><b>Regional layer:</b> 2–3 Malayalam + Tamil/Telugu creators for South metro depth</li>
+    <li>Deal: product + ₹8–25K fee; mandatory honest review + whitelisting rights</li>
+  </ul>
+</div>
+<div class="card">
+  <h4>UGC Creators</h4>
+  <div class="role">Performance creative pipeline</div>
+  <ul>
+    <li>4–6 UGC creators/month producing ad-native scripts (not posted on their pages)</li>
+    <li>Scripts: istri-horror story, payback math, monsoon test, skeptical-spouse reaction</li>
+    <li>₹3–6K per video; raw, phone-shot, hook-first — these become C3/C4/C5 ad creative</li>
+    <li>Seed 5 units to early customers like "Rahul" persona in exchange for unboxing rights</li>
+  </ul>
+</div>
+<div class="card">
+  <h4>Collaboration Ideas</h4>
+  <div class="role">Campaign-level activations</div>
+  <ul>
+    <li><b>#7DaysNoIron Challenge</b> — creators live a week on Marshalway, daily Stories</li>
+    <li><b>Istri-wala reacts</b> — a real pressing vendor tries the machine (viral-bait, respectful tone)</li>
+    <li><b>Monsoon Stress Test</b> — soaked shirt to boardroom-ready, timed, multiple creators</li>
+    <li><b>Dry-cleaning bill reveal</b> — creators total their yearly spend on camera</li>
+    <li>All collabs run as Partnership Ads (boosted from creator handle) for native trust</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<section id="s8">
+<div class="secnum">SECTION 08</div>
+<h2>Budget Allocation</h2>
+<p class="lede">Recommended ad budget: <b style="color:#fff">~₹22,000/month</b> (workable range ₹18K–25K). Split shifts month-to-month as the funnel matures — awareness-heavy first, conversion-heavy by Month 3. Influencer/UGC budget is separate: ₹12–18K/month.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Funnel Stage</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><b>Awareness</b> (C1)</td><td>55% · ₹12K</td><td>35% · ₹7.5K</td><td>25% · ₹5.5K</td><td>Front-loaded to bank warm audiences; never drops below 25% (the funnel starves otherwise)</td></tr>
+<tr><td><b>Consideration</b> (C2 + C3)</td><td>30% · ₹6.5K</td><td>35% · ₹7.5K</td><td>20% · ₹4.5K</td><td>Engagement Week 2, leads Week 3; lead gen peaks Month 2</td></tr>
+<tr><td><b>Conversion</b> (C4)</td><td>5% · ₹1K</td><td>15% · ₹3.5K</td><td>35% · ₹7.5K</td><td>Soft-launch Week 5 on warm only; scale what Month 2 proves</td></tr>
+<tr><td><b>Retargeting</b> (C5)</td><td>10% · ₹2K</td><td>15% · ₹3.5K</td><td>20% · ₹4.5K</td><td>Grows with pool size; highest-ROAS layer, protect it</td></tr>
+</tbody>
+</table></div>
+
+<div class="kpi-strip">
+<div class="kpi"><div class="v">₹66K</div><div class="l">90-day ad spend</div></div>
+<div class="kpi"><div class="v">12–18</div><div class="l">Target orders by Day 90</div></div>
+<div class="kpi"><div class="v">&lt;₹4,500</div><div class="l">Blended CAC target</div></div>
+<div class="kpi"><div class="v">4–5x</div><div class="l">Blended ROAS by Month 3</div></div>
+<div class="kpi"><div class="v">3,500+</div><div class="l">Followers by Day 90</div></div>
+</div>
+<p style="color:var(--muted);font-size:13.5px">Targets assume ~₹22.5K AOV. Month 1 will look "unprofitable" on paper — that is the design. Judge Month 1 on audience-bank size and engagement cost, Month 2 on lead economics, Month 3 on CAC/ROAS.</p>
+</section>
+
+<section id="s9">
+<div class="secnum">SECTION 09</div>
+<h2>90-Day Action Plan</h2>
+
+<h3><span class="dot">●</span> Month 1 — Awareness & Category Education (Days 1–30)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Week</th><th>Actions</th><th>Output / KPI</th></tr></thead>
+<tbody>
+<tr><td><b>W1</b></td><td>Pre-flight: Pixel + CAPI verified, WhatsApp Business API, catalog, IG bio rewrite (category-explaining, not slogan-only), highlights (How It Works / FAQ / Reviews). Batch-shoot content ideas #1–8. Launch C1 Awareness with hero demo + monsoon Reel.</td><td>Tracking live; 8 assets shot; CPM/ThruPlay benchmarks set</td></tr>
+<tr><td><b>W2</b></td><td>Launch C2 Engagement (carousels #5, #7). Organic cadence 4/week begins. Outreach to 15 micro influencers + 6 UGC creators. Stories: polls + cycle-time guessing.</td><td>CPE &lt;₹3; influencer pipeline signed</td></tr>
+<tr><td><b>W3</b></td><td>Launch C3 Lead Gen (WhatsApp + form split test). Activate video-viewer retargeting. Publish founder story (#10) and electricity infographic (#9).</td><td>First 100+ leads; lead cost benchmark</td></tr>
+<tr><td><b>W4</b></td><td>Month-1 creative review — kill bottom 50% of ads, double winners. First UGC scripts delivered. Build LAL of heavy viewers. WhatsApp follow-up SOP live (24h/72h cadence).</td><td>20K+ viewer pool, 1,000+ followers, lead→convo &gt;40%</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Month 2 — Engagement & Lead Generation (Days 31–60)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Week</th><th>Actions</th><th>Output / KPI</th></tr></thead>
+<tbody>
+<tr><td><b>W5</b></td><td>Soft-launch C4 Conversion on warm audiences only (testimonial + EMI creative). First influencer reviews go live; boost as Partnership Ads. Launch ATC retargeting.</td><td>First tracked purchases; partnership ad CTR vs brand ads</td></tr>
+<tr><td><b>W6</b></td><td>#7DaysNoIron challenge with 3 creators. Skeptic-reaction Reel (#8) pushed in C2. Customer audience built; first review requests sent. Onam gifting creative pre-production.</td><td>UGC library 10+ assets; first reviews on site</td></tr>
+<tr><td><b>W7</b></td><td>Scale winning lead ads +30%; test B2B-lite lead form (Airbnb hosts/salons). Objection-sequenced retargeting fully live (math → safety → offer).</td><td>CPL stable under scale; retargeting ROAS &gt;6x</td></tr>
+<tr><td><b>W8</b></td><td>Mid-flight audit: CAC by audience, creative fatigue check, landing-page CRO pass (reviews above fold, EMI calculator, WhatsApp button). Purchase-seed LAL if 25+ orders.</td><td>2,500+ followers; 300+ leads cumulative; CAC trendline to target</td></tr>
+</tbody>
+</table></div>
+
+<h3><span class="dot">●</span> Month 3 — Conversion & Scaling (Days 61–90)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Week</th><th>Actions</th><th>Output / KPI</th></tr></thead>
+<tbody>
+<tr><td><b>W9</b></td><td>Shift budget to conversion-heavy split. Launch Onam/festive offer window (#12) with countdown retargeting. Test Advantage+ Shopping alongside manual C4.</td><td>Offer-window order spike; ASC vs manual CAC comparison</td></tr>
+<tr><td><b>W10</b></td><td>Scale best campaign +20% every 3 days while CAC holds. Testimonial-stack carousel (#11) as primary BOFU creative. Referral offer to customer list.</td><td>ROAS ≥4x blended; referral orders begin</td></tr>
+<tr><td><b>W11</b></td><td>Regional push: Malayalam/Tamil creator content + city-split ad sets (Kochi/Chennai vs NCR performance read). Diwali-quarter creative pre-production.</td><td>Regional CAC data; Q3 festive plan drafted</td></tr>
+<tr><td><b>W12</b></td><td>Day-90 review: full-funnel economics, creative leaderboard, audience LTV signals. Lock Quarter 2 plan — scale budget to ₹35–45K/month if CAC &lt;₹4,500 held for 3 weeks.</td><td>12–18 cumulative orders; 3,500+ followers; documented playbook for scale</td></tr>
+</tbody>
+</table></div>
+
+<div class="callout"><b>The one thing that decides this launch:</b> demo-video quality. Every rupee of media spend is leveraged or wasted on whether the hero demo Reel makes a stranger stop and say "wait, what is that?" Shoot it three ways before spending ₹1 on ads.</div>
+</section>
+
+</div>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:0 28px">
+  <span>Marshalway · 90-Day Meta Marketing Strategy · Prepared by <a href="https://www.speakerbox.agency/">Speakerbox</a></span>
+  <span>Confidential — for internal planning use</span>
+</div></footer>
+
+</body>
+</html>
