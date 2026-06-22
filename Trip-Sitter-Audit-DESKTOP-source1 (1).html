@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trip Sitter — UX, CRO & Marketplace Audit</title>
+<style>
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;}
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;}
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-latin-800-normal.woff2') format('woff2');font-weight:800;font-style:normal;}
+
+:root{
+  --bg:#111111; --bg2:#171A21; --card:#1F2937; --card2:#232f3e;
+  --accent:#F97316; --accent-soft:rgba(249,115,22,0.12);
+  --border:#374151; --text:#E5E7EB; --muted:#9CA3AF; --dim:#6B7280;
+  --good:#34D399; --warn:#FBBF24; --bad:#F87171;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{background:var(--bg);}
+body{font-family:'Inter',sans-serif;color:var(--text);font-size:10.5pt;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+@page{size:A4;margin:16mm 15mm 18mm 15mm;
+  @bottom-left{content:"Trip Sitter · UX, CRO & Marketplace Audit";font-family:'Inter';font-size:7.5pt;color:#6B7280;}
+  @bottom-right{content:"Prepared by Speakerbox · " counter(page) " / " counter(pages);font-family:'Inter';font-size:7.5pt;color:#6B7280;}
+}
+@page cover{margin:0;@bottom-left{content:none;}@bottom-right{content:none;}}
+
+h1,h2,h3,h4{font-family:'Inter Tight',sans-serif;line-height:1.2;color:#fff;}
+p{margin:0 0 8px;}
+strong{color:#fff;font-weight:600;}
+.accent{color:var(--accent);}
+.muted{color:var(--muted);}
+small{font-size:8.5pt;}
+
+/* ---------- COVER ---------- */
+.cover{page:cover;height:297mm;width:210mm;position:relative;overflow:hidden;
+  background:radial-gradient(120% 80% at 75% 0%, #20140a 0%, #141414 42%, #0d0d0d 100%);
+  padding:34mm 22mm;}
+.cover:after{content:"";position:absolute;left:0;top:0;bottom:0;width:8mm;background:var(--accent);}
+.cover .kicker{font-size:9pt;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22mm;}
+.cover .brandmark{position:absolute;top:34mm;right:22mm;text-align:right;}
+.cover .brandmark .b{font-family:'Inter Tight';font-weight:800;font-size:13pt;color:#fff;letter-spacing:-.01em;}
+.cover .brandmark .s{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.cover h1{font-size:46pt;font-weight:800;letter-spacing:-.02em;margin-bottom:6mm;}
+.cover .sub{font-size:15pt;color:var(--text);font-weight:500;font-family:'Inter Tight';max-width:150mm;line-height:1.35;}
+.cover .desc{font-size:10.5pt;color:var(--muted);margin-top:8mm;max-width:140mm;}
+.cover .bench{margin-top:14mm;display:flex;gap:7mm;}
+.cover .bench .chip{border:1px solid var(--border);border-radius:999px;padding:5px 13px;font-size:8.5pt;color:var(--text);background:rgba(255,255,255,.02);}
+.cover .footer{position:absolute;left:22mm;right:22mm;bottom:24mm;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--border);padding-top:6mm;}
+.cover .footer .meta{font-size:9pt;color:var(--muted);}
+.cover .footer .meta b{color:#fff;font-weight:600;}
+.status-pill{display:inline-block;background:var(--accent-soft);border:1px solid rgba(249,115,22,.4);color:var(--accent);font-size:8pt;font-weight:600;padding:4px 11px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase;}
+
+/* ---------- SECTIONS ---------- */
+.section{break-before:page;padding-top:2mm;}
+.sec-head{display:flex;align-items:flex-start;gap:11px;border-bottom:1px solid var(--border);padding-bottom:9px;margin-bottom:14px;}
+.sec-num{flex:none;width:30px;height:30px;border-radius:8px;background:var(--accent);color:#111;font-family:'Inter Tight';font-weight:800;font-size:14pt;display:flex;align-items:center;justify-content:center;}
+.sec-head h2{font-size:18pt;font-weight:700;letter-spacing:-.01em;padding-top:1px;}
+.sec-head .tag{margin-left:auto;font-size:7.5pt;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;padding-top:7px;}
+
+h3{font-size:12pt;font-weight:600;color:#fff;margin:14px 0 6px;}
+h4{font-size:10pt;font-weight:600;color:var(--accent);margin:10px 0 4px;letter-spacing:.02em;}
+
+.lead{font-size:11pt;color:var(--text);line-height:1.6;margin-bottom:10px;}
+
+ul{margin:4px 0 10px;padding-left:0;list-style:none;}
+li{position:relative;padding-left:16px;margin-bottom:5px;}
+li:before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--accent);}
+li.x:before{background:var(--bad);}
+li.ok:before{background:var(--good);}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin:9px 0;}
+.card.tight{padding:11px 13px;}
+.grid2{display:flex;gap:10px;}
+.grid2 > *{flex:1;}
+.grid3{display:flex;gap:9px;}
+.grid3 > *{flex:1;}
+
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:11px 14px;margin:11px 0;}
+.callout.verified{border-left-color:var(--good);background:rgba(52,211,153,.08);}
+.callout .lbl{font-size:7.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px;}
+.callout.verified .lbl{color:var(--good);}
+
+.pillrow{margin:6px 0 10px;}
+.pill{display:inline-block;font-size:8pt;font-weight:600;padding:3px 9px;border-radius:6px;margin:0 5px 5px 0;}
+.pill.add{background:rgba(52,211,153,.14);color:var(--good);border:1px solid rgba(52,211,153,.3);}
+.pill.rem{background:rgba(248,113,113,.13);color:var(--bad);border:1px solid rgba(248,113,113,.3);}
+.pill.red{background:rgba(251,191,36,.13);color:var(--warn);border:1px solid rgba(251,191,36,.3);}
+
+/* table */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:8.7pt;}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top;}
+thead th{background:var(--card2);color:#fff;font-weight:600;font-size:8.2pt;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--accent);}
+tbody tr:nth-child(even){background:rgba(255,255,255,.02);}
+td.c,th.c{text-align:center;}
+.dot{font-size:11pt;line-height:1;}
+.dot.full{color:var(--good);}
+.dot.part{color:var(--warn);}
+.dot.none{color:var(--dim);}
+.prio{font-weight:600;font-size:8pt;padding:2px 7px;border-radius:5px;}
+.prio.h{background:rgba(248,113,113,.15);color:var(--bad);}
+.prio.m{background:rgba(251,191,36,.15);color:var(--warn);}
+.prio.l{background:rgba(156,163,175,.15);color:var(--muted);}
+
+/* scorecard */
+.scorewrap{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0;}
+.scorecard{flex:1 1 30%;min-width:30%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;}
+.scorecard .num{font-family:'Inter Tight';font-weight:800;font-size:26pt;color:var(--accent);line-height:1;}
+.scorecard .num small{font-size:12pt;color:var(--muted);font-weight:600;}
+.scorecard .lab{font-size:9pt;color:#fff;font-weight:600;margin-top:5px;}
+.scorecard .basis{font-size:7.8pt;color:var(--muted);margin-top:3px;line-height:1.4;}
+.scorecard.pending .num{font-size:13pt;color:var(--warn);padding-top:6px;}
+
+/* roadmap */
+.phase{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;}
+.phase .ph-h{font-family:'Inter Tight';font-weight:700;font-size:11pt;color:#fff;margin-bottom:2px;}
+.phase .ph-t{font-size:8pt;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.phase ol{margin:0;padding-left:16px;font-size:9pt;}
+.phase li{padding-left:2px;margin-bottom:5px;}
+.phase li:before{display:none;}
+.phase ol{list-style:decimal;}
+
+.exec-take{display:flex;gap:11px;margin:9px 0;}
+.exec-take .n{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);font-weight:700;font-size:9pt;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight';}
+.exec-take .t{font-size:9.6pt;}
+.exec-take .t b{color:#fff;}
+
+.top10{counter-reset:t;}
+.top10 .item{display:flex;gap:11px;padding:8px 0;border-bottom:1px solid rgba(55,65,81,.6);}
+.top10 .item:before{counter-increment:t;content:counter(t);flex:none;width:24px;height:24px;border-radius:7px;background:var(--accent-soft);border:1px solid rgba(249,115,22,.35);color:var(--accent);font-weight:700;font-size:9pt;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight';}
+.top10 .item .body{font-size:9.5pt;}
+.top10 .item .body b{color:#fff;}
+.top10 .item .conf{font-size:7.5pt;color:var(--muted);}
+
+.method-row{display:flex;gap:10px;margin:7px 0;}
+.method-row .k{flex:none;width:32mm;font-size:8.5pt;color:var(--accent);font-weight:600;}
+.method-row .v{font-size:9.2pt;color:var(--text);}
+
+.legend{font-size:8pt;color:var(--muted);margin-top:4px;}
+.legend .dot{margin-left:8px;}
+hr.soft{border:none;border-top:1px solid var(--border);margin:12px 0;}
+.note{font-size:8.5pt;color:var(--muted);font-style:italic;}
+
+/* ============================================================
+   DESKTOP-VIEW OVERRIDES — widescreen 16:9 (presentation / screen)
+   (visual/layout only; all copy unchanged)
+   ============================================================ */
+@page{ size:338.67mm 190.5mm; margin:14mm 44mm 15mm 44mm; }
+@page cover{ margin:0; }
+body{ font-size:11pt; }
+
+.cover{ width:338.67mm; height:190.5mm; padding:26mm 40mm; }
+.cover:after{ width:10mm; }
+.cover .brandmark{ top:26mm; right:40mm; }
+.cover .kicker{ margin-bottom:14mm; }
+.cover h1{ font-size:54pt; margin-bottom:5mm; }
+.cover .sub{ font-size:19pt; max-width:230mm; }
+.cover .desc{ font-size:12pt; max-width:200mm; margin-top:7mm; }
+.cover .bench{ margin-top:11mm; }
+.cover .footer{ left:40mm; right:40mm; bottom:22mm; padding-top:7mm; }
+
+.sec-head h2{ font-size:20pt; }
+.lead{ font-size:12pt; max-width:215mm; }
+.section > p{ max-width:215mm; }
+.method-row .v{ max-width:215mm; }
+li{ max-width:235mm; }
+.exec-take{ max-width:235mm; }
+.top10 .item{ max-width:235mm; }
+table{ font-size:9pt; }
+thead th{ font-size:8.5pt; }
+.callout{ max-width:250mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="brandmark"><div class="b">SPEAKERBOX</div><div class="s">Strategy · Growth · Performance</div></div>
+  <div class="kicker">Website Experience Audit</div>
+  <h1>Trip&nbsp;Sitter</h1>
+  <div class="sub">UX, Conversion &amp; Marketplace Benchmark Audit</div>
+  <div class="desc">A strategic review of the experiences-booking platform, benchmarked against the category leaders — with a prioritised roadmap to a premium, conversion-ready marketplace.</div>
+  <div class="bench">
+    <span class="chip">Airbnb Experiences</span>
+    <span class="chip">Headout</span>
+    <span class="chip">GetYourGuide</span>
+  </div>
+  <div class="footer">
+    <div class="meta">Prepared for <b>Trip Sitter (Envinto)</b><br>Prepared by <b>Speakerbox</b> · June 2026<br><span style="color:#6B7280">Confidential — strategic deliverable</span></div>
+    <div><span class="status-pill">Platform status · in active development</span></div>
+  </div>
+</div>
+
+<!-- ============ SCOPE & METHOD ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">·</div><h2>Scope &amp; Methodology</h2><span class="tag">How to read this</span></div>
+  <p class="lead">This audit assesses Trip Sitter as an experiences, tours and activities marketplace and maps it against the three global category leaders. Because the platform is in active development and currently populated with placeholder content, the review prioritises <strong>structural, benchmark-led findings and a build roadmap</strong> over pixel-level critique of provisional screens.</p>
+
+  <div class="method-row"><div class="k">What we reviewed</div><div class="v">The live build at tripsitter.envinto.com — page structure, technical delivery, information architecture and the booking model implied by the current layout.</div></div>
+  <div class="method-row"><div class="k">Benchmarks</div><div class="v">Airbnb Experiences, Headout and GetYourGuide — the standard-setters for discovery, booking confidence and conversion in this category.</div></div>
+  <div class="method-row"><div class="k">Evidence basis</div><div class="v">Two findings are technically verified (flagged <span class="accent">Verified</span>). All other observations are benchmark-led recommendations and best-practice standards appropriate to a pre-launch build.</div></div>
+  <div class="method-row"><div class="k">Open item</div><div class="v">Final UI / visual-design scoring is confirmed at design hand-off, once production screens (not placeholder data) are locked.</div></div>
+
+  <div class="callout"><span class="lbl">Why this framing matters</span>Reviewing during development is the cheapest moment to fix structure. Every recommendation here is far less costly to implement now than after launch — which is exactly the value of auditing early.</div>
+</div>
+
+<!-- ============ EXEC SUMMARY ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">★</div><h2>Executive Summary</h2><span class="tag">The headline</span></div>
+  <p class="lead">Trip Sitter has the bones of a marketplace but is not yet operating like one. The category leaders win on three things — <strong>fast discovery, booking confidence, and trust</strong> — and these are precisely the areas with the most headroom today. The good news: most of the highest-impact fixes are low-effort and can land before launch.</p>
+
+  <div class="exec-take"><div class="n">1</div><div class="t"><b>Discovery is the first gap.</b> Leaders are search-first and category-led from the very top of the page. A clear "what + where" value proposition and a working search are the single biggest levers for engagement.</div></div>
+  <div class="exec-take"><div class="n">2</div><div class="t"><b>Trust is unbuilt.</b> Reviews, ratings, secure-payment cues, cancellation policy and partner credibility are the currency of bookings — and none are evident yet. These slots should be designed now and populated at launch.</div></div>
+  <div class="exec-take"><div class="n">3</div><div class="t"><b>Two technical issues need immediate attention.</b> The homepage metadata describes an unrelated category, and the site renders almost entirely on the client — both directly harm search visibility (detailed in §7).</div></div>
+  <div class="exec-take"><div class="n">4</div><div class="t"><b>The path is clear.</b> A focused two-week sprint on metadata, hero, discovery and trust signals would visibly close the gap to leaders before any heavy feature work begins.</div></div>
+
+  <h3>Provisional scorecard <span class="note">— current in-development build; re-scored at launch</span></h3>
+  <div class="scorewrap">
+    <div class="scorecard"><div class="num">3.5<small>/10</small></div><div class="lab">Overall</div><div class="basis">In-dev build; core marketplace functions not yet confirmed end-to-end.</div></div>
+    <div class="scorecard"><div class="num">4.0<small>/10</small></div><div class="lab">UX — journey &amp; structure</div><div class="basis">Foundations present; discovery &amp; booking flow need definition.</div></div>
+    <div class="scorecard pending"><div class="num">Pending</div><div class="lab">UI / Visual design</div><div class="basis">Scored at design hand-off on production screens.</div></div>
+    <div class="scorecard"><div class="num">2.5<small>/10</small></div><div class="lab">Trust &amp; credibility</div><div class="basis">No trust signals evident; placeholder content present.</div></div>
+    <div class="scorecard"><div class="num">3.0<small>/10</small></div><div class="lab">Conversion readiness</div><div class="basis">CTAs, social proof &amp; lead capture not yet in place.</div></div>
+    <div class="scorecard"><div class="num">3.0<small>/10</small></div><div class="lab">SEO &amp; technical</div><div class="basis">Client-side rendering + off-category metadata.</div></div>
+  </div>
+  <div class="callout"><span class="lbl">Target at launch</span>With the roadmap in §9 executed, a realistic launch-ready target is <strong>7.5+/10 overall</strong> — competitive on discovery and trust with the regional offerings of the benchmark platforms.</div>
+</div>
+
+<!-- ============ 1 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">1</div><h2>First Impression &amp; Brand Positioning</h2></div>
+  <p class="lead">The leaders pass the "5-second test" by stating <strong>what, where and proof</strong> above the fold. Headout and GetYourGuide open with a search bar, a destination/category prompt and a rating line; Airbnb's 2025 relaunch placed Experiences inside a unified app with dedicated tabs and AI-assisted, "smarter" search.</p>
+
+  <h4>What to confirm on Trip Sitter — and the likely gaps</h4>
+  <ul>
+    <li><strong>Value proposition in 5 seconds.</strong> A visitor should be able to complete: "Trip Sitter lets me book ___ in ___." If the hero is decorative or generic, this fails. Anchor it with a category and a place.</li>
+    <li><strong>An ownable position.</strong> Headout owns "skip-the-line, instant tickets"; GetYourGuide owns "things to do, book ahead, free cancellation." Trip Sitter needs its own wedge — a region, a curation angle, or a price/quality promise.</li>
+    <li class="x"><strong>Trust at first glance.</strong> Any visible placeholder text, dummy pricing or mismatched stock imagery collapses credibility instantly. This is the first thing to clean up before launch.</li>
+  </ul>
+
+  <div class="callout verified"><span class="lbl">Verified finding</span>The homepage metadata currently reads "Your trusted partner for pet-sitting and home care" — an unrelated category, almost certainly leftover template boilerplate. It is the clearest signal that brand positioning is not yet locked.</div>
+</div>
+
+<!-- ============ 2 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">2</div><h2>Homepage Review</h2></div>
+  <p class="lead">Benchmarked against the leaders, here is the standard for each homepage element and the most common early-build failure mode to check against.</p>
+
+  <table>
+    <thead><tr><th style="width:24%">Element</th><th>Leader standard</th><th style="width:30%">Common gap to check</th></tr></thead>
+    <tbody>
+      <tr><td><b>Hero</b></td><td>One "what + where" headline, prominent search, a trust line, strong lifestyle image.</td><td>Decorative hero, vague headline, no search.</td></tr>
+      <tr><td><b>Search</b></td><td>Central search with autocomplete on place &amp; activity; sticky on scroll.</td><td>Exact-match only, no autocomplete, buried.</td></tr>
+      <tr><td><b>Navigation</b></td><td>Shallow, category-led: Destinations / Categories / How it works / Help.</td><td>Brochure nav (Home / About / Contact).</td></tr>
+      <tr><td><b>Category discovery</b></td><td>Visual category tiles directly under the hero.</td><td>No category layer; one flat list.</td></tr>
+      <tr><td><b>Featured</b></td><td>Curated rails — Top-rated, Near you, Trending — with price, rating, duration.</td><td>Single undifferentiated grid.</td></tr>
+      <tr><td><b>Visual hierarchy</b></td><td>Clear F-pattern, whitespace, one accent colour used sparingly.</td><td>Everything competing for attention.</td></tr>
+      <tr><td><b>CTA placement</b></td><td>Transactional CTA on every card + sticky on mobile.</td><td>Only a top-nav "Sign up".</td></tr>
+      <tr><td><b>Trust elements</b></td><td>Ratings, review counts, free-cancellation, secure-payment on the homepage.</td><td>None present.</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Recommendations</h4>
+  <div class="pillrow">
+    <span class="pill add">ADD · search-first hero</span>
+    <span class="pill add">ADD · visual category tiles</span>
+    <span class="pill add">ADD · curated rails</span>
+    <span class="pill add">ADD · homepage trust strip</span>
+    <span class="pill rem">REMOVE · placeholder / boilerplate copy</span>
+    <span class="pill rem">REMOVE · dummy logos &amp; mismatched stock</span>
+    <span class="pill red">REDESIGN · hero around search intent</span>
+    <span class="pill red">REDESIGN · consistent card component</span>
+  </div>
+</div>
+
+<!-- ============ 3 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">3</div><h2>User Experience (UX) Audit</h2></div>
+  <p class="lead">The benchmark booking journey is short and confidence-led: <strong>land → search/filter → scannable results → detail page with availability → select date &amp; guests → checkout in ≤2–3 steps → instant confirmation + mobile voucher.</strong> GetYourGuide and Headout lean heavily on instant confirmation, free-cancellation windows and mobile tickets to remove friction.</p>
+
+  <div class="grid2">
+    <div class="card"><h4>Friction points to test</h4>
+      <ul>
+        <li>Can a booking actually complete end-to-end, or does the flow dead-end on dummy data?</li>
+        <li>Do filters update results live, or require reload / not exist?</li>
+        <li>Are experience cards clickable into real detail pages?</li>
+        <li>Mobile: tap-target size, sticky CTA, search collapse behaviour.</li>
+      </ul>
+    </div>
+    <div class="card"><h4>Accessibility — to be audited</h4>
+      <ul>
+        <li>Colour contrast (critical on a dark theme).</li>
+        <li>Alt text on all imagery.</li>
+        <li>Keyboard navigability &amp; visible focus states.</li>
+        <li>Proper form labels on search &amp; checkout.</li>
+      </ul>
+      <p class="note">Flagged as "to verify", not assumed compliant.</p>
+    </div>
+  </div>
+
+  <h4>Missing patterns the leaders all have</h4>
+  <ul>
+    <li>Autocomplete search &amp; faceted, live filters.</li>
+    <li>A date / availability calendar on every detail page.</li>
+    <li>Persistent wishlist and a "recently viewed" rail for return intent.</li>
+    <li>A visible cancellation &amp; confirmation promise that lowers commitment anxiety.</li>
+  </ul>
+</div>
+
+<!-- ============ 4 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">4</div><h2>Conversion Optimization Audit</h2></div>
+  <div class="grid2">
+    <div class="card tight"><h4>CTA effectiveness</h4><p style="font-size:9.3pt">Use one verb consistently. <b>"Check availability"</b> outperforms "Book now" on activities because it lowers commitment. Repeat at card and detail level; pin on mobile.</p></div>
+    <div class="card tight"><h4>Lead generation</h4><p style="font-size:9.3pt">For a pre-launch marketplace, capture intent now: an <b>email / WhatsApp "early access"</b> mechanism and a "request an experience" form. WhatsApp-led capture suits the India market well.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card tight"><h4>Social proof &amp; trust</h4><p style="font-size:9.3pt">Reviews with names/photos, total counts, and "X booked this week" are the workhorses. Design the slots now; populate truthfully at launch.</p></div>
+    <div class="card tight"><h4>Urgency &amp; scarcity</h4><p style="font-size:9.3pt">"Only 3 spots left" and free-cancellation framing work — but only with real inventory. Hold these until launch; fake scarcity is a trust and compliance risk.</p></div>
+  </div>
+
+  <div class="callout"><span class="lbl">Highest-impact levers, in order</span>
+  1 — Make search and one full booking flow genuinely work. &nbsp; 2 — Add category discovery + curated rails. &nbsp; 3 — Add the homepage trust strip. &nbsp; 4 — Add wishlist + recently-viewed for return intent.</div>
+</div>
+
+<!-- ============ 5 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">5</div><h2>Feature Gap Analysis</h2></div>
+  <p class="lead">Trip Sitter's column reflects the current in-development build and is marked conservatively — items to confirm or build, not assumed present. Airbnb entries reflect its 2025–26 relaunch.</p>
+  <table>
+    <thead><tr><th style="width:30%">Feature</th><th class="c">Trip&nbsp;Sitter</th><th class="c">Airbnb</th><th class="c">Headout</th><th class="c">GetYourGuide</th><th class="c">Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Wishlist / Favourites</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Reviews &amp; ratings</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Dynamic / faceted filters</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Interactive maps</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio m">Medium</span></td></tr>
+      <tr><td>Personalised recommendations</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio m">Medium</span></td></tr>
+      <tr><td>Instant booking / confirmation</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Local guides / hosts</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot part">◐</span></td><td class="c"><span class="dot part">◐</span></td><td class="c"><span class="prio m">Medium</span></td></tr>
+      <tr><td>Experience collections / curation</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Multi-language support</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio m">Medium</span></td></tr>
+      <tr><td>Mobile-first features (sticky CTA / app)</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>Secure checkout / multiple payments</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="prio h">High</span></td></tr>
+      <tr><td>AI-powered suggestions</td><td class="c"><span class="dot none">○</span></td><td class="c"><span class="dot full">●</span></td><td class="c"><span class="dot part">◐</span></td><td class="c"><span class="dot part">◐</span></td><td class="c"><span class="prio l">Low</span></td></tr>
+    </tbody>
+  </table>
+  <div class="legend">Legend: <span class="dot full">●</span> present &nbsp; <span class="dot part">◐</span> partial &nbsp; <span class="dot none">○</span> to build / confirm</div>
+  <p class="note" style="margin-top:8px">Benchmark note: Airbnb's May 2025 relaunch added a rebuilt app, a 10-category services layer and smarter search; subsequent 2025 updates added opt-in guest-to-guest messaging — a social layer the others do not offer.</p>
+</div>
+
+<!-- ============ 6 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">6</div><h2>Design System &amp; Visual Improvements</h2><span class="tag">Target spec</span></div>
+  <p class="lead">The premium feel of Airbnb and Headout comes from <strong>restraint and consistency</strong>, not decoration. This is the spec to grade the production design against at hand-off.</p>
+  <div class="grid2">
+    <div class="card tight"><h4>Typography</h4><p style="font-size:9.2pt">One humanist sans, a clear scale (12/14/16/20/28/40), two weights only (regular + semibold). Restraint reads as premium.</p></div>
+    <div class="card tight"><h4>Colour</h4><p style="font-size:9.2pt">Near-neutral base, generous whitespace, a single saturated accent reserved for primary CTAs. Avoid more than ~2 accents.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card tight"><h4>Cards</h4><p style="font-size:9.2pt">Rigidly consistent template, 12–16px radius, subtle shadow, fixed image aspect ratio, identical metadata order on every card.</p></div>
+    <div class="card tight"><h4>Imagery</h4><p style="font-size:9.2pt">On a marketplace, photography <i>is</i> the product. High-res, human-centred, consistently colour-graded. No mismatched stock.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card tight"><h4>Iconography</h4><p style="font-size:9.2pt">One icon set, one stroke weight throughout.</p></div>
+    <div class="card tight"><h4>Spacing</h4><p style="font-size:9.2pt">An 8px spacing system and consistent section rhythm top to bottom.</p></div>
+  </div>
+</div>
+
+<!-- ============ 7 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">7</div><h2>SEO &amp; Content Structure</h2></div>
+  <p class="lead">This is where the build has hard, verified issues that directly limit organic growth — and they are inexpensive to fix now.</p>
+
+  <div class="callout verified"><span class="lbl">Verified · metadata</span>The homepage title/description advertise <b>"pet-sitting and home care"</b> — off-category. This misleads both search engines and users in result snippets. Fix immediately with title + description naming the real proposition, city coverage and category.</div>
+
+  <div class="callout verified"><span class="lbl">Verified · rendering</span>The site renders almost entirely client-side, so crawlers can see a near-empty initial page. For an SEO-dependent marketplace this is serious. Move to <b>server-side rendering / static generation</b> (Next.js supports both) or pre-rendering for category and experience pages.</div>
+
+  <h4>Structural recommendations</h4>
+  <ul>
+    <li>One H1 per page; category pages act as hubs linking to experiences (internal linking).</li>
+    <li>Structured data on experience pages — <span class="muted">Product / Event + AggregateRating + Offer</span> — to earn rich results, plus breadcrumb markup.</li>
+    <li>Plan the core organic engine the leaders rank on: programmatic <i>"things to do in [city]"</i> and <i>"[attraction] tickets"</i> pages.</li>
+    <li>Verify sitemap.xml and robots.txt are present and submitted once real pages exist.</li>
+  </ul>
+</div>
+
+<!-- ============ 8 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">8</div><h2>Trust &amp; Credibility</h2></div>
+  <p class="lead">Bookings are an act of trust paid for in advance. The leaders surface credibility everywhere; Trip Sitter currently surfaces none. Build these slots now and populate at launch.</p>
+  <div class="grid3">
+    <div class="card tight"><ul style="margin:0"><li>Verified-experience / host-vetting badges</li><li>Secure-payment indicators (card networks + lock)</li><li>Customer testimonials</li></ul></div>
+    <div class="card tight"><ul style="margin:0"><li>Ratings &amp; reviews with counts &amp; names</li><li>Visible, plain-language refund / cancellation policy</li><li>Partner / operator logos</li></ul></div>
+    <div class="card tight"><ul style="margin:0"><li>Relevant certifications / licences</li><li>Real contact + human support (WhatsApp)</li><li>Clean, finished content — no placeholders</li></ul></div>
+  </div>
+  <div class="callout"><span class="lbl">Note</span>The single most underrated booking-confidence lever is a <strong>visible cancellation policy</strong>. It lowers the perceived risk of paying before the experience happens — and it costs nothing to display.</div>
+</div>
+
+<!-- ============ 9 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">9</div><h2>Priority Roadmap</h2></div>
+  <div class="grid3">
+    <div class="phase">
+      <div class="ph-h">Quick Wins</div>
+      <div class="ph-t">1–2 weeks · high impact, low effort</div>
+      <ol>
+        <li>Replace the "pet-sitting" metadata; purge all placeholder copy &amp; mismatched images.</li>
+        <li>Make the hero search-first with a clear what+where headline.</li>
+        <li>Add a homepage trust strip (ratings · free cancellation · secure payment).</li>
+        <li>Add category tiles + one curated rail.</li>
+        <li>Standardise the experience card.</li>
+      </ol>
+    </div>
+    <div class="phase">
+      <div class="ph-h">Medium-Term</div>
+      <div class="ph-t">1–2 months · features &amp; UX</div>
+      <ol>
+        <li>Working booking flow end-to-end with instant confirmation + voucher.</li>
+        <li>Faceted, live filters + autocomplete search.</li>
+        <li>Detail page with availability calendar, reviews framework, map.</li>
+        <li>Wishlist + recently-viewed.</li>
+        <li>Server-side rendering / pre-render for SEO.</li>
+      </ol>
+    </div>
+    <div class="phase">
+      <div class="ph-h">Long-Term</div>
+      <div class="ph-t">3–6 months · marketplace depth</div>
+      <ol>
+        <li>Personalised recommendations &amp; curated collections.</li>
+        <li>Multi-language (and multi-currency for your market).</li>
+        <li>Mobile app or installable PWA with mobile tickets.</li>
+        <li>Host / operator dashboard + review-collection pipeline.</li>
+        <li>AI-assisted search / itinerary once data justifies it.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 10 ============ -->
+<div class="section">
+  <div class="sec-head"><div class="sec-num">10</div><h2>Final Verdict</h2></div>
+  <p class="lead">Trip Sitter is an early but workable foundation. It is not yet competitive — but the distance to "competitive" is mostly made up of low-effort, high-impact fixes rather than deep engineering. Executed in order, the roadmap closes that gap quickly.</p>
+
+  <div class="scorewrap">
+    <div class="scorecard"><div class="num">3.5<small>/10</small></div><div class="lab">Overall (current build)</div></div>
+    <div class="scorecard"><div class="num">4.0<small>/10</small></div><div class="lab">UX</div></div>
+    <div class="scorecard pending"><div class="num">Pending</div><div class="lab">UI / Visual</div></div>
+    <div class="scorecard"><div class="num">2.5<small>/10</small></div><div class="lab">Trust</div></div>
+    <div class="scorecard"><div class="num">3.0<small>/10</small></div><div class="lab">Conversion</div></div>
+    <div class="scorecard"><div class="num">3.0<small>/10</small></div><div class="lab">SEO &amp; Technical</div></div>
+  </div>
+  <p class="note">Scores are provisional, reflecting an in-development build with placeholder content. UI is scored at design hand-off. Re-score at launch; realistic target 7.5+/10.</p>
+
+  <h3>Top 10 improvements — ranked by impact</h3>
+  <div class="top10">
+    <div class="item"><div class="body"><b>Fix the metadata</b> away from "pet-sitting" and remove all placeholder content. <span class="conf">· verified issue</span></div></div>
+    <div class="item"><div class="body"><b>Add server-side rendering / pre-rendering</b> so the site is crawlable and fast. <span class="conf">· verified issue</span></div></div>
+    <div class="item"><div class="body"><b>Make the hero search-first</b> with a what+where value proposition. <span class="conf">· universal leader pattern</span></div></div>
+    <div class="item"><div class="body"><b>Ensure a booking completes end-to-end</b> with instant confirmation. <span class="conf">· core marketplace function</span></div></div>
+    <div class="item"><div class="body"><b>Add category discovery + curated rails</b> on the homepage. <span class="conf">· discovery</span></div></div>
+    <div class="item"><div class="body"><b>Add a homepage trust strip</b> — ratings, free cancellation, secure payment. <span class="conf">· trust</span></div></div>
+    <div class="item"><div class="body"><b>Standardise the experience card</b> for a consistent, premium feel. <span class="conf">· UI consistency</span></div></div>
+    <div class="item"><div class="body"><b>Build the reviews &amp; ratings framework</b> for real data at launch. <span class="conf">· social proof</span></div></div>
+    <div class="item"><div class="body"><b>Add faceted, live filters + autocomplete search.</b> <span class="conf">· findability</span></div></div>
+    <div class="item"><div class="body"><b>Add wishlist + recently-viewed</b> to drive return intent. <span class="conf">· retention</span></div></div>
+  </div>
+
+  <hr class="soft">
+  <p class="note">Prepared by Speakerbox · June 2026 · Confidential. Findings marked "Verified" are technically confirmed; all other items are benchmark-led recommendations for a pre-launch build and should be validated against final production screens.</p>
+</div>
+
+</body>
+</html>
