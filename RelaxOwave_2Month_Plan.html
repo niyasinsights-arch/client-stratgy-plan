@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RelaxOwave — 2-Month Instagram Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F1A; --panel:#121A2B; --cell:#141D30; --line:rgba(255,255,255,.07);
+    --txt:#E8EDF5; --muted:#8A95A8; --dim:#586176;
+    --reel:#F97316; --reel-bg:rgba(249,115,22,.13);
+    --ai:#8B5CF6;   --ai-bg:rgba(139,92,246,.16);
+    --car:#EC4899;  --car-bg:rgba(236,72,153,.13);
+    --relax:#A78BFA; --rec:#34D399; --warm:#FBBF24; --fam:#F472B6; --fun:#38BDF8; --prod:#60A5FA;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+  .wordmark{font-size:30px;font-weight:700;letter-spacing:-.02em;}
+  .wordmark .o{color:var(--reel);}
+  .tagline{font-size:13px;color:var(--muted);margin-top:2px;}
+  .stripe{height:3px;width:120px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--ai),var(--car));}
+  h1{font-size:21px;font-weight:600;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+  .stats b{color:var(--txt);font-weight:600;}
+
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 12px;display:flex;align-items:baseline;gap:10px;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:118px;padding:10px;display:flex;flex-direction:column;}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:10.5px;font-weight:600;letter-spacing:.08em;}
+  .rest .cbody{justify-content:center;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}  .reel .cicon,.reel .clabel{color:var(--reel);}
+  .aivideo{--c:var(--ai);} .aivideo .cicon,.aivideo .clabel{color:var(--ai);}
+  .carousel{--c:var(--car);} .carousel .cicon,.carousel .clabel{color:var(--car);}
+
+  .sech{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--muted);margin:24px 0 12px;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:14px 16px;}
+  .dcard.reel{--c:var(--reel);} .dcard.aivideo{--c:var(--ai);} .dcard.carousel{--c:var(--car);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.aivideo{background:var(--ai-bg);color:var(--ai);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:600;}
+  .c-relax{color:var(--relax);} .c-rec{color:var(--rec);} .c-warm{color:var(--warm);}
+  .c-fam{color:var(--fam);} .c-fun{color:var(--fun);} .c-prod{color:var(--prod);}
+  .dtitle{font-size:14.5px;font-weight:600;color:var(--txt);margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 38px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--reel);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:#CFD7E5;}
+
+  .poll{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .poll .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--rec);}
+  .poll .q{font-size:13.5px;font-weight:600;color:var(--txt);margin:6px 0 10px;}
+  .poll .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:#CFD7E5;background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+  .foot{margin-top:30px;font-size:12px;color:var(--muted);line-height:1.65;
+    border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+  @media (max-width:740px){ .cards{grid-template-columns:1fr;} .wordmark{font-size:26px;} }
+  @media print{ body{background:#0B0F1A;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;} }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="wordmark">Relax<span class="o">O</span>wave</div>
+  <div class="tagline">Premium cordless foot massager · India</div>
+  <div class="stripe"></div>
+  <h1>2-Month Instagram Content Plan</h1>
+  <div class="stats"><b>20 posts</b> · 8 Reels · 4 AI Videos · 8 Carousels · 10 per month, posting every 3rd day · existing content only</div>
+
+  <!-- ================= MONTH 1 ================= -->
+  <div class="mhead" id="m1">Month 1 <small>4 Reels · 2 AI Videos · 4 Carousels</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">3</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">4</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">5</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell aivideo"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">AI VIDEO</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell rest"><span class="cnum">15</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">16</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">17</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell aivideo"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">AI VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">21</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">22</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">28</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">DAY-BY-DAY — IDEA, HOOK &amp; CTA</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-fun">Entertainment</span></div>
+      <div class="dtitle">Expectations vs reality</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Expectation: productive evening. Reality: sofa, gone."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag someone who is exactly this.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 4</span><span class="dbadge carousel">Carousel</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">At-home spa evening</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"You don't need a spa. Just 6 things you already own."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save the checklist and try it tonight.</span></div></div>
+
+    <div class="dcard aivideo"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge aivideo">AI Video</span><span class="dcat c-fun">Entertainment</span></div>
+      <div class="dtitle">If feet could talk</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"If your feet could talk, they'd file a complaint."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag your hardest-working friend.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 10</span><span class="dbadge reel">Reel</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">Build a relaxation corner</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Turn one corner of your home into your reset zone."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save for your setup.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge carousel">Carousel</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">How many hours are you standing every day?</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"How many hours are you on your feet every day?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Slides: 0–2 → 8+ hrs · close: "The more you stand, the more recovery matters." Save &amp; comment your hours.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 16</span><span class="dbadge reel">Reel</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">The cordless advantage</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"The one thing every plug-in massager can't do."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow to see why cordless wins.</span></div></div>
+
+    <div class="dcard aivideo"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge aivideo">AI Video</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">The Invisible Hero</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"They carry your whole body — and never complain."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save this reminder for yourself.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 22</span><span class="dbadge carousel">Carousel</span><span class="dcat c-fam">Family</span></div>
+      <div class="dtitle">Who needs RelaxOwave most?</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Teachers, nurses, moms, riders… is one of them you?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment which one you are.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-fam">Family</span></div>
+      <div class="dtitle">Family relay</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"One device. The whole family lines up."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag your family.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 28</span><span class="dbadge carousel">Carousel</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">Your relax stack</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Tea + dim lights + this = the perfect night in."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save your relax stack.</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 2 ================= -->
+  <div class="mhead" id="m2">Month 2 <small>4 Reels · 2 AI Videos · 4 Carousels</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">3</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">4</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">5</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell aivideo"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">AI VIDEO</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell rest"><span class="cnum">15</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">16</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">17</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell aivideo"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">AI VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">21</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">22</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">28</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">DAY-BY-DAY — IDEA, HOOK &amp; CTA</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">Splash: every profession</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Every profession deserves recovery."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Which one are you? Comment.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 4</span><span class="dbadge carousel">Carousel</span><span class="dcat c-warm">Warmth</span></div>
+      <div class="dtitle">Cozy-warmth ritual</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Build the coziest evening of your week."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save the cozy checklist.</span></div></div>
+
+    <div class="dcard aivideo"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge aivideo">AI Video</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">The "spa hug" (compression)</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"It feels like a hug for your feet."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow to see how it works.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 10</span><span class="dbadge reel">Reel</span><span class="dcat c-warm">Warmth</span></div>
+      <div class="dtitle">Winter survival</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Cold feet under two socks? There's a warmer way."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save for chilly nights.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge carousel">Carousel</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">5 cozy spots to use it</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"5 places to use it you haven't thought of."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save and pick your spot.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 16</span><span class="dbadge reel">Reel</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">Split-screen challenge</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Same evening, two endings — which one's yours?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Left = busy &amp; drained, right = RelaxOwave. Choose your evening 👇</span></div></div>
+
+    <div class="dcard aivideo"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge aivideo">AI Video</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">Three therapies, total calm</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Three things at once = total calm."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow to see all three.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 22</span><span class="dbadge carousel">Carousel</span><span class="dcat c-rec">Recovery</span></div>
+      <div class="dtitle">Care guide</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Keep it fresh: 4 quick care tips."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save the guide.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-fam">Family</span></div>
+      <div class="dtitle">Care for the caregiver</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"The one who cares for everyone — who cares for them?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag yours.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 28</span><span class="dbadge carousel">Carousel</span><span class="dcat c-relax">Relaxation</span></div>
+      <div class="dtitle">Myth vs fact: relaxation</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Myth: relaxing is a reward. Fact: it's a need."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save and share.</span></div></div>
+  </div>
+
+  <div class="sech">STORY CONTENT — POLLS <span style="color:var(--dim);font-weight:400;letter-spacing:0;">(run in Stories, on top of the feed — reuse any week)</span></div>
+  <div class="cards">
+    <div class="poll"><div class="ptag">POLL</div><div class="q">How many steps today?</div><div class="opts"><span class="opt">Under 5k</span><span class="opt">5k–10k</span><span class="opt">10k+</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">What's most tired after work?</div><div class="opts"><span class="opt">Feet</span><span class="opt">Legs</span><span class="opt">Back</span><span class="opt">Everything 😅</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">When are your feet most tired?</div><div class="opts"><span class="opt">Morning</span><span class="opt">Afternoon</span><span class="opt">Evening</span><span class="opt">Night</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Who deserves a RelaxOwave?</div><div class="opts"><span class="opt">Mom</span><span class="opt">Dad</span><span class="opt">Grandparents</span><span class="opt">Me 😎</span></div></div>
+  </div>
+
+  <p class="foot">
+    <b>Built from your existing content</b> — no new topics added. Re-composed to <b>4 Reels + 2 AI Videos + 4 Carousels per month</b> (10/month, 20 total), posting every 3rd day with rest days between. The 4 <b>AI Videos</b> are the cinematic/conceptual pieces best suited to AI generation rather than live filming.
+    Keep all claims to <b>relaxation, comfort, calm, warmth and recovery from everyday tiredness</b> — avoid disease/cure language to stay compliant on Meta and in India. The 4 Story polls run on top of the feed and can be reused any week.
+  </p>
+
+</div>
+</body>
+</html>
