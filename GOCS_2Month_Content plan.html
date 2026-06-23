@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOCS — 2-Month Instagram Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E0E; --panel:#171717; --cell:#141414; --line:rgba(255,255,255,.07);
+    --txt:#F2EDE6; --muted:#9A8F84; --dim:#5C544B;
+    --reel:#F97316;  --reel-bg:rgba(249,115,22,.14);
+    --story:#2DD4BF; --story-bg:rgba(45,212,191,.14);
+    --car:#EC4899;   --car-bg:rgba(236,72,153,.13);
+    --fun:#38BDF8; --vibe:#A78BFA; --heritage:#FBBF24; --product:#60A5FA;
+    --nostalgia:#C084FC; --home:#FB7185; --match:#4ADE80; --engage:#9A8F84;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+
+  /* HEADER */
+  .wordmark{font-size:32px;font-weight:800;letter-spacing:-.02em;}
+  .wordmark .o{color:var(--reel);}
+  .tagline{font-size:13px;color:var(--muted);margin-top:3px;}
+  .stripe{height:3px;width:130px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--story),var(--car));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:var(--txt);font-weight:600;}
+
+  /* LEGEND */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 4px;font-size:11.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.s{background:var(--story);} .dot.c{background:var(--car);}
+
+  /* CALENDAR */
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:104px;padding:10px;display:flex;flex-direction:column;}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:10px;font-weight:600;letter-spacing:.08em;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}     .reel .cicon,.reel .clabel{color:var(--reel);}
+  .story{--c:var(--story);}   .story .cicon,.story .clabel{color:var(--story);}
+  .carousel{--c:var(--car);}  .carousel .cicon,.carousel .clabel{color:var(--car);}
+
+  /* DAY CARDS */
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:24px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .dcard.reel{--c:var(--reel);} .dcard.story{--c:var(--story);} .dcard.carousel{--c:var(--car);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.story{background:var(--story-bg);color:var(--story);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:600;}
+  .c-fun{color:var(--fun);} .c-vibe{color:var(--vibe);} .c-heritage{color:var(--heritage);}
+  .c-product{color:var(--product);} .c-nostalgia{color:var(--nostalgia);}
+  .c-home{color:var(--home);} .c-match{color:var(--match);} .c-engage{color:var(--engage);}
+  .dtitle{font-size:14.5px;font-weight:600;color:var(--txt);margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 36px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--reel);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:#D8D0C6;}
+
+  /* PLAYBOOK */
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--reel);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:var(--txt);}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:#CFC7BD;margin:5px 0;line-height:1.5;}
+
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .tlcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--match);
+    border-radius:12px;padding:13px 15px;}
+  .tlcard .when{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--match);}
+  .tlcard p{font-size:12px;color:#CFC7BD;margin:7px 0 0;line-height:1.5;}
+  .ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 18px;counter-reset:idea;}
+  .idea{display:flex;gap:10px;font-size:12.5px;color:#D8D0C6;line-height:1.5;padding:3px 0;}
+  .idea::before{counter-increment:idea;content:counter(idea);flex:0 0 22px;height:22px;
+    display:flex;align-items:center;justify-content:center;border-radius:7px;
+    background:var(--reel-bg);color:var(--reel);font-size:11px;font-weight:700;}
+  .idea b{color:var(--txt);font-weight:600;}
+  .seq{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;flex:1;min-width:140px;}
+  .step .t{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--reel);}
+  .step .d{font-size:12px;color:#CFC7BD;margin-top:3px;line-height:1.4;}
+
+  /* POLLS */
+  .poll{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .poll .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--story);}
+  .poll .q{font-size:13.5px;font-weight:600;color:var(--txt);margin:6px 0 10px;}
+  .poll .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:#CFC7BD;background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;
+    border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+
+  @media (max-width:760px){
+    .cards,.ideas,.panel-grid,.tl{grid-template-columns:1fr;}
+    .wordmark{font-size:27px;}
+  }
+  @media print{
+    body{background:#0E0E0E;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="wordmark">G<span class="o">O</span>CS</div>
+  <div class="tagline">God's Own Country Savouries · Kerala heritage snacks · taste of home, away from home</div>
+  <div class="stripe"></div>
+  <h1>2-Month Instagram Content Plan</h1>
+  <div class="stats"><b>30 posts</b> · 16 Reels · 8 Stories · 6 Carousels · 15 per month · posting every 2nd day with rest days between</div>
+
+  <div class="legend">
+    <span><i class="dot r"></i>Reel</span>
+    <span><i class="dot s"></i>Story</span>
+    <span><i class="dot c"></i>Carousel</span>
+  </div>
+
+  <!-- ================= MONTH 1 ================= -->
+  <div class="mhead">Month 1 <small>8 Reels · 4 Stories · 3 Carousels — familiarity → first emotional pull</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">MONTH 1 — IDEA, HOOK &amp; CTA</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-fun">Fun</span></div>
+      <div class="dtitle">Every dialogue deserves GOCS</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Some conversations need a snack upgrade."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment your snack partner.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge story">Story</span><span class="dcat c-engage">Engage</span></div>
+      <div class="dtitle">Sweet or spicy poll</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Sweet or spicy?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Vote now.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Reel</span><span class="dcat c-vibe">Vibe</span></div>
+      <div class="dtitle">Mood may change, GOCS never</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"One snack. Every mood."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Share this reel.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge carousel">Carousel</span><span class="dcat c-vibe">Vibe</span></div>
+      <div class="dtitle">Brand vibe</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"What makes GOCS special?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save for later.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge reel">Reel</span><span class="dcat c-fun">Fun</span></div>
+      <div class="dtitle">POV: sharing everything except snacks</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"You can borrow my charger, not my GOCS."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag your hostel friend.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge story">Story</span><span class="dcat c-engage">Engage</span></div>
+      <div class="dtitle">Snack quiz</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Guess the snack variety."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Answer in stories.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Reel</span><span class="dcat c-fun">Fun</span></div>
+      <div class="dtitle">Snack vs snack comparison</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Normal snacks vs GOCS snacks."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Which side are you on?</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge reel">Reel</span><span class="dcat c-vibe">Lifestyle</span></div>
+      <div class="dtitle">Friends eating together</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"The GOCS snacks finish first."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag the first eater.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge carousel">Carousel</span><span class="dcat c-heritage">Heritage</span></div>
+      <div class="dtitle">Heritage angle</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Kerala taste you remember."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Swipe and save.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge story">Story</span><span class="dcat c-engage">BTS</span></div>
+      <div class="dtitle">Behind the scenes — fresh stock</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Fresh, packed, on its way to you."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Reply with a snack emoji.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge reel">Reel</span><span class="dcat c-vibe">Lifestyle</span></div>
+      <div class="dtitle">Your chilling partner</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Your favourite chilling partner."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Send to a friend.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge reel">Reel</span><span class="dcat c-vibe">Lifestyle</span></div>
+      <div class="dtitle">Outing combo</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Outing with friends + GOCS = perfect combo."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment where you'd snack.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge story">Story</span><span class="dcat c-engage">Engage</span></div>
+      <div class="dtitle">This or that</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Road trip snacks or movie snacks?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Vote now.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 27</span><span class="dbadge reel">Reel</span><span class="dcat c-product">Product</span></div>
+      <div class="dtitle">ASMR variety reel</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Crunch, pour, repeat."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Watch till the end.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 29</span><span class="dbadge carousel">Carousel</span><span class="dcat c-product">Product</span></div>
+      <div class="dtitle">Product spotlight</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Which variety should be next?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment your pick.</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 2 ================= -->
+  <div class="mhead">Month 2 <small>8 Reels · 4 Stories · 3 Carousels — deepening emotion → match-night finale</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell story"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg></span><span class="clabel">STORY</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">MONTH 2 — IDEA, HOOK &amp; CTA</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-product">Product</span></div>
+      <div class="dtitle">Kozhi Ada hero reel</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"One bite of Kozhi Ada — and you're home."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">DM to order.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge story">Story</span><span class="dcat c-engage">Engage</span></div>
+      <div class="dtitle">Countdown sticker</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Snack drop incoming."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tap reminder.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Reel</span><span class="dcat c-nostalgia">Nostalgia</span></div>
+      <div class="dtitle">Childhood memory reel</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"One bite, back to childhood."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save this feeling.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge carousel">Carousel</span><span class="dcat c-nostalgia">Nostalgia</span></div>
+      <div class="dtitle">Nostalgia caption set</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Taste and memories go together."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Share with someone home.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge reel">Reel</span><span class="dcat c-home">Home</span></div>
+      <div class="dtitle">Apartment story</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"One bite, and he's back home again."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Watch till the end.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge story">Story</span><span class="dcat c-home">Home</span></div>
+      <div class="dtitle">Emotional poll</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"What snack reminds you of home?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Reply with your memory.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Reel</span><span class="dcat c-home">Home</span></div>
+      <div class="dtitle">Parcel from home</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"The doorbell rings — it's a parcel from Umma."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag your mom.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge carousel">Carousel</span><span class="dcat c-home">Home</span></div>
+      <div class="dtitle">Home comfort theme</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Food that feels like family."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save and share.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Reel</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Watch-party teaser</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Game night needs crunch."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment your team.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge story">Story</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Team poll</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Which team are you backing?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Vote now.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge reel">Reel</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Half-time snack break</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Half-time belongs to GOCS."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Tag your match crew.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge carousel">Carousel</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Football + snack mood</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Your team, your snack vibe."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment your team.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Goal celebration edit</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"GOAL — and the crunch hits."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Share with football fans.</span></div></div>
+
+    <div class="dcard story"><div class="dtop"><span class="dday">Day 27</span><span class="dbadge story">Story</span><span class="dcat c-match">Match</span></div>
+      <div class="dtitle">Match-night countdown</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"Ready for kickoff?"</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Turn on notifications.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 29</span><span class="dbadge reel">Reel</span><span class="dcat c-vibe">Finale</span></div>
+      <div class="dtitle">Closing hero reel</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">"From childhood comfort to World Cup nights — GOCS fits every moment."</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow for more.</span></div></div>
+  </div>
+
+  <!-- HOW TO RUN IT -->
+  <div class="sech">HOW TO RUN IT — RHYTHM, STYLE &amp; PRIORITIES</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">30</div><div class="l">posts across 2 months</div></div>
+    <div class="chip"><div class="n">15</div><div class="l">posts per month</div></div>
+    <div class="chip"><div class="n">8 · 4 · 3</div><div class="l">Reels · Stories · Carousels / month</div></div>
+    <div class="chip"><div class="n">Rest</div><div class="l">day between every post</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Caption style</h3><ul>
+      <li>"Crunch that feels like home."</li>
+      <li>"Some snacks stay in your heart."</li>
+      <li>"Made for memories."</li>
+      <li>"Perfect for match night."</li>
+    </ul></div>
+    <div class="pcard"><h3>Prioritise these</h3><ul>
+      <li>POV &amp; humour reels</li>
+      <li>Childhood nostalgia stories</li>
+      <li>Mom / home / emotional concepts</li>
+      <li>ASMR &amp; close-up product shots</li>
+    </ul></div>
+    <div class="pcard"><h3>The arc</h3><ul>
+      <li>Month 1: familiarity &amp; first emotion</li>
+      <li>Month 2: deepen emotion → finale</li>
+      <li>Time Month 2 to the live tournament</li>
+      <li>Lead with feeling, close with product</li>
+    </ul></div>
+  </div>
+
+  <!-- FIFA PLAYBOOK -->
+  <div class="sech">FIFA MATCH-DAY PLAYBOOK <span>— layer over Month 2 and run through the tournament</span></div>
+  <div class="tl">
+    <div class="tlcard"><div class="when">PRE-MATCH</div><p>Team polls, snack-mood polls, and "who are you watching with?" stories to build anticipation.</p></div>
+    <div class="tlcard"><div class="when">DURING</div><p>Live story updates, reaction stickers, goal-celebration posts, and snack reminders.</p></div>
+    <div class="tlcard"><div class="when">HALF-TIME</div><p>Quick prompts: "rate your snack combo," "predict the second half," "what are you eating now?"</p></div>
+    <div class="tlcard"><div class="when">POST-MATCH</div><p>Memes, fan reactions, best moments, and "match-night MVP" snack content.</p></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">10 MATCH-DAY IDEAS</div>
+  <div class="ideas">
+    <div class="idea"><span><b>Kickoff snack poll.</b> "What are you munching before kickoff?"</span></div>
+    <div class="idea"><span><b>Team vs snack pairing.</b> "Which GOCS snack matches your team?"</span></div>
+    <div class="idea"><span><b>Half-time crunch reel.</b> GOCS during the 15-minute break.</span></div>
+    <div class="idea"><span><b>Goal celebration story.</b> A crunchy reaction clip per goal.</span></div>
+    <div class="idea"><span><b>Match-night starter pack.</b> Friends, TV, GOCS, countdown sticker.</span></div>
+    <div class="idea"><span><b>Predict the score.</b> Commenters get featured.</span></div>
+    <div class="idea"><span><b>Snack captain of the match.</b> Fans vote the best variety.</span></div>
+    <div class="idea"><span><b>Watch-party UGC.</b> Fans tag GOCS in their setup.</span></div>
+    <div class="idea"><span><b>"What's in your half-time plate?"</b> Story prompt with reposts.</span></div>
+    <div class="idea"><span><b>Final whistle recap.</b> "Win or lose, GOCS wins the night."</span></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">MATCH-DAY POSTING SEQUENCE</div>
+  <div class="seq">
+    <div class="step"><div class="t">MORNING</div><div class="d">Teaser story</div></div>
+    <div class="step"><div class="t">2–3 HRS BEFORE</div><div class="d">Poll or quiz</div></div>
+    <div class="step"><div class="t">30 MIN BEFORE</div><div class="d">Product / watch-party reel</div></div>
+    <div class="step"><div class="t">HALF-TIME</div><div class="d">Engagement story</div></div>
+    <div class="step"><div class="t">FULL-TIME</div><div class="d">Reaction post or meme</div></div>
+    <div class="step"><div class="t">NEXT MORNING</div><div class="d">Recap carousel / UGC repost</div></div>
+  </div>
+
+  <!-- STORY POLLS -->
+  <div class="sech">STORY POLLS <span>(run on top of the feed — reuse any week)</span></div>
+  <div class="cards">
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Sweet or spicy tonight?</div><div class="opts"><span class="opt">Sweet</span><span class="opt">Spicy</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Where do you snack most?</div><div class="opts"><span class="opt">Road trip</span><span class="opt">Movie night</span><span class="opt">Match night</span><span class="opt">Just chilling</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">What snack reminds you of home?</div><div class="opts"><span class="opt">Reply with your memory →</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Which team are you backing?</div><div class="opts"><span class="opt">Argentina</span><span class="opt">Brazil</span><span class="opt">Other 👇</span></div></div>
+  </div>
+
+  <p class="foot">
+    <b>Your 30-post plan, split evenly across two months</b> — 15 posts each, posting every 2nd day with a rest day between. <b>Month 1</b> builds familiarity and the first emotional pull; <b>Month 2</b> deepens the home/nostalgia hooks and climaxes on the match-night finale, so schedule it to line up with the live tournament window. In the calendars, <b style="color:var(--reel)">orange = Reel</b>, <b style="color:var(--story)">teal = Story</b>, <b style="color:var(--car)">pink = Carousel</b>; each grid starts on a Sunday, so shift it to match your real start date. Lead with feeling and introduce product (Kozhi Ada, the ₹599 Sampler) only after the emotional groundwork lands.
+    The FIFA playbook is general best-practice framing for match-day engagement — broad claims like "continuous touchpoints outperform one-off activations" are reasonable direction, not verified figures.
+  </p>
+
+</div>
+</body>
+</html>
