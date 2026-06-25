@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cellupro Green — 2-Month Instagram Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7FAF4; --panel:#FFFFFF; --cell:#FFFFFF; --line:rgba(20,45,20,.12);
+    --txt:#18201A; --muted:#5C6A57; --dim:#9AA694;
+    --reel:#1F9D52;  --reel-bg:rgba(31,157,82,.12);
+    --static:#137E96; --static-bg:rgba(19,126,150,.12);
+    --car:#B07B0E;   --car-bg:rgba(176,123,14,.13);
+    --warn:#B07B0E;  --warn-bg:rgba(176,123,14,.10);
+    --story:#B07B0E; --educate:#1E7FA0; --process:#1593A8; --sustain:#1F9D52;
+    --product:#2A7FB0; --proof:#7C53D6; --impact:#138C7A; --convert:#1F9D52;
+    --tech:#7C53D6; --value:#B07B0E; --benefits:#1F9D52; --application:#137E96;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:
+      radial-gradient(900px 500px at 85% -5%,rgba(31,157,82,.07),transparent 60%),
+      var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+
+  /* HEADER */
+  .brandrow{display:flex;align-items:center;gap:10px;}
+  .leaf{width:30px;height:30px;flex:0 0 auto;}
+  .wordmark{font-size:31px;font-weight:800;letter-spacing:-.02em;}
+  .wordmark .g{color:var(--reel);}
+  .tm{font-size:11px;font-weight:600;color:var(--muted);vertical-align:super;margin-left:2px;}
+  .tagline{font-size:13px;color:var(--muted);margin-top:4px;}
+  .stripe{height:3px;width:150px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--car),var(--static));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:var(--txt);font-weight:600;}
+
+  /* LEGEND */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 4px;font-size:11.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.s{background:var(--static);} .dot.c{background:var(--car);}
+
+  /* CALENDAR */
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:104px;padding:10px;display:flex;flex-direction:column;}
+  .cell.empty{background:transparent;border:none;}
+  .cell.rest{background:#F0F4EC;}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:10px;font-weight:600;letter-spacing:.08em;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .buffer .clabel{color:var(--muted);font-weight:600;letter-spacing:.1em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}      .reel .cicon,.reel .clabel{color:var(--reel);}
+  .static{--c:var(--static);}  .static .cicon,.static .clabel{color:var(--static);}
+  .carousel{--c:var(--car);}   .carousel .cicon,.carousel .clabel{color:var(--car);}
+
+  /* DAY CARDS */
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:24px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .dcard.reel{--c:var(--reel);} .dcard.static{--c:var(--static);} .dcard.carousel{--c:var(--car);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.static{background:var(--static-bg);color:var(--static);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:600;}
+  .c-story{color:var(--story);} .c-educate{color:var(--educate);} .c-process{color:var(--process);}
+  .c-sustain{color:var(--sustain);} .c-product{color:var(--product);} .c-proof{color:var(--proof);}
+  .c-impact{color:var(--impact);} .c-convert{color:var(--convert);} .c-tech{color:var(--tech);}
+  .c-value{color:var(--value);} .c-benefits{color:var(--benefits);} .c-application{color:var(--application);}
+  .dtitle{font-size:14.5px;font-weight:600;color:var(--txt);margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 36px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--reel);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:#3C4838;}
+  .flag{font-size:10.5px;color:var(--warn);margin-top:7px;font-weight:600;}
+
+  /* PLAYBOOK / RHYTHM */
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--reel);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:var(--txt);}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:#3C4838;margin:5px 0;line-height:1.5;}
+
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .tlcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--convert);
+    border-radius:12px;padding:13px 15px;}
+  .tlcard .when{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--convert);}
+  .tlcard p{font-size:12px;color:#3C4838;margin:7px 0 0;line-height:1.5;}
+  .ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 18px;counter-reset:idea;}
+  .idea{display:flex;gap:10px;font-size:12.5px;color:#3C4838;line-height:1.5;padding:3px 0;}
+  .idea::before{counter-increment:idea;content:counter(idea);flex:0 0 22px;height:22px;
+    display:flex;align-items:center;justify-content:center;border-radius:7px;
+    background:var(--reel-bg);color:var(--reel);font-size:11px;font-weight:700;}
+  .idea b{color:var(--txt);font-weight:600;}
+  .seq{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;flex:1;min-width:140px;}
+  .step .t{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--reel);}
+  .step .d{font-size:12px;color:#3C4838;margin-top:3px;line-height:1.4;}
+
+  /* POLLS */
+  .poll{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .poll .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--static);}
+  .poll .q{font-size:13.5px;font-weight:600;color:var(--txt);margin:6px 0 10px;}
+  .poll .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:#3C4838;background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+
+  /* VERIFY */
+  .verify{background:var(--warn-bg);border:1px solid rgba(226,178,60,.30);border-left:3px solid var(--warn);
+    border-radius:12px;padding:15px 18px;}
+  .verify h3{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px;color:var(--warn);}
+  .verify ul{margin:0;padding-left:16px;}
+  .verify li{font-size:12.5px;color:#3C4838;margin:7px 0;line-height:1.55;}
+  .verify li b{color:var(--txt);}
+
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;
+    border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+
+  @media (max-width:760px){
+    .cards,.ideas,.panel-grid,.tl{grid-template-columns:1fr;}
+    .wordmark{font-size:26px;}
+  }
+  @media print{
+    body{background:#FFFFFF;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;}
+  }
+  .cal,.dcard,.pcard,.poll,.tlcard,.verify,.chip,.step{box-shadow:0 1px 2px rgba(20,50,20,.05),0 8px 22px rgba(20,50,20,.05);}
+
+  /* CHECKBOXES + PROGRESS */
+  .tick{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:1.6px solid #B7C3AF;
+    border-radius:5px;background:#fff;cursor:pointer;position:relative;flex:0 0 auto;transition:.15s;margin:0;}
+  .tick:hover{border-color:var(--reel);}
+  .tick:checked{background:var(--reel);border-color:var(--reel);}
+  .tick:checked::after{content:"";position:absolute;left:5px;top:1.5px;width:4.5px;height:9px;
+    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .cell .tick{position:absolute;right:8px;bottom:8px;}
+  .cell.done{box-shadow:inset 0 0 0 2px var(--reel);background:var(--reel-bg);}
+  .cell.done .cicon,.cell.done .clabel,.cell.done .cnum{opacity:.5;}
+  .dcard .tick{margin-right:1px;}
+  .dcard.done{opacity:.62;}
+  .dcard.done .dtitle{text-decoration:line-through;text-decoration-color:var(--muted);}
+
+  .progress{margin:16px 0 4px;max-width:560px;}
+  .ptrack{height:8px;background:#E7EDE3;border:1px solid var(--line);border-radius:99px;overflow:hidden;}
+  .pfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--reel),var(--static));transition:width .25s;}
+  .prow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:7px;}
+  .plab{font-size:12px;color:var(--txt);font-weight:700;}
+  .phint{font-size:11px;color:var(--muted);}
+  .reset{margin-left:auto;font-size:11px;color:var(--muted);background:transparent;border:1px solid var(--line);
+    border-radius:7px;padding:3px 11px;cursor:pointer;font-weight:600;}
+  .reset:hover{color:var(--reel);border-color:var(--reel);}
+
+  /* TRACKER TABLE */
+  .tracker{width:100%;border-collapse:separate;border-spacing:0;min-width:880px;font-size:12.5px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(20,50,20,.05),0 8px 22px rgba(20,50,20,.05);}
+  .tracker th{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+    text-align:left;padding:11px 12px;background:#F1F5EE;border-bottom:1px solid var(--line);}
+  .tracker th.cdone{text-align:center;width:40px;}
+  .tracker td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:#3C4838;line-height:1.45;}
+  .tracker tbody tr:last-child td{border-bottom:none;}
+  .tracker tbody tr:hover{background:#F7FAF4;}
+  .tracker .cdone{text-align:center;}
+  .tracker .nowrap{white-space:nowrap;color:var(--muted);font-weight:600;}
+  .tracker .ttl{font-weight:600;color:var(--txt);}
+  .tracker .ct{color:var(--muted);}
+  .tracker tr.done td{opacity:.5;}
+  .tracker tr.done .ttl{text-decoration:line-through;text-decoration-color:var(--muted);}
+  .warnflag{color:var(--warn);font-weight:800;cursor:help;margin-left:6px;}
+  .dbadge.buffer{background:rgba(92,106,87,.14);color:var(--muted);}
+  /* calendar cell reflects table tick */
+  .cell.done{box-shadow:inset 0 0 0 2px var(--reel);background:var(--reel-bg);}
+  .cell.done .cicon,.cell.done .clabel,.cell.done .cnum{opacity:.5;}
+  .cell.done::after{content:"✓";position:absolute;right:9px;bottom:7px;color:var(--reel);font-weight:800;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="brandrow">
+    <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="var(--reel)" stroke-width="1.8">
+      <path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14z"/><path d="M5 19c3-5 7-8 11-9.5"/></svg>
+    <div>
+      <div class="wordmark">CELLUPRO <span class="g">GREEN</span><span class="tm">™</span></div>
+    </div>
+  </div>
+  <div class="tagline">Sustainable Cellulose Solutions · Wealth from Waste · Kerala biotech turning agri-residue into high-purity cellulose</div>
+  <div class="stripe"></div>
+  <h1>2-Month Instagram Content Plan</h1>
+  <div class="stats"><b>22 posts</b> · 10 Reels · 6 Carousels · 6 Static · + 2 buffer slots · 11 per month · 3 posts/week (Mon · Wed · Fri)</div>
+
+  <div class="legend">
+    <span><i class="dot r"></i>Reel</span>
+    <span><i class="dot c"></i>Carousel</span>
+    <span><i class="dot s"></i>Static</span>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress">
+    <div class="ptrack"><div id="progbar" class="pfill"></div></div>
+    <div class="prow">
+      <span id="proglab" class="plab">0 of 24 scheduled posts done</span>
+      <span class="phint">Tick a post as you publish it · saves in this browser</span>
+      <button id="resetbtn" class="reset" type="button">Reset</button>
+    </div>
+  </div>
+
+  <!-- ================= MONTH 1 ================= -->
+  <div class="mhead">Month 1 — July 2026 <small>5 Reels · 3 Carousels · 3 Static — Foundation &amp; Awareness: build trust</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <!-- Week 1: Jul 1 = Wed -->
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell rest"><span class="cnum">1</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">3</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 2 -->
+    <div class="cell rest"><span class="cnum">5</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul06"><span class="corner"></span><span class="cnum">6</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">7</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul08"><span class="corner"></span><span class="cnum">8</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul10"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 3 -->
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul13"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul15"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul17"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 4 -->
+    <div class="cell rest"><span class="cnum">19</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul20"><span class="corner"></span><span class="cnum">20</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">21</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul22"><span class="corner"></span><span class="cnum">22</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul24"><span class="corner"></span><span class="cnum">24</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 5 -->
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul27"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul29"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell buffer post" data-id="jul31"><span class="corner" style="--c:var(--muted)"></span><span class="cnum">31</span><div class="cbody"><span class="clabel">BUFFER</span></div></div>
+    <div class="cell empty"></div>
+  </div></div>
+
+  <div class="sech">MONTH 1 — TRACKER <span>— tick a row as you publish · it marks the calendar day done</span></div>
+  <div class="scroll"><table class="tracker">
+    <thead><tr><th class="cdone">✓</th><th>Date</th><th>Format</th><th>Pillar</th><th>Title</th><th>Hook</th><th>CTA</th></tr></thead>
+    <tbody>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul06" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 6 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-story" style="font-weight:600">Brand Story</span></td><td class="ttl">Brand Origin Story</td><td class="hk">“From burning waste to creating wealth…”</td><td class="ct">Follow the journey →</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul08" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 8 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-story" style="font-weight:600">Brand Story</span></td><td class="ttl">Our Journey So Far (8–10 slides)</td><td class="hk">“How a research idea became Kerala’s cellulose startup.”</td><td class="ct">Save &amp; share</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul10" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 10 · Fri</td><td><span class="dbadge static">Static</span></td><td><span class="c-story" style="font-weight:600">Brand Story</span></td><td class="ttl">Founder Quote Card<span class="warnflag" title="Confirm founder name/title before attributing.">⚠</span></td><td class="hk">“Turning Kerala’s agricultural waste into premium materials…”</td><td class="ct">— (awareness)</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul13" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 13 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-educate" style="font-weight:600">Educate</span></td><td class="ttl">What is Microcrystalline Cellulose?</td><td class="hk">“This powder is replacing tree-based ingredients…”</td><td class="ct">Save for later</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul15" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 15 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-educate" style="font-weight:600">Educate</span></td><td class="ttl">From Agri-Waste to High-Purity Cellulose<span class="warnflag" title="Confirm which feedstocks are actually used.">⚠</span></td><td class="hk">“What we actually turn into cellulose.”</td><td class="ct">Comment an application</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul17" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 17 · Fri</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-process" style="font-weight:600">Process</span></td><td class="ttl">Rice Straw to EcoPulp (Timelapse)</td><td class="hk">“Your next cream could start in a rice field.”</td><td class="ct">Share with a formulator</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul20" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 20 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-product" style="font-weight:600">Product</span></td><td class="ttl">Product Introduction — Cellulose Pulp<span class="warnflag" title="Use the correct product name (Ecagro vs EcoPulp@CP).">⚠</span></td><td class="hk">“Thickener. Stabiliser. Vegan. Biodegradable.”</td><td class="ct">DM for details</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul22" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 22 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-sustain" style="font-weight:600">Sustainability</span></td><td class="ttl">Why Sustainability Matters in Cosmetics<span class="warnflag" title="Use verified stats only.">⚠</span></td><td class="hk">“Same performance. Zero tree cutting.”</td><td class="ct">Follow for greener beauty</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul24" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 24 · Fri</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-educate" style="font-weight:600">Compare</span></td><td class="ttl">Our Cellulose vs Traditional Cellulose</td><td class="hk">“Two cellulose sources. One is far greener.”</td><td class="ct">Save &amp; send to your team</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul27" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 27 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-impact" style="font-weight:600">Impact</span></td><td class="ttl">Impact Stat Card<span class="warnflag" title="Fill the number only with a verified figure.">⚠</span></td><td class="hk">“1 ton of our cellulose = ___ trees saved + farmer income.”</td><td class="ct">— (awareness)</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul29" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 29 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-story" style="font-weight:600">Founder</span></td><td class="ttl">Behind the Lab — Meet the Founder<span class="warnflag" title="Confirm personal details before scripting.">⚠</span></td><td class="hk">“Why I started this at the lab bench, not a boardroom.”</td><td class="ct">Q&amp;A sticker</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul31" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 31 · Fri</td><td><span class="dbadge buffer">Buffer</span></td><td><span style="color:var(--muted);font-weight:600">Flex</span></td><td class="ttl">Buffer / Repost top performer</td><td class="hk">Re-share best post / answer a top comment</td><td class="ct">Varies</td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- ================= MONTH 2 ================= -->
+  <div class="mhead">Month 2 — August 2026 <small>5 Reels · 3 Carousels · 3 Static — Applications, Proof &amp; Lead Gen: drive inquiries</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <!-- Week 1: Aug 1 = Sat -->
+    <div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div>
+    <div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div>
+    <div class="cell rest"><span class="cnum">1</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 2 -->
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug03"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug05"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug07"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 3 -->
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug10"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug12"><span class="corner"></span><span class="cnum">12</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">13</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug14"><span class="corner"></span><span class="cnum">14</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">15</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 4 -->
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug17"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug19"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug21"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 5 -->
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug24"><span class="corner"></span><span class="cnum">24</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug26"><span class="corner"></span><span class="cnum">26</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell buffer post" data-id="aug28"><span class="corner" style="--c:var(--muted)"></span><span class="cnum">28</span><div class="cbody"><span class="clabel">BUFFER</span></div></div>
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <!-- Week 6 -->
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">31</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell empty"></div><div class="cell empty"></div><div class="cell empty"></div>
+    <div class="cell empty"></div><div class="cell empty"></div>
+  </div></div>
+
+  <div class="sech">MONTH 2 — TRACKER <span>— tick a row as you publish · it marks the calendar day done</span></div>
+  <div class="scroll"><table class="tracker">
+    <thead><tr><th class="cdone">✓</th><th>Date</th><th>Format</th><th>Pillar</th><th>Title</th><th>Hook</th><th>CTA</th></tr></thead>
+    <tbody>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug03" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 3 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-application" style="font-weight:600">Demo</span></td><td class="ttl">Cellulose in Skincare Formulations</td><td class="hk">“Better feel. Greener choice.”</td><td class="ct">DM ‘SAMPLE’</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug05" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 5 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-tech" style="font-weight:600">How-to</span></td><td class="ttl">How to Use It in Your Formulations<span class="warnflag" title="State usage levels only if technically verified.">⚠</span></td><td class="hk">“A formulator’s starting guide.”</td><td class="ct">Comment ‘TDS’</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug07" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 7 · Fri</td><td><span class="dbadge static">Static</span></td><td><span class="c-product" style="font-weight:600">Product</span></td><td class="ttl">Product Flatlay</td><td class="hk">“One ingredient. Three industries.”</td><td class="ct">DM your application</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug10" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 10 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-benefits" style="font-weight:600">Benefits</span></td><td class="ttl">5 Benefits Cosmetic Brands Love</td><td class="hk">“5 reasons formulators are switching.”</td><td class="ct">Save · DM for samples</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug12" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 12 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-application" style="font-weight:600">Demo</span></td><td class="ttl">Cellulose Pulp for Packaging</td><td class="hk">“A plastic alternative that actually works.”</td><td class="ct">DM ‘PACKAGING’</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug14" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 14 · Fri</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-application" style="font-weight:600">Applications</span></td><td class="ttl">Sustainable Packaging Solutions</td><td class="hk">“Where our pulp replaces plastic.”</td><td class="ct">Save &amp; share</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug17" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 17 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-value" style="font-weight:600">Brand Value</span></td><td class="ttl">Value Statement</td><td class="hk">“Science-backed. Farmer-friendly. Planet-positive.”</td><td class="ct">— (reinforcement)</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug19" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 19 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-proof" style="font-weight:600">Social Proof</span></td><td class="ttl">Farmer Success Stories<span class="warnflag" title="Use real, consenting people only.">⚠</span></td><td class="hk">“The waste they used to burn now pays them.”</td><td class="ct">Follow for more</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug21" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 21 · Fri</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-proof" style="font-weight:600">Social Proof</span></td><td class="ttl">Customer / Testimonial Style<span class="warnflag" title="Label as illustrative if not a real customer.">⚠</span></td><td class="hk">“How one brand boosted its green credentials.”</td><td class="ct">DM to start</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug24" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 24 · Mon</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-impact" style="font-weight:600">Impact / Trust</span></td><td class="ttl">Sustainability Report Card<span class="warnflag" title="Verified figures only; mark estimates ‘approx.’">⚠</span></td><td class="hk">“Our impact, in numbers.”</td><td class="ct">DM for our impact deck</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug26" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 26 · Wed</td><td><span class="dbadge static">Static</span></td><td><span class="c-convert" style="font-weight:600">Conversion</span></td><td class="ttl">CTA — Samples &amp; Data Sheet</td><td class="hk">“Ready to make your formulations greener?”</td><td class="ct">DM ‘SAMPLE’ / email</td></tr>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug28" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 28 · Fri</td><td><span class="dbadge buffer">Buffer</span></td><td><span style="color:var(--muted);font-weight:600">Flex</span></td><td class="ttl">Buffer / Repost top performer</td><td class="hk">Repost best / FAQ graphic</td><td class="ct">Capture late leads</td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- BONUS IDEA BANK -->
+  <div class="sech">BONUS IDEA BANK <span>— educational, B2B &amp; trust ideas to swap in anytime</span></div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-educate">Myth-bust</span></div>
+      <div class="dtitle">“Is sustainable always less effective?”</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“The biggest myth about green ingredients.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment a myth you’ve heard.</span></div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-story">BTS</span></div>
+      <div class="dtitle">A day in the lab</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“What a sustainable-materials lab actually looks like.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow the science.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge carousel">Carousel</span><span class="dcat c-educate">Glossary</span></div>
+      <div class="dtitle">MCC vs NCC vs nanocellulose</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Three terms every formulator should know.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save for reference.</span></div></div>
+
+    <div class="dcard static"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge static">Static</span><span class="dcat c-impact">Trust</span></div>
+      <div class="dtitle">Certifications &amp; lab-tested badges</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Eco-friendly. Cruelty-free. pH-balanced. Lab-tested.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">— (credibility post)</span></div>
+      <div class="flag">⚠ Show only certifications you actually hold.</div></div>
+
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-product">Spotlight</span></div>
+      <div class="dtitle">Rice straw cellulose in skincare</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“The ingredient hiding in your moisturiser — from a rice field.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Want it in your line? DM us.</span></div></div>
+
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge carousel">Carousel</span><span class="dcat c-proof">Expo</span></div>
+      <div class="dtitle">Event / expo recap</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Where we showed up this month.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Meeting us next? Comment below.</span></div></div>
+  </div>
+
+  <!-- HOW TO RUN IT -->
+  <div class="sech">HOW TO RUN IT — RHYTHM, STYLE &amp; PRIORITIES</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">22</div><div class="l">posts across 2 months</div></div>
+    <div class="chip"><div class="n">11</div><div class="l">posts per month (+1 buffer)</div></div>
+    <div class="chip"><div class="n">5 · 3 · 3</div><div class="l">Reels · Carousels · Static / month</div></div>
+    <div class="chip"><div class="n">M·W·F</div><div class="l">posting days, rest between</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Caption style</h3><ul>
+      <li>“Same performance. Zero tree cutting.”</li>
+      <li>“Wealth from waste.”</li>
+      <li>“Science-backed. Farmer-friendly. Planet-positive.”</li>
+      <li>“Your next cream could start in a rice field.”</li>
+    </ul></div>
+    <div class="pcard"><h3>Prioritise these</h3><ul>
+      <li>Founder &amp; origin story (trust)</li>
+      <li>Clear education explainers</li>
+      <li>Application &amp; texture demos</li>
+      <li>Proof: farmers, impact, testimonials</li>
+    </ul></div>
+    <div class="pcard"><h3>The arc</h3><ul>
+      <li>Month 1: build trust &amp; awareness</li>
+      <li>Month 2: prove performance → convert</li>
+      <li>Lead with mission, close with the ask</li>
+      <li>Every post earns the DM in Month 2</li>
+    </ul></div>
+  </div>
+
+  <!-- INQUIRY PLAYBOOK -->
+  <div class="sech">SAMPLE-REQUEST / INQUIRY PLAYBOOK <span>— layer over Month 2 to turn reach into leads</span></div>
+  <div class="tl">
+    <div class="tlcard"><div class="when">ATTRACT</div><p>Demos &amp; benefit reels that stop the scroll for formulators and packaging buyers. Reach first, depth second.</p></div>
+    <div class="tlcard"><div class="when">EDUCATE</div><p>How-to carousel + TDS offer. Give real technical value so the right people self-identify and reach out.</p></div>
+    <div class="tlcard"><div class="when">PROVE</div><p>Farmer stories, impact report card, testimonials. Lower perceived risk before you ask for the inquiry.</p></div>
+    <div class="tlcard"><div class="when">CONVERT</div><p>Direct CTA post: DM ‘SAMPLE’ for the kit + data sheet. One clear, low-friction action.</p></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">10 LEAD-GEN IDEAS</div>
+  <div class="ideas">
+    <div class="idea"><span><b>“DM ‘SAMPLE’.”</b> Pinned CTA with a clear next step.</span></div>
+    <div class="idea"><span><b>Free TDS offer.</b> “Comment ‘TDS’ and we’ll send the data sheet.”</span></div>
+    <div class="idea"><span><b>Before/after texture demo.</b> Show the ingredient performing.</span></div>
+    <div class="idea"><span><b>Application-of-the-week.</b> One use case per post (cosmetics, packaging, paints).</span></div>
+    <div class="idea"><span><b>“Switching is easier than you think.”</b> Address the objection directly.</span></div>
+    <div class="idea"><span><b>Farmer impact spotlight.</b> Humanise the supply chain.</span></div>
+    <div class="idea"><span><b>Certifications post.</b> Build buyer confidence (real ones only).</span></div>
+    <div class="idea"><span><b>Q&amp;A sticker.</b> “Ask us anything about cellulose.”</span></div>
+    <div class="idea"><span><b>Sample-kit reveal.</b> Show what a requester actually receives.</span></div>
+    <div class="idea"><span><b>Case-style story.</b> A real (or clearly illustrative) switch journey.</span></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">CTA-DAY POSTING SEQUENCE</div>
+  <div class="seq">
+    <div class="step"><div class="t">MORNING</div><div class="d">Teaser story: “Something for formulators today.”</div></div>
+    <div class="step"><div class="t">MIDDAY</div><div class="d">Feed CTA post (DM ‘SAMPLE’)</div></div>
+    <div class="step"><div class="t">AFTERNOON</div><div class="d">Story: benefit recap + DM sticker</div></div>
+    <div class="step"><div class="t">EVENING</div><div class="d">Story: answer an FAQ as a graphic</div></div>
+    <div class="step"><div class="t">NEXT DAY</div><div class="d">Repost a saved comment / inquiry as proof</div></div>
+  </div>
+
+  <!-- STORY POLLS -->
+  <div class="sech">STORY POLLS <span>(run on top of the feed — reuse any week)</span></div>
+  <div class="cards">
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Did you know rice straw can become skincare?</div><div class="opts"><span class="opt">Yes</span><span class="opt">No way</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Would you switch to a greener ingredient if performance matched?</div><div class="opts"><span class="opt">Absolutely</span><span class="opt">Need proof first</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Which application interests you most?</div><div class="opts"><span class="opt">Cosmetics</span><span class="opt">Packaging</span><span class="opt">Paper</span><span class="opt">Paints</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">What matters more in your sourcing?</div><div class="opts"><span class="opt">Sustainability</span><span class="opt">Performance</span><span class="opt">Both equally</span></div></div>
+  </div>
+
+  <!-- VERIFY BEFORE PUBLISHING -->
+  <div class="sech">BEFORE YOU PUBLISH</div>
+  <div class="verify">
+    <h3>⚠ VERIFY THESE — they couldn’t be confirmed from the brand materials, or conflict with the official product PDF</h3>
+    <ul>
+      <li><b>Product names.</b> Official docs name the B2B product <b>Ecagro</b> and the skincare range <b>Celluglitz</b>. The plan uses “EcoPulp@CP / Pulp@PC”. Pick the canonical names and apply them consistently.</li>
+      <li><b>Founder details.</b> “Dr. Reshmy R”, “10+ years of research”, “started at 45”, and “Kerala’s first women-led cellulose plant” could not be verified here. The docs do confirm women-led recognition, Startup India / Kerala Startup Mission (WE Start) support, and a Mavelikara HQ. Confirm the name/title and any “first/only” claim before publishing.</li>
+      <li><b>Statistics.</b> All impact figures (“1 ton = ___ trees”, deforestation %, carbon/waste numbers) are placeholders. Fill them only with numbers you can trace to a real source; label internal estimates “approx.”</li>
+      <li><b>Feedstock.</b> The official doc centres on rice straw; the plan also lists bagasse, jackfruit and pineapple. Confirm what’s actually used before stating it as fact.</li>
+      <li><b>Testimonials.</b> Use a real, consented customer — or frame the testimonial reel transparently as illustrative. Use a brand’s name/logo only with written permission.</li>
+    </ul>
+  </div>
+
+  <p class="foot">
+    <b>Your 2-month plan, 11 posts per month + a buffer slot</b> — Month 1 builds trust through story, education and the founder; Month 2 proves performance through demos, applications and social proof, then closes on a sample-request CTA. In the calendars, <b style="color:var(--reel)">green = Reel</b>, <b style="color:var(--car)">gold = Carousel</b>, <b style="color:var(--static)">teal = Static</b>; grids are mapped to <b>July &amp; August 2026</b> on a Mon · Wed · Fri rhythm — shift the dates to match your real start. Story polls run on top of the feed and aren’t counted in the 3×/week cadence. <b>Tick a row in the tracker table as you publish</b> and the matching day on the calendar is marked done automatically.
+    Posting-time and best-practice framing here is general guidance, not verified data for your audience — once you have 2–3 weeks of Instagram Insights, post when <b>your</b> followers are most active. Everything in the amber “Before you publish” panel should be confirmed before it goes live.
+  </p>
+
+</div>
+
+<script>
+(function(){
+  var KEY="cellupro_plan_done_v1", TOTAL=24, state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){state={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+  function apply(id,on){
+    document.querySelectorAll('.tick[data-id="'+id+'"]').forEach(function(t){
+      t.checked=on; var r=t.closest('tr'); if(r) r.classList.toggle('done',on);
+    });
+    document.querySelectorAll('.cell[data-id="'+id+'"]').forEach(function(c){ c.classList.toggle('done',on); });
+  }
+  function progress(){
+    var done=0; Object.keys(state).forEach(function(k){if(state[k])done++;});
+    var bar=document.getElementById('progbar'), lab=document.getElementById('proglab');
+    if(lab) lab.textContent=done+' of '+TOTAL+' scheduled posts done';
+    if(bar) bar.style.width=(done/TOTAL*100)+'%';
+  }
+  var ticks=document.querySelectorAll('.tick');
+  ticks.forEach(function(t){ if(state[t.getAttribute('data-id')]) apply(t.getAttribute('data-id'),true); });
+  ticks.forEach(function(t){
+    t.addEventListener('change',function(){
+      var id=t.getAttribute('data-id'); state[id]=t.checked; apply(id,t.checked); save(); progress();
+    });
+  });
+  var rb=document.getElementById('resetbtn');
+  if(rb) rb.addEventListener('click',function(){
+    state={}; save();
+    document.querySelectorAll('.tick').forEach(function(t){t.checked=false;var r=t.closest('tr');if(r)r.classList.remove('done');});
+    document.querySelectorAll('.cell.done').forEach(function(c){c.classList.remove('done');});
+    progress();
+  });
+  progress();
+})();
+</script>
+</body>
+</html>
