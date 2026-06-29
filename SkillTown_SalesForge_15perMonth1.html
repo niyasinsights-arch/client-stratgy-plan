@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Town — Sales Forge Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E0E; --panel:#171717; --cell:#141414; --line:rgba(255,255,255,.07);
+    --txt:#F3F4F6; --muted:#9CA3AF; --dim:#5C6470;
+    --reel:#F97316;  --reel-bg:rgba(249,115,22,.14);
+    --car:#EC4899;   --car-bg:rgba(236,72,153,.13);
+    --static:#2DD4BF;--static-bg:rgba(45,212,191,.14);
+    --p1:#FBBF24; --p2:#A78BFA; --p3:#38BDF8; --p4:#4ADE80; --p5:#FB7185;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+
+  .wordmark{font-size:32px;font-weight:800;letter-spacing:-.02em;}
+  .wordmark .o{color:var(--reel);}
+  .tagline{font-size:13px;color:var(--muted);margin-top:3px;}
+  .stripe{height:3px;width:150px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--car),var(--static));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:var(--txt);font-weight:600;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 4px;font-size:11.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.c{background:var(--car);} .dot.s{background:var(--static);}
+
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .mhead .pill{font-size:10.5px;font-weight:800;letter-spacing:.04em;color:#0E0E0E;border-radius:6px;padding:3px 9px;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .mgoal{font-size:12px;color:var(--muted);margin:0 0 12px;max-width:880px;}
+  .mgoal b{color:var(--txt);}
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:96px;padding:10px;display:flex;flex-direction:column;}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}      .reel .cicon,.reel .clabel{color:var(--reel);}
+  .carousel{--c:var(--car);}   .carousel .cicon,.carousel .clabel{color:var(--car);}
+  .static{--c:var(--static);}  .static .cicon,.static .clabel{color:var(--static);}
+
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:26px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .dcard.reel{--c:var(--reel);} .dcard.carousel{--c:var(--car);} .dcard.static{--c:var(--static);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dbadge.static{background:var(--static-bg);color:var(--static);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:700;}
+  .c-p1{color:var(--p1);} .c-p2{color:var(--p2);} .c-p3{color:var(--p3);} .c-p4{color:var(--p4);} .c-p5{color:var(--p5);}
+  .dtitle{font-size:14px;font-weight:600;color:var(--txt);margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 36px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--reel);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:#D5D8DD;}
+
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--reel);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:var(--txt);}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:#CFD3D9;margin:5px 0;line-height:1.5;}
+
+  .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .tlcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .tlcard.m1{--c:var(--p4);} .tlcard.m2{--c:var(--p3);} .tlcard.m3{--c:var(--reel);}
+  .tlcard .when{font-size:10.5px;font-weight:800;letter-spacing:.08em;}
+  .tlcard.m1 .when{color:var(--p4);} .tlcard.m2 .when{color:var(--p3);} .tlcard.m3 .when{color:var(--reel);}
+  .tlcard p{font-size:12px;color:#CFD3D9;margin:7px 0 0;line-height:1.5;}
+  .tlcard code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--reel);}
+
+  .arc{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin-bottom:14px;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .step .t{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--reel);}
+  .step .d{font-size:12.5px;color:#CFD3D9;margin-top:3px;line-height:1.4;font-weight:600;}
+
+  .pollcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pollcard .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--static);}
+  .pollcard .q{font-size:13.5px;font-weight:600;color:var(--txt);margin:6px 0 10px;}
+  .pollcard .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:#CFD3D9;background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;
+    border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+
+  @media (max-width:760px){.cards,.panel-grid,.tl{grid-template-columns:1fr;}.wordmark{font-size:27px;}}
+  @media print{
+    body{background:#0E0E0E;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="wordmark">SKILL<span class="o">TOWN</span></div>
+  <div class="tagline">Sales Forge · "Think Like a Closer" · Learn → Apply → Grow</div>
+  <div class="stripe"></div>
+  <h1>Sales Forge — 3-Month Content Plan</h1>
+  <div class="stats"><b>45 posts</b> · 24 Reels · 12 Carousels · 9 Static · 15 per month · posting every 2nd day with rest days between</div>
+
+  <div class="legend">
+    <span><i class="dot r"></i>Reel</span>
+    <span><i class="dot c"></i>Carousel</span>
+    <span><i class="dot s"></i>Static post</span>
+    <span style="color:var(--dim)">·&nbsp;&nbsp;P1–P5 tags = content pillar · polls &amp; Q&amp;As run as Stories</span>
+  </div>
+
+  <!-- ================= MONTH 1 ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--p4)">MONTH 1</span> Awareness <small>— "Sales is an opportunity" · 8 Reels · 4 Carousels · 3 Static</small></div>
+  <p class="mgoal"><b>Goal:</b> Make people see sales as a real, valuable career. No admission push. Pillars 1 &amp; 5 heavy, light 4.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell static"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">MONTH 1 — DAY BY DAY</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Why Sales is the Highest Income Skill in 2026</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The highest-income skill of 2026."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment 💯 if you're learning it.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Sales career scope: roles, salary, growth ladder</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Where a sales career can actually take you."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save for later 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">How Nike &amp; FIFA show the power of sales</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Nike doesn't sell shoes. It sells belief."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Tag someone who thinks sales = selling.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge static">Static</span><span class="dcat c-p1">P1 · Quote</span></div><div class="dtitle">Mindset quote card — "the most underrated skill"</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The skill every career secretly needs."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; share 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge reel">Reel</span><span class="dcat c-p5">P5 · Growth</span></div><div class="dtitle">Story-Reel: struggling fresher → top closer</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"No sales degree. Now he leads a team."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Double-tap if this is the goal.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Myths vs reality of a sales job</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Everything you got wrong about sales."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Which myth did you believe?</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Salary potential — what sales pays at each level</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"What sales actually pays, level by level."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment your guess 👀</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge static">Static</span><span class="dcat c-p4">P4 · Mentor</span></div><div class="dtitle">Trainer credibility card — meet the team</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Trained by people who've actually closed deals."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow to meet the team.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">"Sales is an opportunity" — the global-demand angle</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every company on earth needs this skill."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment OPPORTUNITY.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Why Every Company Needs Sales Professionals</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"No company survives without sales."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; tag a founder 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge reel">Reel</span><span class="dcat c-p5">P5 · Growth</span></div><div class="dtitle">A deal that changed someone's life</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"One deal. Everything changed."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Share this to your story.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge static">Static</span><span class="dcat c-p5">P5 · Growth</span></div><div class="dtitle">Role models in sales &amp; business</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"They all started in sales."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Who inspires you? 👇</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Sales vs Marketing: What's the Difference?</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Sales ≠ marketing. Here's the real difference."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment which one fits you.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 27</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">3 Skills Every Salesperson Must Master</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Master these 3. Outsell everyone."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; start practising 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 29</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Inspiring brand/event impact (FIFA-style)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"How one campaign moved millions."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Tag someone who needs this push.</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 2 ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--p3)">MONTH 2</span> Engagement &amp; Trust <small>— "Sales is a skill" · psychology series + influencer collabs</small></div>
+  <p class="mgoal"><b>Goal:</b> Build curiosity, interaction &amp; credibility through sales psychology + micro-influencer collabs. Pillars 2 &amp; 3 heavy, support 4 &amp; 1.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell static"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">CO-REEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">CO-REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">MONTH 2 — DAY BY DAY <span>— "Psychology in Sales" #1–#4 live here (#5 opens Month 3)</span></div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-p2">P2 · Psych #1</span></div><div class="dtitle">How psychology shapes every sales conversation</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every sale is psychology first."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow for the full series 🔥</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p2">P2 · Psychology</span></div><div class="dtitle">Deep-dive: intro to sales psychology</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The mind behind every 'yes'."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save — you'll use this 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Reel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Why Learning Sales Early Matters</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The earlier you learn sales, the further you go."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment if you wish you'd started sooner.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge static">Static</span><span class="dcat c-p2">P2 · Quote</span></div><div class="dtitle">Psychology quote card</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"People buy emotion, then justify with logic."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save this 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge reel">Reel</span><span class="dcat c-p2">P2 · Psych #2</span></div><div class="dtitle">Building rapport &amp; trust fast</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Make anyone trust you in 30 seconds."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Drop a 🔥 if you'll use this.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">Objection-handling scripts for beginners</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"What to say when they say no."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save these lines 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Reel</span><span class="dcat c-p4">P4 · Brand</span></div><div class="dtitle">What Makes Our Program Different?</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Not another theory course."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'INFO' to see the difference.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge static">Static</span><span class="dcat c-p4">P4 · Mentor</span></div><div class="dtitle">Trainer insight card — one tip from real experience</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"One tip from 6 years on the field."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM your question.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Reel</span><span class="dcat c-p2">P2 · Psych #3</span></div><div class="dtitle">Handling objections (the psychology of "no")</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every 'no' has a reason."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment the toughest 'no' you've faced.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p1">P1 · Opportunity</span></div><div class="dtitle">Why Companies Need Skilled Sales Professionals</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every company is hiring closers."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; share 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge reel">Co-Reel</span><span class="dcat c-p4">P4 · Influencer</span></div><div class="dtitle">w/ Riyas Bin Hakkim — sales mindset</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"We asked Riyas about the closer's mindset."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow @riyasbinhakkim 🙌</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge static">Static</span><span class="dcat c-p4">P4 · Announce</span></div><div class="dtitle">Joint Live announcement — Riyas + Fathima</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Two mentors. One live session."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Set a reminder — link in bio.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-p2">P2 · Psych #4</span></div><div class="dtitle">Persuasion &amp; influence (real examples)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The ethical art of influence."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; follow for #5.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 27</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p3">P3 · Brand</span></div><div class="dtitle">Inside the Curriculum</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Here's exactly what you'll learn."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'CURRICULUM' for the full breakdown.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 29</span><span class="dbadge reel">Co-Reel</span><span class="dcat c-p5">P5 · Influencer</span></div><div class="dtitle">w/ Fathima Minha — career clarity</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Fathima on finding career clarity."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow @fathima_minha.t 🙌</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 3 ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--reel)">MONTH 3</span> Consideration &amp; Soft Conversion <small>— "It's learnable → join Skill Town"</small></div>
+  <p class="mgoal"><b>Goal:</b> Connect sales learning to Skill Town through proof &amp; mentors. CTAs go soft, then direct. All pillars, emphasis on 5 &amp; 4. Trainer experience at its strongest.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell static"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-4 4-2-2-4 4"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">25</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+
+    <div class="cell reel"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+
+  <div class="sech">MONTH 3 — DAY BY DAY <span>— proof, mentors &amp; the soft-to-direct admission path</span></div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Reel</span><span class="dcat c-p2">P2 · Psych #5</span></div><div class="dtitle">The power of mindset in closing</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Mindset closes more than scripts."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment CLOSE if you're ready.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p5">P5 · Mentorship</span></div><div class="dtitle">"What structured mentorship looks like"</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Mentorship, not just lectures."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'MENTOR' to know more.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Reel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">"Sales is learnable" — anyone can build this skill</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"You're not born a closer. You're trained."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment ROADMAP.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge static">Static</span><span class="dcat c-p4">P4 · Mentor</span></div><div class="dtitle">Trainer intro card — meet your mentor</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Meet your mentor."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM to connect.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge reel">Reel</span><span class="dcat c-p4">P4 · Mentor</span></div><div class="dtitle">"From the field" trainer story</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"A real story from the field."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment 🙌 for more field stories.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p4">P4 · Mentor</span></div><div class="dtitle">Case study: experience → practical teaching</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"How real experience becomes your lesson."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save this proof 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Reel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">How practical training supports a sales career</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Theory teaches. Practice transforms."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'INFO' for how it works.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge static">Static</span><span class="dcat c-p5">P5 · Proof</span></div><div class="dtitle">Learner outcomes highlight card</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Real people. Real outcomes."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">See yourself here? DM us.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Reel</span><span class="dcat c-p4">P4 · Brand</span></div><div class="dtitle">"Why Skill Town" — Learn → Apply → Grow in action</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Learn. Apply. Grow. Here's how."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment START to begin.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">Inside Sales Forge: what you actually do (live projects)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"What you'll actually do inside Sales Forge."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; DM to enquire 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge reel">Reel</span><span class="dcat c-p3">P3 · Practical</span></div><div class="dtitle">Hands-on vs theory — why practical learning wins</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Why classroom theory keeps failing you."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'BATCH' for the next intake.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge static">Static</span><span class="dcat c-p4">P4 · Convert</span></div><div class="dtitle">Closing enrolment CTA card</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Your seat in Sales Forge is waiting."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Enrol now — DM 'SALES FORGE'.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 25</span><span class="dbadge reel">Reel</span><span class="dcat c-p5">P5 · Proof</span></div><div class="dtitle">Student testimonial / success example (with permission)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"She did it. So can you."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Your turn next — DM to join.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 27</span><span class="dbadge carousel">Carousel</span><span class="dcat c-p3">P3 · Brand</span></div><div class="dtitle">Program value recap + how to join</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Everything Sales Forge gives you."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM 'JOIN' or link in bio.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 29</span><span class="dbadge reel">Reel</span><span class="dcat c-p4">P4 · Brand</span></div><div class="dtitle">"Skill Town helps you learn it" — the full arc payoff</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Sales is learnable. We'll teach you."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment SALES FORGE to enrol.</span></div></div>
+  </div>
+
+  <!-- HOW TO RUN IT -->
+  <div class="sech">HOW TO RUN IT — RHYTHM, STYLE &amp; PRIORITIES</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">45</div><div class="l">posts across 3 months</div></div>
+    <div class="chip"><div class="n">15</div><div class="l">posts per month</div></div>
+    <div class="chip"><div class="n">8 · 4 · 3</div><div class="l">Reels · Carousels · Static / month</div></div>
+    <div class="chip"><div class="n">Rest</div><div class="l">day between every post</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Hook style</h3><ul>
+      <li>"Nobody told you this in college."</li>
+      <li>"Every sale is psychology first."</li>
+      <li>"You're not born a closer. You're trained."</li>
+      <li>"Your seat in Sales Forge is waiting."</li>
+    </ul></div>
+    <div class="pcard"><h3>Prioritise these</h3><ul>
+      <li>Psychology &amp; mindset reels (highest saves)</li>
+      <li>Real trainer "from the field" stories</li>
+      <li>Student journeys &amp; transformations</li>
+      <li>Influencer collabs (Month 2 trust spike)</li>
+    </ul></div>
+    <div class="pcard"><h3>The arc</h3><ul>
+      <li>Month 1: sales is an opportunity</li>
+      <li>Month 2: sales is a skill (psychology)</li>
+      <li>Month 3: it's learnable → join us</li>
+      <li>Lead with value, close with the program</li>
+    </ul></div>
+  </div>
+
+  <!-- CTA ESCALATION -->
+  <div class="sech">CTA ESCALATION <span>— the admission ask only arrives once trust is built</span></div>
+  <div class="tl">
+    <div class="tlcard m1"><div class="when">MONTH 1 · AWARENESS</div><p>Comment / vote / save / tag. <b style="color:var(--txt)">Zero</b> admission pressure.</p></div>
+    <div class="tlcard m2"><div class="when">MONTH 2 · ENGAGEMENT</div><p>Follow the series · join the Live · DM a question. Light, mentor-led.</p></div>
+    <div class="tlcard m3"><div class="when">MONTH 3 · CONVERSION</div><p>Keyword DMs: <code>MENTOR → INFO → SALES → JOIN → SALES FORGE</code>. Soft, then direct.</p></div>
+  </div>
+
+  <!-- CAMPAIGN ARC -->
+  <div class="sech" style="margin-top:24px;">CAMPAIGN ARC</div>
+  <div class="arc">
+    <div class="step"><div class="t">STEP 1</div><div class="d">Sales is an opportunity</div></div>
+    <div class="step"><div class="t">STEP 2</div><div class="d">Sales is a skill</div></div>
+    <div class="step"><div class="t">STEP 3</div><div class="d">Sales is learnable</div></div>
+    <div class="step"><div class="t">STEP 4</div><div class="d">Skill Town helps you learn it</div></div>
+  </div>
+
+  <!-- STORY BANK -->
+  <div class="sech">STORY POLLS &amp; Q&amp;A BANK <span>— run as daily Stories on top of the feed (not counted in the 15)</span></div>
+  <div class="cards">
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">Did you ever think of sales as a career?</div><div class="opts"><span class="opt">Yes</span><span class="opt">Never</span></div></div>
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">What's your biggest career challenge right now?</div><div class="opts"><span class="opt">No clarity</span><span class="opt">No skills</span><span class="opt">No confidence</span><span class="opt">No job</span></div></div>
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">Skills or mentorship — what would help you more?</div><div class="opts"><span class="opt">Skills</span><span class="opt">Mentorship</span><span class="opt">Both 👇</span></div></div>
+    <div class="pollcard"><div class="ptag">Q&amp;A</div><div class="q">What's stopping you from choosing sales?</div><div class="opts"><span class="opt">Reply with your real reason →</span></div></div>
+  </div>
+
+  <p class="foot">
+    <b>Your 45-post plan across three months</b> — 15 each (8 Reels · 4 Carousels · 3 Static), posting every 2nd day with a rest day between. <b>Month 1</b> builds belief that sales is a real career; <b>Month 2</b> teaches the skill (psychology series + Riyas &amp; Fathima collabs); <b>Month 3</b> connects it to Skill Town and opens the soft-then-direct admission path. In the calendars, <b style="color:var(--reel)">orange = Reel</b>, <b style="color:var(--car)">pink = Carousel</b>, <b style="color:var(--static)">teal = Static post</b>; each grid starts on a Sunday — shift it to match your real start date.
+    <br><br>
+    <b>A few honest notes:</b> your brief said "16" but 8 + 4 + 3 = <b>15</b>, so this is built at 15/month — say the word to add a 16th. <b>Polls &amp; Q&amp;As</b> are not feed posts here; they run as daily Stories (bank above). The <b>two Lives</b> (Month 2) are events promoted via the Day-23 static + Stories. <b>Hooks are suggested opening lines</b> — localise to Malayalam where it fits your audience. <b>DM-keyword CTAs</b> assume keyword auto-replies or inbox monitoring; swap in a Linktree/form link if you prefer. Influencer slots (Month 2, Days 21 &amp; 29) assume @riyasbinhakkim and @fathima_minha.t confirm. Posting days are a suggested rhythm — confirm best times from Instagram Insights.
+  </p>
+
+</div>
+</body>
+</html>
