@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOX — 2-Month Instagram Plan · Speakerbox</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111; --panel:#1F2937; --cell:#111827; --rest:#16181d; --line:#374151;
+    --txt:#E5E7EB; --body:#C9D1DC; --muted:#9CA3AF; --dim:#6B7280;
+    --accent:#F97316;
+    --reel:#F97316;  --reel-bg:rgba(249,115,22,.16);
+    --static:#38BDF8; --static-bg:rgba(56,189,248,.15);
+    --car:#FBBF24;   --car-bg:rgba(251,191,36,.15);
+    --warn:#FBBF24;  --warn-bg:rgba(251,191,36,.10);
+    --story:#F97316; --educate:#A78BFA; --process:#22D3EE; --sustain:#34D399;
+    --product:#F472B6; --proof:#FB7185; --impact:#34D399; --convert:#F97316;
+    --tech:#A78BFA; --value:#FBBF24; --benefits:#34D399; --application:#38BDF8;
+    --sans:'Google Sans','Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:
+      radial-gradient(900px 500px at 85% -8%,rgba(249,115,22,.10),transparent 60%),
+      var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:0 0 60px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{color:#fff;letter-spacing:-.02em;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:13px 22px;border-bottom:1px solid var(--line);background:#0c0c0c;}
+  .topbar img{height:24px;display:block;}
+  .topbar .by{font-size:11px;color:var(--dim);letter-spacing:.04em;}
+
+  .sheet{max-width:1120px;margin:0 auto;padding:30px 20px 0;}
+  .brandrow{display:flex;align-items:center;gap:10px;}
+  .leaf{width:30px;height:30px;flex:0 0 auto;}
+  .wordmark{font-size:31px;font-weight:900;letter-spacing:-.02em;color:#fff;}
+  .wordmark .g{color:var(--accent);}
+  .tm{font-size:11px;font-weight:600;color:var(--muted);vertical-align:super;margin-left:2px;}
+  .tagline{font-size:13px;color:var(--muted);margin-top:4px;}
+  .stripe{height:3px;width:150px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--car),var(--static));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:#fff;font-weight:600;}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 4px;font-size:11.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.s{background:var(--static);} .dot.c{background:var(--car);}
+
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;color:#fff;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:104px;padding:10px;display:flex;flex-direction:column;}
+  .cell.empty{background:transparent;border:none;}
+  .cell.rest{background:var(--rest);}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:10px;font-weight:600;letter-spacing:.08em;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .buffer .clabel{color:var(--muted);font-weight:600;letter-spacing:.1em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}      .reel .cicon,.reel .clabel{color:var(--reel);}
+  .static{--c:var(--static);}  .static .cicon,.static .clabel{color:var(--static);}
+  .carousel{--c:var(--car);}   .carousel .cicon,.carousel .clabel{color:var(--car);}
+
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:24px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .dcard.reel{--c:var(--reel);} .dcard.static{--c:var(--static);} .dcard.carousel{--c:var(--car);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.static{background:var(--static-bg);color:var(--static);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dbadge.buffer{background:rgba(156,163,175,.16);color:var(--muted);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:600;}
+  .c-story{color:var(--story);} .c-educate{color:var(--educate);} .c-process{color:var(--process);}
+  .c-sustain{color:var(--sustain);} .c-product{color:var(--product);} .c-proof{color:var(--proof);}
+  .c-impact{color:var(--impact);} .c-convert{color:var(--convert);} .c-tech{color:var(--tech);}
+  .c-value{color:var(--value);} .c-benefits{color:var(--benefits);} .c-application{color:var(--application);}
+  .dtitle{font-size:14.5px;font-weight:600;color:#fff;margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 36px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--accent);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:var(--body);}
+  .flag{font-size:10.5px;color:var(--warn);margin-top:7px;font-weight:600;}
+
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--accent);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:#fff;}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:var(--body);margin:5px 0;line-height:1.5;}
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .tlcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);
+    border-radius:12px;padding:13px 15px;}
+  .tlcard .when{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--accent);}
+  .tlcard p{font-size:12px;color:var(--body);margin:7px 0 0;line-height:1.5;}
+  .ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 18px;counter-reset:idea;}
+  .idea{display:flex;gap:10px;font-size:12.5px;color:var(--body);line-height:1.5;padding:3px 0;}
+  .idea::before{counter-increment:idea;content:counter(idea);flex:0 0 22px;height:22px;
+    display:flex;align-items:center;justify-content:center;border-radius:7px;
+    background:var(--reel-bg);color:var(--reel);font-size:11px;font-weight:700;}
+  .idea b{color:#fff;font-weight:600;}
+  .seq{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;flex:1;min-width:140px;}
+  .step .t{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--accent);}
+  .step .d{font-size:12px;color:var(--body);margin-top:3px;line-height:1.4;}
+  .poll{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .poll .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--static);}
+  .poll .q{font-size:13.5px;font-weight:600;color:#fff;margin:6px 0 10px;}
+  .poll .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:var(--body);background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+  .verify{background:var(--warn-bg);border:1px solid rgba(251,191,36,.30);border-left:3px solid var(--warn);
+    border-radius:12px;padding:15px 18px;}
+  .verify h3{font-size:12px;font-weight:700;letter-spacing:.08em;margin:0 0 10px;color:var(--warn);}
+  .verify ul{margin:0;padding-left:16px;}
+  .verify li{font-size:12.5px;color:var(--body);margin:7px 0;line-height:1.55;}
+  .verify li b{color:#fff;}
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;
+    border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:#fff;font-weight:600;}
+  .kitfoot{text-align:center;margin-top:30px;padding:24px;border-top:1px solid var(--line);}
+  .kitfoot img{height:22px;opacity:.7;margin:0 auto 8px;display:block;}
+  .kitfoot p{color:var(--dim);font-size:11.5px;}
+
+  @media (max-width:760px){
+    .cards,.ideas,.panel-grid,.tl{grid-template-columns:1fr;}
+    .wordmark{font-size:26px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;}
+  }
+  .cal,.dcard,.pcard,.poll,.tlcard,.chip,.step{box-shadow:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);}
+
+  .tick{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:1.6px solid #4B5563;
+    border-radius:5px;background:#0c0c0c;cursor:pointer;position:relative;flex:0 0 auto;transition:.15s;margin:0;}
+  .tick:hover{border-color:var(--accent);}
+  .tick:checked{background:var(--accent);border-color:var(--accent);}
+  .tick:checked::after{content:"";position:absolute;left:5px;top:1.5px;width:4.5px;height:9px;
+    border:solid #111;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .cell .tick{position:absolute;right:8px;bottom:8px;}
+  .cell.done{box-shadow:inset 0 0 0 2px var(--accent);background:var(--reel-bg);}
+  .cell.done .cicon,.cell.done .clabel,.cell.done .cnum{opacity:.5;}
+  .cell.done::after{content:"✓";position:absolute;right:9px;bottom:7px;color:var(--accent);font-weight:800;font-size:13px;}
+  .dcard .tick{margin-right:1px;}
+
+  .progress{margin:16px 0 4px;max-width:560px;}
+  .ptrack{height:8px;background:#0c0c0c;border:1px solid var(--line);border-radius:99px;overflow:hidden;}
+  .pfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--reel),var(--static));transition:width .25s;}
+  .prow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:7px;}
+  .plab{font-size:12px;color:#fff;font-weight:700;}
+  .phint{font-size:11px;color:var(--muted);}
+  .reset{margin-left:auto;font-size:11px;color:var(--muted);background:transparent;border:1px solid var(--line);
+    border-radius:7px;padding:3px 11px;cursor:pointer;font-weight:600;transition:all .2s;}
+  .reset:hover{color:var(--accent);border-color:var(--accent);}
+
+  .tracker{width:100%;border-collapse:separate;border-spacing:0;min-width:880px;font-size:12.5px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);}
+  .tracker th{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+    text-align:left;padding:11px 12px;background:#0f141c;border-bottom:1px solid var(--line);}
+  .tracker th.cdone{text-align:center;width:40px;}
+  .tracker td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--body);line-height:1.45;}
+  .tracker tbody tr:last-child td{border-bottom:none;}
+  .tracker tbody tr:hover{background:#161b24;}
+  .tracker .cdone{text-align:center;}
+  .tracker .nowrap{white-space:nowrap;color:var(--muted);font-weight:600;}
+  .tracker .ttl{font-weight:600;color:#fff;}
+  .tracker .ct{color:var(--muted);}
+  .tracker tr.done td{opacity:.45;}
+  .tracker tr.done .ttl{text-decoration:line-through;text-decoration-color:var(--muted);}
+  .warnflag{color:var(--warn);font-weight:800;cursor:help;margin-left:6px;}
+</style>
+</head>
+<body class="antialiased">
+
+  <div class="topbar">
+    <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer"><img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox"></a>
+    <span class="by">Internal tool · generated with the Speakerbox UI kit</span>
+  </div>
+
+<div class="sheet">
+
+  <div class="brandrow">
+    <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8">
+      <path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg>
+    <div><div class="wordmark">MOX <span class="g">VILLAS</span><span class="tm">®</span></div></div>
+  </div>
+  <div class="tagline">Premium Villas &amp; Apartments · Kochi Airport Corridor · Investment-focused · Built on trust</div>
+  <div class="stripe"></div>
+  <h1>2-Month Instagram Content Plan</h1>
+  <div class="stats"><b>22 posts</b> · 10 Reels · 6 Carousels · 6 Static · + 2 buffer slots · 11 per month · 3 posts/week (Mon · Wed · Fri)</div>
+
+  <div class="legend">
+    <span><i class="dot r"></i>Reel</span>
+    <span><i class="dot c"></i>Carousel</span>
+    <span><i class="dot s"></i>Static</span>
+  </div>
+
+  <div class="progress">
+    <div class="ptrack"><div id="progbar" class="pfill"></div></div>
+    <div class="prow">
+      <span id="proglab" class="plab">0 of 24 scheduled posts done</span>
+      <span class="phint">Tick a post as you publish it · saves in this browser</span>
+      <button id="resetbtn" class="reset" type="button">Reset</button>
+    </div>
+  </div>
+
+  <div class="mhead">Month 1 — July 2026 <small>5 Reels · 3 Carousels · 3 Static — Foundation &amp; Awareness: build trust</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell rest"><span class="cnum">1</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">3</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">5</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul06"><span class="corner"></span><span class="cnum">6</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">7</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul08"><span class="corner"></span><span class="cnum">8</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul10"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul13"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul15"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul17"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">19</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul20"><span class="corner"></span><span class="cnum">20</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">21</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul22"><span class="corner"></span><span class="cnum">22</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="jul24"><span class="corner"></span><span class="cnum">24</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="jul27"><span class="corner"></span><span class="cnum">27</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="jul29"><span class="corner"></span><span class="cnum">29</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell buffer post" data-id="jul31"><span class="corner" style="--c:var(--dim)"></span><span class="cnum">31</span><div class="cbody"><span class="clabel">BUFFER</span></div></div>
+    <div class="cell empty"></div>
+  </div></div>
+
+  <div class="sech">MONTH 1 — TRACKER <span>— tick a row as you publish · it marks the calendar day done</span></div>
+  <div class="scroll"><table class="tracker">
+    <thead><tr><th class="cdone">✓</th><th>Date</th><th>Format</th><th>Pillar</th><th>Title</th><th>Hook</th><th>CTA</th></tr></thead>
+    <tbody>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul06" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 6 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-story" style="font-weight:600">Brand Story</span></td><td class="ttl">Behind Every MOX Home</td><td class="hk">“We don’t just build homes — we build trust you can move into.”</td><td class="ct">Follow the journey →</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul08" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 8 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-story" style="font-weight:600">Brand Story</span></td><td class="ttl">The MOX Standard (6 slides)</td><td class="hk">“What we refuse to compromise on.”</td><td class="ct">Save &amp; share</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul10" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 10 · Fri</td><td><span class="dbadge static">Static</span></td><td><span class="c-value" style="font-weight:600">Trust</span></td><td class="ttl">Trust, Built In — Credentials Card<span class="warnflag" title="Fill founding year &amp; RERA no. from verified records.">⚠</span></td><td class="hk">“Credibility you can verify.”</td><td class="ct">— (awareness)</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul13" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 13 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-application" style="font-weight:600">Location</span></td><td class="ttl">Most People in Kochi Are Missing This</td><td class="hk">“The smart money is moving to the airport corridor.”</td><td class="ct">Save · follow</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul15" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 15 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-application" style="font-weight:600">Location</span></td><td class="ttl">Airport-Corridor Location Advantages<span class="warnflag" title="Source every infrastructure claim.">⚠</span></td><td class="hk">“Location is the one thing you can never renovate.”</td><td class="ct">DM ‘LOCATION’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul17" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 17 · Fri</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-tech" style="font-weight:600">AI Video</span></td><td class="ttl">AI Visualization — Step Inside<span class="warnflag" title="Label clearly as an AI-generated visualization, not real footage.">⚠</span></td><td class="hk">“See your future home before it’s built.”</td><td class="ct">DM ‘TOUR’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul20" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 20 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-educate" style="font-weight:600">Education</span></td><td class="ttl">Buyer’s Checklist Card</td><td class="hk">“Don’t commit to a villa without knowing this.”</td><td class="ct">DM ‘CHECKLIST’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul22" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 22 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-educate" style="font-weight:600">Education</span></td><td class="ttl">2 Things to Check Before You Buy</td><td class="hk">“Location fundamentals + developer track record.”</td><td class="ct">Comment ‘TWO’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul24" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 24 · Fri</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-educate" style="font-weight:600">Education</span></td><td class="ttl">Why Invest Near Kochi Airport (Data)<span class="warnflag" title="Every figure must be sourced.">⚠</span></td><td class="hk">“The case for the corridor, in numbers.”</td><td class="ct">Save · DM ‘WHY’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul27" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 27 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-story" style="font-weight:600">People</span></td><td class="ttl">Meet the People Who Build Your Home<span class="warnflag" title="Confirm names/roles before tagging.">⚠</span></td><td class="hk">“A home is only as good as the hands that build it.”</td><td class="ct">— (trust)</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul29" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 29 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-process" style="font-weight:600">Project</span></td><td class="ttl">Construction Update — See the Progress</td><td class="hk">“Real work, real timelines.”</td><td class="ct">Follow for monthly updates</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="jul31" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Jul 31 · Fri</td><td><span class="dbadge buffer">Buffer</span></td><td><span style="color:var(--dim);font-weight:600">Flex</span></td><td class="ttl">Buffer / Repost top performer</td><td class="hk">Re-share best post / answer a top comment</td><td class="ct">Varies</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="mhead">Month 2 — August 2026 <small>5 Reels · 3 Carousels · 3 Static — Desire, Proof &amp; Conversion: drive site visits</small></div>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell rest"><span class="cnum">1</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug03"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug05"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug07"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">9</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug10"><span class="corner"></span><span class="cnum">10</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">11</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug12"><span class="corner"></span><span class="cnum">12</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">13</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug14"><span class="corner"></span><span class="cnum">14</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">15</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug17"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug19"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel post" data-id="aug21"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">REEL</span></div></div>
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">23</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel post" data-id="aug24"><span class="corner"></span><span class="cnum">24</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell static post" data-id="aug26"><span class="corner"></span><span class="cnum">26</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.5"/><path d="M5 18l4.5-4 3 2.5L16 12l3 3"/></svg></span><span class="clabel">STATIC</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell buffer post" data-id="aug28"><span class="corner" style="--c:var(--dim)"></span><span class="cnum">28</span><div class="cbody"><span class="clabel">BUFFER</span></div></div>
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">31</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+    <div class="cell empty"></div>
+  </div></div>
+
+  <div class="sech">MONTH 2 — TRACKER <span>— tick a row as you publish · it marks the calendar day done</span></div>
+  <div class="scroll"><table class="tracker">
+    <thead><tr><th class="cdone">✓</th><th>Date</th><th>Format</th><th>Pillar</th><th>Title</th><th>Hook</th><th>CTA</th></tr></thead>
+    <tbody>
+        <tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug03" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 3 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-product" style="font-weight:600">Lifestyle</span></td><td class="ttl">Pure Luxury, All in One Beat</td><td class="hk">“Blink and you’ll want to see it again.”</td><td class="ct">DM ‘TOUR’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug05" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 5 · Wed</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-application" style="font-weight:600">Facilities</span></td><td class="ttl">Inside the Amenities<span class="warnflag" title="List only amenities the project actually offers.">⚠</span></td><td class="hk">“Everything you need, within your gate.”</td><td class="ct">DM ‘AMENITIES’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug07" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 7 · Fri</td><td><span class="dbadge static">Static</span></td><td><span class="c-application" style="font-weight:600">Facilities</span></td><td class="ttl">The Clubhouse &amp; Wellness Spaces<span class="warnflag" title="Show only facilities that exist or are clearly labelled ‘planned’.">⚠</span></td><td class="hk">“Your everyday escape, a lift away.”</td><td class="ct">Link in bio</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug10" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 10 · Mon</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-tech" style="font-weight:600">Smart Home</span></td><td class="ttl">When Your Smart Home Just Gets You</td><td class="hk">“Smart living, built in.”</td><td class="ct">DM ‘SMART’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug12" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 12 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-proof" style="font-weight:600">Social Proof</span></td><td class="ttl">The Sound of a Buyer Ready to Close<span class="warnflag" title="Written consent required for any client footage.">⚠</span></td><td class="hk">“When it all lines up, the decision makes itself.”</td><td class="ct">DM ‘READY’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug14" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 14 · Fri</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-proof" style="font-weight:600">Social Proof</span></td><td class="ttl">Real Investor Story<span class="warnflag" title="Use a real, consenting buyer — or label illustrative.">⚠</span></td><td class="hk">“Why they built their future here.”</td><td class="ct">DM ‘STORY’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug17" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 17 · Mon</td><td><span class="dbadge static">Static</span></td><td><span class="c-value" style="font-weight:600">Brand Value</span></td><td class="ttl">Why MOX — Value Statement</td><td class="hk">“More than a home — a decision you can stand behind.”</td><td class="ct">— (reinforcement)</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug19" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 19 · Wed</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-tech" style="font-weight:600">AI Video</span></td><td class="ttl">An AI Vision of Life Here<span class="warnflag" title="Label clearly as AI-generated; mark renders as renders.">⚠</span></td><td class="hk">“A cinematic look at your future home.”</td><td class="ct">DM ‘VISION’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug21" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 21 · Fri</td><td><span class="dbadge reel">Reel</span></td><td><span class="c-application" style="font-weight:600">Facilities</span></td><td class="ttl">A Tour of the Facilities<span class="warnflag" title="Confirm each facility shown is real or clearly labelled ‘planned’.">⚠</span></td><td class="hk">“Step beyond your front door.”</td><td class="ct">DM ‘VISIT’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug24" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 24 · Mon</td><td><span class="dbadge carousel">Carousel</span></td><td><span class="c-impact" style="font-weight:600">Growth</span></td><td class="ttl">Long-Term Appreciation &amp; Infrastructure<span class="warnflag" title="Projections only; mark estimates ‘approx.’; source infra.">⚠</span></td><td class="hk">“A pattern, not a promise.”</td><td class="ct">Save · DM ‘INFRA’</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug26" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 26 · Wed</td><td><span class="dbadge static">Static</span></td><td><span class="c-convert" style="font-weight:600">Conversion</span></td><td class="ttl">Book a Site Visit — Early-Bird<span class="warnflag" title="Genuine offer terms &amp; real deadline only.">⚠</span></td><td class="hk">“Ready to see it before you decide?”</td><td class="ct">DM ‘VISIT’ / call</td></tr><tr><td class="cdone"><input type="checkbox" class="tick" data-id="aug28" title="Mark as posted" aria-label="Mark as posted"></td><td class="nowrap">Aug 28 · Fri</td><td><span class="dbadge buffer">Buffer</span></td><td><span style="color:var(--dim);font-weight:600">Flex</span></td><td class="ttl">Buffer / Repost top performer</td><td class="hk">Repost best / FAQ graphic</td><td class="ct">Capture late leads</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sech">BONUS IDEA BANK <span>— educational, trust &amp; buyer ideas to swap in anytime</span></div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-educate">Myth-bust</span></div>
+      <div class="dtitle">“Is buying off-plan risky?”</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“The biggest myth about pre-launch property.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Comment a worry you’ve heard.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-story">BTS</span></div>
+      <div class="dtitle">A Day on a MOX Site</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“What actually goes into building your home.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Follow the build.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge carousel">Carousel</span><span class="dcat c-educate">Glossary</span></div>
+      <div class="dtitle">Carpet vs Built-up vs Super Built-up</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Three terms every buyer should know.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">Save for reference.</span></div></div>
+    <div class="dcard static"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge static">Static</span><span class="dcat c-impact">Trust</span></div>
+      <div class="dtitle">Approvals &amp; RERA at a Glance</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Verified. Documented. Transparent.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">— (credibility)</span></div><div class="flag">⚠ Show only approvals you actually hold.</div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge reel">Reel</span><span class="dcat c-application">NRI</span></div>
+      <div class="dtitle">NRI Investing Near the Airport</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“Easier visits, easier oversight.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">DM ‘NRI’ for the remote-buyer guide.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Bonus</span><span class="dbadge carousel">Carousel</span><span class="dcat c-process">Project</span></div>
+      <div class="dtitle">Floor Plans, Decoded</div>
+      <div class="drow hook"><span class="k">HOOK</span><span class="v">“A floor plan is a way of living.”</span></div>
+      <div class="drow cta"><span class="k">CTA</span><span class="v">DM ‘PLANS’ for layouts.</span></div></div>
+  </div>
+
+  <div class="sech">HOW TO RUN IT — RHYTHM, STYLE &amp; PRIORITIES</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">22</div><div class="l">posts across 2 months</div></div>
+    <div class="chip"><div class="n">11</div><div class="l">posts per month (+1 buffer)</div></div>
+    <div class="chip"><div class="n">5 · 3 · 3</div><div class="l">Reels · Carousels · Static / month</div></div>
+    <div class="chip"><div class="n">M·W·F</div><div class="l">posting days, rest between</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Caption style</h3><ul>
+      <li>“Trust you can move into.”</li>
+      <li>“Location is the one thing you can never renovate.”</li>
+      <li>“A pattern, not a promise.”</li>
+      <li>“Future-ready — available now.”</li>
+    </ul></div>
+    <div class="pcard"><h3>Prioritise these</h3><ul>
+      <li>Brand &amp; founder story (trust)</li>
+      <li>Clear investment education</li>
+      <li>The airport-corridor case</li>
+      <li>Proof: buyers, progress, transparency</li>
+    </ul></div>
+    <div class="pcard"><h3>The arc</h3><ul>
+      <li>Month 1: build trust &amp; awareness</li>
+      <li>Month 2: desire → proof → convert</li>
+      <li>Lead with trust, close with the ask</li>
+      <li>Every Month-2 post earns the site visit</li>
+    </ul></div>
+  </div>
+
+  <div class="sech">SITE-VISIT / INQUIRY PLAYBOOK <span>— layer over Month 2 to turn reach into bookings</span></div>
+  <div class="tl">
+    <div class="tlcard"><div class="when">ATTRACT</div><p>Luxury tours &amp; location reels that stop the scroll for Kochi buyers and NRIs. Reach first, depth second.</p></div>
+    <div class="tlcard"><div class="when">EDUCATE</div><p>Buyer checklist + “2 things to check” carousel. Give real value so serious buyers self-identify.</p></div>
+    <div class="tlcard"><div class="when">PROVE</div><p>Buyer stories, construction progress, approvals/RERA transparency. Lower perceived risk before the ask.</p></div>
+    <div class="tlcard"><div class="when">CONVERT</div><p>Direct CTA: DM ‘VISIT’ to book a site tour. One clear, low-friction action.</p></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">10 LEAD-GEN IDEAS</div>
+  <div class="ideas">
+    <div class="idea"><span><b>“DM ‘VISIT’.”</b> Pinned CTA with a clear next step.</span></div>
+    <div class="idea"><span><b>Free buyer checklist.</b> “Comment ‘CHECKLIST’ and we’ll send it.”</span></div>
+    <div class="idea"><span><b>Location map reveal.</b> Show the corridor &amp; real distances (verified).</span></div>
+    <div class="idea"><span><b>Unit-of-the-week.</b> One villa/apartment layout per post.</span></div>
+    <div class="idea"><span><b>“Buying off-plan is safer than you think.”</b> Address the objection directly.</span></div>
+    <div class="idea"><span><b>Buyer spotlight.</b> A real, consented investor story.</span></div>
+    <div class="idea"><span><b>Approvals &amp; RERA post.</b> Build buyer confidence (real details only).</span></div>
+    <div class="idea"><span><b>Q&amp;A sticker.</b> “Ask us anything about buying near the airport.”</span></div>
+    <div class="idea"><span><b>What a site visit includes.</b> Show exactly what a visit looks like.</span></div>
+    <div class="idea"><span><b>Case-style story.</b> A real (or clearly illustrative) buyer journey.</span></div>
+  </div>
+
+  <div class="sech" style="margin-top:24px;">CTA-DAY POSTING SEQUENCE</div>
+  <div class="seq">
+    <div class="step"><div class="t">MORNING</div><div class="d">Teaser story: “Something for Kochi buyers today.”</div></div>
+    <div class="step"><div class="t">MIDDAY</div><div class="d">Feed CTA post (DM ‘VISIT’)</div></div>
+    <div class="step"><div class="t">AFTERNOON</div><div class="d">Story: benefit recap + DM sticker</div></div>
+    <div class="step"><div class="t">EVENING</div><div class="d">Story: answer an FAQ as a graphic</div></div>
+    <div class="step"><div class="t">NEXT DAY</div><div class="d">Repost a saved enquiry as proof</div></div>
+  </div>
+
+  <div class="sech">STORY POLLS <span>(run on top of the feed — reuse any week)</span></div>
+  <div class="cards">
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Airport proximity or city centre — what matters more for investment?</div><div class="opts"><span class="opt">Airport</span><span class="opt">City centre</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Would you buy off-plan if the developer’s track record was strong?</div><div class="opts"><span class="opt">Yes</span><span class="opt">Need proof first</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">Which home fits you?</div><div class="opts"><span class="opt">Villa</span><span class="opt">Apartment</span><span class="opt">Still deciding</span></div></div>
+    <div class="poll"><div class="ptag">POLL</div><div class="q">What matters most in your decision?</div><div class="opts"><span class="opt">Location</span><span class="opt">Price</span><span class="opt">Trust</span></div></div>
+  </div>
+
+  <div class="sech">BEFORE YOU PUBLISH</div>
+  <div class="verify">
+    <h3>⚠ VERIFY THESE — fill or confirm before anything goes live</h3>
+    <ul>
+      <li><b>Project name.</b> The plan uses “the airport-corridor project / [Project Name]”. Confirm the actual project (e.g. Creek Town, Coral Bay, or other) and apply it consistently.</li>
+      <li><b>Brand details.</b> Founding year and any “trusted since / first / only” claim are placeholders. Confirm before publishing.</li>
+      <li><b>RERA.</b> Show your project’s RERA registration number where required. The Jul 10 and approvals posts reference it as a placeholder.</li>
+      <li><b>AI videos.</b> Jul 17 &amp; Aug 19 are AI-generated visualizations — label them clearly as such and mark any render as a render.</li>
+      <li><b>Facilities.</b> Aug 5, 7 &amp; 21 cover amenities — show only facilities that genuinely exist or are clearly labelled “planned”.</li>
+      <li><b>Statistics.</b> Drive-times, rental yields, appreciation % and infrastructure are placeholders. Fill only with sourced numbers; label estimates “approx.”; frame appreciation as a projection.</li>
+      <li><b>Testimonials.</b> Use real, consented buyers (Aug 12 &amp; 14) — or label the reel illustrative. Use a person’s name/face only with written permission.</li>
+      <li><b>Offers.</b> “Early-bird / limited-time” (Aug 26) must reflect genuine terms, a real deadline and true availability.</li>
+    </ul>
+  </div>
+
+  <p class="foot">
+    <b>Your 2-month plan, 11 posts per month + a buffer slot</b> — Month 1 builds the MOX brand through story, the airport-corridor location case and investment education; Month 2 creates desire through lifestyle, AI visualizations and facilities, proves it with buyer stories and progress, then closes on a site-visit CTA. In the calendars, <b style="color:var(--reel)">orange = Reel</b>, <b style="color:var(--car)">amber = Carousel</b>, <b style="color:var(--static)">blue = Static</b>; grids are mapped to <b>July &amp; August 2026</b> on a Mon · Wed · Fri rhythm — shift the dates to match your real start. Story polls run on top of the feed and aren’t counted in the 3×/week cadence. <b>Tick a row in the tracker as you publish</b> and the matching calendar day is marked done automatically (saved in this browser).
+    Posting-time guidance here is general, not verified for your audience — once you have 2–3 weeks of Instagram Insights, post when <b>your</b> followers are most active. Everything in the amber “Before you publish” panel should be confirmed before it goes live.
+  </p>
+
+  <div class="kitfoot">
+    <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer"><img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox"></a>
+    <p>Styled with the Speakerbox Internal UI Kit</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var KEY="mox_plan_done_v1", TOTAL=24, state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{};}catch(e){state={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+  function apply(id,on){
+    document.querySelectorAll('.tick[data-id="'+id+'"]').forEach(function(t){
+      t.checked=on; var r=t.closest('tr'); if(r) r.classList.toggle('done',on);
+    });
+    document.querySelectorAll('.cell[data-id="'+id+'"]').forEach(function(c){ c.classList.toggle('done',on); });
+  }
+  function progress(){
+    var done=0; Object.keys(state).forEach(function(k){if(state[k])done++;});
+    var bar=document.getElementById('progbar'), lab=document.getElementById('proglab');
+    if(lab) lab.textContent=done+' of '+TOTAL+' scheduled posts done';
+    if(bar) bar.style.width=(done/TOTAL*100)+'%';
+  }
+  var ticks=document.querySelectorAll('.tick');
+  ticks.forEach(function(t){ if(state[t.getAttribute('data-id')]) apply(t.getAttribute('data-id'),true); });
+  ticks.forEach(function(t){
+    t.addEventListener('change',function(){
+      var id=t.getAttribute('data-id'); state[id]=t.checked; apply(id,t.checked); save(); progress();
+    });
+  });
+  var rb=document.getElementById('resetbtn');
+  if(rb) rb.addEventListener('click',function(){
+    state={}; save();
+    document.querySelectorAll('.tick').forEach(function(t){t.checked=false;var r=t.closest('tr');if(r)r.classList.remove('done');});
+    document.querySelectorAll('.cell.done').forEach(function(c){c.classList.remove('done');});
+    progress();
+  });
+  progress();
+})();
+</script>
+</body>
+</html>
