@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOX — 360° Marketing Strategy · Speakerbox</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111; --panel:#1F2937; --cell:#111827; --line:#374151;
+    --txt:#E5E7EB; --body:#C9D1DC; --muted:#9CA3AF; --dim:#6B7280;
+    --accent:#F97316; --accent-bg:rgba(249,115,22,.14);
+    --green:#34D399; --green-bg:rgba(52,211,153,.13);
+    --blue:#38BDF8; --blue-bg:rgba(56,189,248,.13);
+    --violet:#A78BFA; --violet-bg:rgba(167,139,250,.13);
+    --amber:#FBBF24; --amber-bg:rgba(251,191,36,.12);
+    --rose:#FB7185;
+    --sans:'Google Sans','Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:
+      radial-gradient(1000px 560px at 88% -8%,rgba(249,115,22,.10),transparent 60%),
+      var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6;
+    padding:0 0 70px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{color:#fff;letter-spacing:-.02em;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:#fb923c;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:13px 22px;border-bottom:1px solid var(--line);background:#0c0c0c;position:sticky;top:0;z-index:50;}
+  .topbar img{height:24px;display:block;}
+  .topbar .by{font-size:11px;color:var(--dim);letter-spacing:.04em;}
+
+  .sheet{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* HERO */
+  .hero{padding:48px 0 30px;border-bottom:1px solid var(--line);}
+  .brandrow{display:flex;align-items:center;gap:10px;}
+  .leaf{width:34px;height:34px;flex:0 0 auto;}
+  .wordmark{font-size:30px;font-weight:900;letter-spacing:-.02em;color:#fff;}
+  .wordmark .g{color:var(--accent);}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-top:18px;}
+  .hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;margin:8px 0 10px;line-height:1.05;}
+  .hero p{color:var(--muted);max-width:680px;font-size:15px;}
+  .hero .meta{margin-top:16px;display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:var(--dim);}
+  .hero .meta b{color:#fff;}
+
+  /* CONTENTS */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;}
+  .toc a{font-size:12px;font-weight:600;color:var(--body);background:var(--cell);border:1px solid var(--line);
+    border-radius:8px;padding:6px 11px;transition:.2s;}
+  .toc a:hover{border-color:var(--accent);color:#fff;}
+
+  /* SECTION */
+  .section{padding:38px 0 10px;border-bottom:1px solid var(--line);scroll-margin-top:60px;}
+  .secnum{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.1em;}
+  .section h2{font-size:26px;font-weight:800;margin:4px 0 6px;}
+  .lead{color:var(--muted);font-size:14.5px;max-width:760px;margin-bottom:18px;}
+  .p{color:var(--body);font-size:14px;margin:10px 0;max-width:820px;}
+  .h3{font-size:16px;font-weight:700;color:#fff;margin:22px 0 10px;}
+
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+  .card.rec{border-color:var(--accent);box-shadow:0 10px 30px -15px rgba(249,115,22,.35);}
+  .card h4{font-size:15px;font-weight:700;margin:0 0 6px;}
+  .card .tagline{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;}
+  .card p{color:var(--body);font-size:13px;margin:6px 0;}
+  .card ul{margin:8px 0 0;padding-left:0;list-style:none;}
+  .card li{font-size:12.5px;color:var(--body);padding-left:20px;position:relative;margin:6px 0;line-height:1.5;}
+  .card li::before{content:'›';position:absolute;left:4px;color:var(--accent);font-weight:800;}
+
+  .feature-list{list-style:none;padding-left:0;margin:6px 0 0;}
+  .feature-list li{position:relative;padding-left:26px;margin-bottom:9px;font-size:13px;color:var(--body);}
+  .feature-list li::before{position:absolute;left:0;font-weight:bold;}
+  .included::before{content:'✓';color:var(--accent);}
+
+  .swot{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .swotbox{border-radius:14px;padding:16px 18px;border:1px solid var(--line);background:var(--panel);}
+  .swotbox h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;}
+  .swotbox.s{border-left:3px solid var(--green);} .swotbox.s h4{color:var(--green);}
+  .swotbox.w{border-left:3px solid var(--rose);} .swotbox.w h4{color:var(--rose);}
+  .swotbox.o{border-left:3px solid var(--blue);} .swotbox.o h4{color:var(--blue);}
+  .swotbox.t{border-left:3px solid var(--amber);} .swotbox.t h4{color:var(--amber);}
+  .swotbox li{font-size:12.5px;color:var(--body);margin:5px 0;padding-left:16px;position:relative;list-style:none;}
+  .swotbox li::before{content:'•';position:absolute;left:2px;color:var(--muted);}
+  .swotbox ul{padding:0;margin:0;}
+
+  table.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;min-width:640px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  table.tbl th{background:#0f141c;color:var(--muted);text-align:left;padding:10px 12px;font-size:10.5px;
+    letter-spacing:.06em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--line);}
+  table.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--body);vertical-align:top;line-height:1.5;}
+  table.tbl tr:last-child td{border-bottom:none;}
+  table.tbl td b{color:#fff;}
+  .scroll{overflow-x:auto;}
+
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.03em;}
+  .pill.aw{background:var(--blue-bg);color:var(--blue);}
+  .pill.co{background:var(--violet-bg);color:var(--violet);}
+  .pill.de{background:var(--accent-bg);color:var(--accent);}
+  .pill.cv{background:var(--green-bg);color:var(--green);}
+
+  .ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 18px;counter-reset:idea;}
+  .idea{display:flex;gap:10px;font-size:12.5px;color:var(--body);line-height:1.5;padding:3px 0;}
+  .idea::before{counter-increment:idea;content:counter(idea);flex:0 0 22px;height:22px;display:flex;
+    align-items:center;justify-content:center;border-radius:7px;background:var(--accent-bg);color:var(--accent);font-size:11px;font-weight:700;}
+  .idea b{color:#fff;font-weight:600;}
+
+  .funnel{display:flex;flex-direction:column;gap:8px;}
+  .fstep{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:10px;padding:12px 16px;}
+  .fstep .t{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.05em;text-transform:uppercase;}
+  .fstep p{font-size:12.5px;color:var(--body);margin:5px 0 0;}
+
+  .verify{background:var(--amber-bg);border:1px solid rgba(251,191,36,.30);border-left:3px solid var(--amber);
+    border-radius:12px;padding:16px 20px;margin-top:8px;}
+  .verify h3{font-size:13px;font-weight:700;letter-spacing:.06em;margin:0 0 10px;color:var(--amber);}
+  .verify ul{margin:0;padding-left:16px;}
+  .verify li{font-size:12.5px;color:var(--body);margin:7px 0;line-height:1.55;}
+  .verify li b{color:#fff;}
+  mark{background:rgba(251,191,36,.22);color:#fde68a;padding:0 4px;border-radius:3px;font-weight:600;}
+
+  .kitfoot{text-align:center;margin-top:36px;padding:26px;border-top:1px solid var(--line);}
+  .kitfoot img{height:22px;opacity:.7;margin:0 auto 8px;display:block;}
+  .kitfoot p{color:var(--dim);font-size:11.5px;}
+
+  .cards-shadow .card,.swotbox,table.tbl,.fstep{box-shadow:0 1px 2px rgba(0,0,0,.5),0 14px 34px -20px rgba(0,0,0,.8);}
+  @media (max-width:820px){
+    .grid2,.grid3,.grid4,.swot,.ideas{grid-template-columns:1fr;}
+    .wordmark{font-size:26px;}
+  }
+  @media print{
+    body{background:#fff;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .topbar,.toc{display:none;} .section{break-inside:avoid;} @page{margin:10mm;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+  <div class="topbar">
+    <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer"><img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox"></a>
+    <span class="by">Agency strategy report · generated with the Speakerbox UI kit</span>
+  </div>
+
+<div class="sheet cards-shadow">
+
+  <div class="hero">
+    <div class="brandrow">
+      <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8">
+        <path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg>
+      <div class="wordmark">MOX <span class="g">VILLAS</span></div>
+    </div>
+    <div class="kicker">360° Marketing Strategy</div>
+    <h1>Premium Real-Estate Brand, Digital Growth &amp; Lead Generation</h1>
+    <p>A consultant-style strategy for MOX Villas &amp; Apartments — building a premium brand on the Kochi airport corridor, generating qualified leads, driving site visits, and converting both local and NRI buyers.</p>
+    <div class="meta"><span><b>Industry:</b> Real Estate</span><span><b>Market:</b> Kerala, India</span><span><b>Audience:</b> Local + NRI</span><span><b>Goals:</b> Awareness · Leads · Site visits · Sales</span></div>
+
+    <div class="toc">
+      <a href="#exec">Executive Summary</a>
+      <a href="#brand">01 Brand</a>
+      <a href="#audience">02 Audience</a>
+      <a href="#website">03 Website</a>
+      <a href="#social">04 Social</a>
+      <a href="#content">05 Content</a>
+      <a href="#video">06 Video</a>
+      <a href="#leads">07 Lead Gen</a>
+      <a href="#ads">08 Paid Ads</a>
+      <a href="#intl">09 International</a>
+      <a href="#funnel">10 Funnel</a>
+      <a href="#roadmap">11 Roadmap</a>
+      <a href="#risk">Risk &amp; Growth</a>
+      <a href="#verify">Verify</a>
+    </div>
+  </div>
+
+  <!-- EXEC -->
+  <section class="section" id="exec">
+    <div class="secnum">EXECUTIVE SUMMARY</div>
+    <h2>The one-page version</h2>
+    <p class="p">MOX competes in a crowded Kerala real-estate market against established names. Its defensible edge is not the loudest claims — it is <b>trust</b> (transparency, quality, timely delivery) anchored to a single, ownable thesis: <b>the Kochi airport corridor</b>. The strategy below turns that thesis into a brand, a content engine, a lead machine, and a sales funnel.</p>
+    <div class="grid4">
+      <div class="card rec"><div class="tagline">Position</div><h4>Trust + Airport</h4><p>Own "credible developer on the airport corridor" rather than competing on inflated numbers.</p></div>
+      <div class="card"><div class="tagline">Engine</div><h4>Funnel content</h4><p>Awareness → Consideration → Desire → Decision, on a steady Mon·Wed·Fri cadence.</p></div>
+      <div class="card"><div class="tagline">Demand</div><h4>Local + NRI</h4><p>A dedicated NRI/GCC layer, not an afterthought — the airport makes ownership manageable from abroad.</p></div>
+      <div class="card"><div class="tagline">Proof</div><h4>Show, don't claim</h4><p>Construction progress, real buyers (consented), RERA transparency — proof beats hype.</p></div>
+    </div>
+    <p class="p" style="margin-top:16px;">Ninety-day priorities: <span class="pill aw">Days 1–30</span> foundations &amp; brand, <span class="pill co">Days 31–60</span> content engine &amp; lead capture, <span class="pill cv">Days 61–90</span> paid scale &amp; conversion. Detail in <a href="#roadmap">section 11</a>.</p>
+  </section>
+
+  <!-- 1 BRAND -->
+  <section class="section" id="brand">
+    <div class="secnum">01</div>
+    <h2>Brand Analysis</h2>
+    <p class="lead">Who MOX is, what it can credibly own, and where it stands against the field.</p>
+
+    <div class="h3">Positioning &amp; USP</div>
+    <p class="p">MOX should position as <b>"the trusted developer of the Kochi airport corridor — premium villas and apartments built on transparency and timely delivery."</b> The USP is the intersection of two things competitors rarely combine: a <b>single, infrastructure-backed location thesis</b> (the airport corridor) and a <b>trust-first brand</b> that refuses inflated metrics. Villas <em>and</em> apartments under one brand also let MOX serve two buyer types without splitting its identity.</p>
+
+    <div class="h3">SWOT</div>
+    <div class="swot">
+      <div class="swotbox s"><h4>Strengths</h4><ul>
+        <li>Ownable airport-corridor thesis tied to real infrastructure</li>
+        <li>Trust-first brand stance (transparency, delivery)</li>
+        <li>Villa + apartment range = two buyer segments, one brand</li>
+        <li>Natural NRI/GCC relevance via airport proximity</li></ul></div>
+      <div class="swotbox w"><h4>Weaknesses <mark>verify</mark></h4><ul>
+        <li>Brand awareness vs established players — <b>assess current baseline</b></li>
+        <li>Public track record / delivered-project proof — <b>confirm what can be shown</b></li>
+        <li>Digital footprint maturity (website, CRM) — pending audit</li>
+        <li>Testimonial/social-proof bank still being built</li></ul></div>
+      <div class="swotbox o"><h4>Opportunities</h4><ul>
+        <li>NRI &amp; GCC Malayali demand for trusted home-market assets</li>
+        <li>Airport-corridor infrastructure narrative (announced projects only)</li>
+        <li>Education-led content gap — few developers teach buyers honestly</li>
+        <li>Video / AI-visualization differentiation</li></ul></div>
+      <div class="swotbox t"><h4>Threats</h4><ul>
+        <li>Established competitors with scale &amp; ad budgets</li>
+        <li>Market cyclicality &amp; interest-rate sensitivity</li>
+        <li>Regulatory scrutiny (RERA) on claims &amp; timelines</li>
+        <li>Commoditised "luxury" messaging across the category</li></ul></div>
+    </div>
+
+    <div class="h3">Competitor landscape — benchmark, don't copy</div>
+    <p class="p">These are real players to study for positioning, content cadence and offer structure. <b>Do not republish any claim about them</b> — use this as a primary-research checklist, and verify each developer's current activity yourself.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Tier</th><th>Players to benchmark</th><th>What to study</th></tr></thead>
+      <tbody>
+        <tr><td><b>National / premium</b></td><td>Sobha, Prestige, Puravankara</td><td>Premium brand cues, video production quality, NRI funnels</td></tr>
+        <tr><td><b>Kerala-strong</b></td><td>ABAD, Skyline, Asset Homes, Confident Group</td><td>Local trust signals, bio/profile format, project-launch playbooks</td></tr>
+        <tr><td><b>Regional / value</b></td><td>Noel, Veegaland, Varma &amp; others</td><td>Pricing communication, lead-capture offers, posting frequency</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="h3">Brand perception target</div>
+    <p class="p">Where MOX wants to land in the buyer's mind: <em>"the developer that tells me the truth, builds where the growth is, and actually delivers."</em> Every asset should reinforce one of those three.</p>
+  </section>
+
+  <!-- 2 AUDIENCE -->
+  <section class="section" id="audience">
+    <div class="secnum">02</div>
+    <h2>Target Audience</h2>
+    <p class="lead">Seven segments, each with a different pain point, motivation and platform. Match the message to the mindset.</p>
+    <div class="grid2">
+      <div class="card" style="border-left:3px solid #38BDF8">
+      <h4>First-time home buyers</h4>
+      <p style="color:#38BDF8;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Local · 28–40 · salaried</p>
+      <ul>
+        <li><b>Pain:</b> Affordability anxiety, fear of being misled, loan confusion</li>
+        <li><b>Motivation:</b> Stability, ownership pride, a safe first decision</li>
+        <li><b>Journey:</b> Long research → many questions → reassurance → visit</li>
+        <li><b>Platforms:</b> Instagram, YouTube, Google</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #34D399">
+      <h4>Families</h4>
+      <p style="color:#34D399;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Local · 30–50</p>
+      <ul>
+        <li><b>Pain:</b> Space, safety, schools, long-term value</li>
+        <li><b>Motivation:</b> Better life for kids, community, room to grow</li>
+        <li><b>Journey:</b> Emotion-led; spouse + elders involved</li>
+        <li><b>Platforms:</b> Instagram, Facebook, WhatsApp</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #A78BFA">
+      <h4>Working professionals</h4>
+      <p style="color:#A78BFA;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Local · 28–45</p>
+      <ul>
+        <li><b>Pain:</b> Time-poor, want low-maintenance + commute ease</li>
+        <li><b>Motivation:</b> Convenience, status, smart investment</li>
+        <li><b>Journey:</b> Fast, mobile, decisive once convinced</li>
+        <li><b>Platforms:</b> Instagram, LinkedIn, Google</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #F97316">
+      <h4>NRIs</h4>
+      <p style="color:#F97316;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Abroad · 30–55</p>
+      <ul>
+        <li><b>Pain:</b> Trust from a distance, remote process, oversight</li>
+        <li><b>Motivation:</b> Asset back home, family, future return</li>
+        <li><b>Journey:</b> Cautious; needs proof + virtual tours</li>
+        <li><b>Platforms:</b> Facebook, YouTube, WhatsApp, email</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #FBBF24">
+      <h4>Real-estate investors</h4>
+      <p style="color:#FBBF24;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Local + NRI</p>
+      <ul>
+        <li><b>Pain:</b> ROI clarity, exit, rental demand</li>
+        <li><b>Motivation:</b> Appreciation, rental income, portfolio</li>
+        <li><b>Journey:</b> Data-led; scrutinises every number</li>
+        <li><b>Platforms:</b> LinkedIn, Google, YouTube</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #FB7185">
+      <h4>GCC-based Malayalis</h4>
+      <p style="color:#FB7185;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Gulf · 30–55</p>
+      <ul>
+        <li><b>Pain:</b> Distance, scams, repatriation of savings</li>
+        <li><b>Motivation:</b> Roots, family home, trusted developer</li>
+        <li><b>Journey:</b> Community-driven; WhatsApp referrals matter</li>
+        <li><b>Platforms:</b> Facebook, WhatsApp, Instagram</li>
+      </ul></div>
+      <div class="card" style="border-left:3px solid #22D3EE">
+      <h4>Europe / New Zealand buyers</h4>
+      <p style="color:#22D3EE;font-weight:700;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase">Diaspora</p>
+      <ul>
+        <li><b>Pain:</b> Time zones, remote buying, currency</li>
+        <li><b>Motivation:</b> Second home, retirement, keeping ties</li>
+        <li><b>Journey:</b> Slow, high-trust, relationship-led</li>
+        <li><b>Platforms:</b> LinkedIn, YouTube, email, Facebook</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- 3 WEBSITE -->
+  <section class="section" id="website">
+    <div class="secnum">03</div>
+    <h2>Website Strategy</h2>
+    <p class="lead">A real audit needs the live URL — once shared, this becomes a scored, page-by-page report. Until then, here is the conversion framework to build or fix against.</p>
+    <div class="grid2">
+      <div class="card"><h4>Homepage</h4><ul>
+        <li>One-line value prop above the fold: trust + airport corridor</li>
+        <li>Primary CTA repeated: "Book a site visit" / WhatsApp</li>
+        <li>Trust strip: RERA no., approvals, delivery record</li>
+        <li>Project tiles → dedicated landing pages</li></ul></div>
+      <div class="card"><h4>Project landing pages</h4><ul>
+        <li>One page per project (Creek Town, Coral Bay, others)</li>
+        <li>Specs, floor plans, location map, RERA no., handover timeline</li>
+        <li>Lead form + WhatsApp + downloadable brochure (gated)</li>
+        <li>Renders clearly labelled as renders</li></ul></div>
+      <div class="card"><h4>Lead capture &amp; CRO</h4><ul>
+        <li>Short forms (name, phone, project, intent)</li>
+        <li>Sticky "Enquire / WhatsApp" on mobile</li>
+        <li>Thank-you page with next step + calendar booking</li>
+        <li>Track form starts vs completions</li></ul></div>
+      <div class="card"><h4>SEO, speed &amp; mobile</h4><ul>
+        <li>Target "villas near Kochi airport", "apartments Nedumbassery", NRI terms</li>
+        <li>Compress images; lazy-load; aim for fast mobile load</li>
+        <li>Mobile-first layout (most Kerala + NRI traffic is mobile)</li>
+        <li>Schema for projects, reviews, FAQs</li></ul></div>
+    </div>
+    <p class="p" style="margin-top:14px;"><mark>To run a real audit:</mark> share the live URL and I'll score homepage, landing pages, speed, forms and CTAs page by page.</p>
+  </section>
+
+  <!-- 4 SOCIAL -->
+  <section class="section" id="social">
+    <div class="secnum">04</div>
+    <h2>Social Media Strategy</h2>
+    <p class="lead">Instagram is the organic engine; the others play specific supporting roles. No hashtags in-line with your house style — discovery comes from Reels, collabs and paid.</p>
+    <div class="grid2">
+      <div class="card rec"><div class="tagline">Primary</div><h4>Instagram (@mox_villas)</h4><ul>
+        <li>Bio: trust signals, corridor, one CTA (DM / link)</li>
+        <li>Pillars colour-coded: Brand · Location · Education · Lifestyle · Proof · Conversion</li>
+        <li>Cadence: Mon·Wed·Fri feed + daily-ish Stories</li>
+        <li>Highlights: Projects · Location · Walkthroughs · FAQ · Buyers · Visit</li>
+        <li>Engage: reply to every comment/DM within hours</li></ul></div>
+      <div class="card"><div class="tagline">Reach + Ads</div><h4>Facebook</h4><ul>
+        <li>Mirror IG feed; home of Meta Lead Ads</li>
+        <li>Stronger for 35+ local buyers &amp; GCC Malayalis</li>
+        <li>Groups &amp; community for local-area authority</li></ul></div>
+      <div class="card"><div class="tagline">Depth + Search</div><h4>YouTube</h4><ul>
+        <li>Long-form walkthroughs, drone tours, founder/vision</li>
+        <li>Doubles as search (buyers research before visiting)</li>
+        <li>Shorts repurposed from Reels</li></ul></div>
+      <div class="card"><div class="tagline">Authority + NRI</div><h4>LinkedIn</h4><ul>
+        <li>Founder &amp; company credibility; investor-grade content</li>
+        <li>Reaches GCC professionals &amp; NRI investors</li>
+        <li>Milestones, approvals, partnerships, delivery proof</li></ul></div>
+    </div>
+    <div class="h3">Always-on content tracks</div>
+    <p class="p">Old-project showcase (proof of delivery) · new-project launch campaigns · monthly construction updates · consented customer testimonials · site-visit content · lifestyle-led property storytelling. These run continuously underneath the funnel calendar.</p>
+  </section>
+
+  <!-- 5 CONTENT -->
+  <section class="section" id="content">
+    <div class="secnum">05</div>
+    <h2>Content Marketing</h2>
+    <p class="lead">Six pillars, mapped to the funnel. Then 30 ready-to-shoot ideas.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Pillar</th><th>Funnel stage</th><th>Job to be done</th></tr></thead>
+      <tbody>
+        <tr><td><b>Brand &amp; Trust</b></td><td><span class="pill aw">Awareness</span></td><td>Introduce MOX; earn credibility before selling</td></tr>
+        <tr><td><b>Location / Airport</b></td><td><span class="pill aw">Awareness</span></td><td>Own the corridor thesis</td></tr>
+        <tr><td><b>Investment Education</b></td><td><span class="pill co">Consideration</span></td><td>Teach buying criteria; position as advisor</td></tr>
+        <tr><td><b>Lifestyle &amp; Product</b></td><td><span class="pill de">Desire</span></td><td>Make them want it</td></tr>
+        <tr><td><b>Proof &amp; Social</b></td><td><span class="pill de">Desire</span></td><td>Remove doubt with real proof</td></tr>
+        <tr><td><b>Conversion</b></td><td><span class="pill cv">Decision</span></td><td>Ask for the site visit / sale</td></tr>
+      </tbody>
+    </table></div>
+    <div class="h3">30 high-performing content ideas</div>
+    <div class="ideas">
+      <div class="idea"><span><b>Brand origin story.</b> Why MOX exists.</span></div>
+      <div class="idea"><span><b>The MOX standard.</b> What we won't compromise on.</span></div>
+      <div class="idea"><span><b>Meet the team.</b> The hands that build your home.</span></div>
+      <div class="idea"><span><b>Why the airport corridor.</b> The location thesis.</span></div>
+      <div class="idea"><span><b>Most people miss this.</b> Curiosity hook on the corridor.</span></div>
+      <div class="idea"><span><b>Connectivity tour.</b> Minutes to airport/highway (verified).</span></div>
+      <div class="idea"><span><b>Infrastructure coming.</b> Announced projects only.</span></div>
+      <div class="idea"><span><b>Buyer's checklist.</b> Don't buy a villa without it.</span></div>
+      <div class="idea"><span><b>2 things to check first.</b> Location + developer.</span></div>
+      <div class="idea"><span><b>Off-plan vs finished.</b> Where the upside sits.</span></div>
+      <div class="idea"><span><b>Carpet vs built-up area.</b> Glossary carousel.</span></div>
+      <div class="idea"><span><b>Home-loan basics.</b> Simple buyer education.</span></div>
+      <div class="idea"><span><b>Rental potential.</b> Airport-driven demand (sourced).</span></div>
+      <div class="idea"><span><b>NRI buying guide.</b> Owning from abroad.</span></div>
+      <div class="idea"><span><b>Why invest near the airport.</b> Data carousel (sourced).</span></div>
+      <div class="idea"><span><b>Villa walkthrough.</b> Premium finishes tour.</span></div>
+      <div class="idea"><span><b>Apartment living.</b> Luxury without upkeep.</span></div>
+      <div class="idea"><span><b>A morning in a MOX home.</b> Day-in-the-life.</span></div>
+      <div class="idea"><span><b>Smart-home features.</b> Tech that anticipates you.</span></div>
+      <div class="idea"><span><b>AI visualization.</b> See it before it's built (labelled).</span></div>
+      <div class="idea"><span><b>Construction update.</b> Monthly, date-stamped.</span></div>
+      <div class="idea"><span><b>Buyer FAQ.</b> The questions everyone asks.</span></div>
+      <div class="idea"><span><b>Floor plans decoded.</b> How a layout lives.</span></div>
+      <div class="idea"><span><b>Amenities tour.</b> Everything within the gate.</span></div>
+      <div class="idea"><span><b>Real investor story.</b> Consented testimonial.</span></div>
+      <div class="idea"><span><b>Client ready to close.</b> Proof of demand.</span></div>
+      <div class="idea"><span><b>Approvals &amp; RERA.</b> Transparency post.</span></div>
+      <div class="idea"><span><b>Behind the scenes.</b> A day on site.</span></div>
+      <div class="idea"><span><b>Local area highlights.</b> Life around the corridor.</span></div>
+      <div class="idea"><span><b>Book a site visit.</b> The clear CTA close.</span></div>
+    </div>
+  </section>
+
+  <!-- 6 VIDEO -->
+  <section class="section" id="video">
+    <div class="secnum">06</div>
+    <h2>Video Marketing</h2>
+    <p class="lead">Video is where real estate sells. A layered plan from 15-second hooks to long-form presentations.</p>
+    <div class="grid3">
+      <div class="card"><h4>Short-form (Reels/Shorts)</h4><ul><li>Hook in 1 second</li><li>Luxury tours, location POV, myth-busts</li><li>Captioned, vertical, trending-but-calm audio</li></ul></div>
+      <div class="card"><h4>Walkthroughs &amp; drone</h4><ul><li>Smooth villa/apartment walkthroughs</li><li>Drone for site + corridor context</li><li>Label renders/AI clearly</li></ul></div>
+      <div class="card"><h4>Presenter &amp; founder</h4><ul><li>Founder vision &amp; trust pieces</li><li>Presenter explainers for education</li><li>Builds face-to-brand familiarity</li></ul></div>
+      <div class="card"><h4>Testimonials</h4><ul><li>Real, consented buyers only</li><li>"Why we chose MOX"</li><li>Strongest decision-stage asset</li></ul></div>
+      <div class="card"><h4>Construction progress</h4><ul><li>Monthly, date-stamped</li><li>Proof of delivery in motion</li><li>Honest timelines</li></ul></div>
+      <div class="card"><h4>AI-generated promos</h4><ul><li>Cinematic visualizations of future homes</li><li><b>Always labelled AI/visualization</b></li><li>Great for pre-launch hype</li></ul></div>
+    </div>
+    <div class="h3">Production notes</div>
+    <p class="p"><b>Hooks:</b> lead with curiosity or a number you can prove. <b>Storyboard:</b> hook → value → proof → CTA. <b>Voice-over:</b> calm, confident, advisor-not-salesman. <b>Editing:</b> clean, warm grade, on-screen captions, brand colours. <b>CTA:</b> one action per video (DM a keyword, book a visit).</p>
+  </section>
+
+  <!-- 7 LEADS -->
+  <section class="section" id="leads">
+    <div class="secnum">07</div>
+    <h2>Lead Generation System</h2>
+    <p class="lead">Reach is vanity until it becomes a booked site visit. This is the path from ad to appointment.</p>
+    <div class="grid2">
+      <div class="card"><h4>Capture</h4><ul><li>Meta Lead Ads (instant forms)</li><li>Google Search Ads → landing pages</li><li>WhatsApp click-to-chat campaigns</li><li>Lead magnets: buyer checklist, location guide, price/brochure on request</li></ul></div>
+      <div class="card"><h4>Qualify &amp; nurture</h4><ul><li>CRM captures every lead + source <mark>set up CRM</mark></li><li>Tag by intent, budget, local/NRI</li><li>Email + WhatsApp follow-up sequences</li><li>Speed-to-lead: respond within minutes</li></ul></div>
+    </div>
+    <div class="h3">Site-visit booking funnel</div>
+    <div class="funnel">
+      <div class="fstep"><div class="t">1 · Magnet</div><p>Value offer (checklist / guide / brochure) in exchange for contact.</p></div>
+      <div class="fstep"><div class="t">2 · Qualify</div><p>Quick questions: project, budget band, timeline, location (local/NRI).</p></div>
+      <div class="fstep"><div class="t">3 · Book</div><p>Offer site-visit slots (or a virtual tour for NRIs) with a calendar link.</p></div>
+      <div class="fstep"><div class="t">4 · Remind &amp; show</div><p>WhatsApp reminders; sales team hosts; capture outcome in CRM.</p></div>
+      <div class="fstep"><div class="t">5 · Follow-up</div><p>Structured sequence post-visit until decision; nurture the rest.</p></div>
+    </div>
+  </section>
+
+  <!-- 8 ADS -->
+  <section class="section" id="ads">
+    <div class="secnum">08</div>
+    <h2>Paid Advertising</h2>
+    <p class="lead">A balanced mix of demand-capture (search) and demand-generation (social/video), with remarketing to recover the rest. <mark>Set monthly budget &amp; split before launch.</mark></p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Channel</th><th>Objective</th><th>Targeting</th><th>Creative</th></tr></thead>
+      <tbody>
+        <tr><td><b>Google Search</b></td><td>Capture active intent</td><td>"villas near Kochi airport", project &amp; NRI terms</td><td>Tight ad → matching landing page</td></tr>
+        <tr><td><b>Performance Max</b></td><td>Efficient blended reach</td><td>Signals + audiences</td><td>Full asset set (images, video, copy)</td></tr>
+        <tr><td><b>Google Display</b></td><td>Awareness + recall</td><td>Affinity + custom intent</td><td>Brand + corridor visuals</td></tr>
+        <tr><td><b>Meta Ads</b></td><td>Lead gen + reach</td><td>Local 28–55, lookalikes, GCC Malayali</td><td>Reels, carousels, lead forms</td></tr>
+        <tr><td><b>YouTube</b></td><td>Story &amp; trust</td><td>In-market real estate, NRI geos</td><td>Walkthroughs, founder, testimonials</td></tr>
+        <tr><td><b>Remarketing</b></td><td>Recover &amp; convert</td><td>Site visitors, video viewers, form abandoners</td><td>Proof + offer + "book a visit"</td></tr>
+      </tbody>
+    </table></div>
+    <p class="p" style="margin-top:12px;"><b>Conversion strategy:</b> every campaign points to one measurable action (lead form or WhatsApp), tracked end-to-end in the CRM so spend is judged on <em>booked visits and bookings</em>, not clicks.</p>
+  </section>
+
+  <!-- 9 INTL -->
+  <section class="section" id="intl">
+    <div class="secnum">09</div>
+    <h2>International &amp; NRI Marketing</h2>
+    <p class="lead">A distinct strategic layer. The airport corridor is the perfect NRI story: easy visits, easy oversight, a trusted asset back home.</p>
+    <div class="grid3">
+      <div class="card rec"><div class="tagline">Largest pool</div><h4>GCC (UAE, Saudi, Qatar, Oman…)</h4><ul><li>GCC Malayali families &amp; professionals</li><li>Message: trust, delivery, easy remote ownership</li><li>Meta + WhatsApp + YouTube; English &amp; Malayalam</li></ul></div>
+      <div class="card"><div class="tagline">Diaspora</div><h4>Europe</h4><ul><li>NRI professionals &amp; second-home investors</li><li>Message: stable home-market asset + lifestyle</li><li>LinkedIn + YouTube + email nurture</li></ul></div>
+      <div class="card"><div class="tagline">Diaspora</div><h4>New Zealand</h4><ul><li>Settled Malayali community</li><li>Message: keep roots + invest in growth corridor</li><li>Facebook community + WhatsApp + virtual tours</li></ul></div>
+    </div>
+    <div class="h3">NRI nurture essentials</div>
+    <p class="p">Virtual site tours · time-zone-aware follow-up · clear remote-buying &amp; documentation support (state only what MOX genuinely offers) · transparency on RERA, payments and handover · a named relationship contact. Language: English primary, Malayalam for warmth and trust.</p>
+  </section>
+
+  <!-- 10 FUNNEL -->
+  <section class="section" id="funnel">
+    <div class="secnum">10</div>
+    <h2>Sales Funnel</h2>
+    <p class="lead">Eight stages from stranger to advocate. Each stage has an owner and a next action.</p>
+    <div class="funnel">
+      <div class="fstep"><div class="t">Awareness</div><p>Reels, location &amp; brand content stop the scroll and plant the corridor idea.</p></div>
+      <div class="fstep"><div class="t">Interest</div><p>Education &amp; project content earns the follow and the save.</p></div>
+      <div class="fstep"><div class="t">Lead capture</div><p>Magnet + form/WhatsApp turns attention into a contact.</p></div>
+      <div class="fstep"><div class="t">Qualification</div><p>Intent, budget, timeline, local/NRI — scored in the CRM.</p></div>
+      <div class="fstep"><div class="t">Site visit</div><p>In-person or virtual tour — the single biggest conversion lever.</p></div>
+      <div class="fstep"><div class="t">Consultation</div><p>Sales conversation: fit, financing, documentation, objections.</p></div>
+      <div class="fstep"><div class="t">Booking</div><p>The sale, with a transparent, RERA-compliant process.</p></div>
+      <div class="fstep"><div class="t">Referral</div><p>Delighted buyers → testimonials &amp; referrals → back to Awareness.</p></div>
+    </div>
+  </section>
+
+  <!-- 11 ROADMAP -->
+  <section class="section" id="roadmap">
+    <div class="secnum">11</div>
+    <h2>90-Day Execution Roadmap</h2>
+    <p class="lead">What to do, in what order, so the brand and the lead engine come online together.</p>
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Phase</th><th>Focus</th><th>Key deliverables</th><th>Milestone</th></tr></thead>
+      <tbody>
+        <tr><td><b>Days 1–30</b><br><span class="pill aw">Foundations</span></td><td>Brand, profiles, tracking</td><td>Bio + Highlights, project landing pages, RERA/trust assets, CRM + pixels/WhatsApp set up, Month-1 content shot</td><td>Brand live &amp; measurable</td></tr>
+        <tr><td><b>Days 31–60</b><br><span class="pill co">Engine</span></td><td>Content + lead capture</td><td>Mon·Wed·Fri calendar running, lead magnets live, Meta Lead Ads + Search ads started small, email/WhatsApp sequences built</td><td>First qualified leads &amp; visits</td></tr>
+        <tr><td><b>Days 61–90</b><br><span class="pill cv">Scale</span></td><td>Optimise &amp; convert</td><td>Scale winning ads, add YouTube + remarketing, NRI/GCC campaign live, testimonials captured, funnel tuned on visit→booking</td><td>Repeatable cost-per-visit</td></tr>
+      </tbody>
+    </table></div>
+    <p class="p" style="margin-top:12px;"><b>Team:</b> social/content owner (calendar + community), performance marketer (ads + CRM), video/design (production), sales team (visits + follow-up). One weekly review on leads, cost-per-visit and bookings.</p>
+  </section>
+
+  <!-- RISK + GROWTH -->
+  <section class="section" id="risk">
+    <div class="secnum">RISK &amp; GROWTH</div>
+    <h2>Risk Analysis &amp; Growth Opportunities</h2>
+    <div class="grid2">
+      <div class="card"><h4 style="color:var(--amber)">Risks &amp; mitigations</h4><ul>
+        <li><b>RERA/compliance:</b> no invented metrics; renders labelled; offers genuine — built into every asset</li>
+        <li><b>Market cyclicality:</b> diversify local + NRI demand; lead on trust, not hype</li>
+        <li><b>Over-reliance on paid:</b> build organic + referral so cost-per-lead isn't the only tap</li>
+        <li><b>Thin proof bank:</b> systematically capture progress &amp; consented testimonials now</li></ul></div>
+      <div class="card rec"><h4 style="color:var(--green)">Growth opportunities</h4><ul>
+        <li><b>Own the corridor:</b> become the default name for airport-corridor property</li>
+        <li><b>Education authority:</b> the honest-advisor gap is wide open</li>
+        <li><b>NRI/GCC depth:</b> virtual tours + relationship selling</li>
+        <li><b>Referral engine:</b> turn every delighted buyer into reach</li>
+        <li><b>AI visualization:</b> differentiate pre-launch with cinematic (labelled) renders</li></ul></div>
+    </div>
+    <div class="h3">Top actionable recommendations</div>
+    <div class="card"><ul>
+      <li>Lock the positioning: "trusted developer of the Kochi airport corridor" — apply everywhere</li>
+      <li>Fill the verified data (RERA, founding year, drive-times, contact) and remove placeholders</li>
+      <li>Stand up the lead → CRM → follow-up loop before scaling spend</li>
+      <li>Run the Mon·Wed·Fri funnel calendar; layer the site-visit playbook in month 2</li>
+      <li>Treat NRI/GCC as a first-class campaign, not a side note</li>
+      <li>Measure on booked site visits &amp; bookings, not clicks or likes</li></ul></div>
+  </section>
+
+  <!-- VERIFY -->
+  <section class="section" id="verify">
+    <div class="secnum">BEFORE YOU ACT</div>
+    <h2>Verify &amp; Fill</h2>
+    <div class="verify">
+      <h3>⚠ This is a strategy framework, not verified facts — confirm these before publishing or spending</h3>
+      <ul>
+        <li><b>No invented numbers.</b> Market stats, appreciation %, rental yields, drive-times and competitor specifics are intentionally left as placeholders or benchmarking tasks. Fill only with sourced data; mark estimates "approx."; frame appreciation as projection.</li>
+        <li><b>RERA &amp; legal.</b> Display registration where required; confirm ad disclosures. This is marketing guidance, not legal advice — verify with your compliance contact.</li>
+        <li><b>Project names.</b> Slot in the real projects (Creek Town, Coral Bay, others) where this report says [Project Name].</li>
+        <li><b>Placeholders to fill:</b> <mark>RERA reg no.</mark> · <mark>founding year</mark> · <mark>verified drive-times</mark> · <mark>live website URL</mark> · <mark>WhatsApp number</mark> · <mark>monthly ad budget</mark> · <mark>CRM</mark> · <mark>consented testimonials</mark>.</li>
+        <li><b>Competitors.</b> Named developers are real and for benchmarking only — don't republish any claim about them; verify their current activity yourself.</li>
+        <li><b>Website audit.</b> Pending your live URL — share it for a page-by-page scored audit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="kitfoot">
+    <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer"><img src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox"></a>
+    <p>MOX Villas &amp; Apartments · 360° Marketing Strategy · styled with the Speakerbox Internal UI Kit · editorial draft — verify all figures &amp; compliance before use</p>
+  </div>
+
+</div>
+
+</body>
+</html>
