@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NHC — 2-Month Content Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --card-2:#161d29;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+    --tofu:#38BDF8;   /* sky  - awareness */
+    --mofu:#A78BFA;   /* violet- consideration */
+    --bofu:#F97316;   /* orange- conversion */
+    --flex:#34D399;   /* green - flex/campaign */
+    font-family:'Google Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);line-height:1.5;padding:32px 20px 80px}
+  .wrap{max-width:1240px;margin:0 auto}
+
+  /* Header */
+  header{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:28px}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  h1{font-size:30px;font-weight:700;margin:6px 0 4px}
+  .sub{color:var(--muted);font-size:15px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .chip{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--text)}
+  .chip b{color:var(--accent)}
+
+  /* Panels */
+  .panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:22px}
+  .panel h3{font-size:15px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .panel.warn{border-left:3px solid var(--accent)}
+  .panel ul{list-style:none}
+  .panel li{font-size:13.5px;color:var(--text);padding:5px 0 5px 18px;position:relative}
+  .panel li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .panel li b{color:#fff}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.two-col{grid-template-columns:1fr}}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .lg{display:flex;align-items:center;gap:7px;font-size:13px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .fmt{font-size:12px;color:var(--muted)}
+  .fmt b{color:var(--text)}
+
+  /* Month */
+  .month-title{font-size:20px;font-weight:700;margin:34px 0 4px;display:flex;align-items:center;gap:10px}
+  .month-title span{color:var(--accent)}
+  .month-note{color:var(--muted);font-size:13px;margin-bottom:16px}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .weeklabel{grid-column:1/-1;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:8px;border-top:1px dashed var(--border);padding-top:12px}
+
+  .cell{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;position:relative;overflow:hidden}
+  .cell::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+  .cell.tofu::before{background:var(--tofu)}
+  .cell.mofu::before{background:var(--mofu)}
+  .cell.bofu::before{background:var(--bofu)}
+  .cell.flex::before{background:var(--flex)}
+  .cell .date{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .cell .day{font-size:12px;color:var(--muted);font-weight:500}
+  .cell .stage{font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:5px;text-transform:uppercase}
+  .stage.tofu{background:rgba(56,189,248,.15);color:var(--tofu)}
+  .stage.mofu{background:rgba(167,139,250,.15);color:var(--mofu)}
+  .stage.bofu{background:rgba(249,115,22,.15);color:var(--bofu)}
+  .stage.flex{background:rgba(52,211,153,.15);color:var(--flex)}
+  .cell .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+  .tag{font-size:10px;padding:2px 7px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
+  .tag.f{color:var(--accent);border-color:rgba(249,115,22,.4)}
+  .tag.re{color:#FBBF24;border-color:rgba(251,191,36,.4)}
+  .cell .hook{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+  .cell .mal{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:7px}
+  .cell .concept{font-size:12.5px;color:var(--text);margin-bottom:8px}
+  .cell .cta{font-size:11.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:7px}
+  .cell .cta b{color:var(--text)}
+  .flag{display:inline-block;font-size:10px;color:#FCA5A5;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.3);padding:2px 6px;border-radius:5px;margin-top:7px}
+
+  /* Stories */
+  .stories-title{font-size:16px;font-weight:700;margin:8px 0 4px;display:flex;align-items:center;gap:8px}
+  .stories-title .pill{font-size:11px;font-weight:700;background:rgba(249,115,22,.15);color:var(--accent);padding:3px 9px;border-radius:20px}
+  .smap{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:13px;margin-top:6px}
+  .smap .src{color:var(--accent);font-weight:500;white-space:nowrap}
+  .smap .mech{color:var(--text)}
+  .smap .mech b{color:#fff}
+  .story-special{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  @media(max-width:820px){.story-special{grid-template-columns:1fr}.smap{grid-template-columns:1fr;gap:4px 0}.smap .src{margin-top:8px}}
+
+  footer{margin-top:40px;border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">NHC · New Hair &amp; Cosmetics · Calicut</div>
+    <h1>Instagram + Meta Content Calendar — 2 Months</h1>
+    <div class="sub">Hair Transplant · PRP · GFC &nbsp;|&nbsp; Mon–Wed–Fri funnel cadence (TOFU → MOFU → BOFU)</div>
+    <div class="meta-row">
+      <div class="chip"><b>26</b> posts</div>
+      <div class="chip"><b>13</b> / month</div>
+      <div class="chip">Start (assumed): <b>Mon 6 Jul 2026</b></div>
+      <div class="chip">Language: <b>Malayalam–English</b></div>
+      <div class="chip">Platforms: <b>Instagram + Facebook</b></div>
+      <div class="chip"><b>13</b> stories / month</div>
+    </div>
+  </header>
+
+  <!-- ASSUMPTIONS / HONESTY PANEL -->
+  <div class="panel warn">
+    <h3>⚠ Read first — assumptions &amp; things to verify</h3>
+    <ul>
+      <li><b>Start date is assumed</b> (Mon 6 Jul 2026). If your real start differs, only the dates shift — the content stays. Tell me the date to re-map.</li>
+      <li><b>Post-count vs. production scope:</b> your scope produces <b>10 original assets/month</b> (4 static + 6 video) but the plan runs <b>13 posts/month</b>. The 3-post gap ×2 months = <b>6 slots filled by repurposing</b> — each is tagged <span class="tag re">REPURPOSE</span> so nothing is overstated as new production.</li>
+      <li><b>Content angles are an informed recommendation</b>, built from your 7 visible posts + general hair-clinic marketing patterns. They are <b>not tuned to your real engagement data</b> (which I can't see). Revisit the pillar mix once you have Instagram Insights.</li>
+      <li><b>Malayalam copy needs a native-speaker proofread.</b> Hooks below are drafts; confirm spelling/tone before publishing.</li>
+      <li><b>Placeholders in [brackets]</b> = real clinic data I could not verify (doctor names, procedure counts, technique names, exact offer terms). Fill these before scheduling — do not publish invented figures.</li>
+      <li><b>Special-day stories need date verification.</b> I'm not certain of exact 2026 festival/observance dates (e.g. Onam shifts yearly) — verify against a reliable calendar before scheduling. The only fixed date used is <b>Independence Day, 15 Aug 2026</b>; I calculate it as a Saturday but please sanity-check. Where I couldn't verify a day, I used date-independent seasonal hooks instead.</li>
+    </ul>
+  </div>
+
+  <!-- COMPLIANCE PANEL -->
+  <div class="panel warn">
+    <h3>⚠ Compliance framing (verify with the clinic's doctors — this is not legal advice)</h3>
+    <ul>
+      <li>Medical/aesthetic advertising in India sits under <b>ASCI guidelines</b> and the <b>Drugs &amp; Magic Remedies (Objectionable Advertisements) Act</b>. I'm not certain which specific conditions are scheduled — <b>this should be verified from a reliable/legal source</b> before running claims.</li>
+      <li><b>Before/After posts</b> (flagged in-cell): use only genuine, consented images; avoid implying guaranteed/universal results. Show realistic timelines.</li>
+      <li><b>Testimonials</b> (flagged in-cell): must be real and consented; avoid exaggerated outcome claims.</li>
+      <li>Use <b>"supports / helps / may aid"</b> framing for PRP &amp; GFC. Avoid <b>"cure," "guaranteed," "permanent regrowth,"</b> and unqualified superlatives like <b>"best / No.1."</b> The bio's "Leading… in Calicut" is a marketing claim you may want to soften.</li>
+      <li>Offers (₹50,000 limited graft; PRP + medical kit) are taken from <b>your own existing feed</b>. Publish clear terms &amp; conditions and any eligibility limits.</li>
+    </ul>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="panel">
+    <h3>Legend</h3>
+    <div class="legend" style="margin-bottom:12px">
+      <div class="lg"><span class="dot" style="background:var(--tofu)"></span> <b style="color:var(--tofu)">TOFU</b> — Awareness (Mon)</div>
+      <div class="lg"><span class="dot" style="background:var(--mofu)"></span> <b style="color:var(--mofu)">MOFU</b> — Consideration / Trust (Wed)</div>
+      <div class="lg"><span class="dot" style="background:var(--bofu)"></span> <b style="color:var(--bofu)">BOFU</b> — Conversion / Offer (Fri)</div>
+      <div class="lg"><span class="dot" style="background:var(--flex)"></span> <b style="color:var(--flex)">FLEX</b> — Campaign / Moment (bonus)</div>
+    </div>
+    <div class="fmt">Feed formats / month (scope): <b>4 Static</b> · <b>4 Short Reels</b> · <b>1 Gen-AI Motion (≤30s)</b> · <b>1 Campaign Reel</b> · <b>3 Repurpose</b> = 13 posts</div>
+    <div class="fmt" style="margin-top:6px">Stories / month (scope): <b>10 story cuts</b> of posted creatives + <b>3 special-day engagement stories</b> = 13 stories</div>
+  </div>
+
+  <!-- ================= MONTH 1 ================= -->
+  <div class="month-title"><span>Month 1</span> — July 2026 <span style="color:var(--muted);font-weight:400;font-size:14px">(Educate + build trust, seed offers)</span></div>
+  <div class="month-note">13 posts · 4 Static, 4 Reels, 1 Gen-AI Motion, 1 Campaign Reel, 3 Repurpose</div>
+
+  <div class="grid">
+    <div class="weeklabel">Week 1</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Jul 6</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Myth / Relatable</span></div>
+      <div class="hook">Is everyday hair fall normal — or a warning?</div>
+      <div class="mal">"മുടി കൊഴിച്ചിൽ നോർമൽ ആണോ?"</div>
+      <div class="concept">Fast reel: 3 signs your hair fall has crossed "normal." Ends on "when to see a specialist."</div>
+      <div class="cta"><b>CTA:</b> Save this / DM "HAIR" for a check</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Jul 8</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Education</span></div>
+      <div class="hook">Hair Transplant vs PRP vs GFC — which is for you?</div>
+      <div class="mal">"നിങ്ങൾക്ക് ഏതാണ് വേണ്ടത്?"</div>
+      <div class="concept">Simple comparison poster: what each does, who it suits. Neutral, "supports/helps" language.</div>
+      <div class="cta"><b>CTA:</b> Not sure? Book a consultation</div>
+      <span class="flag">⚑ Use "may help" framing — no efficacy guarantees</span>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Jul 10</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">Consultation CTA</span></div>
+      <div class="hook">Your first step is a conversation, not surgery.</div>
+      <div class="mal">"ആദ്യം ഒരു കൺസൾട്ടേഷൻ."</div>
+      <div class="concept">Repurpose Wed's static into a story-style CTA card: free/consultation offer, contact + location.</div>
+      <div class="cta"><b>CTA:</b> Call [9645 994 343] / DM to book</div>
+    </div>
+
+    <div class="weeklabel">Week 2</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Jul 13</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Myth-bust</span></div>
+      <div class="hook">"Hair transplant is very painful" — myth or fact?</div>
+      <div class="mal">"വേദന ഉണ്ടോ ഇല്ലയോ?"</div>
+      <div class="concept">Myth-buster reel addressing pain fears calmly; explain modern anaesthesia approach in plain terms.</div>
+      <div class="cta"><b>CTA:</b> Questions? Drop them below</div>
+      <span class="flag">⚑ Describe process factually; avoid "painless/guaranteed"</span>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Jul 15</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Procedure demystified</span></div>
+      <div class="hook">What actually happens on transplant day</div>
+      <div class="mal">"ട്രാൻസ്പ്ലാന്റ് ദിവസം എന്ത് നടക്കും?"</div>
+      <div class="concept">Step-through of the visit (consult → prep → procedure → home). Clean, non-graphic B-roll.</div>
+      <div class="cta"><b>CTA:</b> Save for later</div>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Jul 17</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Offer</span></div>
+      <div class="hook">Limited Graft offer — ₹50,000</div>
+      <div class="mal">"പരിമിതമായ സ്ലോട്ടുകൾ."</div>
+      <div class="concept">Offer poster (your existing feed offer). State inclusions + T&amp;C clearly; add limited-slot honesty, not fake scarcity.</div>
+      <div class="cta"><b>CTA:</b> DM "GRAFT" / Call to enquire</div>
+      <span class="flag">⚑ Publish real terms &amp; eligibility for the price</span>
+    </div>
+
+    <div class="weeklabel">Week 3</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Jul 20</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">Myth carousel</span></div>
+      <div class="hook">5 hair-loss myths Malayalis still believe</div>
+      <div class="mal">"ഇപ്പോഴും വിശ്വസിക്കുന്ന മിഥ്യകൾ"</div>
+      <div class="concept">Repurpose earlier myth reels into a swipe carousel — good saves/shares, low production cost.</div>
+      <div class="cta"><b>CTA:</b> Share with someone who needs it</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Jul 22</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Doctor / Trust</span></div>
+      <div class="hook">Meet the team behind your results</div>
+      <div class="mal">"നിങ്ങളുടെ ഡോക്ടറെ പരിചയപ്പെടാം"</div>
+      <div class="concept">Doctor/credentials card — [Dr. Name], qualifications, experience. Build authority, no outcome claims.</div>
+      <div class="cta"><b>CTA:</b> Book with our specialists</div>
+      <span class="flag">⚑ Use verified credentials only — no invented titles</span>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Jul 24</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Testimonial</span></div>
+      <div class="hook">In their words: a patient's experience</div>
+      <div class="mal">"ഒരു രോഗിയുടെ അനുഭവം"</div>
+      <div class="concept">Consented patient talking about the experience/care (not a results guarantee). Real voice.</div>
+      <div class="cta"><b>CTA:</b> Start your own consultation</div>
+      <span class="flag">⚑ Genuine, consented testimonial; ASCI-compliant claims only</span>
+    </div>
+
+    <div class="weeklabel">Week 4</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Jul 27</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Gen-AI Motion</span><span class="tag">Confidence</span></div>
+      <div class="hook">Confidence starts at the hairline</div>
+      <div class="mal">"ആത്മവിശ്വാസം ഇവിടെ തുടങ്ങുന്നു"</div>
+      <div class="concept">≤30s Gen-AI motion piece — emotional, aspirational visual around confidence. Brand-mood, not claims.</div>
+      <div class="cta"><b>CTA:</b> Follow for the full journey</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Jul 29</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">FAQ</span></div>
+      <div class="hook">Your top 6 questions, answered</div>
+      <div class="mal">"നിങ്ങളുടെ സംശയങ്ങൾക്ക് ഉത്തരം"</div>
+      <div class="concept">Repurpose the "FAQs" highlight into a feed carousel. Cost, downtime, eligibility (factual).</div>
+      <div class="cta"><b>CTA:</b> More questions? DM us</div>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Jul 31</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Offer</span></div>
+      <div class="hook">PRP + Medical Kit — this month's offer</div>
+      <div class="mal">"ഈ മാസത്തെ ഓഫർ"</div>
+      <div class="concept">Second existing offer as a clean poster. State what's included; "supports" framing for PRP.</div>
+      <div class="cta"><b>CTA:</b> DM "PRP" to claim</div>
+      <span class="flag">⚑ No efficacy guarantee; clarify kit contents &amp; terms</span>
+    </div>
+
+    <div class="weeklabel">Bonus</div>
+
+    <div class="cell flex">
+      <div class="date"><span class="day">Sat · Aug 1</span><span class="stage flex">FLEX</span></div>
+      <div class="tags"><span class="tag f">Campaign Reel</span><span class="tag">Brand film</span></div>
+      <div class="hook">We Design Your Confidence</div>
+      <div class="mal">"ഞങ്ങൾ നിങ്ങളുടെ ആത്മവിശ്വാസം രൂപകൽപ്പന ചെയ്യുന്നു"</div>
+      <div class="concept">Month's hero Campaign Reel tying the pillars together (matches your existing "WE DESIGN YOUR CONFIDENCE" creative). Use for paid boost.</div>
+      <div class="cta"><b>CTA:</b> Book your consultation today</div>
+    </div>
+  </div>
+
+  <!-- MONTH 1 STORIES -->
+  <div class="panel" style="margin-top:24px">
+    <div class="stories-title">Month 1 — Stories layer <span class="pill">13 stories</span></div>
+    <div class="month-note" style="margin:6px 0 12px">10 story cuts of the month's original creatives + 3 special-day engagement stories. Story cuts should carry an engagement sticker (poll / quiz / question / DM) to feed the algorithm and drive enquiries.</div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">10 story cuts (from posted creatives)</div>
+    <div class="smap">
+      <div class="src">Jul 6 · Hair-fall reel</div><div class="mech">Poll sticker — <b>"Is your hair fall normal? 🙂 / Worried 😟"</b></div>
+      <div class="src">Jul 8 · HT vs PRP vs GFC</div><div class="mech">Quiz sticker — <b>"Which one suits you?"</b> → DM to find out</div>
+      <div class="src">Jul 13 · Pain myth</div><div class="mech">Question sticker — <b>"Ask us anything about the procedure"</b></div>
+      <div class="src">Jul 15 · Transplant day</div><div class="mech">Behind-the-scenes teaser frames → "Full reel on profile"</div>
+      <div class="src">Jul 17 · ₹50,000 offer</div><div class="mech">DM sticker <b>"GRAFT"</b> + honest limited-slots note</div>
+      <div class="src">Jul 22 · Meet the doctor</div><div class="mech">Intro frame + question sticker — <b>"Ask Dr. [Name]"</b></div>
+      <div class="src">Jul 24 · Testimonial</div><div class="mech">Re-share + DM sticker to book <span class="flag" style="margin:0">⚑ consented only</span></div>
+      <div class="src">Jul 27 · Confidence motion</div><div class="mech">Emotive clip + poll — <b>"Would you consider it?"</b></div>
+      <div class="src">Jul 31 · PRP offer</div><div class="mech">DM sticker <b>"PRP"</b> + kit inclusions (state terms)</div>
+      <div class="src">Aug 1 · Campaign reel</div><div class="mech">3-frame teaser sequence → "Watch the full film"</div>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 4px">3 special-day / engagement stories</div>
+    <div class="month-note" style="margin:0 0 10px">I couldn't confidently verify 3 relevant <em>dated</em> July 2026 observances, so these use date-independent seasonal/engagement hooks. If you have specific July observances in mind, confirm the 2026 date and swap in.</div>
+    <div class="story-special">
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Monsoon &amp; your hair</div>
+        <div class="concept">This-or-That poll on monsoon hair myths (seasonally relevant in Kerala). Engagement + soft education.</div>
+        <span class="flag">⚑ Seasonal hook, not a fixed date</span>
+      </div>
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Ask the Doctor</div>
+        <div class="concept">Weekend Q&amp;A: question sticker collected, answered across follow-up story frames. Builds trust.</div>
+      </div>
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Rate your confidence</div>
+        <div class="concept">Emoji-slider / poll story tying to the brand's confidence theme. Light, no medical claim.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MONTH 2 ================= -->
+  <div class="month-title"><span>Month 2</span> — August 2026 <span style="color:var(--muted);font-weight:400;font-size:14px">(Deepen proof, push conversion)</span></div>
+  <div class="month-note">13 posts · 4 Static, 4 Reels, 1 Gen-AI Motion, 1 Campaign Reel, 3 Repurpose</div>
+
+  <div class="grid">
+    <div class="weeklabel">Week 5</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Aug 3</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Education</span></div>
+      <div class="hook">Why is your hair really falling out?</div>
+      <div class="mal">"മുടികൊഴിച്ചിലിന്റെ കാരണങ്ങൾ"</div>
+      <div class="concept">Reel on common causes (genetics, stress, nutrition, hormones) — educational, non-diagnostic.</div>
+      <div class="cta"><b>CTA:</b> Which one's yours? Comment</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Aug 5</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">GFC explained</span></div>
+      <div class="hook">What is GFC — and how is it different?</div>
+      <div class="mal">"GFC എന്താണ്?"</div>
+      <div class="concept">Explainer poster on GFC as a treatment option (differentiator). Plain, "may support" language.</div>
+      <div class="cta"><b>CTA:</b> Ask if GFC suits you</div>
+      <span class="flag">⚑ Verify GFC description with clinicians; no cure claims</span>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Aug 7</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Offer reminder</span></div>
+      <div class="hook">Consultation slots this week</div>
+      <div class="mal">"ഈ ആഴ്ചത്തെ സ്ലോട്ടുകൾ"</div>
+      <div class="concept">Availability-style CTA poster. Honest scarcity only (real slot limits), booking details.</div>
+      <div class="cta"><b>CTA:</b> DM to reserve a slot</div>
+    </div>
+
+    <div class="weeklabel">Week 6</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Aug 10</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Myth-bust</span></div>
+      <div class="hook">"Transplanted hair falls out too" — here's the truth</div>
+      <div class="mal">"സത്യം എന്താണ്?"</div>
+      <div class="concept">Explain shedding/shock-loss realistically so expectations are set honestly (builds credibility).</div>
+      <div class="cta"><b>CTA:</b> Save &amp; share</div>
+      <span class="flag">⚑ Set realistic expectations; avoid over-promising regrowth</span>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Aug 12</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Clinic / Tech</span></div>
+      <div class="hook">Inside NHC: hygiene &amp; technology</div>
+      <div class="mal">"ക്ലിനിക്കിനുള്ളിലേക്ക്"</div>
+      <div class="concept">Clinic-tour reel — cleanliness, equipment, environment. Reassurance for first-timers.</div>
+      <div class="cta"><b>CTA:</b> Visit us — book a tour/consult</div>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Aug 14</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">Testimonial</span></div>
+      <div class="hook">Another patient, another honest experience</div>
+      <div class="mal">"മറ്റൊരു അനുഭവം"</div>
+      <div class="concept">Repurpose earlier testimonial into a quote-card static/story. Low cost, keeps proof flowing.</div>
+      <div class="cta"><b>CTA:</b> Start your consultation</div>
+      <span class="flag">⚑ Consented &amp; genuine only</span>
+    </div>
+
+    <div class="weeklabel">Week 7</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Aug 17</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag f">Gen-AI Motion</span><span class="tag">Life moment</span></div>
+      <div class="hook">Before the big day — look like yourself again</div>
+      <div class="mal">"വലിയ ദിവസത്തിന് മുൻപ്"</div>
+      <div class="concept">≤30s Gen-AI motion around a wedding/career milestone. Emotional pull, mood not claims.</div>
+      <div class="cta"><b>CTA:</b> Plan ahead — talk to us</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Aug 19</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Recovery</span></div>
+      <div class="hook">What recovery actually looks like</div>
+      <div class="mal">"റിക്കവറി എങ്ങനെ?"</div>
+      <div class="concept">Honest recovery-timeline poster (day 1 → weeks → months). Sets expectations, reduces fear.</div>
+      <div class="cta"><b>CTA:</b> Ask about your timeline</div>
+      <span class="flag">⚑ General timeline; note individual results vary</span>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Aug 21</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag f">Reel</span><span class="tag">Before / After</span></div>
+      <div class="hook">A real journey (with consent)</div>
+      <div class="mal">"ഒരു യഥാർത്ഥ യാത്ര"</div>
+      <div class="concept">Before/After feature reel — ONLY if you have consented, genuine, non-misleading images.</div>
+      <div class="cta"><b>CTA:</b> Book your assessment</div>
+      <span class="flag">⚑ Highest-risk post — ASCI consent + no misleading edits; verify before use</span>
+    </div>
+
+    <div class="weeklabel">Week 8</div>
+
+    <div class="cell tofu">
+      <div class="date"><span class="day">Mon · Aug 24</span><span class="stage tofu">TOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">Top performer</span></div>
+      <div class="hook">Re-cut of your best-performing reel</div>
+      <div class="mal">"വീണ്ടും കാണാം"</div>
+      <div class="concept">Repurpose the month's strongest reel with a new hook/cover. Pick using Insights.</div>
+      <div class="cta"><b>CTA:</b> Follow for more</div>
+    </div>
+
+    <div class="cell mofu">
+      <div class="date"><span class="day">Wed · Aug 26</span><span class="stage mofu">MOFU</span></div>
+      <div class="tags"><span class="tag f">Static</span><span class="tag">Broaden audience</span></div>
+      <div class="hook">Hair thinning isn't only a men's concern</div>
+      <div class="mal">"സ്ത്രീകൾക്കും പരിഹാരം ഉണ്ട്"</div>
+      <div class="concept">Poster opening the door to women / cosmetic services (the "Cosmetics" side of NHC).</div>
+      <div class="cta"><b>CTA:</b> Enquire about your concern</div>
+      <span class="flag">⚑ Confirm which women's/cosmetic services you actually offer</span>
+    </div>
+
+    <div class="cell bofu">
+      <div class="date"><span class="day">Fri · Aug 28</span><span class="stage bofu">BOFU</span></div>
+      <div class="tags"><span class="tag re">Repurpose</span><span class="tag">Offer close</span></div>
+      <div class="hook">Last week for this month's offer</div>
+      <div class="mal">"ഈ ഓഫർ ഉടൻ അവസാനിക്കും"</div>
+      <div class="concept">Repurpose the offer creative with an honest "closing soon" frame (only if genuinely ending).</div>
+      <div class="cta"><b>CTA:</b> DM now to claim</div>
+      <span class="flag">⚑ Only claim "ending" if the offer truly ends</span>
+    </div>
+
+    <div class="weeklabel">Bonus</div>
+
+    <div class="cell flex">
+      <div class="date"><span class="day">Sat · Aug 29</span><span class="stage flex">FLEX</span></div>
+      <div class="tags"><span class="tag f">Campaign Reel</span><span class="tag">Patient journey</span></div>
+      <div class="hook">From first call to new confidence</div>
+      <div class="mal">"ആദ്യ കോൾ മുതൽ വരെ"</div>
+      <div class="concept">Month-2 Campaign Reel: a narrative journey (consult → care → follow-up). Hero asset for boosting.</div>
+      <div class="cta"><b>CTA:</b> Your journey starts with one message</div>
+    </div>
+  </div>
+
+  <!-- MONTH 2 STORIES -->
+  <div class="panel" style="margin-top:24px">
+    <div class="stories-title">Month 2 — Stories layer <span class="pill">13 stories</span></div>
+    <div class="month-note" style="margin:6px 0 12px">10 story cuts of the month's original creatives + 3 special-day engagement stories.</div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">10 story cuts (from posted creatives)</div>
+    <div class="smap">
+      <div class="src">Aug 3 · Causes reel</div><div class="mech">Poll — <b>"What's causing yours?"</b> (Stress / Genetics / Not sure)</div>
+      <div class="src">Aug 5 · GFC explained</div><div class="mech">Quiz — <b>"Is GFC right for you?"</b> → DM to ask <span class="flag" style="margin:0">⚑ no efficacy claim</span></div>
+      <div class="src">Aug 7 · Slots offer</div><div class="mech">DM/booking sticker + real availability count</div>
+      <div class="src">Aug 10 · Shedding myth</div><div class="mech">"Myth or Fact?" quiz sticker — sets honest expectations</div>
+      <div class="src">Aug 12 · Clinic tour</div><div class="mech">Walkthrough frames + "Come visit" location sticker</div>
+      <div class="src">Aug 17 · Life-moment motion</div><div class="mech">Emotive clip + countdown to consultation days</div>
+      <div class="src">Aug 19 · Recovery timeline</div><div class="mech">Swipe-through frames + question sticker</div>
+      <div class="src">Aug 21 · Before/After</div><div class="mech">Re-share <span class="flag" style="margin:0">⚑ consent + no misleading edits</span></div>
+      <div class="src">Aug 26 · Women / cosmetic</div><div class="mech">Poll — <b>"Would you want a women's session?"</b></div>
+      <div class="src">Aug 29 · Journey campaign</div><div class="mech">Teaser frames → "Watch the full journey"</div>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 4px">3 special-day / engagement stories</div>
+    <div class="story-special">
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Independence Day</div>
+        <div class="mal" style="margin-bottom:5px">15 Aug 2026 · (calc: Saturday)</div>
+        <div class="concept">Tasteful greeting + light "confidence = freedom" tie-in. Keep respectful; don't hard-sell the offer on a national day.</div>
+        <span class="flag">⚑ Verify the weekday; keep ASCI-tasteful</span>
+      </div>
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Onam greeting</div>
+        <div class="mal" style="margin-bottom:5px">Date NOT confirmed</div>
+        <div class="concept">Festive greeting + gentle "look &amp; feel your best for Onam" angle. Culturally resonant in Kerala.</div>
+        <span class="flag">⚑ Onam 2026 date unverified (Aug–Sept window) — confirm before scheduling</span>
+      </div>
+      <div class="cell flex" style="padding:12px">
+        <div class="hook" style="font-size:13px">Flexible engagement</div>
+        <div class="concept">"Myth vs Fact" quiz day, a clinic milestone, or another <em>verified</em> observance of your choice.</div>
+        <span class="flag">⚑ Swap in a confirmed date/occasion</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    NHC — New Hair &amp; Cosmetics · 2-month content calendar (draft). Dates assume a Mon 6 Jul 2026 start.
+    Malayalam hooks are drafts pending native-speaker review. All efficacy/medical framing to be confirmed
+    with the clinic's doctors and against current ASCI / regulatory guidance before publishing.
+  </footer>
+
+</div>
+</body>
+</html>
