@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAZA Saudi — 1-Month Instagram Content Strategy</title>
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --accent:#F97316; --border:#374151;
+    --text:#E5E7EB; --muted:#9CA3AF; --muted2:#6B7280;
+    --awareness:#3B82F6; --consideration:#A855F7; --conversion:#22C55E;
+    --ai:#F97316; --reg:#9CA3AF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Google Sans","Product Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6; padding:40px 48px 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1600px;margin:0 auto}
+
+  /* HEADER */
+  .head{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:36px}
+  .kicker{color:var(--accent);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  h1{font-size:34px;line-height:1.2;margin-bottom:10px;font-weight:700}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);font-size:15px;max-width:760px}
+  .by{margin-top:16px;font-size:12px;color:var(--muted2)}
+  .by b{color:var(--text)}
+
+  /* SECTION */
+  section{margin-bottom:48px}
+  h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  h3{font-size:18px;font-weight:700;margin-bottom:6px}
+
+  /* CARDS GRID */
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .box .num{font-size:30px;font-weight:700;color:var(--accent);line-height:1}
+  .box .lbl{font-size:12px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+  .box p{font-size:14px;color:var(--text);margin-top:8px}
+
+  .snapshot{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .snapshot .row{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:18px}
+  .snapshot .item{min-width:140px}
+  .snapshot .item .t{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .snapshot .item .v{font-size:15px;color:var(--text);font-weight:600;margin-top:3px}
+  .snapshot p{color:var(--muted);font-size:14px}
+  .snapshot p b{color:var(--text)}
+
+  /* MASTER TABLE */
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border-radius:12px;overflow:hidden}
+  thead th{background:#0d1420;color:var(--accent);text-align:left;padding:12px 12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+  tbody td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text)}
+  tbody tr:last-child td{border-bottom:none}
+  .scroll{overflow-x:auto}
+
+  /* CALENDAR GRID */
+  .calwrap{overflow-x:auto}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;min-width:660px}
+  .cal .dow{background:var(--accent);color:#111;font-weight:700;font-size:11px;letter-spacing:1px;text-align:center;padding:8px 0;border-radius:6px;text-transform:uppercase}
+  .cal .cell{background:var(--card);border:1px solid var(--border);border-radius:8px;min-height:96px;padding:8px;display:flex;flex-direction:column;position:relative}
+  .cal .cell .dnum{font-size:13px;font-weight:700;color:var(--text)}
+  .cal .cell.empty{background:transparent;border:1px dashed rgba(55,65,81,.45)}
+  .cal .cell.rest .dnum{color:var(--muted2)}
+  .cal .cell.active{border-color:rgba(249,115,22,.55)}
+  .cal .ico{margin:7px auto 3px;display:flex;justify-content:center}
+  .cal .ctype{font-size:9px;font-weight:700;letter-spacing:.5px;text-align:center;color:var(--accent);text-transform:uppercase}
+  .cal .cdesc{font-size:9.5px;text-align:center;color:var(--muted);margin-top:2px;line-height:1.25}
+  .cal .cno{position:absolute;top:7px;right:7px;font-size:8px;font-weight:700;color:var(--muted2);background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
+  .callegend{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+  .callegend .li{display:flex;gap:10px;align-items:flex-start}
+  .callegend .li .t b{color:var(--text);display:block;font-size:12px}
+  .callegend .li .t span{color:var(--muted);font-size:11px}
+
+  /* PILLS */
+  .pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+  .p-aware{background:rgba(59,130,246,.15);color:#93C5FD;border:1px solid rgba(59,130,246,.4)}
+  .p-consid{background:rgba(168,85,247,.15);color:#D8B4FE;border:1px solid rgba(168,85,247,.4)}
+  .p-conv{background:rgba(34,197,94,.15);color:#86EFAC;border:1px solid rgba(34,197,94,.4)}
+  .p-ai{background:rgba(249,115,22,.15);color:#FDBA74;border:1px solid rgba(249,115,22,.45)}
+  .p-reg{background:rgba(156,163,175,.12);color:#D1D5DB;border:1px solid rgba(156,163,175,.35)}
+  .p-type{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border)}
+
+  /* DETAIL CARDS */
+  .content-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:0;margin-bottom:22px;overflow:hidden}
+  .cc-head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:#0d1420;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .cc-no{font-size:13px;font-weight:700;color:var(--accent);background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);border-radius:8px;padding:6px 12px;white-space:nowrap}
+  .cc-title{font-size:16px;font-weight:700;flex:1;min-width:200px}
+  .cc-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .cc-body{padding:22px}
+  .field{margin-bottom:16px}
+  .field:last-child{margin-bottom:0}
+  .field .flabel{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .field .ftext{font-size:14px;color:var(--text)}
+  .field .ftext.muted{color:var(--muted)}
+  .field.hook .ftext{font-size:15px;font-weight:600;font-style:italic;color:#fff}
+  .exec{padding-left:18px}
+  .exec li{margin-bottom:5px;font-size:14px;color:var(--text)}
+  .cap{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:14px}
+  .cap .ar{direction:rtl;text-align:right;font-size:15px;color:#fff;margin-bottom:6px;line-height:1.7}
+  .cap .en{color:var(--muted);font-size:13px}
+  .cap .tags{color:var(--accent);font-size:12px;margin-top:8px;word-break:break-word}
+  .cta-box{display:inline-block;background:var(--accent);color:#111;font-weight:700;font-size:13px;padding:8px 16px;border-radius:8px}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.twocol{grid-template-columns:1fr}}
+
+  /* HERO FILM */
+  .hero-film{border:1px solid var(--accent);box-shadow:0 0 0 1px rgba(249,115,22,.25)}
+  .hero-film .cc-head{background:linear-gradient(90deg,rgba(249,115,22,.18),rgba(13,20,32,.6))}
+  .ribbon{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#111;background:var(--accent);padding:4px 10px;border-radius:6px;white-space:nowrap}
+  .tagline-band{text-align:center;padding:18px;background:var(--bg);border:1px dashed var(--accent);border-radius:10px;margin-top:6px}
+  .tagline-band .en{font-size:18px;font-weight:700;color:#fff;font-style:italic}
+  .tagline-band .ar{direction:rtl;font-size:17px;color:var(--accent);font-weight:700;margin-top:4px}
+
+  .note{font-size:12px;color:var(--muted2);margin-top:10px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  footer{border-top:1px solid var(--border);margin-top:50px;padding-top:24px;color:var(--muted2);font-size:12px;text-align:center}
+
+  /* PRINT / PDF */
+  @media print{
+    body{padding:0}
+    .content-card,.box,.snapshot,.cap,.cc-body .field{break-inside:avoid;page-break-inside:avoid}
+    table{break-inside:auto}
+    tr{break-inside:avoid;page-break-inside:avoid}
+    h2{break-after:avoid}
+    section{break-inside:avoid-page}
+    .cal{break-inside:avoid}
+  }
+  /* DESKTOP VIEW OVERRIDES */
+  h1{font-size:40px}
+  .sub{max-width:920px;font-size:16px}
+  .snapshot p{max-width:1150px}
+  .note{max-width:1200px}
+  .cc-body .field .ftext{max-width:1200px}
+  .cal .cell{min-height:120px}
+  .cal .dow{font-size:12px;padding:10px 0}
+  .cal .cell .dnum{font-size:14px}
+  .cal .ctype{font-size:10px}
+  .cal .cdesc{font-size:11px}
+  section{margin-bottom:56px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Instagram Growth Strategy · 2-Month Content Plan</div>
+    <h1>TAZA Saudi <span>طازة</span> — 2-Month (24-Post) Content Strategy</h1>
+    <p class="sub">A 60-day Instagram content system engineered to grow awareness, engagement and followers, lift the average bill, and drive real restaurant visits and online orders — short, hook-driven, interactive content blending proven QSR tactics with realistic-human AI storytelling for the Saudi audience.</p>
+    <p class="by">Prepared by <b>Speakerbox</b> · Senior Brand &amp; Growth Strategy · For <b>@tazasaudi</b> (taza.sa)</p>
+  </header>
+
+  <!-- BRAND SNAPSHOT -->
+  <section>
+    <h2>Brand Snapshot &amp; Strategic Read</h2>
+    <div class="snapshot">
+      <div class="row">
+        <div class="item"><div class="t">Brand</div><div class="v">مطاعم طازة / TAZA</div></div>
+        <div class="item"><div class="t">Founded</div><div class="v">2009 · Yanbu</div></div>
+        <div class="item"><div class="t">Footprint</div><div class="v">~20 outlets · 5 cities</div></div>
+        <div class="item"><div class="t">IG Handle</div><div class="v">@tazasaudi (~21K)</div></div>
+        <div class="item"><div class="t">Category</div><div class="v">Fresh chicken / broast QSR</div></div>
+        <div class="item"><div class="t">Hero SKUs</div><div class="v">Broast · Cheese Sandwich · Fish</div></div>
+      </div>
+      <p><b>Positioning:</b> "#يعني_طازة" — freshness as the brand religion. Daily-fresh chicken, a central-kitchen secret spice blend, a cult garlic sauce, family-friendly value pricing ($$), branches across Taif, Makkah, Madina, Yanbu &amp; Mahayil Aseer, with online ordering via taza.sa.</p>
+      <p style="margin-top:10px"><b>The strategic gap:</b> 953 posts but only ~21K followers signals high output, low velocity — feed-style content with weak shareability and almost no Reels-led reach or AI differentiation. <b>Virtually no Saudi QSR is using AI storytelling yet.</b> This plan leans into (1) viral, sound-led Reels for reach, (2) AI cinematic + realistic-human storytelling to own a creative lane competitors can't copy fast, (3) review proof + an interactive puzzle for trust &amp; engagement, and (4) sharp value offers &amp; combos to lift footfall, orders and the average bill.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--muted2)"><i>Note: brand figures above (follower/post counts, outlet numbers) are approximate, drawn from public sources and may be outdated — worth confirming against the live @tazasaudi account before the deck goes to the client.</i></p>
+    </div>
+  </section>
+  <section>
+    <h2>Strategy at a Glance</h2>
+    <div class="grid g4">
+      <div class="box"><div class="num">24</div><div class="lbl">Posts / 2 Months</div></div>
+      <div class="box"><div class="num">12</div><div class="lbl">Per Month (6·3·3)</div></div>
+      <div class="box"><div class="num">10</div><div class="lbl">AI Concepts (real humans)</div></div>
+      <div class="box"><div class="num">5·4·3</div><div class="lbl">Aware·Consider·Convert / mo</div></div>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="box"><div class="lbl">Primary Business Goal</div><p><b>Raise the average bill (AOV)</b> — every food asset frames the full meal (broast + chips + sauce + drink), not a single item.</p></div>
+      <div class="box"><div class="lbl">Emotional Triggers</div><p>Cravings &amp; layered ASMR · family "اللمّة" moments · convenience · value &amp; the fuller meal · Saudi pride.</p></div>
+      <div class="box"><div class="lbl">This Round Covers</div><p>2 viral reels · interactive puzzle (answer + follow + win) · AI with real human characters · offer + combo (client to supply) · UGC runs client-side · all 6 pillars.</p></div>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--awareness)"></i> Awareness</span>
+      <span><i class="dot" style="background:var(--consideration)"></i> Consideration</span>
+      <span><i class="dot" style="background:var(--conversion)"></i> Conversion</span>
+      <span><i class="dot" style="background:var(--ai)"></i> AI-Generated</span>
+    </div>
+  </section>
+
+  <!-- CHANGES APPLIED -->
+  <section>
+    <h2>Changes Applied — Client Review (Rev. 2)</h2>
+    <div class="snapshot">
+      <p style="margin-bottom:14px;color:var(--muted)">Every point from your feedback has been actioned. Summary of what changed and why:</p>
+      <table>
+        <thead><tr><th>Your Note</th><th>What We Did</th></tr></thead>
+        <tbody>
+          <tr><td><b>#02 ASMR — broast isn't crunchy</b></td><td>Reframed to an <b>AI ASMR Unboxing</b>: layered sounds (chips crunch, garlic-sauce squeeze &amp; drizzle, wrapper, pour) around a <b>full meal reveal</b> — which also supports the average-bill goal by showing more than one item.</td></tr>
+          <tr><td><b>Video length / retention</b></td><td>Recommendation added below: tighten most Reels to a short, loopable length with the hook in the first 1–2s. See "Video Length &amp; Retention".</td></tr>
+          <tr><td><b>#05 Family gathering / culture</b></td><td>Kept and prioritised as a core monthly anchor.</td></tr>
+          <tr><td><b>AI = real humans, no cartoons</b></td><td>Cartoon mascot removed. All AI now uses <b>photorealistic human characters</b> (#03 &amp; #08 reworked; #01/#11 are food-led).</td></tr>
+          <tr><td><b>More on QSR</b></td><td>New "QSR Growth Playbook" section focused on raising the average bill.</td></tr>
+          <tr><td><b>#06 UGC handled your side</b></td><td>Removed from our scope &amp; not counted. Replaced with the <b>Interactive Puzzle</b>. We'll provide <b>motion-graphics support</b> for your UGC when needed.</td></tr>
+          <tr><td><b>Add interactive puzzle</b></td><td>Added as #06 — <b>answer + follow + win 🏆</b> mechanic (engagement &amp; follower growth).</td></tr>
+          <tr><td><b>Offer + Combo you'll supply</b></td><td>#09 (offer) &amp; #10 (combo) kept as slots, marked <b>client-supplied</b> — we'll design once you send details.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- MASTER TABLE -->
+  <section>
+    <h2>Month 1 — Content Calendar</h2>
+    <div class="calwrap">
+      <div class="cal">
+        <div class="dow">Sun</div><div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div>
+
+        <!-- Week 1 -->
+        <div class="cell active"><span class="dnum">1</span><span class="cno">Film</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Hero Brand Film</div></div>
+        <div class="cell rest"><span class="dnum">2</span></div>
+        <div class="cell rest"><span class="dnum">3</span></div>
+        <div class="cell active"><span class="dnum">4</span><span class="cno">C01</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI Cinematic Ad</div></div>
+        <div class="cell rest"><span class="dnum">5</span></div>
+        <div class="cell active"><span class="dnum">6</span><span class="cno">C02</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI ASMR Unboxing · Viral</div></div>
+        <div class="cell rest"><span class="dnum">7</span></div>
+
+        <!-- Week 2 -->
+        <div class="cell active"><span class="dnum">8</span><span class="cno">C04</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">Order These 5</div></div>
+        <div class="cell rest"><span class="dnum">9</span></div>
+        <div class="cell active"><span class="dnum">10</span><span class="cno">C03</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI Human Story · Hook</div></div>
+        <div class="cell rest"><span class="dnum">11</span></div>
+        <div class="cell active"><span class="dnum">12</span><span class="cno">C05</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Friday لمّة · Culture</div></div>
+        <div class="cell rest"><span class="dnum">13</span></div>
+        <div class="cell rest"><span class="dnum">14</span></div>
+
+        <!-- Week 3 -->
+        <div class="cell active"><span class="dnum">15</span><span class="cno">C06</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Interactive Puzzle 🏆</div></div>
+        <div class="cell rest"><span class="dnum">16</span></div>
+        <div class="cell active"><span class="dnum">17</span><span class="cno">C07</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">Reviews · Social Proof</div></div>
+        <div class="cell rest"><span class="dnum">18</span></div>
+        <div class="cell active"><span class="dnum">19</span><span class="cno">C08</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Hungry Story · AI</div></div>
+        <div class="cell rest"><span class="dnum">20</span></div>
+        <div class="cell rest"><span class="dnum">21</span></div>
+
+        <!-- Week 4 -->
+        <div class="cell active"><span class="dnum">22</span><span class="cno">C09</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Offer · Client-Supplied</div></div>
+        <div class="cell rest"><span class="dnum">23</span></div>
+        <div class="cell active"><span class="dnum">24</span><span class="cno">C11</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Farm→Plate · Viral</div></div>
+        <div class="cell rest"><span class="dnum">25</span></div>
+        <div class="cell active"><span class="dnum">26</span><span class="cno">C10</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">Combo · Client-Supplied</div></div>
+        <div class="cell rest"><span class="dnum">27</span></div>
+        <div class="cell active"><span class="dnum">28</span><span class="cno">C12</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Order in 30s</div></div>
+
+        <!-- Week 5 -->
+        <div class="cell rest"><span class="dnum">29</span></div>
+        <div class="cell rest"><span class="dnum">30</span></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+      </div>
+    </div>
+
+    <div class="callegend">
+      <div class="li"><svg viewBox="0 0 24 24" width="22" height="22"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg><div class="t"><b>Post (Static)</b><span>Offers, culture &amp; value moments</span></div></div>
+      <div class="li"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg><div class="t"><b>Video (Reel)</b><span>Story, viral &amp; AI-powered content</span></div></div>
+      <div class="li"><svg viewBox="0 0 28 24" width="24" height="22" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg><div class="t"><b>Carousel</b><span>Menus, proof &amp; step-by-step combos</span></div></div>
+      <div class="li"><div class="t"><b>C## / Film</b><span>Maps to the detailed brief number below</span></div></div>
+    </div>
+
+    <p class="note">12 posts + 1 hero film across the month at a ~3-per-week rhythm (weeks anchored on Sun / Tue / Thu, with viral Reels on Fri and the conversion push on Sat). Calendar starts on a Sunday to match the Saudi week; shift dates to your live month. Blank days are rest/community-management days (Stories, replies, reshares).</p>
+
+    <h3 style="margin-top:34px;margin-bottom:14px">Quick Reference Index</h3>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Type</th><th>AI / Reg</th><th>Pillar</th><th>Funnel</th><th>Hook</th><th>Objective</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>AI Brand Storytelling</td><td><span class="pill p-aware">Awareness</span></td><td>The chicken that's too fresh to be real…</td><td>Awareness</td></tr>
+          <tr><td>02</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>Entertainment / Viral</td><td><span class="pill p-aware">Awareness</span></td><td>Sound on for the most satisfying TAZA unboxing 🔊</td><td>Engagement / AOV</td></tr>
+          <tr><td>03</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI (real human)</span></td><td>AI Brand Storytelling</td><td><span class="pill p-aware">Awareness</span></td><td>She wasn't ready for that first bite 👀</td><td>Awareness / Desire</td></tr>
+          <tr><td>04</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Regular</span></td><td>Product &amp; Food Showcase</td><td><span class="pill p-consid">Consideration</span></td><td>First time at TAZA? Order these 5.</td><td>Consideration</td></tr>
+          <tr><td>05</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Regular</span></td><td>Saudi Lifestyle &amp; Culture</td><td><span class="pill p-aware">Awareness</span></td><td>Friday isn't Friday without the لمّة.</td><td>Awareness / Relatability</td></tr>
+          <tr><td>06</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-reg">Motion GFX</span></td><td>Entertainment / Interactive</td><td><span class="pill p-consid">Consideration</span></td><td>Spot the hidden broast to win 👀🏆</td><td>Engagement / Followers</td></tr>
+          <tr><td>07</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Regular</span></td><td>Customer Experience</td><td><span class="pill p-consid">Consideration</span></td><td>You said it, not us 👇</td><td>Trust / Consideration</td></tr>
+          <tr><td>08</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI (real human)</span></td><td>AI Brand Storytelling</td><td><span class="pill p-consid">Consideration</span></td><td>What really happens when you're hungry…</td><td>Engagement / Desire</td></tr>
+          <tr><td>09</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Client offer</span></td><td>Offers &amp; Promotions</td><td><span class="pill p-conv">Conversion</span></td><td>The offer everyone's been waiting for 👀</td><td>Conversion / Visits</td></tr>
+          <tr><td>10</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Client combo</span></td><td>Offers &amp; Promotions</td><td><span class="pill p-conv">Conversion</span></td><td>Your combo, your way — more meal, more value.</td><td>Conversion / AOV</td></tr>
+          <tr><td>11</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>Entertainment / Viral</td><td><span class="pill p-aware">Awareness</span></td><td>From farm at sunrise to your plate by lunch.</td><td>Awareness / Shares</td></tr>
+          <tr><td>12</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Regular</span></td><td>Product &amp; Food Showcase</td><td><span class="pill p-conv">Conversion</span></td><td>Craving now? Order in 30 seconds.</td><td>Conversion / Online orders</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- MONTH 2 CALENDAR -->
+  <section>
+    <h2>Month 2 — Content Calendar</h2>
+    <p class="note" style="margin-top:-4px;margin-bottom:16px">Month 2 builds on Month 1's momentum — same rhythm and rules (short, hook-driven, interactive, real-human AI), with fresh concepts that push harder on the <b>average-bill</b> goal (sauce &amp; add-on rituals, "make it a meal", combos) and a second high-priority <b>family / Saudi culture</b> anchor.</p>
+    <div class="calwrap">
+      <div class="cal">
+        <div class="dow">Sun</div><div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div>
+
+        <!-- Week 1 -->
+        <div class="cell active"><span class="dnum">1</span><span class="cno">C13</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI Sauce Cinematic</div></div>
+        <div class="cell rest"><span class="dnum">2</span></div>
+        <div class="cell rest"><span class="dnum">3</span></div>
+        <div class="cell active"><span class="dnum">4</span><span class="cno">C16</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">Make It a Meal · AOV</div></div>
+        <div class="cell rest"><span class="dnum">5</span></div>
+        <div class="cell active"><span class="dnum">6</span><span class="cno">C14</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI ASMR Pour · Viral</div></div>
+        <div class="cell rest"><span class="dnum">7</span></div>
+
+        <!-- Week 2 -->
+        <div class="cell active"><span class="dnum">8</span><span class="cno">C17</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Family Gathering 🤍</div></div>
+        <div class="cell rest"><span class="dnum">9</span></div>
+        <div class="cell active"><span class="dnum">10</span><span class="cno">C15</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI Human · POV</div></div>
+        <div class="cell rest"><span class="dnum">11</span></div>
+        <div class="cell active"><span class="dnum">12</span><span class="cno">C18</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Interactive Puzzle 🏆</div></div>
+        <div class="cell rest"><span class="dnum">13</span></div>
+        <div class="cell rest"><span class="dnum">14</span></div>
+
+        <!-- Week 3 -->
+        <div class="cell active"><span class="dnum">15</span><span class="cno">C19</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">How Regulars Order</div></div>
+        <div class="cell rest"><span class="dnum">16</span></div>
+        <div class="cell active"><span class="dnum">17</span><span class="cno">C20</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">AI Human · Craving</div></div>
+        <div class="cell rest"><span class="dnum">18</span></div>
+        <div class="cell active"><span class="dnum">19</span><span class="cno">C23</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="11" fill="#F97316"/><path d="M10 8l6 4-6 4z" fill="#1F2937"/></svg></div><div class="ctype">Video</div><div class="cdesc">Satisfying · Viral</div></div>
+        <div class="cell rest"><span class="dnum">20</span></div>
+        <div class="cell rest"><span class="dnum">21</span></div>
+
+        <!-- Week 4 -->
+        <div class="cell active"><span class="dnum">22</span><span class="cno">C21</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Offer · Client-Supplied</div></div>
+        <div class="cell rest"><span class="dnum">23</span></div>
+        <div class="cell active"><span class="dnum">24</span><span class="cno">C22</span><div class="ico"><svg viewBox="0 0 28 24" width="22" height="20" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round"><rect x="9" y="4.5" width="10" height="15" rx="2"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="23" y1="8" x2="23" y2="16"/></svg></div><div class="ctype">Carousel</div><div class="cdesc">Combo · Client-Supplied</div></div>
+        <div class="cell rest"><span class="dnum">25</span></div>
+        <div class="cell active"><span class="dnum">26</span><span class="cno">C24</span><div class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="#F97316"/><g stroke="#1F2937" stroke-width="1.7" stroke-linecap="round"><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></g></svg></div><div class="ctype">Post</div><div class="cdesc">Order Now · Day-part</div></div>
+        <div class="cell rest"><span class="dnum">27</span></div>
+
+        <!-- Week 5 -->
+        <div class="cell rest"><span class="dnum">28</span></div>
+        <div class="cell rest"><span class="dnum">29</span></div>
+        <div class="cell rest"><span class="dnum">30</span></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+        <div class="cell empty"></div>
+      </div>
+    </div>
+
+    <p class="note">Same ~3-per-week rhythm anchored on Sun / Tue / Thu, viral Reel on Fri, conversion push at month-end. Dates are generic (1–30 from a Sunday) — shift to your live month.</p>
+
+    <h3 style="margin-top:34px;margin-bottom:14px">Month 2 — Quick Reference Index</h3>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Type</th><th>AI / Reg</th><th>Pillar</th><th>Funnel</th><th>Hook</th><th>Objective</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>13</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>Product Showcase</td><td><span class="pill p-aware">Awareness</span></td><td>The sauce that started a cult 🧄</td><td>Awareness / AOV (add-on)</td></tr>
+          <tr><td>14</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>Entertainment / Viral</td><td><span class="pill p-aware">Awareness</span></td><td>Sound on for the most satisfying pour 🔊</td><td>Engagement / AOV</td></tr>
+          <tr><td>15</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI (real human)</span></td><td>AI Brand Storytelling</td><td><span class="pill p-aware">Awareness</span></td><td>Every group has that one TAZA friend 👀</td><td>Awareness / Relatability</td></tr>
+          <tr><td>16</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Regular</span></td><td>Product Showcase</td><td><span class="pill p-consid">Consideration</span></td><td>Don't just get the sandwich… 👀</td><td>Consideration / AOV</td></tr>
+          <tr><td>17</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Regular</span></td><td>Saudi Lifestyle &amp; Culture</td><td><span class="pill p-aware">Awareness</span></td><td>The table that brings everyone back 🤍</td><td>Awareness / Culture</td></tr>
+          <tr><td>18</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-reg">Motion GFX</span></td><td>Entertainment / Interactive</td><td><span class="pill p-consid">Consideration</span></td><td>Count the pieces to win 🏆</td><td>Engagement / Followers</td></tr>
+          <tr><td>19</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Regular</span></td><td>Customer Experience</td><td><span class="pill p-consid">Consideration</span></td><td>How TAZA regulars actually order 👇</td><td>Consideration / Saves</td></tr>
+          <tr><td>20</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI (real human)</span></td><td>AI Brand Storytelling</td><td><span class="pill p-consid">Consideration</span></td><td>It's 11pm and you know what you want…</td><td>Desire / Day-part</td></tr>
+          <tr><td>21</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Client offer</span></td><td>Offers &amp; Promotions</td><td><span class="pill p-conv">Conversion</span></td><td>New offer, dropping now 👀</td><td>Conversion / Visits</td></tr>
+          <tr><td>22</td><td><span class="pill p-type">Carousel</span></td><td><span class="pill p-reg">Client combo</span></td><td>Offers &amp; Promotions</td><td><span class="pill p-conv">Conversion</span></td><td>More meal, more value — your combo.</td><td>Conversion / AOV</td></tr>
+          <tr><td>23</td><td><span class="pill p-type">Reel</span></td><td><span class="pill p-ai">AI</span></td><td>Entertainment / Viral</td><td><span class="pill p-aware">Awareness</span></td><td>The most satisfying 10 seconds today.</td><td>Awareness / Shares</td></tr>
+          <tr><td>24</td><td><span class="pill p-type">Static</span></td><td><span class="pill p-reg">Regular</span></td><td>Product / Convenience</td><td><span class="pill p-conv">Conversion</span></td><td>Lunch sorted in 30 seconds 🔥</td><td>Conversion / Online orders</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STRATEGY NOTES -->
+  <section>
+    <h2>Responding to Your Questions — Strategy Notes</h2>
+
+    <div class="content-card">
+      <div class="cc-head"><span class="cc-no">A</span><span class="cc-title">The ASMR Reframe — Unboxing, Not Crunch</span><span class="cc-tags"><span class="pill p-type">Reel #02 · #14</span><span class="pill p-ai">AI</span></span></div>
+      <div class="cc-body">
+        <div class="field"><div class="flabel">Why the change</div><div class="ftext">You're right — TAZA broast is tender, not crunchy, so a "crunch ASMR" would misrepresent the product. The stronger, on-brand play is an <b>unboxing ASMR</b> that layers the sounds you <i>do</i> own: the chips crunch, the garlic-sauce squeeze &amp; drizzle, the wrapper crinkle, the drink pour, the first tear of the pack.</div></div>
+        <div class="field"><div class="flabel">How it serves the average-bill goal</div><div class="ftext">Because it unboxes a <b>full meal</b> (broast + chips + sauce + drink), the "default order" people picture becomes bigger than a single item — nudging basket size up. Chips stay a supporting sound, not the hero.</div></div>
+        <div class="field"><div class="flabel">Execution — hook · ear · eye · interactive · follow</div><ul class="exec">
+          <li><b>Hook (0–1s):</b> the pack lands on the table, "sound on 🔊" — immediate audio + close-up.</li>
+          <li><b>Ear:</b> clean, layered ASMR captured with a close mic; no music fighting the sound.</li>
+          <li><b>Eye:</b> macro reveal, steam, sauce drizzle in slow-mo — AI-assisted for a premium, seamless look.</li>
+          <li><b>Interactive:</b> caption asks "which sound is the most satisfying — the pour, the squeeze, or the tear?" → comments.</li>
+          <li><b>Follow:</b> end card "follow for the next unboxing" to build a repeatable series.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-head"><span class="cc-no">B</span><span class="cc-title">Video Length &amp; Retention</span><span class="cc-tags"><span class="pill p-reg">Recommendation</span></span></div>
+      <div class="cc-body">
+        <div class="field"><div class="flabel">Our recommendation</div><div class="ftext">Yes — for most Reels, <b>shorter is better</b>. Aim for roughly <b>7–15 seconds</b>, with the hook in the first 1–2 seconds and a clean loop so the video auto-replays. Reserve longer runtimes (20–45s) only for story-led pieces (the AI human story #08) and the hero brand film, where the emotion needs room to build.</div></div>
+        <div class="field"><div class="flabel">Honest caveat</div><div class="ftext muted">This is a general short-form best-practice and our professional judgment, <b>not a guaranteed rule</b> — shorter, fully-watched, looping videos tend to earn stronger completion signals, which usually helps reach. I'd recommend we <b>validate it against TAZA's own numbers</b>: watch the average-watch-time / retention graph in Instagram Insights for the first 2–3 weeks, then lock the ideal length from your real audience data rather than assumptions.</div></div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-head"><span class="cc-no">C</span><span class="cc-title">The Interactive Puzzle — Answer · Follow · Win 🏆</span><span class="cc-tags"><span class="pill p-type">Reel #06 · #18</span><span class="pill p-reg">Motion GFX</span></span></div>
+      <div class="cc-body">
+        <div class="field"><div class="flabel">Concept</div><div class="ftext">A quick motion-graphics puzzle — e.g. "spot the hidden broast," a "find the odd sauce," or a fast "guess the item behind the blur." To enter, viewers <b>answer in the comments</b>, <b>follow</b> the page, and (optional) tag a friend. One winner gets a free meal / voucher 🏆.</div></div>
+        <div class="field"><div class="flabel">Why it works</div><div class="ftext muted">It stacks three growth signals — comments (engagement), follows (growth), and shares/tags (reach) — into one post, and the giveaway gives a real reason to act. Keep it to <b>one clear rule set</b> and announce the winner in Stories to close the loop.</div></div>
+        <div class="field"><div class="flabel">Note</div><div class="ftext muted">Please confirm the prize &amp; any giveaway T&amp;Cs from your side; we'll build the motion graphics.</div></div>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="cc-head"><span class="cc-no">D</span><span class="cc-title">QSR Growth Playbook — Raising the Average Bill</span><span class="cc-tags"><span class="pill p-ai">Your ask</span></span></div>
+      <div class="cc-body">
+        <div class="field"><div class="flabel">The core idea</div><div class="ftext">In QSR, the average bill rarely moves because someone buys "more" — it moves because the <b>default order gets bigger</b>. So the content job is to make the <i>full meal</i> the mental default and to attach the natural add-ons every single time.</div></div>
+        <div class="field"><div class="flabel">Tactics we'd run for TAZA</div><ul class="exec">
+          <li><b>Always show the full meal:</b> never post broast alone — broast + chips + garlic sauce + drink in-frame, so "a TAZA order" means a complete meal.</li>
+          <li><b>The add-on ritual:</b> position garlic sauce &amp; chips as "you can't have broast without…" — drives attach rate.</li>
+          <li><b>Price anchoring in combos:</b> present a mid and a premium combo so the middle option reads as the value pick (client-supplied combo #10 is the vehicle).</li>
+          <li><b>Family / sharing formats:</b> buckets &amp; family boxes = bigger baskets, and they tie straight into the #05 "لمّة" culture post.</li>
+          <li><b>"Make it a meal" nudges:</b> caption &amp; Story prompts that upgrade a sandwich into a combo.</li>
+          <li><b>Day-part cravings:</b> lunch-rush convenience &amp; late-night hunger posts timed to peak order windows.</li>
+          <li><b>Delivery basket framing:</b> "free delivery over X" style nudges (once you confirm thresholds) to lift online-order value.</li>
+          <li><b>Limited-time offers:</b> seasonal LTOs to pull people up to premium items and create urgency.</li>
+        </ul></div>
+        <div class="field"><div class="flabel">Want us to go deeper?</div><div class="ftext muted">We can turn this into a standalone <b>AOV / upsell content sprint</b> — happy to build it out if useful.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO BRAND FILM -->
+  <section>
+    <h2>Featured Hero Brand Film — Campaign Centerpiece</h2>
+    <div class="content-card hero-film">
+      <div class="cc-head">
+        <span class="ribbon">★ Hero Film</span>
+        <span class="cc-title">"A Taste That Brings People Together"</span>
+        <span class="cc-tags"><span class="pill p-type">Brand Film / Reel</span><span class="pill p-reg">Live-action (AI optional)</span><span class="pill p-aware">Awareness</span></span>
+      </div>
+      <div class="cc-body">
+        <div class="tagline-band">
+          <div class="en">"A Taste That Brings People Together."</div>
+          <div class="ar">طعمٌ يجمعنا 🤍</div>
+        </div>
+        <div class="twocol" style="margin-top:18px">
+          <div class="field hook"><div class="flabel">Hook (Visual)</div><div class="ftext">A man sits alone at the shore, the weight of life on his face — silence, sea, stillness.</div></div>
+          <div class="field"><div class="flabel">Pillar · Objective</div><div class="ftext muted">Saudi Lifestyle &amp; Culture + Brand Storytelling · Brand awareness, emotional brand love &amp; shareability</div></div>
+        </div>
+        <div class="field"><div class="flabel">Content Concept</div><div class="ftext">An emotional, near-wordless brand film about kindness and human connection. A man sits alone on the seashore facing the vast ocean, carrying the struggles and challenges of life. In the silence, a TAZA Broast Pack is gently placed beside him. He turns — an Arab man with a warm, gentle smile is standing there. No words are exchanged, but the gesture says everything: kindness, sharing, human connection. The man smiles back, opens the pack, and shares the meal. The film closes on both men sharing a moment of happiness overlooking the sea. This is TAZA's brand soul made visible — food as the thread that brings people together.</div></div>
+        <div class="field"><div class="flabel">Detailed Execution Plan</div><ul class="exec">
+          <li><b>Format &amp; cuts:</b> Produce a 45–60s hero film for the feed/Reels + a tight 20–30s social cut + a 6–10s teaser. Optional 15s vertical paid-ad version.</li>
+          <li><b>Act 1 (0–15s):</b> Establish loneliness — wide shots of the lone man against the sea, slow push-in on his face, ambient waves only.</li>
+          <li><b>Act 2 (15–35s):</b> The gesture — the TAZA pack placed beside him, his curious turn, the stranger's warm smile. Hold the silence; let the eyes carry it.</li>
+          <li><b>Act 3 (35–55s):</b> Connection — they share the meal, the first laugh, two men side by side facing the ocean. Soft swell of music.</li>
+          <li><b>Close:</b> Logo + tagline reveal "A Taste That Brings People Together / طعمٌ يجمعنا".</li>
+          <li><b>Casting &amp; setting:</b> Authentic Saudi coastal location (e.g., Yanbu/Red Sea — ties to TAZA's roots); relatable, real faces over models. Wardrobe natural/local.</li>
+          <li><b>Production options:</b> (1) Live-action shoot for maximum authenticity, or (2) AI-assisted cinematic version (AI-generated coastal scenes + character consistency) for a faster, lower-cost cut — keep the human warmth intact either way.</li>
+          <li><b>Rollout:</b> Launch as the pinned cornerstone, then tease via Stories; let the 12-post plan (esp. #5 culture &amp; the client-side UGC) echo the same "bringing people together" theme for a unified month.</li>
+        </ul></div>
+        <div class="field"><div class="flabel">Visual Direction</div><div class="ftext muted">Cinematic, restrained, emotionally warm. Golden-hour light over the sea; cool, muted tones in Act 1 warming as connection builds. Minimal text, natural sound design, a single tender music score. Real and human — no hard product push until the close. Shoot 9:16 for Reels + a 16:9 master for YouTube/paid.</div></div>
+        <div class="field"><div class="flabel">Caption Idea (AR-first)</div>
+          <div class="cap">
+            <div class="ar">أحياناً… لقمة بسيطة تجمع قلبين 🤍<br>طازة… طعمٌ يجمعنا.</div>
+            <div class="en">Sometimes a simple meal brings two hearts together 🤍 TAZA — a taste that brings people together.</div>
+            <div class="tags">#طعم_يجمعنا #يعني_طازة #طازة #السعودية #TasteThatBringsTogether</div>
+          </div>
+        </div>
+        <div class="twocol">
+          <div class="field"><div class="flabel">CTA</div><div class="ftext"><span class="cta-box">Share this with someone you'd sit beside 🤍</span></div></div>
+          <div class="field"><div class="flabel">Funnel Stage</div><div class="ftext"><span class="pill p-aware">Awareness</span> · Top-of-funnel brand</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Strategic role: this is a brand-equity / emotional film, not a sales post — it sits <i>above</i> the 12-post plan as the campaign's heart. Run it as the anchor, then let the monthly content carry the theme into reach, trust and conversion.</p>
+  </section>
+
+  <!-- COMPLIANCE / NOTES -->
+  <section>
+    <h2>Execution Notes &amp; Growth Tactics</h2>
+    <div class="grid g2">
+      <div class="box"><div class="lbl">Posting &amp; Growth</div><p>Lead with Reels for reach; post at 8–10pm KSA; reply to every comment in the first hour; use 3–5 niche + branded hashtags (#يعني_طازة anchored). Pin the cinematic (#01) &amp; the hero film to the grid; keep most Reels short &amp; loopable (see Video Length below).</p></div>
+      <div class="box"><div class="lbl">Language</div><p>Arabic-first captions with light English support (matches the audience &amp; existing @tazasaudi voice). Keep humour family-safe and culturally respectful for the Saudi market.</p></div>
+      <div class="box"><div class="lbl">AI Production</div><p><b>Photorealistic humans only — no cartoon characters</b> (per client direction; cartoon views trending down). Lock a consistent AI character reference across pieces, and keep all AI food shots true to the real product so reality matches the ad — protects trust.</p></div>
+      <div class="box"><div class="lbl">Measurement</div><p>Awareness → reach, shares, follows. Consideration → saves, profile visits, link taps. Conversion → link clicks, code redemptions, "mention this post" orders. Review weekly; double down on the top 2 Reels with paid.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    Speakerbox · TAZA Saudi (@tazasaudi) Instagram Content Strategy · 2-Month / 24-Post Plan<br>
+    Per month: 6 Reels · 3 Carousels · 3 Static · 5 AI concepts (real humans) · 5 Awareness / 4 Consideration / 3 Conversion · Rev. 2
+  </footer>
+
+</div>
+</body>
+</html>
