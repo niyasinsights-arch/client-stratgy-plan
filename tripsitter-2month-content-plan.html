@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TripSitter · 2-Month Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F2EEE3; --paper:#FBF9F3; --mist:#E5EAE1;
+    --forest:#1F3329; --ink:#20261E; --muted:#5c6455; --line:#d8d3c4;
+    --shadow:rgba(31,51,41,.10);
+    --t-mission:#3E5B45; --t-identity:#C08A34; --t-education:#2E6E68;
+    --t-wayanad:#5B7A3E; --t-social:#9C5A4A; --t-community:#5E7488;
+    --t-conversion:#A8482B; --t-guide:#35655A; --t-influencer:#8A6247;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--ivory);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+  header.hero{background:var(--forest);color:var(--paper);padding:52px 0 40px}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--t-identity)}
+  .hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(34px,5.5vw,60px);line-height:1.03;letter-spacing:-.01em;margin:12px 0 8px;max-width:20ch}
+  .hero h1 em{font-style:italic;color:var(--t-identity)}
+  .hero .tag{font-size:16px;color:#cdd6ca;max-width:60ch}
+  .hero .stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px}
+  .hero .stat .n{font-family:'Fraunces',serif;font-size:28px;color:var(--paper)}
+  .hero .stat .l{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9fb0a1}
+  .keychip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:6px 11px;font-family:'Space Mono',monospace;font-size:12px;color:#e7ecdf;margin:4px 6px 0 0}
+  .keychip b{color:var(--t-identity)}
+  .hero .keyrow{margin-top:22px}
+  .hero .keyrow .kh{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8fa192;margin-bottom:6px}
+
+  .controls{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 2px 12px var(--shadow);padding:12px 0}
+  .controls .row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:7px}
+  .controls .row:last-child{margin-bottom:0}
+  .flabel{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+  .chip{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:20px;padding:5px 12px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .chip:hover{border-color:var(--forest);color:var(--forest)}
+  .chip.active{color:#fff;border-color:transparent}
+  .fmtchip.active,.monthchip.active{background:var(--forest)}
+  .progress-wrap{display:flex;align-items:center;gap:10px;margin-left:auto}
+  .progress-wrap .plabel{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .pbar{width:110px;height:7px;background:var(--mist);border-radius:6px;overflow:hidden}
+  .pbar .fill{height:100%;background:var(--t-conversion);width:0;transition:width .3s}
+  .pct{font-family:'Space Mono',monospace;font-size:12px;color:var(--t-conversion);font-weight:700}
+  .reset{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;background:none;border:1px solid var(--line);border-radius:6px;padding:5px 8px;cursor:pointer;color:var(--muted)}
+  .reset:hover{border-color:var(--t-conversion);color:var(--t-conversion)}
+
+  main{padding:30px 0 40px}
+  .monthband{margin:30px 0 6px;padding:16px 22px;border-radius:16px;color:var(--paper);position:relative;overflow:hidden}
+  .monthband.m1{background:linear-gradient(100deg,#28402F,#3E5B45)}
+  .monthband.m2{background:linear-gradient(100deg,#5a2f22,#A8482B)}
+  .monthband .mlabel{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+  .monthband h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin:2px 0 2px}
+  .monthband p{font-size:13.5px;opacity:.9;max-width:70ch}
+
+  .weekhead{display:flex;align-items:baseline;gap:13px;margin:26px 0 12px}
+  .weekhead .wk{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--t-conversion)}
+  .weekhead h3{font-family:'Fraunces',serif;font-weight:500;font-size:21px;color:var(--forest)}
+  .weekhead::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(345px,1fr));gap:12px}
+  .post{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:box-shadow .2s;border-left:4px solid var(--muted)}
+  .post:hover{box-shadow:0 4px 16px var(--shadow)}
+  .post .top{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;cursor:pointer}
+  .post .when{min-width:46px;text-align:center}
+  .post .when .dow{font-family:'Fraunces',serif;font-size:19px;line-height:1;color:var(--forest)}
+  .post .when .wl{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:var(--muted);margin-top:4px;display:block}
+  .post .maininfo{flex:1;min-width:0}
+  .post .row1{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:5px}
+  .themechip{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:6px;font-weight:700}
+  .fmt{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+  .series{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;background:#efe1c8;color:#8a641f;padding:3px 7px;border-radius:6px;font-weight:700}
+  .post .title{font-weight:600;font-size:14.5px;color:var(--forest);line-height:1.3}
+  .post .hook{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--t-conversion);margin-top:4px;line-height:1.35}
+  .post .chk input{width:17px;height:17px;accent-color:var(--t-conversion);cursor:pointer;margin-top:4px}
+  .flagdot{width:8px;height:8px;border-radius:50%;background:var(--t-conversion);display:inline-block}
+  .post .body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .post.open .body{max-height:1100px}
+  .post .bi{padding:0 16px 16px 16px}
+  .fld{padding:9px 0;border-top:1px solid #efeadd}
+  .fld .fl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-conversion);margin-bottom:3px}
+  .fld .fv{font-size:13.5px;color:var(--ink)}
+  .fld .fv.cap{background:var(--mist);border-radius:8px;padding:9px 11px;font-style:italic;color:#3a4234}
+  .fld .fv.cta{font-weight:600;color:var(--forest)}
+  .kw{background:var(--forest);color:var(--t-identity);font-family:'Space Mono',monospace;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:700;letter-spacing:.04em}
+  .verify-note{background:#f7e9e2;border-left:3px solid var(--t-conversion);border-radius:8px;padding:9px 11px;margin-top:10px;font-size:12.5px;color:#7a3a24}
+  .verify-note b{color:var(--t-conversion)}
+
+  .section{margin-top:44px}
+  .section .sl{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--t-conversion);margin-bottom:6px}
+  .section h2{font-family:'Fraunces',serif;font-weight:500;font-size:30px;color:var(--forest);margin-bottom:6px}
+  .section .lead{font-size:15px;color:var(--muted);max-width:66ch;margin-bottom:18px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .box h3{font-family:'Fraunces',serif;font-size:18px;color:var(--forest);margin-bottom:10px}
+  .box ul{list-style:none;font-size:13.5px}
+  .box ul li{padding:5px 0 5px 18px;position:relative;color:var(--ink)}
+  .box ul li::before{content:"→";position:absolute;left:0;color:var(--t-identity);font-weight:700}
+
+  .verify{background:#fff;border:2px solid var(--t-conversion);border-radius:18px;padding:26px 28px;margin-top:18px}
+  .verify h3{font-family:'Fraunces',serif;font-size:22px;color:var(--t-conversion);margin-bottom:6px}
+  .verify .vsub{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+  .vitem{display:flex;gap:13px;padding:12px 0;border-top:1px solid var(--line)}
+  .vitem input{width:18px;height:18px;accent-color:var(--t-conversion);margin-top:2px;flex-shrink:0;cursor:pointer}
+  .vitem .vt{font-weight:600;color:var(--forest);font-size:14px}
+  .vitem .vd{font-size:13px;color:var(--muted);margin-top:2px}
+
+  footer{background:var(--forest);color:#a8b5a9;padding:30px 0;font-size:12.5px;text-align:center;font-family:'Space Mono',monospace;letter-spacing:.03em;margin-top:44px}
+  footer b{color:var(--t-identity)}
+
+  @media (max-width:560px){.grid{grid-template-columns:1fr}.progress-wrap{margin-left:0;width:100%}.pbar{flex:1}}
+  @media print{.controls{display:none}.post .body{max-height:none!important}.reset{display:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">2-Month Content Plan · Wayanad · Launch → Live &amp; Grow</div>
+    <h1>Two months. From <em>waitlist</em> to first real trips.</h1>
+    <p class="tag">24 posts over 8 weeks (Mon · Wed · Fri) — Month 1 opens the Wayanad pilot, Month 2 turns real trips into proof and bookings. Concrete posts, ready captions, keyword funnels.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">24</div><div class="l">Feed posts</div></div>
+      <div class="stat"><div class="n">12</div><div class="l">Reels</div></div>
+      <div class="stat"><div class="n">12</div><div class="l">Carousels</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">Guide reels</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Creator collabs</div></div>
+    </div>
+    <div class="keyrow">
+      <div class="kh">Reusable keyword funnels (needs auto-DM set up)</div>
+      <span class="keychip">Comment <b>TRIP</b> → early access</span>
+      <span class="keychip">DM <b>WAYANAD</b> → join cohort</span>
+      <span class="keychip">DM <b>ITINERARY</b> → full plan</span>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="row">
+      <span class="flabel">Month</span>
+      <button class="chip monthchip active" data-month="all">All</button>
+      <button class="chip monthchip" data-month="1">Month 1 · Launch</button>
+      <button class="chip monthchip" data-month="2">Month 2 · Grow</button>
+      <div class="progress-wrap">
+        <span class="plabel">Shot &amp; posted</span>
+        <div class="pbar"><div class="fill" id="pfill"></div></div>
+        <span class="pct" id="ppct">0%</span>
+        <button class="reset" id="preset">Reset</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="flabel">Theme</span>
+      <button class="chip themefilter active" data-theme="all">All</button>
+      <button class="chip themefilter" data-theme="Mission">Mission</button>
+      <button class="chip themefilter" data-theme="Identity">Identity</button>
+      <button class="chip themefilter" data-theme="Education">Education</button>
+      <button class="chip themefilter" data-theme="Wayanad">Wayanad</button>
+      <button class="chip themefilter" data-theme="Guide">Guide</button>
+      <button class="chip themefilter" data-theme="Social proof">Social proof</button>
+      <button class="chip themefilter" data-theme="Community">Community</button>
+      <button class="chip themefilter" data-theme="Influencer">Influencer</button>
+      <button class="chip themefilter" data-theme="Conversion">Conversion</button>
+    </div>
+    <div class="row">
+      <span class="flabel">Format</span>
+      <button class="chip fmtchip active" data-fmt="all">All</button>
+      <button class="chip fmtchip" data-fmt="Reel">🎬 Reel</button>
+      <button class="chip fmtchip" data-fmt="Carousel">📑 Carousel</button>
+    </div>
+  </div>
+</div>
+
+<main><div class="wrap" id="cal"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="sl">Every Day, Between Posts</div>
+    <h2>Daily stories + weekly rhythm</h2>
+    <p class="lead">Feed posts are 3×/week; stories run daily to keep momentum. A steady rhythm trains the audience to interact and keeps the waitlist warm.</p>
+    <div class="cols">
+      <div class="box"><h3>🗓️ Weekly rhythm</h3><ul>
+        <li><b>Mon</b> — value / education post (save-worthy)</li>
+        <li><b>Wed</b> — people: guide or creator or community</li>
+        <li><b>Fri</b> — desire / conversion (Wayanad pull or CTA)</li>
+      </ul></div>
+      <div class="box"><h3>🗳️ Daily stories</h3><ul>
+        <li>Polls, quizzes, this-or-that, countdowns</li>
+        <li>"Ask a Guide" Q&amp;A box → recycle into reels</li>
+        <li>BTS clips + reshared UGC (with permission)</li>
+      </ul></div>
+      <div class="box"><h3>📌 Highlights</h3><ul>
+        <li><b>Our Story</b> · <b>Wayanad</b> · <b>Guides</b> · <b>Join</b></li>
+        <li>Pin the "How it works" + waitlist stories</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sl">Before You Post</div>
+    <h2>Keep it honest</h2>
+    <p class="lead">This plan is a scaffold built from brand logic and general travel patterns — not verified ground data. Several posts make claims that only work if they're true. Tick each before it goes live.</p>
+    <div class="verify"><h3>⚑ Verify before publishing</h3>
+      <div class="vsub">Truthfulness, safety and consent checks — not optional polish.</div>
+      <div id="verifylist"></div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">TripSitter · <b>Travel Like You Belong There</b> · 2-month scaffold — confirm dates, numbers, locations, pricing &amp; consent before posting.</div></footer>
+
+<script>
+const THEME_VAR={"Mission":"--t-mission","Identity":"--t-identity","Education":"--t-education","Wayanad":"--t-wayanad","Social proof":"--t-social","Community":"--t-community","Conversion":"--t-conversion","Guide":"--t-guide","Influencer":"--t-influencer"};
+const FMT_ICON={"Reel":"🎬","Carousel":"📑"};
+
+const WEEKS={
+ 1:{m:1,label:"Foundation — who we are"},
+ 2:{m:1,label:"How it works + why"},
+ 3:{m:1,label:"Hidden Wayanad + first collab"},
+ 4:{m:1,label:"Trust → open the pilot"},
+ 5:{m:2,label:"Real trips, real proof"},
+ 6:{m:2,label:"Taste of Wayanad"},
+ 7:{m:2,label:"Why us — the value case"},
+ 8:{m:2,label:"Conversion push"}
+};
+const MONTHS={
+ 1:{cls:"m1",label:"Month 1 · Weeks 1–4",title:"Launch",desc:"Introduce the concept, build the waitlist, and open the Wayanad pilot. Awareness → consideration → first sign-ups."},
+ 2:{cls:"m2",label:"Month 2 · Weeks 5–8",title:"Live &amp; Grow",desc:"Turn real pilot trips into social proof, spotlight the guides, and convert warm followers into bookings."}
+};
+
+/* 24 posts. dow=Mon/Wed/Fri */
+const POSTS=[
+ // WEEK 1
+ {w:1,dow:"Mon",theme:"Identity",format:"Reel",title:"Who we are, in 3 words",hook:"Exploration. Connection. Trips shaped by the people you meet.",
+  concept:"15s brand reel. Three words appear one at a time, each on a B-roll beat (a trail, a shared meal, a host's handshake). End card: 'TripSitter — early access open.'",
+  onscreen:"EXPLORATION → CONNECTION → BELONGING.",
+  caption:"Not another tour company. A way to travel like you already belong there. Early access is opening. 👇",
+  cta:"Comment TRIP for early access.",keyword:"TRIP"},
+ {w:1,dow:"Wed",theme:"Education",format:"Carousel",title:"What is a TripSitter?",hook:"A local who helps you travel like you belong — not a guide reading a script.",
+  concept:"5 slides: hook → definition → 3 benefits (hidden-spot access · belonging not tourism · verified & safe) → save/share CTA.",
+  onscreen:"Benefit stamps: ACCESS / BELONGING / SAFETY.",
+  caption:"A TripSitter isn't a guide. They're a local who opens their Wayanad to you. Here's what that means. →",
+  cta:"Save this + share with your travel buddy."},
+ {w:1,dow:"Fri",theme:"Wayanad",format:"Reel",title:"Wayanad in 20 seconds",hook:"This is your first trip home.",
+  concept:"15–20s montage: misty hills, a homestay morning, a local guide laughing, sunrise, chai being poured. Trending audio, one clean end-text.",
+  onscreen:"Wayanad. Your first trip home.",
+  caption:"Green hills, quiet mornings, and a local who treats you like family. This is where TripSitter begins. 🌄",
+  cta:"DM WAYANAD to join the first cohort.",keyword:"WAYANAD",
+  flag:"Use your own or fully-licensed footage — don't repost unlicensed clips."},
+ // WEEK 2
+ {w:2,dow:"Mon",theme:"Education",format:"Carousel",title:"How TripSitter works",hook:"Three steps between you and a trip that feels like home.",
+  concept:"3-step visual: choose your experience → get matched with a local → travel like you belong. Big numerals, one panel per step.",
+  onscreen:"01 CHOOSE · 02 MEET · 03 BELONG.",
+  caption:"No confusing packages. Three simple steps. That's it. 🌿",
+  cta:"Link in bio to join the waitlist."},
+ {w:2,dow:"Wed",theme:"Guide",format:"Reel",title:"Meet your TripSitter — Guide #1",hook:"I've lived in these hills my whole life. Let me show you the Wayanad I love.",
+  concept:"Guide intro. Shot list: portrait at home/estate → hands doing real local work → walking a trail → sharing food → direct-to-camera invite.",
+  onscreen:"Name + one line about them.",
+  caption:"Meet [Guide Name]. Travel with them and you're not a tourist — you're a guest. 🌿",
+  cta:"Follow to meet more TripSitters.",series:"Guide Series",
+  flag:"Get the guide's explicit consent to feature them and any spots/traditions shown."},
+ {w:2,dow:"Fri",theme:"Education",format:"Carousel",title:"3 mistakes first-timers make in Wayanad",hook:"Most people get these 3 things wrong on their first Wayanad trip.",
+  concept:"Carousel: one mistake + fix per slide — permits, timing/season, packing. Clear, save-worthy.",
+  onscreen:"MISTAKE 1/2/3 + FIX.",
+  caption:"Save this before you book anything. Your future self says thanks. 🎒",
+  cta:"Save this for your trip.",
+  flag:"Verify permit rules and best-season timing from a current local/official source — these change and getting them wrong is a real planning/safety risk."},
+ // WEEK 3
+ {w:3,dow:"Mon",theme:"Wayanad",format:"Carousel",title:"Hidden gems locals love",hook:"5 Wayanad spots most tourists never find.",
+  concept:"One spot per slide with a one-line local reason to go. Rich landscape photos, name-stamp labels.",
+  onscreen:"Spot name stamps.",
+  caption:"Your TripSitter has a favourite for every mood. Five to start — save it, send it to your group. 🌄",
+  cta:"Save this; share with your group.",
+  flag:"Verify EACH spot before naming: access, forest permits, and monsoon/seasonal closures."},
+ {w:3,dow:"Wed",theme:"Influencer",format:"Reel",title:"A day with a TripSitter — Creator #1",hook:"I let a local plan my entire day in Wayanad.",
+  concept:"45–60s creator mini-doc: arrives skeptical → hands the day to a TripSitter → off-map day → won over. Pair with 5–7 stories + link.",
+  onscreen:"Creator's honest reactions throughout.",
+  caption:"I thought I'd seen Wayanad. Then a local took over my day. — in partnership with @gettripsitter",
+  cta:"Want your day planned by someone who lives here? Link in bio.",series:"Creator Collab",
+  flag:"Verify the creator's real reach/audience fit; use a disclosed paid-partnership label; contract usage rights in writing."},
+ {w:3,dow:"Fri",theme:"Wayanad",format:"Carousel",title:"2D/1N Wayanad itinerary",hook:"The 2-day Wayanad plan I wish I'd had.",
+  concept:"Time-block carousel (Day 1 morning→evening, Day 2), with rough cost tags per block.",
+  onscreen:"Time-block labels + cost tags.",
+  caption:"Two days, one night, zero guesswork. Want the full plan with local stops? 👇",
+  cta:"DM ITINERARY for the full plan.",keyword:"ITINERARY",
+  flag:"Verify the itinerary is realistic for the current season; label any costs 'approx.' and keep them current."},
+ // WEEK 4
+ {w:4,dow:"Mon",theme:"Mission",format:"Carousel",title:"Our promise: safe trips",hook:"Meeting a local shouldn't feel like a risk.",
+  concept:"3–4 slides on your safety approach: verified locals, small groups, trusted local partners, a clear plan if something goes wrong.",
+  onscreen:"VERIFIED · SMALL GROUPS · LOCAL PARTNERS.",
+  caption:"Belonging only works when you feel safe. Here's how we build that in. Ask us anything in Stories. →",
+  cta:"Ask us anything in Stories.",
+  flag:"Only list safety measures you actually have in place — don't promise verification/support you can't yet deliver."},
+ {w:4,dow:"Wed",theme:"Guide",format:"Reel",title:"My secret Wayanad — Guide #2",hook:"Tourists never find this place. My guests always do.",
+  concept:"A guide walks you to a personal favourite quiet spot and explains why it matters to them. Follow-cam, soft ambient audio.",
+  onscreen:"Minimal text; let the walk breathe.",
+  caption:"Everyone has a spot they save for people they like. This is [Guide]'s. 🤫",
+  cta:"Want a Wayanad planned around moments like this? DM us.",series:"Guide Series",
+  flag:"Only feature spots that are legal, safe and appropriate to publicise — avoid fragile/private/permit-restricted places."},
+ {w:4,dow:"Fri",theme:"Conversion",format:"Reel",title:"The pilot is open",hook:"Wayanad, hosted by a local. Now open.",
+  concept:"Launch reel: best montage of the month + confident announcement + single clear CTA. Include any genuine launch offer.",
+  onscreen:"THE WAYANAD PILOT IS LIVE.",
+  caption:"It's here. TripSitter is live for Wayanad. Travel like you belong there — starting now. 🌿",
+  cta:"Tap the link to enquire / book your first trip.",
+  flag:"Only post when the pilot is genuinely open with a working link. Only state an offer or 'limited slots' if it's truly real — no fake urgency."},
+ // WEEK 5
+ {w:5,dow:"Mon",theme:"Social proof",format:"Reel",title:"First real traveller story",hook:"I booked a stranger to plan my trip. Here's what happened.",
+  concept:"A real early traveller tells their TripSitter story — the moment it stopped feeling like a tour. Their own footage, honest tone.",
+  onscreen:"Their words, not scripted.",
+  caption:"Their words, not ours. This is what travelling with a local actually feels like. 💛",
+  cta:"Ready for your story? DM us or tap the link.",
+  flag:"Use ONLY a real, consented testimonial with real footage. Do not stage, script or invent a review — pre-launch you may not have one yet, so hold this until you do."},
+ {w:5,dow:"Wed",theme:"Education",format:"Carousel",title:"How we verify TripSitters",hook:"Not just anyone can host you. Here's our bar.",
+  concept:"Steps carousel: how locals are vetted, the standards they meet, the feedback loop that keeps quality high.",
+  onscreen:"STEP 01–03 + STANDARDS.",
+  caption:"Trust isn't a promise — it's a process. Here's ours. Save this. →",
+  cta:"Save this for trust.",
+  flag:"Describe your real vetting process. Don't overstate background checks or standards you haven't implemented."},
+ {w:5,dow:"Fri",theme:"Wayanad",format:"Carousel",title:"48 hours in Wayanad with a local",hook:"48 hours in Wayanad — done the local way.",
+  concept:"6-scene weekend arc carousel (arrival → estate → hidden spot → local meal → culture → farewell), one image per beat.",
+  onscreen:"Scene 1–6 stamps.",
+  caption:"A weekend that feels like a week's worth of memories. Want the plan? 👇",
+  cta:"Comment TRIP for the link.",keyword:"TRIP",
+  flag:"Verify locations/timings shown are feasible and seasonally safe."},
+ // WEEK 6
+ {w:6,dow:"Mon",theme:"Wayanad",format:"Carousel",title:"Top 5 food stops locals love",hook:"Where locals actually eat in Wayanad.",
+  concept:"5 food stops as map-pin slides, one line each (stop + dish). Highly saveable.",
+  onscreen:"Pin + stop name + dish.",
+  caption:"Skip the tourist menus. This is the local food trail. Save it for your trip. 🍛",
+  cta:"Save for your food tour.",
+  flag:"Confirm each stop exists, is open, and is okay being tagged/featured before naming it."},
+ {w:6,dow:"Wed",theme:"Guide",format:"Reel",title:"A day in the life of a TripSitter — Guide #3",hook:"This is my normal day. It could be your best one.",
+  concept:"Documentary follow-cam from sunrise: estate → morning work → meeting a guest → a hidden moment → evening reflection.",
+  onscreen:"Light captions on each beat.",
+  caption:"A day in [Guide]'s life — and a preview of yours, if you travel with them. 🌅",
+  cta:"This is who hosts your trip. Follow the series.",series:"Guide Series",
+  flag:"Confirm consent for people, homes and spots shown — especially any community/tribal settings."},
+ {w:6,dow:"Fri",theme:"Influencer",format:"Reel",title:"24 hours living like a local — Creator #2",hook:"I lived like a Wayanad local for 24 hours.",
+  concept:"Full-day immersion mini-doc with a TripSitter host: morning routine → local breakfast → a working/craft moment → hidden spot → shared dinner → reflection. Plus 6–8 stories + link.",
+  onscreen:"Time-stamped through the 24h.",
+  caption:"24 hours. No tourist version. Just real Wayanad, hosted by a local. — with @gettripsitter",
+  cta:"Curious what your 24 hours would look like? Link in bio.",series:"Creator Collab",
+  flag:"Verify reach/fit; disclosed partnership; contract usage rights."},
+ // WEEK 7
+ {w:7,dow:"Mon",theme:"Wayanad",format:"Carousel",title:"DIY vs TripSitter",hook:"Planning Wayanad yourself vs. letting a local do it.",
+  concept:"Comparison carousel across time, stress and access — honest about what each costs you.",
+  onscreen:"DIY / TRIPSITTER columns.",
+  caption:"Both get you to Wayanad. Only one gets you in. Swipe. → DM for details.",
+  cta:"DM WAYANAD for details.",keyword:"WAYANAD",
+  flag:"If you show cost numbers, make them real and label 'approx.' — don't invent figures to win the comparison."},
+ {w:7,dow:"Wed",theme:"Community",format:"Reel",title:"Behind the scenes",hook:"This is what building TripSitter actually looks like.",
+  concept:"BTS montage: meeting local partners, planning routes, tasting local food. Humanises the brand.",
+  onscreen:"Light captions per scene.",
+  caption:"Route planning, local partners, and a lot of good food 'research.' Building this in the open. Ask us anything. 👇",
+  cta:"Ask us anything in Stories."},
+ {w:7,dow:"Fri",theme:"Conversion",format:"Carousel",title:"Why travellers choose TripSitter",hook:"5 reasons people pick a local over a package.",
+  concept:"One reason per slide, ideally backed by a real snippet of proof from Month 2 trips.",
+  onscreen:"Value-card layout with proof accents.",
+  caption:"When the trip matters, people choose belonging over booking. Here's why. →",
+  cta:"Follow if this is your kind of travel — or DM to start.",
+  flag:"Any proof/stat used must be real and attributable — no invented numbers or reviews."},
+ // WEEK 8
+ {w:8,dow:"Mon",theme:"Education",format:"Carousel",title:"Your questions, answered (FAQ)",hook:"Everything you're wondering before you book.",
+  concept:"FAQ carousel: what's included, pricing basics, safety, who it's for, how matching works, cancellations.",
+  onscreen:"Q&A card layout, calm and clear.",
+  caption:"No surprises, no fine-print games. Here's how it really works. →",
+  cta:"Still have a question? DM us — a human replies.",
+  flag:"Pricing, inclusions and cancellation terms must be accurate and transparent."},
+ {w:8,dow:"Wed",theme:"Guide",format:"Reel",title:"Why I became a TripSitter — Guide #4",hook:"I could've had any job. I chose to host strangers. Here's why.",
+  concept:"Intimate interview — the personal reason a guide hosts travellers. The emotional heart, right before the ask.",
+  onscreen:"Minimal captions; home/estate setting.",
+  caption:"This is why they do it. And why your trip will feel different. 💛",
+  cta:"Meet your TripSitter — enquire via the link.",series:"Guide Series",
+  flag:"Consented, authentic story only."},
+ {w:8,dow:"Fri",theme:"Conversion",format:"Reel",title:"Travel like you belong there",hook:"Two months of Wayanad, hosted by locals. Your turn.",
+  concept:"Closer reel: best proof + guide + traveller moments from the 8 weeks + strong tagline + single clear CTA.",
+  onscreen:"TRAVEL LIKE YOU BELONG THERE.",
+  caption:"This is the trip you've been scrolling past. Wayanad, hosted by a local. Yours whenever you're ready. 🌿",
+  cta:"Enquire / book → link in bio.",
+  flag:"Only include real moments/footage from the period; make sure the booking link works."}
+];
+
+const VERIFY=[
+ ["Real launch date & 'open' claims","Week 4 (pilot open) and Week 8 (closer) imply the pilot is live. Only post once it genuinely is, with a working link."],
+ ["No invented social proof","Weeks 5 & 7 use testimonials/reviews. Use only real, consented traveller stories with real footage — never staged or scripted. Hold them until you have genuine ones."],
+ ["Verified Wayanad locations","Weeks 3, 5, 6 (hidden gems, 48h, food) — confirm access, permits and monsoon/seasonal safety for every named spot."],
+ ["Accurate costs & itineraries","Weeks 3 & 7 — label prices 'approx.', keep them current, and make sure timings are feasible for the season."],
+ ["Guide & host consent","All 4 guide reels + any host feature — explicit consent before filming/posting; extra care for community/tribal content."],
+ ["Creator partnerships","Weeks 3 & 6 — verify each creator's real reach/fit, use a disclosed paid-partnership label, contract usage rights in writing."],
+ ["Honest safety & verification claims","Weeks 4 & 5 — only describe safety and vetting you genuinely have in place."],
+ ["Pricing transparency","Week 8 FAQ — inclusions, pricing and cancellation terms must be accurate."],
+ ["Keyword auto-replies set up","TRIP / WAYANAD / ITINERARY only work if you've configured comment/DM auto-replies (e.g. a tool like ManyChat) — test before the CTA goes live."],
+ ["Real posting dates","Week/Mon-Wed-Fri labels are placeholders — map onto your actual calendar dates before scheduling."]
+];
+
+/* RENDER */
+const cal=document.getElementById('cal');
+let lastMonth=null;
+Object.keys(WEEKS).forEach(wn=>{
+  const wk=WEEKS[wn];
+  if(wk.m!==lastMonth){
+    const m=MONTHS[wk.m];
+    const band=document.createElement('div');
+    band.className='monthband '+m.cls;band.dataset.monthband=wk.m;
+    band.innerHTML=`<div class="mlabel">${m.label}</div><h2>${m.title}</h2><p>${m.desc}</p>`;
+    cal.appendChild(band);
+    lastMonth=wk.m;
+  }
+  const head=document.createElement('div');head.className='weekhead';head.dataset.month=wk.m;
+  head.innerHTML=`<span class="wk">Week ${wn}</span><h3>${wk.label}</h3>`;
+  cal.appendChild(head);
+  const grid=document.createElement('div');grid.className='grid';grid.dataset.month=wk.m;
+  POSTS.filter(p=>p.w==wn).forEach(p=>grid.appendChild(postCard(p,wk.m)));
+  cal.appendChild(grid);
+});
+
+function esc(s){return (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function postCard(p,month){
+  const col=`var(${THEME_VAR[p.theme]})`;
+  const el=document.createElement('div');el.className='post';el.style.borderLeftColor=col;
+  el.dataset.theme=p.theme;el.dataset.fmt=p.format;el.dataset.month=month;
+  const kwCTA=p.keyword?esc(p.cta).replace(p.keyword,`<span class="kw">${p.keyword}</span>`):esc(p.cta);
+  const flag=p.flag?`<div class="verify-note"><b>⚑ Verify:</b> ${esc(p.flag)}</div>`:"";
+  const flagDot=p.flag?`<span class="flagdot" title="Needs verification"></span>`:"";
+  const seriesTag=p.series?`<span class="series">${esc(p.series)}</span>`:"";
+  el.innerHTML=`
+   <div class="top" onclick="this.parentElement.classList.toggle('open')">
+     <div class="when"><div class="dow">${esc(p.dow)}</div><span class="wl">WK ${p.w}</span></div>
+     <div class="maininfo">
+       <div class="row1">
+         <span class="themechip" style="background:${col}">${esc(p.theme)}</span>
+         <span class="fmt">${FMT_ICON[p.format]} ${esc(p.format)}</span>
+         ${seriesTag}${flagDot}
+       </div>
+       <div class="title">${esc(p.title)}</div>
+       <div class="hook">“${esc(p.hook)}”</div>
+     </div>
+     <label class="chk" onclick="event.stopPropagation()"><input type="checkbox" data-track="w${p.w}-${p.dow}"></label>
+   </div>
+   <div class="body"><div class="bi">
+     <div class="fld"><div class="fl">Concept</div><div class="fv">${esc(p.concept)}</div></div>
+     <div class="fld"><div class="fl">On-screen / visual</div><div class="fv">${esc(p.onscreen)}</div></div>
+     <div class="fld"><div class="fl">Caption</div><div class="fv cap">${esc(p.caption)}</div></div>
+     <div class="fld"><div class="fl">CTA</div><div class="fv cta">${kwCTA}</div></div>
+     ${flag}
+   </div></div>`;
+  return el;
+}
+
+const vl=document.getElementById('verifylist');
+VERIFY.forEach((v,i)=>{const d=document.createElement('div');d.className='vitem';
+  d.innerHTML=`<input type="checkbox" data-track="verify-${i}"><div><div class="vt">${esc(v[0])}</div><div class="vd">${esc(v[1])}</div></div>`;vl.appendChild(d);});
+
+/* FILTERS */
+let curTheme="all",curFmt="all",curMonth="all";
+function applyFilters(){
+  document.querySelectorAll('.post').forEach(c=>{
+    const okT=curTheme==="all"||c.dataset.theme===curTheme;
+    const okF=curFmt==="all"||c.dataset.fmt===curFmt;
+    const okM=curMonth==="all"||c.dataset.month===curMonth;
+    c.style.display=(okT&&okF&&okM)?"":"none";
+  });
+  document.querySelectorAll('.grid').forEach(g=>{
+    const any=[...g.children].some(c=>c.style.display!=="none");
+    const head=g.previousElementSibling;
+    g.style.display=any?"":"none";
+    if(head&&head.classList.contains('weekhead'))head.style.display=any?"":"none";
+  });
+  document.querySelectorAll('.monthband').forEach(b=>{
+    b.style.display=(curMonth==="all"||b.dataset.monthband===curMonth)?"":"none";
+  });
+}
+document.querySelectorAll('.themefilter').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.themefilter').forEach(x=>{x.classList.remove('active');x.style.background='';});
+  b.classList.add('active');curTheme=b.dataset.theme;
+  if(curTheme!=="all")b.style.background=`var(${THEME_VAR[curTheme]})`;
+  applyFilters();
+});
+document.querySelectorAll('.fmtchip').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.fmtchip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');curFmt=b.dataset.fmt;applyFilters();
+});
+document.querySelectorAll('.monthchip').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.monthchip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');curMonth=b.dataset.month;applyFilters();
+});
+
+/* TRACKER */
+const LS='tripsitter_2month_v1';
+function load(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return {}}}
+function save(o){try{localStorage.setItem(LS,JSON.stringify(o))}catch(e){}}
+function prog(){const b=document.querySelectorAll('input[data-track]');const done=[...b].filter(x=>x.checked).length;
+  const pct=b.length?Math.round(done/b.length*100):0;
+  document.getElementById('pfill').style.width=pct+'%';document.getElementById('ppct').textContent=pct+'%';}
+window.addEventListener('DOMContentLoaded',()=>{
+  const st=load();
+  document.querySelectorAll('input[data-track]').forEach(x=>{
+    if(st[x.dataset.track])x.checked=true;
+    x.addEventListener('change',()=>{const s=load();s[x.dataset.track]=x.checked;save(s);prog();});
+  });
+  prog();
+  document.getElementById('preset').onclick=()=>{if(confirm('Clear all tracking checkboxes?')){localStorage.removeItem(LS);document.querySelectorAll('input[data-track]').forEach(x=>x.checked=false);prog();}};
+});
+</script>
+</body>
+</html>
