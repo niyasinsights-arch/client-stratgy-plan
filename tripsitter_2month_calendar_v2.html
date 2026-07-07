@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tripsitter — 2-Month Content Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111111;--card:#1F2937;--accent:#F97316;--border:#374151;--text:#E5E7EB;--muted:#9CA3AF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Google Sans','Product Sans','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+.kicker{color:var(--accent);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+h1{font-size:37px;margin:8px 0 6px;font-weight:700;letter-spacing:-.02em}
+.tagline{color:var(--muted);font-size:17px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:14px;margin:0}
+header{border-bottom:1px solid var(--border);padding-bottom:26px;margin-bottom:26px}
+.mission{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:18px 22px;margin:0 0 24px}
+.mission p{margin:0;font-size:16px;line-height:1.6;color:#fff}
+.tabs{display:flex;gap:10px;margin:0 0 24px;flex-wrap:wrap}
+.tab{background:var(--card);border:1px solid var(--border);color:var(--text);padding:11px 20px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+.tab:hover{border-color:var(--accent)}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#111}
+.month{display:none}.month.show{display:block}
+.mhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.mhead h2{font-size:24px;margin:0 0 4px;font-weight:700}
+.mhead .phase{color:var(--muted);font-size:14px;margin:0;max-width:600px}
+.quota{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.qpill{font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid;white-space:nowrap}
+.qtotal{font-size:12px;color:var(--muted);width:100%;text-align:right;margin-top:2px}
+.mixrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0 0 22px}
+.mixlbl{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-right:4px}
+.mixchip{font-size:12px;border:1px solid var(--border);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.mixchip b{filter:brightness(1.5)}
+.grp{margin-bottom:26px}
+.grphead{display:flex;align-items:center;gap:12px;padding:0 2px 10px;border-bottom:1px solid;margin-bottom:12px}
+.gicon{font-size:13px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:8px;border:1px solid}
+.gcount{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{text-align:left;color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 16px;background:#18212f;border-bottom:1px solid var(--border)}
+tbody td{padding:13px 16px;border-bottom:1px solid rgba(55,65,81,.55);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(249,115,22,.05)}
+.num{width:46px}
+.dnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;background:rgba(249,115,22,.12);color:var(--accent);border:1px solid rgba(249,115,22,.35);border-radius:8px;font-weight:700;font-size:13px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid;white-space:nowrap}
+.idea{color:var(--text);min-width:300px}
+.cta{color:var(--muted);font-style:italic;min-width:180px}
+.playbook{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pb{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.pb h3{margin:0 0 12px;font-size:16px;font-weight:700}.pb h3 .dot{color:var(--accent)}
+.pb ul{margin:0;padding-left:18px}.pb li{margin:7px 0;color:var(--text);font-size:14px}.pb li b{color:#fff}
+.hl{display:inline-block;background:rgba(249,115,22,.12);color:var(--accent);border:1px solid rgba(249,115,22,.3);padding:1px 7px;border-radius:6px;font-size:12px;margin:3px 4px 0 0}
+footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--border);color:var(--muted);font-size:12.5px}
+footer b{color:var(--text)}
+@media(max-width:720px){.playbook{grid-template-columns:1fr}h1{font-size:29px}.quota{justify-content:flex-start}.qtotal{text-align:left}.idea{min-width:0}}
+@media print{body{background:#fff;color:#111}.tab{display:none}.month{display:block!important;page-break-after:always}.card,.pb{border-color:#ccc}}
+</style></head><body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Tripsitter · Wayanad Pilot</div>
+    <h1>2-Month Content Calendar</h1>
+    <p class="tagline">Travel Like You Belong There</p>
+    <p class="sub">Monthly quota: 6 Reels · 4 Carousels · 3 Memes — suggested cadence ~3 posts/week</p>
+  </header>
+  <div class="mission">
+    <p>At Tripsitter, we believe travel is more than visiting destinations. It’s about discovering places through the people who call them home.</p>
+  </div>
+  <div class="tabs">
+    <button class="tab active" id="tab1" onclick="showMonth(1)">Month 1 · Pre-Launch</button>
+    <button class="tab" id="tab2" onclick="showMonth(2)">Month 2 · Launch</button>
+  </div>
+  <section class="month show" id="month1">
+    <div class="mhead">
+      <div>
+        <h2>Month 1 — Pre-Launch &amp; Waitlist</h2>
+        <p class="phase">Build belief and grow the list before the MVP opens. Establish the mission, define what a Tripsitter is, seed Wayanad as the pilot, and drive waitlist sign-ups.</p>
+      </div>
+      <div class="quota">
+        <span class="qpill" style="color:#F97316;border-color:rgba(249,115,22,0.4);background:rgba(249,115,22,0.12)">6 Reels</span>
+        <span class="qpill" style="color:#60A5FA;border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.12)">4 Carousels</span>
+        <span class="qpill" style="color:#F0ABFC;border-color:rgba(240,171,252,0.4);background:rgba(240,171,252,0.12)">3 Memes</span>
+        <span class="qtotal">13 posts / month</span>
+      </div>
+    </div>
+    <div class="mixrow"><span class="mixlbl">Theme mix</span><span class="mixchip" style="color:#F97316;background:rgba(249,115,22,0.12);border-color:rgba(249,115,22,0.35)">Mission <b>3</b></span><span class="mixchip" style="color:#F0ABFC;background:rgba(240,171,252,0.12);border-color:rgba(240,171,252,0.35)">Relatable <b>3</b></span><span class="mixchip" style="color:#34D399;background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.35)">Wayanad <b>2</b></span><span class="mixchip" style="color:#60A5FA;background:rgba(96,165,250,0.12);border-color:rgba(96,165,250,0.35)">Education <b>2</b></span><span class="mixchip" style="color:#FBBF24;background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.35)">Conversion <b>2</b></span><span class="mixchip" style="color:#A78BFA;background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.35)">Identity <b>1</b></span></div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(249,115,22,0.4)">
+        <span class="gicon" style="background:rgba(249,115,22,0.15);color:#F97316;border-color:rgba(249,115,22,0.4)">Reels</span>
+        <span class="gcount">6 of 6</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#A78BFA;background:rgba(167,139,250,0.14);border-color:rgba(167,139,250,0.4)">Identity</span></td>
+        <td class="idea">Short VO: “Exploration. Connections. Trips shaped by people you meet.”</td>
+        <td class="cta">Comment ‘TRIP’ for early access.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#34D399;background:rgba(52,211,153,0.14);border-color:rgba(52,211,153,0.4)">Wayanad</span></td>
+        <td class="idea">15–20s Wayanad montage (greens, homestay, insider guide, sunrise).</td>
+        <td class="cta">DM ‘WAYANAD’ to join the first cohort.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#F97316;background:rgba(249,115,22,0.14);border-color:rgba(249,115,22,0.4)">Mission</span></td>
+        <td class="idea">Founder voiceover: why you built Tripsitter; what “belonging” means.</td>
+        <td class="cta">Turn on post notifications.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">4</span></td>
+        <td><span class="pill" style="color:#60A5FA;background:rgba(96,165,250,0.14);border-color:rgba(96,165,250,0.4)">Education</span></td>
+        <td class="idea">“3 mistakes first-timers make in Wayanad” (permits, timing, packing).</td>
+        <td class="cta">Save this for your trip.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">5</span></td>
+        <td><span class="pill" style="color:#34D399;background:rgba(52,211,153,0.14);border-color:rgba(52,211,153,0.4)">Wayanad</span></td>
+        <td class="idea">“Hidden gems in Wayanad” — 3 spots non-tourists know.</td>
+        <td class="cta">Save this; share with your group.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">6</span></td>
+        <td><span class="pill" style="color:#FBBF24;background:rgba(251,191,36,0.14);border-color:rgba(251,191,36,0.4)">Conversion</span></td>
+        <td class="idea">Countdown + “MVP launching soon”; show 2–3 experience cards.</td>
+        <td class="cta">Link in bio to join the waitlist.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(96,165,250,0.4)">
+        <span class="gicon" style="background:rgba(96,165,250,0.15);color:#60A5FA;border-color:rgba(96,165,250,0.4)">Carousels</span>
+        <span class="gcount">4 of 4</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#F97316;background:rgba(249,115,22,0.14);border-color:rgba(249,115,22,0.4)">Mission</span></td>
+        <td class="idea">“Travel is more than destinations” — 4 slides on discovering places through the people who call them home.</td>
+        <td class="cta">Follow for our Wayanad launch.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#60A5FA;background:rgba(96,165,250,0.14);border-color:rgba(96,165,250,0.4)">Education</span></td>
+        <td class="idea">“What is a Tripsitter?” — Destination Insiders who help you travel like you belong (3 benefits).</td>
+        <td class="cta">Save + share with your travel buddy.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#F97316;background:rgba(249,115,22,0.14);border-color:rgba(249,115,22,0.4)">Mission</span></td>
+        <td class="idea">“Our promise: safe trips” — verification, small groups, local partners.</td>
+        <td class="cta">Ask us anything in Stories.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">4</span></td>
+        <td><span class="pill" style="color:#FBBF24;background:rgba(251,191,36,0.14);border-color:rgba(251,191,36,0.4)">Conversion</span></td>
+        <td class="idea">Early-bird perks (pilot pricing, priority slots, welcome kit).</td>
+        <td class="cta">Join the waitlist now.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(240,171,252,0.4)">
+        <span class="gicon" style="background:rgba(240,171,252,0.15);color:#F0ABFC;border-color:rgba(240,171,252,0.4)">Memes</span>
+        <span class="gcount">3 of 3</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">“Me planning a trip with 14 browser tabs open vs. an insider who just knows.”</td>
+        <td class="cta">Tag your over-planner friend.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">“Tourist spots on Google vs. where the insiders actually eat.”</td>
+        <td class="cta">Save so you don’t miss the good stuff.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">POV: your group chat trying to agree on an itinerary for 3 weeks.</td>
+        <td class="cta">Comment if this is your group.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="month" id="month2">
+    <div class="mhead">
+      <div>
+        <h2>Month 2 — Launch &amp; Pilot Activation</h2>
+        <p class="phase">Convert the warmed audience. Open the Wayanad pilot, put Destination Insiders front and centre, turn first trips into proof, and roll momentum into the next cohort.</p>
+      </div>
+      <div class="quota">
+        <span class="qpill" style="color:#F97316;border-color:rgba(249,115,22,0.4);background:rgba(249,115,22,0.12)">6 Reels</span>
+        <span class="qpill" style="color:#60A5FA;border-color:rgba(96,165,250,0.4);background:rgba(96,165,250,0.12)">4 Carousels</span>
+        <span class="qpill" style="color:#F0ABFC;border-color:rgba(240,171,252,0.4);background:rgba(240,171,252,0.12)">3 Memes</span>
+        <span class="qtotal">13 posts / month</span>
+      </div>
+    </div>
+    <div class="mixrow"><span class="mixlbl">Theme mix</span><span class="mixchip" style="color:#FBBF24;background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.35)">Conversion <b>3</b></span><span class="mixchip" style="color:#F0ABFC;background:rgba(240,171,252,0.12);border-color:rgba(240,171,252,0.35)">Relatable <b>3</b></span><span class="mixchip" style="color:#60A5FA;background:rgba(96,165,250,0.12);border-color:rgba(96,165,250,0.35)">Education <b>2</b></span><span class="mixchip" style="color:#34D399;background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.35)">Wayanad <b>2</b></span><span class="mixchip" style="color:#22D3EE;background:rgba(34,211,238,0.12);border-color:rgba(34,211,238,0.35)">Community <b>2</b></span><span class="mixchip" style="color:#F472B6;background:rgba(244,114,182,0.12);border-color:rgba(244,114,182,0.35)">Social proof <b>1</b></span></div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(249,115,22,0.4)">
+        <span class="gicon" style="background:rgba(249,115,22,0.15);color:#F97316;border-color:rgba(249,115,22,0.4)">Reels</span>
+        <span class="gcount">6 of 6</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#FBBF24;background:rgba(251,191,36,0.14);border-color:rgba(251,191,36,0.4)">Conversion</span></td>
+        <td class="idea">“We’re live” launch reveal — Wayanad pilot open, montage of experience cards.</td>
+        <td class="cta">Link in bio — book your pilot slot.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#60A5FA;background:rgba(96,165,250,0.14);border-color:rgba(96,165,250,0.4)">Education</span></td>
+        <td class="idea">“How to book your first Tripsitter experience” — 3-tap walkthrough.</td>
+        <td class="cta">DM ‘BOOK’ if you get stuck.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#34D399;background:rgba(52,211,153,0.14);border-color:rgba(52,211,153,0.4)">Wayanad</span></td>
+        <td class="idea">“A morning with a Wayanad coffee farmer” — sensory montage.</td>
+        <td class="cta">DM ‘COFFEE’ for this experience.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">4</span></td>
+        <td><span class="pill" style="color:#22D3EE;background:rgba(34,211,238,0.14);border-color:rgba(34,211,238,0.4)">Community</span></td>
+        <td class="idea">“A day in the life of a Destination Insider.”</td>
+        <td class="cta">Follow for the human side of travel.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">5</span></td>
+        <td><span class="pill" style="color:#F472B6;background:rgba(244,114,182,0.14);border-color:rgba(244,114,182,0.4)">Social proof</span></td>
+        <td class="idea">First pilot traveller reaction clip (or styled UGC).</td>
+        <td class="cta">Tag your travel buddy.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">6</span></td>
+        <td><span class="pill" style="color:#FBBF24;background:rgba(251,191,36,0.14);border-color:rgba(251,191,36,0.4)">Conversion</span></td>
+        <td class="idea">“Almost full” pilot urgency + your strongest experience card.</td>
+        <td class="cta">Grab the last slots — link in bio.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(96,165,250,0.4)">
+        <span class="gicon" style="background:rgba(96,165,250,0.15);color:#60A5FA;border-color:rgba(96,165,250,0.4)">Carousels</span>
+        <span class="gcount">4 of 4</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#22D3EE;background:rgba(34,211,238,0.14);border-color:rgba(34,211,238,0.4)">Community</span></td>
+        <td class="idea">“Meet your Destination Insiders” — 3 Wayanad hosts + what each one shows you.</td>
+        <td class="cta">Follow to meet the whole crew.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#34D399;background:rgba(52,211,153,0.14);border-color:rgba(52,211,153,0.4)">Wayanad</span></td>
+        <td class="idea">“5 Wayanad experiences you can only do with a Destination Insider.”</td>
+        <td class="cta">Save + tap the link to book.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#60A5FA;background:rgba(96,165,250,0.14);border-color:rgba(96,165,250,0.4)">Education</span></td>
+        <td class="idea">“Wayanad in 2 days: the insider-approved plan.”</td>
+        <td class="cta">DM ‘ITINERARY’ for the full plan.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">4</span></td>
+        <td><span class="pill" style="color:#FBBF24;background:rgba(251,191,36,0.14);border-color:rgba(251,191,36,0.4)">Conversion</span></td>
+        <td class="idea">“Pilot recap + next cohort” — proof + new dates.</td>
+        <td class="cta">Join the next cohort — link in bio.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="grphead" style="border-color:rgba(240,171,252,0.4)">
+        <span class="gicon" style="background:rgba(240,171,252,0.15);color:#F0ABFC;border-color:rgba(240,171,252,0.4)">Memes</span>
+        <span class="gcount">3 of 3</span>
+      </div>
+      <div class="card">
+        <table>
+          <thead><tr><th>#</th><th>Theme</th><th>Idea</th><th>CTA</th></tr></thead>
+          <tbody>
+      <tr>
+        <td class="num"><span class="dnum">1</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">“DIY trip stress vs. showing up and just belonging.”</td>
+        <td class="cta">Tag someone who overplans.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">2</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">“Monsoon Wayanad: expectation vs. reality (both elite).”</td>
+        <td class="cta">Which one are you? Comment.</td>
+      </tr>
+      <tr>
+        <td class="num"><span class="dnum">3</span></td>
+        <td><span class="pill" style="color:#F0ABFC;background:rgba(240,171,252,0.14);border-color:rgba(240,171,252,0.4)">Relatable</span></td>
+        <td class="idea">POV: your insider takes you to the spot that’s on no itinerary.</td>
+        <td class="cta">Save for your Wayanad trip.</td>
+      </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <div class="playbook">
+    <div class="pb">
+      <h3><span class="dot">●</span> Daily Stories routine</h3>
+      <ul>
+        <li><b>3–7 frames/day:</b> polls (“Trekking or homestay?”), Q&amp;A box, countdowns, behind-the-scenes, reshared UGC, DM screenshots (with permission).</li>
+        <li><b>Highlights:</b> “Our Story”, “Wayanad”, “Join” — add “Insiders” &amp; “Reviews” once the pilot is live in Month 2.</li>
+      </ul>
+    </div>
+    <div class="pb">
+      <h3><span class="dot">●</span> Reusable hooks &amp; CTAs</h3>
+      <ul>
+        <li><b>Hooks:</b>
+          <span class="hl">3 mistakes first-timers make…</span>
+          <span class="hl">The 2D/1N plan I wish I had…</span>
+          <span class="hl">We verify insiders like this…</span>
+          <span class="hl">Hidden gems non-tourists know…</span>
+        </li>
+        <li><b>CTAs:</b> DM a keyword (‘WAYANAD’, ‘ITINERARY’, ‘BOOK’), Save &amp; share, Tag a travel buddy, Link in bio to join / book.</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <b>Format quota per month:</b> 6 Reels + 4 Carousels + 3 Memes = 13 posts. &nbsp;·&nbsp; The <b>meme</b> concepts and the Month 2 posts are newly created by me — treat as drafts. Before publishing, verify anything tied to real offers/outcomes: pilot pricing &amp; perks, the “almost full” urgency post, and the “pilot recap + proof” carousel should match what actually ships. Per your instruction, host-facing “locals / a local” copy was swapped for on-brand wording (“the people who call them home”, “Destination Insider”, “insider”). One phrase left unchanged: “local partners” in the safety carousel (business-partnership sense, not host-labeling) — tell me if you want that swapped too. Post numbers are slots, not fixed calendar dates. &nbsp;·&nbsp; Speakerbox deliverable
+  </footer>
+</div>
+<script>
+function showMonth(n){
+  document.querySelectorAll('.month').forEach(m=>m.classList.remove('show'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('month'+n).classList.add('show');
+  document.getElementById('tab'+n).classList.add('active');
+}
+</script></body></html>
