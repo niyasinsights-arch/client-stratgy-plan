@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Town — Sales Forge Content + Admission Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E0E; --panel:#171717; --cell:#141414; --line:rgba(255,255,255,.07);
+    --txt:#F3F4F6; --muted:#9CA3AF; --dim:#5C6470;
+    --reel:#F97316;  --reel-bg:rgba(249,115,22,.14);
+    --car:#EC4899;   --car-bg:rgba(236,72,153,.13);
+    --static:#2DD4BF;--static-bg:rgba(45,212,191,.14);
+    --career:#FBBF24; --income:#34D399; --emi:#FB7185; --skills:#A78BFA; --brand:#38BDF8; --moment:#F472B6;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;
+    padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+
+  .wordmark{font-size:32px;font-weight:800;letter-spacing:-.02em;}
+  .wordmark .o{color:var(--reel);}
+  .tagline{font-size:13px;color:var(--muted);margin-top:3px;}
+  .stripe{height:3px;width:170px;border-radius:3px;margin:14px 0 6px;
+    background:linear-gradient(90deg,var(--reel),var(--car),var(--static));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:var(--txt);font-weight:600;}
+
+  .note-top{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 17px;margin:14px 0 4px;}
+  .note-top p{margin:0;font-size:12.5px;color:#CFD3D9;line-height:1.6;}
+  .note-top b{color:var(--txt);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0 4px;font-size:11.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.c{background:var(--car);} .dot.s{background:var(--static);}
+
+  .mhead{font-size:16px;font-weight:700;margin:32px 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .mhead .pill{font-size:10.5px;font-weight:800;letter-spacing:.04em;color:#0E0E0E;border-radius:6px;padding:3px 9px;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .mgoal{font-size:12px;color:var(--muted);margin:0 0 12px;max-width:900px;}
+  .mgoal b{color:var(--txt);}
+  .scroll{overflow-x:auto;}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;min-width:860px;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .dow{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-align:center;padding-bottom:2px;}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;
+    min-height:92px;padding:10px;display:flex;flex-direction:column;}
+  .cnum{font-size:13px;font-weight:600;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
+  .cicon{display:flex;align-items:center;justify-content:center;}
+  .clabel{font-size:9.5px;font-weight:700;letter-spacing:.06em;}
+  .rest .clabel{color:var(--dim);font-weight:500;letter-spacing:.12em;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;
+    border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .reel{--c:var(--reel);}      .reel .cicon,.reel .clabel{color:var(--reel);}
+  .carousel{--c:var(--car);}   .carousel .cicon,.carousel .clabel{color:var(--car);}
+  .static{--c:var(--static);}  .static .cicon,.static .clabel{color:var(--static);}
+
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:26px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c);
+    border-radius:12px;padding:13px 15px;}
+  .dcard.reel{--c:var(--reel);} .dcard.carousel{--c:var(--car);} .dcard.static{--c:var(--static);}
+  .dtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .dday{font-size:12px;font-weight:600;color:var(--muted);}
+  .dbadge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:6px;}
+  .dbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .dbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .dbadge.static{background:var(--static-bg);color:var(--static);}
+  .dcat{margin-left:auto;font-size:10.5px;font-weight:700;}
+  .c-career{color:var(--career);} .c-income{color:var(--income);} .c-emi{color:var(--emi);}
+  .c-skills{color:var(--skills);} .c-brand{color:var(--brand);} .c-moment{color:var(--moment);}
+  .dstage{font-size:9px;font-weight:800;letter-spacing:.05em;border-radius:5px;padding:2px 7px;}
+  .dstage.aware{color:#38BDF8;background:rgba(56,189,248,.14);}
+  .dstage.consider{color:#A78BFA;background:rgba(167,139,250,.14);}
+  .dstage.convert{color:#F97316;background:rgba(249,115,22,.14);}
+  .funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 4px;}
+  .fstage{border-radius:12px;padding:13px 15px;border:1px solid var(--line);background:var(--panel);border-top:3px solid var(--c);}
+  .fstage.aware{--c:#38BDF8;} .fstage.consider{--c:#A78BFA;} .fstage.convert{--c:#F97316;}
+  .fstage .fh{font-size:11px;font-weight:800;letter-spacing:.07em;}
+  .fstage.aware .fh{color:#38BDF8;} .fstage.consider .fh{color:#A78BFA;} .fstage.convert .fh{color:#F97316;}
+  .fstage p{font-size:11.5px;color:#CFD3D9;margin:6px 0 0;line-height:1.5;}
+  .fstage .arrow{float:right;color:var(--dim);font-weight:700;}
+  @media (max-width:760px){.funnel{grid-template-columns:1fr;}}
+  .dtitle{font-size:14px;font-weight:600;color:var(--txt);margin:9px 0 9px;}
+  .drow{display:flex;gap:10px;font-size:12.5px;line-height:1.5;margin:4px 0;}
+  .drow .k{flex:0 0 36px;font-size:10px;font-weight:700;letter-spacing:.08em;padding-top:2px;}
+  .drow.hook .k{color:var(--reel);} .drow.cta .k{color:var(--muted);}
+  .drow .v{flex:1;color:#D5D8DD;}
+
+  /* ADMISSION PUSH SECTION */
+  .adm-band{background:linear-gradient(180deg,rgba(249,115,22,.10),rgba(249,115,22,.02));
+    border:1px solid rgba(249,115,22,.35);border-radius:16px;padding:20px 20px 22px;margin-top:14px;}
+  .adm-band .ah{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px;}
+  .adm-band .ah h2{font-size:18px;font-weight:800;margin:0;color:var(--txt);letter-spacing:-.01em;}
+  .adm-tag{font-size:10px;font-weight:800;letter-spacing:.08em;color:#0E0E0E;background:var(--reel);border-radius:6px;padding:3px 9px;}
+  .adm-sub{font-size:12.5px;color:#E8B98C;margin:0 0 16px;}
+  .adm-month{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--reel);margin:16px 0 10px;}
+  .adm-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .acard{background:#181410;border:1px solid rgba(249,115,22,.28);border-left:3px solid var(--reel);
+    border-radius:12px;padding:13px 15px;}
+  .acard.static{border-left-color:var(--static);}
+  .atop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  .aurg{margin-left:auto;font-size:9.5px;font-weight:800;letter-spacing:.06em;color:var(--reel);
+    border:1px solid rgba(249,115,22,.4);border-radius:5px;padding:2px 7px;}
+  .atitle{font-size:14px;font-weight:700;color:var(--txt);margin:9px 0 9px;}
+
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--reel);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:var(--txt);}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:#CFD3D9;margin:5px 0;line-height:1.5;}
+  .pcard li b{color:var(--txt);}
+
+  .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .tlcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:12px;padding:13px 15px;}
+  .tlcard.m1{--c:var(--career);} .tlcard.m2{--c:var(--skills);} .tlcard.m3{--c:var(--reel);}
+  .tlcard .when{font-size:10.5px;font-weight:800;letter-spacing:.08em;}
+  .tlcard.m1 .when{color:var(--career);} .tlcard.m2 .when{color:var(--skills);} .tlcard.m3 .when{color:var(--reel);}
+  .tlcard p{font-size:12px;color:#CFD3D9;margin:7px 0 0;line-height:1.5;}
+  .tlcard code{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--reel);}
+
+  .pollcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pollcard .ptag{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--static);}
+  .pollcard .q{font-size:13.5px;font-weight:600;color:var(--txt);margin:6px 0 10px;}
+  .pollcard .opts{display:flex;flex-wrap:wrap;gap:7px;}
+  .opt{font-size:12px;color:#CFD3D9;background:var(--cell);border:1px solid var(--line);border-radius:999px;padding:4px 12px;}
+
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+
+  @media (max-width:760px){.cards,.panel-grid,.tl,.adm-cards{grid-template-columns:1fr;}.wordmark{font-size:27px;}}
+  @media print{
+    body{background:#0E0E0E;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .scroll{overflow:visible;} .cal{min-width:0;} @page{size:landscape;margin:8mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="wordmark">SKILL<span class="o">TOWN</span></div>
+  <div class="tagline">Sales Forge · Content Calendar + Dedicated Admission Push</div>
+  <div class="stripe"></div>
+  <h1>Sales Forge — 3-Month Plan</h1>
+  <div class="stats"><b>Content calendar:</b> 8 videos + 4 carousels per month &nbsp;·&nbsp; <b>Admission push:</b> aggressive videos + static posts, ramping each month</div>
+
+  <div class="note-top">
+    <p><b>Two engines, kept separate.</b> The <b>Content Calendar</b> builds awareness, sales-career belief, salary/income and EMI-reality through 8 videos + 4 carousels a month. The <b>Admission Push</b> is its own aggressive conversion track — admission videos and static posts that scale up month over month and close hard in Month 3. Run the push posts alongside the calendar (on the in-between days, or as boosted posts).</p>
+  </div>
+
+  <div class="funnel">
+    <div class="fstage aware"><div class="fh">1 &middot; AWARENESS<span class="arrow">&rarr;</span></div><p>Sales-career belief, salary &amp; income, EMI reality, myths and weekly trend posts &mdash; broad reach that pulls cold audiences in.</p></div>
+    <div class="fstage consider"><div class="fh">2 &middot; CONSIDERATION<span class="arrow">&rarr;</span></div><p>Skills, negotiation, roadmap, extra income, academy story &amp; behind-the-scenes &mdash; build trust and intent with warm viewers.</p></div>
+    <div class="fstage convert"><div class="fh">3 &middot; CONVERSION</div><p>The Admission Push (why join, seats, deadline, FAQ, enrol). Runs throughout and peaks in Month 3.</p></div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot r"></i>Reel / Video</span>
+    <span><i class="dot c"></i>Carousel</span>
+    <span><i class="dot s"></i>Static (admission push)</span>
+    <span style="color:var(--dim)">·&nbsp;&nbsp;colour tag = theme · polls &amp; Q&amp;As run as Stories</span>
+  </div>
+
+  <!-- ================= MONTH 1 CONTENT ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--career)">MONTH 1</span> Content Calendar <small>— sales careers, salary/income, EMI, skills</small></div>
+  <p class="mgoal"><b>Goal:</b> Establish sales as a high-income career and open the salary/income &amp; EMI conversation. 8 videos + 4 carousels.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+  <p class="mgoal" style="margin-top:8px;">Days 25–30 are left open for the <b style="color:var(--reel)">Admission Push</b> posts (see the dedicated section) or for boosting the best-performing content.</p>
+
+  <div class="sech">MONTH 1 — DAY BY DAY</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-career">Career</span></div><div class="dtitle">Why Sales is the Highest-Income Skill in 2026</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The highest-income skill of 2026."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment 💯 if you're learning it.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dstage aware">Awareness</span><span class="dcat c-income">Income</span></div><div class="dtitle">Sales Career Scope + Salary Bands</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Roles, salary bands &amp; the growth ladder."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save for later 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-income">Income</span></div><div class="dtitle">How Much Can a Salesperson Earn in India?</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"What sales really pays in India."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment your city 👇</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-income">Income</span></div><div class="dtitle">Sales vs Traditional Jobs: Salary Comparison</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Govt job vs sales — the real numbers."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment which you'd pick.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge carousel">Carousel</span><span class="dstage aware">Awareness</span><span class="dcat c-career">Career</span></div><div class="dtitle">Myths vs Reality of a Sales Job</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Everything you got wrong about sales."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Which myth did you believe?</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-career">Career</span></div><div class="dtitle">Why Sales Professionals Rarely Stay Unemployed</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Sales skills = job security for life."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save this 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-income">Income</span></div><div class="dtitle">How Sales Skills Create Extra Income</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Turn one skill into extra income."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment INCOME for ideas.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">3 Skills Every Salesperson Must Master</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Master these 3. Outsell everyone."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; start practising 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-emi">EMI</span></div><div class="dtitle">Why One Income Source Is Risky in 2026</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"One income source is a real risk."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment if you agree.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-moment">Moment</span></div><div class="dtitle">What [This Week's Trend] Teaches About Selling</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Sales lessons from what everyone's watching."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Tag someone who'd relate.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge carousel">Carousel</span><span class="dstage aware">Awareness</span><span class="dcat c-emi">EMI</span></div><div class="dtitle">EMI Reality — Money Pressure Is Real</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"EMI അടക്കാൻ job മാത്രം മതി?"</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; share 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-brand">Brand</span></div><div class="dtitle">Why We Started This Academy</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Why Skill Town exists."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow our story.</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 2 CONTENT ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--skills)">MONTH 2</span> Content Calendar <small>— sales skills, income, EMI, moment</small></div>
+  <p class="mgoal"><b>Goal:</b> Teach real sales skills and deepen the income &amp; EMI angle. 8 videos + 4 carousels.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+  <p class="mgoal" style="margin-top:8px;">Days 25–30 open for the <b style="color:var(--reel)">Admission Push</b> (Month 2 block below) or boosting.</p>
+
+  <div class="sech">MONTH 2 — DAY BY DAY</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-income">Income</span></div><div class="dtitle">Sales as a Side Hustle: Freelance &amp; Commission</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Turn conversations into commissions."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment SIDE for the guide.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Objection Handling 101: What to Say When They Say No</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every 'no' has a reason."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save these lines 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-income">Income</span></div><div class="dtitle">Commission-Based Earning: How It Works</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Your income = your effort."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM INCOME to learn how.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Negotiation Skills That Actually Work</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Never lose a deal on price again."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; DM SKILLS.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Persuasion &amp; Influence (Ethical)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Persuade without pressure."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-income">Income</span></div><div class="dtitle">Extra Income Through Sales</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"One skill. Multiple income streams."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment INCOME.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Active Listening: The Underrated Sales Skill</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Listen more, close more."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment 👂 to try it.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Communication Skills That Close Deals</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"How top closers actually talk."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; practise 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-emi">EMI</span></div><div class="dtitle">Your Degree Pays ₹20K. Your EMI Is ₹18K.</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The maths every fresher feels."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment if this is you.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-moment">Moment</span></div><div class="dtitle">Trending Brand / Movie: A Sales Masterclass</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"What [trending brand/movie] teaches about selling."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Tag a marketing nerd.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">5 Common Sales Mistakes Beginners Make</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The mistakes costing you the sale."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; avoid them &#128278;</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-brand">Brand</span></div><div class="dtitle">Behind the Scenes at Skill Town</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"A day inside the academy."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Follow for more BTS.</span></div></div>
+  </div>
+
+  <!-- ================= MONTH 3 CONTENT ================= -->
+  <div class="mhead"><span class="pill" style="background:var(--income)">MONTH 3</span> Content Calendar <small>— proof, income &amp; financial freedom</small></div>
+  <p class="mgoal"><b>Goal:</b> Stack proof and income evidence to support the heavy admission push. 8 videos + 4 carousels.</p>
+  <div class="scroll"><div class="cal">
+    <div class="dow">SUN</div><div class="dow">MON</div><div class="dow">TUE</div><div class="dow">WED</div><div class="dow">THU</div><div class="dow">FRI</div><div class="dow">SAT</div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">1</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">2</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">3</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">4</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">5</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">6</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">7</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">8</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">9</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">10</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">11</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">12</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">13</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">14</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">15</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">16</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">17</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">18</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">19</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">20</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell carousel"><span class="corner"></span><span class="cnum">21</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg></span><span class="clabel">CAROUSEL</span></div></div>
+    <div class="cell rest"><span class="cnum">22</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell reel"><span class="corner"></span><span class="cnum">23</span><div class="cbody"><span class="cicon"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="clabel">VIDEO</span></div></div>
+    <div class="cell rest"><span class="cnum">24</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">25</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">26</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">27</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">28</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">29</span><div class="cbody"><span class="clabel">REST</span></div></div>
+    <div class="cell rest"><span class="cnum">30</span><div class="cbody"><span class="clabel">REST</span></div></div>
+  </div></div>
+  <p class="mgoal" style="margin-top:8px;">In Month 3 the <b style="color:var(--reel)">Admission Push</b> is heaviest — schedule those posts across the open days and boost them hard.</p>
+
+  <div class="sech">MONTH 3 — DAY BY DAY</div>
+  <div class="cards">
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 1</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-income">Income</span></div><div class="dtitle">High-Paying Sales Careers in 2026</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The sales roles that pay the most."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; DM CAREER.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 3</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Sales Psychology: 5 Principles</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every sale is psychology first."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 5</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Sales is Learnable — Anyone Can Do It</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"You're not born a closer. You're trained."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment ROADMAP.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 7</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-career">Career</span></div><div class="dtitle">Why Companies Need Skilled Sales Professionals</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Every company is hiring closers."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; tag a founder.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 9</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-skills">Skills</span></div><div class="dtitle">Negotiation Cheat Sheet</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Steal these negotiation lines."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; use them 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 11</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-brand">Brand</span></div><div class="dtitle">From the Field — Trainer Story</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"A real story from the field."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment 🙌 for more.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 13</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-career">Career</span></div><div class="dtitle">Why Sales Skills Future-Proof Your Career</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The skill no recession can take."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment SAFE if you agree.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 15</span><span class="dbadge carousel">Carousel</span><span class="dstage consider">Consideration</span><span class="dcat c-career">Career</span></div><div class="dtitle">Career Roadmap: Beginner → Sales Leader</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Your 12-month sales career roadmap."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save &amp; DM ROADMAP 🔖</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 17</span><span class="dbadge reel">Video</span><span class="dstage convert">Conversion</span><span class="dcat c-income">Income</span></div><div class="dtitle">What Our Students Earn (Extra-Income Proof)</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Real students. Real income."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM INCOME to learn how.</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 19</span><span class="dbadge reel">Video</span><span class="dstage aware">Awareness</span><span class="dcat c-moment">Moment</span></div><div class="dtitle">What [This Week's Trend] Teaches About Closing</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Sales lessons from what everyone's watching."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Tag someone who'd relate.</span></div></div>
+    <div class="dcard carousel"><div class="dtop"><span class="dday">Day 21</span><span class="dbadge carousel">Carousel</span><span class="dstage convert">Conversion</span><span class="dcat c-income">Income</span></div><div class="dtitle">Student Results / Income Proof</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"The numbers behind the transformations."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Save 🔖 &amp; DM INCOME</span></div></div>
+    <div class="dcard reel"><div class="dtop"><span class="dday">Day 23</span><span class="dbadge reel">Video</span><span class="dstage consider">Consideration</span><span class="dcat c-emi">EMI</span></div><div class="dtitle">Financial Freedom Through Sales Skills</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"From EMI stress to financial freedom."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">Comment FREEDOM.</span></div></div>
+  </div>
+
+  <!-- ================= ADMISSION PUSH ================= -->
+  <div class="sech" style="margin-top:34px;">DEDICATED ADMISSION PUSH <span>— aggressive conversion track · videos + static posts · ramps every month</span></div>
+  <div class="adm-band">
+    <div class="ah"><h2>Admission Push</h2><span class="adm-tag">AGGRESSIVE · CONVERSION</span></div>
+    <p class="adm-sub">Runs alongside the content calendar (open days / boosted). Intensity climbs each month — soft in M1, hard-close in M3.</p>
+
+    <div class="adm-month">MONTH 1 · SOFT OPEN — 2 videos + 1 static</div>
+    <div class="adm-cards">
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">WHY NOW</span></div><div class="atitle">Why Join Sales Forge Now?</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Why start now, not next year."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION to apply.</span></div></div>
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">CURRICULUM</span></div><div class="atitle">What You'll Learn Inside Sales Forge</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Here's exactly what you'll master."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM CURRICULUM.</span></div></div>
+      <div class="acard static"><div class="atop"><span class="dbadge static">Static</span><span class="aurg">SEATS</span></div><div class="atitle">Admission Open — Batch 1 Filling</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Seats are filling fast."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION now.</span></div></div>
+    </div>
+
+    <div class="adm-month">MONTH 2 · RISING — 3 videos + 1 static</div>
+    <div class="adm-cards">
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">DIFFERENT</span></div><div class="atitle">What Makes Our Program Different?</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Not another theory course."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM INFO to see the difference.</span></div></div>
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">OUTCOMES</span></div><div class="atitle">Your Career Roadmap After Sales Forge</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Where you'll be in 12 months."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ROADMAP.</span></div></div>
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">CLOSING</span></div><div class="atitle">Early Batch Closing Soon</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Last days to join this batch."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION now.</span></div></div>
+      <div class="acard static"><div class="atop"><span class="dbadge static">Static</span><span class="aurg">LIMITED</span></div><div class="atitle">Admission Open — Limited Seats</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Seats are limited. Don't wait."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION.</span></div></div>
+    </div>
+
+    <div class="adm-month">MONTH 3 · HARD CLOSE — 3 videos + 3 statics</div>
+    <div class="adm-cards">
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">FINAL BATCH</span></div><div class="atitle">Final Batch — Admission Open</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Doors are open. Seats are limited."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION to apply.</span></div></div>
+      <div class="acard static"><div class="atop"><span class="dbadge static">Static</span><span class="aurg">SCARCITY</span></div><div class="atitle">Seat Availability — Only a Few Left</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Only a few seats left."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION before they're gone.</span></div></div>
+      <div class="acard static"><div class="atop"><span class="dbadge static">Static</span><span class="aurg">DEADLINE</span></div><div class="atitle">Admission Deadline — Closing Soon</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Admission closes soon. Don't miss out."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM ADMISSION now.</span></div></div>
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">LAST CHANCE</span></div><div class="atitle">Last Chance — Enrol Before We Close</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Last call before we close."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM SALES FORGE — final seats.</span></div></div>
+      <div class="acard static"><div class="atop"><span class="dbadge static">Static</span><span class="aurg">FAQ</span></div><div class="atitle">FAQ About Admissions</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Your top questions — answered."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM FAQ or tap the link in bio.</span></div></div>
+      <div class="acard"><div class="atop"><span class="dbadge reel">Video</span><span class="aurg">ENROL NOW</span></div><div class="atitle">Your Sales Career Starts Here</div><div class="drow hook"><span class="k">HOOK</span><span class="v">"Your sales career starts now."</span></div><div class="drow cta"><span class="k">CTA</span><span class="v">DM SALES FORGE to enrol.</span></div></div>
+    </div>
+  </div>
+
+  <!-- HOW TO RUN IT -->
+  <div class="sech">HOW TO RUN IT</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">12</div><div class="l">content posts / month (8 video · 4 carousel)</div></div>
+    <div class="chip"><div class="n">3 → 4 → 6</div><div class="l">admission-push posts by month</div></div>
+    <div class="chip"><div class="n">Aggressive</div><div class="l">admission tone ramps to a hard close</div></div>
+    <div class="chip"><div class="n">Stories</div><div class="l">polls &amp; Q&amp;As run on top (bank below)</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Content calendar themes</h3><ul>
+      <li><b>Career &amp; salary/income</b> — earnings, comparisons, extra income</li>
+      <li><b>EMI &amp; money reality</b> — the relatable emotional hook</li>
+      <li><b>Skills</b> — objection handling, negotiation, listening</li>
+      <li><b>Brand &amp; moment</b> — trainer stories + one weekly trend post</li>
+    </ul></div>
+    <div class="pcard"><h3>Admission push (separate)</h3><ul>
+      <li>Its own aggressive conversion track — not mixed into the calendar</li>
+      <li>Videos: why-now, difference, roadmap, final batch, last chance</li>
+      <li>Statics: seats, limited, deadline, FAQ</li>
+      <li>Scales up M1 → M3 with urgency &amp; scarcity</li>
+    </ul></div>
+    <div class="pcard"><h3>Scheduling</h3><ul>
+      <li>Content posts on the marked days (every 2nd day, Days 1–23)</li>
+      <li>Admission-push posts on the open days (24–30) or boosted</li>
+      <li>Front-load reach content, close hard late-month</li>
+      <li>Confirm best times from Instagram Insights</li>
+    </ul></div>
+  </div>
+
+  <!-- CTA ESCALATION -->
+  <div class="sech">ADMISSION CTA ESCALATION</div>
+  <div class="tl">
+    <div class="tlcard m1"><div class="when">MONTH 1</div><p>Soft open. <code>DM CURRICULUM / DM ADMISSION</code>. Invite, don't pressure.</p></div>
+    <div class="tlcard m2"><div class="when">MONTH 2</div><p>Rising. <code>DM INFO / ROADMAP / ADMISSION</code> + "early batch closing."</p></div>
+    <div class="tlcard m3"><div class="when">MONTH 3</div><p>Hard close. <code>DM ADMISSION / FAQ / SALES FORGE</code> — deadline, scarcity, last chance.</p></div>
+  </div>
+
+  <!-- STORY BANK -->
+  <div class="sech">STORY POLLS &amp; Q&amp;A BANK <span>— run as daily Stories on top of the feed</span></div>
+  <div class="cards">
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">How much do you think a good salesperson earns in India?</div><div class="opts"><span class="opt">&lt;₹30K</span><span class="opt">₹30–60K</span><span class="opt">₹60K–1L</span><span class="opt">1L+</span></div></div>
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">Is one income source enough in 2026?</div><div class="opts"><span class="opt">Yes</span><span class="opt">No way</span></div></div>
+    <div class="pollcard"><div class="ptag">POLL</div><div class="q">Biggest money stress right now?</div><div class="opts"><span class="opt">EMI</span><span class="opt">Low salary</span><span class="opt">No job</span><span class="opt">Family</span></div></div>
+    <div class="pollcard"><div class="ptag">Q&amp;A</div><div class="q">Ask us anything about admissions &amp; fees</div><div class="opts"><span class="opt">Reply on the sticker →</span></div></div>
+  </div>
+
+  <p class="foot">
+    <b>Two tracks.</b> The <b>Content Calendar</b> is 8 videos + 4 carousels a month (career, salary/income, EMI, skills, brand, one weekly moment post) — no memes. The <b>Admission Push</b> is a separate aggressive track of admission videos + static posts that scales <b>~3 → ~4 → ~6</b> across the three months and closes hard in Month 3. Colours: <b style="color:var(--reel)">orange = Video</b>, <b style="color:var(--car)">pink = Carousel</b>, <b style="color:var(--static)">teal = Static</b>. Each grid starts on a Sunday — shift to your real start date.
+    <br><br>
+    <b>A few honest notes:</b> I've assumed the admission-push posts run <b>on top of</b> the 12 content posts (open days / boosted) rather than inside the 8+4 — tell me if you'd rather I fold them into the calendar or set exact numbers. <b>MOMENT posts</b> use "[this week's trend]" placeholders — swap in whatever's genuinely trending; I haven't hard-coded a specific event I can't verify. The <b>Malayalam EMI line</b> (M1 Day 21) is exactly as you wrote it; worth a native check on anything else you localise. <b>Salary/income figures</b> are kept generic on purpose — verify any specific numbers (including the ₹20K/₹18K example, which is illustrative) before publishing so nothing over-promises. <b>Funnel:</b> every post now carries a stage tag (Awareness / Consideration / Conversion); the Admission Push is the Conversion stage and still runs throughout, so admissions are not held back to the end. <b>Testimonials removed</b> as requested (Month 2 Day 21 and Month 3 Day 13 replaced with non-testimonial posts). I did <b>not</b> remove the two income-proof posts (Month 3, Days 17 &amp; 21) since you only named testimonials &mdash; but they imply specific student-earnings figures I cannot verify. Use only real, documented numbers there, or tell me to remove/soften them. <b>DM-keyword automation</b> needs a tool (e.g. ManyChat) or an inbox owner.
+  </p>
+
+</div>
+</body>
+</html>
