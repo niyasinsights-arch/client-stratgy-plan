@@ -1,0 +1,309 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SENYORA — Launch Plan · 16 July – 6 August 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--brown:#4D2712;--brown-mid:#8A5B3E;--tan:#C9A184;--cream:#F9EDE1;--cream-2:#FFF9F3;--line:rgba(77,39,18,.15)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--brown);font-family:'Inter',system-ui,sans-serif;font-weight:300;padding:22px 14px 70px}
+  .wrap{max-width:960px;margin:0 auto}
+  header{text-align:center;margin-bottom:18px}
+  .mark{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1.5px solid var(--brown);border-radius:10px;font-family:'Tenor Sans',serif;font-size:16px;letter-spacing:1px;margin-bottom:12px}
+  header h1{font-family:'Tenor Sans',serif;font-size:26px;font-weight:400;letter-spacing:6px}
+  header .sub{font-size:10px;letter-spacing:2.5px;color:var(--brown-mid);margin-top:4px}
+  header .split{font-size:10px;letter-spacing:2px;color:var(--tan);margin-top:3px}
+
+  .progress{display:flex;align-items:center;gap:12px;margin:16px 0 20px}
+  .bar{flex:1;height:6px;background:#EBD9C7;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--brown);transition:width .3s}
+  #count{font-size:12px;letter-spacing:1.5px;color:var(--brown-mid);white-space:nowrap}
+  .reset{background:none;border:1px solid var(--line);border-radius:7px;color:var(--brown-mid);font-family:inherit;font-size:11px;padding:6px 12px;cursor:pointer}
+  .reset:hover{background:#F1E0D0}
+
+  .mname{font-family:'Tenor Sans',serif;font-size:17px;letter-spacing:3px;margin:0 0 10px}
+  .cal{background:var(--cream-2);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:26px}
+  .head{display:grid;grid-template-columns:repeat(7,1fr);background:var(--brown)}
+  .head div{color:var(--cream);font-size:10px;letter-spacing:2px;text-align:center;padding:9px 0}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr)}
+  .cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 4px 9px;min-height:86px;text-align:center;position:relative}
+  .cell:nth-child(7n){border-right:none}
+  .cell .n{position:absolute;top:5px;left:6px;font-size:10.5px;font-weight:500;color:var(--brown-mid)}
+  .cell.pad{background:rgba(77,39,18,.035)}
+  .cell.empty{background:repeating-linear-gradient(135deg,transparent,transparent 6px,rgba(77,39,18,.03) 6px,rgba(77,39,18,.03) 12px)}
+  .cell.pre{background:transparent}
+  .cell.has{cursor:pointer;transition:.15s}
+  .cell.has:hover{background:#F5E7D8}
+  .cb{position:absolute;top:5px;right:5px;width:15px;height:15px;border:1.4px solid var(--brown-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .cb svg{width:8px;height:8px;stroke:var(--cream);stroke-width:3.5;fill:none;opacity:0}
+  .cell.done{background:#EFE0D0;opacity:.55}
+  .cell.done .cb{background:var(--brown);border-color:var(--brown)}
+  .cell.done .cb svg{opacity:1}
+  .no{position:absolute;bottom:4px;left:0;right:0;font-size:7px;letter-spacing:1px;color:var(--brown-mid)}
+  .ic{width:30px;height:30px;margin:19px auto 4px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .ic svg{width:15px;height:15px;fill:none;stroke-width:1.9}
+  .lbl{font-size:7px;letter-spacing:.4px;color:var(--brown-mid);line-height:1.2}
+  .static .ic{background:transparent;border:1px solid var(--line)} .static .ic svg{stroke:var(--brown)}
+  .video .ic{background:var(--brown)} .video .ic svg{stroke:var(--cream);fill:var(--cream)}
+  .campaign .ic{background:#7A3F1E} .campaign .ic svg{stroke:var(--cream)}
+  .carousel .ic{background:var(--tan)} .carousel .ic svg{stroke:var(--brown)}
+  .ai .ic{background:var(--brown-mid)} .ai .ic svg{stroke:var(--cream)}
+  .cell.open{box-shadow:inset 0 0 0 2px var(--brown)}
+
+  .legend{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+  .lg{display:flex;gap:8px;align-items:center;padding:12px 8px;border-right:1px solid var(--line)}
+  .lg:last-child{border-right:none}
+  .lg .ic{margin:0;flex:none;width:26px;height:26px}
+  .lg b{display:block;font-size:8.5px;letter-spacing:1px;font-weight:500}
+  .lg span{font-size:9.5px;color:var(--brown-mid)}
+
+  .li{background:var(--cream-2);border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-bottom:8px;display:flex;gap:12px;align-items:center;cursor:pointer;transition:.15s}
+  .li:hover{background:#F5E7D8}
+  .li.done{opacity:.5}
+  .li.done .ti{text-decoration:line-through}
+  .li .num{font-family:'Tenor Sans',serif;font-size:17px;color:var(--tan);flex:none;width:20px}
+  .li .m{flex:1;min-width:0}
+  .li .ty{font-size:9px;letter-spacing:1.6px;color:var(--brown-mid)}
+  .li .ti{font-family:'Tenor Sans',serif;font-size:15.5px;line-height:1.3;margin-top:2px}
+  .li .dy{flex:none;text-align:right}
+  .li .dy b{display:block;font-size:12px;font-weight:500}
+  .li .dy span{font-size:9px;letter-spacing:1px;color:var(--brown-mid)}
+
+  .ov{display:none;position:fixed;inset:0;background:rgba(31,16,7,.62);z-index:50;align-items:center;justify-content:center;padding:16px}
+  .ov.on{display:flex}
+  .modal{background:var(--cream-2);border-radius:14px;max-width:530px;width:100%;max-height:86vh;overflow-y:auto}
+  .mh{background:var(--brown);color:var(--cream);padding:20px 22px;position:sticky;top:0}
+  .mh .k{font-size:10px;letter-spacing:2.5px;color:var(--tan)}
+  .mh h2{font-family:'Tenor Sans',serif;font-size:20px;font-weight:400;margin-top:5px;line-height:1.35}
+  .x{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--cream);font-size:20px;cursor:pointer;line-height:1}
+  .mb{padding:20px 22px 24px}
+  .f{margin-bottom:15px}
+  .f .k{font-size:9.5px;letter-spacing:2px;color:var(--brown-mid);margin-bottom:4px}
+  .f .v{font-size:14px;line-height:1.6}
+  .f .v.cap{background:#F3E4D6;border-left:3px solid var(--tan);padding:10px 12px;border-radius:0 6px 6px 0;font-style:italic}
+  .ctaB{display:inline-block;background:var(--brown);color:var(--cream);font-size:11.5px;letter-spacing:.8px;padding:8px 14px;border-radius:7px}
+  .mark-btn{width:100%;margin-top:6px;background:var(--brown);color:var(--cream);border:none;border-radius:9px;font-family:inherit;font-size:12px;letter-spacing:1.5px;padding:12px;cursor:pointer}
+  .mark-btn.undo{background:transparent;color:var(--brown);border:1px solid var(--line)}
+  .note{background:#F3E4D6;border-left:3px solid var(--tan);border-radius:0 8px 8px 0;padding:12px 14px;font-size:12px;line-height:1.6;margin-bottom:20px}
+  h3.sec{font-family:'Tenor Sans',serif;font-size:14px;letter-spacing:2.5px;color:var(--brown-mid);margin:24px 0 10px}
+  @media(max-width:640px){
+    .cell{min-height:70px;padding:5px 2px 7px}
+    .ic{width:23px;height:23px;margin-top:17px}
+    .ic svg{width:12px;height:12px}
+    .lbl{display:none}
+    .no{font-size:7px}
+    .legend{grid-template-columns:1fr 1fr}
+    .lg{border-bottom:1px solid var(--line)}
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="mark">SM</div>
+    <h1>SENYORA</h1>
+    <div class="sub">16 JULY — 6 AUGUST 2026</div>
+    <div class="split">6 VIDEOS · 1 CAROUSEL · 2 STATICS</div>
+  </header>
+
+  <div class="progress">
+    <span id="count">0 / 9 DELIVERED</span>
+    <div class="bar"><i id="fill"></i></div>
+    <button class="reset" id="reset">Reset</button>
+  </div>
+
+  <div class="note"><b>22-day campaign: 16 July → 6 August 2026.</b> Nine pieces, roughly one every 2–3 days. Grand opening is Thursday 6 August (#9). Note: the opening-date poster (#7) now lands only <b>4 days before opening</b> — thin runway for bookings.</div>
+
+  <div class="mname">JULY 2026</div>
+  <div class="cal">
+    <div class="head"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" id="gJul"></div>
+  </div>
+
+  <div class="mname">AUGUST 2026</div>
+  <div class="cal">
+    <div class="head"><div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div></div>
+    <div class="grid" id="gAug"></div>
+    <div class="legend">
+      <div class="lg ai"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3"/></svg></div><div><b>GEN AI</b><span>#2</span></div></div>
+      <div class="lg video"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="7 4 20 12 7 20 7 4"/></svg></div><div><b>VIDEO</b><span>#3 #8 #9</span></div></div>
+      <div class="lg campaign"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/></svg></div><div><b>CAMPAIGN</b><span>#4 #6</span></div></div>
+      <div class="lg carousel"><div class="ic"><svg viewBox="0 0 24 24"><rect x="8" y="4" width="12" height="16" rx="2"/><line x1="4" y1="7" x2="4" y2="17"/></svg></div><div><b>CAROUSEL</b><span>#5</span></div></div>
+      <div class="lg static"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg></div><div><b>STATIC</b><span>#1 #7</span></div></div>
+    </div>
+  </div>
+
+  <h3 class="sec">THE NINE PIECES</h3>
+  <div id="list"></div>
+</div>
+
+<div class="ov" id="ov">
+  <div class="modal">
+    <div class="mh"><button class="x" id="x" aria-label="Close">✕</button><div class="k" id="mk"></div><h2 id="mt"></h2></div>
+    <div class="mb" id="mb"></div>
+  </div>
+</div>
+
+<script>
+// Day 1 = Thu 16 July 2026.  July 2026 starts on a Wednesday. Aug 2026 starts on a Saturday.
+const D=[
+{no:1,m:7,d:16,wd:'THU',f:'static',ty:'GRID POST',t:'Brand Introduction Grid Post',
+ h:'Calicut, meet SENYORA.',
+ v:'Cream tile, brown Tenor Sans. The SM monogram centred with generous margins — no photography, no clutter. This is the first thing anyone will ever see from the brand, so it must look expensive at thumbnail size. If it works in greyscale, it works.',
+ c:'SENYORA — Makeover Studio. A premium beauty space, opening soon in Calicut.',
+ a:'Follow — the story starts here.',
+ o:'Establish the brand. This tile anchors the top of the grid permanently.'},
+
+{no:2,m:7,d:19,wd:'SUN',f:'ai',ty:'GEN AI VIDEO · LOGO LAUNCH',t:'Official Logo Launch Announcement',
+ h:'The mark that will be on every mirror in the room.',
+ v:'Gen AI motion, 8–15s. Liquid espresso-brown ink pours and resolves into the SM monogram, then the SENYORA lockup in Tenor Sans lands on cream. NO gold, no sparkle, no lens flare, no shine sweep — every one of those reads cheap and fights the palette. The restraint IS the luxury signal. Hold the final frame so it can be screenshotted. Sound: one low tone. No build, no drop.',
+ c:'Our identity, officially. Brown, because gold shouts and brown listens.',
+ a:'Save it. You will be seeing it a lot.',
+ o:'Brand identity goes public, in motion.'},
+
+{no:3,m:7,d:22,wd:'WED',f:'video',ty:'BTS VIDEO',t:'Behind the Scenes: Bringing Our Shop to Life',
+ h:'This was an empty room three weeks ago.',
+ v:'Handheld, natural light, deliberately unpolished — dust, wires, cardboard, mirrors still wrapped. Timelapse of the fit-out cut against real-time detail shots. Soft piano. The one piece allowed to break the premium polish; it buys credibility for everything after it. SHOOT THIS FIRST — you cannot recreate an unfinished room once it is finished.',
+ c:'Everything beautiful starts ugly. Here is the part nobody shows you.',
+ a:'Follow to see how it finishes.',
+ o:'Authenticity + trust. Proves the space is real, not a render.'},
+
+{no:4,m:7,d:25,wd:'SAT',f:'campaign',ty:'CAMPAIGN VIDEO',t:'Something Exciting is Coming – Stay Tuned',
+ h:'Something is coming to Calicut.',
+ v:'Cinematic, restrained. Slow push through the half-built studio in low light. No faces, no product, no reveal. Text beats in Tenor Sans, one line at a time. Ends on the monogram and the date. Under 30 seconds — a teaser loses power the longer it runs.',
+ c:'Not a parlour. A studio. Stay tuned.',
+ a:'Turn on notifications.',
+ o:'Curiosity + reach. The first piece built to travel past your followers.'},
+
+{no:5,m:7,d:28,wd:'TUE',f:'carousel',ty:'CAROUSEL POST',t:'AI Vision vs Reality: Our Shop Interior Concept',
+ h:'This is what we imagined. This is what we built.',
+ v:'Split carousel, 6–8 slides. Odd slides = the AI concept render. Even slides = the same angle shot for real. Same framing, same crop. CRITICAL: the real photo must hold up beside the render. If reality looks worse, cut that pair — a concept that outshines the room tells people the room is a disappointment, and they will feel it when they walk in. Final slide = a real wide shot, no AI.',
+ c:'We showed you the dream. Here is the room. Swipe to compare.',
+ a:'Save this — then come see which one was better.',
+ o:'Transparency + desire. Turns AI into a trust asset instead of a liability.'},
+
+{no:6,m:7,d:31,wd:'FRI',f:'campaign',ty:'CAMPAIGN VIDEO',t:'More Than a Shop – A New Experience is Coming',
+ h:'You are not booking a service. You are booking ninety minutes to yourself.',
+ v:'Emotive, human. Multi-woman montage — a teacher, a mother, a student — each pausing. Shot in the brown/cream world. Voiceover, no lip-sync. Restrained score, no swelling strings. This carries the brand VALUES, not the offer. No pricing, no logo spam.',
+ c:'A space where you are allowed to slow down. Coming to Calicut.',
+ a:'Tag a woman who forgets herself.',
+ o:'Positioning + shares. The share is the growth mechanic here, not the view.'},
+
+{no:7,m:8,d:2,wd:'SUN',f:'static',ty:'STATIC POST',t:'Grand Opening Date Announcement',
+ h:'Mark the date.',
+ v:'Brown poster. The date in large Tenor Sans, then time, then address. SM monogram small. This is the one poster allowed to be loud — a utility post, built to be screenshotted and forwarded on WhatsApp. Every detail legible at thumbnail size.',
+ c:'SENYORA opens Thursday 6 August at [TIME]. [ADDRESS], Calicut.',
+ a:'DM “VIP” for an opening-day slot.',
+ o:'Anticipation + early bookings. The first hard CTA of the campaign.'},
+
+{no:8,m:8,d:4,wd:'TUE',f:'video',ty:'PRESENTATION VIDEO',t:'Discover Our Shop – Location, Experience & Invitation',
+ h:'Come in. Take your time.',
+ v:'The polished counterpart to the BTS video. Gimbal one-take: exterior and signage → entrance → reception → styling stations → bridal suite. Smooth, no jump cuts. INCLUDE THE STREET and the landmark outside — “Location” is in the title, and people need to know how to find you. Ends on a direct invitation to camera. 45–60s. Golden-warm grade.',
+ c:'Here is where to find us, and what to expect when you do.',
+ a:'Save this for directions. Book via the link in bio.',
+ o:'Practical conversion. Removes the “where is it / what is it like” friction.'},
+
+{no:9,m:8,d:6,wd:'THU',f:'video',ty:'INAUGURATION & PERSONAL BRANDING',t:'Grand Opening Highlights & Meet the Founder',
+ h:'We opened. And here is the woman who built it.',
+ v:'Two halves, one video. First: fast-cut inauguration — ribbon, applause, first client through the door, flowers, the first blow-dry. Warm, alive, slightly grainy. Second: the founder to camera, seated in the finished studio, natural light, subtitles in Switzer. Why she built it, in her own words. The event footage earns the attention; the founder converts it into trust. 60–90s.',
+ c:'Day one. I am [Name], and this is why I built SENYORA. Thank you, Calicut.',
+ a:'We are open. Book your first visit — link in bio.',
+ o:'Social proof + personal brand + bookings. The campaign closer.'}
+];
+
+const MONTHS={7:{name:'July',days:31,startDow:3},8:{name:'August',days:31,startDow:6}}; // 0=Sun
+const ICON={
+ static:'<rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/>',
+ video:'<polygon points="7 4 20 12 7 20 7 4"/>',
+ campaign:'<path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/>',
+ carousel:'<rect x="8" y="4" width="12" height="16" rx="2"/><line x1="4" y1="7" x2="4" y2="17"/>',
+ ai:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3"/>'
+};
+const NAME={static:'STATIC',video:'VIDEO',campaign:'CAMPAIGN',carousel:'CAROUSEL',ai:'GEN AI'};
+const MON=['','JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG'];
+let done={};
+
+function buildMonth(mNum,elId){
+  const M=MONTHS[mNum], el=document.getElementById(elId);
+  const map={}; D.forEach(x=>{if(x.m===mNum)map[x.d]=x;});
+  for(let i=0;i<M.startDow;i++){const p=document.createElement('div');p.className='cell pad';el.appendChild(p);}
+  for(let d=1;d<=M.days;d++){
+    const x=map[d];
+    const c=document.createElement('div');
+    // before the campaign starts (July 1-15) = untouched, not hatched
+    const inWindow = (mNum===7 && d>=16) || (mNum===8 && d<=6);
+    if(!x){
+      c.className='cell '+(inWindow?'empty':'pre');
+      c.innerHTML=`<span class="n">${d}</span>`;
+      el.appendChild(c);continue;
+    }
+    c.className='cell has '+x.f;c.id='c'+x.no;
+    c.innerHTML=`<span class="n">${d}</span>
+      <div class="cb" role="checkbox" aria-checked="false" tabindex="0" aria-label="Mark piece ${x.no} delivered"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="ic"><svg viewBox="0 0 24 24">${ICON[x.f]}</svg></div>
+      <div class="lbl">${NAME[x.f]}</div>
+      <div class="no">#${x.no}</div>`;
+    const cb=c.querySelector('.cb');
+    const tog=e=>{e.stopPropagation();done[x.no]=!done[x.no];render();save();};
+    cb.addEventListener('click',tog);
+    cb.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();tog(e);}});
+    c.addEventListener('click',()=>openM(x));
+    el.appendChild(c);
+  }
+}
+buildMonth(7,'gJul');
+buildMonth(8,'gAug');
+
+const list=document.getElementById('list');
+D.forEach(x=>{
+  const li=document.createElement('div');
+  li.className='li';li.id='l'+x.no;
+  li.innerHTML=`<span class="num">${x.no}</span>
+    <div class="cb" role="checkbox" aria-checked="false" tabindex="0" aria-label="Mark piece ${x.no} delivered"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="m"><div class="ty">${x.ty}</div><div class="ti">${x.t}</div></div>
+    <div class="dy"><b>${x.d} ${MON[x.m]}</b><span>${x.wd}</span></div>`;
+  li.querySelector('.cb').style.cssText='position:static;width:19px;height:19px;flex:none;';
+  const cb=li.querySelector('.cb');
+  const tog=e=>{e.stopPropagation();done[x.no]=!done[x.no];render();save();};
+  cb.addEventListener('click',tog);
+  cb.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();tog(e);}});
+  li.addEventListener('click',()=>openM(x));
+  list.appendChild(li);
+});
+
+const ov=document.getElementById('ov');
+function openM(x){
+  document.getElementById('mk').textContent='#'+x.no+' · '+x.wd+' '+x.d+' '+MON[x.m]+' 2026 · '+x.ty;
+  document.getElementById('mt').textContent=x.t;
+  const on=!!done[x.no];
+  document.getElementById('mb').innerHTML=`
+    <div class="f"><div class="k">HOOK</div><div class="v">“${x.h}”</div></div>
+    <div class="f"><div class="k">VISUAL DIRECTION</div><div class="v">${x.v}</div></div>
+    <div class="f"><div class="k">CAPTION IDEA</div><div class="v cap">“${x.c}”</div></div>
+    <div class="f"><div class="k">CTA</div><div class="v"><span class="ctaB">${x.a}</span></div></div>
+    <div class="f"><div class="k">OBJECTIVE</div><div class="v">${x.o}</div></div>
+    <button class="mark-btn ${on?'undo':''}" id="mkbtn">${on?'MARK AS NOT DELIVERED':'MARK AS DELIVERED'}</button>`;
+  document.getElementById('mkbtn').onclick=()=>{done[x.no]=!done[x.no];render();save();openM(x);};
+  ov.classList.add('on');
+}
+document.getElementById('x').onclick=()=>ov.classList.remove('on');
+ov.onclick=e=>{if(e.target===ov)ov.classList.remove('on');};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')ov.classList.remove('on');});
+
+function render(){
+  let n=0;
+  D.forEach(x=>{
+    const on=!!done[x.no];
+    ['c'+x.no,'l'+x.no].forEach(id=>{
+      const e=document.getElementById(id);
+      e.classList.toggle('done',on);
+      e.querySelector('.cb').setAttribute('aria-checked',on);
+    });
+    if(on)n++;
+  });
+  document.getElementById('count').textContent=n+' / 9 DELIVERED';
+  document.getElementById('fill').style.width=Math.round(n/9*100)+'%';
+}
+async function save(){try{await window.storage.set('senyora-jul16',JSON.stringify(done));}catch(e){}}
+async function load(){try{const r=await window.storage.get('senyora-jul16');if(r&&r.value)done=JSON.parse(r.value);}catch(e){done={};}render();}
+document.getElementById('reset').onclick=()=>{done={};render();save();};
+load();
+</script>
