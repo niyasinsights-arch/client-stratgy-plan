@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sree Vidya Niketan College — Instagram Content Plan (2 Months)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{
+    --bg:#111111; --card:#1F2937; --accent:#F97316; --border:#374151;
+    --text:#E5E7EB; --muted:#9CA3AF; --heading:#FFFFFF;
+    --green:#22C55E; --red:#EF4444; --amber:#FBBF24; --blue:#60A5FA;
+  }
+  body{ font-family:'Google Sans','Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; padding:40px 20px; max-width:1120px; margin:0 auto; }
+  header{ border-bottom:1px solid var(--border); padding-bottom:28px; margin-bottom:32px; }
+  .eyebrow{ color:var(--accent); font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; }
+  h1{ color:var(--heading); font-size:30px; font-weight:700; margin:8px 0 6px; }
+  h2{ color:var(--heading); font-size:21px; font-weight:700; margin:0 0 4px; }
+  h3{ color:var(--heading); font-size:16px; font-weight:500; }
+  .sub{ color:var(--muted); font-size:15px; }
+  .meta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .pill{ background:var(--card); border:1px solid var(--border); border-radius:999px; padding:6px 14px; font-size:13px; color:var(--text); }
+  .pill b{ color:var(--accent); }
+  section{ margin-bottom:40px; }
+  .section-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:18px; border-left:3px solid var(--accent); padding-left:14px; }
+  .card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; }
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .flag{ border-radius:12px; padding:18px 20px; border:1px solid var(--border); }
+  .flag-amber{ border-left:3px solid var(--amber); background:rgba(251,191,36,.06); }
+  .flag-red{ border-left:3px solid var(--red); background:rgba(239,68,68,.06); }
+  .flag-blue{ border-left:3px solid var(--blue); background:rgba(96,165,250,.06); }
+  .flag h3{ margin-bottom:6px; } .flag p{ font-size:14px; color:var(--text); }
+  .flag .tag{ font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .tag-amber{ color:var(--amber); } .tag-blue{ color:var(--blue); } .tag-red{ color:var(--red); }
+  ul{ list-style:none; }
+  .feat li{ padding:5px 0; padding-left:26px; position:relative; font-size:14px; }
+  .feat li::before{ content:"✓"; color:var(--green); position:absolute; left:0; font-weight:700; }
+  .month-banner{ display:flex; flex-wrap:wrap; align-items:center; gap:14px; background:#111; border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:10px; padding:16px 20px; margin-bottom:20px; }
+  .month-banner .m-label{ background:var(--accent); color:#111; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; padding:6px 14px; border-radius:6px; }
+  .month-banner .m-goal{ color:var(--muted); font-size:14px; }
+  .month-banner .m-mix{ margin-left:auto; display:flex; gap:8px; }
+  .mixchip{ font-size:12px; border:1px solid var(--border); border-radius:999px; padding:4px 11px; color:var(--text); }
+  .mixchip b{ color:var(--accent); }
+  .post{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:16px; }
+  .post-top{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:12px; }
+  .post-no{ background:#111; border:1px solid var(--border); color:var(--accent); font-weight:700; border-radius:6px; padding:3px 10px; font-size:13px; }
+  .fmt{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:6px; }
+  .fmt-reel{ background:rgba(249,115,22,.14); color:var(--accent); border:1px solid rgba(249,115,22,.4); }
+  .fmt-carousel{ background:rgba(96,165,250,.12); color:var(--blue); border:1px solid rgba(96,165,250,.4); }
+  .fmt-static{ background:rgba(156,163,175,.12); color:var(--muted); border:1px solid var(--border); }
+  .pillar{ font-size:12px; color:var(--muted); margin-left:auto; }
+  .funnel{ font-size:11px; font-weight:700; padding:2px 8px; border-radius:5px; }
+  .funnel.tofu{ background:rgba(34,197,94,.12); color:var(--green); }
+  .funnel.mofu{ background:rgba(96,165,250,.12); color:var(--blue); }
+  .funnel.bofu{ background:rgba(249,115,22,.14); color:var(--accent); }
+  .post h3{ color:var(--heading); font-size:16px; margin-bottom:10px; }
+  .line{ font-size:14px; margin:7px 0; }
+  .line b{ color:var(--muted); font-weight:500; display:inline-block; min-width:74px; }
+  .hook{ background:#111; border:1px dashed var(--border); border-radius:8px; padding:10px 14px; margin:10px 0; font-size:14px; color:var(--text); }
+  .hook .lbl{ color:var(--accent); font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:3px; }
+  .ph{ color:var(--amber); font-style:italic; }
+  .cta-note{ color:var(--muted); font-size:13px; }
+  table{ width:100%; border-collapse:collapse; font-size:14px; }
+  th,td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); }
+  th{ color:var(--muted); font-weight:500; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  td b{ color:var(--heading); }
+  .foot{ border-top:1px solid var(--border); margin-top:36px; padding-top:20px; color:var(--muted); font-size:13px; }
+  @media (max-width:760px){ .grid-2,.grid-3{ grid-template-columns:1fr; } .pillar{ margin-left:0; width:100%; } .month-banner .m-mix{ margin-left:0; width:100%; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Instagram Content Plan · 2 Months</div>
+  <h1>Sree Vidya Niketan College (SVN)</h1>
+  <p class="sub">@sreevidyaniketan · Palayam Junction, Kozhikode · "Your Second Chance Starts Here"</p>
+  <div class="meta-row">
+    <span class="pill"><b>Goal:</b> Admissions & enquiries</span>
+    <span class="pill"><b>Duration:</b> 2 months · 14 posts</span>
+    <span class="pill"><b>Per month:</b> 4 Reels · 2 Carousels · 1 Static</span>
+    <span class="pill"><b>Tone:</b> Benefit-led, dignified</span>
+    <span class="pill"><b>Language:</b> Malayalam–English</span>
+  </div>
+</header>
+
+<!-- STRATEGY -->
+<section>
+  <div class="section-head"><h2>Strategy at a glance</h2></div>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="color:var(--accent);margin-bottom:10px;">Built on your 3 real offerings</h3>
+      <ul class="feat">
+        <li><b>NIOS</b> — finish SSLC / +2 at any age</li>
+        <li><b>Degree completion</b> — via credit transfer / migration <span class="ph">(verify first)</span></li>
+        <li><b>Hospital Administration</b> — career diploma + Gulf scope</li>
+        <li><b>Flexibility USP</b> — Sunday / Regular / Online classes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--accent);margin-bottom:10px;">Who we're talking to</h3>
+      <ul class="feat">
+        <li>People who left SSLC / +2 unfinished (any age)</li>
+        <li>Students who stopped a degree partway</li>
+        <li>Working adults, homemakers, Gulf-returnees</li>
+        <li>Plus-two completers wanting a career diploma</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <h3 style="color:var(--accent);margin-bottom:12px;">The 2-month arc</h3>
+    <table>
+      <tr><th>Month</th><th>Stage</th><th>Job of the month</th></tr>
+      <tr><td><b>Month 1</b></td><td><span class="funnel tofu">TOFU</span> → <span class="funnel mofu">MOFU</span></td><td>Introduce the 3 restart routes &amp; educate on each</td></tr>
+      <tr><td><b>Month 2</b></td><td><span class="funnel mofu">MOFU</span> → <span class="funnel bofu">BOFU</span></td><td>Build trust, kill objections, drive admissions</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- MONTH 1 -->
+<section>
+  <div class="month-banner">
+    <span class="m-label">Month 1 · Introduce &amp; Educate</span>
+    <span class="m-goal">Land the three restart routes; teach what each one actually offers.</span>
+    <span class="m-mix"><span class="mixchip"><b>4</b> Reels</span><span class="mixchip"><b>2</b> Carousels</span><span class="mixchip"><b>1</b> Static</span></span>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P1</span><span class="fmt fmt-reel">Reel</span><span class="funnel tofu">TOFU</span><span class="pillar">NIOS · Second Chance</span></div>
+    <h3>"It's not too late to finish school"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"SSLC / +2 പാതിവഴിയിൽ നിന്നോ? ഏത് പ്രായത്തിലും പൂർത്തിയാക്കാം."</div>
+    <p class="line"><b>Visual:</b> Faces across ages — young dropout, homemaker, working man — one line each. Close on NIOS + SVN.</p>
+    <p class="line cta-note"><b>CTA:</b> DM "NIOS" for eligibility.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P2</span><span class="fmt fmt-reel">Reel</span><span class="funnel tofu">TOFU</span><span class="pillar">Degree completion</span></div>
+    <h3>"Stopped your degree halfway? You can still finish it"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"പാതിവഴിയിൽ നിർത്തിയ ഡിഗ്രി — ക്രെഡിറ്റ് ട്രാൻസ്ഫർ വഴി പൂർത്തിയാക്കാം."</div>
+    <p class="line"><b>Visual:</b> Calm explainer — old credits count, migrate, finish. <span class="ph">No duration claim until verified; hold until UGC-recognition confirmed.</span></p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P3</span><span class="fmt fmt-carousel">Carousel</span><span class="funnel tofu">TOFU</span><span class="pillar">Second Chance</span></div>
+    <h3>"3 ways to restart your education at SVN"</h3>
+    <div class="hook"><span class="lbl">Hook (slide 1)</span>"നിർത്തിയിടത്ത് നിന്ന് വീണ്ടും തുടങ്ങാം — 3 വഴി 👇"</div>
+    <p class="line"><b>Slides:</b> Finish +2 (NIOS) · Finish your degree (credit transfer) · Career diploma (Hospital Admin) · All with Sunday/Online options · CTA.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P4</span><span class="fmt fmt-reel">Reel</span><span class="funnel mofu">MOFU</span><span class="pillar">Hospital Admin</span></div>
+    <h3>"Where a Hospital Administration diploma can take you"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"Hospital-ൽ ജോലി വേണോ? ചികിത്സകനാകാതെയും ആരോഗ്യരംഗത്ത് കരിയർ."</div>
+    <p class="line"><b>Visual:</b> Role reel — hospitals, clinics, diagnostics, insurance + Gulf. Straight from your benefits note.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P5</span><span class="fmt fmt-carousel">Carousel</span><span class="funnel mofu">MOFU</span><span class="pillar">NIOS</span></div>
+    <h3>"NIOS explained — finish +2 on your terms"</h3>
+    <div class="hook"><span class="lbl">Hook (slide 1)</span>"NIOS എന്നാൽ എന്ത്? ആർക്കൊക്കെ യോജിക്കും? 👇"</div>
+    <p class="line"><b>Slides (from your doc):</b> Recognised open schooling · No age limit · Own-pace study · Re-sit single subjects · Multiple exam chances/year · Lower cost · Opens higher-study &amp; govt-job eligibility <span class="ph">(subject to recruitment conditions)</span>.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P6</span><span class="fmt fmt-reel">Reel</span><span class="funnel mofu">MOFU</span><span class="pillar">Flexibility USP</span></div>
+    <h3>"Working already? You can still study"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"Joli-യും പഠനവും ഒരുമിച്ച് — Sunday / Regular / Online classes."</div>
+    <p class="line"><b>Visual:</b> Split-day story — work by day, class on Sunday/online. Sells the flexibility USP.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M1 · P7</span><span class="fmt fmt-static">Static</span><span class="funnel tofu">TOFU</span><span class="pillar">Second Chance</span></div>
+    <h3>Positioning card</h3>
+    <div class="hook"><span class="lbl">Copy</span>"New Hope. Better Future. Your second chance starts here."</div>
+    <p class="line"><b>Visual:</b> Clean brand quote card — grid anchor.</p>
+  </div>
+</section>
+
+<!-- MONTH 2 -->
+<section>
+  <div class="month-banner">
+    <span class="m-label">Month 2 · Trust &amp; Convert</span>
+    <span class="m-goal">Answer "is this valid?", show real people, then make the ask.</span>
+    <span class="m-mix"><span class="mixchip"><b>4</b> Reels</span><span class="mixchip"><b>2</b> Carousels</span><span class="mixchip"><b>1</b> Static</span></span>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P1</span><span class="fmt fmt-reel">Reel</span><span class="funnel mofu">MOFU→BOFU</span><span class="pillar">Second Chance</span></div>
+    <h3>Real student story — the restart arc</h3>
+    <div class="hook"><span class="lbl">Hook</span>"പഠനം നിർത്തിയിട്ട് വർഷങ്ങൾ. പിന്നെ ഞാൻ വീണ്ടും തുടങ്ങി."</div>
+    <p class="line cta-note ph">Use a real student with written consent. Don't script a fictional testimonial as if real.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P2</span><span class="fmt fmt-carousel">Carousel</span><span class="funnel mofu">MOFU→BOFU</span><span class="pillar">Trust</span></div>
+    <h3>"Is NIOS valid? Your questions, answered honestly"</h3>
+    <div class="hook"><span class="lbl">Hook (slide 1)</span>"NIOS valid ആണോ? Sathyam ithaanu."</div>
+    <p class="line"><b>Slides:</b> Recognised board · Accepted for higher study · Govt-job eligibility <span class="ph">(subject to recruitment conditions)</span> · How admission works · CTA. Only claim what's documented.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P3</span><span class="fmt fmt-reel">Reel</span><span class="funnel mofu">MOFU</span><span class="pillar">Degree completion</span></div>
+    <h3>"Credit transfer, explained simply"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"Mumbe padicha credits waste alla — അവ പരിഗണിക്കും."</div>
+    <p class="line"><b>Visual:</b> Plain 3-step explainer: old credits → migrate → finish. <span class="ph">Publish only after recognition is verified.</span></p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P4</span><span class="fmt fmt-carousel">Carousel</span><span class="funnel bofu">BOFU</span><span class="pillar">Admission push</span></div>
+    <h3>"Admissions open — courses, eligibility, how to apply"</h3>
+    <div class="hook"><span class="lbl">Hook (slide 1)</span>"Admission open aanu — ithokke aanu options 👇"</div>
+    <p class="line"><b>Slides:</b> NIOS · Degree completion · Hospital Admin · Class options (Sun/Regular/Online) · Simple 3-step apply · Contact + location.</p>
+    <p class="line cta-note"><b>CTA:</b> "Call <span class="ph">[number]</span> or DM 'ADMISSION'."</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P5</span><span class="fmt fmt-reel">Reel</span><span class="funnel bofu">BOFU</span><span class="pillar">Admission push</span></div>
+    <h3>"Don't wait another year"</h3>
+    <div class="hook"><span class="lbl">Hook</span>"Adutha year vare wait cheyyano? Ippo thanne thudangam."</div>
+    <p class="line"><b>Visual:</b> Punchy cut → real deadline/seat text → contact card. <span class="ph">Use a real deadline; don't fake scarcity.</span></p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P6</span><span class="fmt fmt-reel">Reel</span><span class="funnel bofu">BOFU</span><span class="pillar">Second Chance</span></div>
+    <h3>Campaign closer — back to the promise, with real faces</h3>
+    <div class="hook"><span class="lbl">Hook</span>"Your second chance starts here. Ningalude turn aanu ippo."</div>
+    <p class="line"><b>Visual:</b> Montage of real students/moments from the 2 months → strong close on tagline + CTA.</p>
+  </div>
+
+  <div class="post">
+    <div class="post-top"><span class="post-no">M2 · P7</span><span class="fmt fmt-static">Static</span><span class="funnel bofu">BOFU</span><span class="pillar">Admission push</span></div>
+    <h3>Course-of-focus CTA card</h3>
+    <div class="hook"><span class="lbl">Copy</span>"<span class="ph">[Priority course]</span> — admission open. <span class="ph">[X]</span> seats."</div>
+    <p class="line"><b>Visual:</b> One course, one benefit, contact + handle. <span class="ph">Tell me which course to fill first and I'll lock this in.</span></p>
+  </div>
+</section>
+
+<!-- POSTING RHYTHM -->
+<section>
+  <div class="section-head"><h2>Posting rhythm</h2></div>
+  <div class="card">
+    <p class="line" style="margin-top:0;">At 7 posts/month, aim for roughly <b>2 posts per week</b> (e.g. Wednesday + Saturday), so each post gets room to breathe. Suggested pattern per fortnight: Reel → Carousel → Reel → Static/Reel.</p>
+    <p class="line" style="margin-bottom:0;color:var(--muted);"><b>Note:</b> Support every feed post with 2–3 stories (reshare, poll, Q&amp;A, enquiry sticker). Times here are sensible defaults, not verified best-times — check SVN's own Insights after 2–3 weeks and adjust.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <p><b>Sree Vidya Niketan College — Instagram Content Plan (2 Months).</b> Prepared under the Speakerbox brand.</p>
+  <p style="margin-top:6px;">14 posts · exactly 4 Reels + 2 Carousels + 1 Static per month. Built on SVN's three real offerings plus the Sunday/Regular/Online USP. Placeholders in <span class="ph">amber</span> are for SVN to confirm — no figures, testimonials, approvals, or durations were invented. Verify the UGC-recognition point on the degree route and the ASCI point on guarantees before publishing.</p>
+</footer>
+
+</body>
+</html>
