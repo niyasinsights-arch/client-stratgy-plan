@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twinline Group — Month 2 Content Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Google Sans','Inter',-apple-system,sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    padding:56px 24px 80px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto}
+
+  /* ---------- Header ---------- */
+  header{padding-bottom:28px;border-bottom:1px solid var(--border);margin-bottom:44px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:500;margin-bottom:14px;
+  }
+  h1{font-size:34px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+  .theme{color:var(--muted);font-size:15px;margin-top:8px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{
+    font-size:12px;color:var(--muted);border:1px solid var(--border);
+    border-radius:999px;padding:5px 12px;
+  }
+  .chip b{color:var(--text);font-weight:500}
+
+  /* ---------- Week ---------- */
+  .week{margin-bottom:38px}
+  .week-head{
+    display:flex;align-items:baseline;gap:12px;
+    padding-bottom:10px;margin-bottom:4px;
+  }
+  .week-no{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+  .week-range{font-size:12px;color:var(--muted)}
+  .week-focus{margin-left:auto;font-size:12px;color:var(--accent)}
+
+  /* ---------- Post row ---------- */
+  .post{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:18px 0;
+    border-top:1px solid var(--border);
+  }
+  .date{padding-top:2px}
+  .date .d{font-size:22px;font-weight:500;line-height:1}
+  .date .m{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+
+  .body .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .fmt{
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+    padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted);
+  }
+  .fmt.reel{color:var(--accent);border-color:rgba(249,115,22,.45)}
+  .stage{font-size:11px;color:var(--muted)}
+  .stage::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--border);margin-right:7px;vertical-align:middle}
+  .stage.tofu::before{background:#60A5FA}
+  .stage.mofu::before{background:#F97316}
+  .stage.bofu::before{background:#34D399}
+
+  h3{font-size:17px;font-weight:500;letter-spacing:-.01em}
+  .line{color:var(--muted);font-size:14px;margin-top:5px;max-width:62ch}
+  .ref{
+    display:inline-block;margin-top:9px;font-size:11px;color:var(--muted);
+    text-decoration:none;border-bottom:1px dotted var(--border);
+  }
+  .ref:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---------- Footer blocks ---------- */
+  .panel{
+    background:var(--card);border:1px solid var(--border);border-radius:10px;
+    padding:24px 26px;margin-top:40px;
+  }
+  .panel h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px}
+  .panel ul{list-style:none}
+  .panel li{font-size:14px;color:var(--muted);padding:6px 0 6px 18px;position:relative}
+  .panel li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:1px;background:var(--accent)}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+
+  @media(max-width:600px){
+    body{padding:36px 18px 60px}
+    h1{font-size:26px}
+    .post{grid-template-columns:52px 1fr;gap:14px}
+    .week-focus{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Twinline Group · Instagram</div>
+    <h1>Month 2 Content Calendar</h1>
+    <div class="theme">Theme — Beyond the Structure</div>
+    <div class="meta">
+      <span class="chip"><b>12</b> posts</span>
+      <span class="chip"><b>3</b> per week</span>
+      <span class="chip"><b>6</b> reels</span>
+      <span class="chip"><b>3</b> carousels</span>
+      <span class="chip"><b>3</b> statics</span>
+      <span class="chip">Mon · Wed · Sat</span>
+    </div>
+  </header>
+
+  <!-- WEEK 1 -->
+  <section class="week">
+    <div class="week-head">
+      <span class="week-no">Week 01</span>
+      <span class="week-range">Aug 3 – Aug 8</span>
+      <span class="week-focus">Set the scale</span>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">03</div><div class="m">Mon</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">BTS Reel</span><span class="stage tofu">Awareness</span></div>
+        <h3>Steel in Motion</h3>
+        <p class="line">Unloading, crane lifts, bolt fastening, welding sparks, erected frame. Raw site footage, no voice-over — the process is the hero.</p>
+        <a class="ref" href="https://www.instagram.com/reel/DZp90qbShxQ/" target="_blank">Reference reel ↗</a>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">05</div><div class="m">Wed</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">Motion Graphic</span><span class="stage tofu">Awareness</span></div>
+        <h3>What's Inside a Steel Building?</h3>
+        <p class="line">Animated cut-section revealing columns, I-beams, purlins, roofing, insulation, anchor bolts. Every component has a purpose.</p>
+        <a class="ref" href="https://www.instagram.com/reel/DUYug3_jKFV/" target="_blank">Reference reel ↗</a>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">08</div><div class="m">Sat</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">Reel</span><span class="stage mofu">Consideration</span></div>
+        <h3>A Day with Our Site Engineer</h3>
+        <p class="line">Arrival, drawings, team coordination, inspections, measurements, progress checks. Leadership shown, not narrated.</p>
+        <a class="ref" href="https://www.instagram.com/reel/DYJOb3xhfYs/" target="_blank">Reference reel ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEK 2 -->
+  <section class="week">
+    <div class="week-head">
+      <span class="week-no">Week 02</span>
+      <span class="week-range">Aug 10 – Aug 15</span>
+      <span class="week-focus">Earn the trust</span>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">10</div><div class="m">Mon</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">Educational Reel</span><span class="stage mofu">Consideration</span></div>
+        <h3>3 Mistakes to Avoid Before Constructing a Steel Building</h3>
+        <p class="line">Poor site planning · no expansion planning · price over quality. Built for saves and shares. Never name or imply competitors.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">12</div><div class="m">Wed</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Carousel</span><span class="stage mofu">Consideration</span></div>
+        <h3>Built with Precision</h3>
+        <p class="line">Weld quality, bolt connections, alignment, roofing, final inspection, completed structure. Seven slides, one detail each.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">15</div><div class="m">Sat</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Static Poster</span><span class="stage tofu">Moment</span></div>
+        <h3>Independence Day Special</h3>
+        <p class="line">Site team or completed project with restrained tricolour accents. Headline: Building a Stronger India, One Structure at a Time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEK 3 -->
+  <section class="week">
+    <div class="week-head">
+      <span class="week-no">Week 03</span>
+      <span class="week-range">Aug 17 – Aug 22</span>
+      <span class="week-focus">Show the people &amp; the answers</span>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">17</div><div class="m">Mon</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">Reel</span><span class="stage tofu">Awareness</span></div>
+        <h3>Faces Behind the Framework</h3>
+        <p class="line">Welder, fabricator, crane operator, safety officer, roofing crew, candid team moment. Overlays: Precision · Teamwork · Dedication · Experience · Safety · Commitment.</p>
+        <a class="ref" href="https://www.instagram.com/reel/DXbq2ArlSEI/" target="_blank">Reference reel ↗</a>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">19</div><div class="m">Wed</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Carousel</span><span class="stage bofu">Decision</span></div>
+        <h3>Frequently Asked Questions</h3>
+        <p class="line">Timelines, future expansion, durability, Kerala climate suitability, why experience matters. Seven slides ending on an open invitation to ask.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">22</div><div class="m">Sat</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt reel">AI Reel</span><span class="stage tofu">Awareness</span></div>
+        <h3>The Journey of a Steel Beam</h3>
+        <p class="line">Molten steel to casting, rolling, cooling, QC, dispatch — then cut to a real Twinline site and the finished structure. Ends on: From Raw Steel to Remarkable Structures.</p>
+        <a class="ref" href="https://www.instagram.com/reel/DaPQRJas8Jm/" target="_blank">Reference reel ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEK 4 -->
+  <section class="week">
+    <div class="week-head">
+      <span class="week-no">Week 04</span>
+      <span class="week-range">Aug 24 – Aug 29</span>
+      <span class="week-focus">Close with proof</span>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">24</div><div class="m">Mon</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Carousel</span><span class="stage mofu">Consideration</span></div>
+        <h3>One Project. Three Stages</h3>
+        <p class="line">Introduction, site prep, fabrication, erection, roofing, completion. One project documented end to end.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">26</div><div class="m">Wed</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Static</span><span class="stage bofu">Decision</span></div>
+        <h3>Project Milestone</h3>
+        <p class="line">Real site image marking framework completion, roofing or handover. Headline: Another Milestone. Another Promise Delivered.</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="date"><div class="d">29</div><div class="m">Sat</div></div>
+      <div class="body">
+        <div class="top"><span class="fmt">Static</span><span class="stage bofu">Decision</span></div>
+        <h3>Client Trust</h3>
+        <p class="line">Completed project paired with a short client testimonial. Headline: Built on Trust. Backed by Results.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="panel">
+    <h4>Funnel Mix</h4>
+    <div class="legend">
+      <span class="stage tofu">Awareness — 5 posts</span>
+      <span class="stage mofu">Consideration — 4 posts</span>
+      <span class="stage bofu">Decision — 3 posts</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h4>Creative Direction</h4>
+    <ul>
+      <li>Authentic site footage over staged content — real people, real processes, real progress.</li>
+      <li>Motion graphics stay clean and informative; no decorative animation.</li>
+      <li>Minimal, confident copy. Let the visuals lead.</li>
+      <li>Consistent visual identity across all twelve pieces.</li>
+      <li>Shoot in batches — one site visit should cover 3–4 pieces of content.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Twinline Group · Month 2 · Beyond the Structure · Prepared by Speakerbox
+  </footer>
+
+</div>
+</body>
+</html>
