@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Origin · Two-Month Content Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#231A12; --espresso-2:#2E241A; --bark:#3A2E22;
+    --bone:#EFE7D6; --bone-dim:#C7BBA4; --brass:#B98D45; --brass-soft:#D8B876;
+    --sage:#8B9A78; --clay:#B26A4B; --parchment:#F2ECDD; --ink:#2A2016;
+    --shadow:rgba(20,14,8,.45); --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Public Sans',system-ui,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(185,141,69,.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(139,154,120,.08), transparent 55%),
+      var(--espresso);
+    color:var(--bone);line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass);color:var(--espresso)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  header.hero{padding:74px 0 40px;border-bottom:1px solid var(--bark);position:relative;overflow:hidden}
+  .eyebrow{letter-spacing:.42em;text-transform:uppercase;font-size:11px;font-weight:600;color:var(--brass-soft);display:flex;align-items:center;gap:14px}
+  .eyebrow::before,.eyebrow::after{content:"";height:1px;flex:0 0 34px;background:var(--brass);opacity:.6}
+  .eyebrow::after{flex:1}
+  h1.title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(44px,7vw,88px);line-height:.98;letter-spacing:-.01em;margin:18px 0 6px;color:var(--bone)}
+  h1.title em{font-style:italic;color:var(--brass-soft)}
+  .sub{max-width:660px;color:var(--bone-dim);font-size:16px;font-weight:300;margin-top:14px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:30px}
+  .chip{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--bark);border-radius:2px;color:var(--bone-dim);background:rgba(255,255,255,.015)}
+  .chip b{color:var(--brass-soft);font-weight:600}
+  .seal{position:absolute;top:54px;right:0;width:132px;height:132px;opacity:.9}
+  @media(max-width:720px){.seal{display:none}}
+
+  section.strategy{padding:56px 0 20px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
+  .sec-no{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--brass);font-style:italic;line-height:1}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;color:var(--bone)}
+  .sec-rule{flex:1;height:1px;background:var(--bark);align-self:center}
+
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bark);border:1px solid var(--bark)}
+  .pillar{background:var(--espresso-2);padding:22px 22px 24px}
+  .pillar h4{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;color:var(--brass-soft);margin-bottom:6px}
+  .pillar p{font-size:13.5px;color:var(--bone-dim);font-weight:300}
+  @media(max-width:820px){.pillars{grid-template-columns:1fr}}
+
+  .arc{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+  .arc-card{border:1px solid var(--bark);border-radius:3px;padding:26px 26px 28px;background:linear-gradient(180deg,rgba(185,141,69,.05),transparent 60%)}
+  .arc-card .m{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);font-weight:600}
+  .arc-card h3{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:500;margin:6px 0 10px;color:var(--bone)}
+  .arc-card p{font-size:14px;color:var(--bone-dim);font-weight:300}
+  .arc-card .goal{margin-top:12px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--brass-soft)}
+  @media(max-width:820px){.arc{grid-template-columns:1fr}}
+
+  section.calendar{padding:58px 0 40px}
+  .tabs{display:flex;gap:0;border-bottom:1px solid var(--bark);margin-bottom:8px}
+  .tab{appearance:none;background:none;border:none;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--bone-dim);padding:12px 26px 16px;position:relative;letter-spacing:.01em;transition:color .25s}
+  .tab .tn{display:block;font-family:'Public Sans',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);margin-bottom:2px;font-weight:600}
+  .tab.active{color:var(--brass-soft)}
+  .tab.active::after{content:"";position:absolute;left:20px;right:20px;bottom:-1px;height:2px;background:var(--brass)}
+  .tab:hover{color:var(--bone)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:18px 0 26px;font-size:12px;color:var(--bone-dim)}
+  .legend .dot{display:inline-flex;align-items:center;gap:7px;letter-spacing:.06em}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .i-reel{background:var(--clay)} .i-carousel{background:var(--brass)} .i-static{background:var(--sage)}
+  .i-story{width:9px;height:9px;border-radius:2px;background:none;border:1px solid var(--sage);display:inline-block}
+  .prog{margin-left:auto;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-soft)}
+
+  .month-panel{display:none} .month-panel.active{display:block}
+  .week{margin-bottom:30px}
+  .week-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+  .week-label b{color:var(--bone);font-weight:600;letter-spacing:.14em}
+  .week-label::after{content:"";flex:1;height:1px;background:var(--bark)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+  .card{position:relative;border:1px solid var(--bark);border-radius:3px;background:var(--espresso-2);padding:20px 20px 18px;cursor:pointer;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brass);opacity:.85}
+  .card[data-type="Reel"]::before{background:var(--clay)}
+  .card[data-type="Static"]::before{background:var(--sage)}
+  .card:hover{transform:translateY(-3px);border-color:var(--brass);box-shadow:0 14px 30px var(--shadow)}
+  .card:focus-visible{outline:2px solid var(--brass-soft);outline-offset:2px}
+  .card.done{opacity:.55}
+  .card.done .c-title{text-decoration:line-through;text-decoration-color:var(--brass)}
+
+  .c-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px}
+  .c-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .c-type{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:2px;border:1px solid var(--bark)}
+  .c-type.Reel{color:var(--clay);border-color:rgba(178,106,75,.5)}
+  .c-type.Carousel{color:var(--brass-soft);border-color:rgba(185,141,69,.5)}
+  .c-type.Static{color:var(--sage);border-color:rgba(139,154,120,.5)}
+  .c-format{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);border:1px dashed var(--bark);padding:4px 8px;border-radius:2px}
+  .c-no{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--bark);line-height:1}
+  .card:hover .c-no{color:var(--brass)}
+  .c-pillar{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:5px;font-weight:600}
+  .c-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--bone);line-height:1.12;margin-bottom:8px}
+  .c-hook{font-size:13px;color:var(--bone-dim);font-weight:300;font-style:italic}
+  .c-foot{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:11px;color:var(--bone-dim);letter-spacing:.04em}
+  .c-foot .open{margin-left:auto;color:var(--brass-soft);letter-spacing:.16em;text-transform:uppercase;font-size:10px;font-weight:600}
+  .check{width:17px;height:17px;border:1px solid var(--brass);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;transition:background .2s}
+  .card.done .check{background:var(--brass)}
+  .check svg{width:11px;height:11px;opacity:0;transition:opacity .2s}
+  .card.done .check svg{opacity:1}
+
+  .extras{margin-top:14px;border:1px solid var(--bark);border-left:3px solid var(--sage);border-radius:3px;background:rgba(139,154,120,.05);padding:15px 20px}
+  .extras-lab{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:11px;display:flex;align-items:center;gap:9px}
+  .extras-lab svg{width:13px;height:13px}
+  .extras ul{list-style:none;display:grid;gap:9px}
+  .extras li{display:flex;gap:11px;align-items:flex-start;font-size:13px;color:var(--bone-dim);font-weight:300}
+  .ex-badge{flex:0 0 auto;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:4px 6px;border-radius:2px;border:1px solid var(--bark);color:var(--brass-soft);width:64px;text-align:center}
+  .ex-badge.UGC{color:var(--clay);border-color:rgba(178,106,75,.5)}
+  .ex-badge.Poll{color:var(--sage);border-color:rgba(139,154,120,.5)}
+  .ex-badge.Repost{color:var(--brass-soft)}
+
+  .overlay{position:fixed;inset:0;background:rgba(15,10,6,.72);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;padding:40px 20px;z-index:60;overflow-y:auto}
+  .overlay.open{display:flex}
+  .modal{width:100%;max-width:680px;background:var(--parchment);color:var(--ink);border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid #d8cdb4;animation:rise .3s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .m-head{padding:26px 30px 22px;border-bottom:1px solid #ddd2b8;position:relative;background:linear-gradient(180deg,#fff9ec,transparent)}
+  .m-ey{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);font-weight:700}
+  .m-ey.Carousel{color:#9a7327} .m-ey.Static{color:#5f6f4d}
+  .m-title{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;line-height:1.04;margin:8px 0 4px;color:var(--ink)}
+  .m-slot{font-size:12px;color:#7a6b52;letter-spacing:.06em}
+  .close{position:absolute;top:20px;right:22px;width:34px;height:34px;border:1px solid #cdbf9f;background:#fff;border-radius:50%;cursor:pointer;font-size:17px;color:#6a5c44;line-height:1;transition:.2s}
+  .close:hover{background:var(--ink);color:var(--parchment);border-color:var(--ink)}
+  .m-body{padding:22px 30px 30px}
+  .field{margin-bottom:20px}
+  .field .lab{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .field .lab::after{content:"";flex:1;height:1px;background:#e0d5bb}
+  .field p{font-size:14.5px;color:#3a2f20}
+  .field .hookline{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--ink);line-height:1.3}
+  .caption-box{background:#fbf6e9;border:1px solid #e3d8bd;border-radius:3px;padding:16px 18px;font-size:14px;white-space:pre-line;color:#3a2f20;line-height:1.72}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .tag{font-size:11.5px;background:#e9dfc5;color:#6a5730;padding:4px 10px;border-radius:2px;letter-spacing:.02em}
+  .note{background:#f4ece0;border-left:3px solid var(--clay);padding:12px 16px;border-radius:2px;font-size:13px;color:#5a4a34}
+  .note b{color:var(--clay)}
+  .cta-pill{display:inline-block;background:var(--ink);color:var(--parchment);font-size:13px;letter-spacing:.04em;padding:9px 16px;border-radius:2px}
+
+  footer{border-top:1px solid var(--bark);padding:40px 0 60px;margin-top:30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--brass-soft);margin-bottom:8px;font-weight:600}
+  .foot-grid p,.foot-grid li{font-size:13px;color:var(--bone-dim);font-weight:300}
+  .foot-grid ul{list-style:none;margin-top:8px}
+  .foot-grid li{padding:5px 0;border-bottom:1px solid rgba(58,46,34,.5);display:flex;gap:10px}
+  .foot-grid li::before{content:"❧";color:var(--brass);font-size:12px}
+  .signoff{margin-top:34px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bark)}
+  .signoff span{color:var(--sage)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="seal" viewBox="0 0 120 120" fill="none">
+      <circle cx="60" cy="60" r="56" stroke="#B98D45" stroke-width="1"/>
+      <circle cx="60" cy="60" r="46" stroke="#B98D45" stroke-width=".6" opacity=".5"/>
+      <path d="M60 26c-9 12-9 22 0 34 9-12 9-22 0-34z" stroke="#8B9A78" stroke-width="1.1" fill="none"/>
+      <path d="M60 60c0 12 0 22 0 34" stroke="#8B9A78" stroke-width="1.1"/>
+      <path d="M60 72c-7-5-14-6-22-4M60 82c7-5 14-6 22-4" stroke="#8B9A78" stroke-width="1.1" fill="none"/>
+      <text x="60" y="112" text-anchor="middle" fill="#B98D45" font-family="Cormorant Garamond, serif" font-size="8" letter-spacing="3">EST · KERALA</text>
+    </svg>
+    <p class="eyebrow">Instagram Content Plan · Two Months</p>
+    <h1 class="title">The <em>Origin</em></h1>
+    <p class="sub">A two-month editorial plan for a premium, handmade Kerala wellness brand. Month one introduces the brand story, fixes the engagement gap, and builds a content bank before opening UGC. Month two turns that trust into belonging.</p>
+    <div class="hero-meta">
+      <span class="chip"><b>15</b> feed posts</span>
+      <span class="chip"><b>8</b> reels</span>
+      <span class="chip"><b>4</b> carousels</span>
+      <span class="chip"><b>3</b> statics</span>
+      <span class="chip">+ Stories &amp; UGC layer</span>
+    </div>
+  </div>
+</header>
+
+<section class="strategy wrap">
+  <div class="sec-head"><span class="sec-no">I</span><span class="sec-title">The six voices we speak in</span><span class="sec-rule"></span></div>
+  <div class="pillars">
+    <div class="pillar"><h4>Founder &amp; Legacy</h4><p>The father's story and the Calicut craft lineage — the why beneath the brand.</p></div>
+    <div class="pillar"><h4>The Makers</h4><p>BTS of handmade craft and the women who shape every bar.</p></div>
+    <div class="pillar"><h4>Educate to Trust</h4><p>Bio-regional ingredient transparency — no over-claiming.</p></div>
+    <div class="pillar"><h4>Proof &amp; Sincerity</h4><p>Visible ingredients, honest comparisons, real testimonials.</p></div>
+    <div class="pillar"><h4>Home Ritual</h4><p>Emotional storytelling — the soap inside a calm daily life.</p></div>
+    <div class="pillar"><h4>Purpose</h4><p>Women's livelihoods and giving back — the good each purchase does.</p></div>
+  </div>
+
+  <div class="arc">
+    <div class="arc-card">
+      <span class="m">Month One</span>
+      <h3>Return to the Origin — Launch &amp; Foundation</h3>
+      <p>Launch the father's story, walk people through the factory and ingredients, prove the product against fillers, and tie it to a real regional legacy — then seed the first testimonials.</p>
+      <p class="goal">Introduce the brand story, fix the engagement gap, and build a content bank before opening UGC.</p>
+    </div>
+    <div class="arc-card">
+      <span class="m">Month Two</span>
+      <h3>From Nature to Your Home — Emotion &amp; Belonging</h3>
+      <p>Move from proof to feeling. Place the product inside daily rituals, deepen the maker and giving-back stories, and close with testimonial-led momentum toward the DM.</p>
+      <p class="goal">Turn trust into belonging — and activate the UGC seeded in month one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="calendar wrap">
+  <div class="sec-head"><span class="sec-no">II</span><span class="sec-title">The calendar</span><span class="sec-rule"></span></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-month="1" role="tab"><span class="tn">Month 01</span>Launch &amp; Foundation</button>
+    <button class="tab" data-month="2" role="tab"><span class="tn">Month 02</span>From Nature to Your Home</button>
+  </div>
+
+  <div class="legend">
+    <span class="dot"><i class="i-reel"></i> Reel</span>
+    <span class="dot"><i class="i-carousel"></i> Carousel</span>
+    <span class="dot"><i class="i-static"></i> Static</span>
+    <span class="dot"><i class="i-story"></i> Stories &amp; Extras (under each week)</span>
+    <span class="prog" id="prog">0 / 15 published</span>
+  </div>
+
+  <div class="month-panel active" data-panel="1"></div>
+  <div class="month-panel" data-panel="2"></div>
+</section>
+
+<div class="overlay" id="overlay"><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <div>
+      <h4>How to run this plan</h4>
+      <p>Each week pairs feed posts (tap any card for the full brief) with a Stories &amp; Extras layer — polls, Q&amp;A, reposts, and the soft UGC seed that becomes month two's first customer content. Two feed posts a week keeps a premium account unhurried; the stories layer carries daily engagement in between.</p>
+      <p style="margin-top:12px">Your published-progress is saved on this device.</p>
+    </div>
+    <div>
+      <h4>Before you publish</h4>
+      <ul>
+        <li>Keep skincare claims soft — describe feel and ingredients, not clinical outcomes.</li>
+        <li>Verify the 1914 Calicut heritage date and any sourcing claims against a real source.</li>
+        <li>Use only genuine, consented testimonials, father's-story details, and maker names.</li>
+        <li>Hold one signature closing frame across every reel for brand recall.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="signoff">Prepared for <span>The Origin</span> · content strategy</p>
+</footer>
+
+<script>
+const POSTS = [
+  /* ================= MONTH 1 — from the approved plan ================= */
+  {n:1,m:1,week:"Week 1 — Launch",slot:"Hero drop",type:"Reel",format:"AI-recreated",
+   pillar:"Founder & Legacy",
+   title:"The Father's Story",
+   hook:"Before it was a brand, it was one man's promise.",
+   concept:"The hero launch piece. Use AI to restore/recreate the family's own old footage or photographs of the founder's father and the early days, intercut with present-day narration that carries the story into today. Slow, cinematic, reverent. The Week-1 story teasers all build toward this drop. End on the brand reveal + signature closing frame.",
+   caption:"Every Origin bar begins with a story that started long before us.\n\n[FOUNDER'S FATHER — the real story, in the founder's words: what he made, why it mattered, what he passed on.]\n\nToday, we carry it forward — by hand, in Kerala, the way it was always meant to be made.\n\nReturn to the Origin. 🤎",
+   cta:"This is where we begin. Follow the story.",
+   tags:["#founderstory","#returntotheorigin","#keralamade","#handmadesoap","#legacy","#theorigin"],
+   note:"PLACEHOLDER: build strictly on the real father's story. AI should restore/recreate the family's actual history — never invent events or footage that didn't happen. Keep it true; the whole launch rests on this being authentic."},
+
+  {n:2,m:1,week:"Week 2 — Factory Story & Ingredient Education",slot:"Mid-week",type:"Reel",format:"Short form",
+   pillar:"The Makers · BTS",
+   title:"Return to the Origin",
+   hook:"Walk with us — from the sourcing trail to the hands that shape every bar.",
+   concept:"Short-form factory / BTS reel. Follow the women's team through the unit and a real sourcing walk. Warm, textural, unhurried — the making and the sourcing told as one journey. Faces, hands, process. Signature closing frame.",
+   caption:"This is where 'handmade' actually happens.\n\nOur women's team, our unit, the walk from source to soap. No assembly line — just care, repeated by hand, every single day.\n\nMeet the origin of your bar. 🌿",
+   cta:"Comment 🤎 if you'd choose handmade over mass-made.",
+   tags:["#behindthescenes","#womenmade","#handmadesoap","#keralamade","#slowbeauty","#theorigin"],
+   note:"Film real team members with consent. Keep the empowerment framing warm and dignified, never pitying."},
+
+  {n:3,m:1,week:"Week 2 — Factory Story & Ingredient Education",slot:"Weekend",type:"Carousel",format:"Bio-Regional",
+   pillar:"Educate to Trust",
+   title:"Sourced From Our Soil: Kasturi Manjal & Nalpamaram",
+   hook:"The ingredients in your bar have a postcode.",
+   concept:"Ingredient-education carousel through a bio-regional lens. Spotlight Wayanadan Kasturi Manjal (wild/aromatic turmeric) and Nalpamaram (the traditional four-bark Ayurvedic blend): where they grow, why local sourcing matters, and how they enter the bar. Apothecary layout — one idea per slide, bone + brass. Final slide: soft brand line.",
+   caption:"Not just 'natural.' Local.\n\nOur Kasturi Manjal and Nalpamaram come from Wayanad's own soil — ingredients Kerala has trusted for generations, sourced close to home.\n\nSwipe to meet what's really in your bar. →",
+   cta:"Save this for the next time you read a label.",
+   tags:["#kasturimanjal","#nalpamaram","#wayanad","#ayurvedicskincare","#bioregional","#theorigin"],
+   note:"Kasturi Manjal (Curcuma aromatica) and Nalpamaram are traditional Ayurvedic ingredients — frame benefits as traditionally valued / gentle, not clinically proven. Confirm the Wayanad-specific sourcing claim is accurate before publishing."},
+
+  {n:4,m:1,week:"Week 3 — Product Proof & Legacy",slot:"Mid-week",type:"Reel",format:"AI-animated",
+   pillar:"Proof & Sincerity",
+   title:"0% Fillers",
+   hook:"One of these bars is mostly filler. Look closely.",
+   concept:"AI-animated comparison — a generic commercial bar vs the Origin bar, revealing the real botanical particles visible inside ours (the Radical Sincerity angle). Clean cross-section reveal, a little bold, honest. Keep it about visible ingredients, not brand-shaming. Signature closing frame.",
+   caption:"Radical honesty: here's what's actually inside.\n\nMost bars hide behind filler. Ours shows its ingredients — you can see the botanicals we fold in by hand.\n\nLook closely. Then decide what belongs on your skin. 🌿",
+   cta:"Save this. Share it with a label-reader.",
+   tags:["#0fillers","#cleaningredients","#coldprocesssoap","#radicalsincerity","#handmade","#theorigin"],
+   note:"'0% Fillers' and 'Radical Sincerity' only work if literally true — show genuine botanical inclusions. Don't name or disparage competitors (keep it 'a commercial bar'). Avoid unprovable superiority claims."},
+
+  {n:5,m:1,week:"Week 3 — Product Proof & Legacy",slot:"Weekend",type:"Static",format:"Poster",
+   pillar:"Founder & Legacy",
+   title:"A Calicut Legacy, Since 1914",
+   hook:"Soap-making has run along this coast for over a century.",
+   concept:"Heritage poster tying The Origin to Calicut's soap-making tradition (1914). Vintage-apothecary treatment — aged paper, letterpress texture, sepia + brass, an old-crest feel. Positions the brand as heir to a real regional craft, not a startup out of nowhere. A grid-anchor static.",
+   caption:"Long before us, this coast knew soap.\n\nWe carry a craft that's been part of Calicut for over a century — made the old way, for a new generation.\n\nHeritage you can hold. 🤎",
+   cta:"Save if you love where things come from.",
+   tags:["#calicut","#kozhikode","#heritage","#since1914","#keralalegacy","#theorigin"],
+   note:"VERIFY the 1914 date and the Calicut soap-legacy claim against a reliable source before publishing — a public heritage date must be accurate. Also confirm the brand's actual relationship to that legacy: claim direct lineage only if true, otherwise frame as 'part of a regional tradition' rather than 'our 1914 origin.' I can research this for you if useful."},
+
+  {n:6,m:1,week:"Week 4 — Consolidate & First Testimonial Push",slot:"Mid-week",type:"Reel",format:"Campaign",
+   pillar:"Proof & Sincerity",
+   title:"Tag Someone With Sensitive Skin",
+   hook:"Know someone whose skin reacts to everything? This one's for them.",
+   concept:"Engagement-driving campaign reel built around a 'tag someone with sensitive skin' / comment-to-win mechanic — designed specifically to fix the engagement gap. Gentle, feel-led product footage + a clear, simple participation prompt on screen. Signature closing frame.",
+   caption:"This one's for the ones whose skin says no to everything.\n\nGentle, handmade, made with ingredients you can actually name. Know someone who needs a kinder bar?\n\nTag them below — one lucky pair wins a bar each. 🌿\n[Add real, simple entry rules + closing date.]",
+   cta:"Tag a friend + comment 'GENTLE' to enter.",
+   tags:["#sensitiveskin","#gentlecare","#giveaway","#handmadesoap","#cleanbeauty","#theorigin"],
+   note:"If running comment-to-win, state real prize + simple rules + end date, and follow platform promotion guidelines. Keep skin language soft ('gentle') — never medical ('cures sensitivity')."},
+
+  {n:7,m:1,week:"Week 4 — Consolidate & First Testimonial Push",slot:"Weekend",type:"Static",format:"Poster",
+   pillar:"Proof · Testimonial",
+   title:"In Their Words",
+   hook:"The review we couldn't have written better ourselves.",
+   concept:"Testimonial poster redesigned from a real, existing customer review. Clean apothecary quote layout — big serif pull-quote, attributed by first name, small product mark. The first proper trust-anchor on the grid, and the bridge into month two's UGC.",
+   caption:"We'll let them do the talking.\n\n[Real customer review, verbatim or lightly trimmed without changing the meaning.] — [First name]\n\nThank you for trusting your care to us. 🤎",
+   cta:"Loved by you. DM us your Origin story.",
+   tags:["#customerlove","#reviews","#realresults","#handmadesoap","#theorigin"],
+   note:"Use a genuine, consented review only. Don't strengthen the customer's words into bigger claims than they made."},
+
+  /* ================= MONTH 2 — emotion & belonging ================= */
+  {n:8,m:2,week:"Week 1",slot:"Mid-week",type:"Reel",format:"Cinematic",
+   pillar:"Home Ritual",
+   title:"The Evening Ritual",
+   hook:"The bravest thing some days is to slow down for five minutes.",
+   concept:"Cinematic slice-of-home. Someone winding down — warm light, the bar, water, steam, a quiet exhale. The soap is simply part of a calm evening, not a hard sell. Echoes the 'gives calm' tone already on the grid. Soft ambient audio. Signature closing frame.",
+   caption:"After the noise of the day, a small ritual.\n\nWarm water. A bar that smells like something grew it. Five minutes that belong to you.\n\nThis is what we're really making — not soap, but the pause. 🕯️",
+   cta:"What's your five-minute ritual? Tell us below.",
+   tags:["#eveningritual","#selfcare","#slowliving","#calm","#theorigin"],
+   note:"Emotion-led; keep it a mood, not a therapeutic promise."},
+
+  {n:9,m:2,week:"Week 1",slot:"Weekend",type:"Carousel",format:"Discovery",
+   pillar:"Product Discovery",
+   title:"Build Your Shelf",
+   hook:"So many ways to make clean feel like a ritual.",
+   concept:"Discovery carousel across the range — oils, serums, soaps — grouped by moment: morning, wind-down, 'for the man who…', and gifting. One hero product per slide with a one-line reason. Helps followers navigate a large catalogue without overwhelm.",
+   caption:"With a full range to choose from, where do you begin? Here. →\n\nWe've grouped a few Origin favourites by the moment they belong to — morning, wind-down, and gifting.\n\nSwipe and build a shelf that feels like you.",
+   cta:"Which shelf are you building? DM us to start.",
+   tags:["#skincareroutine","#handmade","#cleanbeauty","#giftideas","#theorigin"],
+   note:"Confirm any product-count or range claims are accurate before using them as a headline."},
+
+  {n:10,m:2,week:"Week 2",slot:"Mid-week",type:"Reel",format:"Demo · Proof",
+   pillar:"Proof & Sincerity",
+   title:"Does It Actually Lather?",
+   hook:"Real soap has nothing to hide. Watch.",
+   concept:"Satisfying, honest product test — lather bloom in slow motion, the melt, the glide, water beading. Pure scroll-stopping proof. Minimal text ('Cold-process. Real lather. No filler.'). Ties to the grid's 'Lasting moisture' theme. Signature closing frame.",
+   caption:"No fancy claims here. Just proof.\n\nThis is what a cold-process, hand-made bar does when it meets water — rich lather, no squeaky strip, no film left behind.\n\nWatch till the end. 🫧",
+   cta:"Save this. Then find your bar in our DMs.",
+   tags:["#satisfying","#soaptest","#coldprocesssoap","#realresults","#theorigin"],
+   note:"Show, don't claim — describe what's visible ('rich lather') rather than asserting skin outcomes."},
+
+  {n:11,m:2,week:"Week 2",slot:"Weekend",type:"Static",format:"Occasion",
+   pillar:"Occasion · Gifting",
+   title:"Wrapped in Jute, Given With Meaning",
+   hook:"Some gifts smell like effort. This one is.",
+   concept:"Single elegant graphic positioning The Origin as a considered gift — the jute-wrapped bar/box as hero. Warm styling, ribbon, a card. Leans on the jute-packaging USP. Works for weddings, housewarmings, festive and NRI gifting. Grid-anchor static.",
+   caption:"A gift that isn't just bought — it's meant.\n\nHandmade, wrapped in jute, carrying a little of Kerala with it. For the housewarming, the wedding return, the 'thinking of you.'\n\nGive something with a story. 🎁",
+   cta:"Planning a gift? DM us for custom sets.",
+   tags:["#giftideas","#jutepackaging","#handmadegifts","#keralagifts","#theorigin"],
+   note:"Confirm gifting / custom-set availability before promising it in the CTA."},
+
+  {n:12,m:2,week:"Week 3",slot:"Mid-week",type:"Carousel",format:"Deep-dive",
+   pillar:"Educate to Trust",
+   title:"Ingredient Deep-Dive: Goat Milk",
+   hook:"Why does goat milk keep showing up in good skincare?",
+   concept:"Single-ingredient spotlight (goat milk — or swap to paala). 5–6 slides: what it is, why it's traditionally loved, how it's used, which Origin bars carry it. Ties to the grid's 'Why Goat Milk?' post. Educational, gentle, non-clinical.",
+   caption:"Goat milk has been a skincare secret for generations — long before it was a trend.\n\nSwipe to see why we fold it into our bars, and which Origin soaps carry it. →\n\nOld wisdom, made by hand.",
+   cta:"Want the goat-milk bar? DM us.",
+   tags:["#goatmilksoap","#skincareingredients","#naturalskincare","#handmade","#theorigin"],
+   note:"Frame benefits as 'traditionally loved / gentle,' not proven clinical effects."},
+
+  {n:13,m:2,week:"Week 3",slot:"Weekend",type:"Reel",format:"Portrait",
+   pillar:"The Makers · Purpose",
+   title:"Meet the Makers",
+   hook:"Behind every bar is a name, a face, a livelihood.",
+   concept:"Humanise the empowerment story. Short portraits and a line or two from the women who craft the soaps — their names, their day, what the work means. Warm, dignified, first-person. The emotional peak of month two's purpose thread. Signature closing frame.",
+   caption:"You've seen the soap. Now meet the hands.\n\n[Real first names] make Origin bars every day — steady work, close to home, done with pride. When you choose handmade, this is who you choose.\n\nMade by women. Made with care. 🤎",
+   cta:"Send this to someone who champions women's work.",
+   tags:["#womenempowerment","#madebywomen","#handmade","#localimpact","#theorigin"],
+   note:"Consent and dignity first — real names only with permission. Empowerment framing should never read as charity-for-attention."},
+
+  {n:14,m:2,week:"Week 4",slot:"Mid-week",type:"Reel",format:"Documentary",
+   pillar:"Purpose · Community",
+   title:"Every Bar Gives Back",
+   hook:"A soap can't change the world. A thousand of them, a little, can.",
+   concept:"Show the real community / giving-back initiative — the local support, the contribution, the people it reaches. Honest documentary tone, not a glossy CSR ad. If the initiative is early, tell it modestly. Signature closing frame.",
+   caption:"We started The Origin to make something clean. Along the way it became a way to give back.\n\n[Describe the real initiative — local support, contribution, who it helps.]\n\nSmall brand, small steps, real intent. Thank you for making it possible. 🌱",
+   cta:"Be part of it — every purchase adds up.",
+   tags:["#givingback","#socialimpact","#communityfirst","#madeinkerala","#theorigin"],
+   note:"PLACEHOLDER: only describe giving-back activity that genuinely happens. Modest and true beats grand and vague."},
+
+  {n:15,m:2,week:"Week 4",slot:"Weekend",type:"Carousel",format:"Round-up",
+   pillar:"Proof · Conversion",
+   title:"Loved, In Their Own Words",
+   hook:"Two months of quiet reviews — and the first UGC from our seed batch.",
+   concept:"Testimonial + first-UGC round-up to close on momentum. 5–6 real reviews / customer posts as elegant quote slides (bone/brass), attributed by first name — including the UGC seeded back in month one. Final slide converts softly: 'Your turn — DM us to begin.'",
+   caption:"We'll let them do the talking. →\n\nA few of the messages — and the first posts from customers we sent bars to. Real people, real skin, real words.\n\nReady to find your bar? Our DMs are open. 🤎",
+   cta:"DM 'ORIGIN' and we'll help you choose your first bar.",
+   tags:["#customerreviews","#ugc","#realresults","#handmadesoap","#theorigin"],
+   note:"Every quote / repost must be a genuine, consented review or post. Never attribute invented words to a customer."},
+];
+
+const EXTRAS = {
+  "1-Week 1 — Launch":[
+    {kind:"Story",text:"BTS teaser series (drip across 3–4 days) building anticipation toward the father's-story launch reel."},
+    {kind:"Poll",text:"Poll sticker: \u201CWhich matters more to you \u2014 ingredients or scent?\u201D"},
+  ],
+  "1-Week 2 — Factory Story & Ingredient Education":[
+    {kind:"Q&A",text:"Q&A sticker: \u201CAsk us anything about our ingredients.\u201D Save the best answers as a highlight."},
+    {kind:"Repost",text:"Repost existing customer reviews as branded Story graphics."},
+  ],
+  "1-Week 3 — Product Proof & Legacy":[
+    {kind:"Story",text:"\u201CMeet the team\u201D \u2014 short intro clips with 1\u20132 women workers (adds faces before the launch of month-two portraits)."},
+  ],
+  "1-Week 4 — Consolidate & First Testimonial Push":[
+    {kind:"Poll",text:"Recap poll: \u201CWhich post was your favourite this month?\u201D"},
+    {kind:"UGC",text:"Soft UGC seed: DM 3\u20135 loyal customers/followers to try a bar and share feedback \u2014 this becomes month two's first UGC batch."},
+  ],
+  "2-Week 1":[
+    {kind:"UGC",text:"Share the first feedback/posts from the month-one seed batch as Story reposts."},
+    {kind:"Poll",text:"Poll sticker: \u201CMorning person or evening person?\u201D (feeds the ritual reel)."},
+  ],
+  "2-Week 2":[
+    {kind:"Story",text:"BTS of the lather test \u2014 the takes that didn't make the reel."},
+    {kind:"Q&A",text:"Q&A sticker: \u201CWhich bar for my skin type?\u201D Route answers to DMs."},
+  ],
+  "2-Week 3":[
+    {kind:"Story",text:"Maker spotlight clip tied to the \u201CMeet the Makers\u201D reel."},
+    {kind:"Repost",text:"Repost saves/DMs from the goat-milk carousel as social proof."},
+  ],
+  "2-Week 4":[
+    {kind:"Repost",text:"Reshare customer posts/testimonials collected through the month."},
+    {kind:"Poll",text:"Poll: \u201CWhich bar should we restock first?\u201D \u2014 low-effort engagement + inventory signal."},
+  ],
+};
+
+const overlay=document.getElementById('overlay');
+const modal=document.getElementById('modal');
+let done=loadDone();
+
+function loadDone(){try{return JSON.parse(localStorage.getItem('origin_done_v2')||'[]')}catch(e){return[]}}
+function saveDone(){try{localStorage.setItem('origin_done_v2',JSON.stringify(done))}catch(e){}}
+
+function render(){
+  [1,2].forEach(m=>{
+    const panel=document.querySelector(`.month-panel[data-panel="${m}"]`);
+    const weeks=[...new Set(POSTS.filter(p=>p.m===m).map(p=>p.week))];
+    panel.innerHTML=weeks.map(w=>{
+      const cards=POSTS.filter(p=>p.m===m&&p.week===w).map(cardHTML).join('');
+      const ex=EXTRAS[`${m}-${w}`];
+      const exHTML=ex?`<div class="extras"><div class="extras-lab">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#8B9A78" stroke-width="1.5"/><circle cx="12" cy="12" r="3.2" fill="#8B9A78"/></svg>
+        Stories &amp; Extras</div><ul>${ex.map(i=>`<li><span class="ex-badge ${i.kind.replace(/[^A-Za-z]/g,'')}">${i.kind}</span><span>${i.text}</span></li>`).join('')}</ul></div>`:'';
+      const label=w.includes('—')?`<b>${w.split('—')[0].trim()}</b> — ${w.split('—').slice(1).join('—').trim()}`:w;
+      return `<div class="week"><div class="week-label">${label}</div><div class="grid">${cards}</div>${exHTML}</div>`;
+    }).join('');
+  });
+  bind();
+  updateProg();
+}
+
+function cardHTML(p){
+  const isDone=done.includes(p.n);
+  const fmt=p.format?`<span class="c-format">${p.format}</span>`:'';
+  return `<div class="card ${isDone?'done':''}" data-type="${p.type}" data-n="${p.n}" tabindex="0" role="button" aria-label="${p.title}">
+    <div class="c-top">
+      <span class="c-tags"><span class="c-type ${p.type}">${p.type}</span>${fmt}</span>
+      <span class="c-no">${String(p.n).padStart(2,'0')}</span>
+    </div>
+    <div class="c-pillar">${p.pillar}</div>
+    <div class="c-title">${p.title}</div>
+    <div class="c-hook">"${p.hook}"</div>
+    <div class="c-foot">
+      <span class="check" data-check="${p.n}" title="Mark as published"><svg viewBox="0 0 12 12"><path d="M1 6l3.5 3.5L11 2" stroke="#231A12" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>${p.slot}</span>
+      <span class="open">Open brief →</span>
+    </div>
+  </div>`;
+}
+
+function bind(){
+  document.querySelectorAll('.card').forEach(c=>{
+    const n=+c.dataset.n;
+    c.addEventListener('click',e=>{
+      if(e.target.closest('[data-check]')){toggle(n);return;}
+      openModal(n);
+    });
+    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(n);}});
+  });
+}
+
+function toggle(n){
+  const i=done.indexOf(n);
+  if(i>-1)done.splice(i,1);else done.push(n);
+  saveDone();
+  document.querySelector(`.card[data-n="${n}"]`).classList.toggle('done');
+  updateProg();
+}
+
+function updateProg(){document.getElementById('prog').textContent=`${done.length} / 15 published`;}
+
+function openModal(n){
+  const p=POSTS.find(x=>x.n===n);
+  const fmt=p.format?` · ${p.format}`:'';
+  modal.innerHTML=`
+    <div class="m-head">
+      <button class="close" aria-label="Close">×</button>
+      <span class="m-ey ${p.type}">${p.type}${fmt} · Post ${String(p.n).padStart(2,'0')} · ${p.pillar}</span>
+      <div class="m-title">${p.title}</div>
+      <div class="m-slot">Month ${p.m} · ${p.week} · ${p.slot}</div>
+    </div>
+    <div class="m-body">
+      <div class="field"><div class="lab">The Hook</div><p class="hookline">"${p.hook}"</p></div>
+      <div class="field"><div class="lab">Concept &amp; Execution</div><p>${p.concept}</p></div>
+      <div class="field"><div class="lab">Starter Caption</div><div class="caption-box">${p.caption}</div></div>
+      <div class="field"><div class="lab">Call to Action</div><p><span class="cta-pill">${p.cta}</span></p></div>
+      <div class="field"><div class="lab">Hashtag Direction</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
+      <div class="field"><div class="lab">Production Note</div><div class="note">${p.note}</div></div>
+    </div>`;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  modal.querySelector('.close').addEventListener('click',closeModal);
+}
+
+function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.month-panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelector(`.month-panel[data-panel="${t.dataset.month}"]`).classList.add('active');
+  });
+});
+
+render();
+</script>
+</body>
+</html>
