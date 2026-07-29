@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBD Construction — Content Calendar · August 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+  :root{
+    --bg:#0C0C0D; --bg2:#111113; --card:#161719; --card2:#1C1D20;
+    --accent:#F97316; --accent2:#FB923C; --accentSoft:rgba(249,115,22,.10);
+    --border:#26282C; --border2:#33363B;
+    --text:#F3F4F6; --muted:#9BA0A8; --faint:#6B7078;
+    --carousel:#F97316; --reel:#5B9DF9; --festival:#34D399;
+    --shadow:0 10px 30px -12px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Google Sans','Roboto',system-ui,sans-serif;
+    color:var(--text); line-height:1.5;
+    background:
+      radial-gradient(1100px 500px at 50% -220px, rgba(249,115,22,.10), transparent 60%),
+      radial-gradient(700px 400px at 100% 0, rgba(91,157,249,.05), transparent 55%),
+      var(--bg);
+    background-attachment:fixed;
+    padding:0 20px 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+
+  /* Top brand bar */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 2px 26px;border-bottom:1px solid var(--border);margin-bottom:38px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:14px;letter-spacing:.02em}
+  .brand .mark{
+    width:26px;height:26px;border-radius:7px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#0C0C0D;font-weight:700;font-size:14px;box-shadow:0 4px 14px -4px rgba(249,115,22,.6);
+  }
+  .topbar .meta{font-size:12px;color:var(--faint);letter-spacing:.14em;text-transform:uppercase}
+
+  /* Hero */
+  .hero{margin-bottom:30px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  h1{font-size:38px;font-weight:700;letter-spacing:-.02em;margin:12px 0 8px;line-height:1.08}
+  h1 .mo{
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sub{color:var(--muted);font-size:15.5px;max-width:640px}
+
+  /* Summary strip */
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 34px}
+  .stat{
+    background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--border);border-radius:16px;padding:20px 20px 18px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--border2)}
+  .stat.carousel::before{background:linear-gradient(90deg,var(--carousel),transparent)}
+  .stat.reel::before{background:linear-gradient(90deg,var(--reel),transparent)}
+  .stat.festival::before{background:linear-gradient(90deg,var(--festival),transparent)}
+  .stat .n{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1}
+  .stat .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:8px}
+  .stat.carousel .n{color:var(--carousel)}
+  .stat.reel .n{color:var(--reel)}
+  .stat.festival .n{color:var(--festival)}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;gap:22px;margin:0 2px 20px;font-size:13px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:9px}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;box-shadow:0 0 0 4px rgba(255,255,255,.03)}
+  .dot.carousel{background:var(--carousel)}
+  .dot.reel{background:var(--reel)}
+  .dot.festival{background:var(--festival)}
+
+  /* Section label */
+  .sec{display:flex;align-items:center;gap:14px;margin:44px 2px 18px}
+  .sec h2{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .sec .line{height:1px;background:var(--border);flex:1}
+
+  /* Calendar */
+  .cal-shell{
+    background:linear-gradient(180deg,var(--bg2),var(--bg));
+    border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:var(--shadow);
+  }
+  .cal-head{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:10px}
+  .cal-head div{text-align:center;font-size:11px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;padding:2px 0}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+  .cell{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    min-height:104px;padding:11px 12px;position:relative;
+    transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+  }
+  .cell.empty{background:transparent;border:1px solid transparent}
+  .cell .date{font-size:13px;font-weight:500;color:var(--faint)}
+  .cell.has{cursor:pointer}
+  .cell.has .date{color:var(--muted)}
+  .cell.has:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 14px 28px -16px rgba(0,0,0,.8)}
+  .tag{
+    display:block;margin-top:10px;font-size:11.5px;font-weight:500;
+    border-radius:9px;padding:8px 9px;line-height:1.3;
+    background:var(--accentSoft);color:var(--text);
+    border:1px solid rgba(249,115,22,.18);
+  }
+  .tag.reel{background:rgba(91,157,249,.10);border-color:rgba(91,157,249,.20)}
+  .tag.festival{background:rgba(52,211,153,.10);border-color:rgba(52,211,153,.20)}
+  .tag .fmt{display:flex;align-items:center;gap:6px;font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:4px;font-weight:700}
+  .tag .fmt::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--carousel)}
+  .tag.reel .fmt::before{background:var(--reel)}
+  .tag.festival .fmt::before{background:var(--festival)}
+  .cell.done .tag{opacity:.4}
+  .cell.done::after{
+    content:"✓";position:absolute;top:10px;right:11px;color:var(--festival);
+    font-weight:700;font-size:13px;
+  }
+
+  /* Timeline list */
+  .row{
+    display:flex;gap:20px;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:12px;
+    align-items:flex-start;transition:border-color .18s,transform .18s;box-shadow:var(--shadow);
+  }
+  .row:hover{border-color:var(--border2);transform:translateX(3px)}
+  .row .when{min-width:96px;text-align:center;border-right:1px solid var(--border);padding-right:18px}
+  .row .when .num{font-size:11px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .row .when .d{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1}
+  .row .when .mo{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+  .row .when .w{font-size:11.5px;color:var(--faint);margin-top:6px}
+  .row .body{flex:1;padding-top:2px}
+  .row .body .t{font-size:15.5px;font-weight:500;margin-bottom:5px;line-height:1.35}
+  .row .body .meta{font-size:13px;color:var(--muted);line-height:1.55}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;padding:4px 11px;border-radius:20px;margin-bottom:9px;
+  }
+  .badge::before{content:"";width:6px;height:6px;border-radius:50%}
+  .badge.carousel{background:rgba(249,115,22,.13);color:var(--carousel)}
+  .badge.carousel::before{background:var(--carousel)}
+  .badge.reel{background:rgba(91,157,249,.13);color:var(--reel)}
+  .badge.reel::before{background:var(--reel)}
+  .badge.festival{background:rgba(52,211,153,.13);color:var(--festival)}
+  .badge.festival::before{background:var(--festival)}
+  .row a.reflink{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;display:inline-flex;gap:5px;align-items:center;margin-top:10px}
+  .row a.reflink:hover{text-decoration:underline}
+
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(6,6,7,.72);backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;
+    padding:20px;z-index:50;
+  }
+  .overlay.open{display:flex;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--border2);border-radius:20px;max-width:540px;width:100%;
+    padding:30px;position:relative;box-shadow:0 30px 60px -20px rgba(0,0,0,.85);
+    animation:pop .22s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+  .modal .close{position:absolute;top:18px;right:20px;background:none;border:none;color:var(--faint);font-size:26px;cursor:pointer;line-height:1;transition:color .15s}
+  .modal .close:hover{color:var(--text)}
+  .modal .badge{margin-bottom:12px}
+  .modal h3{font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;padding-right:24px;line-height:1.25}
+  .modal .mdate{color:var(--muted);font-size:13.5px;margin-bottom:20px;display:flex;align-items:center;gap:7px}
+  .modal .mdate::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .modal .notes{font-size:14.5px;line-height:1.65;color:#DDE0E4;margin-bottom:18px}
+  .modal .ref{
+    display:inline-flex;align-items:center;gap:8px;background:var(--accentSoft);
+    border:1px solid rgba(249,115,22,.25);border-radius:11px;padding:11px 15px;
+    color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:500;transition:border-color .15s,background .15s;
+  }
+  .modal .ref:hover{border-color:var(--accent);background:rgba(249,115,22,.16)}
+  .modal .doneBtn{
+    display:block;width:100%;margin-top:22px;border:none;border-radius:11px;padding:14px;
+    font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;letter-spacing:.01em;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0C0C0D;
+    box-shadow:0 8px 20px -8px rgba(249,115,22,.55);transition:transform .12s;
+  }
+  .modal .doneBtn:hover{transform:translateY(-1px)}
+  .modal .doneBtn.is-done{background:transparent;border:1px solid var(--border2);color:var(--muted);box-shadow:none}
+
+  .note{
+    margin-top:44px;font-size:12.5px;color:var(--muted);
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:18px 20px;line-height:1.7;
+  }
+  .note strong{color:var(--text)}
+
+  @media(max-width:640px){
+    h1{font-size:30px}
+    .summary{grid-template-columns:repeat(2,1fr)}
+    .cal-shell{padding:12px}
+    .cal,.cal-head{gap:6px}
+    .cell{min-height:74px;padding:7px 8px;border-radius:11px}
+    .cell .date{font-size:12px}
+    .tag{font-size:10px;padding:5px 6px;margin-top:6px}
+    .row{flex-direction:column;gap:12px}
+    .row .when{min-width:auto;text-align:left;border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:12px;display:flex;align-items:baseline;gap:10px}
+    .row .when .w{margin-top:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span class="mark">S</span>Speakerbox</div>
+    <div class="meta">Content Calendar</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">RBD Construction</div>
+    <h1>August <span class="mo">2026</span></h1>
+    <div class="sub">Five core posts and two festival creatives on a Wednesday &amp; Saturday cadence. Tap any dated post to open its brief.</div>
+  </div>
+
+  <div class="summary">
+    <div class="stat carousel"><div class="n">3</div><div class="l">Carousels</div></div>
+    <div class="stat reel"><div class="n">2</div><div class="l">Reels</div></div>
+    <div class="stat festival"><div class="n">2</div><div class="l">Festival</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">Total Posts</div></div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot carousel"></i>Carousel — educational / value</span>
+    <span><i class="dot reel"></i>Reel — brand building / engagement</span>
+    <span><i class="dot festival"></i>Festival creative</span>
+  </div>
+
+  <div class="sec"><h2>The Month</h2><div class="line"></div></div>
+  <div class="cal-shell">
+    <div class="cal-head">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+    <div class="cal" id="cal"></div>
+  </div>
+
+  <div class="sec"><h2>Full Schedule</h2><div class="line"></div></div>
+  <div id="list"></div>
+
+  <div class="note">
+    <strong>Notes &amp; assumptions</strong> — Month (August 2026) and the Wednesday/Saturday cadence were inferred from the content mix; adjust freely. Independence Day is fixed on 15 August (Saturday). Onam / Thiruvonam is placed on <strong>Wednesday 26 August 2026</strong>, per the majority of sources including one citing the Kerala government holiday list; one source listed 1 September, so verify against the official Kerala holiday list before publishing. Festival creatives sit outside the core plan. Style follows the Speakerbox UI Kit — copy is untouched from the original plan.
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+  const posts = {
+    5:  {n:"01", fmt:"Carousel", type:"carousel", title:"Monsoons Are Here — Construction Tips, Rain Protection & Site Safety", notes:"Educational / value-driven carousel. Practical monsoon-season guidance: protecting the site, materials and structure through the rains, plus on-site safety measures. Timely for peak Kerala monsoon.", ref:null},
+    12: {n:"02", fmt:"Carousel", type:"carousel", title:"Can Low-Quality Steel Reduce Construction Costs? Think Again.", notes:"Myth-buster carousel. Frame the false economy of cheap steel vs. long-term structural cost, safety and durability — positions RBD as a quality-first builder.", ref:null},
+    15: {n:"—", fmt:"Festival Creative", type:"festival", title:"Independence Day", notes:"Festival creative — outside the regular content plan. Standalone greeting post for 15 August.", ref:null},
+    19: {n:"03", fmt:"Carousel", type:"carousel", title:"5 Common Construction Mistakes Homeowners Should Avoid", notes:"Educational carousel aimed at homeowners / first-time builders. Five practical, avoidable mistakes — high save/share potential.", ref:null},
+    22: {n:"04", fmt:"Reel", type:"reel", title:"The Art of Construction", notes:"Brand-building reel. Showcase craftsmanship, teamwork and quality work on-site — cinematic, human, pride-of-work tone.", ref:"https://www.instagram.com/reel/DU5aEZLD80Q/"},
+    26: {n:"—", fmt:"Festival Creative", type:"festival", title:"Onam · Thiruvonam", notes:"Festival creative — outside the regular content plan. Onam greeting for Thiruvonam (main day). Warm, culturally-rooted Kerala tone.", ref:null},
+    29: {n:"05", fmt:"Reel", type:"reel", title:"The Sounds of Construction", notes:"Engagement reel. Authentic site sounds paired with cinematic visuals — ASMR-adjacent, scroll-stopping texture of a live site.", ref:"https://www.instagram.com/reel/DU0V1O9EgeQ/"}
+  };
+
+  const WD = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const daysInMonth = 31;
+  const firstDow = 6; // 1 Aug 2026 = Saturday
+
+  let done = {};
+  try{ done = JSON.parse(localStorage.getItem('rbd_aug26_done_p')||'{}'); }catch(e){ done = {}; }
+  function saveDone(){ try{ localStorage.setItem('rbd_aug26_done_p', JSON.stringify(done)); }catch(e){} }
+
+  const cal = document.getElementById('cal');
+  for(let i=0;i<firstDow;i++){ const e=document.createElement('div'); e.className='cell empty'; cal.appendChild(e); }
+  for(let d=1; d<=daysInMonth; d++){
+    const cell=document.createElement('div'); cell.className='cell';
+    let inner='<span class="date">'+d+'</span>';
+    if(posts[d]){
+      const p=posts[d];
+      cell.className+=' has'+(done[d]?' done':'');
+      cell.dataset.day=d;
+      inner+='<span class="tag '+p.type+'"><span class="fmt">'+p.fmt+'</span>'+shortTitle(p.title)+'</span>';
+      cell.addEventListener('click',()=>openModal(d));
+    }
+    cell.innerHTML=inner; cal.appendChild(cell);
+  }
+  function shortTitle(t){ return t.length>44 ? t.slice(0,42)+'…' : t; }
+
+  const list=document.getElementById('list');
+  Object.keys(posts).map(Number).sort((a,b)=>a-b).forEach(d=>{
+    const p=posts[d]; const dow=WD[(firstDow+d-1)%7];
+    const row=document.createElement('div'); row.className='row';
+    row.innerHTML=
+      '<div class="when"><div class="num">'+(p.n!=="—"?('#'+p.n):'FEST')+'</div><div class="d">'+d+'</div><div class="mo">Aug</div><div class="w">'+dow+'</div></div>'+
+      '<div class="body">'+
+        '<span class="badge '+p.type+'">'+p.fmt+'</span>'+
+        '<div class="t">'+p.title+'</div>'+
+        '<div class="meta">'+p.notes+'</div>'+
+        (p.ref?'<a class="reflink" href="'+p.ref+'" target="_blank" rel="noopener">↗ Reference reel</a>':'')+
+      '</div>';
+    list.appendChild(row);
+  });
+
+  const overlay=document.getElementById('overlay');
+  const modal=document.getElementById('modal');
+  function openModal(d){
+    const p=posts[d]; const dow=WD[(firstDow+d-1)%7]; const isDone=!!done[d];
+    modal.innerHTML=
+      '<button class="close" onclick="closeModal()">×</button>'+
+      '<span class="badge '+p.type+'">'+p.fmt+'</span>'+
+      '<h3>'+(p.n!=="—"?('Post #'+p.n+' — '):'')+p.title+'</h3>'+
+      '<div class="mdate">'+dow+', August '+d+', 2026</div>'+
+      '<div class="notes">'+p.notes+'</div>'+
+      (p.ref?'<a class="ref" href="'+p.ref+'" target="_blank" rel="noopener">↗ Open reference reel</a>':'')+
+      '<button class="doneBtn'+(isDone?' is-done':'')+'" onclick="toggleDone('+d+')">'+(isDone?'✓ Marked complete — undo':'Mark as complete')+'</button>';
+    overlay.classList.add('open');
+  }
+  function closeModal(){ overlay.classList.remove('open'); }
+  function toggleDone(d){
+    done[d]=!done[d]; if(!done[d]) delete done[d]; saveDone();
+    const cell=document.querySelector('.cell[data-day="'+d+'"]');
+    if(cell) cell.classList.toggle('done', !!done[d]);
+    openModal(d);
+  }
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
