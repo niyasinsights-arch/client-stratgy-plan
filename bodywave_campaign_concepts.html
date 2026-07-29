@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Wave — Campaign Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E10; --surface:#16161A; --surface2:#1D1D22; --line:#2A2A30; --line2:#3a3a42;
+    --gold:#C9A24B; --gold-soft:#E4C97E; --ivory:#ECE7DE; --muted:#8B8680; --sage:#9DB0A6; --warn:#D98A5A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ivory);font-family:'Inter',system-ui,sans-serif;line-height:1.6;padding:44px 22px 90px;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 50% -8%,rgba(201,162,75,.10),transparent 55%)}
+  .wrap{max-width:900px;margin:0 auto}
+
+  .head{text-align:center;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:14px}
+  .brand{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .rule{width:44px;height:1px;background:var(--gold);margin:16px auto}
+  h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;line-height:1.02;color:#fff}
+  h1 em{font-style:italic;color:var(--gold-soft);font-weight:500}
+  .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--muted);margin-top:12px}
+
+  .frame{background:rgba(201,162,75,.06);border:1px solid rgba(201,162,75,.3);border-radius:6px;padding:16px 20px;margin:24px 0 8px;font-size:13.5px;color:var(--gold-soft)}
+  .frame b{color:#fff}
+
+  .campaign{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:34px 34px 30px;margin-top:26px;position:relative;overflow:hidden}
+  .campaign::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(var(--gold),transparent)}
+  .cnum{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+  .ctype{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);float:right;margin-top:5px}
+  .campaign h2{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#fff;line-height:1.12;margin:6px 0 4px}
+  .concept{font-size:15px;color:var(--ivory);margin:14px 0 4px}
+
+  .sec{margin-top:24px}
+  .sec .lbl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  ul.clean{list-style:none;display:flex;flex-direction:column;gap:9px}
+  ul.clean li{font-size:14px;padding-left:20px;position:relative;color:var(--ivory)}
+  ul.clean li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+  ol.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:11px}
+  ol.steps li{font-size:14px;padding-left:34px;position:relative;counter-increment:s;color:var(--ivory)}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--gold);font-weight:600}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
+  .box{background:var(--surface2);border:1px solid var(--line2);border-radius:5px;padding:15px 17px}
+  .box h5{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-bottom:9px}
+  .box ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .box li{font-size:13px;color:var(--ivory);padding-left:16px;position:relative}
+  .box li::before{content:'·';position:absolute;left:4px;color:var(--gold)}
+
+  .offer{background:linear-gradient(90deg,rgba(201,162,75,.14),transparent);border:1px solid rgba(201,162,75,.3);border-left:3px solid var(--gold);border-radius:6px;padding:15px 18px;margin-top:18px}
+  .offer .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .offer p{font-size:14px;color:var(--ivory)}
+
+  .watch{background:rgba(217,138,90,.08);border:1px solid rgba(217,138,90,.32);border-radius:6px;padding:15px 18px;margin-top:18px}
+  .watch .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--warn);font-weight:700;margin-bottom:8px}
+  .watch ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .watch li{font-size:13px;color:var(--gold-soft);padding-left:18px;position:relative}
+  .watch li::before{content:'⚑';position:absolute;left:0;font-size:11px}
+  .watch li b{color:#fff}
+
+  .ref{font-size:12px;color:var(--muted);margin-top:16px;font-style:italic}
+  .ref a{color:var(--sage)}
+
+  .foot{margin-top:34px;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:640px){h1{font-size:38px}.campaign{padding:26px 22px}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="brand">Body Wave · @bodywaveindia · Calicut</div>
+    <div class="rule"></div>
+    <h1>Campaign <em>Concepts</em></h1>
+    <div class="tagline">Two tentpole reel activations — built for reach and enquiries.</div>
+  </div>
+
+  <div class="frame"><b>Note:</b> These two campaigns sit <b>outside the August content calendar</b> — they're standalone activations, not dated feed posts. The footage they generate can feed future reels and creatives, but they run on their own timeline and budget.</div>
+
+  <!-- CAMPAIGN 1 -->
+  <div class="campaign">
+    <span class="cnum">Campaign 01</span><span class="ctype">Reel · Field activation</span>
+    <h2>Public Fitness Campaign</h2>
+    <p class="concept">Take Body Wave off the gym floor and into the community — a live fitness activation at nearby women's colleges or busy public spots. Invite people into a quick challenge, put the trainers front and centre, and turn genuine reactions into a high-energy reel that positions the gym as active, local, and welcoming.</p>
+
+    <div class="sec">
+      <div class="lbl">Objectives</div>
+      <ul class="clean">
+        <li>Increase local brand awareness in Calicut</li>
+        <li>Engage college students and young adults directly</li>
+        <li>Generate social-media engagement from authentic footage</li>
+        <li>Drive membership enquiries via a time-boxed student offer</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="lbl">Execution</div>
+      <ol class="steps">
+        <li>Pick 1–2 nearby women's colleges or busy public spaces and secure permission to set up.</li>
+        <li>Set a simple, inclusive challenge anyone can try in 30–60 seconds (e.g. plank hold, squat count, a quick trainer-led combo).</li>
+        <li>Feature female trainers motivating participants and dropping one quick, useful fitness tip each.</li>
+        <li>Offer participants an exclusive <b>20% student discount</b> on the spot.</li>
+        <li>Capture authentic reactions and cut them into one punchy reel + a Stories set.</li>
+      </ol>
+    </div>
+
+    <div class="offer">
+      <div class="lbl">The offer</div>
+      <p>Exclusive <b>20% student discount</b> for participants. Set a clear expiry (e.g. valid 2 weeks) and a simple redemption (show the reel / a code / a flyer at reception) so it drives action while it's fresh.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="box"><h5>Content outputs</h5><ul>
+        <li>1 hero reel (reactions + trainer energy)</li>
+        <li>Stories set — live, day-of</li>
+        <li>Optional carousel of the best moments</li>
+        <li>Clips banked for future reels</li>
+      </ul></div>
+      <div class="box"><h5>Success signals</h5><ul>
+        <li>Reel reach, shares &amp; saves</li>
+        <li>New followers in the days after</li>
+        <li>Discount redemptions / enquiries</li>
+        <li>Comments &amp; profile visits</li>
+      </ul></div>
+    </div>
+
+    <div class="watch">
+      <div class="lbl">Watch-outs</div>
+      <ul>
+        <li><b>Permissions:</b> get institutional sign-off for any campus, and a permit if a public space requires one.</li>
+        <li><b>Consent:</b> as a women-only brand, get explicit filming consent from every participant; offer to keep anyone who prefers off-camera or blurred.</li>
+        <li><b>Timing:</b> many Kerala colleges break for Onam in late August — worth checking term dates and running the campus activation <b>before the break or after reopening</b>, not during.</li>
+        <li><b>Claims:</b> promote only the real discount and real terms; don't imply results or offers you won't honour.</li>
+      </ul>
+    </div>
+    <p class="ref">Reference reel: <a href="https://www.instagram.com/reel/DY6gBSuSCKT/">instagram.com/reel/DY6gBSuSCKT</a> (couldn't open it directly — Instagram blocks automated access — so execution above follows the written brief; share the key beat if you want it matched exactly).</p>
+  </div>
+
+  <!-- CAMPAIGN 2 -->
+  <div class="campaign">
+    <span class="cnum">Campaign 02</span><span class="ctype">Reel · UGC challenge</span>
+    <h2>Easy Gym Fitness Challenge</h2>
+    <p class="concept">A fun, low-barrier fitness challenge — inspired by the reference reel — that members and non-members can attempt, tag Body Wave in, and pass to their friends. Built to spread through nominations and generate a steady stream of user-generated content.</p>
+
+    <div class="sec">
+      <div class="lbl">Objectives</div>
+      <ul class="clean">
+        <li>Increase brand awareness through shares and nominations</li>
+        <li>Boost community engagement</li>
+        <li>Attract new members</li>
+        <li>Generate a bank of user-generated content (UGC)</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <div class="lbl">Execution</div>
+      <ol class="steps">
+        <li>Define one simple, repeatable challenge task and a branded hashtag (e.g. #BodyWaveChallenge) so entries are easy to find.</li>
+        <li>Seed it first — trainers and a few members model the challenge so others know exactly what to do.</li>
+        <li>Record participants attempting it, with trainers motivating and guiding.</li>
+        <li>Ask each participant to nominate <b>2–3 friends</b> to keep the chain going.</li>
+        <li>Collect entries over a set window, then announce winners.</li>
+      </ol>
+    </div>
+
+    <div class="offer">
+      <div class="lbl">Rewards</div>
+      <p>Prizes for winners — e.g. a <b>free one-week pass</b>, a discounted membership, or fitness merchandise. Publish clear, simple rules up front: how to enter, the deadline, and how winners are chosen.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="box"><h5>Mechanic &amp; timeline</h5><ul>
+        <li>Entry: do the task, tag the gym, use the hashtag, nominate 2–3</li>
+        <li>Run window: ~2 weeks</li>
+        <li>Winner announcement: reel + Stories</li>
+        <li>Judging: energy / creativity / reach (your call)</li>
+      </ul></div>
+      <div class="box"><h5>Success signals</h5><ul>
+        <li>Number of entries &amp; unique participants</li>
+        <li>Hashtag uses &amp; nominations</li>
+        <li>Reach from reposted UGC</li>
+        <li>New followers &amp; enquiries</li>
+      </ul></div>
+    </div>
+
+    <div class="watch">
+      <div class="lbl">Watch-outs</div>
+      <ul>
+        <li><b>UGC rights:</b> get each participant's permission before reposting their clip to the gym's page.</li>
+        <li><b>Consent &amp; safety:</b> women-only brand — keep entries comfortable, never pressure anyone on camera, and keep the task genuinely easy so no one risks injury.</li>
+        <li><b>Rules clarity:</b> state the deadline, prize terms and how winners are picked up front to avoid disputes.</li>
+        <li><b>Seeding:</b> a challenge with zero early entries stalls — line up the first 5–10 before promoting it widely.</li>
+      </ul>
+    </div>
+    <p class="ref">Reference reel: same as Campaign 01 (Instagram blocked direct access).</p>
+  </div>
+
+  <div class="foot">Speakerbox · Prepared for Body Wave · Campaign concepts — outside the calendar</div>
+</div>
+</body>
+</html>
