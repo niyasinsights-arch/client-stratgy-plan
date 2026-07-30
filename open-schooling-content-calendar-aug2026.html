@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Schooling — Content Calendar · August 2026</title>
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --accent:#F97316; --border:#374151;
+    --text:#E5E7EB; --muted:#9CA3AF; --card-2:#182130;
+    --video:#F97316; --creative:#38BDF8;
+    --tofu:#34D399; --mofu:#FBBF24; --bofu:#F472B6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Google Sans','Product Sans',-apple-system,'Segoe UI',Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.55;
+    padding:32px 20px 80px;
+  }
+  .wrap{max-width:1040px;margin:0 auto}
+
+  /* Header */
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-size:30px;font-weight:700;margin:8px 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:15px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:5px 13px;font-size:12.5px;color:var(--text)}
+
+  /* Progress */
+  .progress-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:26px 0}
+  .progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+  .progress-top .label{font-size:13px;color:var(--muted)}
+  .progress-top .count{font-size:15px;font-weight:600}
+  .progress-top .count b{color:var(--accent)}
+  .bar{height:8px;background:#0d1521;border-radius:99px;overflow:hidden;border:1px solid var(--border)}
+  .bar > span{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s ease}
+  .reset{margin-left:12px;background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:4px 10px;font-size:11.5px;cursor:pointer}
+  .reset:hover{color:var(--text);border-color:var(--muted)}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 20px;font-size:12.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:50%}
+
+  /* Section titles */
+  .sec-title{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:30px 0 14px;font-weight:600}
+
+  /* Calendar */
+  .cal{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card-2)}
+  .cal-head,.cal-week{display:grid;grid-template-columns:repeat(7,1fr)}
+  .cal-head div{padding:10px 6px;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+  .cell{min-height:74px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:7px 8px;position:relative}
+  .cal-week > .cell:last-child{border-right:none}
+  .cell.empty{background:repeating-linear-gradient(45deg,transparent,transparent 6px,rgba(255,255,255,.015) 6px,rgba(255,255,255,.015) 12px)}
+  .cell .num{font-size:12px;color:var(--muted)}
+  .cell.post{cursor:pointer;transition:background .15s}
+  .cell.post:hover{background:#20293a}
+  .cell.post.done{background:rgba(249,115,22,.06)}
+  .pill{margin-top:6px;display:block;border-radius:8px;padding:6px 8px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent)}
+  .pill.creative{border-left-color:var(--creative)}
+  .pill .pn{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:5px;justify-content:space-between}
+  .pill .pt{font-size:11.5px;font-weight:600;margin-top:2px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .check{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--muted);display:inline-block;flex:none}
+  .cell.post.done .check{background:var(--accent);border-color:var(--accent)}
+
+  /* List */
+  .list{display:grid;gap:12px}
+  .row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 16px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:border-color .15s,transform .1s}
+  .row:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .row.done{opacity:.62}
+  .rnum{flex:none;width:34px;height:34px;border-radius:9px;background:var(--card-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--accent)}
+  .rbody{flex:1;min-width:0}
+  .rtop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:3px}
+  .rdate{font-size:12px;color:var(--muted)}
+  .tag{font-size:10.5px;padding:2px 8px;border-radius:99px;border:1px solid var(--border);font-weight:600}
+  .tag.video{color:var(--video);border-color:rgba(249,115,22,.4)}
+  .tag.creative{color:var(--creative);border-color:rgba(56,189,248,.4)}
+  .tag.stage{color:var(--muted)}
+  .rtitle{font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .rformat{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .rcheck{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--muted);margin-top:6px;position:relative}
+  .row.done .rcheck{background:var(--accent);border-color:var(--accent)}
+  .row.done .rcheck::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:solid #111;border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+  /* Modal */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow-y:auto}
+  .overlay.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:640px;width:100%;padding:0;overflow:hidden;animation:pop .18s ease}
+  @keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+  .m-head{padding:22px 24px 18px;border-bottom:1px solid var(--border);position:relative}
+  .m-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .m-title{font-size:20px;font-weight:700;letter-spacing:-.01em;padding-right:34px}
+  .m-date{font-size:13px;color:var(--muted);margin-top:5px}
+  .close{position:absolute;top:18px;right:18px;width:30px;height:30px;border:1px solid var(--border);background:var(--card-2);color:var(--muted);border-radius:8px;font-size:17px;cursor:pointer;line-height:1}
+  .close:hover{color:var(--text);border-color:var(--muted)}
+  .m-body{padding:20px 24px 24px}
+  .field{margin-bottom:18px}
+  .field h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:600}
+  .field p{font-size:14.5px;color:var(--text)}
+  .field.hook p{background:var(--card-2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 14px;font-style:italic}
+  .field ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+  .field ul li{font-size:12.5px;background:var(--card-2);border:1px solid var(--border);border-radius:99px;padding:4px 11px;color:var(--muted)}
+  .note{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:12px 14px;font-size:13px;color:#FDE68A;display:flex;gap:9px;margin-top:4px}
+  .note b{color:#FCD34D}
+  .m-foot{padding:16px 24px 22px;border-top:1px solid var(--border)}
+  .m-done-btn{width:100%;background:var(--accent);color:#111;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .m-done-btn:hover{filter:brightness(1.06)}
+  .m-done-btn.is-done{background:var(--card-2);color:var(--muted);border:1px solid var(--border)}
+
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+  footer b{color:var(--text)}
+
+  @media(max-width:640px){
+    body{padding:22px 14px 70px}
+    h1{font-size:24px}
+    .cell{min-height:58px;padding:5px}
+    .pill .pt{display:none}
+    .pill{padding:5px;text-align:center}
+    .cal-head div{font-size:9px;padding:8px 2px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Content Calendar</div>
+    <h1>Open Schooling — NIOS &amp; BOSSE</h1>
+    <p class="sub">Awareness-to-enrolment content plan for open schooling admissions.</p>
+    <div class="meta-row">
+      <span class="chip">🗓 August 2026</span>
+      <span class="chip">2 posts / week · Tue &amp; Fri</span>
+      <span class="chip">7 pieces</span>
+      <span class="chip">3 video · 4 creative</span>
+    </div>
+  </header>
+
+  <div class="progress-card">
+    <div class="progress-top">
+      <span class="label">Publishing progress</span>
+      <span style="display:flex;align-items:center">
+        <span class="count"><b id="doneCount">0</b> / 7 marked done</span>
+        <button class="reset" id="resetBtn">Reset</button>
+      </span>
+    </div>
+    <div class="bar"><span id="barFill"></span></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--video)"></span>Video</span>
+    <span><span class="dot" style="background:var(--creative)"></span>Creative</span>
+    <span style="margin-left:auto">Funnel:</span>
+    <span><span class="dot" style="background:var(--tofu)"></span>Awareness</span>
+    <span><span class="dot" style="background:var(--mofu)"></span>Consideration</span>
+    <span><span class="dot" style="background:var(--bofu)"></span>Decision</span>
+  </div>
+
+  <div class="sec-title">Calendar view</div>
+  <div class="cal" id="cal"></div>
+
+  <div class="sec-title">Post-by-post briefs</div>
+  <div class="list" id="list"></div>
+
+  <footer>
+    <p><b>Note on accuracy:</b> Several posts state claims about recognition, eligibility, higher-studies access and government-job acceptance. These are marked with a ⚠ flag in the brief. I have <b>not</b> independently verified them — every such claim should be checked against official NIOS and BOSSE sources (and the relevant board/exam authority) before scripting or publishing, since misinformation in the education-admissions space carries real risk.</p>
+    <p style="margin-top:8px">Dates, cadence and copy are all editable — this is a starting structure, not a locked plan. Progress is saved on this device where supported.</p>
+  </footer>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const POSTS = [
+  {
+    id:1, date:"2026-08-04", dLabel:"Tue · Aug 4", day:4,
+    title:"What is NIOS & BOSSE?", type:"Video", stage:"Awareness",
+    format:"Explainer / animated presentation — academic counsellor as narrator",
+    concept:"A counsellor introduces open schooling from zero: what NIOS and BOSSE are, who they're for, how they work, recognition, eligibility, and the core benefits. Simple graphics and light animation keep it easy to follow.",
+    hook:"“Never heard of open schooling? Here's the whole thing in 60 seconds.”",
+    visual:"Counsellor on-camera or clean voiceover over animated title cards. One idea per card — eligibility, flexibility, recognition — with icons. Keep the pace calm and reassuring, not salesy.",
+    caption:"Plain-language intro that positions the institute as the guide, not the seller. End on reassurance that there's a real path here for students who don't fit the regular route.",
+    cta:"DM ‘START’ and we'll tell you if open schooling fits your situation.",
+    tags:["#OpenSchooling","#NIOS","#BOSSE","#KeralaEducation"],
+    note:"⚠ Every statement about recognition and eligibility in the script must be verified against official NIOS / BOSSE sources first — this video sets the credibility baseline for the whole campaign."
+  },
+  {
+    id:2, date:"2026-08-07", dLabel:"Fri · Aug 7", day:7,
+    title:"Open Schooling vs Regular School", type:"Creative", stage:"Awareness",
+    format:"6–8 slide comparison carousel",
+    concept:"Compare the two systems across flexibility, study schedule, examinations, student support, and who each option suits best — so a student can self-identify which path fits their life.",
+    hook:"“Open schooling vs regular school — which one is actually built for you?”",
+    visual:"Split-layout slides, one comparison axis per slide. Neutral, non-judgemental design — the goal is ‘right fit’, not ‘one is better’. Final slide = a clear ‘where do you fit?’ prompt.",
+    caption:"Frame it as a decision aid. Avoid disparaging regular school — respect that both are valid; open schooling just serves a different need (work, sport, health, repeat attempts, relocation).",
+    cta:"Swipe through, then tell us in the comments where you see yourself.",
+    tags:["#OpenSchooling","#StudentChoice","#FlexibleLearning"],
+    note:"⚠ Keep every comparison factual and neutral; verify any specifics about exam structure or support before publishing."
+  },
+  {
+    id:3, date:"2026-08-11", dLabel:"Tue · Aug 11", day:11,
+    title:"Myths vs Facts About Open Schooling", type:"Video", stage:"Consideration",
+    format:"Conversational podcast — host + counsellor (cut into per-myth reels)",
+    concept:"Host and counsellor address the four most common objections one at a time: Is it recognised? Can students pursue higher studies? Is it only for students who failed? Is it accepted for government jobs? Each myth gets a clear factual answer.",
+    hook:"“‘Open schooling is only for students who failed.’ Let's settle this.”",
+    visual:"Simple 2-person podcast set. Cut each myth into its own captioned short so the series can run across the week. On-screen ‘MYTH / FACT’ tags.",
+    caption:"Reassuring, myth-busting tone. Invite the audience to surface their own doubts so you get comment volume and future content ideas.",
+    cta:"Heard a myth about open schooling? Drop it below and we'll fact-check it.",
+    tags:["#MythVsFact","#OpenSchooling","#NIOS","#BOSSE"],
+    note:"⚠ Highest-risk post for misinformation. Each ‘fact’ answer — recognition, higher-studies eligibility, government-job acceptance — must be individually verified against the relevant authority (NIOS/BOSSE, and e.g. UGC or the specific recruiter/exam body) before recording. Do not state anything you can't source."
+  },
+  {
+    id:4, date:"2026-08-14", dLabel:"Fri · Aug 14", day:14,
+    title:"Flexible Learning Benefits", type:"Creative", stage:"Consideration",
+    format:"Static (single frame) — 6-benefit icon grid",
+    concept:"Highlight the practical benefits: learn at your own pace, recorded classes, printed & digital study materials, live exam-oriented sessions, TMA support, and academic guidance.",
+    hook:"“Learning that works around your life — not the other way round.”",
+    visual:"Clean six-tile icon grid, one benefit per tile, generous spacing. This is a scannable ‘reasons to choose us’ frame that can be reused as an ad later.",
+    caption:"Speak directly to students juggling a job, sport, health, family duties, or a repeat attempt. Each benefit answers a real ‘but how would I manage?’ worry.",
+    cta:"Which of these matters most to you right now? 👇",
+    tags:["#FlexibleLearning","#StudyAtYourPace","#OpenSchooling"],
+    note:"TMA = Tutor-Marked Assignment. Confirm the exact support inclusions (materials, live-session frequency, TMA handling) match what the institute actually delivers before publishing."
+  },
+  {
+    id:5, date:"2026-08-18", dLabel:"Tue · Aug 18", day:18,
+    title:"Student Success Roadmap", type:"Creative", stage:"Consideration",
+    format:"Infographic (tall single image or short carousel)",
+    concept:"A visual roadmap of the student journey: Counselling → Admission → Subject Selection → Study Materials → Live & Recorded Classes → Exam Prep → Certification → Higher Studies / Career.",
+    hook:"“From your first call to your certificate — here's the full journey.”",
+    visual:"Numbered path/roadmap with a clear start and end. Each node = one step with a one-line description. Order matters here, so numbering is genuinely useful.",
+    caption:"Reduce fear of the unknown. Show the institute walks with the student through every step — nobody's left to figure it out alone.",
+    cta:"Ready for step 1? DM ‘COUNSELLING’ to book yours.",
+    tags:["#StudentJourney","#OpenSchooling","#Admissions2026"],
+    note:""
+  },
+  {
+    id:6, date:"2026-08-21", dLabel:"Fri · Aug 21", day:21,
+    title:"Career Opportunities After Class 10 & 12", type:"Creative", stage:"Decision",
+    format:"Infographic carousel",
+    concept:"Map the academic and career pathways after completing Class 10 or 12 through open schooling — higher studies, vocational education, professional courses, competitive-exam prep, and other future options.",
+    hook:"“Finished 10th or 12th through open schooling? Here's everything you can do next.”",
+    visual:"One branching pathway per slide (after-10 vs after-12). Aspirational but concrete — real destinations, not vague ‘endless possibilities’.",
+    caption:"This is the ‘it opens doors, not closes them’ post — the proof that open schooling is a real launchpad. Strong save/share candidate.",
+    cta:"Save this for later, then DM us the goal you're aiming for.",
+    tags:["#CareerAfter10","#CareerAfter12","#OpenSchooling"],
+    note:"⚠ Verify that the higher-studies, professional-course and competitive-exam pathways shown actually accept NIOS/BOSSE certification. Eligibility varies by course and exam body — confirm before listing any specific pathway."
+  },
+  {
+    id:7, date:"2026-08-25", dLabel:"Tue · Aug 25", day:25,
+    title:"Expert Podcast", type:"Video", stage:"Authority",
+    format:"Podcast with an invited guest (teacher / career counsellor / education expert)",
+    concept:"A guest expert discusses future careers, the importance of completing education, and alternative education pathways — building authority and trust for the brand.",
+    hook:"“We asked a career counsellor what students get wrong about their future.”",
+    visual:"Guest-interview set, cut into shareable reel moments. Evergreen content that can anchor a recurring series if it performs.",
+    caption:"Authority-building and evergreen. Less about admissions, more about earning the audience's trust — which is what makes the earlier funnel posts convert.",
+    cta:"Full episode dropping soon — follow so you don't miss it.",
+    tags:["#ExpertTalk","#CareerGuidance","#OpenSchooling"],
+    note:"If the guest states facts on camera about recognition or eligibility, brief them beforehand with verified information."
+  }
+];
+
+// August 2026: Aug 1 = Saturday (index 6 if week starts Sunday)
+const FIRST_OFFSET = 6, DAYS_IN_MONTH = 31;
+const postByDay = {}; POSTS.forEach(p => postByDay[p.day] = p);
+let done = loadDone();
+
+function loadDone(){
+  try{ const v = localStorage.getItem('osc_done'); return v?JSON.parse(v):{}; }
+  catch(e){ return {}; }
+}
+function saveDone(){ try{ localStorage.setItem('osc_done', JSON.stringify(done)); }catch(e){} }
+
+function stageColor(s){
+  return s==="Awareness"?"var(--tofu)":s==="Decision"?"var(--bofu)":s==="Authority"?"var(--accent)":"var(--mofu)";
+}
+
+/* ---- Calendar ---- */
+function renderCal(){
+  const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let html='<div class="cal-head">'+days.map(d=>`<div>${d}</div>`).join('')+'</div>';
+  let d=1; const totalCells=FIRST_OFFSET+DAYS_IN_MONTH; const rows=Math.ceil(totalCells/7);
+  for(let r=0;r<rows;r++){
+    html+='<div class="cal-week">';
+    for(let c=0;c<7;c++){
+      const idx=r*7+c;
+      if(idx<FIRST_OFFSET||d>DAYS_IN_MONTH){ html+='<div class="cell empty"></div>'; }
+      else{
+        const p=postByDay[d];
+        if(p){
+          const isDone=done[p.id];
+          html+=`<div class="cell post ${isDone?'done':''}" data-id="${p.id}">
+            <span class="num">${d}</span>
+            <span class="pill ${p.type==='Creative'?'creative':''}">
+              <span class="pn"><span>#${p.id} · ${p.type}</span><span class="check"></span></span>
+              <span class="pt">${p.title}</span>
+            </span></div>`;
+        } else {
+          html+=`<div class="cell"><span class="num">${d}</span></div>`;
+        }
+        d++;
+      }
+    }
+    html+='</div>';
+  }
+  document.getElementById('cal').innerHTML=html;
+  document.querySelectorAll('.cell.post').forEach(el=>el.onclick=()=>openModal(+el.dataset.id));
+}
+
+/* ---- List ---- */
+function renderList(){
+  document.getElementById('list').innerHTML = POSTS.map(p=>`
+    <div class="row ${done[p.id]?'done':''}" data-id="${p.id}">
+      <div class="rnum">${p.id}</div>
+      <div class="rbody">
+        <div class="rtop">
+          <span class="rdate">${p.dLabel}</span>
+          <span class="tag ${p.type.toLowerCase()}">${p.type}</span>
+          <span class="tag stage" style="color:${stageColor(p.stage)}">${p.stage}</span>
+        </div>
+        <div class="rtitle">${p.title}</div>
+        <div class="rformat">${p.format}</div>
+      </div>
+      <div class="rcheck"></div>
+    </div>`).join('');
+  document.querySelectorAll('.row').forEach(el=>el.onclick=()=>openModal(+el.dataset.id));
+}
+
+/* ---- Modal ---- */
+function openModal(id){
+  const p=POSTS.find(x=>x.id===id);
+  const isDone=!!done[p.id];
+  document.getElementById('modal').innerHTML=`
+    <div class="m-head">
+      <button class="close" onclick="closeModal()">×</button>
+      <div class="m-tags">
+        <span class="tag ${p.type.toLowerCase()}">${p.type}</span>
+        <span class="tag stage" style="color:${stageColor(p.stage)}">${p.stage}</span>
+        <span class="tag stage">Post #${p.id}</span>
+      </div>
+      <div class="m-title">${p.title}</div>
+      <div class="m-date">${p.dLabel}, 2026 · ${p.format}</div>
+    </div>
+    <div class="m-body">
+      <div class="field"><h4>Concept</h4><p>${p.concept}</p></div>
+      <div class="field hook"><h4>Hook</h4><p>${p.hook}</p></div>
+      <div class="field"><h4>Visual direction</h4><p>${p.visual}</p></div>
+      <div class="field"><h4>Caption angle</h4><p>${p.caption}</p></div>
+      <div class="field"><h4>Call to action</h4><p>${p.cta}</p></div>
+      <div class="field"><h4>Hashtag direction</h4><ul>${p.tags.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+      ${p.note?`<div class="note"><span>${p.note}</span></div>`:''}
+    </div>
+    <div class="m-foot">
+      <button class="m-done-btn ${isDone?'is-done':''}" onclick="toggleDone(${p.id})">
+        ${isDone?'✓ Marked as done — tap to undo':'Mark as done'}
+      </button>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+}
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
+document.getElementById('overlay').onclick=e=>{ if(e.target.id==='overlay') closeModal(); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+function toggleDone(id){
+  done[id]=!done[id]; if(!done[id]) delete done[id];
+  saveDone(); renderCal(); renderList(); updateProgress(); openModal(id);
+}
+function updateProgress(){
+  const n=Object.keys(done).length;
+  document.getElementById('doneCount').textContent=n;
+  document.getElementById('barFill').style.width=(n/POSTS.length*100)+'%';
+}
+document.getElementById('resetBtn').onclick=()=>{ done={}; saveDone(); renderCal(); renderList(); updateProgress(); };
+
+renderCal(); renderList(); updateProgress();
+</script>
+</body>
+</html>
