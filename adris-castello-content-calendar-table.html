@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adris Castello — Content Calendar (Master Table)</title>
+<style>
+  :root{
+    --bg:#111111;--card:#1F2937;--accent:#F97316;--border:#374151;
+    --text:#E5E7EB;--muted:#9CA3AF;
+    --pre:#F97316;--soft:#FBBF24;--grand:#34D399;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Google Sans','Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding:32px 20px 64px}
+  .wrap{max-width:1180px;margin:0 auto}
+  header{border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:22px}
+  .kicker{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  h1{font-size:28px;font-weight:600;margin:6px 0 4px}
+  .sub{color:var(--muted);font-size:15px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+  .chip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  .tbl-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:14px}
+  table{width:100%;border-collapse:collapse;min-width:920px}
+  thead th{background:#161b22;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+  tbody td{padding:14px;border-bottom:1px solid var(--border);font-size:13.5px;vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(255,255,255,.02)}
+
+  .slot{color:var(--muted);font-size:12px;white-space:nowrap}
+  .ph{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap;display:inline-block}
+  .ph-pre{background:rgba(249,115,22,.15);color:var(--pre)}
+  .ph-soft{background:rgba(251,191,36,.15);color:var(--soft)}
+  .ph-grand{background:rgba(52,211,153,.15);color:var(--grand)}
+  .post-t{font-weight:600;color:var(--text)}
+  .fmt{color:var(--muted);font-size:12px;margin-top:3px}
+  td ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+  td li{padding-left:14px;position:relative;font-size:13px}
+  td li:before{content:"›";position:absolute;left:0;color:var(--accent)}
+  .phase-row td{background:#12161d;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:9px 14px}
+
+  footer{margin-top:28px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:12.5px}
+  footer b{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Perambra Launch · Master Content Calendar</div>
+    <h1>Adris Castello</h1>
+    <p class="sub">10 posts · one month · Pre-Launch → Soft Launch → Grand Opening.</p>
+  </header>
+
+  <div class="legend">
+    <span class="chip"><span class="dot" style="background:var(--pre)"></span>Pre-Launch</span>
+    <span class="chip"><span class="dot" style="background:var(--soft)"></span>Soft Launch</span>
+    <span class="chip"><span class="dot" style="background:var(--grand)"></span>Grand Opening</span>
+  </div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:70px">Slot</th>
+          <th style="width:90px">Phase</th>
+          <th style="width:210px">Post / Theme</th>
+          <th>Content Direction</th>
+          <th style="width:200px">Objective</th>
+          <th style="width:80px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="phase-row"><td colspan="6">Week 1–2 · Pre-Launch — build curiosity before the reveal</td></tr>
+
+        <tr>
+          <td class="slot">Day 2</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">"What's Next at Perambra?"</span><div class="fmt">3-Post Grid</div></td>
+          <td><ul><li>Three tiles that read as one grid frame</li><li>Teaser only — no full brand reveal</li></ul></td>
+          <td>Spark curiosity before the brand is revealed.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 4</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">"What do you want next at Perambra?"</span><div class="fmt">Public Campaign · Vox-pop Reel</div></td>
+          <td><ul><li>Interview 2–3 people</li><li>Responses revolve around: a complete food destination · different types of food in one place · perfect ambience · everything under one roof</li></ul></td>
+          <td>Community-led curiosity.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 6</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">BTS Picture Carousel</span><div class="fmt">Carousel (Creative)</div></td>
+          <td><ul><li>Behind-the-scenes photos</li><li>Layered with illustrations</li></ul></td>
+          <td>Show the making, creatively.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 9</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">BTS Video — "Coming Soon" reveal</span><div class="fmt">BTS Video</div></td>
+          <td><ul><li>Behind-the-scenes video under a tagline</li><li>Ends on a "Coming Soon" reveal</li></ul></td>
+          <td>Build anticipation toward the reveal.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 11</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">AI Video — Perambra → Billboard</span><div class="fmt">AI Video</div></td>
+          <td><ul><li>AI-generated video showcasing different locations in Perambra</li><li>Journey leads to the Adris Castello billboard</li></ul></td>
+          <td>Cinematic teaser rooting the brand in Perambra.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 13</td>
+          <td><span class="ph ph-pre">Pre</span></td>
+          <td><span class="post-t">Dialogue Carousel — "Kaycho?"</span><div class="fmt">Carousel</div></td>
+          <td><ul><li>Popular Perambra-style dialogues / pitching</li><li>e.g. "Kaycho?"</li></ul></td>
+          <td>Local-flavour hook right before soft launch.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr class="phase-row"><td colspan="6">Week 3 · Soft Launch — founders shoot their own videos; brand edits &amp; uploads</td></tr>
+
+        <tr>
+          <td class="slot">Day 16</td>
+          <td><span class="ph ph-soft">Soft</span></td>
+          <td><span class="post-t">"Kaycho… illenki Vaa"</span><div class="fmt">Welcome Note (Creative)</div></td>
+          <td><ul><li>Welcoming creative with a local touch</li><li>Copy: "Kaycho… illenki Vaa"</li></ul></td>
+          <td>Warm, local welcome as doors soft-open.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 19</td>
+          <td><span class="ph ph-soft">Soft</span></td>
+          <td><span class="post-t">Influencer Marketing</span><div class="fmt">Influencer Invites</div></td>
+          <td><ul><li>Invite influencers with: Date · Time · Purpose · Location</li></ul></td>
+          <td>Bring influencers in with clear invite details.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr class="phase-row"><td colspan="6">Week 4 · Grand Opening</td></tr>
+
+        <tr>
+          <td class="slot">Day 24<br><span style="color:var(--grand)">Opening</span></td>
+          <td><span class="ph ph-grand">Grand</span></td>
+          <td><span class="post-t">Inauguration + Customer Reactions</span><div class="fmt">Event Coverage</div></td>
+          <td><ul><li>Coverage of the inauguration ceremony</li><li>Customer reactions — capture first impressions and feedback</li></ul></td>
+          <td>Capture the moment and the room.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+        <tr>
+          <td class="slot">Day 26</td>
+          <td><span class="ph ph-grand">Grand</span></td>
+          <td><span class="post-t">Happy Faces, Man Behind It</span><div class="fmt">Feature</div></td>
+          <td><ul><li>Feature happy customers</li><li>Story of the founder / team behind Adris Castello</li></ul></td>
+          <td>Close the launch on people and story.</td>
+          <td class="slot">☐</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <b>Slots are relative (Day 1–28)</b> — anchor Day 24 to your real grand-opening date and the rest shifts around it. Day placements (Tue/Thu/Sat rhythm) are a suggested cadence, easy to change. <br>
+    Design: Speakerbox UI Kit.
+  </footer>
+</div>
+</body>
+</html>
