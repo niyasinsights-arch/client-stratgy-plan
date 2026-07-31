@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>August 2026 Content Calendar — Zaara</title>
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --card-2:#161d29;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+    --tofu:#38BDF8;
+    --mofu:#F97316;
+    --bofu:#22C55E;
+    --festival:#EAB308;
+    --font:'Google Sans','Product Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.5;padding:28px 18px 80px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto}
+
+  .head{margin-bottom:26px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);font-size:15px;max-width:720px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 8px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .stat .num{font-size:26px;font-weight:700;color:var(--text)}
+  .stat .num.accent{color:var(--accent)}
+  .stat .lab{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+  .progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:16px 0 26px}
+  .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;color:var(--muted)}
+  .progress-top b{color:var(--text)}
+  .bar{height:8px;background:#0d1117;border-radius:99px;overflow:hidden;border:1px solid var(--border)}
+  .bar > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#fb923c);transition:width .35s ease}
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-bottom:22px;font-size:13px;color:var(--muted)}
+  .legend .item{display:inline-flex;align-items:center;gap:7px}
+  .swatch{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+  .cal-title{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .cal-title h2{font-size:18px;font-weight:600}
+  .cal-title .m{color:var(--muted);font-size:13px}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px}
+  .dow span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;padding:4px 0}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .cell{min-height:104px;background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px}
+  .cell.empty{background:transparent;border:1px solid transparent}
+  .cell .date{font-size:12px;color:var(--muted);font-weight:600}
+  .cell.fest{border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.05)}
+  .cell.onam-day{border-color:var(--festival);background:rgba(234,179,8,.12)}
+  .fest-tag{font-size:9.5px;letter-spacing:.04em;color:var(--festival);text-transform:uppercase;font-weight:700}
+  .onam-badge{margin-top:auto;font-size:10px;color:var(--festival);font-weight:700}
+
+  .chip{text-align:left;border:none;cursor:pointer;width:100%;background:var(--card);border-left:3px solid var(--mofu);border-radius:6px;padding:6px 7px;color:var(--text);font-family:var(--font);transition:transform .12s ease,background .12s ease}
+  .chip:hover{background:#243043;transform:translateY(-1px)}
+  .chip.tofu{border-left-color:var(--tofu)}
+  .chip.mofu{border-left-color:var(--mofu)}
+  .chip.bofu{border-left-color:var(--bofu)}
+  .chip .cnum{font-size:9px;color:var(--muted);font-weight:700;letter-spacing:.05em}
+  .chip .ctitle{font-size:11px;font-weight:600;line-height:1.25;margin-top:1px}
+  .chip.done{opacity:.5}
+  .chip.done .ctitle{text-decoration:line-through}
+  .fmt{display:inline-block;font-size:8.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:3px}
+
+  .phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:34px 0 0}
+  .phase{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .phase h3{font-size:14px;margin-bottom:4px}
+  .phase .win{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:8px}
+  .phase p{font-size:12.5px;color:var(--muted)}
+
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+  .overlay.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;padding:26px;position:relative}
+  .modal .x{position:absolute;top:16px;right:16px;background:var(--card-2);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1}
+  .modal .x:hover{color:var(--text)}
+  .m-num{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.05em}
+  .m-title{font-size:22px;font-weight:700;margin:4px 0 14px;padding-right:36px}
+  .m-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .pill{font-size:11px;font-weight:600;padding:5px 10px;border-radius:99px;border:1px solid var(--border);color:var(--text)}
+  .pill.date{background:var(--card-2)}
+  .pill.tofu{color:var(--tofu);border-color:rgba(56,189,248,.4)}
+  .pill.mofu{color:var(--mofu);border-color:rgba(249,115,22,.4)}
+  .pill.bofu{color:var(--bofu);border-color:rgba(34,197,94,.4)}
+  .m-sec{margin-bottom:16px}
+  .m-sec .h{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:6px}
+  .m-sec p{font-size:14px;color:var(--text)}
+  .m-sec .tagline{font-size:16px;font-weight:600;color:var(--accent)}
+  .ref-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--accent);text-decoration:none;border:1px solid rgba(249,115,22,.4);border-radius:8px;padding:8px 12px;word-break:break-all}
+  .ref-link:hover{background:rgba(249,115,22,.1)}
+  .no-ref{font-size:13px;color:var(--muted);font-style:italic}
+  .m-done{display:flex;align-items:center;gap:9px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);cursor:pointer;font-size:14px;color:var(--text);user-select:none}
+  .m-done input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+
+  .foot{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px}
+  .foot b{color:var(--text)}
+
+  @media(max-width:640px){
+    .cell{min-height:78px;padding:5px}
+    .chip .ctitle{font-size:10px}
+    h1{font-size:24px}
+    .dow span{font-size:9px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="eyebrow"><span class="dot"></span> Zaara · Speakerbox</div>
+    <h1>August 2026 Content Calendar <span>— Onam Campaign</span></h1>
+    <p class="sub">Revised monthly plan: <b>5 reels + 4 creatives</b>, ramping from brand awareness into Onam offer pushes. Thiruvonam falls on <b style="color:var(--festival)">Wednesday, 26 August 2026</b>. Tap any post to open its brief.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num accent">9</div><div class="lab">Total Posts</div></div>
+    <div class="stat"><div class="num">5</div><div class="lab">Reels</div></div>
+    <div class="stat"><div class="num">4</div><div class="lab">Creatives</div></div>
+    <div class="stat"><div class="num">Aug 4–28</div><div class="lab">Publish Window</div></div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-top"><span>Campaign progress</span><span><b id="doneCount">0</b> / 9 marked done</span></div>
+    <div class="bar"><i id="barFill"></i></div>
+  </div>
+
+  <div class="legend">
+    <span class="item"><span class="swatch" style="background:var(--tofu)"></span> TOFU · Awareness</span>
+    <span class="item"><span class="swatch" style="background:var(--mofu)"></span> MOFU · Consideration</span>
+    <span class="item"><span class="swatch" style="background:var(--bofu)"></span> BOFU · Conversion</span>
+    <span class="item"><span class="swatch" style="background:var(--festival)"></span> Onam / festival day</span>
+  </div>
+
+  <div class="cal-title">
+    <h2>August 2026</h2>
+    <span class="m">Onam season (Atham → Thiruvonam): Aug 17 – Aug 26</span>
+  </div>
+  <div class="dow">
+    <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <div class="phases">
+    <div class="phase">
+      <h3>Phase 1 · Establish</h3>
+      <div class="win">Aug 4 – Aug 7</div>
+      <p>Land the brand line and open the store's world — the "പെണ്ണോടിയാൽ Zaara വരെ!" grid opener plus a shop showcase reel to build first reach.</p>
+    </div>
+    <div class="phase">
+      <h3>Phase 2 · Build Trust</h3>
+      <div class="win">Aug 11 – Aug 18</div>
+      <p>Product depth &amp; proof — a catalogue-style creative, a hero feature reel, and a scroll-stopping AI carousel to move viewers toward consideration.</p>
+    </div>
+    <div class="phase">
+      <h3>Phase 3 · Festive Ramp</h3>
+      <div class="win">Aug 21 – Aug 23</div>
+      <p>Onam season is live. A real customer presenter and the Onam offer teaser poster prime the audience for the final push.</p>
+    </div>
+    <div class="phase">
+      <h3>Phase 4 · Convert &amp; Tail</h3>
+      <div class="win">Aug 25 – Aug 28</div>
+      <p>The finale — the hard offer promo on the eve of Thiruvonam, then the emotional Onam gift film on Fourth Onam, carrying the campaign through the festival days.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p><b>Notes &amp; assumptions:</b> Rebuilt for <b>Zaara</b> at 5 reels + 4 creatives, resequenced so reels and creatives alternate through the feed. Kept on the <b>August / Onam</b> timeline — tell me if the month is different. Cadence ~2 posts/week; dates are a suggested schedule you can shift. <b>Held back from the 5 reels:</b> Product Review – Interactive, Shop Location Presentation — ask to swap either in. Reference links are passed through exactly as you supplied them (I couldn't open the reels). Verify the Onam date against the Kerala govt holiday list before locking offer posts.</p>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const posts = [
+  { n:1, day:4,  dow:"Tue", title:"പെണ്ണോടിയാൽ Zaara വരെ!", kind:"Creative", fmt:"Grid / Static", stage:"tofu",
+    tagline:"പെണ്ണോടിയാൽ Zaara വരെ!",
+    obj:"The brand-line opener. Hoarding-style grid post — big confident type, 'Zaara' set apart, everything else quiet. Positions Zaara as THE destination and sets the campaign's tone.",
+    ref:"https://www.instagram.com/p/DZC3jfUn1-V/" },
+  { n:2, day:7,  dow:"Fri", title:"Shop Showcase Video", kind:"Reel", fmt:"Reel", stage:"tofu",
+    obj:"Walk-through of the store — space, sections and scale — so first-time viewers instantly grasp what Zaara offers under one roof.",
+    ref:"https://www.instagram.com/reel/DSmyRkCAThS/" },
+  { n:3, day:11, dow:"Tue", title:"Product Showcase Static Post", kind:"Creative", fmt:"Static", stage:"mofu",
+    obj:"Clean catalogue-style creative showing a product range at a glance — save-worthy for people planning festive shopping.",
+    ref:"https://www.instagram.com/p/Da2KlWfRnvP/" },
+  { n:4, day:14, dow:"Fri", title:"Product Feature Video", kind:"Reel", fmt:"Reel", stage:"mofu",
+    obj:"Spotlight one hero product / collection with its standout details and use, giving buyers a concrete reason to consider Zaara.",
+    ref:"https://www.instagram.com/reel/DXEX1FJjI0D/" },
+  { n:5, day:18, dow:"Tue", title:"AI Character Product Showcase", kind:"Creative", fmt:"Carousel", stage:"mofu",
+    obj:"Novel AI-character carousel presenting products in a scroll-stopping way — differentiates the feed and re-engages the audience mid-campaign.",
+    ref:null },
+  { n:6, day:21, dow:"Fri", title:"Customer-Cum-Presenter Reel", kind:"Reel", fmt:"Reel", stage:"mofu",
+    obj:"Social proof led by a real customer presenting their pick — relatability plus credibility, the strongest consideration driver before the festive ramp.",
+    ref:"https://www.instagram.com/reel/DWDfRJgkv3A/" },
+  { n:7, day:23, dow:"Sun", title:"Onam-Themed Poster", kind:"Creative", fmt:"Static", stage:"bofu",
+    obj:"Festive offer teaser in Onam styling — introduces the Onam deal and primes the audience for the conversion pieces landing over the final days.",
+    ref:null },
+  { n:8, day:28, dow:"Fri", title:"Scripted Video — Onam Gift Campaign", kind:"Reel", fmt:"Reel", stage:"bofu",
+    obj:"Emotional hero film around Onam gifting — now landing on Fourth Onam (Aug 28), carrying the gifting message through the festival tail.",
+    ref:"https://www.instagram.com/reel/DYmrlu7zU5r/" },
+  { n:9, day:25, dow:"Tue", title:"Onam Offer Promotional Video", kind:"Reel", fmt:"Reel", stage:"bofu",
+    obj:"Final hard-offer push on the eve of Thiruvonam — clear deal, clear CTA, timed to peak purchase intent.",
+    ref:null }
+];
+
+const festivals = {
+  17:{label:"Atham · Onam begins", fest:true},
+  25:{label:"First Onam", fest:true},
+  26:{label:"THIRUVONAM", onam:true},
+  28:{label:"Fourth Onam", fest:true}
+};
+
+const stageLabel = { tofu:"TOFU · Awareness", mofu:"MOFU · Consideration", bofu:"BOFU · Conversion" };
+const done = {};
+try { const s = JSON.parse(localStorage.getItem("zaara_aug_done")||"{}"); Object.assign(done,s); } catch(e){}
+
+const grid = document.getElementById("grid");
+const LEAD = 6, DAYS = 31;
+const byDay = {};
+posts.forEach(p => byDay[p.day] = p);
+
+let html = "";
+for (let i=0;i<LEAD;i++) html += '<div class="cell empty"></div>';
+for (let d=1; d<=DAYS; d++){
+  const p = byDay[d];
+  const f = festivals[d];
+  let cls = "cell";
+  if (f && f.onam) cls += " onam-day";
+  else if (f && f.fest) cls += " fest";
+  html += `<div class="${cls}"><div class="date">${d}</div>`;
+  if (f) html += `<div class="fest-tag">${f.label}</div>`;
+  if (p){
+    html += `<button class="chip ${p.stage} ${done[p.n]?'done':''}" data-n="${p.n}">
+      <span class="cnum">${p.kind.toUpperCase()} · ${p.n}</span>
+      <div class="ctitle">${p.title}</div>
+      <span class="fmt">${p.fmt}</span>
+    </button>`;
+  }
+  if (f && f.onam) html += `<div class="onam-badge">⭐ Main day</div>`;
+  html += `</div>`;
+}
+grid.innerHTML = html;
+
+const overlay = document.getElementById("overlay");
+const modal = document.getElementById("modal");
+
+function openModal(n){
+  const p = posts.find(x=>x.n===n);
+  const refHtml = p.ref
+    ? `<a class="ref-link" href="${p.ref}" target="_blank" rel="noopener">↗ Open reference</a>`
+    : `<span class="no-ref">No reference supplied — create original from brief.</span>`;
+  const tagHtml = p.tagline
+    ? `<div class="m-sec"><div class="h">Tagline</div><p class="tagline">${p.tagline}</p></div>` : "";
+  modal.innerHTML = `
+    <button class="x" onclick="closeModal()">✕</button>
+    <div class="m-num">${p.kind.toUpperCase()} ${p.n} · ${p.dow} Aug ${p.day}</div>
+    <div class="m-title">${p.title}</div>
+    <div class="m-meta">
+      <span class="pill date">📅 Aug ${p.day}, 2026</span>
+      <span class="pill">${p.fmt}</span>
+      <span class="pill ${p.stage}">${stageLabel[p.stage]}</span>
+    </div>
+    ${tagHtml}
+    <div class="m-sec"><div class="h">Objective</div><p>${p.obj}</p></div>
+    <div class="m-sec"><div class="h">Reference</div>${refHtml}</div>
+    <label class="m-done">
+      <input type="checkbox" ${done[p.n]?'checked':''} onchange="toggleDone(${p.n}, this.checked)">
+      Mark as done / shot
+    </label>
+  `;
+  overlay.classList.add("open");
+}
+function closeModal(){ overlay.classList.remove("open"); }
+overlay.addEventListener("click", e => { if(e.target===overlay) closeModal(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeModal(); });
+grid.addEventListener("click", e => {
+  const btn = e.target.closest(".chip");
+  if(btn) openModal(parseInt(btn.dataset.n));
+});
+
+function toggleDone(n, val){
+  done[n] = val;
+  if(!val) delete done[n];
+  try{ localStorage.setItem("zaara_aug_done", JSON.stringify(done)); }catch(e){}
+  const chip = grid.querySelector(`.chip[data-n="${n}"]`);
+  if(chip) chip.classList.toggle("done", !!val);
+  updateProgress();
+}
+function updateProgress(){
+  const c = Object.keys(done).filter(k=>done[k]).length;
+  document.getElementById("doneCount").textContent = c;
+  document.getElementById("barFill").style.width = (c/posts.length*100) + "%";
+}
+updateProgress();
+</script>
+</body>
+</html>
