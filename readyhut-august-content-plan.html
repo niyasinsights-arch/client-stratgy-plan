@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready Hut Developers — August 2026 Content Plan</title>
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --card-2:#182230;
+    --accent:#F97316; --accent-soft:rgba(249,115,22,.14);
+    --amber:#F59E0B; --amber-soft:rgba(245,158,11,.13); --forest:#34D399;
+    --border:#374151; --text:#E5E7EB; --muted:#9CA3AF;
+    --font:'Google Sans','Product Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 80px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-size:34px;line-height:1.15;margin:10px 0 6px;font-weight:600}
+  h1 span{color:var(--muted);font-weight:400}
+  .sub{color:var(--muted);font-size:15px;max-width:660px}
+  .divider{height:1px;background:var(--border);margin:28px 0}
+  .note{background:var(--amber-soft);border:1px solid rgba(245,158,11,.35);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:#FDE68A}
+  .note b{color:#FCD34D}
+  .note .ico{flex:0 0 auto;font-size:16px;line-height:1.4}
+
+  /* Sequence strip */
+  .seq{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:26px 0 6px}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 12px 13px;position:relative;overflow:hidden;cursor:pointer;transition:.15s}
+  .step:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .step.fest:hover{border-color:var(--amber)}
+  .step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+  .step.fest::before{background:var(--amber)}
+  .step .n{font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:600}
+  .step .f{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:9px}
+  .step.fest .f{color:var(--amber)}
+  .step .t{font-size:12.5px;font-weight:500;margin-top:3px;line-height:1.25}
+  .step .dt{font-size:11px;color:var(--accent);margin-top:8px;font-weight:500}
+  .step.fest .dt{color:var(--amber)}
+
+  .meta-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:26px 0 14px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap}
+  .lg{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+  .dot{width:10px;height:10px;border-radius:3px}
+  .dot.reel{background:var(--accent)}
+  .dot.car{background:var(--amber)}
+  .count{margin-left:auto;font-size:12.5px;color:var(--muted)}
+  .count b{color:var(--text)}
+
+  h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:34px 0 14px}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .dow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding-bottom:4px;font-weight:600}
+  .cell{background:var(--card-2);border:1px solid var(--border);border-radius:10px;min-height:92px;padding:8px;position:relative}
+  .cell.empty{background:transparent;border:1px dashed rgba(55,65,81,.5)}
+  .cell .d{font-size:12px;color:var(--muted);font-weight:600}
+  .cell.onam .d{color:var(--amber)}
+  .cell.onam{border-color:rgba(245,158,11,.4)}
+  .cell.thiru{background:var(--amber-soft);border-color:var(--amber)}
+  .post{margin-top:6px;border-radius:7px;padding:6px 7px;cursor:pointer;border:1px solid var(--border);background:var(--card);transition:.15s;display:block;width:100%;text-align:left;font-family:inherit}
+  .post:hover{transform:translateY(-1px);border-color:var(--accent)}
+  .post.reel{border-left:3px solid var(--accent)}
+  .post.car{border-left:3px solid var(--amber)}
+  .post .seqn{font-size:9px;letter-spacing:.08em;color:var(--muted);font-weight:700}
+  .post .fmt{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:1px}
+  .post .tt{font-size:11.5px;font-weight:500;color:var(--text);margin-top:2px;line-height:1.25}
+  .post:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+  .overlay.on{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .modal-head{padding:22px 24px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card)}
+  .m-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .tag{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:20px}
+  .tag.reel{background:var(--accent-soft);color:var(--accent)}
+  .tag.car{background:var(--amber-soft);color:var(--amber)}
+  .tag.date{background:var(--card-2);color:var(--text);border:1px solid var(--border)}
+  .tag.pos{background:rgba(52,211,153,.1);color:var(--forest)}
+  .modal h3{font-size:20px;font-weight:600;line-height:1.25}
+  .modal-body{padding:20px 24px 26px}
+  .fld{margin-bottom:18px}
+  .fld .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .fld .val{font-size:14px;color:var(--text);white-space:pre-line}
+  .fld.copy .val{background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;font-size:13.5px;color:#F3F4F6}
+  .cta-line{font-size:13.5px;color:var(--forest);font-weight:500}
+  .phone{font-size:13px;color:var(--muted);margin-top:2px}
+  .close{position:absolute;top:16px;right:18px;background:var(--card-2);border:1px solid var(--border);color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;line-height:1}
+  .close:hover{border-color:var(--accent);color:var(--accent)}
+  footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:860px){
+    .seq{grid-template-columns:repeat(2,1fr)}
+    .cal{grid-template-columns:1fr;gap:6px}
+    .dow{display:none}
+    .cell{min-height:auto;display:flex;flex-direction:column}
+    .cell.empty{display:none}
+    .cell .d::after{content:" August"}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Instagram Content Plan · Speakerbox</div>
+  <h1>Ready Hut Developers <span>— August 2026</span></h1>
+  <p class="sub">Six posts, in posting order — opening on a carousel, then the AI Brand Film. Three reels and three Onam carousels, building to Thiruvonam.</p>
+
+  <div class="divider"></div>
+
+  <div class="note">
+    <span class="ico">◆</span>
+    <span><b>Onam anchor:</b> Thiruvonam falls on <b>Wed, 26 Aug 2026</b>. "Welcome Mahabali" is pinned to that day. The opener ("Plant the Seed") is a soft early-month Onam tease — worth confirming you want it that early, since the other two carousels sit in the actual festival window.</span>
+  </div>
+
+  <!-- Sequence -->
+  <div class="seq" id="seq"></div>
+
+  <div class="meta-row">
+    <div class="legend">
+      <span class="lg"><span class="dot reel"></span> Reel</span>
+      <span class="lg"><span class="dot car"></span> Onam Carousel</span>
+    </div>
+    <div class="count"><b>6</b> posts · <b>3</b> reels · <b>3</b> carousels</div>
+  </div>
+
+  <h2>The Calendar — click any post for its brief</h2>
+  <div class="cal" id="cal"></div>
+
+  <footer>
+    <span>Ready Hut Developers · Premium Villas. Personalized Living.</span>
+    <span>📞 8101222000 · 9745445577</span>
+  </footer>
+</div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal" id="modal">
+    <div class="modal-head">
+      <button class="close" id="close" aria-label="Close">✕</button>
+      <div class="m-tags" id="mTags"></div>
+      <h3 id="mTitle"></h3>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+  const PHONE = "📞 8101222000  ·  9745445577";
+
+  // Posting order: 1 carousel, 2 AI video, then reels, closing on the Onam carousels.
+  const posts = [
+    { pos:1, day:4, type:"car", fmt:"Carousel · Onam", title:"This Onam, Plant the Seed of Your Dream Home",
+      role:"Soft opener — plants the Onam theme early",
+      visual:"Pookalam transforming into a villa layout / design.",
+      copy:`Every beautiful home starts with a dream.
+Take the first step this Onam.`,
+      cta:"Start Your Home Journey This Onam" },
+
+    { pos:2, day:8, type:"reel", fmt:"Reel", title:"AI Brand Film",
+      role:"Brand + projects introduction",
+      visual:"AI-generated brand film introducing Ready Hut, Eleganza and Meadow Hills.",
+      copy:`Calicut is growing rapidly. And homebuyers are looking for more than just a house.
+
+Introducing Ready Hut Developers, creating thoughtfully planned villa communities in some of Kozhikode's most sought-after locations.
+
+With projects like Eleganza and Meadow Hills, we offer premium 3 & 4 BHK villas with modern amenities, excellent connectivity, and quality construction.
+
+What sets us apart is the freedom to customize. Choose your plot, personalize your layout, and build a home that reflects your lifestyle.
+
+Whether you're looking for your family's next home or a smart investment, Ready Hut offers the perfect blend of location, design, and lasting value.
+
+Ready Hut Developers
+Premium Villas. Personalized Living.
+Book Your Site Visit`,
+      cta:"Book Your Site Visit" },
+
+    { pos:3, day:13, type:"reel", fmt:"Reel", title:"Why Kozhikode?",
+      role:"Awareness — why this city, why now",
+      visual:"City-growth montage — connectivity, infrastructure, lifestyle, education, healthcare — resolving into a Ready Hut villa community.",
+      copy:`Why are more families and investors looking towards Kozhikode today?
+
+Because Kozhikode is not just a city with a rich history… it's a city moving towards the future.
+
+With better connectivity, growing infrastructure, premium lifestyle destinations, quality education, and advanced healthcare facilities, Kozhikode is becoming one of Kerala's most promising places to live and invest.
+
+But what truly makes this city special is its perfect balance — the comfort of modern living with the warmth and peace of a hometown.
+
+And in this growing city, Ready Hut Developers brings thoughtfully planned villa communities designed around your lifestyle.
+
+With premium 3 & 4 BHK villas, modern amenities, prime locations, and the freedom to customize your dream home, we help you create a space that is truly yours.
+
+Because choosing a home is not just about finding a place to live…
+It's about choosing a future.
+
+Ready Hut Developers.
+Premium Villas. Personalized Living.`,
+      cta:"Brand awareness — no hard CTA" },
+
+    { pos:4, day:18, type:"reel", fmt:"Reel", title:"NRI Presentation Video",
+      role:"NRI-targeted — build early, personalize",
+      visual:"Presentation-style film (45–60 sec) speaking directly to NRIs planning to build in Kerala.",
+      copy:`NRIs…
+Planning to build a home in Kerala after years of working abroad?
+
+Before you invest, here's something worth considering.
+
+Buying a completed villa means compromising on someone else's design.
+
+With Ready Hut Developers, you can secure your plot early and build a home that's designed around your family's lifestyle.
+
+Choose your layout. Personalize your spaces. And watch your home take shape — even while you're overseas.
+
+Our premium villa communities, Eleganza and Meadow Hills, are located in fast-growing areas of Kozhikode with excellent connectivity, modern amenities, and strong long-term appreciation potential.
+
+Whether you're planning your retirement, a family home, or a future investment, buying early gives you more flexibility, more customization, and greater value.
+
+The next time you're in Kerala, let's talk about your future home.
+
+Ready Hut Developers`,
+      cta:"The next time you're in Kerala, let's talk" },
+
+    { pos:5, day:22, type:"car", fmt:"Carousel · Onam", title:"Your Kerala Home Story Starts This Onam",
+      role:"NRI-home angle — peak festival window",
+      visual:"NRI family visiting a premium villa site during their Onam holidays — exploring the location, viewing villa plans, imagining their future home.",
+      copy:`While you are home for the celebrations, take the first step towards your future home.`,
+      cta:"Take The First Step Towards Your Kerala Home" },
+
+    { pos:6, day:26, type:"car", fmt:"Carousel · Onam", title:"Welcome Mahabali To Your Dream Home",
+      role:"Festive centerpiece — Thiruvonam day",
+      visual:"Modern Mahabali entering a beautifully designed premium villa with Onam decorations, pookalam at the entrance, and a warm family welcome.",
+      copy:`This Onam, welcome happiness, prosperity, and a home you've always wished for.`,
+      cta:"Book Your Dream Home Visit Today" }
+  ];
+
+  // Sequence strip
+  const seq=document.getElementById('seq');
+  posts.forEach(p=>{
+    const el=document.createElement('div');
+    el.className='step '+(p.type==='car'?'fest':'');
+    el.innerHTML=`<div class="n">Post ${p.pos}</div><div class="f">${p.fmt}</div><div class="t">${p.title}</div><div class="dt">Aug ${p.day}</div>`;
+    el.addEventListener('click',()=>openModal(p));
+    seq.appendChild(el);
+  });
+
+  // Calendar (Sun-start). Aug 1 2026 = Saturday -> 6 leading empties.
+  const cal=document.getElementById('cal');
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>{const e=document.createElement('div');e.className='dow';e.textContent=d;cal.appendChild(e);});
+  const byDay={}; posts.forEach(p=>byDay[p.day]=p);
+  for(let i=0;i<6;i++){const e=document.createElement('div');e.className='cell empty';cal.appendChild(e);}
+  for(let d=1;d<=31;d++){
+    const cell=document.createElement('div'); cell.className='cell';
+    if(d>=16&&d<=26)cell.classList.add('onam');
+    if(d===26)cell.classList.add('thiru');
+    const dn=document.createElement('div');dn.className='d';dn.textContent=d+(d===26?' · Thiruvonam':'');cell.appendChild(dn);
+    const p=byDay[d];
+    if(p){
+      const btn=document.createElement('button');
+      btn.className='post '+p.type;
+      btn.innerHTML=`<div class="seqn">POST ${p.pos}</div><div class="fmt">${p.fmt}</div><div class="tt">${p.title}</div>`;
+      btn.addEventListener('click',()=>openModal(p));
+      cell.appendChild(btn);
+    }
+    cal.appendChild(cell);
+  }
+
+  // Modal
+  const overlay=document.getElementById('overlay');
+  const mTags=document.getElementById('mTags');
+  const mTitle=document.getElementById('mTitle');
+  const mBody=document.getElementById('mBody');
+  function openModal(p){
+    mTags.innerHTML='';
+    [{c:'pos',t:`Post ${p.pos}`},{c:'date',t:`Aug ${p.day}`},{c:p.type,t:p.type==='car'?'Onam Carousel':'Reel'}]
+      .forEach(t=>{const s=document.createElement('span');s.className='tag '+t.c;s.textContent=t.t;mTags.appendChild(s);});
+    mTitle.textContent=p.title;
+    let html='';
+    html+=fld('Role',p.role);
+    html+=fld('Visual',p.visual);
+    html+=`<div class="fld copy"><div class="lbl">Caption / Script</div><div class="val">${esc(p.copy)}</div></div>`;
+    html+=`<div class="fld"><div class="lbl">CTA</div><div class="val cta-line">${esc(p.cta)}</div><div class="phone">${PHONE}</div></div>`;
+    mBody.innerHTML=html;
+    overlay.classList.add('on');
+  }
+  function fld(l,v){return `<div class="fld"><div class="lbl">${l}</div><div class="val">${esc(v)}</div></div>`;}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  document.getElementById('close').addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  function close(){overlay.classList.remove('on');}
+</script>
+</body>
+</html>
