@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Mee — Launch Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap');
+  :root{
+    --bg:#FBF8F3; --paper:#FFFFFF; --paper-2:#FAF5EE;
+    --ink:#33291F; --muted:#9C9082; --line:#EDE4D6;
+    --gold:#B8935A; --gold-soft:#EBD9BC; --gold-tint:#F6EEDF;
+    --blush:#E7C6BE; --blush-tint:#FBEEE9;
+    --sage:#8FA487; --sage-tint:#EEF2EA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Nunito Sans',system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;padding:40px 20px 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto}
+  h1,h2,h3,h4,.serif{font-family:'Fraunces',Georgia,serif}
+
+  .header{
+    border:1px solid var(--line);border-radius:24px;background:linear-gradient(155deg,#FFFDFA,#F7EEE1);
+    padding:44px 42px;margin-bottom:20px;position:relative;overflow:hidden;
+    box-shadow:0 14px 40px rgba(90,70,45,.06);
+  }
+  .header:before{content:"";position:absolute;top:-70px;right:-50px;width:260px;height:260px;
+    border-radius:50%;background:radial-gradient(circle,rgba(231,198,190,.35),transparent 70%)}
+  .header:after{content:"";position:absolute;bottom:-90px;left:-40px;width:220px;height:220px;
+    border-radius:50%;background:radial-gradient(circle,rgba(184,147,90,.14),transparent 70%)}
+  .eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:3.5px;
+    text-transform:uppercase;margin-bottom:14px;position:relative}
+  .eyebrow:after{content:"";display:block;width:40px;height:1px;background:var(--gold);margin-top:12px;opacity:.6}
+  h1{font-size:42px;font-weight:600;letter-spacing:-.5px;line-height:1.05}
+  .sub{color:var(--muted);margin-top:12px;font-size:15px;font-style:italic;font-family:'Fraunces',serif}
+  .month{margin-top:20px;display:inline-block;background:var(--gold-tint);
+    border:1px solid var(--gold-soft);color:var(--gold);
+    padding:8px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.5px}
+
+  .banner{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:14px;padding:16px 22px;margin-bottom:26px;font-size:13.5px;color:var(--muted);
+    box-shadow:0 8px 24px rgba(90,70,45,.04)}
+  .banner strong{color:var(--gold);font-weight:700}
+
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:18px;font-size:12.5px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:11px;height:11px;border-radius:4px;flex:none}
+  .dot.pre{background:var(--gold-tint);border:1px solid var(--gold)}
+  .dot.launch{background:var(--gold)}
+  .dot.post{background:var(--sage-tint);border:1px solid var(--sage)}
+
+  /* Cadence grid */
+  .cal{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--paper);
+    box-shadow:0 16px 44px rgba(90,70,45,.06)}
+  .cad-head{display:grid;grid-template-columns:96px 1fr 1fr;background:var(--paper-2)}
+  .cad-head div{padding:14px 12px;font-size:10.5px;font-weight:800;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);border-right:1px solid var(--line)}
+  .cad-head div:last-child{border-right:none}
+  .cad-row{display:grid;grid-template-columns:96px 1fr 1fr;border-top:1px solid var(--line)}
+  .wk{padding:14px 12px;border-right:1px solid var(--line);background:var(--paper-2);
+    font-family:'Fraunces',serif;font-size:15px;color:var(--gold);font-weight:500;display:flex;align-items:center}
+  .cell{min-height:120px;border-right:1px solid var(--line);padding:12px;position:relative}
+  .cell:last-child{border-right:none}
+  .cell.inaug{background:linear-gradient(160deg,var(--blush-tint),transparent)}
+
+  .chip{display:block;border-radius:10px;padding:10px 12px;font-size:12px;line-height:1.4;text-decoration:none}
+  .chip .t{display:block;font-size:9.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;
+    opacity:.9;margin-bottom:4px}
+  .chip.pre{background:var(--gold-tint);border:1px solid var(--gold-soft);color:#9A7638}
+  .chip.launch{background:var(--gold);color:#FFFBF5;font-weight:700;box-shadow:0 4px 14px rgba(184,147,90,.3)}
+  .chip.launch .t{opacity:.8}
+  .chip.post{background:var(--sage-tint);border:1px solid #CBD8C4;color:#5F7357}
+  a.chip{transition:.18s} a.chip:hover{transform:translateY(-1px);filter:brightness(1.03)}
+  .inaug-flag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:1.5px;
+    background:var(--blush);color:#FFF;padding:3px 8px;border-radius:6px;margin-bottom:8px}
+
+  .section-title{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);
+    margin:44px 0 18px;letter-spacing:-.3px}
+  .section-title:before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold);
+    vertical-align:middle;margin-right:12px;opacity:.6}
+  .row{display:flex;gap:18px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);
+    border-radius:14px;padding:16px 22px;margin-bottom:11px;box-shadow:0 6px 18px rgba(90,70,45,.04)}
+  .row .d{flex:none;width:112px;font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--gold)}
+  .row .body h4{font-size:15px;font-weight:600;margin-bottom:3px}
+  .row .body p{font-size:13.5px;color:var(--muted)}
+  .row .body p em{color:var(--gold);font-style:italic}
+  .row .body a{color:var(--sage);font-size:12.5px;text-decoration:none;font-weight:700}
+  .row .body a:hover{text-decoration:underline}
+  .row.l{border-color:var(--gold-soft);background:linear-gradient(120deg,#FFFDF9,var(--gold-tint))}
+
+  .note{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:14px;padding:22px 26px;margin-top:26px;box-shadow:0 8px 24px rgba(90,70,45,.04)}
+  .note h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:12px;color:var(--gold);font-weight:600}
+  .note ul{list-style:none;padding:0}
+  .note li{padding-left:20px;position:relative;margin-bottom:8px;font-size:13.5px}
+  .note li:before{content:"◆";position:absolute;left:0;color:var(--gold);font-size:8px;top:5px}
+  .note .ph{color:var(--muted);font-style:italic}
+
+  @media(max-width:760px){
+    .cad-head,.cad-row{grid-template-columns:64px 1fr 1fr}
+    .cell{min-height:auto}
+    h1{font-size:30px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="eyebrow">Speakerbox · Launch Plan</div>
+    <h1>Baby&nbsp;Mee — Kochi Launch</h1>
+    <p class="sub">Feel The Love → Kochi felt the love</p>
+    <div class="month">Wed / Sat cadence &nbsp;·&nbsp; 4 weeks</div>
+  </div>
+
+  <div class="banner">
+    <strong>No dates locked.</strong> Sequence runs on a Wed/Sat cadence across four weeks, building to the inauguration in Week 3.
+    Share the inauguration date and I'll drop this straight onto a dated calendar.
+  </div>
+
+  <div class="legend">
+    <span><span class="dot pre"></span> Pre-launch — awareness</span>
+    <span><span class="dot launch"></span> Inauguration / launch</span>
+    <span><span class="dot post"></span> Post-launch — proof</span>
+  </div>
+
+  <!-- CADENCE GRID -->
+  <div class="cal">
+    <div class="cad-head"><div></div><div>Wednesday</div><div>Saturday</div></div>
+
+    <div class="cad-row">
+      <div class="wk">Week 1</div>
+      <div class="cell">
+        <span class="chip pre"><span class="t">Creative · Grid</span>Pre-launch 3-poster grid — Kochi.. Feel The Love</span>
+      </div>
+      <div class="cell">
+        <a class="chip pre" href="https://www.instagram.com/reel/DRuioPNE9Jf/" target="_blank"><span class="t">Reel 01</span>Mascot walks with children through Kochi ↗</a>
+      </div>
+    </div>
+
+    <div class="cad-row">
+      <div class="wk">Week 2</div>
+      <div class="cell">
+        <a class="chip pre" href="https://www.instagram.com/reel/DXdj9Q5Dr5C/" target="_blank"><span class="t">Reel 02</span>Mascot questions the public ↗</a>
+      </div>
+      <div class="cell">
+        <span class="chip pre"><span class="t">Seeding</span>Influencer reels — inform on inauguration</span>
+      </div>
+    </div>
+
+    <div class="cad-row">
+      <div class="wk">Week 3</div>
+      <div class="cell">
+        <span class="chip pre"><span class="t">Reel 03</span>Inauguration announcement — "We're ready"</span>
+      </div>
+      <div class="cell inaug">
+        <span class="inaug-flag">★ INAUGURATION</span>
+        <span class="chip launch"><span class="t">Reel 04</span>Inauguration video — child &amp; family influencers</span>
+      </div>
+    </div>
+
+    <div class="cad-row">
+      <div class="wk">Week 4</div>
+      <div class="cell">
+        <span class="chip launch"><span class="t">Creative · Grid</span>Launch 3-poster grid — Kochi felt the love</span>
+      </div>
+      <div class="cell">
+        <a class="chip post" href="https://www.instagram.com/reel/DSH63nIE3tj/" target="_blank"><span class="t">Reel 05</span>Baby Mee tour &amp; customer review ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQUENCE LIST -->
+  <div class="section-title">Sequence at a glance</div>
+
+  <div class="row"><div class="d">Week 1 · Wed</div><div class="body"><h4>Pre-launch 3-poster grid</h4><p>Kochi.. Feel The Love</p></div></div>
+  <div class="row"><div class="d">Week 1 · Sat</div><div class="body"><h4>Reel 01 · Public campaign with mascot</h4><p>Mascot walks with children through the streets of Kochi. <em>Need: poster.</em></p><a href="https://www.instagram.com/reel/DRuioPNE9Jf/" target="_blank">↗ Reference reel</a></div></div>
+  <div class="row"><div class="d">Week 2 · Wed</div><div class="body"><h4>Reel 02 · Questions by the mascot</h4><p>Engaging, fun, and thought-provoking interactions.</p><a href="https://www.instagram.com/reel/DXdj9Q5Dr5C/" target="_blank">↗ Reference reel</a></div></div>
+  <div class="row"><div class="d">Week 2 · Sat</div><div class="body"><h4>Influencer seeding</h4><p>Invite influencers to do reels to inform the audience on inauguration.</p></div></div>
+  <div class="row"><div class="d">Week 3 · Wed</div><div class="body"><h4>Reel 03 · Inauguration announcement</h4><p>"We're ready" type announcement video.</p></div></div>
+  <div class="row l"><div class="d">Week 3 · Sat</div><div class="body"><h4>★ Inauguration · Reel 04 · Inauguration video</h4><p>Child influencers and family influencers. Position Baby Mee as a brand centered around love and care.</p></div></div>
+  <div class="row"><div class="d">Week 4 · Wed</div><div class="body"><h4>Launch 3-poster grid</h4><p>Kochi felt the love.</p></div></div>
+  <div class="row"><div class="d">Week 4 · Sat</div><div class="body"><h4>Reel 05 · Baby Mee tour &amp; customer review</h4><p>Tour of Baby Mee. Customer testimonials / reviews.</p><a href="https://www.instagram.com/reel/DSH63nIE3tj/" target="_blank">↗ Reference reel</a></div></div>
+
+  <div class="note">
+    <h4>Open items</h4>
+    <ul>
+      <li><strong>Dates</strong> — <span class="ph">sequence is cadence-based only; no calendar dates set. Send the inauguration date to convert to a dated calendar.</span></li>
+      <li><strong>Creative count</strong> — <span class="ph">brief said "Creatives (5)"; only two 3-poster grids are placed. Confirm the remaining creatives so I can slot them in.</span></li>
+      <li><strong>Brand category</strong> — <span class="ph">Baby Mee treated as a premium baby/kids brand in Kochi (inferred, not stated). Confirm the exact descriptor.</span></li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
