@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zaara · Onam Campaign — Content Calendar (Aug 2026)</title>
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --card-2:#172131;
+    --border:#374151; --text:#E5E7EB; --muted:#9CA3AF;
+    --accent:#F97316; --accent-soft:rgba(249,115,22,.14);
+    --grid:#2563EB; --static:#38BDF8; --video:#F97316; --carousel:#10B981; --onam:#EAB308;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Google Sans","Product Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.5;
+    -webkit-font-smoothing:antialiased; padding:28px 18px 80px;
+  }
+  .wrap{max-width:1120px;margin:0 auto}
+
+  /* Header */
+  header{border:1px solid var(--border);background:linear-gradient(180deg,var(--card),var(--card-2));
+    border-radius:var(--radius);padding:26px 26px 22px;margin-bottom:20px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);display:inline-block}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);margin-top:6px;font-size:15px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{border:1px solid var(--border);background:rgba(255,255,255,.02);border-radius:999px;
+    padding:7px 13px;font-size:13px;color:var(--text)}
+  .chip b{color:var(--accent);font-weight:600}
+
+  /* Progress */
+  .progress-card{border:1px solid var(--border);background:var(--card);border-radius:var(--radius);
+    padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .progress-card .label{font-size:13px;color:var(--muted)}
+  .progress-card .count{font-size:22px;font-weight:700}
+  .count b{color:var(--accent)}
+  .bar{flex:1;min-width:180px;height:10px;background:#0b0f16;border:1px solid var(--border);
+    border-radius:999px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#fb923c);
+    transition:width .4s ease}
+  .reset{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:10px;
+    padding:8px 14px;font-size:12px;cursor:pointer}
+  .reset:hover{color:var(--text);border-color:var(--accent)}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .dot.grid{background:var(--grid)} .dot.static{background:var(--static)}
+  .dot.video{background:var(--video)} .dot.carousel{background:var(--carousel)}
+  .dot.onam{background:var(--onam)}
+
+  /* Month */
+  .month-title{font-size:15px;font-weight:600;letter-spacing:.02em;margin:6px 2px 12px;color:var(--text)}
+  .month-title small{color:var(--muted);font-weight:400}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .cal .head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    text-align:center;padding:4px 0}
+  .cell{min-height:96px;border:1px solid var(--border);background:var(--card);border-radius:12px;
+    padding:8px 8px 9px;position:relative;display:flex;flex-direction:column}
+  .cell.empty{background:transparent;border-color:transparent}
+  .cell .d{font-size:12px;color:var(--muted);font-weight:600}
+  .cell.today .d{color:var(--onam)}
+  .post{margin-top:6px;border-radius:9px;padding:7px 8px;cursor:pointer;border:1px solid transparent;
+    background:rgba(255,255,255,.03);transition:transform .12s ease,border-color .12s ease}
+  .post:hover{transform:translateY(-1px);border-color:var(--accent)}
+  .post .fmt{font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;display:flex;
+    align-items:center;gap:5px}
+  .post .t{font-size:11.5px;color:var(--text);margin-top:3px;line-height:1.35}
+  .post.done{opacity:.5}
+  .post.done .t{text-decoration:line-through}
+  .bar-fmt{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .post.grid .fmt{color:var(--grid)} .post.grid .bar-fmt{background:var(--grid)}
+  .post.static .fmt{color:var(--static)} .post.static .bar-fmt{background:var(--static)}
+  .post.video .fmt{color:var(--video)} .post.video .bar-fmt{background:var(--video)}
+  .post.carousel .fmt{color:var(--carousel)} .post.carousel .bar-fmt{background:var(--carousel)}
+  .post.onam-post{background:var(--accent-soft)}
+  .onam-flag{position:absolute;top:7px;right:8px;font-size:9px;font-weight:700;color:var(--onam);
+    letter-spacing:.06em;text-transform:uppercase}
+
+  /* Modal */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.66);backdrop-filter:blur(3px);
+    display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow-y:auto}
+  .overlay.open{display:flex}
+  .modal{width:100%;max-width:600px;background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius);padding:26px;animation:pop .18s ease}
+  @keyframes pop{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .modal .fmt-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 10px;border-radius:999px;border:1px solid var(--border)}
+  .modal h3{font-size:21px;font-weight:700;margin:14px 0 4px;letter-spacing:-.01em}
+  .modal .date-row{color:var(--muted);font-size:13px;margin-bottom:16px}
+  .close{background:transparent;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
+  .close:hover{color:var(--text)}
+  .field{margin-top:14px}
+  .field .k{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);
+    font-weight:600;margin-bottom:5px}
+  .field .v{font-size:14px;color:var(--text)}
+  .field .v.ml{color:#fcd9b6}
+  .ph{color:var(--onam);font-style:italic}
+  .field a{color:var(--static);word-break:break-all;font-size:13px}
+  .modal .actions{margin-top:22px;display:flex;gap:10px}
+  .btn{border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border)}
+  .btn.primary{background:var(--accent);color:#111;border-color:var(--accent)}
+  .btn.ghost{background:transparent;color:var(--text)}
+  .btn.ghost:hover{border-color:var(--accent)}
+  .note{margin-top:22px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:14px}
+  .note b{color:var(--text)}
+  footer{margin-top:26px;font-size:12px;color:var(--muted);text-align:center}
+  @media(max-width:640px){
+    .cell{min-height:auto}
+    .cal .head{display:none}
+    .cal{grid-template-columns:1fr;gap:8px}
+    .cell.empty{display:none}
+    .cell{flex-direction:row;align-items:flex-start;gap:10px}
+    .cell .d{min-width:42px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Speakerbox · Content Calendar</div>
+    <h1>Zaara — <span>Onam Campaign</span> 2026</h1>
+    <div class="sub">10-post festive run · teaser → scheme → product push → Thiruvonam → footfall</div>
+    <div class="meta">
+      <div class="chip"><b>Window:</b> 07 Aug – 02 Sep 2026</div>
+      <div class="chip"><b>Posts:</b> 10</div>
+      <div class="chip"><b>Anchor:</b> Thiruvonam · Wed 26 Aug</div>
+      <div class="chip"><b>Mix:</b> 5 video · 2 static · 1 carousel · 1 grid · 1 Onam creative</div>
+    </div>
+  </header>
+
+  <div class="progress-card">
+    <div>
+      <div class="label">Scheduled &amp; done</div>
+      <div class="count"><b id="doneCount">0</b> / 10 posts</div>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <button class="reset" id="resetBtn">Reset progress</button>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot grid"></i>Grid / teaser</span>
+    <span><i class="dot static"></i>Static</span>
+    <span><i class="dot video"></i>Video / reel</span>
+    <span><i class="dot carousel"></i>Carousel</span>
+    <span><i class="dot onam"></i>Onam creative</span>
+  </div>
+
+  <div class="month-title">August 2026 <small>· campaign build-up (from 06 Aug)</small></div>
+  <div class="cal" id="augGrid"></div>
+
+  <div class="month-title" style="margin-top:26px">September 2026 <small>· post-Onam footfall</small></div>
+  <div class="cal" id="sepGrid"></div>
+
+  <footer>Speakerbox UI Kit · dark deliverable · bracketed values are placeholders awaiting client confirmation</footer>
+</div>
+
+<!-- Modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const posts = [
+  {
+    id:1, day:7, month:8, weekday:"Fri", format:"grid", label:"Grid / Teaser",
+    stage:"Awareness · TOFU", onam:false,
+    title:'"പെണ്ണോടിയാൽ Zara വരെ" — teaser hook',
+    objective:"Open the campaign with a witty, high-recall grid teaser that positions Zaara as *the* Onam destination and builds curiosity for the scheme to come. No offer reveal yet.",
+    caption:"Play on the Malayalam line to tease that the Onam collection has landed. Curiosity-first, no details. End with a soft 'coming soon / stay tuned' beat.",
+    ml:'പെണ്ണോടിയാൽ Zara വരെ',
+    reference:"",
+    warn:"'Zara' is a registered global fashion brand. Using its name in a pun carries trademark/brand-safety risk — recommend a quick brand/legal sign-off before publishing, or a safe alternative spelling."
+  },
+  {
+    id:2, day:10, month:8, weekday:"Mon", format:"static", label:"Static",
+    stage:"Consideration · MOFU", onam:false,
+    title:"Scheme introduction",
+    objective:"Introduce the Onam scheme clearly in a single, scannable static creative — what it is and who it's for.",
+    caption:"State the scheme plainly. Lead with the benefit, keep it clean and legible for the feed.",
+    ml:"",
+    reference:"",
+    fields:[["Scheme name","[scheme / offer name]"],["Scheme details","[what the customer gets]"]]
+  },
+  {
+    id:3, day:13, month:8, weekday:"Thu", format:"video", label:"Video",
+    stage:"Consideration · MOFU", onam:false,
+    title:"Scheme introduction — video (Onam-tied, offer date)",
+    objective:"Motion version of the scheme intro, framed around Onam. Must clearly state the offer validity/date.",
+    caption:"Warm Onam framing → introduce the scheme → call out the offer date on screen and in caption.",
+    ml:"",
+    reference:"",
+    fields:[["Offer date to mention","[offer start–end date]"],["Scheme details","[what the customer gets]"]]
+  },
+  {
+    id:4, day:17, month:8, weekday:"Mon", format:"carousel", label:"Carousel",
+    stage:"Consideration · MOFU", onam:false,
+    title:"Product showcase — carousel",
+    objective:"Multi-slide product showcase of the Onam range. Follow the reference post's carousel structure/pacing.",
+    caption:"Slide-by-slide product story; one hero look per slide, price/detail where confirmed.",
+    ml:"",
+    reference:"https://www.instagram.com/p/Da2KlWfRnvP/",
+    fields:[["Products featured","[SKUs / looks to include]"]]
+  },
+  {
+    id:5, day:20, month:8, weekday:"Thu", format:"static", label:"Static",
+    stage:"Conversion · BOFU", onam:false,
+    title:"Scheme / offer reminder — static",
+    objective:"Reinforce the offer as Onam nears. Offer terms front and centre; light urgency.",
+    caption:"Offer-forward. Repeat the validity date. Clear next step (visit / DM / shop).",
+    ml:"",
+    reference:"",
+    fields:[["Offer details","[discount / bundle terms]"],["Valid till","[offer end date]"]]
+  },
+  {
+    id:6, day:22, month:8, weekday:"Sat", format:"video", label:"Video",
+    stage:"Consideration · MOFU", onam:false,
+    title:"Product showcase — video",
+    objective:"Reel-style product showcase. Follow the reference reel's edit style/pacing.",
+    caption:"Movement-led product reel; let the fabric/fit do the talking. Trending-audio friendly.",
+    ml:"",
+    reference:"https://www.instagram.com/reel/DXEX1FJjI0D/",
+    fields:[["Products featured","[SKUs / looks to include]"]]
+  },
+  {
+    id:7, day:24, month:8, weekday:"Mon", format:"video", label:"Video",
+    stage:"Conversion · BOFU", onam:false,
+    title:"Scheme reminder — video (pre-Onam urgency)",
+    objective:"Final offer push two days before Thiruvonam. Drive action now.",
+    caption:"Urgency beat: 'before Onam' framing, repeat offer + date, strong CTA.",
+    ml:"",
+    reference:"",
+    fields:[["Offer details","[discount / bundle terms]"],["Valid till","[offer end date]"]]
+  },
+  {
+    id:8, day:26, month:8, weekday:"Wed", format:"static", label:"Static", onamFormat:true,
+    stage:"Brand · Engagement", onam:true,
+    title:"Thiruvonam creative — greeting",
+    objective:"Festive Onam-day greeting creative. Brand warmth, not selling. Highest-visibility day of the run.",
+    caption:"Heartfelt Thiruvonam wish from Zaara. Brand-led, minimal/no offer.",
+    ml:"[Onam greeting line — Malayalam, native-proof before publish]",
+    reference:""
+  },
+  {
+    id:9, day:28, month:8, weekday:"Fri", format:"video", label:"Video",
+    stage:"Consideration · MOFU", onam:false,
+    title:"Product showcase — video",
+    objective:"Post-Onam product reel to keep momentum on the collection.",
+    caption:"Fresh product angle / new looks; carry the festive glow into the tail of the campaign.",
+    ml:"",
+    reference:"",
+    fields:[["Products featured","[SKUs / looks to include]"]]
+  },
+  {
+    id:10, day:2, month:9, weekday:"Wed", format:"video", label:"Video",
+    stage:"Conversion · BOFU", onam:false,
+    title:"Store showcase — interior, exterior, shop",
+    objective:"Close the run by showcasing the physical store (interior, exterior, experience) to convert online attention into footfall.",
+    caption:"Walk-through of the space; location + hours; invite people in.",
+    ml:"",
+    reference:"",
+    fields:[["Include","Storefront / exterior · interior · billing/experience"],["Location + hours","[store address, timings]"]]
+  }
+];
+
+const STORE_KEY = "zaara_onam_2026_done";
+let done = new Set();
+try{ const s = localStorage.getItem(STORE_KEY); if(s) done = new Set(JSON.parse(s)); }catch(e){}
+
+const WD = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+// Aug 1 2026 = Saturday (index 6); Sep 1 2026 = Tuesday (index 2)
+function buildMonth(elId, monthNum, firstIdx, numDays, startDay){
+  startDay = startDay || 1;
+  const el = document.getElementById(elId);
+  el.innerHTML = "";
+  WD.forEach(w=>{ const h=document.createElement("div"); h.className="head"; h.textContent=w; el.appendChild(h); });
+  for(let i=0;i<firstIdx;i++){ const c=document.createElement("div"); c.className="cell empty"; el.appendChild(c); }
+  for(let d=startDay; d<=numDays; d++){
+    const c=document.createElement("div"); c.className="cell";
+    const isOnam = (monthNum===8 && d===26);
+    if(isOnam) c.classList.add("today");
+    c.innerHTML = `<div class="d">${d}${isOnam?' 🌸':''}</div>`;
+    const p = posts.find(x=>x.month===monthNum && x.day===d);
+    if(p){
+      const pe=document.createElement("div");
+      pe.className=`post ${p.format}${p.onam?' onam-post':''}${done.has(p.id)?' done':''}`;
+      pe.innerHTML=`<div class="fmt"><span class="bar-fmt"></span>${p.label}</div><div class="t">${p.title.replace(/"/g,'')}</div>`;
+      if(p.onam) pe.insertAdjacentHTML('beforeend','<span class="onam-flag">Onam</span>');
+      pe.onclick=()=>openModal(p.id);
+      c.appendChild(pe);
+    }
+    el.appendChild(c);
+  }
+}
+function openModal(id){
+  const p = posts.find(x=>x.id===id);
+  const isDone = done.has(id);
+  let fields = "";
+  fields += `<div class="field"><div class="k">Objective</div><div class="v">${p.objective}</div></div>`;
+  fields += `<div class="field"><div class="k">Caption direction</div><div class="v">${p.caption}</div></div>`;
+  if(p.ml){ fields += `<div class="field"><div class="k">Hook / Malayalam <span style="color:var(--muted)">(native-proof before publish)</span></div><div class="v ml">${esc(p.ml)}</div></div>`; }
+  if(p.fields){ p.fields.forEach(f=>{
+    const val = /^\[.*\]$/.test(f[1]) ? `<span class="ph">${f[1]}</span>` : f[1];
+    fields += `<div class="field"><div class="k">${f[0]}</div><div class="v">${val}</div></div>`;
+  }); }
+  if(p.reference){ fields += `<div class="field"><div class="k">Format reference</div><div class="v"><a href="${p.reference}" target="_blank" rel="noopener">${p.reference}</a></div></div>`; }
+  if(p.warn){ fields += `<div class="note"><b>⚠ Flag:</b> ${p.warn}</div>`; }
+
+  const fmtColor = {grid:"var(--grid)",static:"var(--static)",video:"var(--video)",carousel:"var(--carousel)"}[p.format];
+  document.getElementById("modal").innerHTML = `
+    <div class="top">
+      <span class="fmt-tag" style="color:${fmtColor};border-color:${fmtColor}">${p.label}</span>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <h3>Post ${p.id} · ${p.title}</h3>
+    <div class="date-row">${p.weekday}, ${String(p.day).padStart(2,'0')}/${String(p.month).padStart(2,'0')}/2026 · ${p.stage}</div>
+    ${fields}
+    <div class="actions">
+      <button class="btn primary" onclick="toggleDone(${p.id})">${isDone?'↺ Mark not done':'✓ Mark done'}</button>
+      <button class="btn ghost" onclick="closeModal()">Close</button>
+    </div>`;
+  document.getElementById("overlay").classList.add("open");
+}
+function closeModal(){ document.getElementById("overlay").classList.remove("open"); }
+function toggleDone(id){
+  if(done.has(id)) done.delete(id); else done.add(id);
+  save(); render(); closeModal();
+}
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify([...done])); }catch(e){} }
+function esc(s){ return s.replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function render(){
+  buildMonth("augGrid",8,4,31,6);  // start at Aug 6 (Thu); Aug 1-5 removed
+  buildMonth("sepGrid",9,2,2,1);   // Sep 1 = Tue; stop at Sep 2 (campaign end)
+  const n = done.size;
+  document.getElementById("doneCount").textContent = n;
+  document.getElementById("barFill").style.width = (n/10*100)+"%";
+}
+document.getElementById("resetBtn").onclick=()=>{ done.clear(); save(); render(); };
+document.getElementById("overlay").onclick=(e)=>{ if(e.target.id==="overlay") closeModal(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
+render();
+</script>
+</body>
+</html>
