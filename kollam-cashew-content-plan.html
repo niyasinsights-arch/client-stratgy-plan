@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kollam Cashew – Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --card-hover:#242e3d;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Google Sans','Product Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    padding:48px 24px 80px;
+    min-height:100vh;
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:40px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    color:var(--accent);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  h1{font-size:30px;font-weight:700;letter-spacing:-.01em;}
+  .meta{color:var(--muted);font-size:14px;text-align:right;}
+  .meta strong{color:var(--text);}
+
+  .legend{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12px;font-weight:500;color:var(--muted);
+    border:1px solid var(--border);border-radius:999px;
+    padding:5px 12px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;}
+  .dot.video{background:var(--accent);}
+  .dot.poster{background:#60A5FA;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr;}}
+
+  .day-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .day-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+
+  .day-row{display:flex;justify-content:space-between;align-items:center;}
+  .day-label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+  .type-badge{
+    font-size:11px;font-weight:700;letter-spacing:.03em;
+    padding:4px 10px;border-radius:999px;
+    text-transform:uppercase;
+  }
+  .type-badge.video{background:rgba(249,115,22,.15);color:var(--accent);}
+  .type-badge.poster{background:rgba(96,165,250,.15);color:#60A5FA;}
+
+  .idea{font-size:17px;font-weight:700;line-height:1.35;color:var(--text);}
+
+  .fmt-row{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--muted);
+    padding-top:10px;border-top:1px solid var(--border);
+  }
+  .fmt-row svg{flex-shrink:0;opacity:.7;}
+
+  .ref{
+    font-size:12.5px;color:var(--muted);
+    display:flex;align-items:center;gap:6px;
+  }
+  .ref .link-ico{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:18px;height:18px;border-radius:5px;
+    background:rgba(249,115,22,.12);color:var(--accent);
+    font-size:11px;flex-shrink:0;
+  }
+  .ref.empty{color:#4B5563;font-style:italic;}
+
+  .note{
+    margin-top:36px;
+    background:rgba(249,115,22,.06);
+    border:1px solid rgba(249,115,22,.25);
+    border-radius:10px;
+    padding:14px 18px;
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+  .note strong{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="eyebrow">Speakerbox · Client Deliverable</div>
+      <h1>Kollam Cashew — Content Plan</h1>
+    </div>
+    <div class="meta">6-day content sequence<br><strong>3 AI Videos · 3 Posters</strong></div>
+  </header>
+
+  <div class="legend">
+    <span class="tag"><span class="dot video"></span>AI Video (Reel)</span>
+    <span class="tag"><span class="dot poster"></span>Poster (Static)</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 1</span>
+        <span class="type-badge video">AI Video</span>
+      </div>
+      <div class="idea">AI Brand/Product Video</div>
+      <div class="fmt-row">Reel</div>
+      <div class="ref"><span class="link-ico">↗</span>Reference Reel 1 — Instagram Reel</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 2</span>
+        <span class="type-badge poster">Poster</span>
+      </div>
+      <div class="idea">Independence Day Creative</div>
+      <div class="fmt-row">Static Post</div>
+      <div class="ref empty">No reel reference</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 3</span>
+        <span class="type-badge video">AI Video</span>
+      </div>
+      <div class="idea">AI Brand/Product Video</div>
+      <div class="fmt-row">Reel</div>
+      <div class="ref"><span class="link-ico">↗</span>Reference Reel 2 — Instagram Reel</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 4</span>
+        <span class="type-badge poster">Poster</span>
+      </div>
+      <div class="idea">Onam Wish Creative</div>
+      <div class="fmt-row">Static Post</div>
+      <div class="ref empty">No reel reference</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 5</span>
+        <span class="type-badge video">AI Video</span>
+      </div>
+      <div class="idea">AI Brand/Product Video</div>
+      <div class="fmt-row">Reel</div>
+      <div class="ref"><span class="link-ico">↗</span>Reference Reel 3 — Instagram Reel</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-row">
+        <span class="day-label">Day 6</span>
+        <span class="type-badge poster">Poster</span>
+      </div>
+      <div class="idea">Poster 3 — Brand/Product Creative</div>
+      <div class="fmt-row">Static Post</div>
+      <div class="ref empty">No reel reference</div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> Content is arranged in the order you provided (Day 1–6), alternating AI Video and Poster. The sheet didn't include actual calendar dates — Independence Day (15 Aug) and Onam fall in August, but I haven't assumed specific dates for Day 1, 3, 5, or 6 since those weren't given. Let me know the actual publish dates and I'll slot them in.
+  </div>
+
+</div>
+</body>
+</html>
