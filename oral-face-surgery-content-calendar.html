@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral &amp; Face Surgery — Instagram Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4ECDE;--panel:#FBF6EC;--panel-2:#F6EEDF;--cell:#FCF9F2;--header-bar:#3E2A1C;
+    --ink:#3A2A1E;--ink-soft:#8A7259;--ink-mute:#A9977F;--line:#E4D7C1;--line-soft:#EEE4D2;
+    --brown:#6E4A2E;--brown-2:#8A5A34;--cream:#FBF6EC;--fn-a:#C8922E;--fn-c:#B5651D;--fn-x:#8C3B22;
+    --radius:14px;--font:'Google Sans','Product Sans','Inter',Roboto,system-ui,-apple-system,Segoe UI,sans-serif;--serif:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;padding:0 20px 80px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .hero{margin-top:36px;padding:40px 40px 34px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#FCF7ED,#F7EFE0);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(181,101,29,.14),transparent 70%)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brown-2);border:1px solid var(--line);background:#fff8ee;padding:6px 12px;border-radius:999px}
+  .hero h1{font-family:var(--serif);font-size:36px;font-weight:600;margin:16px 0 8px;letter-spacing:-.01em;line-height:1.1;color:var(--ink)}
+  .hero .sub{color:var(--ink-soft);max-width:640px;font-size:15px}
+  .count-line{margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .count-line b{color:var(--brown-2)}
+  .progress-wrap{display:flex;align-items:center;gap:16px;margin:24px 2px 0}
+  .progress-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+  .progress-label b{color:var(--brown-2)}
+  .track{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .track-fill{height:100%;width:0;background:linear-gradient(90deg,var(--fn-a),var(--fn-c));border-radius:999px;transition:width .3s ease}
+  .reset-btn{font:inherit;font-size:12px;font-weight:600;color:var(--brown-2);background:#fff8ee;border:1px solid var(--line);border-radius:9px;padding:7px 14px;cursor:pointer;transition:background .15s}
+  .reset-btn:hover{background:#f3e7d4}
+  .note{margin-top:22px;padding:16px 18px;background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--brown);border-radius:12px;font-size:13.5px;color:var(--ink-soft)}
+  .note b{color:var(--ink)}
+  .sec-title{display:flex;align-items:center;gap:12px;margin:44px 0 18px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .sec-title::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--brown)}
+  .sec-title::after{content:"";flex:1;height:1px;background:var(--line)}
+  .legend{display:flex;flex-wrap:wrap;gap:10px}
+  .legend .lg{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 13px}
+  .legend .lg .tile{width:26px;height:26px}
+  .legend .lg span{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+  .fdot{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 13px}
+  .fdot i{width:10px;height:10px;border-radius:50%}
+  .tile{border-radius:8px;display:grid;place-items:center;flex:none}
+  .tile svg{width:56%;height:56%;fill:var(--cream);stroke:none}
+  .fmt-reel{background:#6E4A2E}.fmt-carousel{background:#8A5A34}.fmt-static{background:#A9764A}
+  .tile.static-ic svg{fill:none;stroke:var(--cream);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .month{margin-bottom:26px}
+  .month h3{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.02em;color:var(--brown);margin:0 2px 10px}
+  .cal{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);background:var(--header-bar)}
+  .dow div{padding:11px 12px;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:#E9D9C4;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr)}
+  .day{min-height:96px;border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:8px 8px 6px;position:relative;background:var(--cell)}
+  .grid .day:nth-child(7n){border-right:none}
+  .day.blank{background:repeating-linear-gradient(-45deg,transparent,transparent 6px,rgba(180,150,110,.06) 6px,rgba(180,150,110,.06) 12px)}
+  .day.off{background:repeating-linear-gradient(-45deg,var(--cell),var(--cell) 7px,#F3EBDB 7px,#F3EBDB 14px)}
+  .dnum{font-size:12px;font-weight:600;color:#8B7FA0}
+  .day .chk{position:absolute;top:7px;right:7px}
+  .post-tile{display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:12px;text-align:center}
+  .post-tile .tile{width:34px;height:34px}
+  .post-tile .pf{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .post-tile .pn{font-size:9.5px;font-weight:600;color:var(--brown-2)}
+  input.chk{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.5px solid var(--brown);border-radius:4px;background:#fff8ee;cursor:pointer;position:relative;flex:none;transition:background .12s}
+  input.chk:checked{background:var(--brown);border-color:var(--brown)}
+  input.chk:checked::after{content:"";position:absolute;left:4.5px;top:1px;width:4px;height:9px;border:solid var(--cream);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .piece{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin-bottom:10px;overflow:hidden;transition:border-color .15s}
+  .piece.open{border-color:var(--brown)}
+  .piece-head{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer}
+  .piece-head:hover{background:var(--panel-2)}
+  .pnum{font-size:12px;font-weight:700;color:var(--ink-mute);min-width:20px}
+  .piece-head .tile{width:32px;height:32px}
+  .pmeta{flex:1;min-width:0}
+  .ptitle{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+  .psub{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px;display:flex;align-items:center;gap:7px}
+  .psub i{width:8px;height:8px;border-radius:50%;flex:none}
+  .pdate{text-align:right;font-size:12.5px;font-weight:700;color:var(--brown-2);white-space:nowrap;line-height:1.2}
+  .pdate small{display:block;font-size:9px;font-weight:600;letter-spacing:.1em;color:var(--ink-mute)}
+  .caret{color:var(--ink-mute);font-size:12px;transition:transform .2s;flex:none}
+  .piece.open .caret{transform:rotate(180deg)}
+  .piece-body{display:none;padding:4px 18px 20px 18px;border-top:1px solid var(--line-soft)}
+  .piece.open .piece-body{display:block}
+  .block{margin:15px 0}
+  .block-label{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:7px}
+  .plain{font-size:14px;color:var(--ink)}
+  .lines{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .lines li{position:relative;padding-left:18px;font-size:14px;color:var(--ink)}
+  .lines li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--brown-2)}
+  .flow{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .flow li{display:flex;gap:12px;font-size:13.5px;color:var(--ink);padding:9px 12px;background:var(--panel-2);border:1px solid var(--line-soft);border-radius:9px}
+  .flow li b{color:var(--brown-2);font-weight:700;flex:none;min-width:56px;font-size:11px;letter-spacing:.03em}
+  .quote-lines{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .quote-lines li{font-size:13.5px;color:var(--ink);padding-left:15px;border-left:2px solid #D9B98E}
+  .caption-box{background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--brown);border-radius:11px;padding:14px 16px;margin-top:4px}
+  .caption-box .block-label{color:var(--brown-2)}
+  .caption-box p{font-size:14px;color:var(--ink);white-space:pre-line}
+  .cta{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:linear-gradient(135deg,var(--brown-2),var(--brown));color:var(--cream);font-weight:700;font-size:12.5px;padding:9px 15px;border-radius:9px}
+  .cta::before{content:"▸";font-size:11px}
+  .divider-note{margin:4px 0 12px;padding:10px 12px;font-size:11.5px;color:var(--ink-soft);border:1px dashed var(--line);border-radius:9px;background:#fff8ee}
+  .foot{margin-top:52px;padding:24px 26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);color:var(--ink-soft);font-size:13px}
+  .foot b{color:var(--ink)}
+  .foot ul{margin:10px 0 0 18px;display:flex;flex-direction:column;gap:6px}
+  @media(max-width:640px){
+    body{padding:0 12px 60px}.hero{padding:28px 20px}.hero h1{font-size:27px}
+    .day{min-height:74px;padding:6px 5px}.post-tile .pf,.post-tile .pn{font-size:8.5px}
+    .dow div{padding:8px 5px;font-size:9px}.pdate{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Content Calendar · Post Order</span>
+    <h1>Oral &amp; Face Surgery — Instagram Content Plan</h1>
+    <p class="sub">Fourteen pieces laid out in your original post order (Post 1, 2, 4, 5 …), with each piece tagged by funnel stage. Every caption, hook and CTA is kept exactly as written.</p>
+    <div class="count-line"><b>9</b> Reels &nbsp;·&nbsp; <b>4</b> Carousels &nbsp;·&nbsp; <b>1</b> Static</div>
+    <div class="progress-wrap">
+      <span class="progress-label"><b id="doneCount">0</b> / 14 delivered</span>
+      <div class="track"><div class="track-fill" id="trackFill"></div></div>
+      <button class="reset-btn" id="resetBtn">Reset</button>
+    </div>
+  </header>
+
+  <div class="note">
+    <b>Order:</b> sequenced by your original post numbers (Post&nbsp;1 → Post&nbsp;14; note there is no Post&nbsp;3 and two Post&nbsp;13s in your plan). Funnel stage shows as a coloured tag on each piece.
+    <b>Dates (17 Aug → 12 Sep 2026, ~one every 2 days) are a placeholder cadence</b> you can shift.
+  </div>
+
+  <div class="sec-title">Legend</div>
+  <div class="legend">
+    <div class="lg"><span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span>Reel</span></div>
+    <div class="lg"><span class="tile fmt-carousel"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg></span><span>Carousel</span></div>
+    <div class="lg"><span class="tile fmt-static static-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.4"/><path d="M5 17l4.5-4 3 2.5 3-3L20 16"/></svg></span><span>Static</span></div>
+    <div class="fdot"><i style="background:var(--fn-a)"></i>Awareness</div>
+    <div class="fdot"><i style="background:var(--fn-c)"></i>Consideration</div>
+    <div class="fdot"><i style="background:var(--fn-x)"></i>Conversion</div>
+  </div>
+
+  <div class="sec-title">The Calendar</div>
+  <div id="calendars"></div>
+
+  <div class="sec-title">The Fourteen Pieces</div>
+
+  <!-- 01 · Post 1 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="1">
+      <span class="pnum">01</span>
+      <span class="tile fmt-carousel"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg></span>
+      <div class="pmeta"><div class="ptitle">5 questions to ask before choosing an implant clinic</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 1 · Carousel · Consideration</div></div>
+      <div class="pdate">17 Aug<small>MON</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Angle</div><p class="plain">"5 questions to ask before choosing an implant clinic" – positions you as transparent and expert ( carusal )</p></div>
+    </div>
+  </div>
+
+  <!-- 02 · Post 2 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="2">
+      <span class="pnum">02</span>
+      <span class="tile fmt-static static-ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.4"/><path d="M5 17l4.5-4 3 2.5 3-3L20 16"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Patient Testimonial</div><div class="psub"><i style="background:var(--fn-x)"></i>Post 2 · Static Post · Conversion</div></div>
+      <div class="pdate">19 Aug<small>WED</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Concept</div><p class="plain">Patient testimonial (text + photo with consent) – "How implants changed my confidence"</p></div>
+    </div>
+  </div>
+
+  <!-- 03 · Post 4 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="3">
+      <span class="pnum">03</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Reel — Jaw Surgery Explained</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 4 · Reel · Consideration</div></div>
+      <div class="pdate">21 Aug<small>FRI</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Points</div>
+        <ul class="lines"><li>"What actually happens in jaw surgery?"</li><li>Incisions mostly inside the mouth</li><li>Bone cut &amp; repositioned</li><li>Fixed with plates/screws</li><li>No wires in most modern cases</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 · Post 5 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="4">
+      <span class="pnum">04</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Reel — "Why we do CBCT before every surgery"</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 5 · Reel · Consideration</div></div>
+      <div class="pdate">23 Aug<small>SUN</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Visual</div><p class="plain">Show CBCT machine + 3D scan on screen</p></div>
+      <div class="block"><div class="block-label">Points</div>
+        <ul class="lines"><li>"Get bone in 3D"</li><li>"Plan precisely, avoid nerves &amp; sinuses"</li><li>"More accurate, safer wisdom tooth &amp; implant surgery" [fda +3]</li></ul>
+      </div>
+      <span class="cta">CTA: "DM 'CBCT' to see how your case will be planned."</span>
+    </div>
+  </div>
+
+  <!-- 05 · Post 6 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="5">
+      <span class="pnum">05</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Reel — "Why choose us for wisdom tooth &amp; jaw surgery?"</div><div class="psub"><i style="background:var(--fn-x)"></i>Post 6 · Reel · Conversion</div></div>
+      <div class="pdate">25 Aug<small>TUE</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Visual</div><p class="plain">Quick cuts: CBCT machine, Piezo handpiece, surgeon planning, smiling patients.</p></div>
+      <div class="block"><div class="block-label">Text</div>
+        <ul class="lines"><li>"CBCT 3D planning"</li><li>"Piezosurgery – minimally invasive"</li><li>"Zygoma &amp; full-mouth expertise"</li><li>"Safe, precise, affordable" [nih +4]</li></ul>
+      </div>
+      <span class="cta">CTA: "DM 'VISIT' to book your consultation."</span>
+    </div>
+  </div>
+
+  <!-- 06 · Post 7 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="6">
+      <span class="pnum">06</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Clinic Introduction Reel</div><div class="psub"><i style="background:var(--fn-a)"></i>Post 7 · Reel · 20–30 sec · Awareness</div></div>
+      <div class="pdate">27 Aug<small>THU</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="divider-note">1. "Who We Are" Brand Posts — Clinic Introduction Reel</div>
+      <div class="block"><div class="block-label">Visuals</div><p class="plain">Outside of clinic → reception → CBCT machine → surgeon greeting → smiling patient (with consent).</p></div>
+      <div class="block"><div class="block-label">On-screen text</div>
+        <ul class="lines"><li>"Advanced Oral &amp; Facial Surgery Center"</li><li>"CBCT -  Zygoma Implants -  Piezosurgery -  Jaw Surgery"</li><li>"Serving [City] &amp; Kerala"</li></ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>സാധാരണ ഡെന്റൽ ക്ലിനിക് മാത്രമല്ല – സമർപ്പിത ഓറൽ &amp; മാക്സിലോഫേഷ്യൽ സർജറി സെന്റർ.
+
+At The Oral and Face Surgery, we focus on wisdom tooth removal, jaw surgery, zygoma implants, and full-mouth rehabilitation – all planned with CBCT 3D imaging for safety and precision.</p></div>
+    </div>
+  </div>
+
+  <!-- 07 · Post 8 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="7">
+      <span class="pnum">07</span>
+      <span class="tile fmt-carousel"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"Why We Started This Center"</div><div class="psub"><i style="background:var(--fn-a)"></i>Post 8 · Carousel or Reel · Awareness</div></div>
+      <div class="pdate">29 Aug<small>SAT</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Slides / Scenes</div>
+        <ul class="lines"><li>Surgeon photo</li><li>Short story: training, why oral surgery, vision</li><li>"Our goal: safe, advanced, affordable surgery for everyone in Kerala"</li></ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>Every patient deserves access to advanced oral surgery – without fear, without compromise.
+
+Our center was started to bring CBCT-guided planning, zygoma implants, and piezosurgery to patients in [City] and across Kerala, so complex cases can be treated safely close</p></div>
+    </div>
+  </div>
+
+  <!-- 08 · Post 9 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="8">
+      <span class="pnum">08</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"Our Tech Advantage" Reel</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 9 · Reel · Fast-cut · Consideration</div></div>
+      <div class="pdate">31 Aug<small>MON</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Shots</div><p class="plain">CBCT scan → 3D model on screen → Piezo handpiece → zygoma implant model → surgeon explaining.</p></div>
+      <div class="block"><div class="block-label">Text on screen</div>
+        <ul class="lines"><li>"CBCT 3D Planning"</li><li>"Piezosurgery – Minimally Invasive"</li><li>"Zygoma &amp; Full-Mouth Implants"</li><li>"Advanced Anesthesia &amp; Pain Control"</li></ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>Your surgery is planned in 3D before we even touch your tooth.  
+
+With CBCT, Piezosurgery, and advanced implant systems, we make wisdom tooth removal, jaw surgery, and full-mouth implants more precise, less invasive, and safer.</p></div>
+    </div>
+  </div>
+
+  <!-- 09 · Post 10 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="9">
+      <span class="pnum">09</span>
+      <span class="tile fmt-carousel"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"Meet the Surgeon" Carousel</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 10 · Carousel · 5–6 slides · Consideration</div></div>
+      <div class="pdate">2 Sep<small>WED</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Slides</div>
+        <ul class="lines">
+          <li>Slide 1: Surgeon photo + name</li>
+          <li>Slide 2: Qualifications (MDS, fellowships, etc.)</li>
+          <li>Slide 3: Special focus: wisdom tooth, jaw surgery, zygoma</li>
+          <li>Slide 4: Memberships / trainings (simple icons)</li>
+          <li>Slide 5: "Trusted by patients across [City] &amp; Kerala"</li>
+          <li>Slide 6: CTA – "Book your consultation"</li>
+        </ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>Behind every safe surgery is an experienced surgeon.
+
+Dr. [Name] specializes in oral &amp; maxillofacial surgery – wisdom tooth removal, corrective jaw surgery, zygoma implants, and full-mouth rehabilitation – all planned with CBCT for maximum safety.</p></div>
+    </div>
+  </div>
+
+  <!-- 10 · Post 11 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="10">
+      <span class="pnum">10</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"A Day in Our Clinic" Reel</div><div class="psub"><i style="background:var(--fn-a)"></i>Post 11 · Reel · 20–30 sec · Awareness</div></div>
+      <div class="pdate">4 Sep<small>FRI</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Shots</div><p class="plain">Receptionist greeting → patient check-in → CBCT scan → surgeon explaining on screen → staff sterilizing instruments → patient leaving with a smile.</p></div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>From the moment you walk in, your safety and comfort are our priority
+
+Strict sterilization, advanced equipment, and a friendly team – that's The Oral and Face Surgery</p></div>
+    </div>
+  </div>
+
+  <!-- 11 · Post 12 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="11">
+      <span class="pnum">11</span>
+      <span class="tile fmt-carousel"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"Why Patients Choose Us" Carousel</div><div class="psub"><i style="background:var(--fn-x)"></i>Post 12 · Carousel · 5–6 slides · Conversion</div></div>
+      <div class="pdate">6 Sep<small>SUN</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="divider-note">Trust &amp; Social Proof (Brand Credibility)</div>
+      <div class="block"><div class="block-label">Slides</div>
+        <ul class="lines">
+          <li>Slide 1: "Why patients choose us?"</li>
+          <li>Slide 2: "Specialist oral &amp; maxillofacial surgeon"</li>
+          <li>Slide 3: "CBCT 3D planning for every surgery"</li>
+          <li>Slide 4: "Piezosurgery &amp; advanced pain control"</li>
+          <li>Slide 5: "Zygoma &amp; full-mouth implant expertise"</li>
+          <li>Slide 6: "Affordable, transparent, and patient-first care"</li>
+        </ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>It's not just about pulling teeth – it's about planning, precision, and safety.  
+
+Patients choose us for specialist care, advanced technology, and clear communication – so they know exactly what will happen and why.</p></div>
+    </div>
+  </div>
+
+  <!-- 12 · Post 13 Wisdom -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="12">
+      <span class="pnum">12</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">Reel — Wisdom Tooth Pain &amp; Fear</div><div class="psub"><i style="background:var(--fn-a)"></i>Post 13 · Reel · Awareness</div></div>
+      <div class="pdate">8 Sep<small>TUE</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="divider-note">Educational Content — Wisdom Tooth Pain &amp; Fear</div>
+      <div class="block"><div class="block-label">Hook (0–2 sec, on-screen text)</div><p class="plain">"Back tooth pain again? Might be your wisdom tooth."</p></div>
+      <div class="block"><div class="block-label">Visual flow</div>
+        <ul class="flow">
+          <li><b>Shot 1</b><span>Person holding jaw in pain (or stock clip)</span></li>
+          <li><b>Shot 2</b><span>CBCT screen showing impacted wisdom tooth near nerve [nih +1]</span></li>
+          <li><b>Shot 3</b><span>Surgeon pointing on screen: "See how close it is to the nerve?"</span></li>
+          <li><b>Shot 4</b><span>Quick text: "Planned in 3D → Safer removal"</span></li>
+          <li><b>Shot 5</b><span>Smiling patient after (or text): "Less pain. Faster recovery."</span></li>
+        </ul>
+      </div>
+      <div class="block"><div class="block-label">Voiceover / On-screen text</div>
+        <ul class="quote-lines">
+          <li>"If your back tooth keeps hurting, your wisdom tooth could be the reason."</li>
+          <li>"We use CBCT 3D scans to see the exact position of your tooth and nearby nerves."</li>
+          <li>"That means safer, more precise removal – with less risk of complications."</li>
+          <li>"Most patients are back to normal in a few days.</li>
+        </ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>Back tooth pain that keeps coming back? 
+
+Don't ignore it.
+With CBCT 3D planning, we remove wisdom teeth more safely and precisely – reducing the risk of nerve injury and complications.</p></div>
+    </div>
+  </div>
+
+  <!-- 13 · Post 13 Scared -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="13">
+      <span class="pnum">13</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"I'm Scared of Surgery"</div><div class="psub"><i style="background:var(--fn-a)"></i>Post 13 · Reel · Awareness</div></div>
+      <div class="pdate">10 Sep<small>THU</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Hook</div><p class="plain">"Scared of wisdom tooth or jaw surgery? Watch this."</p></div>
+      <div class="block"><div class="block-label">Visual flow</div>
+        <ul class="flow">
+          <li><b>Shot 1</b><span>Patient looking nervous in chair</span></li>
+          <li><b>Shot 2</b><span>Surgeon explaining with 3D CBCT on screen</span></li>
+          <li><b>Shot 3</b><span>Piezo handpiece close-up (no blood, just device)</span></li>
+          <li><b>Shot 4</b><span>Text: "Piezosurgery = less pain, less swelling"</span></li>
+          <li><b>Shot 5</b><span>Relaxed patient leaving with a smile</span></li>
+        </ul>
+      </div>
+      <div class="block"><div class="block-label">Voiceover / Text</div>
+        <ul class="quote-lines">
+          <li>"Fear is normal. That's why we explain everything using your 3D scan first."</li>
+          <li>"We use Piezosurgery – ultrasonic, minimally invasive bone cutting."</li>
+          <li>"This means less pain, less swelling, and faster healing."</li>
+          <li>"You're never alone – we guide you at every step."</li>
+        </ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>Fear of surgery is real. We handle it with clear explanation and advanced tech.
+
+
+Piezosurgery makes wisdom tooth and jaw procedures minimally invasive – less pain, less swelling, faster recovery.</p></div>
+    </div>
+  </div>
+
+  <!-- 14 · Post 14 -->
+  <div class="piece">
+    <div class="piece-head">
+      <input type="checkbox" class="chk" data-piece="14">
+      <span class="pnum">14</span>
+      <span class="tile fmt-reel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="pmeta"><div class="ptitle">"No Bone for Implants?"</div><div class="psub"><i style="background:var(--fn-c)"></i>Post 14 · Reel · Consideration</div></div>
+      <div class="pdate">12 Sep<small>SAT</small></div>
+      <span class="caret">▾</span>
+    </div>
+    <div class="piece-body">
+      <div class="block"><div class="block-label">Hook</div><p class="plain">"Told you have 'no bone' for implants? Don't lose hope."</p></div>
+      <div class="block"><div class="block-label">Visual flow</div>
+        <ul class="flow">
+          <li><b>Shot 1</b><span>Patient looking disappointed</span></li>
+          <li><b>Shot 2</b><span>CBCT scan showing very thin upper jaw bone</span></li>
+          <li><b>Shot 3</b><span>3D model / diagram of zygoma implant going into cheek bone</span></li>
+          <li><b>Shot 4</b><span>Text: "Zygoma implants – no grafting, minimal cutting"</span></li>
+          <li><b>Shot 5</b><span>Before/after smile (with consent) or text: "Fixed teeth even with less bone"</span></li>
+        </ul>
+      </div>
+      <div class="block"><div class="block-label">Voiceover / Text (EN)</div>
+        <ul class="quote-lines">
+          <li>"Many patients are told they don't have enough bone for implants."</li>
+          <li>"With zygoma implants, we anchor in the cheek bone instead of the jaw."</li>
+          <li>"No bone grafting, minimal cutting, fixed teeth – often in a short time."</li>
+          <li>"A CBCT scan tells us if you're a candidate."</li>
+        </ul>
+      </div>
+      <div class="caption-box"><div class="block-label">Caption</div><p>"No bone for implants" doesn't mean "no teeth".  
+
+Zygoma implants use the cheek bone for support – no grafting, minimal cutting, fixed teeth. A CBCT scan shows if you're a candidate.</p></div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <b>Notes on this arrangement</b>
+    <ul>
+      <li>All copy, captions, hooks, on-screen text and CTAs are reproduced exactly as in your plan — only the layout, numbering and dates changed.</li>
+      <li>Pieces are in your original post-number order (Post 1 → Post 14). Funnel stage is shown as a coloured tag per piece.</li>
+      <li>Dates (17 Aug → 12 Sep 2026) are a suggested cadence you can shift freely.</li>
+      <li>Post 8 shows a carousel icon but your plan lists it as "Carousel or Reel".</li>
+      <li>Malayalam / Manglish copy (Post 7) should be proofed by a native speaker; [City] and [Name] placeholders still need filling in.</li>
+    </ul>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var pieces = [
+    {n:1,  m:8, d:17, fmt:'carousel', fn:'c', label:'Post 1'},
+    {n:2,  m:8, d:19, fmt:'static',   fn:'x', label:'Post 2'},
+    {n:3,  m:8, d:21, fmt:'reel',     fn:'c', label:'Post 4'},
+    {n:4,  m:8, d:23, fmt:'reel',     fn:'c', label:'Post 5'},
+    {n:5,  m:8, d:25, fmt:'reel',     fn:'x', label:'Post 6'},
+    {n:6,  m:8, d:27, fmt:'reel',     fn:'a', label:'Post 7'},
+    {n:7,  m:8, d:29, fmt:'carousel', fn:'a', label:'Post 8'},
+    {n:8,  m:8, d:31, fmt:'reel',     fn:'c', label:'Post 9'},
+    {n:9,  m:9, d:2,  fmt:'carousel', fn:'c', label:'Post 10'},
+    {n:10, m:9, d:4,  fmt:'reel',     fn:'a', label:'Post 11'},
+    {n:11, m:9, d:6,  fmt:'carousel', fn:'x', label:'Post 12'},
+    {n:12, m:9, d:8,  fmt:'reel',     fn:'a', label:'Post 13'},
+    {n:13, m:9, d:10, fmt:'reel',     fn:'a', label:'Post 13'},
+    {n:14, m:9, d:12, fmt:'reel',     fn:'c', label:'Post 14'}
+  ];
+  var icons = {
+    reel:'<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+    carousel:'<svg viewBox="0 0 24 24"><rect x="3" y="7" width="4" height="10" rx="1.5" opacity=".55"/><rect x="8" y="5" width="13" height="14" rx="2"/></svg>',
+    static:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.4"/><path d="M5 17l4.5-4 3 2.5 3-3L20 16"/></svg>'
+  };
+  var fmtLabel = {reel:'Reel', carousel:'Carousel', static:'Static'};
+  var dow = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  function tileClass(f){ return f==='reel'?'fmt-reel':(f==='carousel'?'fmt-carousel':'fmt-static static-ic'); }
+
+  function buildMonth(label, month, firstWeekday, numDays){
+    var html = '<div class="month"><h3>'+label+'</h3><div class="cal"><div class="dow">';
+    for(var i=0;i<7;i++){ html += '<div>'+dow[i]+'</div>'; }
+    html += '</div><div class="grid">';
+    for(var b=0;b<firstWeekday;b++){ html += '<div class="day blank"></div>'; }
+    for(var day=1; day<=numDays; day++){
+      var p = null;
+      for(var k=0;k<pieces.length;k++){ if(pieces[k].m===month && pieces[k].d===day){ p=pieces[k]; break; } }
+      if(p){
+        html += '<div class="day"><div class="dnum">'+day+'</div>'
+          + '<input type="checkbox" class="chk" data-piece="'+p.n+'">'
+          + '<div class="post-tile"><span class="tile '+tileClass(p.fmt)+'">'+icons[p.fmt]+'</span>'
+          + '<span class="pf">'+fmtLabel[p.fmt]+'</span><span class="pn">'+p.label+'</span></div></div>';
+      } else {
+        html += '<div class="day off"><div class="dnum">'+day+'</div></div>';
+      }
+    }
+    html += '</div></div></div>';
+    return html;
+  }
+
+  document.getElementById('calendars').innerHTML =
+    buildMonth('August 2026', 8, 6, 31) + buildMonth('September 2026', 9, 2, 30);
+
+  var state = {};
+  function refresh(){
+    var done = 0;
+    for(var i=1;i<=14;i++){ if(state[i]) done++; }
+    document.getElementById('doneCount').textContent = done;
+    document.getElementById('trackFill').style.width = (done/14*100)+'%';
+    document.querySelectorAll('input.chk').forEach(function(b){ b.checked = !!state[b.getAttribute('data-piece')]; });
+  }
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.classList.contains('chk')){
+      state[e.target.getAttribute('data-piece')] = e.target.checked; refresh();
+    }
+  });
+  document.getElementById('resetBtn').addEventListener('click', function(){ state = {}; refresh(); });
+
+  document.querySelectorAll('.piece-head').forEach(function(head){
+    head.addEventListener('click', function(e){
+      if(e.target.classList.contains('chk')) return;
+      head.parentElement.classList.toggle('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
