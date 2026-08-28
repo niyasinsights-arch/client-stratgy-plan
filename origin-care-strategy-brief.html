@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Origin Care — Market & Audience Strategy Brief</title>
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Google Sans','Product Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:48px 28px 80px;}
+
+  /* Header */
+  header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:40px;}
+  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+  h1{font-size:34px;line-height:1.2;margin:12px 0 8px;font-weight:600;}
+  .sub{color:var(--muted);font-size:15px;}
+  .meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:22px;}
+  .meta div{font-size:13px;}
+  .meta span{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin-bottom:3px;}
+
+  /* Note banner */
+  .note{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:18px 22px;
+    margin-bottom:40px;
+    font-size:14px;
+    color:var(--muted);
+  }
+  .note strong{color:var(--text);}
+
+  /* Sections */
+  section{margin-bottom:44px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+  .qnum{color:var(--accent);font-weight:600;font-size:14px;border:1px solid var(--border);border-radius:6px;padding:2px 9px;white-space:nowrap;}
+  h2{font-size:22px;font-weight:600;line-height:1.3;}
+  .lede{color:var(--muted);font-size:15px;margin:10px 0 20px;}
+
+  /* Card */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:18px;}
+  .card h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text);}
+  .card h3 .tag{color:var(--accent);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-left:8px;}
+
+  /* Table */
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+  th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  td .seg{font-weight:600;}
+  td .who{color:var(--muted);font-size:13px;display:block;margin-top:2px;}
+  .pct{color:var(--accent);font-weight:600;white-space:nowrap;}
+  .pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--border);color:var(--muted);}
+  .pill.high{color:#86EFAC;border-color:#166534;}
+  .pill.med{color:#FCD34D;border-color:#854D0E;}
+  .pill.low{color:#FCA5A5;border-color:#7F1D1D;}
+
+  /* Two-col */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr;}}
+
+  ul{list-style:none;}
+  ul li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px;color:var(--text);}
+  ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  .muted-list li{color:var(--muted);}
+
+  .kv{font-size:14px;margin-bottom:10px;}
+  .kv b{color:var(--accent);font-weight:600;}
+
+  /* Positioning stack */
+  .stack{display:flex;flex-direction:column;gap:10px;margin:18px 0;}
+  .layer{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;}
+  .layer .idx{color:var(--accent);font-weight:600;font-size:13px;min-width:64px;}
+  .layer .lbl{font-weight:600;}
+  .layer .desc{color:var(--muted);font-size:13px;}
+  .layer.lead{border-color:var(--accent);}
+
+  .callout{background:rgba(249,115,22,.08);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:14px;margin-top:14px;}
+  .callout b{color:var(--accent);}
+
+  .reco{font-size:16px;font-weight:600;line-height:1.5;color:var(--text);margin:16px 0;padding:16px 20px;border-left:3px solid var(--accent);background:var(--card);border-radius:0 10px 10px 0;}
+
+  footer{border-top:1px solid var(--border);margin-top:56px;padding-top:24px;color:var(--muted);font-size:12px;line-height:1.7;}
+
+  @media print{
+    body{background:#fff;color:#111;}
+    .card,.layer,.reco,.note{background:#fff;border-color:#ccc;}
+    .wrap{padding:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Market &amp; Audience Strategy Brief</div>
+    <h1>The Origin Care</h1>
+    <div class="sub">Botanical bath care · Kerala · @theoriginsoap · originsoap.com</div>
+    <div class="meta">
+      <div><span>Prepared by</span>Speakerbox</div>
+      <div><span>Scope</span>Audience · Competition · Digital signals · Positioning</div>
+      <div><span>Status</span>Strategy input — for review</div>
+    </div>
+  </header>
+
+  <div class="note">
+    <strong>How to read this brief.</strong> The audience segment splits below are a planning model built from
+    the brand's current positioning and category norms — they are a starting hypothesis, not measured analytics.
+    We recommend validating them against Origin's own order data and Meta Audience Insights before locking budgets.
+    Competitor share and pricing figures have been intentionally excluded pending verified market data.
+  </div>
+
+  <!-- Q2 -->
+  <section>
+    <div class="sec-head"><span class="qnum">Q2</span><h2>Priority customer segments &amp; revenue model</h2></div>
+    <p class="lede">Five buyer segments, ranked by their likely contribution to <em>revenue</em> (which differs from
+      share of audience — a premium soap brand earns disproportionately from gifting and diaspora baskets).</p>
+
+    <div class="card" style="padding:8px 8px;">
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Est. share of revenue</th><th>Confidence</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="seg">Conscious urban women, 28–45</span><span class="who">Kerala metros &amp; Tier-2 — Kochi, Trivandrum, Calicut, Thrissur. Label-readers, skin-sensitive, already buying "natural."</span></td>
+            <td class="pct">30–35%</td>
+            <td><span class="pill high">High</span></td>
+          </tr>
+          <tr>
+            <td><span class="seg">Gifting &amp; premium-hamper buyers</span><span class="who">Onam, weddings, corporate gifting. Buy in multiples — highest basket value.</span></td>
+            <td class="pct">~20%</td>
+            <td><span class="pill med">Medium</span></td>
+          </tr>
+          <tr>
+            <td><span class="seg">NRI / Gulf-Malayali households</span><span class="who">Buying for family in Kerala or shipping abroad. Strong pull toward authentic Kerala Ayurveda.</span></td>
+            <td class="pct">15–20%</td>
+            <td><span class="pill med">Medium</span></td>
+          </tr>
+          <tr>
+            <td><span class="seg">Skin-condition seekers</span><span class="who">Eczema, acne, sensitive &amp; baby skin. Switching away from chemical soaps.</span></td>
+            <td class="pct">~15%</td>
+            <td><span class="pill med">Medium</span></td>
+          </tr>
+          <tr>
+            <td><span class="seg">Pan-India clean-beauty shoppers</span><span class="who">Discover via Instagram &amp; marketplaces. Buy the hero bar first.</span></td>
+            <td class="pct">10–15%</td>
+            <td><span class="pill low">Lower</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b>Where the volume is.</b> Segment 1 is the steady, repeat-purchase base with subscription potential.
+      Segments 2 and 3 are the basket-size amplifiers — fewer buyers, larger orders. If the goal is unit volume rather than margin,
+      gifting and sensitive-skin problem-solvers convert fastest, because both buy on emotion and urgency rather than price.
+    </div>
+  </section>
+
+  <!-- Q3 -->
+  <section>
+    <div class="sec-head"><span class="qnum">Q3</span><h2>Competitive landscape</h2></div>
+    <p class="lede">Grouped by where they compete with Origin. The local cottage cluster is fragmented and
+      under-branded — which is precisely Origin's opening.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Inside Kerala <span class="tag">Home market</span></h3>
+        <ul>
+          <li><b>Medimix</b> — Ayurvedic/herbal soap, Thrissur origins. Mass-market; competes on the <em>Ayurvedic</em> claim, not premium-handcrafted.</li>
+          <li><b>Chandrika</b> — long-standing Kerala Ayurvedic soap, mass-premium heritage brand.</li>
+          <li><b>Kerala Soaps (KSIE)</b> — state-owned legacy brands (Kerala Sandal). Heritage, not premium D2C.</li>
+          <li><b>Regional handmade makers</b> — a wide cluster of small Kozhikode / Malappuram / Trivandrum cold-process makers. Direct rivals, but small and weakly branded.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Outside Kerala <span class="tag">National / D2C</span></h3>
+        <ul>
+          <li><b>Vilvah</b> — Coimbatore D2C natural skincare &amp; soap. Strong social-led brand.</li>
+          <li><b>Bare Necessities</b> — Bangalore, plant-based zero-waste handcrafted soaps. Closest positioning rival.</li>
+          <li><b>Rustic Art · Soap Opera · Khadi Naturals</b> — national handmade / organic soap names.</li>
+          <li><b>Kama Ayurveda · Forest Essentials</b> — premium Ayurvedic <em>skincare</em> houses. Not soap-first, but they own the "luxury Ayurveda" mental space and set the price ceiling.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <b>The gap to own.</b> The Ayurvedic-soap category below is crowded and price-driven; the premium luxury-Ayurveda space above is skincare, not soap.
+      Origin's room to win is the <em>premium, handcrafted, Kerala-botanical bar</em> — a space local makers are too small to claim and national brands don't lead with.
+    </div>
+  </section>
+
+  <!-- Q4 -->
+  <section>
+    <div class="sec-head"><span class="qnum">Q4</span><h2>Digital marketing signals</h2></div>
+    <p class="lede">Keywords, targeting, behaviours, pain points, intents and interests to build campaigns around.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Keywords &amp; search terms</h3>
+        <ul class="muted-list">
+          <li>Ayurvedic soap · herbal soap · handmade soap · organic soap · chemical-free soap</li>
+          <li>Kerala soap · botanical bath care · cold-process soap · sandalwood / neem / turmeric soap</li>
+          <li>Soap for sensitive skin / acne / eczema / dry skin · baby-safe natural soap</li>
+          <li>Long-tail: "best natural soap in Kerala," "chemical free soap online India"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Meta targeting &amp; interests</h3>
+        <ul class="muted-list">
+          <li>Interests: Ayurveda, organic beauty, clean beauty, natural skincare, sustainable living, handmade products</li>
+          <li>Brand-affinity: Forest Essentials, Kama Ayurveda, Khadi, Biotique, The Body Shop</li>
+          <li>Behaviours: engaged shoppers, online purchasers</li>
+          <li>NRI layer: "away from hometown Kerala" + Malayalam language for the Gulf-Malayali segment</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Behaviours to build around</h3>
+        <ul class="muted-list">
+          <li>Ingredient-label reading &amp; switching away from chemical soap</li>
+          <li>Gifting cycles — Onam, weddings, Diwali, corporate</li>
+          <li>Seasonal skin flare-ups — monsoon skin issues are a real Kerala hook</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pain points to message</h3>
+        <ul class="muted-list">
+          <li>Chemical soaps causing dryness, irritation, allergies</li>
+          <li>Distrust of "natural" labels that aren't genuinely natural</li>
+          <li>Wanting authentic Ayurveda without the luxury price tag</li>
+          <li>Sensitive &amp; baby skin needing a safe, gentle bar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Search intents — map content to the funnel</h3>
+      <p class="kv"><b>Problem-aware</b> — "soap for eczema / sensitive skin" → educational + product-solution content</p>
+      <p class="kv"><b>Solution-aware</b> — "handmade Ayurvedic soap online" → hero-product &amp; ingredient storytelling</p>
+      <p class="kv"><b>Comparison</b> — "best organic soap brand Kerala" → proof, reviews, brand differentiation</p>
+      <p class="kv" style="margin-bottom:0;"><b>Gifting</b> — "natural soap gift set / hamper" → bundle &amp; seasonal offers</p>
+    </div>
+  </section>
+
+  <!-- Q6 -->
+  <section>
+    <div class="sec-head"><span class="qnum">Q6</span><h2>Positioning recommendation</h2></div>
+    <p class="lede">Not all four attributes flat — that dilutes into "generic natural soap." Stack them with a clear lead.</p>
+
+    <div class="stack">
+      <div class="layer lead">
+        <div class="idx">Lead</div>
+        <div><span class="lbl">Botanical</span> &nbsp;<span class="desc">Freshest, most premium space. Sidesteps the crowded mass-market "Ayurvedic soap" category.</span></div>
+      </div>
+      <div class="layer">
+        <div class="idx">Proof</div>
+        <div><span class="lbl">Kerala heritage</span> &nbsp;<span class="desc">The authenticity moat — why NRI &amp; heritage-gifting buyers trust the brand. Tell it as a story, not the headline.</span></div>
+      </div>
+      <div class="layer">
+        <div class="idx">Credibility</div>
+        <div><span class="lbl">Ayurvedic</span> &nbsp;<span class="desc">Gives efficacy credibility, but it's the most commoditised claim — a supporting pillar, not the flag.</span></div>
+      </div>
+      <div class="layer">
+        <div class="idx">Texture</div>
+        <div><span class="lbl">Traditional / handcrafted</span> &nbsp;<span class="desc">The sensory, craft layer — powers reels and packaging narrative. Weak as a standalone position.</span></div>
+      </div>
+    </div>
+
+    <div class="reco">
+      "Kerala's first botanical bath care, rooted in Ayurvedic wisdom — handcrafted."
+      Premium, defensible, and clearly separated from the ₹25–40 mass Ayurvedic-soap market where price wins.
+    </div>
+
+    <div class="callout">
+      <b>One thing to substantiate.</b> The "Kerala's First" claim is a strong assertion. Confirm it is genuinely defensible
+      before scaling it in paid campaigns — if a competitor challenges it, it undercuts brand trust.
+    </div>
+  </section>
+
+  <footer>
+    Prepared by Speakerbox for The Origin Care.<br>
+    Audience percentage splits are a strategic planning model, not measured analytics, and should be validated against the brand's own order data and Meta Audience Insights. Competitor share and pricing figures have been excluded pending verified market data. Positioning claims (including "Kerala's First") should be substantiated internally before use in advertising.
+  </footer>
+
+</div>
+</body>
+</html>
