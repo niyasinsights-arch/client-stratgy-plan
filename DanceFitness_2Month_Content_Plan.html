@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dance Fitness — 2-Month Instagram Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E0E; --panel:#171717; --cell:#141414; --line:rgba(255,255,255,.07);
+    --txt:#F2EDE6; --muted:#9A8F84; --dim:#5C544B;
+    --reel:#F97316;  --reel-bg:rgba(249,115,22,.14);
+    --car:#EC4899;   --car-bg:rgba(236,72,153,.13);
+    --static:#2DD4BF; --static-bg:rgba(45,212,191,.14);
+    --brand:#A78BFA; --mindset:#C084FC; --edu:#60A5FA; --fun:#38BDF8;
+    --exp:#5EEAD4; --proof:#4ADE80; --life:#FB7185; --convert:#FBBF24;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+    --mal:'Noto Sans Malayalam','Inter',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.5;padding:30px 20px 60px;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:1120px;margin:0 auto;}
+  .wordmark{font-size:30px;font-weight:800;letter-spacing:.02em;}
+  .wordmark .m{color:var(--reel);} .wordmark .s{color:var(--car);} .wordmark .k{color:var(--static);}
+  .brandnote{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--dim);border:1px dashed var(--line);border-radius:6px;padding:3px 8px;margin-left:10px;vertical-align:middle;}
+  .tagline{font-size:13px;color:var(--muted);margin-top:5px;}
+  .stripe{height:3px;width:150px;border-radius:3px;margin:14px 0 6px;background:linear-gradient(90deg,var(--reel),var(--car),var(--static));}
+  h1{font-size:21px;font-weight:700;margin:18px 0 2px;}
+  .stats{font-size:12.5px;color:var(--muted);margin-bottom:4px;}
+  .stats b{color:var(--txt);font-weight:600;}
+  .funnel{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 2px;}
+  .fstep{flex:1;min-width:120px;background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:9px 12px;}
+  .fstep .fn{font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--dim);}
+  .fstep .ft{font-size:13px;font-weight:700;margin-top:2px;}
+  .fstep.s1 .ft,.fstep.s2 .ft{color:var(--static);}
+  .fstep.s3 .ft,.fstep.s4 .ft{color:var(--car);}
+  .fstep.s5 .ft,.fstep.s6 .ft{color:var(--reel);}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 4px;font-size:11.5px;color:var(--muted);align-items:center;}
+  .legend span.lg{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .dot.r{background:var(--reel);} .dot.c{background:var(--car);} .dot.st{background:var(--static);}
+  .hint{margin-left:auto;font-size:11px;font-weight:600;color:var(--reel);background:var(--reel-bg);border-radius:999px;padding:5px 12px;}
+  .mhead{font-size:16px;font-weight:700;margin:34px 0 6px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .mhead small{font-weight:400;font-size:12px;color:var(--muted);}
+  .mkey{font-size:12px;color:var(--muted);margin:0 0 12px;}
+  .mkey b{color:var(--txt);font-weight:600;}
+  .wgrid{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;}
+  .wrow{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:stretch;padding:10px 4px;border-bottom:1px solid var(--line);}
+  .wrow:last-child{border-bottom:none;}
+  .wtab{display:flex;flex-direction:column;justify-content:center;padding:6px 2px;}
+  .wtab .wn{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);}
+  .wtab .wt{font-size:12.5px;font-weight:600;color:var(--txt);margin-top:3px;line-height:1.35;}
+  .wcells{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  @media(max-width:640px){.wcells{grid-template-columns:repeat(2,1fr);} .wrow{grid-template-columns:96px 1fr;}}
+  .cell{position:relative;background:var(--cell);border:1px solid var(--line);border-radius:12px;min-height:96px;padding:10px;display:flex;flex-direction:column;text-align:left;cursor:pointer;font-family:inherit;color:inherit;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;}
+  .cell:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 6px 18px rgba(0,0,0,.35);}
+  .cell:focus-visible{outline:2px solid var(--c);outline-offset:2px;}
+  .corner{position:absolute;top:-1px;right:-1px;width:0;height:0;border-top:16px solid var(--c);border-left:16px solid transparent;border-top-right-radius:11px;}
+  .cnum{font-size:12px;font-weight:700;color:var(--muted);}
+  .cbody{flex:1;display:flex;flex-direction:column;gap:6px;justify-content:center;}
+  .cicon{display:flex;align-items:center;}
+  .clabel{font-size:9.5px;font-weight:700;letter-spacing:.09em;}
+  .ctitle{font-size:11px;color:#D8D0C6;line-height:1.35;font-weight:500;}
+  .cview{position:absolute;bottom:8px;right:10px;font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--c);opacity:0;transition:opacity .12s ease;}
+  .cell:hover .cview{opacity:1;}
+  .reel{--c:var(--reel);} .reel .cicon,.reel .clabel{color:var(--reel);}
+  .carousel{--c:var(--car);} .carousel .cicon,.carousel .clabel{color:var(--car);}
+  .staticp{--c:var(--static);} .staticp .cicon,.staticp .clabel{color:var(--static);}
+  .mal{font-family:var(--mal);}
+  .sech{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);margin:26px 0 12px;}
+  .sech span{color:var(--dim);font-weight:400;letter-spacing:0;}
+  .myth{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:760px){.myth{grid-template-columns:1fr;}}
+  .mcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--convert);border-radius:12px;padding:13px 15px;}
+  .mcard .mq{font-size:13px;font-weight:600;color:#E7E0D7;font-style:italic;}
+  .mcard .ma{font-size:12.5px;color:#CFC7BD;margin-top:8px;line-height:1.5;}
+  .mcard .ma::before{content:"→ ";color:var(--convert);font-weight:700;}
+  .rhythm{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+  .chip{background:var(--cell);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex:1;min-width:150px;}
+  .chip .n{font-size:19px;font-weight:800;color:var(--reel);}
+  .chip .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:760px){.panel-grid{grid-template-columns:1fr;}}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .pcard h3{font-size:12px;font-weight:700;letter-spacing:.04em;margin:0 0 8px;color:var(--txt);}
+  .pcard.do h3{color:var(--proof);} .pcard.dont h3{color:var(--life);}
+  .pcard ul{margin:0;padding-left:16px;}
+  .pcard li{font-size:12.5px;color:#CFC7BD;margin:5px 0;line-height:1.5;}
+  .pcard li em{color:var(--muted);font-style:normal;font-size:11px;}
+  .foot{margin-top:32px;font-size:12px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line);padding-top:16px;}
+  .foot b{color:var(--txt);font-weight:600;}
+  .note{display:block;margin-top:10px;font-size:11.5px;color:var(--dim);line-height:1.6;}
+  /* MODAL */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50;}
+  .overlay.open{display:flex;}
+  .modal{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c,#F97316);border-radius:16px;max-width:580px;width:100%;max-height:90vh;overflow:auto;padding:22px 24px 22px;position:relative;animation:pop .16s ease;}
+  @keyframes pop{from{transform:scale(.96);opacity:.4;}to{transform:scale(1);opacity:1;}}
+  .mclose{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;background:var(--cell);border:1px solid var(--line);color:var(--muted);cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;z-index:2;}
+  .mclose:hover{color:var(--txt);border-color:var(--c,#F97316);}
+  .mtop{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-right:36px;}
+  .mnum{font-size:12px;font-weight:700;color:var(--muted);}
+  .mweek{font-size:11px;font-weight:600;color:var(--dim);}
+  .mbadge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:6px;}
+  .mbadge.reel{background:var(--reel-bg);color:var(--reel);}
+  .mbadge.carousel{background:var(--car-bg);color:var(--car);}
+  .mbadge.staticp{background:var(--static-bg);color:var(--static);}
+  .mcat{font-size:10.5px;font-weight:700;}
+  .mtitle{font-size:20px;font-weight:700;color:var(--txt);margin:12px 0 4px;line-height:1.3;}
+  .mrow{display:flex;gap:12px;font-size:13px;line-height:1.55;margin:0;padding:11px 0;border-top:1px solid var(--line);}
+  .mrow:first-of-type{border-top:none;}
+  .mrow .mk{flex:0 0 78px;font-size:10px;font-weight:700;letter-spacing:.06em;padding-top:2px;color:var(--muted);}
+  .mrow.hook .mk{color:var(--reel);} .mrow.cta .mk{color:var(--static);} .mrow.flow .mk{color:var(--car);}
+  .mrow .mk .sg{color:var(--dim);font-weight:700;}
+  .mrow .mv{flex:1;color:#D8D0C6;}
+  .mrow .mv.q{font-style:italic;color:#EAE3DA;}
+  .mrow .mv ul{margin:2px 0 0;padding-left:15px;} .mrow .mv li{margin:3px 0;}
+  .mfoot{font-size:10.5px;color:var(--dim);margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);}
+  .mnav{display:flex;justify-content:space-between;gap:10px;margin-top:14px;}
+  .mbtn{flex:1;background:var(--cell);border:1px solid var(--line);color:var(--muted);border-radius:10px;padding:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .mbtn:hover:not(:disabled){color:var(--txt);border-color:var(--c,#F97316);}
+  .mbtn:disabled{opacity:.35;cursor:default;}
+  @media print{body{background:#0E0E0E;-webkit-print-color-adjust:exact;print-color-adjust:exact;}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.hint{display:none;}@page{size:portrait;margin:8mm;}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="wordmark"><span class="m">MOVE</span> · <span class="s">SHAPE</span> · <span class="k">MINDSET</span><span class="brandnote">drop in studio name / logo</span></div>
+  <div class="tagline">Dance Fitness · Kochi — fitness that doesn't feel like a routine</div>
+  <div class="stripe"></div>
+  <h1>2-Month Instagram Content Plan</h1>
+  <div class="stats"><b>22 posts</b> · 14 Reels · 7 Carousels · 1 Static · Month 1 (9) + Month 2 (13)</div>
+  <div class="funnel">
+    <div class="fstep s1"><div class="fn">STAGE 01</div><div class="ft">Curiosity</div></div>
+    <div class="fstep s2"><div class="fn">STAGE 02</div><div class="ft">Awareness</div></div>
+    <div class="fstep s3"><div class="fn">STAGE 03</div><div class="ft">Trust</div></div>
+    <div class="fstep s4"><div class="fn">STAGE 04</div><div class="ft">Desire</div></div>
+    <div class="fstep s5"><div class="fn">STAGE 05</div><div class="ft">Trial</div></div>
+    <div class="fstep s6"><div class="fn">STAGE 06</div><div class="ft">Conversion</div></div>
+  </div>
+  <div class="legend">
+    <span class="lg"><i class="dot r"></i>Reel</span>
+    <span class="lg"><i class="dot c"></i>Carousel</span>
+    <span class="lg"><i class="dot st"></i>Static</span>
+    <span class="hint">👆 Tap any post for the full brief</span>
+  </div>
+  <div id="cal"></div>
+
+  <div class="sech">OBJECTION BANK <span>— the Myth vs Reality angles for Post 15</span></div>
+  <div class="myth">
+    <div class="mcard"><div class="mq">“I can't dance.”</div><div class="ma">You don't need to be a dancer.</div></div>
+    <div class="mcard"><div class="mq">“I'm not fit enough.”</div><div class="ma">You can start at your own level.</div></div>
+    <div class="mcard"><div class="mq">“It's only for young people.”</div><div class="ma">Movement can be adapted to different fitness levels.</div></div>
+  </div>
+
+  <div class="sech">HOW TO RUN IT — RHYTHM, MESSAGE &amp; GUARDRAILS</div>
+  <div class="rhythm">
+    <div class="chip"><div class="n">22</div><div class="l">posts across 2 months</div></div>
+    <div class="chip"><div class="n">9 · 13</div><div class="l">Month 1 · Month 2 posts</div></div>
+    <div class="chip"><div class="n">14 · 7 · 1</div><div class="l">Reels · Carousels · Static</div></div>
+    <div class="chip"><div class="n">8</div><div class="l">weekly themes, funnel-ordered</div></div>
+  </div>
+  <div class="panel-grid">
+    <div class="pcard"><h3>Key messages</h3><ul>
+      <li>“Fitness doesn't have to feel like a routine.” <em>(M1)</em></li>
+      <li>“You've seen it. Now experience it.” <em>(M2)</em></li>
+      <li>MOVE • SHAPE • MINDSET — the through-line.</li>
+    </ul></div>
+    <div class="pcard do"><h3>✓ Do</h3><ul>
+      <li>Keep experience content authentic, not salesy.</li>
+      <li>Lead with confidence, energy, consistency, enjoyment.</li>
+      <li>Let the audience self-identify before the ask.</li>
+    </ul></div>
+    <div class="pcard dont"><h3>✕ Don't</h3><ul>
+      <li>Don't attack gyms or other workouts.</li>
+      <li>Don't make unrealistic body-transformation claims.</li>
+      <li>Don't push conversion before trust is built.</li>
+    </ul></div>
+  </div>
+
+  <p class="foot">
+    <b>Your 22-post plan across two months.</b> <b>Month 1</b> moves the audience from <b style="color:var(--static)">curiosity</b> to <b style="color:var(--static)">awareness</b>; <b>Month 2</b> carries them through <b style="color:var(--car)">trust</b> and <b style="color:var(--car)">desire</b> into <b style="color:var(--reel)">trial and conversion</b>. Tap any post to open its full brief. In the calendar, <b style="color:var(--reel)">orange = Reel</b>, <b style="color:var(--car)">pink = Carousel</b>, <b style="color:var(--static)">teal = Static</b>.
+    <span class="note">Inside each brief, rows marked <b style="color:var(--reel)">✎</b> are <b>suggested execution direction</b> you can rewrite — concepts, shot ideas, on-screen text and captions I've drafted to flesh out the plan. Rows <b>without</b> the mark (objectives, the hooks/CTAs/flows and guardrails) come straight from your brief. The plan is organised by week and theme, not calendar dates. The wordmark is a placeholder — drop in the studio's real name and logo.</span>
+  </p>
+</div>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <button class="mclose" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="mcontent"></div>
+    <div class="mfoot">✎ = suggested execution direction you can edit. Unmarked rows are from your brief.</div>
+    <div class="mnav">
+      <button class="mbtn" id="prevBtn" onclick="step(-1)">← Previous</button>
+      <button class="mbtn" id="nextBtn" onclick="step(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ICON = {
+  reel:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  carousel:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="6" width="11" height="13" rx="2"/><line x1="5" y1="9" x2="5" y2="16"/></svg>',
+  staticp:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="9" cy="11" r="1.5" fill="currentColor" stroke="none"/><path d="M5 17l4-4 3 2.5"/></svg>'
+};
+const CVAR = {reel:'reel', carousel:'car', staticp:'static'};
+// row: {k, v, cls?, q?, sug?}  sug=true → suggested (✎)
+const POSTS = {
+ 1:{week:"Week 1",fmt:"reel",fmtLabel:"Reel",cat:"Brand Awareness",catCls:"brand",title:"Kochi, Ready to Change Your Shape?",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Kochi, ready to change your shape?” — text-first open, big and bold on screen."},
+    {k:"CONCEPT",sug:1,v:"Curiosity-led teaser that introduces the brand without explaining everything. Ask the question, don't answer it yet."},
+    {k:"VISUAL",sug:1,v:"Fast cuts — silhouettes mid-movement, feet, a smile, studio light. Energy over information. End on logo / handle."},
+    {k:"ON-SCREEN",sug:1,v:"“Not another gym.” → “Not another routine.” → “Something you'll actually enjoy.” → “Coming to Kochi.”"},
+    {k:"CAPTION",sug:1,v:"Tease the launch, ask “Ready?”, give no details. 3–4 short lines + handle."},
+    {k:"CTA",cls:"cta",sug:1,v:"Follow to find out · Save this."},
+    {k:"GOAL",v:"Create curiosity"},
+    {k:"NOTE",v:"Campaign opener — no hard sell. Sets up the whole 2-month arc."}]},
+ 2:{week:"Week 1",fmt:"reel",fmtLabel:"Reel",cat:"Mindset",catCls:"mindset",title:"Shape എന്ന് പറഞ്ഞാൽ Body മാത്രം ആണോ?",mal:true,rows:[
+    {k:"HOOK",cls:"hook",v:"“Shape എന്ന് പറഞ്ഞാൽ Body മാത്രം ആണോ?”",q:1},
+    {k:"CONCEPT",sug:1,v:"Reframe “shape” from body-only to mind + energy + confidence + lifestyle."},
+    {k:"VISUAL",sug:1,v:"Talk-to-camera or text-over-movement; contrast “body only” vs “mind · energy · confidence”."},
+    {k:"ON-SCREEN",sug:1,v:"Shape = body? → Shape = mindset · Shape = energy · Shape = how you feel."},
+    {k:"CAPTION",sug:1,v:"Short bilingual reframe; invite an opinion in the comments."},
+    {k:"CTA",cls:"cta",sug:1,v:"“നിങ്ങളുടെ അഭിപ്രായം കമന്റ് ചെയ്യൂ.”"},
+    {k:"GOAL",v:"Challenge perception"},
+    {k:"NOTE",v:"Reframe “shape” as mindset + lifestyle, not just body. Bilingual hook."}]},
+ 3:{week:"Week 1",fmt:"carousel",fmtLabel:"Carousel",cat:"Brand Philosophy",catCls:"brand",title:"MOVE • SHAPE • MINDSET",rows:[
+    {k:"CONCEPT",sug:1,v:"The foundation post — introduce the three pillars, one slide each."},
+    {k:"SLIDES",cls:"flow",sug:1,v:"<ul><li>Cover: MOVE • SHAPE • MINDSET</li><li>MOVE — movement you actually enjoy</li><li>SHAPE — body + confidence</li><li>MINDSET — consistency & feeling good</li><li>CTA: this is our philosophy</li></ul>"},
+    {k:"CAPTION",sug:1,v:"Explain the philosophy in 4–5 lines; make it save-worthy."},
+    {k:"CTA",cls:"cta",sug:1,v:"Save this · Follow for the journey."},
+    {k:"GOAL",v:"Introduce the pillars"},
+    {k:"NOTE",v:"One slide per pillar — the foundation post for the brand identity."}]},
+ 4:{week:"Week 2",fmt:"reel",fmtLabel:"Reel",cat:"Education",catCls:"edu",title:"What Is Dance Fitness?",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“What actually is dance fitness?”"},
+    {k:"CONCEPT",sug:1,v:"Simple explainer for a cold audience — dance + workout = fun that still burns."},
+    {k:"VISUAL",sug:1,v:"A short real session snippet with a plain-language definition overlaid."},
+    {k:"ON-SCREEN",sug:1,v:"“Dance + fitness.” → “A full workout that feels like fun.” → “No steps to memorise.”"},
+    {k:"CAPTION",sug:1,v:"Three-line definition + who it's for."},
+    {k:"CTA",cls:"cta",sug:1,v:"Curious? Follow along."},
+    {k:"GOAL",v:"Build awareness"},
+    {k:"NOTE",v:"Simple explainer of the concept for a cold audience."}]},
+ 5:{week:"Week 2",fmt:"reel",fmtLabel:"Reel",cat:"Entertainment",catCls:"fun",title:"Workout Boring ആണെന്ന് ആരാണ് പറഞ്ഞത്?",mal:true,rows:[
+    {k:"HOOK",cls:"hook",v:"“Workout Boring ആണെന്ന് ആരാണ് പറഞ്ഞത്?”",q:1},
+    {k:"CONCEPT",sug:1,v:"Fun-first reel countering the “boring workout” idea. Ride a trending audio."},
+    {k:"VISUAL",sug:1,v:"High-energy dance clip — smiles, sweat, laughing. Let the vibe sell it."},
+    {k:"ON-SCREEN",sug:1,v:"“Workout ≠ boring.” → “This is your sign.”"},
+    {k:"CAPTION",sug:1,v:"Playful; ask them to tag a friend who dreads the gym."},
+    {k:"CTA",cls:"cta",sug:1,v:"Tag a friend."},
+    {k:"GOAL",v:"Show the fun side"},
+    {k:"NOTE",v:"Energy + fun. Counter the “workouts are boring” objection early."}]},
+ 6:{week:"Week 2",fmt:"carousel",fmtLabel:"Carousel",cat:"Education",catCls:"edu",title:"Why Dance Fitness?",rows:[
+    {k:"CONCEPT",sug:1,v:"Benefit-led carousel: why choose dance fitness over a routine workout."},
+    {k:"SLIDES",cls:"flow",sug:1,v:"<ul><li>Cover: Why dance fitness?</li><li>Burns calories without feeling like a chore</li><li>Builds stamina & lifts your mood</li><li>Community energy keeps you going</li><li>Sustainable — you'll actually keep coming back</li><li>CTA</li></ul>"},
+    {k:"CAPTION",sug:1,v:"List the benefits plainly; make it a save."},
+    {k:"CTA",cls:"cta",sug:1,v:"Save this · DM to know more."},
+    {k:"GOAL",v:"Explain benefits"},
+    {k:"NOTE",v:"Frame as benefits, not as an attack on gyms."}]},
+ 7:{week:"Week 3",fmt:"reel",fmtLabel:"Reel",cat:"Brand Philosophy",catCls:"brand",title:"3 Pillars in Motion",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“MOVE. SHAPE. MINDSET — in motion.”"},
+    {k:"CONCEPT",sug:1,v:"Show the three pillars as real footage, not text slides."},
+    {k:"VISUAL",cls:"flow",sug:1,v:"Three segments — MOVE (dance) · SHAPE (bodies working) · MINDSET (smiles, breath, cool-down)."},
+    {k:"ON-SCREEN",sug:1,v:"Pillar label fades in over each segment."},
+    {k:"CAPTION",sug:1,v:"Tie the footage back to the philosophy in a line or two."},
+    {k:"CTA",cls:"cta",sug:1,v:"Follow the movement."},
+    {k:"GOAL",v:"Build deeper awareness"},
+    {k:"NOTE",v:"Show MOVE • SHAPE • MINDSET in real movement footage."}]},
+ 8:{week:"Week 3",fmt:"carousel",fmtLabel:"Static / Carousel",cat:"Brand Positioning",catCls:"brand",title:"Change Your Shape, Change Your Way",rows:[
+    {k:"CONCEPT",sug:1,v:"Positioning statement piece — the brand's point of view, designed to be quotable."},
+    {k:"LAYOUT",cls:"flow",sug:1,v:"Bold statement creative: “Change your shape. Change your way.” + one supporting line."},
+    {k:"CAPTION",sug:1,v:"Articulate the POV — why “your way” matters more than a fixed routine."},
+    {k:"CTA",cls:"cta",sug:1,v:"Save · Follow."},
+    {k:"GOAL",v:"Establish brand thought"},
+    {k:"NOTE",v:"Positioning statement — establish the brand's point of view."}]},
+ 9:{week:"Week 4",fmt:"reel",fmtLabel:"Reel",cat:"Brand Awareness",catCls:"brand",title:"Kochi, This Is Your Sign to Move",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Kochi — this is your sign to move.”"},
+    {k:"CONCEPT",sug:1,v:"Month-1 closer: reinforce the message and bridge into Month 2."},
+    {k:"VISUAL",sug:1,v:"Montage of the best Month-1 moments; end teasing “next — come see inside.”"},
+    {k:"ON-SCREEN",sug:1,v:"“You've seen the idea.” → “Next — see it for real.”"},
+    {k:"CAPTION",sug:1,v:"Recap + tease what Month 2 opens up."},
+    {k:"CTA",cls:"cta",sug:1,v:"Follow — Month 2 goes inside the studio."},
+    {k:"GOAL",v:"Reinforce message"},
+    {k:"NOTE",v:"Month 1 closer — reinforce the core message and bridge into Month 2."}]},
+ 10:{week:"Week 5 · Experience",fmt:"reel",fmtLabel:"Reel",cat:"Experience",catCls:"exp",title:"A Day Inside Our Dance Fitness Studio",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Ever wondered what a day in here actually looks like?”"},
+    {k:"CONCEPT",sug:1,v:"Authentic day-in-the-life. Let the environment do the talking — no ad energy."},
+    {k:"FLOW",cls:"flow",v:"Walk In → Warm Up → Dance → Sweat → Energy → Cool Down"},
+    {k:"ON-SCREEN",sug:1,v:"Label each stage as it plays."},
+    {k:"CAPTION",sug:1,v:"Warm and honest; invite them to come see it in person."},
+    {k:"CTA",cls:"cta",sug:1,v:"Come see it for yourself."},
+    {k:"GOAL",v:"Show the environment"},
+    {k:"NOTE",v:"Keep it authentic, not overly promotional."}]},
+ 11:{week:"Week 5 · Experience",fmt:"reel",fmtLabel:"Reel",cat:"Education",catCls:"edu",title:"What Happens in Your First Session?",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Nervous about your first session? Here's exactly what happens.”"},
+    {k:"ANSWER",v:"What to wear? · Need dance experience? · Beginner-friendly? · How long is it? · What to expect?"},
+    {k:"VISUAL",sug:1,v:"Answer each question as a quick on-screen beat with a matching clip."},
+    {k:"CAPTION",sug:1,v:"Reassure beginners — first-timers are welcome and normal."},
+    {k:"CTA",cls:"cta",sug:1,v:"DM “FIRST” to book a trial."},
+    {k:"GOAL",v:"Remove uncertainty"},
+    {k:"NOTE",v:"Answers the common first-timer questions head-on."}]},
+ 12:{week:"Week 5 · Experience",fmt:"carousel",fmtLabel:"Carousel",cat:"Education",catCls:"edu",title:"Dance Fitness vs Traditional Workout",rows:[
+    {k:"CONCEPT",sug:1,v:"Differentiate on experience, not by attacking gyms."},
+    {k:"SLIDES",cls:"flow",sug:1,v:"<ul><li>Cover</li><li>Motivation: routine vs music + energy</li><li>Consistency: willpower vs enjoyment</li><li>Vibe: solo vs community</li><li>Both work — pick the one you'll stick with</li><li>CTA</li></ul>"},
+    {k:"CAPTION",sug:1,v:"Respectful framing — it's about fit, not “better/worse”."},
+    {k:"CTA",cls:"cta",sug:1,v:"Save · Which one suits you?"},
+    {k:"GOAL",v:"Show differentiation"},
+    {k:"NOTE",v:"Focus on the experience & approach — don't attack gyms or other workouts."}]},
+ 13:{week:"Week 6 · Trust",fmt:"reel",fmtLabel:"Reel",cat:"Brand Story",catCls:"brand",title:"Meet the People Behind the Movement",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Meet the people behind the movement.”"},
+    {k:"CONCEPT",sug:1,v:"Humanise the brand — instructor / team personality up front."},
+    {k:"FLOW",cls:"flow",v:"Who they are → Why they do this → What they believe about fitness"},
+    {k:"ON-SCREEN",sug:1,v:"Name + role for each person."},
+    {k:"CAPTION",sug:1,v:"Story-led — the ‘why’ behind the studio."},
+    {k:"CTA",cls:"cta",sug:1,v:"Say hi in the comments."},
+    {k:"GOAL",v:"Humanize the brand"},
+    {k:"NOTE",v:"Show the instructor / team personality."}]},
+ 14:{week:"Week 6 · Trust",fmt:"reel",fmtLabel:"Reel",cat:"Social Proof",catCls:"proof",title:"Real Member Journey",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“She almost didn't walk in. Now she doesn't miss a class.”"},
+    {k:"FLOW",cls:"flow",v:"Before → Experience → Change → Feeling"},
+    {k:"FOCUS",v:"Confidence · Energy · Consistency · Enjoyment · Lifestyle"},
+    {k:"CAPTION",sug:1,v:"Let the member's own words carry it; keep it real."},
+    {k:"CTA",cls:"cta",sug:1,v:"DM to start your own."},
+    {k:"GOAL",v:"Build trust"},
+    {k:"NOTE",v:"No unrealistic body-transformation claims — focus on how it feels."}]},
+ 15:{week:"Week 6 · Trust",fmt:"carousel",fmtLabel:"Carousel",cat:"Education",catCls:"edu",title:"5 Things People Think About Dance Fitness",rows:[
+    {k:"GOAL",v:"Handle objections (Myth vs Reality)"},
+    {k:"MYTHS",cls:"flow",v:"<ul><li>“I can't dance” → you don't need to be a dancer</li><li>“I'm not fit enough” → start at your own level</li><li>“It's only for young people” → adaptable to all levels</li></ul>"},
+    {k:"+ADD",sug:1,v:"Two more to reach “5 things”: “It's not a real workout” → you'll sweat; “I'll feel judged” → it's a supportive community."},
+    {k:"CAPTION",sug:1,v:"One myth per slide, reality underneath."},
+    {k:"CTA",cls:"cta",sug:1,v:"Which one held you back?"},
+    {k:"NOTE",v:"Your brief specifies 3 myths; the two extra are suggested to fill the “5”."}]},
+ 16:{week:"Week 7 · Desire",fmt:"reel",fmtLabel:"Reel",cat:"Entertainment",catCls:"fun",title:"If You Hate Boring Workouts, Watch This",rows:[
+    {k:"HOOK",cls:"hook",v:"“If the thought of another boring workout makes you want to quit… maybe you need a different kind of movement.”",q:1},
+    {k:"SHOW",cls:"flow",v:"Music → Community → Movement → Sweat → Smile"},
+    {k:"CAPTION",sug:1,v:"Desire-led — paint the feeling of a session you look forward to."},
+    {k:"CTA",cls:"cta",sug:1,v:"Save this as your sign."},
+    {k:"GOAL",v:"Create desire"}]},
+ 17:{week:"Week 7 · Desire",fmt:"reel",fmtLabel:"Reel",cat:"Lifestyle",catCls:"life",title:"5 Reasons You'll Actually Enjoy Coming Back",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“5 reasons people actually keep coming back.”"},
+    {k:"FOCUS",v:"Music · Energy · Community · Variety · Enjoyment"},
+    {k:"VISUAL",sug:1,v:"One quick cut per reason, counted 1–5 on screen."},
+    {k:"CAPTION",sug:1,v:"List the five; ask which one is them."},
+    {k:"CTA",cls:"cta",sug:1,v:"Which reason is you?"},
+    {k:"GOAL",v:"Build desire"}]},
+ 18:{week:"Week 7 · Desire",fmt:"carousel",fmtLabel:"Carousel",cat:"Education",catCls:"edu",title:"Is Dance Fitness Right for You?",rows:[
+    {k:"CONCEPT",sug:1,v:"Self-identify checklist — help the audience place themselves."},
+    {k:"YES IF",cls:"flow",v:"<ul><li>You want enjoyable movement</li><li>You struggle with consistency</li><li>You prefer group energy</li><li>You want something different</li><li>You want fitness as a lifestyle</li></ul>"},
+    {k:"CAPTION",sug:1,v:"“If you said yes to 2 or more…” lead-in."},
+    {k:"CTA",cls:"cta",sug:1,v:"DM to try a session."},
+    {k:"GOAL",v:"Help the audience self-identify"}]},
+ 19:{week:"Week 8 · Conversion",fmt:"reel",fmtLabel:"Reel",cat:"Conversion",catCls:"convert",title:"Still Watching? It's Time to Move.",rows:[
+    {k:"HOOK",cls:"hook",v:"“You've watched us move for 2 months. Now it's your turn.”",q:1},
+    {k:"SHOW",cls:"flow",v:"Best moments from Month 1 + Month 2"},
+    {k:"CAPTION",sug:1,v:"Direct nudge — the watching phase is over."},
+    {k:"CTA",cls:"cta",v:"DM us to know about your first session."},
+    {k:"GOAL",v:"Create action"}]},
+ 20:{week:"Week 8 · Conversion",fmt:"reel",fmtLabel:"Reel",cat:"Conversion",catCls:"convert",title:"Your First Session Starts Here",rows:[
+    {k:"HOOK",cls:"hook",sug:1,v:"“Your first session starts here.”"},
+    {k:"FLOW",cls:"flow",v:"Enquiry → Visit → Introduction → Warm-up → Dance Fitness → Cool-down"},
+    {k:"CAPTION",sug:1,v:"Walk them through how easy the first step is."},
+    {k:"CTA",cls:"cta",v:"Ready to experience it?"},
+    {k:"GOAL",v:"Drive trial"}]},
+ 21:{week:"Week 8 · Conversion",fmt:"carousel",fmtLabel:"Carousel",cat:"Conversion",catCls:"convert",title:"What Are You Waiting For?",rows:[
+    {k:"SLIDES",cls:"flow",v:"<ul><li>Still thinking about starting?</li><li>“I'm not fit enough.”</li><li>“I can't dance.”</li><li>“I'll start next month.”</li><li>There will always be a reason to wait</li><li>Start with one session</li></ul>"},
+    {k:"END",cls:"cta",v:"“Kochi, Ready to Change Your Shape?”"},
+    {k:"CAPTION",sug:1,v:"Name the hesitation, then dissolve it."},
+    {k:"CTA",cls:"cta",sug:1,v:"DM to book your first session."},
+    {k:"GOAL",v:"Overcome hesitation"}]},
+ 22:{week:"Week 8 · Conversion",fmt:"staticp",fmtLabel:"Static",cat:"Sales",catCls:"convert",title:"Join the Movement",rows:[
+    {k:"CONCEPT",sug:1,v:"Clean, conversion-focused creative to close the campaign."},
+    {k:"COPY",v:"MOVE. SHAPE. MINDSET. — “Your next chapter starts with one move.”"},
+    {k:"CAPTION",sug:1,v:"Short and confident; the campaign's closing line."},
+    {k:"CTA",cls:"cta",v:"DM us / Book your first session"},
+    {k:"GOAL",v:"Generate enquiries"}]}
+};
+
+const MONTHS = [
+ {title:"Month 1",sub:"“Kochi, Ready to Change Your Shape?” — Curiosity → Awareness · 9 posts",
+  key:"<b>Key message:</b> “Fitness doesn't have to feel like a routine.”",
+  weeks:[{n:"WEEK 1",t:"Spark curiosity",posts:[1,2,3]},
+         {n:"WEEK 2",t:"Explain the concept",posts:[4,5,6]},
+         {n:"WEEK 3",t:"Deepen the message",posts:[7,8]},
+         {n:"WEEK 4",t:"Reinforce & bridge",posts:[9]}]},
+ {title:"Month 2",sub:"“You've Seen It. Now Experience It.” — Trust → Desire → Conversion · 13 posts",
+  key:"<b>Goal:</b> make the audience feel the real experience, overcome objections, and take the first step.",
+  weeks:[{n:"WEEK 5",t:"👀 Experience — “What actually happens here?”",posts:[10,11,12]},
+         {n:"WEEK 6",t:"❤️ Trust — “Real people. Real movement.”",posts:[13,14,15]},
+         {n:"WEEK 7",t:"🔥 Desire — “Maybe this is for me.”",posts:[16,17,18]},
+         {n:"WEEK 8",t:"🚀 Trial → Conversion — “Stop watching. Start moving.”",posts:[19,20,21,22]}]}
+];
+
+const cal=document.getElementById('cal');
+MONTHS.forEach(m=>{
+  const head=document.createElement('div');head.className='mhead';head.innerHTML=m.title+' <small>'+m.sub+'</small>';cal.appendChild(head);
+  const key=document.createElement('div');key.className='mkey';key.innerHTML=m.key;cal.appendChild(key);
+  const grid=document.createElement('div');grid.className='wgrid';
+  m.weeks.forEach(w=>{
+    const row=document.createElement('div');row.className='wrow';
+    row.innerHTML='<div class="wtab"><div class="wn">'+w.n+'</div><div class="wt">'+w.t+'</div></div>';
+    const cells=document.createElement('div');cells.className='wcells';
+    w.posts.forEach(pn=>{const p=POSTS[pn];const btn=document.createElement('button');
+      btn.className='cell '+p.fmt;btn.type='button';btn.onclick=()=>openPost(pn);
+      btn.innerHTML='<span class="corner"></span><span class="cnum">'+String(pn).padStart(2,'0')+'</span>'+
+        '<div class="cbody"><span class="cicon">'+ICON[p.fmt]+'</span><span class="clabel">'+p.fmtLabel.toUpperCase()+'</span>'+
+        '<span class="ctitle'+(p.mal?' mal':'')+'">'+p.title+'</span></div><span class="cview">VIEW ›</span>';
+      cells.appendChild(btn);});
+    row.appendChild(cells);grid.appendChild(row);
+  });
+  cal.appendChild(grid);
+});
+
+let current=null;
+const overlay=document.getElementById('overlay');
+const modal=document.getElementById('modal');
+function openPost(n){
+  const p=POSTS[n];current=n;
+  modal.style.setProperty('--c','var(--'+CVAR[p.fmt]+')');
+  const rows=p.rows.map(r=>{
+    const mark=r.sug?' <span class="sg" title="suggested execution">✎</span>':'';
+    return '<div class="mrow '+(r.cls||'')+'"><span class="mk">'+r.k+mark+'</span><span class="mv'+(r.q?' q':'')+'">'+r.v+'</span></div>';
+  }).join('');
+  document.getElementById('mcontent').innerHTML=
+    '<div class="mtop"><span class="mnum">POST '+String(n).padStart(2,'0')+'</span>'+
+    '<span class="mweek">'+p.week+'</span>'+
+    '<span class="mbadge '+p.fmt+'">'+p.fmtLabel+'</span>'+
+    '<span class="mcat" style="color:var(--'+p.catCls+')">'+p.cat+'</span></div>'+
+    '<div class="mtitle'+(p.mal?' mal':'')+'">'+p.title+'</div>'+rows;
+  document.getElementById('prevBtn').disabled=(n<=1);
+  document.getElementById('nextBtn').disabled=(n>=22);
+  modal.scrollTop=0;
+  overlay.classList.add('open');
+}
+function closeModal(){overlay.classList.remove('open');current=null;}
+function step(d){if(current){const t=current+d;if(POSTS[t])openPost(t);}}
+document.addEventListener('keydown',e=>{
+  if(!overlay.classList.contains('open'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
+});
+</script>
+</body>
+</html>
