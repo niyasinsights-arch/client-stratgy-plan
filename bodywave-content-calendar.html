@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodywave — Selected Content Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111111;
+    --card:#1F2937;
+    --accent:#F97316;
+    --border:#374151;
+    --text:#E5E7EB;
+    --muted:#9CA3AF;
+    --font:"Google Sans","Product Sans","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding:0 20px 80px;
+  }
+  .wrap{max-width:1180px;margin:0 auto}
+
+  /* ---------- Header ---------- */
+  header{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:44px;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:20px;
+  }
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+  h1{
+    font-size:clamp(34px,5.4vw,58px);
+    font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px;
+  }
+  h1 .thin{color:var(--muted);font-weight:600}
+  .sub{
+    display:flex;flex-wrap:wrap;gap:14px 28px;color:var(--muted);
+    font-size:14px;font-weight:500;margin-top:6px;
+  }
+  .sub .k{color:var(--text);font-weight:600}
+  .daylist{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;
+  }
+  .daychip{
+    font-size:13px;font-weight:700;color:var(--muted);
+    border:1px solid var(--border);border-radius:8px;
+    padding:6px 12px;background:rgba(255,255,255,.02);
+  }
+
+  /* ---------- Flow ribbon (signature) ---------- */
+  .flow-head{
+    font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:16px;
+  }
+  .flow{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px 6px;
+    margin-bottom:52px;
+  }
+  .stage{
+    font-size:13px;font-weight:600;color:var(--text);
+    background:var(--card);border:1px solid var(--border);
+    border-radius:999px;padding:9px 16px;white-space:nowrap;
+  }
+  .arrow{color:var(--accent);font-weight:800;font-size:14px;padding:0 2px}
+
+  /* ---------- Cards ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+    gap:22px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px 26px 22px;
+    display:flex;flex-direction:column;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;height:3px;width:100%;
+    background:linear-gradient(90deg,var(--accent),transparent 70%);
+    opacity:.85;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--accent);
+    box-shadow:0 18px 40px -20px rgba(249,115,22,.5);
+  }
+  .card-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+  .badge{
+    flex:none;width:58px;height:58px;border-radius:14px;
+    background:linear-gradient(145deg,var(--accent),#c2410c);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#111;line-height:1;
+  }
+  .badge .lbl{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+  .badge .num{font-size:24px;font-weight:800;margin-top:2px}
+  .title-block{flex:1;min-width:0}
+  .idea{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .chip{
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:4px 10px;border-radius:6px;
+  }
+  .chip.format{color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--border)}
+  .chip.pillar{color:var(--accent);background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.35)}
+
+  .field{margin-top:14px}
+  .field .lab{
+    font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:5px;display:block;
+  }
+  .field .val{font-size:14px;color:var(--text);line-height:1.5}
+  .field.objective .val{color:var(--muted)}
+
+  .cta-row{
+    margin-top:20px;padding-top:18px;border-top:1px solid var(--border);
+    display:flex;align-items:center;gap:10px;
+  }
+  .cta-lab{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .cta{
+    font-size:13.5px;font-weight:700;color:var(--accent);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:56px;padding-top:28px;border-top:1px solid var(--border);
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+    color:var(--muted);font-size:13px;
+  }
+  footer .brand{font-weight:700;color:var(--text)}
+  footer .brand span{color:var(--accent)}
+
+  @media (max-width:520px){
+    header{padding:44px 0 32px}
+    .grid{grid-template-columns:1fr}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    body{background:#fff;color:#111;padding:0}
+    .card,.stage,.daychip{break-inside:avoid}
+    .card:hover{transform:none;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow"><span class="dot"></span>Bodywave · Ladies-Only Gym</span>
+    <h1>Detailed Selected <span class="thin">Content Plan</span></h1>
+    <div class="sub">
+      <div><span class="k">11</span> selected posts</div>
+      <div>Sequenced <span class="k">Trust → Conversion</span></div>
+      <div>Format mix: <span class="k">Reel · Carousel · Graphic · Photo · Review</span></div>
+    </div>
+    <div class="daylist">
+      <span class="daychip">Day 2</span>
+      <span class="daychip">Day 5</span>
+      <span class="daychip">Day 7</span>
+      <span class="daychip">Day 8</span>
+      <span class="daychip">Day 10</span>
+      <span class="daychip">Day 12</span>
+      <span class="daychip">Day 16</span>
+      <span class="daychip">Day 17</span>
+      <span class="daychip">Day 18</span>
+      <span class="daychip">Day 22</span>
+      <span class="daychip">Day 27</span>
+    </div>
+  </header>
+
+  <div class="flow-head">Content Flow</div>
+  <div class="flow">
+    <span class="stage">Trust</span><span class="arrow">→</span>
+    <span class="stage">Engagement</span><span class="arrow">→</span>
+    <span class="stage">Value</span><span class="arrow">→</span>
+    <span class="stage">Consideration</span><span class="arrow">→</span>
+    <span class="stage">Education</span><span class="arrow">→</span>
+    <span class="stage">Community</span><span class="arrow">→</span>
+    <span class="stage">Social Proof</span><span class="arrow">→</span>
+    <span class="stage">Conversion</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- Day 2 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">2</span></div>
+        <div class="title-block">
+          <div class="idea">Trainer Introduction</div>
+          <div class="chips">
+            <span class="chip format">Carousel</span>
+            <span class="chip pillar">Trust</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Build credibility and introduce the trainers.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Introduce the trainer, qualifications, experience and specialty. Explain why the right guidance matters.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Trainer portraits, credentials, training environment and coaching moments.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Meet your coach</span></div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">5</span></div>
+        <div class="title-block">
+          <div class="idea">Cardio vs Strength</div>
+          <div class="chips">
+            <span class="chip format">Reel</span>
+            <span class="chip pillar">Engagement</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Encourage interaction and educate members.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Compare cardio and strength simply. Explain the basic difference and when each can be useful.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Split-screen cardio vs strength, exercise demos and quick text overlays.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Comment: Cardio or Strength?</span></div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">7</span></div>
+        <div class="title-block">
+          <div class="idea">Weekend Motivation</div>
+          <div class="chips">
+            <span class="chip format">Graphic Post</span>
+            <span class="chip pillar">Engagement</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Create an emotional connection and encourage consistency.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Focus on showing up consistently rather than waiting for motivation.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Strong fitness/lifestyle visual with bold motivational typography.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Tag a friend</span></div>
+    </div>
+
+    <!-- Day 8 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">8</span></div>
+        <div class="title-block">
+          <div class="idea">5-Min Home Workout Tutorial</div>
+          <div class="chips">
+            <span class="chip format">Reel</span>
+            <span class="chip pillar">Value</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Provide useful fitness content and increase saves.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Demonstrate 3–5 simple exercises for days when someone cannot visit the gym.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Trainer demonstrating exercises with names, repetitions or timing on screen.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Save for later</span></div>
+    </div>
+
+    <!-- Day 10 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">10</span></div>
+        <div class="title-block">
+          <div class="idea">Trainer Q&amp;A</div>
+          <div class="chips">
+            <span class="chip format">Reel</span>
+            <span class="chip pillar">Engagement</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Answer common questions and build trust.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Ask the trainer 3 common beginner/gym questions and give short, practical answers.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Trainer speaking to camera with questions appearing on screen.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Drop your question</span></div>
+    </div>
+
+    <!-- Day 12 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">12</span></div>
+        <div class="title-block">
+          <div class="idea">Benefits of Ladies-Only Gym</div>
+          <div class="chips">
+            <span class="chip format">Carousel</span>
+            <span class="chip pillar">Consideration</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Communicate Bodywave's unique positioning.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Explain why women choose a ladies-only gym, focusing on confidence, comfort, support and effective training.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Women training confidently and showing the supportive environment.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Safe. Supportive. Effective.</span></div>
+    </div>
+
+    <!-- Day 16 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">16</span></div>
+        <div class="title-block">
+          <div class="idea">Beginner Strength Training Demo</div>
+          <div class="chips">
+            <span class="chip format">Reel</span>
+            <span class="chip pillar">Education</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Remove fear around weight training for beginners.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Show simple beginner-friendly strength exercises and correct technique.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Coach demonstrating exercises step-by-step and correct form.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Book a PT session</span></div>
+    </div>
+
+    <!-- Day 17 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">17</span></div>
+        <div class="title-block">
+          <div class="idea">Member Spotlight</div>
+          <div class="chips">
+            <span class="chip format">Photo + Caption</span>
+            <span class="chip pillar">Community</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Strengthen community and social connection.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Introduce a Bodywave member and share their fitness journey or experience.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Member portrait, workout moments and natural gym environment.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Inspire someone today</span></div>
+    </div>
+
+    <!-- Day 18 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">18</span></div>
+        <div class="title-block">
+          <div class="idea">Common Gym Mistakes</div>
+          <div class="chips">
+            <span class="chip format">Reel</span>
+            <span class="chip pillar">Education</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Educate beginners and establish expertise.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Highlight 3 common gym mistakes and show the correct approach.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Mistake → Correct Technique, trainer demonstrations and text overlays.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Save this</span></div>
+    </div>
+
+    <!-- Day 22 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">22</span></div>
+        <div class="title-block">
+          <div class="idea">Posture Tips for Desk Workers</div>
+          <div class="chips">
+            <span class="chip format">Carousel</span>
+            <span class="chip pillar">Value</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Provide practical everyday fitness education.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Address prolonged sitting and show correct vs incorrect posture.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Correct/incorrect posture comparison with demonstrations or illustrations.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Save &amp; Share</span></div>
+    </div>
+
+    <!-- Day 27 -->
+    <div class="card">
+      <div class="card-top">
+        <div class="badge"><span class="lbl">Day</span><span class="num">27</span></div>
+        <div class="title-block">
+          <div class="idea">Client Review</div>
+          <div class="chips">
+            <span class="chip format">Review Post</span>
+            <span class="chip pillar">Social Proof</span>
+          </div>
+        </div>
+      </div>
+      <div class="field objective">
+        <span class="lab">Objective</span>
+        <div class="val">Build credibility and support conversion.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Content Direction</span>
+        <div class="val">Showcase a genuine client review with the member's image and experience.</div>
+      </div>
+      <div class="field">
+        <span class="lab">Visual Direction</span>
+        <div class="val">Review screenshot + member photo + Bodywave branding.</div>
+      </div>
+      <div class="cta-row"><span class="cta-lab">CTA</span><span class="cta">Start your journey</span></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="brand">Bodywave <span>·</span> Content Calendar</div>
+    <div>Prepared by Speakerbox</div>
+  </footer>
+
+</div>
+</body>
+</html>
