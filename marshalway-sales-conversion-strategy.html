@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarshalWay — Sales & Conversion Strategy</title>
+<style>
+  :root{
+    --bg:#111111; --card:#1F2937; --accent:#F97316; --border:#374151;
+    --text:#E5E7EB; --muted:#9CA3AF; --accent-soft:rgba(249,115,22,.12);
+    --good:#34D399; --bad:#F87171; --warn:#FBBF24;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Google Sans','Product Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6; font-size:15px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 96px}
+  header.masthead{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:8px}
+  .eyebrow{color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+  h1{font-size:34px;line-height:1.15;margin:10px 0 6px;font-weight:700}
+  h2{font-size:24px;margin:48px 0 4px;font-weight:700}
+  h2 .num{color:var(--accent)}
+  h3{font-size:18px;margin:26px 0 8px;font-weight:600}
+  h4{font-size:15px;margin:16px 0 6px;font-weight:600;color:#fff}
+  p{margin:8px 0}
+  .lede{color:var(--muted);font-size:16px;max-width:760px}
+  .section-intro{color:var(--muted);max-width:820px;margin-bottom:14px}
+  a{color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:14px 0}
+  .card.recommended{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted);margin:0 6px 6px 0}
+  .pill.stage-con{color:#93C5FD;border-color:#3B82F6}
+  .pill.stage-conv{color:#FCD34D;border-color:#D97706}
+  .pill.stage-sale{color:#6EE7B7;border-color:#059669}
+  .pill.stage-ret{color:#F0ABFC;border-color:#A21CAF}
+  .pill.accent{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;margin:14px 0}
+  table{border-collapse:collapse;width:100%;min-width:920px;font-size:13.5px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:#182230;color:#fff;font-weight:600;position:sticky;top:0;font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  td .hook{color:#fff;font-weight:600}
+  td .cta{color:var(--accent);font-weight:600}
+  .weekband{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:10px 16px;margin:26px 0 4px;font-weight:600}
+  .weekband small{display:block;color:var(--muted);font-weight:400;margin-top:2px}
+  ul.tight{margin:8px 0;padding-left:20px}
+  ul.tight li{margin:5px 0}
+  .kv{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:10px 0}
+  .kv dt{color:var(--muted);font-size:13px}
+  .kv dd{margin:0}
+  .feat li{list-style:none;position:relative;padding-left:26px;margin:7px 0}
+  .feat li::before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:700}
+  .feat li.no::before{content:"✗";color:var(--bad)}
+  .note{background:rgba(251,191,36,.08);border:1px solid var(--warn);border-radius:12px;padding:14px 18px;margin:16px 0}
+  .note strong{color:var(--warn)}
+  .callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;border-radius:8px;margin:12px 0}
+  .toc{columns:2;column-gap:28px}
+  @media(max-width:600px){.toc{columns:1}}
+  .toc a{display:block;padding:5px 0;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+  .toc a:hover{color:var(--accent)}
+  .budget-head{font-size:20px;color:#fff;font-weight:700}
+  .budget-head span{color:var(--accent)}
+  code{background:#0d1117;border:1px solid var(--border);border-radius:6px;padding:1px 6px;font-size:13px;color:#e2e8f0}
+  .mini{font-size:12.5px;color:var(--muted)}
+  hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+  .legend span{margin-right:14px;font-size:12px;color:var(--muted)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">Speakerbox · Performance Marketing Strategy</div>
+  <h1>MarshalWay — Sales &amp; Conversion Strategy</h1>
+  <p class="lede">A 30-day content + Meta Ads system built for one job: turn people already interested in the MarshalWay Smart Ironing Machine into paying customers. Consideration → Conversion → Sales → Retargeting.</p>
+  <div style="margin-top:12px">
+    <span class="pill accent">Objective: Purchases</span>
+    <span class="pill">Product: Smart Ironing Machine</span>
+    <span class="pill">Channel: Meta (IG + FB)</span>
+    <span class="pill">Model: D2C · own-website checkout</span>
+  </div>
+</header>
+
+<!-- HONESTY / VERIFY-BEFORE-LAUNCH -->
+<div class="note">
+  <strong>Read first — verify before you launch.</strong> This plan is built from the product facts on file. A few things I could not confirm here and you should validate in-account:
+  <ul class="tight">
+    <li><strong>Live Instagram data</strong> (followers, top posts, current engagement, audience mix) was not accessible — pull it from Instagram Insights + Meta Ads Manager and let it re-rank the creative priorities below.</li>
+    <li><strong>Price / offer:</strong> shown as <code>₹19,999 (from ₹24,999)</code> per our last record. Confirm the current live price and any active offer before running the offer/urgency creative — the exact figures drive those hooks.</li>
+    <li><strong>Benchmarks</strong> (CPM, CTR, ROAS, CPA) are approximate, industry-illustrative ranges for Indian D2C at this price point — not guarantees. Treat them as starting hypotheses and recalibrate to the account's own numbers after 7–14 days.</li>
+    <li><strong>Reviews, testimonials &amp; "units sold" content must use real customer material</strong> — collected post-purchase (WhatsApp, email, review request). Do not fabricate social proof. Performance/time claims like "8–12 minutes" and "wrinkle-free" should be substantiable if challenged (ASCI).</li>
+  </ul>
+</div>
+
+<h2>Contents</h2>
+<div class="toc">
+  <a href="#analysis">1 · Brand &amp; product analysis</a>
+  <a href="#thesis">2 · Sales funnel thesis</a>
+  <a href="#content">3 · 30-day content plan</a>
+  <a href="#ads">4 · Meta Ads plan (3 campaigns)</a>
+  <a href="#retarget">5 · Retargeting audiences</a>
+  <a href="#reels">6 · 10 sales Reel ideas</a>
+  <a href="#creatives">7 · 10 Meta ad creative ideas</a>
+  <a href="#budgets">8 · Budget plans (₹500 / ₹1k / ₹2k)</a>
+  <a href="#testing">9 · Creative testing plan</a>
+  <a href="#optimize">10 · Weekly optimization plan</a>
+  <a href="#launch">11 · Pre-launch tracking checklist</a>
+</div>
+
+<!-- 1. ANALYSIS -->
+<h2 id="analysis"><span class="num">1 ·</span> Brand &amp; product analysis</h2>
+<p class="section-intro">What we're actually selling — and why the sale is a <em>considered</em> purchase, not an impulse buy. This shapes everything downstream.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>The product, in one line</h4>
+    <p>A machine that takes a <strong>damp shirt and returns it dry <em>and</em> ironed in ~8–12 minutes</strong>, using an adjustable inflating "shirt balloon" that presses the garment from the inside. It replaces two chores (drying + ironing) and one recurring cost (laundry/dry-clean/ironing help).</p>
+    <p class="mini">Positioning guardrail: this is <strong>not</strong> a handheld garment steamer. Never let the creative frame it as one — that's a ₹1,500 mental category and it kills the ₹19,999 price.</p>
+  </div>
+  <div class="card">
+    <h4>Why buyers hesitate (the real objections)</h4>
+    <ul class="feat">
+      <li class="no"><strong>Price shock</strong> — "₹19,999 for ironing?"</li>
+      <li class="no"><strong>Belief gap</strong> — "Does it really work on my shirts?"</li>
+      <li class="no"><strong>Fabric fear</strong> — "Will it damage delicate clothes?"</li>
+      <li class="no"><strong>Trust</strong> — new brand, high ticket, online-only</li>
+      <li class="no"><strong>Deferral</strong> — "I'll think about it" (never returns)</li>
+    </ul>
+    <p class="mini">Every content and ad angle below exists to dismantle one of these five. That is the whole game at ₹19,999.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h4>Strategic implication for a sales-only mandate</h4>
+  <div class="grid g3" style="margin-top:6px">
+    <div>
+      <span class="pill stage-con">High ticket</span>
+      <p class="mini">A ₹19,999 purchase is rarely first-touch. Expect a consideration window — proof and objection-handling matter more than reach.</p>
+    </div>
+    <div>
+      <span class="pill stage-conv">Demo-led</span>
+      <p class="mini">The product sells itself <em>on video</em>. Seeing the damp-to-crisp transformation does more than any adjective. Demo is your hero format.</p>
+    </div>
+    <div>
+      <span class="pill stage-ret">Retargeting-heavy</span>
+      <p class="mini">Most sales close on the 2nd–5th touch. The retargeting layer isn't optional here — it's where the money is made.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2. THESIS -->
+<h2 id="thesis"><span class="num">2 ·</span> Sales funnel thesis</h2>
+<p class="section-intro">One continuous machine, not four separate efforts. Each stage feeds the next and hands warm audiences down the line.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4><span class="pill stage-con">Consideration</span></h4>
+    <p>Reach people showing intent signals (home appliance shoppers, busy professionals, new-home movers) and <strong>make them believe the machine works</strong>. Job: create video-viewers and page-engagers = tomorrow's retargeting pool.</p>
+    <p class="mini"><strong>Success = </strong>cheap ThruPlays, growing engaged audiences, rising ViewContent.</p>
+  </div>
+  <div class="card">
+    <h4><span class="pill stage-conv">Conversion</span></h4>
+    <p>Push warm-but-cold prospects to the product page with <strong>features, comparisons and cost-per-use math</strong>. Job: turn belief into Add-to-Cart and Initiate-Checkout.</p>
+    <p class="mini"><strong>Success = </strong>ATC/IC volume rising, landing-page views converting.</p>
+  </div>
+  <div class="card recommended">
+    <h4><span class="pill stage-sale">Sales</span></h4>
+    <p>Close with <strong>social proof + offer + urgency</strong>. Real reviews, testimonials, warranty confidence, and a reason to buy <em>now</em>. Job: purchases.</p>
+    <p class="mini"><strong>Success = </strong>Purchases at a ROAS your margin can sustain.</p>
+  </div>
+  <div class="card">
+    <h4><span class="pill stage-ret">Retargeting</span></h4>
+    <p>Re-approach everyone who watched, clicked, viewed, or abandoned — with the <strong>exact objection they likely stalled on</strong>. Job: recover the deferred sale.</p>
+    <p class="mini"><strong>Success = </strong>highest ROAS in the account; lowest CPA.</p>
+  </div>
+</div>
+
+<div class="callout">Budget follows heat. As spend scales, a bigger share moves to Conversion and Retargeting, because that's where a rupee returns the most. See the budget plans in §8.</div>
+
+<!-- 3. CONTENT PLAN -->
+<h2 id="content"><span class="num">3 ·</span> 30-day content plan</h2>
+<p class="section-intro">30 pieces, each carrying a single sales job. The month is sequenced to mirror the funnel: Week 1 builds belief, Week 2 handles objections, Week 3 stacks proof, Week 4 drives the close. Captions are written tight — expand only where the format needs it.</p>
+<div class="legend" style="margin:8px 0 4px">
+  <span><span class="dot" style="background:#3B82F6"></span>Consideration</span>
+  <span><span class="dot" style="background:#D97706"></span>Conversion</span>
+  <span><span class="dot" style="background:#059669"></span>Sales</span>
+  <span><span class="dot" style="background:#A21CAF"></span>Retargeting-aligned</span>
+</div>
+
+<!-- WEEK 1 -->
+<div class="weekband">Week 1 · Build belief <small>Consideration — problem→solution, demos, benefits, "why MarshalWay". Every piece is a retargeting-pool builder.</small></div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Day</th><th>Type</th><th>Stage</th><th>Hook</th><th>Main concept</th><th>Caption / Ad copy</th><th>CTA</th><th>Sales objective</th></tr></thead>
+<tbody>
+<tr>
+  <td>1</td><td>Reel (Problem→Solution)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"Ironing steals 40 minutes of your morning. Here's how to get them back."</td>
+  <td>Open on the universal pain — the pre-work ironing scramble — then reveal the machine as the fix.</td>
+  <td>You didn't sign up for a life of ironing boards. Damp shirt in → dry, crisp shirt out in minutes. This is MarshalWay.</td>
+  <td class="cta">Watch how it works →</td>
+  <td>Seed intent; build video-viewer pool</td>
+</tr>
+<tr>
+  <td>2</td><td>Reel (Demo)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"Wet shirt. No dryer. No iron. Watch."</td>
+  <td>The hero demo — real-time damp shirt loaded, balloon inflates, timer, crisp result. Unedited feel.</td>
+  <td>No cuts, no tricks. One damp shirt, one machine, one timer. Save this for the next time ironing ruins your morning.</td>
+  <td class="cta">See it on our site →</td>
+  <td>Prove it works; drive ViewContent</td>
+</tr>
+<tr>
+  <td>3</td><td>Carousel (Benefits)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"5 chores this one machine deletes"</td>
+  <td>Slide per benefit: dries, irons, saves time, no ironing skill needed, no more laundry runs.</td>
+  <td>It's not an iron. It's the end of ironing. Swipe for the 5 things you'll never do again.</td>
+  <td class="cta">Explore the machine →</td>
+  <td>Expand desire; educate on value</td>
+</tr>
+<tr>
+  <td>4</td><td>Carousel (Why MarshalWay)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"Why we built an ironing machine nobody asked for"</td>
+  <td>Brand POV — the problem you set out to solve, the balloon mechanism, who it's for.</td>
+  <td>Every home has a dryer and an iron. Almost nobody uses them daily. We fixed the reason why. Here's the thinking.</td>
+  <td class="cta">Meet MarshalWay →</td>
+  <td>Build trust in a new brand</td>
+</tr>
+<tr>
+  <td>5</td><td>Reel (Feature spotlight)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"The 'shirt balloon' — the part that makes this work"</td>
+  <td>Close-up of the adjustable inflating form; explain how inside-out pressure = even, crease-free finish.</td>
+  <td>Most machines press from outside. Ours presses from inside — adjustable to your shirt. That's why the finish is this clean.</td>
+  <td class="cta">See full specs →</td>
+  <td>Differentiate on mechanism</td>
+</tr>
+<tr>
+  <td>6</td><td>Reel (Before/After)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"Crumpled → boardroom-ready. Same shirt."</td>
+  <td>Split-screen: sad crumpled shirt vs the finished result, side by side.</td>
+  <td>Left: how it came out of the wash. Right: 10 minutes later. No board, no spray, no skill.</td>
+  <td class="cta">Want this? Tap the link →</td>
+  <td>Visual proof of outcome</td>
+</tr>
+<tr>
+  <td>7</td><td>Carousel (Who it's for)</td><td><span class="pill stage-con">Con</span></td>
+  <td class="hook">"If any of these is you, keep reading"</td>
+  <td>Personas: working professional, parent, hostel/PG, someone who hates ironing, elderly-care household.</td>
+  <td>Built for people whose time is worth more than a laundry queue. Find yourself in the swipe.</td>
+  <td class="cta">Find your fit →</td>
+  <td>Qualify + self-select buyers</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- WEEK 2 -->
+<div class="weekband">Week 2 · Handle objections <small>Conversion — features, comparisons, cost math, FAQs. Turn "nice" into "I need this."</small></div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Day</th><th>Type</th><th>Stage</th><th>Hook</th><th>Main concept</th><th>Caption / Ad copy</th><th>CTA</th><th>Sales objective</th></tr></thead>
+<tbody>
+<tr>
+  <td>8</td><td>Carousel (Comparison)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"MarshalWay vs steam iron vs dry-cleaning — the honest table"</td>
+  <td>3-way comparison: time, effort, skill, recurring cost, finish quality.</td>
+  <td>We're not scared of the comparison. Time, effort, cost — see where each one actually lands.</td>
+  <td class="cta">Compare &amp; decide →</td>
+  <td>Frame against alternatives</td>
+</tr>
+<tr>
+  <td>9</td><td>Carousel (Feature deep-dive)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"The 4 features people ask about most"</td>
+  <td>Adjustable balloon size, timer/auto-stop, fabric safety, footprint/storage.</td>
+  <td>Everything you'd want to know before spending real money. No fluff, just the specs that matter.</td>
+  <td class="cta">Read full features →</td>
+  <td>Reduce spec uncertainty</td>
+</tr>
+<tr>
+  <td>10</td><td>Reel (Cost-per-use math)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"₹19,999 sounds like a lot — until you do this math"</td>
+  <td>On-screen math: monthly ironing/laundry spend × months = the machine pays for itself.</td>
+  <td>What do you spend on ironing or laundry every month? Multiply it. Most people cross ₹19,999 in a year — and then it's free.</td>
+  <td class="cta">Do your own math →</td>
+  <td>Reframe price as investment</td>
+</tr>
+<tr>
+  <td>11</td><td>Carousel (FAQ)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"Your top 6 questions, answered straight"</td>
+  <td>Power use, which fabrics, warranty, delivery time, installation, returns.</td>
+  <td>Before you ask us in the DMs — here are the answers. Anything missing? Comment it.</td>
+  <td class="cta">More on the site →</td>
+  <td>Remove friction to purchase</td>
+</tr>
+<tr>
+  <td>12</td><td>Reel (Multi-garment demo)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"Cotton, linen, formal, kurta — one machine, four fabrics"</td>
+  <td>Rapid demo across garment types to answer "will it work on <em>my</em> clothes?"</td>
+  <td>The #1 question we get: "does it work on ___?" Here's ___, ___, ___ and ___. Judge for yourself.</td>
+  <td class="cta">See it handle yours →</td>
+  <td>Kill the fabric-fear objection</td>
+</tr>
+<tr>
+  <td>13</td><td>Reel (Before/After UGC-style)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"POV: you just did your last-ever ironing session"</td>
+  <td>Handheld, home-feel before/after — relatable, un-polished, buyer-shot vibe.</td>
+  <td>Filmed in a real home, not a studio. This is what a normal weekday morning looks like now.</td>
+  <td class="cta">Make it your morning →</td>
+  <td>Believability via realism</td>
+</tr>
+<tr>
+  <td>14</td><td>Reel (Time-saved story)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"What I did with the hour I stopped spending on ironing"</td>
+  <td>Emotional benefit — time back for family/sleep/work, not just "convenience".</td>
+  <td>It's never really about the shirt. It's about the hour. Here's what that hour is worth.</td>
+  <td class="cta">Get your hour back →</td>
+  <td>Sell the deeper payoff</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- WEEK 3 -->
+<div class="weekband">Week 3 · Stack proof <small>Sales — real reviews, testimonials, social proof, warranty confidence. (Use genuine customer material only.)</small></div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Day</th><th>Type</th><th>Stage</th><th>Hook</th><th>Main concept</th><th>Caption / Ad copy</th><th>CTA</th><th>Sales objective</th></tr></thead>
+<tbody>
+<tr>
+  <td>15</td><td>Post (Customer review)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"'I was sceptical too.' — a real customer"</td>
+  <td>Screenshot/graphic of a genuine review, framed around the scepticism→relief arc.</td>
+  <td>We get it — high price, new brand, online. Here's what someone who took the leap had to say.</td>
+  <td class="cta">Join them →</td>
+  <td>Trust via peer proof</td>
+</tr>
+<tr>
+  <td>16</td><td>Reel (Testimonial video)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"30 seconds with a MarshalWay owner"</td>
+  <td>Real customer on camera: what they feared, what changed. Authentic &gt; polished.</td>
+  <td>No script, no incentive — just an owner telling it like it is. This is the review we're proudest of.</td>
+  <td class="cta">Order yours →</td>
+  <td>High-trust close asset</td>
+</tr>
+<tr>
+  <td>17</td><td>Post (Social proof)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"Homes across India woke up to no ironing today"</td>
+  <td>Aggregate proof — only if real: verified order count, rating, cities shipped to.</td>
+  <td>Every one of these is a home that quit ironing. Yours next?</td>
+  <td class="cta">Be the next home →</td>
+  <td>Bandwagon effect</td>
+</tr>
+<tr>
+  <td>18</td><td>Carousel (Objection: risk)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"Warranty, returns &amp; support — the boring stuff that matters"</td>
+  <td>Lay out warranty terms, return policy, support access — de-risk the ticket size.</td>
+  <td>A ₹19,999 decision deserves clarity, not fine print. Here's exactly what you're covered for.</td>
+  <td class="cta">Buy with confidence →</td>
+  <td>Remove purchase risk</td>
+</tr>
+<tr>
+  <td>19</td><td>Reel (Demo + offer teaser)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"The demo that sells this machine — plus something for this week"</td>
+  <td>Re-cut hero demo, end card teases the current offer (confirm live price first).</td>
+  <td>The proof you've seen. The price you haven't. Details at the link — this week only.</td>
+  <td class="cta">See this week's price →</td>
+  <td>Bridge proof → offer</td>
+</tr>
+<tr>
+  <td>20</td><td>Carousel (Comparison recap)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"Still comparing? Here's the whole case on one card"</td>
+  <td>One-glance summary: outcome, cost-per-use, proof, warranty — the full argument.</td>
+  <td>Everything that makes MarshalWay worth it, in a single swipe. Then decide.</td>
+  <td class="cta">Make the call →</td>
+  <td>Consolidate the decision</td>
+</tr>
+<tr>
+  <td>21</td><td>Reel (UGC compilation)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"Real owners, real mornings"</td>
+  <td>Stitch of genuine customer clips/reactions (with permission).</td>
+  <td>We didn't shoot any of this. Our customers did. That's the point.</td>
+  <td class="cta">Add yours →</td>
+  <td>Volume of proof</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- WEEK 4 -->
+<div class="weekband">Week 4 · Drive the close <small>Sales + Urgency + Retargeting-aligned — offers, scarcity, direct objection-handling, strong CTAs.</small></div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Day</th><th>Type</th><th>Stage</th><th>Hook</th><th>Main concept</th><th>Caption / Ad copy</th><th>CTA</th><th>Sales objective</th></tr></thead>
+<tbody>
+<tr>
+  <td>22</td><td>Post (Offer announcement)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"₹24,999 → ₹19,999. For a limited window."</td>
+  <td>Clean offer creative. <em>Confirm exact price/dates before publishing.</em></td>
+  <td>The machine that ends ironing, now at ₹19,999. This price won't sit here forever.</td>
+  <td class="cta">Claim this price →</td>
+  <td>Convert fence-sitters</td>
+</tr>
+<tr>
+  <td>23</td><td>Reel (Urgency)</td><td><span class="pill stage-ret">Ret</span></td>
+  <td class="hook">"If you've been 'thinking about it' — read this"</td>
+  <td>Speak directly to deferrers; limited stock/limited-time framing (only if true).</td>
+  <td>Thinking about it isn't the same as owning it. If stock/price matters to you, now's the moment.</td>
+  <td class="cta">Order before it's gone →</td>
+  <td>Break deferral loop</td>
+</tr>
+<tr>
+  <td>24</td><td>Carousel (Objection handler)</td><td><span class="pill stage-ret">Ret</span></td>
+  <td class="hook">"The 3 reasons people wait — and why none hold up"</td>
+  <td>Price, doubt, timing — answered one card each. Built for warm/retargeted viewers.</td>
+  <td>You've seen it work. So what's actually stopping you? Let's settle each one.</td>
+  <td class="cta">Settle it → buy →</td>
+  <td>Recover stalled buyers</td>
+</tr>
+<tr>
+  <td>25</td><td>Carousel (FAQ: delivery/setup)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"Ordered today — then what happens?"</td>
+  <td>Delivery timeline, unboxing, plug-in-and-go setup ease. Removes last-mile doubt.</td>
+  <td>From 'add to cart' to your first crisp shirt — here's the whole journey.</td>
+  <td class="cta">Start the journey →</td>
+  <td>Ease post-cart anxiety</td>
+</tr>
+<tr>
+  <td>26</td><td>Reel (Testimonial + strong CTA)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"'Best money I spent this year.'"</td>
+  <td>Punchy testimonial cut, ending on a hard purchase CTA + offer reminder.</td>
+  <td>Their words, not ours. If a crisp shirt with zero effort sounds worth it — the link's right there.</td>
+  <td class="cta">Buy MarshalWay →</td>
+  <td>Proof-led close</td>
+</tr>
+<tr>
+  <td>27</td><td>Reel (Before/After + offer)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"This transformation, at this price, won't repeat"</td>
+  <td>Best-performing before/after re-cut, offer overlaid, urgency end-card.</td>
+  <td>The result you've seen a dozen times. The price you'll see for a few more days.</td>
+  <td class="cta">Lock the price →</td>
+  <td>Pair proof with scarcity</td>
+</tr>
+<tr>
+  <td>28</td><td>Post (Payment/EMI angle)</td><td><span class="pill stage-conv">Conv</span></td>
+  <td class="hook">"₹19,999 or roughly ___/month — your call"</td>
+  <td>If EMI/finance exists, surface it to shrink the price wall. <em>Confirm availability.</em></td>
+  <td>Own it outright, or spread it out. Either way, ironing ends this week.</td>
+  <td class="cta">See payment options →</td>
+  <td>Lower the price barrier</td>
+</tr>
+<tr>
+  <td>29</td><td>Story/Reel (Last call)</td><td><span class="pill stage-ret">Ret</span></td>
+  <td class="hook">"Final hours at ₹19,999"</td>
+  <td>Countdown-style last-call for the offer window; short, urgent, single CTA.</td>
+  <td>This is the reminder you'll be glad you didn't ignore. Offer closes soon.</td>
+  <td class="cta">Order now →</td>
+  <td>Maximise offer-window sales</td>
+</tr>
+<tr>
+  <td>30</td><td>Carousel (Why now recap)</td><td><span class="pill stage-sale">Sale</span></td>
+  <td class="hook">"Everything that makes today the day"</td>
+  <td>Full-argument close: outcome + proof + offer + risk-free — one decisive swipe.</td>
+  <td>You've seen the demos, the reviews, the math. There's nothing left to wait for.</td>
+  <td class="cta">Get MarshalWay →</td>
+  <td>Decisive final push</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout"><strong>Posting rhythm:</strong> aim for 4–5 pieces/week live (not all 30 need to be daily). Reels &amp; before/afters that earn watch-time double as your best paid creatives — promote the organic winners rather than guessing. Pin the strongest demo + strongest testimonial to the profile grid so cold ad-clickers who check the page land on proof.</div>
+
+<!-- 4. META ADS -->
+<h2 id="ads"><span class="num">4 ·</span> Meta Ads plan — 3 campaigns</h2>
+<p class="section-intro">Structured as one funnel: prospect cold → convert warm-cold → close warm. All three run the Meta <strong>Sales</strong> objective where volume allows; the Consideration campaign may optimize for an upper event (ThruPlay / ViewContent) early, then shift to purchase as data builds.</p>
+
+<div class="note"><strong>Data-volume reality:</strong> at a ₹19,999 AOV, purchase events will be sparse at first. Until the pixel sees enough purchases weekly, optimize the Consideration campaign for <code>ThruPlay</code> or <code>ViewContent</code>, and the Conversion campaign for <code>Add to Cart</code>, then graduate to <code>Purchase</code> optimization once volume supports it. Don't force purchase-optimization on a starved pixel.</div>
+
+<!-- Campaign 1 -->
+<div class="card">
+  <h3>Campaign 1 · <span style="color:#93C5FD">Consideration (Prospecting)</span></h3>
+  <dl class="kv">
+    <dt>Target audience</dt><dd>Cold. Home-appliance &amp; premium-lifestyle intent: interests around home appliances, washing machines/dryers, smart home, busy professionals, new-home/interiors; age 27–55; India metros + tier-1/2 with delivery. Include a <strong>broad/Advantage+ audience</strong> ad set to let Meta find buyers.</dd>
+    <dt>Audience source</dt><dd>Interest &amp; behaviour targeting + broad. No customer data required.</dd>
+    <dt>Creative type</dt><dd>Hero <strong>demo Reel</strong> + problem→solution Reel (Day 1, 2, 12 assets).</dd>
+    <dt>Ad angle</dt><dd>"See it actually work" — belief-building, not selling yet.</dd>
+    <dt>Hook</dt><dd>"Wet shirt in. Dry, ironed shirt out. No dryer, no iron."</dd>
+    <dt>Primary text</dt><dd>Ironing eats 30–40 minutes you'll never get back. MarshalWay dries <em>and</em> irons a damp shirt in minutes using an adjustable inside-out press. Watch the demo — then decide for yourself.</dd>
+    <dt>Headline</dt><dd>The machine that ends ironing</dd>
+    <dt>CTA button</dt><dd>Learn More</dd>
+    <dt>Budget allocation</dt><dd>~30–40% of spend (scales down as retargeting fills).</dd>
+    <dt>KPI</dt><dd>Cost per ThruPlay, ViewContent volume &amp; cost, video hold-rate; <em>secondary:</em> add-to-cart assist. <span class="mini">(Illustrative starting watch-points, not targets.)</span></dd>
+  </dl>
+</div>
+
+<!-- Campaign 2 -->
+<div class="card recommended">
+  <h3>Campaign 2 · <span style="color:#6EE7B7">Conversion / Sales</span></h3>
+  <dl class="kv">
+    <dt>Target audience</dt><dd><strong>Lookalikes</strong> (1–3% of purchasers / ATC / video-viewers, once seeded) + your best-performing cold interests from Campaign 1. This is the workhorse for scale.</dd>
+    <dt>Audience source</dt><dd>LAL from pixel/CRM events + winning interest sets promoted from Consideration.</dd>
+    <dt>Creative type</dt><dd>Comparison carousel, cost-per-use Reel, feature deep-dive, before/after (Days 8, 10, 6, 27).</dd>
+    <dt>Ad angle</dt><dd>"Worth every rupee" — value justification + differentiation.</dd>
+    <dt>Hook</dt><dd>"₹19,999 sounds like a lot — until you do this math."</dd>
+    <dt>Primary text</dt><dd>What do you spend on ironing or laundry each month? Multiply it across a year. MarshalWay usually pays for itself — then keeps giving you your mornings back. Adjustable fit, fabric-safe, crisp finish in ~8–12 minutes. See the full breakdown.</dd>
+    <dt>Headline</dt><dd>Dry + iron in minutes — see the specs</dd>
+    <dt>CTA button</dt><dd>Shop Now</dd>
+    <dt>Budget allocation</dt><dd>~40–50% — the largest share once it proves out.</dd>
+    <dt>KPI</dt><dd>Add-to-Cart &amp; Initiate-Checkout cost/volume → Purchases &amp; ROAS. <span class="mini">Set a break-even ROAS from real margin, then push above it.</span></dd>
+  </dl>
+</div>
+
+<!-- Campaign 3 -->
+<div class="card">
+  <h3>Campaign 3 · <span style="color:#F0ABFC">Retargeting (Close)</span></h3>
+  <dl class="kv">
+    <dt>Target audience</dt><dd>Warm only — everyone who engaged, watched, visited, viewed product, added to cart, or began checkout (see §5 for exact segments). Tiered by heat.</dd>
+    <dt>Audience source</dt><dd>Custom Audiences from Pixel/CAPI + IG/FB engagement + video views.</dd>
+    <dt>Creative type</dt><dd>Testimonial video, objection-handler carousel, offer + urgency (Days 16, 24, 22, 29).</dd>
+    <dt>Ad angle</dt><dd>"Finish what you started" — answer the specific stall + give a reason to act now.</dd>
+    <dt>Hook</dt><dd>"Still thinking about it? Let's settle the 3 things holding you back."</dd>
+    <dt>Primary text</dt><dd>You've seen it work. Here's the honest answer to price, doubt and timing — plus this week's price. A crisp shirt with zero effort is one click away.</dd>
+    <dt>Headline</dt><dd>Your MarshalWay is waiting — ₹19,999</dd>
+    <dt>CTA button</dt><dd>Shop Now</dd>
+    <dt>Budget allocation</dt><dd>~15–25% — small spend, highest ROAS. Uncap dynamically as warm pools grow.</dd>
+    <dt>KPI</dt><dd>ROAS (should be highest in account), CPA (lowest), checkout-completion rate. Frequency watched to avoid fatigue.</dd>
+  </dl>
+</div>
+
+<!-- 5. RETARGETING -->
+<h2 id="retarget"><span class="num">5 ·</span> Retargeting audiences to build</h2>
+<p class="section-intro">Build these as Custom Audiences on day one — even before you spend heavily — so the pools are ripe when the retargeting campaign scales. Message each by how hot it is and which objection it likely stalled on.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Audience</th><th>How to build</th><th>Window</th><th>Heat</th><th>What to show them</th></tr></thead>
+<tbody>
+<tr><td><strong>IG / FB engagers</strong></td><td>Custom Audience → Instagram &amp; Facebook account → everyone who engaged (profile visits, post/ad interaction, saves, DMs)</td><td>365 days (tiered 30/90/365)</td><td>Warm-low</td><td>Demo + benefits — re-introduce, push to ViewContent</td></tr>
+<tr><td><strong>Video viewers</strong></td><td>Custom Audience → Video → 25% / 50% / 75% / 95% viewers of the hero demo &amp; before/after</td><td>30–90 days</td><td>Warm-mid</td><td>Feature deep-dive + comparison — deepen belief. 75%+ viewers get the offer.</td></tr>
+<tr><td><strong>Website visitors</strong></td><td>Pixel/CAPI → All website visitors (tier: 7 / 30 / 90-day for recency-based bidding)</td><td>7 / 30 / 90 days</td><td>Warm-mid</td><td>Cost-per-use math + social proof — bring them back</td></tr>
+<tr><td><strong>Product viewers (ViewContent)</strong></td><td>Pixel event → <code>ViewContent</code> on the product page, excluded from Purchasers</td><td>14–30 days</td><td>Hot-low</td><td>Objection handler + warranty confidence + offer</td></tr>
+<tr><td><strong>Add to Cart</strong></td><td>Pixel event → <code>AddToCart</code>, excluded from Purchasers</td><td>7–14 days</td><td>Hot</td><td>Urgency + testimonial + "finish your order" — strongest close creative</td></tr>
+<tr><td><strong>Initiate Checkout</strong></td><td>Pixel event → <code>InitiateCheckout</code>, excluded from Purchasers</td><td>3–7 days</td><td>Hottest</td><td>Direct nudge: offer reminder, free-delivery/COD reassurance, single hard CTA</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Sequencing logic</h4>
+    <ul class="tight">
+      <li>Always <strong>exclude Purchasers</strong> from every retargeting set (and from prospecting, to protect budget).</li>
+      <li>Exclude hotter audiences from cooler sets to avoid overlap (e.g. remove ATC from the plain "website visitors" set).</li>
+      <li>Shorter windows = higher intent = more aggressive offer + urgency.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Also seed for the future</h4>
+    <ul class="tight">
+      <li><strong>Purchasers</strong> Custom Audience → source for Lookalikes + later cross-sell/referral.</li>
+      <li><strong>Lookalikes</strong> 1% / 1–3% from ATC + Purchasers once you have enough events — feeds Campaign 2.</li>
+      <li><strong>DM / comment</strong> engagers → warm hand-raisers worth a manual follow-up too.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6. REELS -->
+<h2 id="reels"><span class="num">6 ·</span> 10 sales-focused Reel ideas</h2>
+<p class="section-intro">Every one is engineered to move a viewer toward buying — not to chase views. Ranked roughly by expected sales impact.</p>
+<div class="grid g2">
+  <div class="card"><h4>1 · The unbroken demo</h4><p>One take, damp shirt → crisp, with a live timer on screen. No cuts = no doubt. <span class="mini">Your #1 sales asset; also the best cold ad.</span></p></div>
+  <div class="card"><h4>2 · "Does it work on ___?"</h4><p>Rapid-fire across cotton, linen, formals, kurta. Directly answers the fabric objection that stalls buyers.</p></div>
+  <div class="card"><h4>3 · The ₹19,999 math</h4><p>On-screen calculator: monthly ironing/laundry spend → annual → "it pays for itself." Reframes price.</p></div>
+  <div class="card"><h4>4 · Before/After split-screen</h4><p>Crumpled vs boardroom-ready, same shirt. Simple, scroll-stopping, endlessly reusable as an ad.</p></div>
+  <div class="card"><h4>5 · Real owner, 30 seconds</h4><p>Unscripted testimonial: fear → result. Highest-trust close creative for retargeting.</p></div>
+  <div class="card"><h4>6 · "My last-ever ironing session"</h4><p>POV storytelling; emotional payoff of time reclaimed. Great for warm audiences.</p></div>
+  <div class="card"><h4>7 · Objection speed-round</h4><p>3 objections, 3 answers, 30 seconds. Built to retarget deferrers who "need to think."</p></div>
+  <div class="card"><h4>8 · The mechanism explainer</h4><p>Why inside-out balloon pressing beats a flat iron — differentiation that justifies price.</p></div>
+  <div class="card"><h4>9 · Morning-routine comparison</h4><p>Split day: with vs without MarshalWay. Sells the hour, not the shirt.</p></div>
+  <div class="card"><h4>10 · Offer + urgency last-call</h4><p>Short countdown cut, single CTA. Runs in the final days of the offer window to warm pools.</p></div>
+</div>
+
+<!-- 7. AD CREATIVES -->
+<h2 id="creatives"><span class="num">7 ·</span> 10 Meta ad creative ideas</h2>
+<p class="section-intro">Distinct angles so you're never testing the same idea twice. Each names its funnel fit.</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>#</th><th>Format</th><th>Angle</th><th>Hook line</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Single video (demo)</td><td>Proof-of-function</td><td>"Wet shirt in. Crisp shirt out."</td><td><span class="pill stage-con">Prospecting</span></td></tr>
+<tr><td>2</td><td>Before/After single image</td><td>Transformation</td><td>"Same shirt. 10 minutes apart."</td><td><span class="pill stage-con">Prospecting</span></td></tr>
+<tr><td>3</td><td>Comparison carousel</td><td>Vs iron / dry-clean</td><td>"The honest comparison we're not scared of."</td><td><span class="pill stage-conv">Conversion</span></td></tr>
+<tr><td>4</td><td>Cost-per-use video</td><td>Value math</td><td>"₹19,999 — until you do this math."</td><td><span class="pill stage-conv">Conversion</span></td></tr>
+<tr><td>5</td><td>Feature carousel</td><td>Spec confidence</td><td>"The 4 things people ask before buying."</td><td><span class="pill stage-conv">Conversion</span></td></tr>
+<tr><td>6</td><td>Testimonial video</td><td>Peer trust</td><td>"'I was sceptical too.'"</td><td><span class="pill stage-sale">Sales / RT</span></td></tr>
+<tr><td>7</td><td>Review-screenshot image</td><td>Social proof</td><td>"Real owners, real mornings."</td><td><span class="pill stage-sale">Sales / RT</span></td></tr>
+<tr><td>8</td><td>Objection-handler carousel</td><td>De-risk</td><td>"3 reasons people wait — none hold up."</td><td><span class="pill stage-ret">Retargeting</span></td></tr>
+<tr><td>9</td><td>Offer creative (static/video)</td><td>Price + scarcity</td><td>"₹24,999 → ₹19,999. Limited window."</td><td><span class="pill stage-ret">Retargeting</span></td></tr>
+<tr><td>10</td><td>Cart-recovery single image</td><td>Finish the order</td><td>"You left something in your cart."</td><td><span class="pill stage-ret">IC / ATC RT</span></td></tr>
+</tbody>
+</table>
+</div>
+<p class="mini">Confirm the exact price/offer and ensure any testimonial/review used is genuine and permissioned before these go live.</p>
+
+<!-- 8. BUDGETS -->
+<h2 id="budgets"><span class="num">8 ·</span> Budget plans</h2>
+<p class="section-intro">Three daily levels. The honest truth up front: at a ₹19,999 AOV, small budgets buy <em>learning and pool-building</em>, not a flood of sales. Splits below assume the account is past the learning phase; on a cold start, weight everything toward Consideration + Retargeting for the first 2–3 weeks, then rebalance toward Conversion as the pixel matures.</p>
+
+<div class="grid g3">
+  <div class="card">
+    <div class="budget-head"><span>₹500</span>/day · ~₹15k/mo</div>
+    <p class="mini">Lean test. Goal: build audiences + 1–3 high-intent sales/month, not volume.</p>
+    <ul class="feat">
+      <li>Consideration 40% — <strong>₹200</strong> (1 hero demo, broad)</li>
+      <li>Retargeting 60% — <strong>₹300</strong> (video-viewers + ATC/IC)</li>
+      <li class="no">Skip a separate Conversion campaign — fold into Consideration until pools are warm</li>
+    </ul>
+    <p class="mini">Run 1 CBO/Advantage+ campaign to avoid spreading ₹500 too thin. Judge on cost-per-ViewContent + retargeting ROAS, not raw purchase count.</p>
+  </div>
+  <div class="card recommended">
+    <div class="budget-head"><span>₹1,000</span>/day · ~₹30k/mo</div>
+    <p class="mini">The realistic starting point for a considered-purchase D2C. Full funnel, lightly staffed.</p>
+    <ul class="feat">
+      <li>Consideration 35% — <strong>₹350</strong></li>
+      <li>Conversion 40% — <strong>₹400</strong> (LAL + winning interests)</li>
+      <li>Retargeting 25% — <strong>₹250</strong> (tiered warm pools)</li>
+    </ul>
+    <p class="mini">Enough to generate ATC/IC events weekly and start feeding Lookalikes. First real read on blended ROAS by ~day 14.</p>
+  </div>
+  <div class="card">
+    <div class="budget-head"><span>₹2,000</span>/day · ~₹60k/mo</div>
+    <p class="mini">Scale posture. Three live campaigns, room for creative testing in parallel.</p>
+    <ul class="feat">
+      <li>Consideration 30% — <strong>₹600</strong></li>
+      <li>Conversion 45% — <strong>₹900</strong> (primary scaling lever)</li>
+      <li>Retargeting 25% — <strong>₹500</strong> (uncap dynamically if ROAS holds)</li>
+    </ul>
+    <p class="mini">Reserve a slice of Conversion budget for a dedicated testing ad set (see §9). Scale winners 20–30% every 3–4 days, not overnight.</p>
+  </div>
+</div>
+
+<div class="callout"><strong>Golden rule across all three:</strong> never let retargeting starve. A small, always-on retargeting spend against warm ATC/IC pools is almost always the highest-ROAS rupee you spend — protect it first, scale prospecting second.</div>
+
+<!-- 9. TESTING -->
+<h2 id="testing"><span class="num">9 ·</span> Creative testing plan</h2>
+<p class="section-intro">Test to <em>learn what sells</em>, not to admire creatives. Isolate one variable at a time so a winner tells you <em>why</em> it won.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Testing ladder (in order)</h4>
+    <ul class="tight">
+      <li><strong>1 · Angle</strong> — demo vs value-math vs testimonial vs comparison. Find the winning <em>message</em> first; it matters most.</li>
+      <li><strong>2 · Hook</strong> — same winning angle, 3 different first-3-seconds. Hook decides hold-rate.</li>
+      <li><strong>3 · Format</strong> — Reel vs carousel vs static for the winning angle.</li>
+      <li><strong>4 · Offer/CTA</strong> — "Shop Now" vs "Learn More"; offer-led vs benefit-led copy.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>How to run it cleanly</h4>
+    <ul class="tight">
+      <li>Dedicated <strong>testing ad set</strong> (or Advantage+ with clearly named creatives) so tests don't disturb proven ad sets.</li>
+      <li><strong>3–4 creatives per test</strong>, one variable different. Name them so results are readable.</li>
+      <li>Let each run to a <strong>meaningful signal</strong> — roughly ~1,000+ impressions or a few days, and ideally some ATC before you judge. Don't kill on 200 impressions.</li>
+      <li><strong>Primary decision metric</strong>: cost per ATC / ViewContent early; ROAS once purchases accrue. Hold-rate &amp; CTR are diagnostic, not verdicts.</li>
+      <li>Winners graduate into Conversion/Retargeting; losers are paused, learnings logged.</li>
+    </ul>
+  </div>
+</div>
+<div class="note"><strong>Sample-size honesty:</strong> at low budgets, purchase data is thin, so early "winners" can be noise. Lean on upper-funnel proxies (hold-rate, cost-per-ViewContent, cost-per-ATC) to decide faster, and confirm with ROAS once enough purchases land. Treat any single-test conclusion as provisional until it repeats.</div>
+
+<!-- 10. OPTIMIZATION -->
+<h2 id="optimize"><span class="num">10 ·</span> Weekly optimization plan</h2>
+<p class="section-intro">A fixed rhythm beats reactive tinkering. Avoid daily knee-jerk edits — they reset learning. Here's the weekly loop.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Day</th><th>Focus</th><th>Actions</th></tr></thead>
+<tbody>
+<tr><td><strong>Mon</strong></td><td>Read the week</td><td>Pull last-7-day report: spend, ATC, IC, purchases, ROAS, CPA, frequency by campaign. Note what moved and why.</td></tr>
+<tr><td><strong>Tue</strong></td><td>Creative health</td><td>Check frequency &amp; hold-rate. Pause creatives with rising frequency (&gt;~2.5–3 on retargeting) or falling CTR/hold. Queue replacements from the test winners.</td></tr>
+<tr><td><strong>Wed</strong></td><td>Audience &amp; funnel</td><td>Refresh retargeting pools (they update automatically, but check exclusions). Confirm ATC→IC→Purchase drop-off; if checkout leaks, flag the page, not the ad.</td></tr>
+<tr><td><strong>Thu</strong></td><td>Budget shift</td><td>Move budget toward the best CPA/ROAS ad sets. Scale winners <strong>20–30% max</strong>; don't double overnight. Protect retargeting spend.</td></tr>
+<tr><td><strong>Fri</strong></td><td>Launch next tests</td><td>Push new creative test live (one variable, §9). Prep weekend offer/urgency creative for warm pools if an offer is running.</td></tr>
+<tr><td><strong>Wknd</strong></td><td>Light-touch monitor</td><td>Watch for spend anomalies &amp; disapprovals only. No structural edits over the weekend.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Escalation triggers (act immediately)</h4>
+    <ul class="feat">
+      <li class="no">CPA drifting above break-even for 3+ days → pause weakest ad set, reallocate</li>
+      <li class="no">Frequency high + CTR dropping → creative fatigue, swap now</li>
+      <li class="no">Clicks high but no ATC → landing-page/price problem, not ad problem</li>
+      <li class="no">ATC high but no purchase → checkout friction (COD? shipping cost? trust?)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Leave-it-alone rules</h4>
+    <ul class="feat">
+      <li>Don't edit ad sets still in learning (resets it)</li>
+      <li>Don't judge purchase performance on &lt;3–5 days of data</li>
+      <li>Don't scale on one good day — scale on a good <em>week</em></li>
+      <li>Don't add 6 creatives at once to a small budget — starves each</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 11. LAUNCH CHECKLIST -->
+<h2 id="launch"><span class="num">11 ·</span> Pre-launch tracking checklist</h2>
+<p class="section-intro">None of the above works if the events aren't firing. Confirm this before a single rupee goes out — this is the foundation the whole sales machine sits on.</p>
+<div class="card">
+  <ul class="feat">
+    <li><strong>Meta Pixel + Conversions API (CAPI)</strong> live and de-duplicated on the website</li>
+    <li>Standard events firing correctly: <code>ViewContent</code>, <code>AddToCart</code>, <code>InitiateCheckout</code>, <code>Purchase</code> (with value + currency)</li>
+    <li><strong>Product catalog</strong> connected (enables dynamic/DPA cart-recovery ads)</li>
+    <li>Domain verified; <strong>Aggregated Event Measurement</strong> priorities set (Purchase = 1)</li>
+    <li>Custom Audiences from §5 created and populating</li>
+    <li>UTM parameters on all ad links for clean attribution</li>
+    <li class="no"><strong>Confirm current price/offer</strong> and update all offer creative accordingly</li>
+    <li class="no"><strong>Verify all testimonials/reviews are genuine</strong> and you have permission to use them</li>
+    <li class="no">Check performance/time claims are substantiable (ASCI) before publishing ads</li>
+  </ul>
+</div>
+
+<hr>
+<p class="mini">Prepared for MarshalWay · Speakerbox. Benchmarks and split percentages are approximate starting hypotheses for Indian D2C at this price point, not guaranteed outcomes — validate against the account's own data and recalibrate after the first 7–14 days. Live Instagram insights and current pricing should be confirmed in-account before launch.</p>
+
+</div>
+</body>
+</html>
