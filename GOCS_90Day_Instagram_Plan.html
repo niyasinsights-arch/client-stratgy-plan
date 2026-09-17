@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOCS — 90-Day Instagram Content & Sales Marketing Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1C1C1C;
+    --leaf:      #2D6A4F;
+    --leaf-mid:  #40916C;
+    --leaf-pale: #D8F3DC;
+    --leaf-faint:#F0FBF4;
+    --gold:      #B8860B;
+    --gold-pale: #FFF8E1;
+    --paper:     #FAFAF7;
+    --mid:       #6B7280;
+    --rule:      #C4DAC9;
+    --white:     #FFFFFF;
+    --radius:    6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--leaf);
+    color: var(--white);
+    padding: 56px 32px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 24px,
+      rgba(255,255,255,.04) 24px,
+      rgba(255,255,255,.04) 25px
+    );
+    pointer-events: none;
+  }
+  .brand-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--leaf-pale);
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 20px;
+  }
+  .site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .site-header .subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,.75);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── WRAPPER ── */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── STRATEGY SECTION ── */
+  .strategy {
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    padding: 48px 0;
+  }
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--leaf-mid);
+    margin-bottom: 8px;
+  }
+  .strategy h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .strategy p {
+    color: var(--mid);
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+
+  /* ── FUNNEL STRIP ── */
+  .funnel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .funnel-step {
+    background: var(--white);
+    padding: 20px 16px;
+  }
+  .funnel-step .step-num {
+    width: 26px; height: 26px;
+    background: var(--leaf);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .funnel-step strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--leaf);
+    margin-bottom: 4px;
+  }
+  .funnel-step span {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* ── RHYTHM + RULES ROW ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 4px;
+  }
+  .info-card {
+    background: var(--leaf-faint);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .info-card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--leaf);
+    margin-bottom: 12px;
+  }
+  .mix-row {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+  }
+  .mix-row:last-child { border-bottom: none; }
+  .mix-count {
+    font-weight: 700;
+    color: var(--leaf);
+    min-width: 72px;
+  }
+  .mix-desc { color: var(--mid); }
+  .rule-list { list-style: none; }
+  .rule-list li {
+    font-size: 12.5px;
+    color: var(--mid);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-list li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--leaf-mid);
+    font-weight: 700;
+  }
+
+  /* ── MONTH SECTION ── */
+  .month-section { padding: 52px 0; border-bottom: 1px solid var(--rule); }
+  .month-section:last-child { border-bottom: none; }
+
+  .month-header {
+    display: flex; align-items: flex-start; gap: 20px;
+    margin-bottom: 28px;
+  }
+  .month-badge {
+    flex-shrink: 0;
+    background: var(--leaf);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .month-header-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .month-header-text p {
+    font-size: 13px;
+    color: var(--mid);
+  }
+
+  /* meta strip */
+  .month-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .meta-cell {
+    background: var(--white);
+    padding: 14px 14px;
+  }
+  .meta-cell .meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--leaf-mid);
+    margin-bottom: 4px;
+  }
+  .meta-cell .meta-val {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* ── CONTENT TABLE ── */
+  .content-table-wrap { overflow-x: auto; margin-bottom: 28px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead tr {
+    background: var(--leaf);
+    color: var(--white);
+  }
+  thead th {
+    padding: 11px 14px;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .04em;
+    text-align: left;
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(even) { background: var(--leaf-faint); }
+  tbody tr:nth-child(odd)  { background: var(--white); }
+  tbody td {
+    padding: 10px 14px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+  td.num { text-align: center; font-weight: 700; color: var(--leaf); width: 36px; }
+  td.fmt { font-weight: 600; color: var(--leaf-mid); white-space: nowrap; }
+  td.cta { color: var(--mid); font-size: 12px; }
+
+  /* ── STORIES + METRICS ROW ── */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 4px;
+  }
+  .stories-card, .metrics-card {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .card-head {
+    background: var(--leaf-pale);
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--leaf);
+  }
+  .card-body { padding: 14px 16px; }
+  .stories-list { list-style: none; }
+  .stories-list li {
+    font-size: 12.5px;
+    color: var(--mid);
+    padding: 5px 0;
+    border-bottom: 1px dotted var(--rule);
+    padding-left: 16px;
+    position: relative;
+  }
+  .stories-list li:last-child { border-bottom: none; }
+  .stories-list li::before {
+    content: '↗';
+    position: absolute; left: 0;
+    color: var(--leaf-mid);
+    font-size: 10px;
+    top: 7px;
+  }
+  .metrics-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .metric-chip {
+    background: var(--gold-pale);
+    border: 1px solid #E8D48B;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--ink);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+  }
+  .site-footer strong { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .funnel { grid-template-columns: 1fr 1fr; }
+    .two-col, .bottom-row { grid-template-columns: 1fr; }
+    .month-meta { grid-template-columns: 1fr 1fr; }
+    .month-badge { width: 54px; height: 54px; font-size: 1.2rem; }
+  }
+  @media (max-width: 460px) {
+    .funnel { grid-template-columns: 1fr; }
+    .month-meta { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .site-header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    thead tr { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="brand-tag">Kerala Heritage Snacks — Digital Growth Strategy</div>
+  <h1>GOCS</h1>
+  <p class="subtitle">90-Day Instagram Content &amp; Sales Marketing Plan</p>
+</header>
+
+<!-- STRATEGY -->
+<section class="strategy">
+  <div class="wrap">
+    <div class="section-label">Strategic Foundation</div>
+    <h2>Objective &amp; Commercial Funnel</h2>
+    <p>Move GOCS from a small regional snack account to a recognisable Kerala savoury brand — built on authenticity, nostalgia, product variety, gifting, social proof and modern short-form storytelling.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="step-num">1</div>
+        <strong>Discovery</strong>
+        <span>Reach new Malayali, Kerala-food and traditional-snack audiences.</span>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">2</div>
+        <strong>Consideration</strong>
+        <span>Explain products and prove freshness, hygiene, quality and authenticity.</span>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">3</div>
+        <strong>Conversion</strong>
+        <span>Drive website visits, WhatsApp enquiries, first orders, bundles and gifting purchases.</span>
+      </div>
+      <div class="funnel-step">
+        <div class="step-num">4</div>
+        <strong>Retention</strong>
+        <span>Encourage reviews, repeat orders, referrals and customer-generated content.</span>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-card">
+        <h3>Publishing Rhythm — 14 Posts / Month</h3>
+        <div class="mix-row"><span class="mix-count">5 Reels</span><span class="mix-desc">Reach &amp; product desire</span></div>
+        <div class="mix-row"><span class="mix-count">3 Carousels</span><span class="mix-desc">Product education &amp; consideration</span></div>
+        <div class="mix-row"><span class="mix-count">3 Conversion</span><span class="mix-desc">Bundles, offers &amp; gifting</span></div>
+        <div class="mix-row"><span class="mix-count">2 Testimonial</span><span class="mix-desc">Trust &amp; community</span></div>
+        <div class="mix-row"><span class="mix-count">1 Founder</span><span class="mix-desc">Authenticity &amp; cultural story</span></div>
+      </div>
+      <div class="info-card">
+        <h3>Content Rules</h3>
+        <ul class="rule-list">
+          <li>Show the product within the first 2 seconds of every Reel.</li>
+          <li>Every sales post — clear product name and purchase action.</li>
+          <li>Consistent visual treatment across product, bundle and testimonial covers.</li>
+          <li>One primary action per post: shop, WhatsApp, save, comment, share, review or reorder.</li>
+          <li>Pin best product education post, bestseller and ordering guide.</li>
+          <li>Track clicks, enquiries, add-to-cart, purchases, saves, shares and repeat orders.</li>
+          <li>Malayalam + English together; subtitles on every Reel.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MONTH 1 ── -->
+<section class="month-section">
+  <div class="wrap">
+    <div class="month-header">
+      <div class="month-badge">M1</div>
+      <div class="month-header-text">
+        <h2>Build Demand &amp; Explain the Range</h2>
+        <p>Introduce GOCS as a complete Kerala savoury brand — not only a banana-chip seller.</p>
+      </div>
+    </div>
+
+    <div class="month-meta">
+      <div class="meta-cell"><div class="meta-label">Sales Objective</div><div class="meta-val">Qualified profile visits, first-time website visits &amp; initial orders.</div></div>
+      <div class="meta-cell"><div class="meta-label">Primary Offer</div><div class="meta-val">Kerala Tea-Time Starter Box</div></div>
+      <div class="meta-cell"><div class="meta-label">Core Message</div><div class="meta-val">"A box full of Kerala for your everyday tea-time."</div></div>
+      <div class="meta-cell"><div class="meta-label">Posts</div><div class="meta-val">14 posts + daily Stories</div></div>
+    </div>
+
+    <div class="content-table-wrap">
+      <table>
+        <thead>
+          <tr><th>No.</th><th>Format</th><th>Content Idea</th><th>Sales Role / CTA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="fmt">Reel</td><td>What is GOCS? Fast 20-sec montage showing products, packaging and Kerala connection.</td><td class="cta">Build recognition — Follow GOCS and explore Kerala taste.</td></tr>
+          <tr><td class="num">2</td><td class="fmt">Carousel</td><td>Kerala Snack Map — Chukkappam, Kozhi Ada, Kuzhalappam, Ari Murukku, Payyoli Mixture, Banana Chips, Beef Ada, Achappam.</td><td class="cta">Product discovery — Save the guide and choose your first snack.</td></tr>
+          <tr><td class="num">3</td><td class="fmt">Reel</td><td>Texture Test — Close-up sounds of breaking, crunching and serving 3 bestsellers.</td><td class="cta">Create appetite — Tap link in bio to try the crunch.</td></tr>
+          <tr><td class="num">4</td><td class="fmt">Static</td><td>Bestseller Spotlight — Taste, texture, occasion and serving suggestion.</td><td class="cta">Drive first purchase.</td></tr>
+          <tr><td class="num">5</td><td class="fmt">Carousel</td><td>What Does Each Snack Taste Like? Sweet, savoury, spicy, crispy and soft flavour scale.</td><td class="cta">Reduce purchase uncertainty.</td></tr>
+          <tr><td class="num">6</td><td class="fmt">Reel</td><td>Tea-Time Transformation — Empty tea table becomes a Kerala tea-time spread.</td><td class="cta">Sell the occasion — Build your tea-time box.</td></tr>
+          <tr><td class="num">7</td><td class="fmt">Testimonial</td><td>Early customer review with product photo / unboxing image.</td><td class="cta">Build trust.</td></tr>
+          <tr><td class="num">8</td><td class="fmt">Reel</td><td>Malayalam Family Humour — Family debate over who gets the last snack.</td><td class="cta">Increase shares and reach.</td></tr>
+          <tr><td class="num">9</td><td class="fmt">Carousel</td><td>How to Choose Your First GOCS Order — Recommendations by taste and occasion.</td><td class="cta">Convert first-time visitors.</td></tr>
+          <tr><td class="num">10</td><td class="fmt">BTS Reel</td><td>Packing, sealing, labelling and dispatch preparation.</td><td class="cta">Prove care and hygiene.</td></tr>
+          <tr><td class="num">11</td><td class="fmt">Offer Post</td><td>Kerala Tea-Time Starter Box — Contents, serving count, price and delivery information.</td><td class="cta">Main Month 1 conversion post.</td></tr>
+          <tr><td class="num">12</td><td class="fmt">Reel</td><td>Street/Family Taste Test — People unfamiliar with the snacks share reactions.</td><td class="cta">Social proof and wider appeal.</td></tr>
+          <tr><td class="num">13</td><td class="fmt">Carousel</td><td>FAQ — Shelf life, storage, delivery, ingredients, ordering and veg/non-veg options.</td><td class="cta">Remove conversion barriers.</td></tr>
+          <tr><td class="num">14</td><td class="fmt">Community</td><td>Vote for next combo — chips, murukku, ada or mixed traditional snacks.</td><td class="cta">Gather demand and encourage engagement.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bottom-row">
+      <div class="stories-card">
+        <div class="card-head">Stories Plan</div>
+        <div class="card-body">
+          <ul class="stories-list">
+            <li>Product polls</li>
+            <li>"Choose your snack" quizzes</li>
+            <li>Starter Box countdown</li>
+            <li>Customer reposts</li>
+            <li>Packing clips</li>
+            <li>Daily link sticker — final 5 days of offer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metrics-card">
+        <div class="card-head">Key Metrics</div>
+        <div class="card-body">
+          <div class="metrics-wrap">
+            <span class="metric-chip">Profile Visits</span>
+            <span class="metric-chip">Website Clicks</span>
+            <span class="metric-chip">Starter Box Conversion</span>
+            <span class="metric-chip">Saves</span>
+            <span class="metric-chip">Shares</span>
+            <span class="metric-chip">WhatsApp Enquiries</span>
+            <span class="metric-chip">First Orders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MONTH 2 ── -->
+<section class="month-section">
+  <div class="wrap">
+    <div class="month-header">
+      <div class="month-badge">M2</div>
+      <div class="month-header-text">
+        <h2>Build Trust, Cultural Meaning &amp; Gifting Demand</h2>
+        <p>Position GOCS as the trusted "taste of home" brand for families and gifting.</p>
+      </div>
+    </div>
+
+    <div class="month-meta">
+      <div class="meta-cell"><div class="meta-label">Sales Objective</div><div class="meta-val">Increase AOV via curated boxes; create festive &amp; family gifting demand.</div></div>
+      <div class="meta-cell"><div class="meta-label">Primary Offers</div><div class="meta-val">Taste of Home Box &amp; Family Sharing Combo</div></div>
+      <div class="meta-cell"><div class="meta-label">Core Message</div><div class="meta-val">"Traditional taste, packed with care and made for sharing."</div></div>
+      <div class="meta-cell"><div class="meta-label">Posts</div><div class="meta-val">14 posts + daily Stories</div></div>
+    </div>
+
+    <div class="content-table-wrap">
+      <table>
+        <thead>
+          <tr><th>No.</th><th>Format</th><th>Content Idea</th><th>Sales Role / CTA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="fmt">Reel</td><td>One Snack, One Story — Cultural/family context behind Kozhi Ada or Kuzhalappam.</td><td class="cta">Build meaning and preference.</td></tr>
+          <tr><td class="num">2</td><td class="fmt">Carousel</td><td>Authenticity Checklist — Ingredients, preparation, packing and freshness.</td><td class="cta">Build confidence.</td></tr>
+          <tr><td class="num">3</td><td class="fmt">Reel</td><td>Inside the Pack — Product selection to sealing and dispatch.</td><td class="cta">Increase trust.</td></tr>
+          <tr><td class="num">4</td><td class="fmt">Static</td><td>Customer Review Series — Family, parent or diaspora customer.</td><td class="cta">Strengthen family trust.</td></tr>
+          <tr><td class="num">5</td><td class="fmt">Reel</td><td>Blind Taste Test — Familiar vs unfamiliar snack reactions.</td><td class="cta">Make niche products approachable.</td></tr>
+          <tr><td class="num">6</td><td class="fmt">Carousel</td><td>Kerala Snack Pairing Guide — Tea, coffee, travel, movie night and festive sharing.</td><td class="cta">Increase multi-product purchases.</td></tr>
+          <tr><td class="num">7</td><td class="fmt">Offer Post</td><td>Family Sharing Combo — Quantity, value and recommended number of people.</td><td class="cta">Increase basket size.</td></tr>
+          <tr><td class="num">8</td><td class="fmt">Reel</td><td>Malayali Nostalgia — Rainy evenings, school holidays, family visits, grandparents and tea.</td><td class="cta">Build emotional preference.</td></tr>
+          <tr><td class="num">9</td><td class="fmt">Carousel</td><td>Vegetarian &amp; Non-Vegetarian Guide.</td><td class="cta">Reduce hesitation and improve product matching.</td></tr>
+          <tr><td class="num">10</td><td class="fmt">Creator Reel</td><td>Kerala food/family/diaspora creator tasting.</td><td class="cta">Borrow trust and reach qualified audiences.</td></tr>
+          <tr><td class="num">11</td><td class="fmt">Gifting Post</td><td>Taste of Home Box — For parents, relatives abroad, new homes, birthdays and festivals.</td><td class="cta">Establish gifting demand.</td></tr>
+          <tr><td class="num">12</td><td class="fmt">Reel</td><td>Customer Unboxing Montage.</td><td class="cta">Proof of delivery and enjoyment.</td></tr>
+          <tr><td class="num">13</td><td class="fmt">Carousel</td><td>Gift Buyer Guide — Parents, friends abroad, colleagues, first-time customers and families.</td><td class="cta">Simplify gifting decisions.</td></tr>
+          <tr><td class="num">14</td><td class="fmt">Limited-Time</td><td>72-Hour Bundle / Free Shipping Threshold.</td><td class="cta">Create legitimate urgency.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bottom-row">
+      <div class="stories-card">
+        <div class="card-head">Stories Plan</div>
+        <div class="card-body">
+          <ul class="stories-list">
+            <li>Customer review stickers</li>
+            <li>Snack comparisons</li>
+            <li>Creator reposts</li>
+            <li>Gifting countdowns</li>
+            <li>Ingredient Q&amp;A</li>
+            <li>"Send this to someone abroad" prompts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metrics-card">
+        <div class="card-head">Key Metrics</div>
+        <div class="card-body">
+          <div class="metrics-wrap">
+            <span class="metric-chip">Avg Order Value</span>
+            <span class="metric-chip">Bundle Revenue Share</span>
+            <span class="metric-chip">Product-Page Visits</span>
+            <span class="metric-chip">Testimonial Saves</span>
+            <span class="metric-chip">Creator-Attributed Sales</span>
+            <span class="metric-chip">Gifting Enquiries</span>
+            <span class="metric-chip">Customer Tags</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MONTH 3 ── -->
+<section class="month-section">
+  <div class="wrap">
+    <div class="month-header">
+      <div class="month-badge">M3</div>
+      <div class="month-header-text">
+        <h2>Scale Reach, Conversion &amp; Repeat Purchase</h2>
+        <p>Turn GOCS into a repeatable purchase habit while expanding beyond the Malayali audience.</p>
+      </div>
+    </div>
+
+    <div class="month-meta">
+      <div class="meta-cell"><div class="meta-label">Sales Objective</div><div class="meta-val">Repeat orders, referrals, marketplace enquiries &amp; gift-box sales.</div></div>
+      <div class="meta-cell"><div class="meta-label">Primary Offer</div><div class="meta-val">GOCS Kerala Snack Collection</div></div>
+      <div class="meta-cell"><div class="meta-label">Core Message</div><div class="meta-val">"There is a Kerala snack for every moment."</div></div>
+      <div class="meta-cell"><div class="meta-label">Posts</div><div class="meta-val">14 posts + daily Stories</div></div>
+    </div>
+
+    <div class="content-table-wrap">
+      <table>
+        <thead>
+          <tr><th>No.</th><th>Format</th><th>Content Idea</th><th>Sales Role / CTA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="fmt">Reel</td><td>Five Ways to Snack with GOCS — Tea-time, office break, travel, movie night and gifting.</td><td class="cta">Expand usage occasions.</td></tr>
+          <tr><td class="num">2</td><td class="fmt">Carousel</td><td>Best Sellers by Customer Type — Beginner, spicy lover, traditional-food lover, family and gift buyer.</td><td class="cta">Improve product matching.</td></tr>
+          <tr><td class="num">3</td><td class="fmt">Reel</td><td>Snack Challenge — Identify product by sound, shape or close-up.</td><td class="cta">Drive comments and reach.</td></tr>
+          <tr><td class="num">4</td><td class="fmt">Static</td><td>Hero Product Comparison — Flavour, texture, spice and occasion.</td><td class="cta">Help customers select faster.</td></tr>
+          <tr><td class="num">5</td><td class="fmt">Testimonial</td><td>Why People Reorder GOCS — Customer reactions.</td><td class="cta">Drive repeat demand.</td></tr>
+          <tr><td class="num">6</td><td class="fmt">Carousel</td><td>How to Store Kerala Snacks — Storage and serving guidance.</td><td class="cta">Protect product experience.</td></tr>
+          <tr><td class="num">7</td><td class="fmt">Offer Post</td><td>GOCS Kerala Snack Collection — Bestsellers + discovery product.</td><td class="cta">Main Month 3 conversion push.</td></tr>
+          <tr><td class="num">8</td><td class="fmt">Reel</td><td>Non-Malayali Taste Test — Simple English explanation + first impressions.</td><td class="cta">Expand audience.</td></tr>
+          <tr><td class="num">9</td><td class="fmt">Carousel</td><td>Why Buy a Combo? — Variety, value, sharing and gifting convenience.</td><td class="cta">Increase average order value.</td></tr>
+          <tr><td class="num">10</td><td class="fmt">Founder</td><td>12-Month Vision — Preserving Kerala snacks and reaching more homes.</td><td class="cta">Build long-term trust.</td></tr>
+          <tr><td class="num">11</td><td class="fmt">Referral Post</td><td>Share the Taste — Existing customer referral benefit + new customer first-order benefit.</td><td class="cta">Customer acquisition.</td></tr>
+          <tr><td class="num">12</td><td class="fmt">Reel</td><td>Restock Alert — Show bestsellers being packed after genuine demand.</td><td class="cta">Encourage repeat purchases.</td></tr>
+          <tr><td class="num">13</td><td class="fmt">Carousel</td><td>Corporate &amp; Festive Gifting Guide — Quantity, customization, lead time and contact process.</td><td class="cta">Generate bulk enquiries.</td></tr>
+          <tr><td class="num">14</td><td class="fmt">Community</td><td>GOCS Customer Favourites based on actual orders/engagement + next month's announcement.</td><td class="cta">Encourage reorders.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bottom-row">
+      <div class="stories-card">
+        <div class="card-head">Stories Plan</div>
+        <div class="card-body">
+          <ul class="stories-list">
+            <li>Referral reminders</li>
+            <li>Reorder prompts</li>
+            <li>Restock countdowns</li>
+            <li>Product-rating sliders</li>
+            <li>Customer polls</li>
+            <li>Dispatch BTS</li>
+            <li>Weekly "What are you snacking on?" sticker</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metrics-card">
+        <div class="card-head">Key Metrics</div>
+        <div class="card-body">
+          <div class="metrics-wrap">
+            <span class="metric-chip">Repeat Orders</span>
+            <span class="metric-chip">Referrals</span>
+            <span class="metric-chip">Marketplace Enquiries</span>
+            <span class="metric-chip">Bestseller Sales</span>
+            <span class="metric-chip">Gift-Box Sales</span>
+            <span class="metric-chip">Avg Order Value</span>
+            <span class="metric-chip">Customer Tags</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <strong>GOCS</strong> — Kerala Heritage Snacks &nbsp;|&nbsp; 90-Day Instagram Marketing Plan &nbsp;|&nbsp; Speakerbox
+</footer>
+
+</body>
+</html>
