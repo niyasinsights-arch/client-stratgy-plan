@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Celluglitz by CelluProGreen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8f3;--card:#fff;--ink:#1d2b22;--mute:#5d6b62;--sage:#4f8a5b;--deep:#1f4a33;--mint:#dcebd9;--line:#dfe7da;--rice:#e9d9a6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a15;--card:#1a251e;--ink:#eaf1e8;--mute:#9db0a2;--sage:#6fb37d;--deep:#2d6a47;--mint:#223629;--line:#2a3a2f;--rice:#c9b873}}
+:root[data-theme="dark"]{--bg:#121a15;--card:#1a251e;--ink:#eaf1e8;--mute:#9db0a2;--sage:#6fb37d;--deep:#2d6a47;--mint:#223629;--line:#2a3a2f;--rice:#c9b873}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.bar{background:var(--deep);color:#fff;text-align:center;font-size:14px;padding:8px 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--sage);color:#fff}
+.nav{display:flex;align-items:center;gap:20px;height:58px}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.5px}
+.logo small{font-weight:400;font-size:11px;display:block;line-height:1;opacity:.85;margin-top:-2px}
+.nav .sp{flex:1}
+.btn{border:0;border-radius:10px;padding:10px 16px;font:600 14px inherit;font-family:inherit;cursor:pointer;background:#fff;color:var(--deep)}
+.btn.dark{background:var(--deep);color:#fff}
+.btn.ghost{background:transparent;border:1.5px solid currentColor;color:inherit}
+.sub{background:var(--mint);border-bottom:1px solid var(--line)}
+.sub .wrap{display:flex;gap:22px;overflow-x:auto;padding-top:10px;padding-bottom:10px;font-size:14px;font-weight:600;white-space:nowrap}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:48px 20px}
+h1{font:400 clamp(34px,5vw,56px)/1.08 Newsreader,Georgia,serif;margin:0 0 16px;letter-spacing:-.5px}
+.lead{color:var(--mute);max-width:46ch;margin:0 0 24px;font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--mint);border-radius:28px;padding:36px 20px;flex-wrap:wrap}
+.step{text-align:center;font-size:14px;font-weight:600;width:96px}
+.step i{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 8px;border-radius:50%;background:var(--card);font-style:normal;font-size:34px}
+.arr{color:var(--sage);font-size:22px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:20px}
+.trust div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:600;text-align:center}
+.promo{margin:20px auto;border-radius:24px;background:linear-gradient(100deg,var(--deep),var(--sage));color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:30px 36px;flex-wrap:wrap}
+.promo h2{font:400 clamp(26px,3.6vw,40px)/1.1 Newsreader,serif;margin:0}
+.promo p{margin:6px 0 0;opacity:.9}
+.shop{display:grid;grid-template-columns:220px 1fr;gap:28px;padding-top:20px;padding-bottom:40px}
+.shop h2,.sec h2{font:400 32px/1.1 Newsreader,serif;margin:0 0 6px}
+aside{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;align-self:start}
+aside h3{margin:0 0 10px;font-size:15px}
+aside label{display:flex;gap:10px;align-items:center;padding:6px 0;font-size:14px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-top:16px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.p .img{aspect-ratio:1/1;display:grid;place-items:center;position:relative}
+.tag{position:absolute;top:10px;left:10px;background:var(--deep);color:#fff;font-size:12px;font-weight:600;border-radius:6px;padding:2px 8px}
+.off{position:absolute;top:10px;right:10px;background:#e3f4df;color:#1e6b34;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px}
+.p .b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.p h3{font-size:15px;font-weight:600;margin:0;line-height:1.3}
+.p .meta{font-size:13px;color:var(--mute)}
+.price{font-weight:800}.price s{font-weight:400;color:var(--mute);margin-right:6px;font-size:14px}
+.add{margin-top:auto;width:100%;background:var(--sage);color:#fff;border:0;border-radius:10px;padding:10px;font:600 15px inherit;font-family:inherit;cursor:pointer}
+.add:hover{background:var(--deep)}
+.sec{padding:40px 20px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:15px}
+.ugc{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-top:20px}
+.u{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.u .ph{aspect-ratio:4/5;display:grid;place-items:center;font-size:34px;text-align:center;color:var(--mute)}
+.u .ph span{display:block;font-size:12px;margin-top:4px}
+.u .cap{padding:10px 12px;font-size:13px;color:var(--mute)}
+.u .cap b{display:block;color:var(--ink);font-size:14px}
+.ugc-top{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.share{margin-top:20px;background:var(--mint);border-radius:18px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.share p{margin:0;font-size:14px;color:var(--mute);max-width:60ch}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--card);z-index:20;transform:translateX(105%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
+.drawer.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);font-weight:800;font-size:18px}
+.dh button{background:none;border:0;font-size:22px;color:var(--ink);cursor:pointer}
+.dp{padding:12px 20px;background:var(--mint);font-size:14px}
+.prog{height:8px;background:var(--card);border-radius:9px;overflow:hidden;margin-top:6px}.prog i{display:block;height:100%;width:0;background:var(--sage);transition:width .3s}
+.dl{flex:1;overflow:auto;padding:6px 20px}
+.li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.li .e{font-size:30px}.li .t{flex:1}.li b{display:block}
+.q{display:flex;align-items:center;gap:8px}.q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.df{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:8px;font-size:14px}
+.df .r{display:flex;justify-content:space-between}.df .tot{font-weight:800;font-size:17px}
+.cp{display:flex;gap:8px}.cp input{flex:1;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:19;display:none}.scrim.on{display:block}
+.ben{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:10px}
+.ben div{display:flex;gap:10px;align-items:center;font-size:14px}.ben span{font-size:24px}
+.ben small{display:block;color:var(--mute)}
+.hl{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px;font-size:14px;font-weight:600}
+.hl span{background:var(--mint);border-radius:999px;padding:5px 12px}
+.news{background:var(--mint);border-radius:24px;padding:36px;text-align:center}
+.news h2{font:400 32px/1.1 Newsreader,serif;margin:0 0 8px}
+.news form{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.news input{padding:12px;border-radius:10px;border:1px solid var(--line);min-width:260px;font:inherit}
+.sbar{display:none}
+.p .ben1{font-size:13px;color:var(--ink)}
+.save{color:#1e6b34;font-size:13px;font-weight:600}
+@media(max-width:820px){.c4{grid-template-columns:1fr 1fr}.ben{grid-template-columns:1fr 1fr}.sbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--deep);color:#fff;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));justify-content:space-between;align-items:center;gap:10px}.wa{bottom:calc(76px + env(safe-area-inset-bottom,0px))}footer{padding-bottom:110px}}
+[hidden]{display:none!important}
+.sub a.cur{border-bottom:2px solid currentColor}
+.pg{padding-top:40px;padding-bottom:10px}.pg h1{font-size:clamp(32px,4.4vw,48px)}
+.c4{grid-template-columns:repeat(4,1fr)}.c4 .card b{font:400 28px Newsreader,serif;color:var(--sage);display:block}
+table.sp{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:15px}
+.sp td{padding:12px 16px;border-bottom:1px solid var(--line)}.sp td:first-child{font-weight:600;width:40%}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:10px}
+summary{font-weight:600;cursor:pointer}details p{margin:8px 0 0;color:var(--mute)}
+.av{width:72px;height:72px;border-radius:50%;background:var(--mint);color:var(--deep);display:grid;place-items:center;font-weight:800;font-size:22px;margin:0 auto 12px}
+.note{font-size:13px;color:var(--mute);margin-top:8px}
+.b2b{background:var(--deep);color:#fff;border-radius:28px;padding:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.b2b h2{font:400 34px/1.1 Newsreader,serif;margin:0 0 10px}
+.b2b ul{margin:0 0 20px;padding-left:18px;opacity:.92}
+.b2b form{background:rgba(255,255,255,.1);border-radius:16px;padding:18px;display:grid;gap:10px}
+.b2b input,.b2b select{padding:11px;border-radius:8px;border:0;font:inherit;width:100%}
+footer{border-top:1px solid var(--line);padding:30px 0 90px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#25a244;color:#fff;border-radius:999px;padding:12px 18px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:14px;transition:.25s;z-index:9}
+#toast.on{transform:translateX(-50%) translateY(0)}
+@media(max-width:820px){.hero,.b2b{grid-template-columns:1fr}.shop{grid-template-columns:1fr}aside{display:none}.trust{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}.nav .search{display:none}.promo{padding:24px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bar">Launch offer: extra 10% off with code <b>RICE10</b> · Free shipping above ₹499 · Ends in <b id="cd">--:--:--</b></div>
+<header><div class="wrap nav">
+<a class="logo" href="#/">Celluglitz<small>by CelluProGreen</small></a>
+<span class="sp"></span>
+<a href="#/ecagro" class="btn ghost">For business</a>
+<button class="btn" id="cartBtn" aria-label="Cart">Cart (<span id="cnt">0</span>)</button>
+</div>
+<div class="sub"><div class="wrap"><a href="#/shop">Shop all</a><a href="#/face">Face</a><a href="#/body">Body</a><a href="#/combos">Combos</a><a href="#/story">Our story</a><a href="#/routines">Real routines</a><a href="#/ecagro">Ecagro cellulose</a></div></div>
+</header>
+
+<main>
+<section class="wrap hero" data-v="home">
+<div>
+<h1>Skincare grown from the leftovers of Kerala's rice fields.</h1>
+<p class="lead">Celluglitz uses nanocellulose from rice straw to hydrate skin gently, in formulas that are pH-balanced and cruelty-free.</p>
+<div class="hl"><span>Starter routine ₹599 <s style="opacity:.6">₹748</s></span><span>Free shipping above ₹499</span></div>
+<div class="cta"><a class="btn dark" href="#/shop">Shop now and save</a><a class="btn ghost" href="#/ecagro" style="color:var(--deep)">Business enquiries</a></div>
+</div>
+<div class="flow" aria-label="From rice straw to skincare">
+<div class="step"><i>🌾</i>Rice straw from farms</div><span class="arr">›</span>
+<div class="step"><i>🔬</i>Nanocellulose in our lab</div><span class="arr">›</span>
+<div class="step"><i>🧴</i>Gentle skincare</div>
+</div>
+</section>
+
+<div class="wrap trust" data-v="home">
+<div>Made in Kerala</div><div>Cruelty-free</div><div>pH-balanced</div><div>Lab-tested</div>
+</div>
+
+<div class="wrap ben" data-v="home shop"><div><span>🚚</span><p style="margin:0"><b>Free shipping</b><small>Above ₹499</small></p></div><div><span>💳</span><p style="margin:0"><b>UPI, cards, COD</b><small>Pay your way</small></p></div><div><span>↩️</span><p style="margin:0"><b>Easy returns</b><small>7-day policy</small></p></div><div><span>🔒</span><p style="margin:0"><b>Secure checkout</b><small>Encrypted payment</small></p></div></div>
+<div class="wrap" data-v="home"><div class="promo">
+<div><h2>Build your routine, save 15%</h2><p>Face wash + moisturizer starter set, with a free mini body wash.</p></div>
+<button class="btn" id="comboBtn">Add routine to cart</button>
+</div></div>
+
+<section class="wrap shop" id="shop" data-v="shop">
+<aside>
+<h3>Filter by</h3>
+<label><input type="checkbox" class="f" value="Face wash"> Face wash</label>
+<label><input type="checkbox" class="f" value="Body wash"> Body wash</label>
+<label><input type="checkbox" class="f" value="Moisturizer"> Moisturizer</label>
+<label><input type="checkbox" class="f" value="Combo"> Combos</label>
+</aside>
+<div>
+<h2 id="ptitle">Shop all</h2><p id="pdesc" style="margin:0;color:var(--mute)"></p>
+<div class="meta" style="color:var(--mute);font-size:14px"><span id="n">4</span> products</div>
+<div class="grid" id="grid"></div>
+</div>
+</section>
+
+<section class="wrap sec" data-v="home story">
+<h2>Why nanocellulose?</h2>
+<div class="cols">
+<div class="card"><h3>Holds moisture</h3><p>Cellulose fibres form a light network on the skin that helps keep hydration in.</p></div>
+<div class="card"><h3>Made from farm waste</h3><p>Rice straw is often burned. We turn it into an ingredient instead.</p></div>
+<div class="card"><h3>Tested in our own lab</h3><p>Developed by our Kerala research team. Test reports will be linked here.</p></div>
+</div>
+</section>
+
+<section class="wrap sec" data-v="home"><div class="ugc-top"><h2>Bestsellers</h2><a class="btn dark" href="#/shop">Shop all</a></div><div class="grid" id="grid2"></div></section>
+
+<section class="wrap pg" data-v="story"><h1>About CelluPro Green</h1>
+<p class="lead" style="max-width:70ch">Cellupro Green Private Limited (CPG) produces high quality micro/crystalline and nanocellulose pulp from agricultural waste. Our raw materials are agro residues such as rice straw, sugarcane bagasse and pineapple straw, chosen for their seasonal availability and affordable price.</p>
+<p style="max-width:70ch;color:var(--mute)">The pulp is a base material for cosmetics such as creams, lotions, concealers, foundations, face masks and sunscreens. It also goes into paper products such as sustainable packaging and sanitary napkins. Researchers can buy high-purity nanocellulose to develop new biocomposites, and we also supply lignin (alkali wash) for varied uses.</p></section>
+<section class="wrap sec" data-v="story"><div class="cols" style="grid-template-columns:1fr 1fr"><div class="card"><h3>Our vision</h3><p>To lead the global transition toward renewable, biodegradable material systems, where every agricultural residue becomes a valuable resource powering a circular, low-carbon future.</p></div><div class="card"><h3>Our mission</h3><p>To convert agro residues into high quality micro and nanocellulose materials through science-driven innovation, enabling sustainable products that improve human well-being and reduce environmental impact.</p></div></div></section>
+<section class="wrap sec" data-v="story"><h2>How it is made</h2>
+<div class="cols c4"><div class="card"><b>1</b><h3>Collect</h3><p>Agro residues such as rice straw, sugarcane bagasse and pineapple straw.</p></div><div class="card"><b>2</b><h3>Extract</h3><p>Cellulose is separated from the residue.</p></div><div class="card"><b>3</b><h3>Refine</h3><p>Reduced to micro and nano scale in our lab.</p></div><div class="card"><b>4</b><h3>Use</h3><p>Supplied as Ecagro pulp, or formulated into Celluglitz skincare.</p></div></div></section>
+<section class="wrap sec" data-v="story"><h2>Meet our directors</h2><p style="margin:0;color:var(--mute)">The visionaries leading CelluPro Green toward a sustainable future.</p>
+<div class="cols" style="margin-top:20px"><div class="card" style="text-align:center"><div class="av">RR</div><h3>Dr. Reshmy Rajasekharan</h3><p>Managing Director</p></div><div class="card" style="text-align:center"><div class="av">PK</div><h3>Mr. Padmakumar K</h3><p>Director</p></div><div class="card" style="text-align:center"><div class="av">MR</div><h3>Maya Rajesh</h3><p>Director</p></div></div>
+<p class="note">Replace the initials with each director's photo.</p></section>
+<section class="wrap sec" data-v="story"><h2>Industries we serve</h2><div class="cols">
+<div class="card"><h3>Paper</h3><p>Sustainable packaging base material, sanitary pad raw materials, craft paper and customised paper products.</p></div>
+<div class="card"><h3>Cosmetics</h3><p>Thickening and stabilizing agent for creams and lotions, film former for masks, and a base for vegan and herbal cosmetics.</p></div>
+<div class="card"><h3>Research</h3><p>High-purity nanocellulose for advanced material research, with customised grades for specific research needs.</p></div></div></section>
+<section class="wrap sec" data-v="story"><h2>Recognized and featured by</h2>
+<div class="hl" style="margin-top:16px;font-size:16px"><span>Kerala Startup Mission</span><span>Ministry of MSME, Govt. of India</span><span>Sathyam</span><span>Anweshanam</span><span>Manorama</span></div>
+<p class="note">Swap these names for the official logos.</p>
+<div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn dark" href="#/shop">Shop Celluglitz</a><a class="btn ghost" href="#/ecagro" style="color:var(--deep)">Explore Ecagro</a></div></section>
+
+<section class="wrap pg" data-v="ecagro"><h1>Ecagro micro and nano cellulose pulp</h1><p class="lead">Sustainable cellulose made from rice straw, for manufacturers who want a renewable ingredient.</p><div class="cta"><a class="btn dark" href="#b2b" onclick="event.preventDefault();document.getElementById('b2b').scrollIntoView({behavior:'smooth'})">Request a sample</a><button class="btn ghost" type="button" style="color:var(--deep)" onclick="toast('Add your Amazon listing link')">Buy small quantities on Amazon</button></div></section>
+<section class="wrap sec" data-v="ecagro"><h2>Applications</h2><div class="cols c4" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))"><div class="card"><h3>Personal care</h3><p>Texture and moisture hold in creams and washes.</p></div><div class="card"><h3>Skin care and cosmetics</h3><p>Natural thickener and film former.</p></div><div class="card"><h3>Paper</h3><p>Strength and barrier additive.</p></div><div class="card"><h3>Paints and coatings</h3><p>Sustainable performance modifier.</p></div></div>
+<p style="margin-top:16px">We also supply <b>Lignin (alkali wash)</b>, available in pails for varied industrial uses. Ask us in the form below.</p>
+<p class="note">Confirm each benefit against your technical datasheet before publishing.</p></section>
+<section class="wrap sec" data-v="ecagro"><h2>Specifications</h2><table class="sp"><tr><td>Form</td><td>Add from datasheet</td></tr><tr><td>Particle size</td><td>Add from datasheet</td></tr><tr><td>Solid content</td><td>Add from datasheet</td></tr><tr><td>Pack sizes</td><td>Add from datasheet</td></tr><tr><td>Minimum order</td><td>Add MOQ and lead time</td></tr></table></section>
+<section class="wrap sec" data-v="ecagro"><h2>Questions buyers ask</h2><details><summary>Can I get a sample before a bulk order?</summary><p>Yes. Send the form below with your application and we will reply with sample details.</p></details><details><summary>Do you share a COA and datasheet?</summary><p>Yes, on request for every batch.</p></details><details><summary>Do you ship across India?</summary><p>Add your shipping regions and lead times here.</p></details></section>
+
+<section class="wrap sec" id="ugc" data-v="routines">
+<div class="ugc-top">
+<div><h2>Real people, real routines</h2><p style="margin:0;color:var(--mute)">Photos and reviews from customers using Celluglitz. Tag <b>#MyCelluglitz</b> to be featured.</p></div>
+<a class="btn dark" href="https://www.instagram.com/celluprogreen/" target="_blank" rel="noopener">Follow @celluprogreen</a>
+</div>
+<div class="ugc" id="ugcGrid"></div>
+<div class="share">
+<p>Share your routine with a photo or a short video. We only feature posts with your permission, and you can ask us to remove yours at any time.</p>
+<button class="btn dark" id="shareBtn">Share your routine</button>
+</div>
+</section>
+
+<section class="wrap sec" id="b2b" data-v="ecagro">
+<div class="b2b">
+<div>
+<h2>Ecagro micro and nano cellulose pulp</h2>
+<ul><li>For personal care, cosmetics, paper, paints and coatings</li><li>Datasheet and COA on request</li><li>Samples and bulk quotes</li></ul>
+<button class="btn" type="button" onclick="toast('Link your datasheet PDF here')">Download datasheet</button>
+</div>
+<form onsubmit="event.preventDefault();toast('Thanks, we will reply within 2 working days')">
+<input required placeholder="Company name" aria-label="Company name">
+<input required type="email" placeholder="Work email" aria-label="Work email">
+<select aria-label="Interest"><option>Request a sample</option><option>Bulk quote</option><option>Partnership</option></select>
+<button class="btn" type="submit">Send enquiry</button>
+</form>
+</div>
+</section>
+<section class="wrap sec" data-v="home shop routines"><div class="news"><h2>Get 10% off your first order</h2><p style="color:var(--mute);margin:0">Join for launch offers and restock alerts on WhatsApp or email.</p>
+<form onsubmit="event.preventDefault();toast('Use RICE10 at checkout')"><input required placeholder="Email or WhatsApp number" aria-label="Email or WhatsApp number"><button class="btn dark" type="submit">Claim my 10%</button></form></div></section>
+</main>
+
+<footer><div class="wrap"><div>© CelluProGreen Pvt. Ltd., Kerala<br>celluprogreen.com</div><div>Shipping · Returns · Privacy · Contact</div></div></footer>
+<a class="wa" href="#/" onclick="event.preventDefault();toast('Add your WhatsApp number')" aria-label="Chat on WhatsApp">Chat on WhatsApp</a>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart"><div class="dh">Your cart<button id="close" aria-label="Close cart">×</button></div>
+<div class="dp" id="dp"></div><div class="dl" id="dl"></div>
+<div class="df"><div class="cp"><input id="cin" placeholder="Coupon code" aria-label="Coupon code"><button class="btn dark" id="capply">Apply</button></div>
+<div class="r"><span>Subtotal</span><span id="sub">₹0</span></div><div class="r"><span>Discount</span><span id="dis">₹0</span></div><div class="r"><span>Shipping</span><span id="shp">₹0</span></div><div class="r tot"><span>Total</span><span id="tot">₹0</span></div>
+<button class="btn dark" id="co" style="padding:14px;font-size:16px">Checkout</button></div></aside>
+<div class="sbar"><span id="sbt">Cart empty</span><button class="btn" id="sbb">View cart</button></div>
+<div id="toast" role="status"></div>
+
+<script>
+var P=[
+{n:"Gentle Face Wash",t:"Face wash",s:"150 ml",p:299,m:349,c:"#dcebd9",e:"🧴",b:"Cleanses without stripping",best:1},
+{n:"Everyday Body Wash",t:"Body wash",s:"250 ml",p:349,m:399,c:"#e9efd0",e:"🚿",b:"Fresh feel, no tight skin"},
+{n:"Deep Hydration Moisturizer",t:"Moisturizer",s:"50 g",p:399,m:449,c:"#f1ead2",e:"🫙",b:"Hydrates without feeling heavy",best:1},
+{n:"Starter Routine: Face wash + Moisturizer",t:"Combo",s:"Pack of 2",p:599,m:748,c:"#d7e8e0",e:"🎁",b:"Best value: save ₹149",best:1}
+];
+var cart={},coupon=0,g=document.getElementById("grid"),$=function(i){return document.getElementById(i)};
+function toast(m){var t=$("toast");t.textContent=m;t.className="on";clearTimeout(window._t);window._t=setTimeout(function(){t.className=""},2200)}
+function card(x){var d=Math.round((1-x.p/x.m)*100);
+ return '<article class="p"><div class="img" style="background:'+x.c+';font-size:72px"><span class="tag">'+(x.best?"Bestseller":"Celluglitz")+'</span><span class="off">-'+d+'%</span>'+x.e+'</div><div class="b"><h3>'+x.n+'</h3><div class="meta">'+x.s+'</div><div class="ben1">'+x.b+'</div><div class="price"><s>₹'+x.m+'</s>₹'+x.p+' <span class="save">Save ₹'+(x.m-x.p)+'</span></div><button class="add" data-n="'+x.n+'">+ Add to cart</button></div></article>'}
+function draw(){
+ var on=[].slice.call(document.querySelectorAll(".f:checked")).map(function(x){return x.value});
+ var l=P.filter(function(x){return !on.length||on.indexOf(x.t)>-1});
+ $("n").textContent=l.length;g.innerHTML=l.map(card).join("");
+}
+function find(n){return P.filter(function(x){return x.n===n})[0]}
+function add(n,q){var x=find(n);cart[n]=(cart[n]||0)+q;if(cart[n]<=0)delete cart[n];render()}
+function render(){
+ var sub=0,cnt=0,h="";
+ Object.keys(cart).forEach(function(n){var x=find(n),q=cart[n];sub+=x.p*q;cnt+=q;
+  h+='<div class="li"><span class="e">'+x.e+'</span><div class="t"><b>'+x.n+'</b>₹'+x.p+'</div><div class="q"><button data-n="'+n+'" data-d="-1" aria-label="Less">−</button>'+q+'<button data-n="'+n+'" data-d="1" aria-label="More">+</button></div></div>'});
+ var dis=coupon?Math.round(sub*.1):0,after=sub-dis,ship=(after>=499||!sub)?0:49;
+ $("dl").innerHTML=h||'<p style="color:var(--mute)">Your cart is empty. Start with a bestseller.</p>';
+ $("cnt").textContent=cnt;$("sub").textContent="₹"+sub;$("dis").textContent="-₹"+dis;$("shp").textContent=ship?"₹"+ship:"Free";$("tot").textContent="₹"+(after+ship);
+ var left=499-after;$("dp").innerHTML=(sub?(left>0?'Add <b>₹'+left+'</b> more for free shipping':'🎉 You unlocked free shipping'):'Free shipping above ₹499')+'<div class="prog"><i style="width:'+Math.min(100,after/499*100)+'%"></i></div>';
+ $("sbt").textContent=cnt?cnt+" item(s) · ₹"+(after+ship):"Free shipping above ₹499";
+}
+function open(o){$("drawer").className="drawer"+(o?" on":"");$("scrim").className="scrim"+(o?" on":"")}
+document.addEventListener("click",function(e){var b=e.target.closest(".add");if(!b)return;add(b.dataset.n,1);open(true)});
+$("dl").addEventListener("click",function(e){var b=e.target.closest("button");if(b)add(b.dataset.n,+b.dataset.d)});
+["cartBtn","sbb"].forEach(function(i){$(i).addEventListener("click",function(){open(true)})});
+["close","scrim"].forEach(function(i){$(i).addEventListener("click",function(){open(false)})});
+$("comboBtn").addEventListener("click",function(){add("Starter Routine: Face wash + Moisturizer",1);open(true)});
+$("capply").addEventListener("click",function(){if($("cin").value.trim().toUpperCase()==="RICE10"){coupon=1;toast("RICE10 applied: 10% off");render()}else toast("Code not valid")});
+$("co").addEventListener("click",function(){toast("Preview only: connect a payment gateway to go live")});
+function tick(){var n=new Date(),e=new Date(n);e.setHours(23,59,59,0);var d=Math.max(0,e-n)/1000|0,p=function(v){return String(v).padStart(2,"0")};$("cd").textContent=p(d/3600|0)+":"+p(d%3600/60|0)+":"+p(d%60)}
+tick();setInterval(tick,1000);
+document.querySelectorAll(".f").forEach(function(c){c.addEventListener("change",draw)});
+draw();render();
+var U=[["#dcebd9","Morning routine"],["#f1ead2","Shower time"],["#d7e8e0","Night skincare"],["#e9efd0","Travel kit"],["#e6e2d3","Gift unboxing"],["#cfe3d4","First impressions"]];
+document.getElementById("ugcGrid").innerHTML=U.map(function(x){return '<figure class="u" style="margin:0"><div class="ph" style="background:'+x[0]+'"><div>📷<span>Customer photo goes here</span></div></div><figcaption class="cap"><b>@customer_handle</b>'+x[1]+'</figcaption></figure>'}).join("");
+document.getElementById("shareBtn").addEventListener("click",function(){toast("Tag #MyCelluglitz on Instagram, or send your photo on WhatsApp")});
+
+$("grid2").innerHTML=P.filter(function(x){return x.best}).map(card).join("");
+var D={shop:["Shop all","Face, body and combo sets from rice-straw nanocellulose."],face:["Face care","Face wash and moisturizer for daily use."],body:["Body care","Body wash for fresh, comfortable skin."],combos:["Combos and gift sets","Bundles that save you more."]};
+function route(){
+ var h=location.hash.replace(/^#\/?/,"")||"home",V={shop:"shop",face:"shop",body:"shop",combos:"shop",story:"story",routines:"routines",ecagro:"ecagro"},v=V[h]||"home";
+ if(!V[h])h="home";
+ document.querySelectorAll("[data-v]").forEach(function(el){el.hidden=el.dataset.v.split(" ").indexOf(v)<0});
+ if(v==="shop"){var m={shop:[],face:["Face wash","Moisturizer"],body:["Body wash"],combos:["Combo"]}[h];
+  document.querySelectorAll(".f").forEach(function(c){c.checked=m.indexOf(c.value)>-1});$("ptitle").textContent=D[h][0];$("pdesc").textContent=D[h][1];draw()}
+ document.querySelectorAll(".sub a").forEach(function(a){a.classList.toggle("cur",a.getAttribute("href")==="#/"+h)});
+ window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
