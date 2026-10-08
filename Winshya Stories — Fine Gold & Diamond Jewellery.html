@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Winshya Stories — Fine Gold &amp; Diamond Jewellery</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#FFFDF8;--surface:#fff;--ink:#0B3925;--green:#0B3925;--muted:#4F6A5C;--gold:#EABB47;--gold-d:#7A5A0A;--line:#E8DEC0;--red:#A23B3B;--tint:#FFF6DC;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07261A;--surface:#0D3325;--ink:#FFFDF8;--muted:#B5C7BC;--gold-d:#EABB47;--line:#1F4D3A;--tint:#0D3325}}
+:root[data-theme="dark"]{--bg:#07261A;--surface:#0D3325;--ink:#FFFDF8;--muted:#B5C7BC;--gold-d:#EABB47;--line:#1F4D3A;--tint:#0D3325}
+html{scroll-padding-top:130px;scroll-behavior:smooth}*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 16px/1.65 "Jost",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.w{max-width:1180px;margin:0 auto;padding:0 20px}section{padding:76px 0}
+.hd{text-align:center;margin-bottom:40px}.hd h2{font-size:clamp(34px,5vw,54px)}.hd p{color:var(--muted);margin:8px auto 0;max-width:48ch}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);margin:14px auto 0;max-width:260px}.orn::before,.orn::after{content:"";flex:1;height:1px;background:var(--gold)}.orn i{font-style:normal;font-size:12px}
+.btn{display:inline-block;background:var(--green);color:#FFFDF8;border:1px solid var(--green);padding:14px 30px;text-decoration:none;font-weight:400;text-align:center;letter-spacing:.03em}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:#0B3925}
+.btn.o{background:none;color:inherit;border-color:currentColor}.btn.o:hover{background:var(--gold);color:#0B3925;border-color:var(--gold)}
+.btn.g{background:var(--gold);border-color:var(--gold);color:#0B3925}.btn.g:hover{background:var(--green);border-color:var(--gold);color:#FFFDF8}
+/* top + header */
+.ann{background:var(--green);color:var(--gold);text-align:center;font-size:13px;padding:7px 12px;letter-spacing:.04em}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:5px double var(--gold)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:68px;gap:12px}
+.logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;text-decoration:none;letter-spacing:.1em;text-align:center;white-space:nowrap}
+.bar input{width:min(220px,100%);padding:9px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:15px}
+.ac{display:flex;justify-content:flex-end;gap:4px}.ib{background:none;border:0;padding:8px;font-size:15px;white-space:nowrap}
+nav{display:flex;justify-content:center;gap:34px;padding:0 0 12px}nav a{text-decoration:none;font-size:14px;letter-spacing:.1em;text-transform:uppercase}nav a:hover{color:var(--gold-d)}
+@media(max-width:800px){nav{overflow-x:auto;justify-content:flex-start;gap:22px;white-space:nowrap}.bar{grid-template-columns:auto 1fr auto;height:60px}.logo{font-size:20px;letter-spacing:.06em;text-align:left}.bar input{display:none}html{scroll-padding-top:112px}}
+/* hero */
+.hero{background:var(--green);color:#FFFDF8;padding:28px 0}
+.frame{border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:-9px;padding:64px 28px;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;min-height:calc(100svh - 190px)}
+.hero h1{font-size:clamp(44px,6.4vw,84px);color:#FFFDF8}.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{max-width:42ch;opacity:.85;margin:18px 0 28px;font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}.hero .btn{background:var(--gold);border-color:var(--gold);color:#0B3925}.hero .btn:hover{background:#FFFDF8;border-color:#FFFDF8}.hero .btn.o{background:none;color:#FFFDF8;border-color:var(--gold)}.hero .btn.o:hover{background:var(--gold);color:#0B3925}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-size:14px;opacity:.9}.trust b{color:var(--gold)}
+.medal{display:grid;place-items:center;color:var(--gold)}.medal svg{width:100%;max-width:420px}
+@media(max-width:800px){.frame{grid-template-columns:1fr;padding:40px 20px;min-height:0;text-align:center}.cta,.trust{justify-content:center}.hero p{margin-inline:auto}.medal{order:-1}.medal svg{max-width:220px}}
+.frame{display:flex;flex-direction:column;justify-content:center}
+.sl{display:grid}.sld{grid-area:1/1;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;opacity:0;visibility:hidden;transition:opacity .7s,visibility .7s}.sld.on{opacity:1;visibility:visible}
+.frame .trust{justify-content:center;margin-top:36px}
+.hc{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px}.hc .ar{background:none;border:1px solid var(--gold);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:22px;line-height:1;padding:0}.hc .ar:hover{background:var(--gold);color:#0B3925}
+#dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:none;padding:0;margin:0 5px}#dots button[aria-current=true]{background:var(--gold)}
+@media(max-width:800px){.sld{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.sld{transition:none}}
+/* medallion categories */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.cat{text-align:center;text-decoration:none}.cat .i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--tint);color:var(--green);margin:6px;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--gold);transition:background .25s}
+.cat:hover .i{background:var(--gold)}.cat .i svg{width:46%}.cat h3{font-size:22px;margin-top:16px}.cat span{font-size:14px;color:var(--gold-d)}
+@media(max-width:800px){.cats{grid-template-columns:repeat(3,1fr);gap:14px}.cat h3{font-size:18px}}
+/* showcase panels */
+.sc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pn{position:relative;min-height:460px;background:var(--green);color:#FFFDF8;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;text-decoration:none;overflow:hidden}
+.pn::before{content:"";position:absolute;inset:10px;border:1px solid var(--gold);pointer-events:none}
+.pn svg{position:absolute;top:14%;left:50%;width:46%;transform:translateX(-50%);color:var(--gold)}
+.pn h3{font-size:36px;color:var(--gold);position:relative}.pn p{margin:6px 0 16px;opacity:.85;font-size:15px;position:relative}.pn span{border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:2px;position:relative}
+.pn:nth-child(2){background:#145238}.pn:nth-child(3){background:#082A1B}
+@media(max-width:800px){.sc{grid-template-columns:1fr}.pn{min-height:320px}}
+/* products */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin-bottom:28px}
+.chip{background:none;border:1px solid var(--line);padding:7px 18px;font-size:14px}.chip[aria-pressed=true]{background:var(--green);color:#FFFDF8;border-color:var(--green)}
+.tools select{padding:8px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font:inherit;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);padding:8px;position:relative}
+.card .im{aspect-ratio:1;display:grid;place-items:center;background:var(--tint);color:var(--green);position:relative;border:0;width:100%;padding:0}.card .im svg{width:46%}
+.badge{position:absolute;top:8px;left:8px;background:var(--green);color:var(--gold);font-size:11px;letter-spacing:.08em;padding:3px 9px;font-weight:500}.badge.l{background:var(--red);color:#fff}
+.wl{position:absolute;top:4px;right:4px;background:var(--surface);border:0;border-radius:50%;width:36px;height:36px;font-size:18px;color:var(--ink)}.wl[aria-pressed=true]{color:var(--red)}
+.qv{position:absolute;bottom:0;left:0;right:0;background:rgba(11,57,37,.92);color:#FFFDF8;border:0;padding:9px;font-size:14px;letter-spacing:.04em}
+.card .b{padding:14px 8px 8px;display:flex;flex-direction:column;gap:4px;flex:1;text-align:center}.card h3{font-size:23px}
+.st{color:var(--gold-d);font-size:14px}.st small{color:var(--muted);font-size:13px}
+.pr{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;justify-content:center}.pr b{font-weight:500;font-size:19px}.pr s{color:var(--muted);font-size:14px}.pr em{font-style:normal;color:var(--red);font-size:13px;font-weight:500}
+.card .btn{margin-top:auto;padding:12px}.none{padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
+/* heritage edit */
+.ed{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--gold);margin-bottom:24px;background:var(--surface)}
+.ed .v{min-height:400px;background:var(--green);display:grid;place-items:center;color:var(--gold);margin:10px;outline:1px solid var(--gold);outline-offset:-8px}.ed .v svg{width:70%;max-width:300px}
+.ed .t{padding:48px 40px;display:flex;flex-direction:column;justify-content:center;gap:16px;align-items:flex-start}.ed h2{font-size:clamp(32px,4.6vw,50px)}.ed p{color:var(--muted);margin:0;max-width:44ch}
+@media(max-width:800px){.ed{grid-template-columns:1fr}.ed .v{min-height:260px}.ed .t{padding:28px 22px}}
+/* offer */
+.offer{background:var(--green);color:#FFFDF8;text-align:center;padding:60px 0}
+.offer .in{border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:-9px;padding:56px 20px}
+.offer .big{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(52px,9vw,108px);color:var(--gold);line-height:1;margin:14px 0;font-weight:600}
+.offer p{max-width:46ch;margin:0 auto 24px;opacity:.88}.offer small{display:block;opacity:.75;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+/* trust */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tc{text-align:center;padding:28px 20px;border:1px solid var(--line);background:var(--surface)}.tc svg{width:34px;height:34px;color:var(--gold-d);margin-bottom:10px}.tc h3{font-size:23px;margin-bottom:4px}.tc p{margin:0;color:var(--muted);font-size:15px}
+@media(max-width:700px){.tg{grid-template-columns:1fr 1fr}}@media(max-width:460px){.tg{grid-template-columns:1fr}}
+/* reviews */
+.rv{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.rc{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--gold);padding:22px;display:flex;flex-direction:column;gap:10px;font-size:15px}.rc p{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;line-height:1.35}.rc small{color:var(--muted);margin-top:auto}
+@media(max-width:900px){.rv{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.rv{grid-template-columns:1fr}}
+/* final + footer */
+.fin{text-align:center}.fin .cta{justify-content:center;margin-top:26px}.fin h2{font-size:clamp(34px,5vw,58px)}
+.wa{background:#1E8E4E!important;border-color:#1E8E4E!important;color:#fff!important}
+footer{background:var(--green);color:#FFFDF8;padding:56px 0 100px;font-size:15px;border-top:5px double var(--gold)}
+.fg{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.fg h3{font-size:22px;color:var(--gold);margin-bottom:10px}.fg a{display:block;text-decoration:none;opacity:.8;padding:3px 0}.fg a:hover{opacity:1;color:var(--gold)}
+@media(max-width:700px){.fg{grid-template-columns:1fr 1fr}}
+.pay{display:flex;gap:8px;flex-wrap:wrap;margin:32px 0 12px}.pay span{border:1px solid rgba(234,187,71,.5);padding:3px 10px;font-size:13px}
+.legal{display:flex;gap:16px;flex-wrap:wrap;opacity:.75;font-size:14px}
+/* ugc */
+.ug{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}
+.ut{flex:0 0 min(270px,74%);scroll-snap-align:start;position:relative;aspect-ratio:4/5;display:grid;place-items:center;color:var(--green);border:1px solid var(--line)}.ut svg{width:40%;margin-top:-14%}
+.uc{position:absolute;left:0;right:0;bottom:0;padding:44px 14px 14px;background:linear-gradient(transparent,rgba(11,57,37,.94));color:#FFFDF8;font-size:14px}.uc b{display:block;font-weight:500;font-size:15px}.uc span{opacity:.8}
+.uc button{display:block;background:none;border:0;border-bottom:1px solid var(--gold);color:var(--gold);padding:2px 0;margin-top:8px;font-size:13px}
+.ugb{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;align-items:center}.ugb span{color:var(--muted);font-size:15px}
+/* about */
+.ab{background:var(--green);color:#FFFDF8;padding:28px 0}.ab .frame{display:block;text-align:center;min-height:0;padding:72px 24px}.ab h1{font-size:clamp(44px,7vw,84px);color:var(--gold)}.ab p{max-width:52ch;margin:16px auto 0;opacity:.88;font-size:18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}.two .medal{background:var(--green);padding:36px;outline:1px solid var(--gold);outline-offset:-10px}.two h2{font-size:clamp(32px,4.6vw,48px);margin-bottom:14px}.two p{color:var(--muted);margin:0 0 14px}
+.two small{color:var(--gold-d)}
+@media(max-width:800px){.two{grid-template-columns:1fr;gap:28px}}
+.stp{counter-reset:s}.stp .tc::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;margin:0 auto 12px;border:1px solid var(--gold);border-radius:50%;color:var(--gold-d);font-family:"Cormorant Garamond",Georgia,serif;font-size:20px}
+.vis{background:var(--tint);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.vis p{color:var(--muted);max-width:46ch;margin:10px auto 22px}
+.tg.c4{grid-template-columns:repeat(4,1fr)}@media(max-width:800px){.tg.c4{grid-template-columns:1fr 1fr}}@media(max-width:560px){.tg.c3,.tg.c4{grid-template-columns:1fr}}
+/* overlays */
+.ov{position:fixed;inset:0;background:rgba(5,25,16,.6);z-index:40;display:none}.ov.on{display:block}
+.mod{position:absolute;inset:4vh 0 0;margin:0 auto;max-width:900px;background:var(--bg);overflow:auto;padding:28px 24px 24px;border-top:3px solid var(--gold)}
+.dr{position:absolute;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--bg);padding:24px;display:flex;flex-direction:column;gap:14px;overflow:auto;border-left:3px solid var(--gold)}
+.x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;line-height:1}
+.pv{display:grid;grid-template-columns:1fr 1fr;gap:28px}.pv .im{aspect-ratio:1;display:grid;place-items:center;background:var(--tint);color:var(--green);border:1px solid var(--line)}.pv .im svg{width:50%}
+.pv h2{font-size:40px}.pv dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:14px 0;font-size:15px}.pv dt{color:var(--muted)}.pv dd{margin:0}
+.pv select,.pv input{padding:10px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font:inherit}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}.pa{display:flex;gap:10px;margin:16px 0}.pa .btn{flex:1}
+details{border-top:1px solid var(--line);padding:10px 0;font-size:15px}summary{cursor:pointer}details p{margin:6px 0;color:var(--muted)}
+.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.rel button{background:var(--surface);border:1px solid var(--line);padding:10px;text-align:left;font-size:14px}
+@media(max-width:700px){.pv{grid-template-columns:1fr}.pa{position:sticky;bottom:0;background:var(--bg);padding:10px 0}}
+.ci{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:15px}.ci .th{width:52px;height:52px;background:var(--tint);display:grid;place-items:center;color:var(--green)}.ci .th svg{width:60%}.ci div{flex:1}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--green);color:var(--gold);padding:10px 18px;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}#toast.on{opacity:1}
+.stk{display:none;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:2px solid var(--gold);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));gap:10px}
+@media(max-width:800px){.stk{display:flex}.stk .btn{flex:1;padding:13px}}
+.wf{position:fixed;right:16px;bottom:24px;z-index:25;background:#1E8E4E;color:#fff;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:13px;font-weight:500}
+@media(max-width:800px){.wf{bottom:84px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cat .i{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="ring" viewBox="0 0 100 100"><circle cx="50" cy="62" r="26" fill="none" stroke="currentColor" stroke-width="5"/><path d="M40 30L50 14L60 30L50 40Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+<symbol id="ear" viewBox="0 0 100 100"><path d="M50 8V30" stroke="currentColor" stroke-width="3" fill="none"/><path d="M50 30C70 52 74 62 74 70A24 24 0 0 1 26 70C26 62 30 52 50 30Z" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+<symbol id="neck" viewBox="0 0 100 100"><path d="M14 22C14 70 86 70 86 22" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/><circle cx="50" cy="66" r="9" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+<symbol id="brac" viewBox="0 0 100 100"><ellipse cx="50" cy="52" rx="34" ry="30" fill="none" stroke="currentColor" stroke-width="6"/><ellipse cx="50" cy="52" rx="26" ry="22" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="gold" viewBox="0 0 100 100"><path d="M10 70L30 36H70L90 70Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 36L50 70L70 36" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="dia" viewBox="0 0 100 100"><path d="M26 30H74L90 48L50 90L10 48Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 48H90M38 30L50 90L62 30" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>
+
+<div class="ann">BIS hallmarked · Insured delivery · Easy exchange</div>
+<header><div class="w">
+<div class="bar">
+<div><input id="q" type="search" placeholder="Search jewellery" aria-label="Search jewellery"></div>
+<a class="logo" href="#top">WINSHYA STORIES</a>
+<div class="ac"><button class="ib" id="wlb" aria-label="Wishlist">♡ <span id="wc">0</span></button><button class="ib" id="cb" aria-label="Cart">Cart (<span id="cc">0</span>)</button></div>
+</div>
+<nav><a href="#cats">Shop</a><a href="#showcase">Collections</a><a href="#best">Best Sellers</a><a href="#offer">Offers</a><a href="#reviews">Reviews</a><a href="#ugc">Community</a><a href="#about">About</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" aria-roledescription="carousel" aria-label="Featured collections"><div class="w"><div class="frame">
+<div class="sl" id="sl" aria-live="off">
+<div class="sld on">
+<div>
+<h1>Jewellery Made for <em>Your Moments.</em></h1>
+<p>Timeless designs crafted to celebrate the moments you never want to forget.</p>
+<div class="cta"><a class="btn" href="#best">Shop Now</a><a class="btn o" href="#showcase">Explore Collection</a></div>
+</div>
+<div class="medal" id="medal" role="img" aria-label="Ornamental lotus medallion"></div>
+</div>
+<div class="sld">
+<div>
+<h1>Bridal Jewellery for <em>Your Big Day.</em></h1>
+<p>Necklace sets, bangles and wedding bands crafted to be worn, loved and passed down.</p>
+<div class="cta"><a class="btn" href="#best" data-go="Necklaces">Shop Bridal</a><a class="btn o" href="#showcase">Explore Collection</a></div>
+</div>
+<div class="medal" role="img" aria-label="Necklace illustration"><svg viewBox="0 0 100 100" style="max-width:300px"><use href="#neck"/></svg></div>
+</div>
+<div class="sld">
+<div>
+<h1>Up to 20% Off <em>Selected Pieces.</em></h1>
+<p>Exclusive offers on selected jewellery for a limited time.</p>
+<div class="cta"><a class="btn" href="#best" data-go="Offers">Shop Offers</a><a class="btn o" href="#showcase">Explore Collection</a></div>
+</div>
+<div class="medal" role="img" aria-label="Diamond illustration"><svg viewBox="0 0 100 100" style="max-width:300px"><use href="#dia"/></svg></div>
+</div>
+</div>
+<div class="trust"><span><b>✓</b> Certified Jewellery</span><span><b>✓</b> Secure Payments</span><span><b>✓</b> Fast &amp; Safe Delivery</span></div>
+<div class="hc"><button class="ar" id="hp" aria-label="Previous slide">‹</button><div id="dots"></div><button class="ar" id="hn" aria-label="Next slide">›</button><button class="ar" id="ht" aria-label="Pause slideshow" style="font-size:13px">❚❚</button></div>
+</div></div></section>
+
+<section id="cats"><div class="w">
+<div class="hd"><h2>Find Your Perfect Piece</h2><div class="orn"><i>◆</i></div></div>
+<div class="cats" id="catgrid"></div>
+</div></section>
+
+<section id="showcase" style="padding-top:0"><div class="w">
+<div class="hd"><h2>The Collections</h2><div class="orn"><i>◆</i></div><p>Three signature collections, each made for a different kind of moment. Replace with your own ranges.</p></div>
+<div class="sc">
+<a class="pn" href="#best" data-go="Necklaces"><svg><use href="#neck"/></svg><h3>Bridal</h3><p>Necklace sets, bangles and wedding bands in 22k gold.</p><span>Explore Bridal</span></a>
+<a class="pn" href="#best" data-go="Gold"><svg><use href="#gold"/></svg><h3>Temple</h3><p>Traditional motifs, handcrafted by master goldsmiths.</p><span>Explore Temple</span></a>
+<a class="pn" href="#best" data-go="Diamond"><svg><use href="#dia"/></svg><h3>Diamond</h3><p>Certified diamonds set in 18k gold for everyday brilliance.</p><span>Explore Diamond</span></a>
+</div>
+</div></section>
+
+<section id="best" style="padding-top:0"><div class="w">
+<div class="hd"><h2>Our Best Sellers</h2><div class="orn"><i>◆</i></div><p>Customer favourites, crafted to be worn and remembered.</p></div>
+<div class="tools" id="tools"></div>
+<div class="grid" id="grid"></div>
+<div style="text-align:center;margin-top:36px"><button class="btn o" id="all">View All Best Sellers</button></div>
+</div></section>
+
+<section class="offer" id="offer"><div class="w"><div class="in">
+<small>Limited-time collection</small>
+<div class="big">UP TO 20% OFF</div>
+<h2 style="font-size:clamp(26px,4vw,40px);margin-bottom:12px">A Little More Shine, A Little More Savings.</h2>
+<p>Enjoy exclusive offers on selected jewellery pieces for a limited time.</p>
+<button class="btn g" id="offbtn">Shop Offers</button>
+<small id="timer" hidden style="margin-top:16px"></small>
+</div></div></section>
+
+<section><div class="w">
+<div class="hd"><h2>Jewellery You Can Buy With Confidence</h2><div class="orn"><i>◆</i></div></div>
+<div class="tg" id="tg"></div>
+</div></section>
+
+<section id="aboutus" style="padding-top:0"><div class="w two">
+<div class="medal" id="medal3" role="img" aria-label="Ornamental lotus medallion"></div>
+<div>
+<h2>About Winshya Stories</h2>
+<div class="orn" style="margin:0 0 18px;max-width:140px"><i>◆</i></div>
+<p>Winshya Stories makes gold and diamond jewellery for the moments that matter: weddings, milestones and everyday wear. Add one or two lines here about who you are and what you stand for.</p>
+<p><b style="font-weight:500">Certified</b> metal and stones. <b style="font-weight:500">Handcrafted</b> finishing. <b style="font-weight:500">Made to last</b> and made to be passed on.</p>
+<small>[Replace with your own brand story and facts]</small>
+<div style="margin-top:20px"><a class="btn" href="#about">Read Our Story</a></div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="w">
+<div class="grid" id="feat"></div>
+</div></section>
+
+<section id="reviews" style="padding-top:0"><div class="w">
+<div class="hd"><h2>Loved by Our Customers</h2><div class="orn"><i>◆</i></div><p>Join thousands of happy jewellery lovers.</p></div>
+<div class="rv" id="rv"></div>
+</div></section>
+
+<section id="ugc" style="padding-top:0"><div class="w">
+<div class="hd"><h2>Styled by You</h2><div class="orn"><i>◆</i></div><p>Real moments from our community. Tag @winshya-stories and use #WinshyaStories to be featured.</p></div>
+<!-- Placeholder tiles: replace each with a real customer photo (with their permission) -->
+<div class="ug" id="ug"></div>
+<div class="ugb"><a class="btn" href="#" target="_blank" rel="noopener">Follow on Instagram</a><span>Share your moment and get featured.</span></div>
+</div></section>
+
+<section id="recent" hidden style="padding-top:0"><div class="w"><div class="hd"><h2>Recently Viewed</h2></div><div class="grid" id="rec"></div></div></section>
+
+<section class="fin"><div class="w">
+<div class="orn"><i>◆</i></div>
+<h2 style="margin-top:18px">Your Next Favourite Piece Is Waiting.</h2>
+<p style="color:var(--muted);margin:10px 0 0">Discover jewellery designed to make every moment shine.</p>
+<div class="cta"><a class="btn" href="#best">Shop Now</a><a class="btn o" href="#cats">Explore All Jewellery</a><a class="btn wa" id="wa2" href="#" target="_blank" rel="noopener">Chat With Us</a></div>
+</div></section>
+</main>
+
+<main id="aboutpage" hidden>
+<section class="ab"><div class="w"><div class="frame">
+<h1>Our Story</h1>
+<p>Jewellery made with care, for the moments you want to remember.</p>
+</div></div></section>
+<section><div class="w two">
+<div class="medal" id="medal2" role="img" aria-label="Ornamental lotus medallion"></div>
+<div>
+<h2>Crafted with purity, worn with pride.</h2>
+<p>Tell your story here: who started the brand, why, and what makes your jewellery different. Two or three honest paragraphs work better than long ones.</p>
+<p>Mention where your pieces are made, the goldsmiths behind them, and how you look after customers long after the sale.</p>
+<small>[Add your founding year, location and founder's name]</small>
+</div>
+</div></section>
+<section style="padding-top:0"><div class="w">
+<div class="hd"><h2>What We Stand For</h2><div class="orn"><i>◆</i></div></div>
+<div class="tg c3" id="vals"></div>
+</div></section>
+<section style="padding-top:0"><div class="w">
+<div class="hd"><h2>How Every Piece Is Made</h2><div class="orn"><i>◆</i></div></div>
+<div class="tg stp c4" id="steps"></div>
+</div></section>
+<section class="vis"><div class="w">
+<h2 style="font-size:clamp(32px,4.6vw,48px)">Visit Us or Ask Us Anything</h2>
+<p>Your showroom address, opening hours and phone number go here.</p>
+<div class="cta" style="justify-content:center"><a class="btn wa" id="wa3" href="#" target="_blank" rel="noopener">Chat With Us</a><a class="btn" href="#best">Shop the Collection</a></div>
+</div></section>
+</main>
+
+<footer><div class="w">
+<div class="fg">
+<div><h3>Shop</h3><a href="#best">New Arrivals</a><a href="#best">Best Sellers</a><a href="#cats" data-c="Rings">Rings</a><a href="#cats" data-c="Earrings">Earrings</a><a href="#cats" data-c="Necklaces">Necklaces</a><a href="#cats" data-c="Bracelets">Bracelets</a><a href="#cats" data-c="Gold">Gold Jewellery</a><a href="#cats" data-c="Diamond">Diamond Jewellery</a></div>
+<div><h3>Customer Care</h3><a href="#">Contact Us</a><a href="#">Shipping</a><a href="#">Returns &amp; Exchanges</a><a href="#">Jewellery Care</a><a href="#">FAQs</a></div>
+<div><h3>Company</h3><a href="#about">About Us</a><a href="#about">Our Story</a><a href="#">Contact</a></div>
+<div><h3>Follow Us</h3><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a></div>
+</div>
+<div class="pay"><span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span><span>🔒 Secure checkout</span></div>
+<div class="legal"><span>© 2026 Winshya Stories. All rights reserved.</span><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></div>
+</div></footer>
+
+<a class="wf" id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">Chat</a>
+<div class="stk"><a class="btn o" href="#showcase">Explore</a><a class="btn g" href="#best">Shop Now</a></div>
+<div class="ov" id="pov"><div class="mod" id="pm" role="dialog" aria-modal="true" aria-label="Product details"></div></div>
+<div class="ov" id="cov"><div class="dr" id="cd" role="dialog" aria-modal="true" aria-label="Cart"></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+var WHATSAPP='910000000000', OFFER_ENDS=''; // set OFFER_ENDS to a real deadline e.g. '2026-11-15T23:59:00+05:30' to show a countdown
+var P=[
+{id:1,n:'Solitaire Ring',c:'Rings',t:'Diamond',s:'ring',p:46000,o:56000,r:4.8,rv:128,b:'BEST SELLER',st:12,m:'18k gold, 0.30 ct diamond',w:'4 g',sz:1},
+{id:2,n:'Pearl Drop Earrings',c:'Earrings',t:'Gold',s:'ear',p:19800,o:0,r:4.7,rv:86,b:'TRENDING',st:20,m:'18k gold, freshwater pearl',w:'2 g'},
+{id:3,n:'Temple Necklace',c:'Necklaces',t:'Gold',s:'neck',p:345000,o:0,r:4.9,rv:64,b:'BEST SELLER',st:6,m:'22k gold',w:'42 g'},
+{id:4,n:'Slim Stacking Bangle',c:'Bracelets',t:'Gold',s:'brac',p:62000,o:68000,r:4.6,rv:51,b:'',st:3,m:'18k gold',w:'9 g'},
+{id:5,n:'Diamond Studs',c:'Earrings',t:'Diamond',s:'dia',p:38500,o:44000,r:4.8,rv:97,b:'TRENDING',st:15,m:'18k gold, 0.20 ct diamonds',w:'2 g'},
+{id:6,n:'Fine Gold Chain',c:'Necklaces',t:'Gold',s:'neck',p:24500,o:0,r:4.7,rv:143,b:'BEST SELLER',st:30,m:'18k gold',w:'5 g'},
+{id:7,n:'Wedding Band Set',c:'Rings',t:'Gold',s:'ring',p:78000,o:0,r:4.9,rv:72,b:'',st:9,m:'22k gold',w:'12 g',sz:1},
+{id:8,n:'Tennis Bracelet',c:'Bracelets',t:'Diamond',s:'brac',p:118000,o:138000,r:4.9,rv:39,b:'LIMITED STOCK',st:2,m:'18k white gold, 1.2 ct diamonds',w:'11 g'}];
+var CATS=[['Rings','ring'],['Earrings','ear'],['Necklaces','neck'],['Bracelets','brac'],['Gold','gold','Gold Jewellery'],['Diamond','dia','Diamond Jewellery']];
+var TRUST=[['Certified Quality','Every piece meets our quality standards.'],['Secure Payments','Safe and encrypted checkout.'],['Easy Returns','Simple return and exchange process.'],['Safe Delivery','Carefully packed and securely delivered.'],['Premium Craftsmanship','Made with attention to every detail.'],['Customer Support',"We're here whenever you need us."]];
+var REV=[['Priya M.','Solitaire Ring','Absolutely beautiful! The finishing was perfect and the packaging made the whole experience feel premium.'],['Ananya R.','Pearl Drop Earrings','Light, elegant and exactly like the photos. I get compliments every time I wear them.'],['Fathima K.','Temple Necklace','Wore it for my sister\'s wedding. Delivery was on time and the quality is superb.'],['Rahul S.','Diamond Studs','Bought as an anniversary gift. Easy ordering and she loved them.']];
+var f={q:'',c:'All',sort:'pop'},cart={},wl={},recent=[],$=function(i){return document.getElementById(i)};
+function inr(n){return '₹'+n.toLocaleString('en-IN')}
+function stars(r,n){return '<span class="st">'+'★'.repeat(Math.round(r))+'☆'.repeat(5-Math.round(r))+' <small>'+r+' ('+n+')</small></span>'}
+function disc(p){return p.o?Math.round((1-p.p/p.o)*100):0}
+function price(p){return '<div class="pr"><b>'+inr(p.p)+'</b>'+(p.o?'<s>'+inr(p.o)+'</s><em>'+disc(p)+'% off</em>':'')+'</div>'}
+function card(p){var bd=p.st<=3?'<span class="badge l">LIMITED STOCK</span>':(p.b?'<span class="badge">'+p.b+'</span>':'');
+return '<article class="card"><div style="position:relative"><button class="im" data-v="'+p.id+'" aria-label="View '+p.n+'"><svg><use href="#'+p.s+'"/></svg></button>'+bd+'<button class="wl" data-w="'+p.id+'" aria-pressed="'+!!wl[p.id]+'" aria-label="Wishlist">'+(wl[p.id]?'♥':'♡')+'</button><button class="qv" data-v="'+p.id+'">Quick View</button></div><div class="b"><h3>'+p.n+'</h3>'+stars(p.r,p.rv)+price(p)+'<button class="btn g" data-a="'+p.id+'">Add to Cart</button></div></article>'}
+function list(){var a=P.filter(function(p){var q=f.q.toLowerCase();return(f.c==='All'||p.c===f.c||p.t===f.c||(f.c==='Offers'&&p.o))&&(!q||(p.n+p.c+p.t+p.m).toLowerCase().indexOf(q)>-1)});
+if(f.sort==='lo')a.sort(function(x,y){return x.p-y.p});if(f.sort==='hi')a.sort(function(x,y){return y.p-x.p});if(f.sort==='rt')a.sort(function(x,y){return y.r-x.r});
+$('grid').innerHTML=a.length?a.map(card).join(''):'<p class="none">No pieces match. Try a different search or filter.</p>';
+$('tools').innerHTML=['All','Rings','Earrings','Necklaces','Bracelets','Gold','Diamond','Offers'].map(function(c){return '<button class="chip" data-f="'+c+'" aria-pressed="'+(f.c===c)+'">'+c+'</button>'}).join('')+'<select id="sort" aria-label="Sort"><option value="pop">Sort: Popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rt">Top rated</option></select>';
+$('sort').value=f.sort}
+function side(){$('wc').textContent=Object.keys(wl).length;$('cc').textContent=Object.keys(cart).reduce(function(s,k){return s+cart[k].q},0);
+$('feat').innerHTML=[3,5,1,8].map(function(i){return card(P[i-1])}).join('');
+var r=recent.map(function(i){return card(P[i-1])}).join('');$('recent').hidden=!r;$('rec').innerHTML=r}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},1800)}
+function add(id,sz){var k=id+(sz?'-'+sz:'');cart[k]=cart[k]||{id:id,sz:sz,q:0};cart[k].q++;side();toast('Added to cart')}
+function drawer(){var ks=Object.keys(cart),tot=0;
+var h='<button class="x" data-x="cov" aria-label="Close">×</button><h2 style="font-size:34px">Your Cart</h2>';
+if(!ks.length)h+='<p style="color:var(--muted)">Your cart is empty.</p>';
+ks.forEach(function(k){var c=cart[k],p=P[c.id-1];tot+=p.p*c.q;h+='<div class="ci"><div class="th"><svg><use href="#'+p.s+'"/></svg></div><div><b style="font-weight:500">'+p.n+'</b><br><small>'+(c.sz?'Size '+c.sz+' · ':'')+inr(p.p)+' × '+c.q+'</small></div><button class="ib" data-rm="'+k+'" aria-label="Remove">Remove</button></div>'});
+if(ks.length)h+='<div class="pr" style="justify-content:space-between"><span>Subtotal</span><b>'+inr(tot)+'</b></div><p style="font-size:14px;color:var(--muted)">Shipping calculated at checkout. 🔒 Secure payment.</p><button class="btn g" data-co="1">Checkout</button>';
+$('cd').innerHTML=h;$('cov').classList.add('on')}
+function view(id){var p=P[id-1];recent=[id].concat(recent.filter(function(x){return x!==id})).slice(0,4);
+var rel=P.filter(function(x){return x.id!==id&&(x.c===p.c||x.t===p.t)}).slice(0,3);
+$('pm').innerHTML='<button class="x" data-x="pov" aria-label="Close">×</button><div class="pv"><div class="im" role="img" aria-label="'+p.n+'"><svg><use href="#'+p.s+'"/></svg></div><div><h2>'+p.n+'</h2>'+stars(p.r,p.rv)+price(p).replace('justify-content:center','')+'<p style="color:var(--muted)">A timeless piece designed to be worn every day and kept for years.</p><dl><dt>Material</dt><dd>'+p.m+'</dd><dt>Weight</dt><dd>'+p.w+'</dd><dt>Certification</dt><dd>Certified, with authenticity card</dd><dt>Stock</dt><dd>'+(p.st<=3?'<span style="color:var(--red)">Only '+p.st+' left</span>':'In stock')+'</dd></dl>'+
+(p.sz?'<div class="row"><label for="sz">Size</label><select id="sz"><option>10</option><option>12</option><option selected>14</option><option>16</option><option>18</option></select></div>':'')+
+'<div class="row"><input id="pin" inputmode="numeric" maxlength="6" placeholder="Pincode" aria-label="Pincode"><button class="btn o" data-pin="1" style="padding:10px 16px">Check delivery</button><span id="pr" style="font-size:14px"></span></div>'+
+'<div class="pa"><button class="btn g" data-a="'+p.id+'" data-m="1">Add to Cart</button><button class="btn" data-buy="'+p.id+'">Buy Now</button></div>'+
+'<button class="ib" data-w="'+p.id+'">'+(wl[p.id]?'♥ Saved to wishlist':'♡ Add to wishlist')+'</button> <a class="ib" href="https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hi, I am interested in '+p.n)+'" target="_blank" rel="noopener">Enquire on WhatsApp</a>'+
+'<details><summary>Delivery information</summary><p>Insured, tamper-proof delivery. Typical delivery 3–5 working days (sample text).</p></details><details><summary>Returns information</summary><p>Easy returns and exchange within 7 days of delivery (sample text).</p></details><details><summary>Jewellery care</summary><p>Store separately, avoid perfume and water, wipe with a soft cloth.</p></details></div></div>'+
+'<h3 style="font-size:28px;margin-top:24px">You may also like</h3><div class="rel">'+rel.map(function(x){return '<button data-v="'+x.id+'"><b style="font-weight:500">'+x.n+'</b><br>'+inr(x.p)+'</button>'}).join('')+'</div>';
+$('pov').classList.add('on');$('pm').scrollTop=0;side()}
+document.addEventListener('click',function(e){var t=e.target.closest('button,a');if(!t)return;var d=t.dataset;
+if(d.v)return view(+d.v);
+if(d.a){var s=$('sz');add(+d.a,d.m&&s?s.value:'');return}
+if(d.buy){var s2=$('sz');add(+d.buy,s2?s2.value:'');$('pov').classList.remove('on');return drawer()}
+if(d.w){var i=d.w;if(wl[i])delete wl[i];else{wl[i]=1;toast('Saved to wishlist')}side();list();if($('pov').classList.contains('on'))view(+i);return}
+if(d.f){f.c=d.f;return list()}
+if(d.x)return $(d.x).classList.remove('on');
+if(d.rm){delete cart[d.rm];side();return drawer()}
+if(d.co)return toast('Demo only: connect a payment gateway to take orders');
+if(d.pin){var v=$('pin').value;$('pr').textContent=/^\d{6}$/.test(v)?'✓ Delivery available (3–5 days, sample)':'Enter a valid 6-digit pincode';return}
+if(d.go){f.c=d.go;list();return}
+if(d.c!==undefined&&t.closest('footer')){f.c=d.c;list()}});
+$('cb').onclick=drawer;$('wlb').onclick=function(){if(!Object.keys(wl).length)return toast('Your wishlist is empty');var a=P.filter(function(p){return wl[p.id]});$('grid').innerHTML=a.map(card).join('');$('best').scrollIntoView()};
+$('all').onclick=function(){f={q:'',c:'All',sort:'pop'};$('q').value='';list()};
+$('offbtn').onclick=function(){f.c='Offers';list();$('best').scrollIntoView()};
+$('q').oninput=function(e){f.q=e.target.value;list();if(f.q)$('best').scrollIntoView()};
+document.addEventListener('change',function(e){if(e.target.id==='sort'){f.sort=e.target.value;list()}});
+['pov','cov'].forEach(function(i){$(i).addEventListener('click',function(e){if(e.target===this)this.classList.remove('on')})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')['pov','cov'].forEach(function(i){$(i).classList.remove('on')})});
+$('catgrid').innerHTML=CATS.map(function(c){return '<a class="cat" href="#best" data-go="'+c[0]+'"><div class="i"><svg><use href="#'+c[1]+'"/></svg></div><h3>'+(c[2]||c[0])+'</h3><span>Shop Now</span></a>'}).join('');
+var ic='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>';
+$('tg').innerHTML=TRUST.map(function(t){return '<div class="tc">'+ic+'<h3>'+t[0]+'</h3><p>'+t[1]+'</p></div>'}).join('');
+$('rv').innerHTML=REV.map(function(r){return '<div class="rc"><span class="st">★★★★★</span><p>“'+r[2]+'”</p><small>'+r[0]+' · '+r[1]+'</small></div>'}).join('');
+var pet='';for(var k=0;k<16;k++)pet+='<ellipse cx="100" cy="46" rx="9" ry="26" transform="rotate('+k*22.5+' 100 100)" fill="none" stroke="currentColor" stroke-width="1.2"/>';
+var pet2='';for(k=0;k<8;k++)pet2+='<path d="M100 100L100 38" transform="rotate('+(k*45+22.5)+' 100 100)" stroke="currentColor" stroke-width="1"/><circle cx="100" cy="28" r="2.5" transform="rotate('+k*45+' 100 100)" fill="currentColor"/>';
+$('medal').innerHTML='<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="1 6" stroke-linecap="round"/>'+pet+pet2+'<circle cx="100" cy="100" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="8" fill="currentColor"/></svg>';
+$('wa').href=$('wa2').href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hi, I would like to know more about your jewellery.');
+if(OFFER_ENDS){var T=$('timer'),end=new Date(OFFER_ENDS).getTime();setInterval(function(){var s=Math.max(0,Math.floor((end-Date.now())/1000));T.hidden=!s;T.textContent='Offer ends in '+Math.floor(s/86400)+'d '+Math.floor(s%86400/3600)+'h '+Math.floor(s%3600/60)+'m'},1000)}
+var UG=[['@priya.moments',1,'#FFF4D1','Wore it to my engagement.'],['@ananya.styles',2,'#F5DC93','My everyday favourite.'],['@fathima.k',3,'#FFF6DC','Sister’s wedding day.'],['@rahul.gifts',5,'#F3DFA0','Anniversary surprise.'],['@meera.diaries',8,'#FFF4D1','Stacked and ready.'],['@nisha.wears',6,'#F5DC93','Simple, everyday gold.']];
+$('ug').innerHTML=UG.map(function(u){var p=P[u[1]-1];return '<div class="ut" style="background:'+u[2]+'"><svg><use href="#'+p.s+'"/></svg><div class="uc"><b>'+u[0]+'</b><span>'+u[3]+'</span><button data-v="'+p.id+'">Shop this look: '+p.n+'</button></div></div>'}).join('');
+$('medal2').innerHTML=$('medal').innerHTML;$('medal3').innerHTML=$('medal').innerHTML;
+$('wa3').href=$('wa').href;
+var ic2=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+d+'</svg>'};
+$('vals').innerHTML=[['Purity','Hallmarked metal and certified stones, with the paperwork to prove it.',ic2('<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>')],['Craft','Designed and finished by skilled hands, with attention to every detail.',ic2('<path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/>')],['Care','Free cleaning, easy exchange and support long after you buy.',ic2('<path d="M12 21s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 10c0 6-8 11-8 11z"/>')]].map(function(v){return '<div class="tc">'+v[2]+'<h3>'+v[0]+'</h3><p>'+v[1]+'</p></div>'}).join('');
+$('steps').innerHTML=[['Design','Every piece starts as a sketch, then a detailed model.'],['Crafting','Goldsmiths cast, shape and set each piece by hand.'],['Finishing','Polishing and a final quality check.'],['Hallmark & pack','Hallmarked, certified and packed for safe delivery.']].map(function(v){return '<div class="tc"><h3>'+v[0]+'</h3><p>'+v[1]+'</p></div>'}).join('');
+function route(){var a=location.hash==='#about';$('aboutpage').hidden=!a;$('top').hidden=a;if(a){scrollTo(0,0)}else if(location.hash.length>1){var el=document.querySelector(location.hash);if(el)setTimeout(function(){el.scrollIntoView()},0)}}
+window.addEventListener('hashchange',route);route();
+var sls=document.querySelectorAll('.sld'),si=0,st,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+$('dots').innerHTML=[].map.call(sls,function(_,k){return '<button data-s="'+k+'" aria-label="Go to slide '+(k+1)+'"></button>'}).join('');
+function go(n){si=(n+sls.length)%sls.length;[].forEach.call(sls,function(e,k){e.classList.toggle('on',k===si);e.setAttribute('aria-hidden',k!==si)});[].forEach.call($('dots').children,function(b,k){b.setAttribute('aria-current',k===si)})}
+function play(){clearInterval(st);if(playing)st=setInterval(function(){go(si+1)},6000)}
+$('hp').onclick=function(){go(si-1);play()};$('hn').onclick=function(){go(si+1);play()};
+$('dots').onclick=function(e){if(e.target.dataset.s){go(+e.target.dataset.s);play()}};
+$('ht').onclick=function(){playing=!playing;this.textContent=playing?'❚❚':'▶';this.setAttribute('aria-label',playing?'Pause slideshow':'Play slideshow');play()};
+var hero=document.querySelector('.hero');hero.addEventListener('mouseenter',function(){clearInterval(st)});hero.addEventListener('mouseleave',play);hero.addEventListener('focusin',function(){clearInterval(st)});hero.addEventListener('focusout',play);
+var tx=0;hero.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});hero.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50){go(si+(d<0?1:-1));play()}});
+if(!playing)$('ht').textContent='▶';
+go(0);play();
+list();side();
+</script>
+</body>
+</html>
