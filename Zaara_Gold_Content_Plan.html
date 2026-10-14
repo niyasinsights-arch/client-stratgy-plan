@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zaara Gold | Creative &amp; Video Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#4A0F1E; --wine-2:#6A1B2E; --gold:#B8893A; --gold-soft:#E6CF9C;
+  --ivory:#FBF9F4; --paper:#FFFFFF; --ink:#2A1A1D; --muted:#6F5F5F; --line:#E8DDC6;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--ivory);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* Hero */
+.hero{background:var(--wine);color:#F6EBD3;padding:88px 0 76px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(230,207,156,.35);box-shadow:0 0 0 38px rgba(230,207,156,.06),0 0 0 76px rgba(230,207,156,.04)}
+.hero .wrap{position:relative;z-index:1}
+.brand{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,9vw,6rem);line-height:1;letter-spacing:.06em;color:var(--gold-soft)}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.4rem,3.2vw,2rem);margin-top:14px;letter-spacing:.02em}
+.rule{width:72px;height:2px;background:var(--gold);margin:28px 0 24px}
+.hero p{max-width:60ch;color:#E9D9BA;font-size:1.02rem}
+.facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.facts span{border:1px solid rgba(230,207,156,.45);border-radius:999px;padding:7px 18px;font-size:.92rem;color:var(--gold-soft)}
+
+/* Sections */
+section{padding:68px 0 0}
+section:last-of-type{padding-bottom:84px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,4vw,2.4rem);color:var(--wine);line-height:1.15}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+.sec-head .n{font-family:var(--serif);font-size:1.5rem;color:var(--gold);font-weight:600}
+.lead{max-width:68ch;color:var(--muted);margin-bottom:30px}
+.gold-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:6px 0 28px}
+
+/* Cards */
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:26px 26px 22px;border-top:3px solid var(--gold);display:flex;flex-direction:column}
+.card.feature{border-top-color:var(--wine)}
+.idx{font-family:var(--serif);font-size:1.15rem;color:var(--gold);font-weight:600}
+.card h3{font-family:var(--serif);font-size:1.45rem;line-height:1.2;color:var(--wine);margin:2px 0 10px;font-weight:700}
+.card p{font-size:.96rem;color:#47383A;flex:1}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:.9rem}
+.meta dt{color:var(--muted)}
+.meta dd{font-weight:500}
+.link{display:inline-block;margin-top:14px;font-weight:500;color:var(--wine-2);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;align-self:flex-start}
+.link:hover{color:var(--gold)}
+.pending{display:inline-block;margin-top:14px;font-size:.9rem;color:var(--muted);font-style:italic}
+
+/* Direction */
+.dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.dir article{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:24px 26px}
+.dir h3{font-family:var(--serif);font-size:1.4rem;color:var(--wine);margin-bottom:10px}
+ul.tick{list-style:none}
+ul.tick li{position:relative;padding-left:22px;margin-bottom:8px;font-size:.96rem;color:#47383A}
+ul.tick li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+
+/* Strategy */
+.strategy{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.srow{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:16px 26px;border-bottom:1px solid var(--line)}
+.srow:last-child{border-bottom:0}
+.srow:nth-child(even){background:#FDFBF6}
+.srow b{font-family:var(--serif);font-size:1.15rem;color:var(--wine);font-weight:700}
+.srow span{color:#47383A;font-size:.97rem}
+
+/* Outcome */
+.outcome{background:var(--wine);color:#F6EBD3;border-radius:6px;padding:44px 40px}
+.outcome h2{color:var(--gold-soft);margin-bottom:16px}
+.outcome p{max-width:70ch;color:#EBDCBE;margin-bottom:14px}
+.outcome p:last-child{margin-bottom:0}
+
+footer{text-align:center;padding:28px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media(max-width:720px){
+  .hero{padding:64px 0 56px}
+  .srow{grid-template-columns:1fr;gap:4px}
+  .outcome{padding:32px 24px}
+  .wrap{padding:0 20px}
+}
+@media print{
+  .hero,.outcome{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{padding-top:36px;break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">ZAARA GOLD</div>
+    <h1>Creative &amp; Video Content Plan</h1>
+    <div class="rule"></div>
+    <p>Five static creatives and five reels to showcase the jewellery collections, build brand awareness, and promote the Old Gold Exchange Offer.</p>
+    <div class="facts"><span>5 Static Creatives</span><span>5 Reels</span><span>Old Gold Exchange Offer</span></div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="n">1</span><h2>Content Overview</h2></div>
+    <div class="gold-line"></div>
+    <p class="lead" style="color:var(--ink);font-size:1.05rem;max-width:78ch">The proposed content plan includes five static creatives and five reels designed to showcase Zaara Gold’s jewellery collections, strengthen brand awareness, and promote the Old Gold Exchange Offer. The content focuses on product showcases, collection highlights, promotional communication, and emotional storytelling to increase audience engagement, generate enquiries, and encourage store visits.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="n">2</span><h2>Static Creative Content Plan</h2></div>
+    <div class="gold-line"></div>
+    <div class="grid g3">
+      <article class="card">
+        <span class="idx">Content 01</span>
+        <h3>Gold Chain &amp; Earring Combo</h3>
+        <p>Showcase a coordinated gold jewellery set featuring a chain and matching earrings, highlighting its design, detailing, and craftsmanship.</p>
+        <dl class="meta"><dt>Format</dt><dd>Static Post</dd><dt>Objective</dt><dd>Product Awareness</dd></dl>
+      </article>
+      <article class="card">
+        <span class="idx">Content 02</span>
+        <h3>Gold Bangles Collection</h3>
+        <p>Present a variety of gold bangle designs through a carousel, highlighting the collection’s distinctive styles, intricate detailing, and craftsmanship.</p>
+        <dl class="meta"><dt>Format</dt><dd>Carousel Post</dd><dt>Objective</dt><dd>Product Awareness</dd></dl>
+      </article>
+      <article class="card">
+        <span class="idx">Content 03</span>
+        <h3>Gold Wedding Collection</h3>
+        <p>Showcase Zaara Gold’s wedding jewellery collection, emphasising traditional designs, elaborate detailing, and the timeless appeal of gold ornaments for bridal occasions.</p>
+        <dl class="meta"><dt>Format</dt><dd>Static Post</dd><dt>Objective</dt><dd>Collection Awareness</dd></dl>
+      </article>
+      <article class="card">
+        <span class="idx">Content 04</span>
+        <h3>Gold Ring</h3>
+        <p>Highlight an elegant gold ring through a single poster, focusing on its distinctive design, refined detailing, and craftsmanship.</p>
+        <dl class="meta"><dt>Format</dt><dd>Static Poster</dd><dt>Objective</dt><dd>Product Awareness</dd></dl>
+      </article>
+      <article class="card feature">
+        <span class="idx">Content 05</span>
+        <h3>Gold Exchange Offer</h3>
+        <p>Promote Zaara Gold’s Old Gold Exchange Offer through a promotional poster highlighting the opportunity to exchange old gold for new jewellery designs.</p>
+        <dl class="meta"><dt>Format</dt><dd>Promotional Poster</dd><dt>Objective</dt><dd>Offer Awareness &amp; Store Visits</dd></dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="n">3</span><h2>Video Content Plan</h2></div>
+    <div class="gold-line"></div>
+    <div class="grid g3">
+      <article class="card">
+        <span class="idx">Video 01</span>
+        <h3>Premium Jewellery Showcase</h3>
+        <p>Highlight gold jewellery through elegant model shots, detailed product close-ups, and sophisticated styling visuals that reflect the brand’s premium appeal.</p>
+        <a class="link" href="https://www.instagram.com/reel/Dbf8evMzFb9/?vrfl=cHFzanVsZDZkOHoz" target="_blank" rel="noopener">Watch Reference</a>
+        <dl class="meta"><dt>Format</dt><dd>Reel</dd><dt>Duration</dt><dd>35 seconds</dd><dt>Objective</dt><dd>Brand Awareness</dd></dl>
+      </article>
+      <article class="card">
+        <span class="idx">Video 02</span>
+        <h3>Elegant Jewellery Presentation</h3>
+        <p>Showcase the beauty, craftsmanship, and traditional appeal of gold jewellery through refined visuals, intricate detailing, and graceful presentation.</p>
+        <a class="link" href="https://www.instagram.com/reel/DPqLWSOlNWy/?utm_source=ig_web_copy_link&amp;psln=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener">Watch Reference</a>
+        <dl class="meta"><dt>Format</dt><dd>Reel</dd><dt>Duration</dt><dd>35 seconds</dd><dt>Objective</dt><dd>Product Awareness</dd></dl>
+      </article>
+      <article class="card feature">
+        <span class="idx">Video 03</span>
+        <h3>Old Gold Exchange – Customer Conversation</h3>
+        <p>Feature a natural interaction between a customer and a sales representative to introduce the exchange offer and showcase new jewellery designs.</p>
+        <a class="link" href="https://www.instagram.com/reel/DXEX1FJjI0D/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Watch Reference</a>
+        <dl class="meta"><dt>Format</dt><dd>Dialogue-Based Reel</dd><dt>Duration</dt><dd>To Be Finalised</dd><dt>Objective</dt><dd>Engagement &amp; Enquiries</dd></dl>
+      </article>
+      <article class="card feature">
+        <span class="idx">Video 04</span>
+        <h3>Old Gold Exchange – Promotional Reel</h3>
+        <p>Highlight the opportunity to exchange old gold for new jewellery through an engaging promotional video featuring attractive product visuals and a clear call to action.</p>
+        <a class="link" href="https://www.instagram.com/reel/DJ6tafvtGjg/?vrfl=eXA2d29oajB5cTZh" target="_blank" rel="noopener">Watch Reference</a>
+        <dl class="meta"><dt>Format</dt><dd>Promotional Reel</dd><dt>Duration</dt><dd>To Be Finalised</dd><dt>Objective</dt><dd>Store Visits &amp; Conversions</dd></dl>
+      </article>
+      <article class="card feature">
+        <span class="idx">Video 05</span>
+        <h3>Old Gold Exchange – A Mother’s Gift</h3>
+        <p>Present an emotional mother–daughter story in which a mother uses the Old Gold Exchange Offer to transform her old gold ornaments into a meaningful gift for her daughter.</p>
+        <span class="pending">Reference: To Be Finalised</span>
+        <dl class="meta"><dt>Format</dt><dd>Storytelling Reel</dd><dt>Duration</dt><dd>To Be Finalised</dd><dt>Objective</dt><dd>Emotional Engagement &amp; Offer Awareness</dd></dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <div class="wrap">
+    <div class="outcome">
+      <h2>4. Expected Outcome</h2>
+      <p>The combined content plan aims to strengthen Zaara Gold’s brand visibility, increase awareness of its jewellery collections, generate enquiries about the Old Gold Exchange Offer, and encourage store visits.</p>
+      <p>By integrating product-focused creatives, premium jewellery presentations, promotional content, and emotional storytelling, the campaign seeks to enhance audience engagement, strengthen brand appeal, and support customer conversions.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>Zaara Gold | Creative &amp; Video Content Plan</footer>
+</body>
+</html>
