@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Influencer and Presenter Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* Speakerbox UI kit: Google Sans, dark theme, orange accent */
+  :root {
+    --bg: #111111;
+    --card: #1F2937;
+    --border: #374151;
+    --input: #222222;
+    --row-a: #161616;
+    --row-b: #1D1D1D;
+    --text: #E5E7EB;
+    --muted: #9CA3AF;
+    --accent: #F97316;
+    --accent-btn: #EA580C;
+    --accent-btn-hover: #C2410C;
+    --ok: #34D399;
+    --warn: #FBBF24;
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--bg);
+  }
+  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100%;
+    font-family: 'Google Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+    font-size: 14px; color: var(--text); background: var(--bg);
+    display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
+  }
+
+  .toolbar {
+    display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap;
+    padding: 14px 20px; border-bottom: 1px solid #1f2937; background: var(--bg);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .logo { font-weight: 900; font-size: 17px; letter-spacing: -0.03em; color: #fff; }
+  .logo i { color: var(--accent); font-style: normal; }
+  .toolbar h1 {
+    margin: 0; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.025em;
+    padding-left: 14px; border-left: 1px solid var(--border);
+  }
+  .stats { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .chip {
+    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+    padding: 3px 11px; font-size: 12px; color: var(--muted); white-space: nowrap;
+  }
+  .chip b { color: #fff; }
+  .chip.total { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+  .chip.total b { color: #fff; }
+
+  .status { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+  .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .status[data-kind="saved"] .dot { background: var(--ok); }
+  .status[data-kind="saving"] .dot { background: var(--accent); }
+  .status[data-kind="local"] .dot, .status[data-kind="readonly"] .dot { background: var(--warn); }
+
+  .tools { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    appearance: none; font: inherit; font-size: 13px; font-weight: 700;
+    padding: 8px 14px; border-radius: 8px; border: 1px solid #4B5563;
+    background: transparent; color: var(--muted); cursor: pointer; transition: background-color .2s, color .2s;
+  }
+  .btn:hover:not(:disabled) { background: var(--border); color: #fff; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.primary { background: var(--accent-btn); border-color: var(--accent-btn); color: #fff; }
+  .btn.primary:hover:not(:disabled) { background: var(--accent-btn-hover); border-color: var(--accent-btn-hover); }
+  .btn:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  [hidden] { display: none !important; }
+
+  .panel { flex: 1; min-height: 0; padding: 16px 20px 0; }
+  .scroll {
+    height: 100%; overflow: auto; max-width: 100%; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 12px;
+    scrollbar-width: thin; scrollbar-color: #4B5563 var(--bg);
+  }
+  .scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+  .scroll::-webkit-scrollbar-track { background: var(--bg); }
+  .scroll::-webkit-scrollbar-thumb { background: #4B5563; border-radius: 6px; }
+  table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; table-layout: fixed; }
+
+  thead tr.letters th {
+    position: sticky; top: 0; z-index: 3; height: 22px; padding: 0;
+    background: #0d0d0d; color: #6B7280; font-size: 11px; font-weight: 400;
+    text-align: center; border-right: 1px solid #1f2937; border-bottom: 1px solid #1f2937;
+  }
+  thead tr.names th {
+    position: sticky; top: 22px; z-index: 3; height: 46px; padding: 0 10px;
+    background: var(--card); color: #fff; font-size: 14px; font-weight: 700; text-align: center;
+    border-right: 1px solid var(--border); border-bottom: 2px solid var(--accent);
+  }
+  tbody td {
+    height: 32px; padding: 0; background: var(--row-a); position: relative;
+    border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  tbody tr:nth-child(even) td { background: var(--row-b); }
+  td.sl { text-align: center; font-weight: 700; color: var(--accent); }
+  td input, td .dd {
+    display: block; width: 100%; height: 31px; border: 0; background: transparent;
+    font: inherit; color: #fff; padding: 0 10px; border-radius: 0;
+  }
+  td input.link { color: #FB923C; }
+  td input.num { text-align: right; }
+  td input:focus, td .dd:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+  td input:focus { background: var(--input); }
+  td .dd {
+    display: flex; align-items: center; cursor: pointer; padding-right: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239CA3AF'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center;
+    user-select: none; white-space: nowrap; overflow: hidden;
+  }
+  td .dd:focus, td .dd[aria-expanded="true"] { background-color: var(--input); }
+  body.readonly td .dd { cursor: default; }
+
+  .dd-pop {
+    position: fixed; z-index: 1000; background: #0a0a0a; color: #fff;
+    border: 1px solid var(--border); border-radius: 14px; padding: 8px 0;
+    max-height: 262px; overflow-y: auto;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,.8), 0 0 0 1px rgba(249,115,22,.08);
+    scrollbar-width: thin; scrollbar-color: #4B5563 transparent;
+  }
+  .dd-pop::-webkit-scrollbar { width: 8px; }
+  .dd-pop::-webkit-scrollbar-track { background: transparent; margin: 10px 0; }
+  .dd-pop::-webkit-scrollbar-thumb { background: #4B5563; border-radius: 4px; }
+  .dd-item { padding: 0 22px; height: 34px; line-height: 34px; font-size: 14px; cursor: pointer; white-space: nowrap; }
+  .dd-item.on { background: rgba(249,115,22,.16); }
+  .dd-item[aria-selected="true"] { color: var(--accent); font-weight: 700; }
+
+  .tabs-wrap { padding: 12px 20px 14px; display: flex; }
+  .tabs { display: flex; gap: 4px; padding: 4px; background: var(--card); border-radius: 999px; }
+  .tab {
+    appearance: none; background: transparent; font: inherit; font-size: 13px; font-weight: 500;
+    color: var(--muted); border: 1px solid #4B5563; border-radius: 999px;
+    padding: 7px 22px; cursor: pointer; transition: all .2s;
+  }
+  .tab:hover { color: #fff; }
+  .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: calc(70px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+    background: var(--card); color: #fff; border: 1px solid var(--accent);
+    padding: 9px 16px; border-radius: 8px; font-size: 13px;
+    opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 1100; max-width: 90vw;
+  }
+  .toast.show { opacity: 1; }
+
+  .overlay {
+    position: fixed; inset: 0; z-index: 1200; background: rgba(0,0,0,.65);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; max-width: 400px; width: 100%; text-align: center;
+  }
+  .modal h2 { margin: 0 0 10px; font-size: 20px; color: #fff; letter-spacing: -0.025em; }
+  .modal p { margin: 0 0 22px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .modal .row { display: flex; gap: 10px; }
+  .modal .btn { flex: 1; padding: 11px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="brand">
+    <span class="logo">SPEAKERBOX<i>.</i></span>
+    <h1>Influencer and Presenter Research</h1>
+  </div>
+  <div class="stats" id="stats" aria-live="polite"></div>
+  <div class="status" id="status" data-kind="local"><span class="dot"></span><span id="status-text">Starting…</span></div>
+  <div class="tools">
+    <button class="btn" id="export" type="button">Export CSV</button>
+    <button class="btn" id="clear" type="button">Clear sheet</button>
+    <button class="btn primary" id="add-rows" type="button">Add 50 rows</button>
+  </div>
+</div>
+
+<section class="panel" id="panel-inf" role="tabpanel" aria-labelledby="tab-inf"><div class="scroll"></div></section>
+<section class="panel" id="panel-pres" role="tabpanel" aria-labelledby="tab-pres" hidden><div class="scroll"></div></section>
+
+<div class="tabs-wrap"><div class="tabs" role="tablist">
+  <button class="tab" role="tab" id="tab-inf" aria-selected="true" aria-controls="panel-inf" data-sheet="inf">Influencer List</button>
+  <button class="tab" role="tab" id="tab-pres" aria-selected="false" aria-controls="panel-pres" data-sheet="pres">Presenter List</button>
+</div></div>
+
+<div class="dd-pop" id="pop" role="listbox" hidden></div>
+<div class="toast" id="toast" role="status"></div>
+<div class="overlay" id="confirm" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">Clear this sheet?</h2>
+    <p id="confirm-text"></p>
+    <div class="row">
+      <button class="btn" id="confirm-no" type="button">Cancel</button>
+      <button class="btn primary" id="confirm-yes" type="button">Clear sheet</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var NICHES = ["Fashion","Beauty","Lifestyle","Food","Travel","Fitness","Tech","Education","Gaming","Entertainment","Other"];
+  var CATEGORIES = ["Nano","Micro","Macro","Mega"];
+  var CONTENT = ["Reel Presenter","Brand Promotion","Product Review","UGC Creator","Event Host","Interview Presenter","Other"];
+
+  var SHEETS = {
+    inf: {
+      name: "Influencer List", coll: "influencers", statCol: 3, statOpts: CATEGORIES,
+      fields: ["name","link","category","niche","location","followers","reelViews","contact","cost"],
+      cols: [
+        { h: "Sl. No.", type: "sl", w: 74 },
+        { h: "Influencer Name", type: "text", w: 220 },
+        { h: "Instagram Profile Link", type: "text", cls: "link", w: 280 },
+        { h: "Category", type: "select", opts: CATEGORIES, w: 140 },
+        { h: "Niche", type: "select", opts: NICHES, w: 170 },
+        { h: "Location", type: "text", w: 160 },
+        { h: "Followers", type: "text", cls: "num", w: 130 },
+        { h: "Average Reel Views", type: "text", cls: "num", w: 180 },
+        { h: "Contact Details", type: "text", w: 240 },
+        { h: "Collaboration Cost", type: "text", w: 180 }
+      ]
+    },
+    pres: {
+      name: "Presenter List", coll: "presenters", statCol: 4, statOpts: CONTENT,
+      fields: ["name","link","location","contentType","contact","fee"],
+      cols: [
+        { h: "Sl. No.", type: "sl", w: 74 },
+        { h: "Presenter Name", type: "text", w: 220 },
+        { h: "Instagram Profile Link", type: "text", cls: "link", w: 280 },
+        { h: "Location", type: "text", w: 160 },
+        { h: "Content Type", type: "select", opts: CONTENT, w: 200 },
+        { h: "Contact Details", type: "text", w: 240 },
+        { h: "Presentation Fee", type: "text", w: 180 }
+      ]
+    }
+  };
+
+  var START_ROWS = 200;
+  var LOCAL_KEY = "influencer-presenter-research-v1";
+  var current = "inf";
+  var data = { inf: [], pres: [] };
+  var built = { inf: false, pres: false };
+  var exists = { inf: {}, pres: {} };      // ids of rows that exist in the database
+  var db = null, mode = "starting", readOnly = false, downloadsApi = null;
+
+  function blankRow(key) { return new Array(SHEETS[key].cols.length - 1).fill(""); }
+  function isBlank(row) { return !row.some(function (v) { return v !== ""; }); }
+  function rowId(i) { return "r" + String(i + 1).padStart(5, "0"); }
+
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (a) { n.setAttribute(a, attrs[a]); });
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function $(id) { return document.getElementById(id); }
+
+  var toastTimer = null;
+  function toast(msg) {
+    var t = $("toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 3200);
+  }
+
+  function setStatus(kind, text) {
+    $("status").setAttribute("data-kind", kind);
+    $("status-text").textContent = text;
+  }
+
+  /* ---------- Rows ---------- */
+  function ensureRows(key, n) {
+    var from = data[key].length;
+    while (data[key].length < n) data[key].push(blankRow(key));
+    if (built[key] && data[key].length > from) appendRows(key, from);
+  }
+
+  function buildTable(key) {
+    var cols = SHEETS[key].cols;
+    var wrap = document.querySelector("#panel-" + key + " .scroll");
+    wrap.innerHTML = "";
+    var table = el("table"), cg = el("colgroup");
+    cols.forEach(function (c) { var x = el("col"); x.style.width = c.w + "px"; cg.appendChild(x); });
+    table.appendChild(cg);
+    var thead = el("thead"), tl = el("tr", { "class": "letters" }), tn = el("tr", { "class": "names" });
+    cols.forEach(function (c, i) {
+      tl.appendChild(el("th", { "aria-hidden": "true" }, String.fromCharCode(65 + i)));
+      tn.appendChild(el("th", { scope: "col" }, c.h));
+    });
+    thead.appendChild(tl); thead.appendChild(tn); table.appendChild(thead);
+    table.appendChild(el("tbody"));
+    wrap.appendChild(table);
+    built[key] = true;
+    appendRows(key, 0);
+  }
+
+  function appendRows(key, from) {
+    var cols = SHEETS[key].cols;
+    var tbody = document.querySelector("#panel-" + key + " tbody");
+    var frag = document.createDocumentFragment();
+    for (var r = from; r < data[key].length; r++) {
+      var tr = el("tr"); tr.dataset.r = r;
+      cols.forEach(function (c, i) {
+        var td = el("td"), v = data[key][r][i - 1] || "";
+        if (c.type === "sl") {
+          td.className = "sl"; td.textContent = r + 1;
+        } else if (c.type === "text") {
+          var inp = el("input", { type: "text", autocomplete: "off", "aria-label": c.h + ", row " + (r + 1) });
+          if (c.cls) inp.className = c.cls;
+          if (readOnly) inp.readOnly = true;
+          inp.dataset.c = i; inp.value = v;
+          td.appendChild(inp);
+        } else {
+          var d = el("div", { "class": "dd", tabindex: "0", role: "combobox", "aria-haspopup": "listbox",
+                              "aria-expanded": "false", "aria-label": c.h + ", row " + (r + 1) });
+          d.dataset.c = i; d.textContent = v;
+          td.appendChild(d);
+        }
+        tr.appendChild(td);
+      });
+      frag.appendChild(tr);
+    }
+    tbody.appendChild(frag);
+  }
+
+  function cellEl(key, r, c) {
+    return document.querySelector("#panel-" + key + ' tr[data-r="' + r + '"] [data-c="' + c + '"]');
+  }
+
+  /* ---------- Saving: cloud database, with this browser as fallback ---------- */
+  var pend = {};   // "key:i" -> { key, i, fields, timer, busy }
+
+  function pendingCount() { return Object.keys(pend).length; }
+
+  function commit(key, r, c, delay) {
+    if (mode === "cloud") {
+      var id = key + ":" + r, p = pend[id];
+      if (!p) p = pend[id] = { key: key, i: r, fields: {}, timer: null, busy: false };
+      p.fields[SHEETS[key].fields[c - 1]] = data[key][r][c - 1];
+      clearTimeout(p.timer);
+      p.timer = setTimeout(function () { flush(id); }, delay == null ? 600 : delay);
+      setStatus("saving", "Saving…");
+    } else {
+      saveLocal();
+    }
+  }
+
+  function flush(id) {
+    var p = pend[id];
+    if (!p) return;
+    if (p.busy) { p.timer = setTimeout(function () { flush(id); }, 150); return; }
+    var fields = p.fields; p.fields = {};
+    if (!Object.keys(fields).length) { delete pend[id]; return; }
+    p.busy = true;
+    persistRow(p.key, p.i, fields).then(function () {
+      p.busy = false;
+      if (Object.keys(p.fields).length) { p.timer = setTimeout(function () { flush(id); }, 0); return; }
+      delete pend[id];
+      if (!pendingCount()) setStatus("saved", "All changes saved");
+    }, function (e) {
+      p.busy = false; delete pend[id];
+      writeFailed(e);
+    });
+  }
+
+  function persistRow(key, i, changed) {
+    var sh = SHEETS[key], id = rowId(i), ref = db.collection(sh.coll).doc(id), row = data[key][i];
+    if (isBlank(row)) {
+      delete exists[key][id];
+      return ref.delete();
+    }
+    if (exists[key][id]) return ref.update(changed);
+    var body = { row: i };
+    sh.fields.forEach(function (f, k) { body[f] = row[k]; });
+    exists[key][id] = true;
+    return ref.set(body);
+  }
+
+  function writeFailed(e) {
+    var code = e && e.code;
+    if (code === "invalid_argument" && !readOnly) {
+      setReadOnly(true);
+      toast("You can view this sheet but not edit it.");
+    } else if (code === "quota_exceeded") {
+      setStatus("local", "Storage limit reached");
+      toast("The database is full. Export your data and clear some rows.");
+    } else {
+      setStatus("local", "Could not save, retrying on next edit");
+      toast("Could not save that change. Try again in a moment.");
+    }
+  }
+
+  function saveLocal() {
+    try { localStorage.setItem(LOCAL_KEY, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(LOCAL_KEY);
+      if (!raw) return;
+      var p = JSON.parse(raw);
+      ["inf", "pres"].forEach(function (k) {
+        if (p && Array.isArray(p[k])) data[k] = p[k].map(function (row) {
+          var out = blankRow(k);
+          for (var j = 0; j < out.length; j++) out[j] = row && row[j] != null ? String(row[j]) : "";
+          return out;
+        });
+      });
+    } catch (e) { /* start blank */ }
+  }
+
+  function applyRemote(key, snap) {
+    var sh = SHEETS[key], grew = 0;
+    snap.docChanges().forEach(function (ch) {
+      var d = ch.doc, body = d.data() || {}, id = d.id;
+      var idx = typeof body.row === "number" ? body.row : parseInt(id.slice(1), 10) - 1;
+      if (!(idx >= 0) || idx > 20000) return;
+      if (idx >= data[key].length) grew = Math.max(grew, Math.ceil((idx + 1) / 50) * 50);
+      if (grew) ensureRows(key, grew);
+      var p = pend[key + ":" + idx], pendingFields = p ? p.fields : {};
+      if (ch.type === "removed") delete exists[key][id]; else exists[key][id] = true;
+      sh.fields.forEach(function (f, k) {
+        if (Object.prototype.hasOwnProperty.call(pendingFields, f)) return;   // keep the local edit
+        var v = ch.type === "removed" ? "" : (body[f] == null ? "" : String(body[f]));
+        if (data[key][idx][k] === v) return;
+        data[key][idx][k] = v;
+        var cell = built[key] ? cellEl(key, idx, k + 1) : null;
+        if (!cell || cell === document.activeElement) return;
+        if (cell.tagName === "INPUT") cell.value = v; else cell.textContent = v;
+      });
+    });
+    if (key === current) updateStats();
+  }
+
+  function setReadOnly(on) {
+    readOnly = on;
+    document.body.classList.toggle("readonly", on);
+    document.querySelectorAll("td input").forEach(function (i) { i.readOnly = on; });
+    $("add-rows").disabled = on; $("clear").disabled = on;
+    if (on) setStatus("readonly", "View only");
+  }
+
+  /* ---------- Dropdown popup ---------- */
+  var pop = $("pop");
+  var dd = { cell: null, items: [], idx: -1 };
+
+  function closePop(refocus) {
+    if (!dd.cell) return;
+    dd.cell.setAttribute("aria-expanded", "false");
+    pop.hidden = true;
+    var c = dd.cell; dd.cell = null;
+    if (refocus) c.focus();
+  }
+  function highlight(i) {
+    dd.idx = i;
+    dd.items.forEach(function (n, k) { n.classList.toggle("on", k === i); });
+    if (dd.items[i]) dd.items[i].scrollIntoView({ block: "nearest" });
+  }
+  function openPop(cell) {
+    if (readOnly) return;
+    if (dd.cell === cell) { closePop(true); return; }
+    closePop(false);
+    var c = +cell.dataset.c, opts = SHEETS[current].cols[c].opts, cur = cell.textContent;
+    pop.innerHTML = ""; dd.items = [];
+    opts.forEach(function (o, k) {
+      var it = el("div", { "class": "dd-item", role: "option", "aria-selected": o === cur ? "true" : "false" }, o);
+      it.addEventListener("mouseenter", function () { highlight(k); });
+      it.addEventListener("mousedown", function (e) { e.preventDefault(); choose(o); });
+      pop.appendChild(it); dd.items.push(it);
+    });
+    dd.cell = cell; cell.setAttribute("aria-expanded", "true");
+    pop.hidden = false;
+    var rect = cell.getBoundingClientRect();
+    pop.style.minWidth = Math.max(rect.width, 150) + "px";
+    var h = pop.offsetHeight, top = rect.bottom + 4;
+    if (top + h > window.innerHeight - 8) top = Math.max(8, rect.top - h - 4);
+    pop.style.top = top + "px";
+    pop.style.left = Math.max(8, Math.min(rect.left + 8, window.innerWidth - pop.offsetWidth - 8)) + "px";
+    var start = opts.indexOf(cur);
+    highlight(start >= 0 ? start : 0);
+  }
+  function setDD(key, r, c, value) {
+    data[key][r][c - 1] = value;
+    var cell = cellEl(key, r, c);
+    if (cell) cell.textContent = value;
+    commit(key, r, c, 0);
+  }
+  function choose(value) {
+    var cell = dd.cell;
+    if (!cell) return;
+    var tr = cell.closest("tr");
+    setDD(current, +tr.dataset.r, +cell.dataset.c, value);
+    closePop(true);
+    updateStats();
+  }
+  document.addEventListener("mousedown", function (e) {
+    if (!dd.cell) return;
+    if (pop.contains(e.target) || dd.cell.contains(e.target)) return;
+    closePop(false);
+  });
+  window.addEventListener("resize", function () { closePop(false); });
+  document.addEventListener("scroll", function () { closePop(false); }, true);
+
+  /* ---------- Followers to category ---------- */
+  function parseFollowers(s) {
+    var m = String(s).trim().toLowerCase().replace(/[, ]/g, "").match(/^(\d+(?:\.\d+)?)([km]?)$/);
+    if (!m) return null;
+    var n = parseFloat(m[1]);
+    if (m[2] === "k") n *= 1e3;
+    if (m[2] === "m") n *= 1e6;
+    return n;
+  }
+  function categoryFor(n) {
+    if (n >= 1e6) return "Mega";
+    if (n >= 1e5) return "Macro";
+    if (n >= 1e4) return "Micro";
+    if (n >= 1e3) return "Nano";
+    return "";
+  }
+
+  /* ---------- Stats ---------- */
+  function updateStats() {
+    var sh = SHEETS[current], rows = data[current];
+    var filled = rows.filter(function (r) { return !isBlank(r); }).length;
+    var box = $("stats");
+    box.innerHTML = "";
+    var total = el("span", { "class": "chip total" });
+    total.innerHTML = "<b>" + filled + "</b> " + (filled === 1 ? "entry" : "entries");
+    box.appendChild(total);
+    sh.statOpts.forEach(function (o) {
+      var n = rows.filter(function (r) { return r[sh.statCol - 1] === o; }).length;
+      if (!n) return;
+      var chip = el("span", { "class": "chip" });
+      chip.innerHTML = o + " <b>" + n + "</b>";
+      box.appendChild(chip);
+    });
+  }
+
+  /* ---------- Events ---------- */
+  ["inf", "pres"].forEach(function (key) {
+    var panel = $("panel-" + key);
+
+    function onEdit(e) {
+      var t = e.target;
+      if (t.tagName !== "INPUT" || readOnly) return;
+      var tr = t.closest("tr"), r = +tr.dataset.r, c = +t.dataset.c;
+      data[key][r][c - 1] = t.value;
+      commit(key, r, c, 600);
+      if (key === "inf" && c === 6 && e.type === "change") {
+        var n = parseFollowers(t.value);
+        if (n !== null && !data.inf[r][2]) {
+          var cat = categoryFor(n);
+          if (cat) { setDD("inf", r, 3, cat); toast("Category set to " + cat + " from follower count"); }
+        }
+      }
+      updateStats();
+    }
+    panel.addEventListener("input", onEdit);
+    panel.addEventListener("change", function (e) {
+      if (e.target.tagName === "INPUT" && !readOnly) {
+        var tr = e.target.closest("tr");
+        if (tr) { var p = pend[key + ":" + tr.dataset.r]; if (p) { clearTimeout(p.timer); flush(key + ":" + tr.dataset.r); } }
+      }
+      onEdit(e);
+    });
+
+    panel.addEventListener("mousedown", function (e) {
+      var cell = e.target.closest(".dd");
+      if (!cell) return;
+      e.preventDefault(); cell.focus(); openPop(cell);
+    });
+
+    panel.addEventListener("keydown", function (e) {
+      var t = e.target, isDD = t.classList && t.classList.contains("dd");
+      if (isDD && dd.cell === t) {
+        if (e.key === "ArrowDown") { e.preventDefault(); highlight(Math.min(dd.items.length - 1, dd.idx + 1)); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); highlight(Math.max(0, dd.idx - 1)); }
+        else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (dd.items[dd.idx]) choose(dd.items[dd.idx].textContent); }
+        else if (e.key === "Escape" || e.key === "Tab") { closePop(e.key === "Escape"); }
+        return;
+      }
+      if (isDD && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openPop(t); return; }
+      if (isDD && (e.key === "Backspace" || e.key === "Delete")) {
+        e.preventDefault();
+        if (readOnly) return;
+        setDD(key, +t.closest("tr").dataset.r, +t.dataset.c, ""); updateStats(); return;
+      }
+      if (t.tagName === "INPUT" || isDD) {
+        var dir = e.key === "Enter" || e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+        if (!dir || (isDD && e.key === "Enter")) return;
+        var tr = t.closest("tr"), next = dir === 1 ? tr.nextElementSibling : tr.previousElementSibling;
+        if (!next) return;
+        var target = next.querySelector('[data-c="' + t.dataset.c + '"]');
+        if (target) { e.preventDefault(); target.focus(); if (target.select) target.select(); }
+      }
+    });
+  });
+
+  function showSheet(key) {
+    closePop(false);
+    current = key;
+    ["inf", "pres"].forEach(function (k) {
+      $("panel-" + k).hidden = k !== key;
+      $("tab-" + k).setAttribute("aria-selected", k === key ? "true" : "false");
+    });
+    updateStats();
+  }
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.addEventListener("click", function () { showSheet(b.dataset.sheet); });
+  });
+
+  $("add-rows").addEventListener("click", function () {
+    ensureRows(current, data[current].length + 50);
+    if (mode !== "cloud") saveLocal();
+    toast("50 rows added");
+  });
+
+  /* Clear sheet, with an in-page confirmation */
+  $("clear").addEventListener("click", function () {
+    $("confirm-text").textContent = "This removes every entry on " + SHEETS[current].name + " for everyone with access. It cannot be undone.";
+    $("confirm").hidden = false;
+    $("confirm-no").focus();
+  });
+  $("confirm-no").addEventListener("click", function () { $("confirm").hidden = true; });
+  $("confirm").addEventListener("keydown", function (e) { if (e.key === "Escape") $("confirm").hidden = true; });
+  $("confirm-yes").addEventListener("click", function () {
+    $("confirm").hidden = true;
+    var key = current, name = SHEETS[key].name;
+    var ids = Object.keys(exists[key]);
+    data[key] = [];
+    ensureRows(key, START_ROWS);
+    buildTable(key);
+    exists[key] = {};
+    updateStats();
+    if (mode !== "cloud") { saveLocal(); toast(name + " cleared"); return; }
+    setStatus("saving", "Saving…");
+    var coll = db.collection(SHEETS[key].coll), i = 0;
+    function next() {
+      var batch = ids.slice(i, i + 10); i += 10;
+      if (!batch.length) { setStatus("saved", "All changes saved"); toast(name + " cleared"); return; }
+      Promise.all(batch.map(function (id) { return coll.doc(id).delete(); })).then(next, writeFailed);
+    }
+    next();
+  });
+
+  /* Export CSV through the downloads capability */
+  $("export").addEventListener("click", function () {
+    var sh = SHEETS[current];
+    function q(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    var lines = [sh.cols.map(function (c) { return q(c.h); }).join(",")], n = 0;
+    data[current].forEach(function (row) {
+      if (isBlank(row)) return;
+      n++; lines.push([n].concat(row).map(q).join(","));
+    });
+    if (!n) { toast("Nothing to export yet"); return; }
+    if (!downloadsApi) { toast("Export is not available here."); return; }
+    downloadsApi.save({ filename: sh.name.replace(/ /g, "_") + ".csv", data: new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv" }) })
+      .then(function () { toast("Exported " + n + (n === 1 ? " row" : " rows")); },
+            function (e) { if (!e || e.code !== "declined") toast("Could not export the file."); });
+  });
+  $("export").hidden = true;
+
+  /* ---------- Start up ---------- */
+  function startLocal(reason) {
+    mode = "local";
+    loadLocal();
+    ["inf", "pres"].forEach(function (k) { ensureRows(k, START_ROWS); buildTable(k); });
+    updateStats();
+    setStatus("local", reason);
+  }
+
+  ensureRows("inf", START_ROWS); ensureRows("pres", START_ROWS);
+  buildTable("inf"); buildTable("pres");
+  showSheet("inf");
+  setStatus("local", "Connecting…");
+
+  var hasClaude = window.claude && typeof window.claude.use === "function";
+  if (!hasClaude) {
+    startLocal("Saving in this browser only");
+    return;
+  }
+
+  Promise.all([
+    window.claude.use("db"),
+    window.claude.use("user"),
+    window.claude.use("downloads")
+  ]).then(function (res) {
+    db = res[0];
+    var user = res[1];
+    downloadsApi = res[2];
+    if (downloadsApi) $("export").hidden = false;
+    if (!db) { startLocal("Saving in this browser only"); return; }
+    mode = "cloud";
+    setStatus("saved", "Connected");
+    var canWrite = user && typeof user.can === "function" ? user.can("data.write") : Promise.resolve(null);
+    canWrite.then(function (ok) { if (ok === false) setReadOnly(true); });
+    ["inf", "pres"].forEach(function (k) {
+      var first = true;
+      db.collection(SHEETS[k].coll).onSnapshot(function (snap) {
+        applyRemote(k, snap);
+        if (first) { first = false; if (!readOnly && !pendingCount()) setStatus("saved", "All changes saved"); }
+      }, function (e) {
+        if (e && e.code === "revoked") { setReadOnly(true); setStatus("readonly", "Access changed, view only"); }
+        else setStatus("local", "Live updates stopped. Reload to reconnect.");
+      });
+    });
+  }, function () {
+    startLocal("Saving in this browser only");
+  });
+})();
+</script>
+</body>
+</html>
