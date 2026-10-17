@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZAAJ by Bektash — Content Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111111;--card:#1F2937;--ink:#E5E7EB;--mute:#9CA3AF;--line:#374151;--field:#222;--fline:#444;--acc:#F97316;--accbg:#F9731626;--head:#fff;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Google Sans","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+header{text-align:center;padding:40px 16px 28px;border-bottom:1px solid #1f2937}
+.brand{font-weight:900;letter-spacing:.18em;font-size:.8rem;color:var(--acc);text-transform:uppercase;margin-bottom:10px}
+h1,h2,h3{color:var(--head);font-weight:700;letter-spacing:-.025em}
+h1{font-size:2.2rem;margin:0 0 6px}
+.sub{color:var(--mute);margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 56px}
+.filters{display:flex;gap:4px;background:var(--card);padding:4px;border-radius:99px;width:max-content;max-width:100%;margin-bottom:22px}
+.filters button{border:1px solid #4B5563;background:transparent;color:var(--mute);padding:8px 22px;border-radius:99px;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.filters button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.box{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:12px;padding:18px 22px;margin-bottom:26px}
+.box h2{font-size:1.1rem;margin:0 0 8px}
+.box ul,.foot ul{margin:0;padding-left:20px}
+.box li,.foot li{margin-bottom:6px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:24px;margin-bottom:18px;transition:border-color .3s}
+.card:hover{border-color:var(--acc)}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 12px;border-radius:99px;background:var(--accbg);color:var(--acc)}
+.card h3{margin:10px 0 6px;font-size:1.35rem}
+.lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin:14px 0 2px}
+.card p{margin:0}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{position:relative;padding-left:28px;margin-bottom:6px}
+.card li::before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:700}
+a{color:var(--acc)}
+a:hover{color:#FB923C}
+code{background:var(--field);padding:1px 6px;border-radius:4px}
+.foot{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+.foot h2{font-size:1.1rem;margin:0 0 8px}
+footer{text-align:center;padding:24px;border-top:1px solid #1f2937;color:#4B5563;font-size:.85rem}
+@media (max-width:480px){h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<header><div class="brand">Speakerbox</div><h1>ZAAJ by Bektash — Content Plan</h1>
+<p class="sub">11 posts · 6 videos · 5 creatives</p></header>
+<div class="wrap">
+
+<div class="box">
+<h2>Flags on the plan</h2>
+<ul>
+<li><b>Video 05 (AI burger):</b> if the AI visuals look better than the real burger, visitors may feel misled. Pair it with a real-footage post soon after (Creative 06 can do this), or keep the AI look stylised rather than photoreal.</li>
+<li><b>Video 07 (Malayalam song):</b> use audio from Instagram’s library, since brand accounts are often restricted to licensed or commercial audio.</li>
+<li><b>Creative 08:</b> it had no headline or copy, so a suggested line is added.</li>
+<li><b>Missing details:</b> no location, offer or opening hours in the plan. at least one post should carry a clear “where to find us” CTA.</li>
+</ul>
+</div>
+
+<div class="filters" id="filters"></div>
+<div id="list"></div>
+
+<div class="foot">
+<h2>To confirm</h2>
+<ul>
+<li>The Instagram reference links have not been opened, so it is unconfirmed that they match the concepts.</li>
+</ul>
+</div>
+</div>
+<footer>Speakerbox</footer>
+
+<script>
+var POSTS=[
+{n:"01",t:"video",title:"A Taste of ZAAJ",concept:"Showcase ZAAJ’s ambience, food preparation, and menu items.",flow:["Show the outlet and interior.","Capture food preparation.","Highlight shawarmas, burgers, and bowls.","End with the ZAAJ logo."],obj:"Introduce the brand and its food offerings.",ref:"https://www.instagram.com/reel/Db2zGu0J_vm/"},
+{n:"02",t:"creative",title:"Have You Tried It Yet?",concept:"Introduce ZAAJ’s food range through a playful carousel.",head:["Slide 1: HAVE YOU…","Slide 2: TRIED IT…","Slide 3: NOT YET?"],vis:"People enjoying ZAAJ’s shawarma, burgers, and bowls.",obj:"Brand awareness and engagement."},
+{n:"03",t:"video",title:"The Art of Shawarma",concept:"Showcase the shawarma preparation process, from fresh ingredients to the final wrap.",flow:["Show meat cooking on the grill.","Capture fresh ingredients and sauces.","Show assembly and wrapping.","End with a close-up of the finished shawarma."],obj:"Highlight the preparation and appeal of ZAAJ’s shawarma.",ref:"https://www.instagram.com/reel/Ddd2ofShC2n/"},
+{n:"04",t:"creative",title:"No Forks, No Rules",concept:"Highlight the experience of enjoying ZAAJ’s shawarma.",head:["Slide 1: NO FORKS, JUST SHAWARMA.","Slide 2: HOLDING IT TOGETHER. BARELY.","Slide 3: NOT MADE FOR SMALL BITES."],vis:"Close-up shots of loaded shawarma, fillings, sauces, and a big bite.",obj:"Product awareness and food cravings."},
+{n:"05",t:"video",title:"The Perfect Burger (AI Video)",concept:"An AI-generated video showcasing burger preparation and presentation.",flow:["Show the burger ingredients.","Highlight the juicy patty, melted cheese, and sauces.","Show the burger layers coming together.","End with a close-up of the finished burger."],obj:"Introduce the burger through appetising visuals.",ref:"https://www.instagram.com/reel/DcgqDGsA9Ab/"},
+{n:"06",t:"creative",title:"Introducing the New Burger",concept:"Introduce ZAAJ’s burger with appetising product photography.",head:["Main headline: MEET YOUR NEW CRAVING.","Supporting copy: A BIG BITE OF HAPPINESS.","CTA: YOUR FIRST BITE AWAITS!"],vis:"Highlight the bun, patty, cheese, and sauces.",obj:"New product awareness."},
+{n:"07",t:"video",title:"A Feast for Your Eyes",concept:"Showcase ZAAJ’s menu with attractive close-up shots and a feel-good Malayalam song.",flow:["Show different food items.","Highlight food textures and presentation.","Add a feel-good Malayalam song.","Include an eye-catching title.","End with the ZAAJ logo."],obj:"Encourage viewers to visit ZAAJ and try the food.",ref:"https://www.instagram.com/reel/DdTdhLbB5Ih/"},
+{n:"08",t:"creative",title:"Minimal Food Showcase",concept:"Showcase ZAAJ’s food and packaging.",vis:"Arrange shawarma, burgers, fries, and drinks on a branded tray.",obj:"Brand awareness and product presentation.",line:"Everything you crave. One tray."},
+{n:"09",t:"video",title:"Tag Your Food Partner",concept:"Create a relatable food video encouraging viewers to share it with friends.",flow:["Show close-up shots of ZAAJ’s food.","Highlight the food’s texture and presentation.","Add a relatable Malayalam caption, such as “Enik ithu vangitharuo?” or “Namuk ithu kazhikkan poyalo?”","End with the ZAAJ logo."],obj:"Encourage shares, tags, and restaurant visits.",ref:"https://www.instagram.com/reel/DbzoaH9Rzns/"},
+{n:"10",t:"creative",title:"Loaded Fries",concept:"Showcase ZAAJ’s loaded fries through an appetising product creative.",head:["Main headline: OMG! LOADED FRIES"],vis:"Crispy fries topped with melted cheese, sauces, and delicious toppings.",obj:"Product awareness and food cravings."},
+{n:"11",t:"video",title:"Loaded Fries ASMR",concept:"Create a satisfying ASMR video featuring the preparation of loaded fries.",flow:["Show crispy fries.","Add cheese, sauces, and toppings.","Capture the garnishing process.","Focus on satisfying preparation sounds.","End with a close-up of the finished loaded fries."],obj:"Create food cravings and encourage viewers to try ZAAJ’s loaded fries.",ref:"https://www.instagram.com/reel/DFqsybZScH6/"}
+];
+var cur="all",list=document.getElementById("list"),fl=document.getElementById("filters");
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function ul(a){return "<ul>"+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>"}
+function render(){
+list.innerHTML=POSTS.filter(function(p){return cur==="all"||p.t===cur}).map(function(p){
+var h='<div class="card"><span class="tag">'+(p.t==="video"?"Video ":"Creative ")+p.n+'</span><h3>'+esc(p.title)+'</h3>';
+h+='<div class="lbl">Concept</div><p>'+esc(p.concept)+'</p>';
+if(p.flow)h+='<div class="lbl">Video flow</div>'+ul(p.flow);
+if(p.head)h+='<div class="lbl">Headlines</div>'+ul(p.head);
+if(p.vis)h+='<div class="lbl">Visual direction</div><p>'+esc(p.vis)+'</p>';
+if(p.line)h+='<div class="lbl">Suggested on-creative line</div><p>'+esc(p.line)+'</p>';
+h+='<div class="lbl">Objective</div><p>'+esc(p.obj)+'</p>';
+if(p.ref)h+='<div class="lbl">Reference</div><p><a href="'+p.ref+'" target="_blank" rel="noopener">Watch reel</a></p>';
+h+='</div>';
+return h}).join("");
+}
+[["all","All"],["video","Videos"],["creative","Creatives"]].forEach(function(f){
+var b=document.createElement("button");b.textContent=f[1];if(f[0]===cur)b.className="on";
+b.onclick=function(){cur=f[0];Array.prototype.forEach.call(fl.children,function(c){c.className=""});b.className="on";render()};
+fl.appendChild(b)});
+render();
+</script>
+</body>
+</html>
