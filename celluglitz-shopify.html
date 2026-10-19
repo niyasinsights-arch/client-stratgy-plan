@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celluglitz: six sales slides for each product</title>
+<style>
+:root{--bg:#F1EADD;--card:#FBF8F1;--ink:#2F4A2E;--mute:#6B6A5A;--gold:#A8702C;--line:#D9CDB6;--warn:#FFF1D6;--warnink:#6B4A12}
+@media (prefers-color-scheme:dark){:root{--bg:#1B2419;--card:#243022;--ink:#E7EBDD;--mute:#A9B3A0;--gold:#D9A45B;--line:#3A4A37;--warn:#3A3220;--warnink:#F0D9A8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px 16px 48px}
+.w{max-width:1040px;margin:0 auto}
+h1{font:400 30px/1.15 Georgia,serif;margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 18px;max-width:62ch}
+.global{background:var(--warn);color:var(--warnink);border-radius:8px;padding:12px 14px;font-size:14px;margin-bottom:20px}
+.global b{font-weight:600}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{font:inherit;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.line{font:italic 400 19px/1.3 Georgia,serif;margin:0}
+.copy{font:inherit;font-size:13px;padding:6px 12px;border-radius:6px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.meta{font-size:12px;color:var(--gold);font-weight:600}
+.card h3{font:400 22px/1.2 Georgia,serif;margin:0}
+.card ul{margin:0;padding-left:18px;font-size:14px}
+.card li{margin:2px 0}
+.vis{margin-top:auto;border-top:1px dashed var(--line);padding-top:8px;font-size:12.5px;color:var(--mute)}
+.vis b{color:var(--ink);font-weight:600}
+.notes{margin-top:18px;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card)}
+.notes h2{font:600 15px/1.3 system-ui,sans-serif;margin:0 0 6px}
+.notes ul{margin:0;padding-left:18px;font-size:14px}
+.notes li{margin:3px 0}
+.bgrid{display:grid;gap:18px}
+.bc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.bc h3{font:400 22px/1.2 Georgia,serif;margin:2px 0 4px}
+.bn{display:grid;grid-template-columns:1.1fr 1fr;min-height:200px;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--bg);margin:10px 0 12px}
+.bt{padding:18px 20px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.bt b{font:400 26px/1.15 Georgia,serif}
+.bt span{font-size:14px;color:var(--mute)}
+.cta{align-self:flex-start;background:var(--gold);color:#fff;font-style:normal;font-size:13px;padding:7px 14px;border-radius:6px}
+.badge{align-self:flex-start;border:1px solid var(--gold);color:var(--gold);font-size:12px;padding:2px 10px;border-radius:99px}
+.bi{border-left:1px dashed var(--line);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:12.5px;color:var(--mute)}
+.bd{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;font-size:13.5px}
+.bd p{margin:0}.bd b{font-weight:600}
+@media (max-width:640px){.bn{grid-template-columns:1fr}.bi{border-left:0;border-top:1px dashed var(--line);min-height:110px}}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Celluglitz: six sales slides for each product</h1>
+<p class="sub">Copy for square product-page gallery images, built from the catalogue labels and the TDS files. Each card gives the slide copy and what to show. The last tab has three Shopify banner concepts.</p>
+<div class="global"><b>Before publishing:</b> do not say “vegan” (the moisturiser and lip balm contain beeswax). Confirm pack sizes on the printed labels (the catalogue says 50 ml for both washes, the packs and TDS say 100 ml and 200 ml). Attach the laboratory report before using “laboratory tested”. Cosmetic claims in India are regulated; I’m not certain of the current rules, so verify against CDSCO/BIS and ASCI guidance.</div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="panel"></div>
+</div>
+<script>
+const CTA="Order now · WhatsApp 7012834140";
+const P=[
+{n:"Face Wash",line:"Cleans like a ritual. Gentle like a facepack.",
+slides:[
+["Hero","Fresh, clean skin starts here.",["Soap-free face wash with cellulose and botanical powders","[pack size from the printed label]"],"Bottle on a beige botanical backdrop, with rice stalks and flower petals."],
+["Benefits","Cleanses. Refreshes. Glows.",["Helps remove dirt and excess oil","Gentle cleansing","Hydrating care","Soap-free"],"Bottle centred, four icons around it."],
+["What’s inside","A facepack, in a face wash.",["Besan, turmeric, sandalwood, rose","Neem, tulsi, saffron, multani mitti","Glycerin and vitamin E"],"Small bowls of each powder, shot from above."],
+["Why it’s different","Rice straw, turned into skincare.",["Cellulose from rice straw replaces petroleum-based ingredients","Made by Cellupro Green"],"Three-step graphic: rice field, straw, bottle."],
+["Trust","Made with care in Kerala.",["2-year shelf life","Patch test before first use","Avoid the eye area","Contains lavender essential oil"],"Six icon tiles on a green backdrop."],
+["How to use and order","Your daily fresh start.",["Wet face, massage in circles, rinse, pat dry","Use twice daily",CTA],"Model holding the bottle, steps beside her."]],
+notes:["Don’t say “non-abrasive”. The botanical powders may feel slightly textured.","Name only ingredients printed on the label."]},
+{n:"Body Wash",line:"Turn every shower into a spa.",
+slides:[
+["Hero","Every shower, a fresh start.",["Body wash with cellulose, botanical powders and orange essential oil","[pack size from the printed label]"],"Bathroom shelf with towel and loofah, as on your existing creative."],
+["Benefits","Clean. Soft. Fresh.",["Gentle daily cleanse","Soft, smooth skin feel","Fresh feel","Suitable for all skin types"],"Bottle left, benefits right."],
+["What’s inside","Botanicals you know.",["Turmeric, sandalwood, rose, neem, tulsi","Orange peel and licorice","Orange essential oil for a fresh scent"],"Orange slice, rose petals and herbs around the bottle."],
+["Why it’s different","Rice straw, turned into skincare.",["Rice straw cellulose, a plant-based alternative to petroleum-based ingredients"],"Rice field to straw to bottle."],
+["Trust","Made with care in Kerala.",["2-year shelf life","Patch test before first use","Contains orange essential oil","Avoid the eye area"],"Six icon tiles."],
+["How to use and order","Make every shower a reset.",["Wet body, massage, rinse","Use twice daily or as directed",CTA],"Lather on a loofah."]],
+notes:["Say “fresh feel”, not “long-lasting freshness”, until you can prove a duration."]},
+{n:"Moisturiser",line:"Light on skin. Rich in care.",
+slides:[
+["Hero","Hydration that feels light.",["Cellulose-based cream with almond oil, jojoba oil and lavender essential oil","50 g"],"Jar on a cream stone podium."],
+["Benefits","Moisture, without the heaviness.",["Deep hydration","Lightweight formula","Supports the skin barrier","Natural-looking glow"],"Jar centred with four callouts."],
+["What’s inside","Oils your skin knows.",["Almond oil and jojoba oil","Beeswax and glycerin","Cellulose from rice straw","Lavender essential oil"],"Almonds, jojoba seeds, lavender sprig and the cream swatch."],
+["See the difference","Before. After.",["Two equal photo panels, labelled Before and After","“Unedited photos from our user trial. Individual results may vary.”"],"Real, consented user photos only. Leave empty until you have them."],
+["Trust","Made with care in Kerala.",["2-year shelf life","Patch test before first use","Contains almond oil, beeswax and lavender","For external use only"],"Six icon tiles."],
+["How to use and order","Your daily moisture ritual.",["Cleanse and dry, apply to face and neck","Massage upward until absorbed","Morning and night, sunscreen by day",CTA],"Model applying cream."]],
+notes:["“Deep hydration” and “supports the skin barrier” need substantiation.","Remove “vegan” from any earlier moisturiser artwork."]},
+{n:"Lip Balm",line:"Simple oils. Simple care.",
+slides:[
+["Hero","Care for your lips.",["Almond oil, jojoba oil, beeswax and orange essential oil"],"Balm on a stone podium with almonds and an orange slice."],
+["What’s inside","Simple ingredients.",["Almond oil","Jojoba oil","Beeswax","Orange essential oil"],"Four circles, one ingredient each."],
+["Oils","Conditioning oils.",["Almond oil and jojoba oil help condition and soften the feel of lips"],"Close-up of golden oil drops."],
+["Texture","A protective feel.",["Beeswax gives a protective, waxy texture"],"Honeycomb and a smooth balm swatch."],
+["See the difference","Before. After.",["Two equal photo panels, labelled Before and After","“Unedited photos from our user trial. Individual results may vary.”"],"Real, consented user photos only. Leave empty until you have them."],
+["Made in Kerala","Order yours.",["By Cellupro Green Pvt. Ltd., Mavelikara, Kerala","External use only. Patch test before first use",CTA],"Balm with your logo."]],
+notes:["Only the ingredient note exists. Pack size, directions, shelf life and warnings are not confirmed.","Send the approved label before adding any performance claim.","Contains beeswax and almond oil, so not vegan and a possible nut allergen."]}
+];
+const tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function show(i){
+ [...tabs.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
+ if(i===P.length){showBanners();return}
+ const p=P[i];
+ panel.innerHTML=`<div class="top"><p class="line">${p.line}</p><button class="copy" id="cp">Copy all text</button></div>
+ <div class="grid">${p.slides.map((s,k)=>`<article class="card"><div class="meta">Slide ${k+1}: ${s[0]}</div><h3>${s[1]}</h3><ul>${s[2].map(l=>`<li>${l}</li>`).join("")}</ul><div class="vis"><b>Show:</b> ${s[3]}</div></article>`).join("")}</div>
+ <div class="notes"><h2>Check for ${p.n}</h2><ul>${p.notes.map(n=>`<li>${n}</li>`).join("")}</ul></div>`;
+ document.getElementById("cp").onclick=e=>{
+  const t=p.n+"\n"+p.line+"\n\n"+p.slides.map((s,k)=>`Slide ${k+1} (${s[0]})\n${s[1]}\n- ${s[2].join("\n- ")}\nShow: ${s[3]}`).join("\n\n");
+  navigator.clipboard.writeText(t).then(()=>{e.target.textContent="Copied"},()=>{e.target.textContent="Copy not available"});
+  setTimeout(()=>{e.target.textContent="Copy all text"},1800);
+ };
+}
+const B=[
+{type:"Awareness",name:"Concept 1: Rice straw, turned into skincare",
+h:"Skincare from rice straw.",s:"Cellulose-based face and body care, made in Kerala.",cta:"Meet the range",badge:"",
+vis:"All four products standing on stone podiums with rice stalks and soft natural light, like the catalogue photo.",
+lay:"Text on the left, product line-up on the right. On mobile, the line-up goes on top and the text below.",
+why:"Tells shoppers who don’t know the brand what makes it different. Link the button to the collection page.",
+chk:"The rice straw cellulose line comes from the catalogue’s own brand message. Don’t add percentages or “eco-certified”."},
+{type:"Sales",name:"Concept 2: Starter routine bundle",
+h:"Cleanse. Moisturise. Repeat.",s:"Face Wash + Moisturiser, the two-step routine.",cta:"Shop the routine",badge:"[Bundle price or offer, only if real]",
+vis:"Face wash and moisturiser jar side by side on a cream podium, price badge in the corner.",
+lay:"Product pair in the centre-right, offer badge near the button. On mobile, stack: pair, headline, badge, button.",
+why:"Raises order value by selling two products at once. Link to a bundle product or a collection with both.",
+chk:"Create the bundle in Shopify first and use its real price. Show allergens on the product page (almond oil, beeswax, lavender)."},
+{type:"Sales",name:"Concept 3: Gift the range",
+h:"Gift the glow.",s:"Face wash, body wash, moisturiser and lip balm in one set.",cta:"Shop the gift set",badge:"[Free delivery above ₹__, only if real]",
+vis:"All four products in a ribbon-tied gift box on a warm beige backdrop with a few gold accents.",
+lay:"Gift box on the right, large headline on the left, delivery badge under the button.",
+why:"Fits festive and Onam seasons and lets you sell the whole range at once. Link to the gift set product.",
+chk:"Only run it when the lip balm label is approved and you have stock for all four. Confirm pack sizes on the printed labels."}
+];
+function showBanners(){
+ panel.innerHTML=`<div class="top"><p class="line">Three banners for your Shopify homepage.</p></div>
+ <div class="notes" style="margin:0 0 14px"><h2>Sizes</h2><ul><li>Desktop: about 1920 × 800 px. Mobile: about 750 × 900 px, with the text and button in the top two-thirds.</li><li>Sizes vary by Shopify theme, so check your theme’s recommended hero image size before you export.</li><li>Keep text short and large enough to read on a phone. Put the product away from the edges so cropping doesn’t cut it.</li></ul></div>
+ <div class="bgrid">${B.map(c=>`<article class="bc"><div class="meta">${c.type}</div><h3>${c.name}</h3>
+ <div class="bn"><div class="bt"><b>${c.h}</b><span>${c.s}</span>${c.badge?`<em class="badge" style="font-style:normal">${c.badge}</em>`:""}<i class="cta">${c.cta}</i></div><div class="bi">${c.vis}</div></div>
+ <div class="bd"><p><b>Layout.</b> ${c.lay}</p><p><b>Why it works.</b> ${c.why}</p><p><b>Check.</b> ${c.chk}</p></div></article>`).join("")}</div>`;
+}
+P.forEach((p,i)=>{const b=document.createElement("button");b.textContent=p.n;b.setAttribute("role","tab");b.onclick=()=>show(i);tabs.appendChild(b)});
+{const b=document.createElement("button");b.textContent="Shopify banners";b.setAttribute("role","tab");b.onclick=()=>show(P.length);tabs.appendChild(b)}
+show(0);
+</script>
+</body>
+</html>
