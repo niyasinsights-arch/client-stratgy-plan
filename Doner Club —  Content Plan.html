@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doner Club — Hyderabad Launch Content Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D32F2F;
+    --red-deep: #B71C1C;
+    --yellow: #FFD600;
+    --yellow-soft: #FFF9C4;
+    --black: #111111;
+    --off-black: #1C1C1C;
+    --white: #FFFFFF;
+    --grey-light: #F5F5F5;
+    --grey-mid: #E0E0E0;
+    --grey-text: #666666;
+    --ink: #222222;
+    --tag-real: #D32F2F;
+    --tag-ai: #6A1FD4;
+    --tag-creative: #0277BD;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
+  }
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--black);
+    color: var(--white);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 8px; height: 100%;
+    background: var(--yellow);
+  }
+  .header-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .header-title span { color: var(--yellow); }
+  .header-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 400;
+    color: #AAAAAA;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+  .header-theme {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    margin-bottom: 40px;
+  }
+  .header-counts {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .count-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .count-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .count-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888888;
+    margin-top: 4px;
+  }
+
+  /* ── LAYOUT ── */
+  .main { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── SECTION HEADING ── */
+  .section {
+    margin-top: 64px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 12px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey-text);
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--black);
+  }
+
+  /* ── OVERVIEW ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 600px) { .overview-grid { grid-template-columns: 1fr; } }
+  .overview-card {
+    background: var(--grey-light);
+    padding: 24px;
+    border-left: 3px solid var(--red);
+  }
+  .overview-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .overview-card p {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .overview-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .overview-card ul li {
+    font-size: 14px;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .overview-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  /* ── REEL / VIDEO CARDS ── */
+  .reel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .reel-grid { grid-template-columns: 1fr; } }
+
+  .reel-card {
+    border: 1px solid var(--grey-mid);
+    overflow: hidden;
+  }
+  .reel-card-top {
+    background: var(--black);
+    padding: 16px 20px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .reel-card-top h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tag-real { background: var(--red); color: #fff; }
+  .tag-ai { background: #6A1FD4; color: #fff; }
+  .tag-creative { background: #0277BD; color: #fff; }
+
+  .reel-card-body {
+    padding: 18px 20px;
+    background: var(--white);
+  }
+  .reel-concept {
+    font-size: 13px;
+    color: var(--grey-text);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .shots-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .shots-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .shots-list li {
+    font-size: 12px;
+    background: var(--grey-light);
+    padding: 4px 10px;
+    color: var(--ink);
+  }
+
+  .reel-hooks {
+    border-top: 1px solid var(--grey-mid);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .hook-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .hook-key {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    white-space: nowrap;
+    min-width: 48px;
+    padding-top: 1px;
+  }
+  .hook-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.3;
+  }
+  .hook-cta .hook-val { color: var(--red); }
+
+  /* ── PRODUCTION NOTE ── */
+  .prod-note {
+    background: var(--yellow-soft);
+    border-left: 3px solid var(--yellow);
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--off-black);
+  }
+
+  /* ── AI VIDEO CARDS ── */
+  .ai-card {
+    background: var(--off-black);
+    color: var(--white);
+    padding: 28px 28px;
+    margin-bottom: 16px;
+  }
+  .ai-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
+  }
+  .ai-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .ai-card-meta {
+    font-size: 13px;
+    color: #AAAAAA;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .ai-scenes {
+    list-style: none;
+    padding: 0;
+    counter-reset: scene;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .ai-scenes li {
+    counter-increment: scene;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: #CCCCCC;
+  }
+  .ai-scenes li::before {
+    content: counter(scene, decimal-leading-zero);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--yellow);
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+  .ai-copy {
+    background: rgba(255,214,0,0.12);
+    border-left: 3px solid var(--yellow);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .ai-copy-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 6px;
+  }
+  .ai-copy p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .ai-end {
+    font-size: 13px;
+    color: #AAAAAA;
+  }
+  .ai-end strong { color: var(--yellow); font-weight: 700; letter-spacing: 0.05em; }
+
+  /* ── CREATIVE CARDS ── */
+  .creative-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 720px) { .creative-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .creative-grid { grid-template-columns: 1fr; } }
+
+  .creative-card {
+    border: 1px solid var(--grey-mid);
+    display: flex;
+    flex-direction: column;
+  }
+  .creative-card-badge {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+  }
+  .creative-card-body {
+    padding: 18px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .creative-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--black);
+    line-height: 1.2;
+  }
+  .creative-objective {
+    font-size: 12px;
+    color: var(--grey-text);
+    font-style: italic;
+  }
+  .creative-copy-row {
+    margin-top: 4px;
+  }
+  .creative-copy-row .copy-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    margin-bottom: 3px;
+  }
+  .creative-copy-row .copy-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.25;
+  }
+  .creative-copy-row .copy-body {
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .creative-cta {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--grey-mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .creative-cta-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .creative-visual {
+    font-size: 11px;
+    color: var(--grey-text);
+    font-style: italic;
+    text-align: right;
+    max-width: 140px;
+    line-height: 1.35;
+  }
+
+  /* ── PUBLISHING TABLE ── */
+  .pub-table-wrap { overflow-x: auto; }
+  .pub-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .pub-table thead tr {
+    background: var(--black);
+    color: var(--white);
+  }
+  .pub-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .pub-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--grey-mid);
+    vertical-align: middle;
+  }
+  .pub-table tr:nth-child(even) td { background: var(--grey-light); }
+  .pub-table tr:hover td { background: var(--yellow-soft); }
+  .pub-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--grey-text);
+  }
+  .pub-content { font-weight: 600; color: var(--black); }
+  .stage-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+  }
+  .stage-teaser { background: #F3E5F5; color: #6A1FD4; }
+  .stage-launch { background: #FFEBEE; color: #B71C1C; }
+  .stage-awareness { background: #FFF9C4; color: #827717; }
+  .stage-brand { background: #E3F2FD; color: #0277BD; }
+  .stage-product { background: #E8F5E9; color: #2E7D32; }
+  .stage-engagement { background: #FBE9E7; color: #BF360C; }
+  .stage-trust { background: #F3E5F5; color: #4A148C; }
+  .stage-food { background: #FFF3E0; color: #E65100; }
+  .stage-social { background: #E0F2F1; color: #00695C; }
+  .stage-conversion { background: #FFEBEE; color: #C62828; }
+  .stage-community { background: #F1F8E9; color: #33691E; }
+
+  /* ── PRODUCTION SPECS ── */
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 560px) { .specs-grid { grid-template-columns: 1fr; } }
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .specs-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--grey-light);
+    border-bottom: 2px solid var(--black);
+  }
+  .specs-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--grey-mid);
+    color: var(--ink);
+  }
+  .specs-table td:first-child { font-weight: 600; color: var(--black); }
+
+  .identity-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .identity-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--ink);
+    padding: 12px 16px;
+    background: var(--grey-light);
+  }
+  .identity-list li::before {
+    content: '●';
+    color: var(--red);
+    font-size: 10px;
+    padding-top: 4px;
+  }
+
+  /* ── APPROACH ── */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 640px) { .approach-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 420px) { .approach-grid { grid-template-columns: 1fr; } }
+  .approach-item {
+    padding: 20px 18px;
+    border-top: 3px solid var(--red);
+    background: var(--grey-light);
+  }
+  .approach-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .approach-item p {
+    font-size: 12px;
+    color: var(--grey-text);
+    line-height: 1.5;
+  }
+
+  /* ── KPI TABLE ── */
+  .kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .kpi-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--black);
+    color: var(--white);
+  }
+  .kpi-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--grey-mid);
+  }
+  .kpi-table tr:nth-child(even) td { background: var(--grey-light); }
+  .kpi-table td:first-child { font-weight: 600; }
+  .kpi-table td:last-child { color: var(--grey-text); font-style: italic; }
+
+  /* ── FINAL DIRECTION ── */
+  .final-block {
+    background: var(--red);
+    padding: 48px;
+    text-align: center;
+    margin-top: 64px;
+  }
+  .final-block .sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+  }
+  .final-block h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--yellow);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+  .final-block .direction {
+    max-width: 560px;
+    margin: 0 auto 32px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .priority-box {
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    padding: 16px 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    text-align: left;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+  .priority-box strong { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-label">Brand Launch &amp; Digital Content Strategy</div>
+  <div class="header-title">Doner<br><span>Club</span></div>
+  <div class="header-sub">Hyderabad Launch Content Plan</div>
+  <div class="header-theme">Campaign Theme: Hyderabad, Meet Your New Crush.</div>
+  <div class="header-counts">
+    <div class="count-item">
+      <div class="count-num">08</div>
+      <div class="count-label">Real Videos</div>
+    </div>
+    <div class="count-item">
+      <div class="count-num">02</div>
+      <div class="count-label">AI Videos</div>
+    </div>
+    <div class="count-item">
+      <div class="count-num">06</div>
+      <div class="count-label">Creatives</div>
+    </div>
+    <div class="count-item">
+      <div class="count-num">16</div>
+      <div class="count-label">Total Posts</div>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- SECTION 1: CAMPAIGN OVERVIEW -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Campaign Overview</span>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>Objective</h3>
+        <p>Introduce Doner Club to the Hyderabad market, build curiosity around the new outlet, establish product awareness and encourage customers to visit and experience the brand.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Target Audience</h3>
+        <p>Young adults (18–35), college students, young professionals, food enthusiasts, friends and families looking for casual dining, and customers interested in international and quick-service food experiences.</p>
+      </div>
+      <div class="overview-card" style="grid-column: 1 / -1;">
+        <h3>Key Communication Objectives</h3>
+        <ul>
+          <li>Create awareness about Doner Club's arrival in Hyderabad.</li>
+          <li>Introduce Döner as a distinctive food experience.</li>
+          <li>Showcase products, preparation and restaurant ambience.</li>
+          <li>Build trust through genuine customer experiences.</li>
+          <li>Encourage first-time visits and repeat purchases.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: REAL-SHOOT VIDEOS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Real-Shoot Video Content (08)</span>
+    </div>
+    <div class="reel-grid">
+
+      <!-- REEL 01 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 01 — Grand Inauguration</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Officially introduce Doner Club's Hyderabad outlet through a cinematic video capturing the opening celebration.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Exterior &amp; signage</li><li>Inauguration ceremony</li><li>Guests &amp; visitors</li><li>Restaurant interior</li><li>Kitchen &amp; food prep</li><li>Food close-ups</li><li>Brand reveal</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">HYDERABAD, WE ARE OPEN!</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">WELCOME TO DONER CLUB.</span>
+            </div>
+          </div>
+          <div class="prod-note">⚑ Shoot on 5 November. Do not display the inauguration date in the video.</div>
+        </div>
+      </div>
+
+      <!-- REEL 02 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 02 — Welcome to Doner Club</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Introduce the new outlet and its atmosphere through a cinematic walkthrough.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Exterior signage reveal</li><li>Door-opening transition</li><li>Interior ambience</li><li>Seating &amp; dining space</li><li>Kitchen activity</li><li>Food served on table</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">YOUR NEW FOOD DESTINATION HAS ARRIVED.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Your table is waiting. Visit Doner Club, Hyderabad.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 03 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 03 — What Makes a Döner?</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Educate the audience about the product and introduce the Döner experience.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Döner meat on grill</li><li>Chef slicing meat</li><li>Bread preparation</li><li>Fresh ingredients</li><li>Sauce application</li><li>Final wrap assembly</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">NOT JUST ANOTHER WRAP. THIS IS DÖNER!</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Discover the Döner experience.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 04 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 04 — The First Bite</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Create cravings through close-up visuals of the filling, texture and product presentation.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Wrap preparation</li><li>Close-up of filling</li><li>Sauce spread</li><li>Wrap cut in half</li><li>Customer first bite</li><li>Genuine reaction</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">ONE BITE. THAT'S ALL IT TAKES.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Your first bite is waiting.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 05 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 05 — Behind Every Döner</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Build product confidence by showing the people and process behind the food.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Chef preparing ingredients</li><li>Meat preparation</li><li>Kitchen workflow</li><li>Wrap assembly</li><li>Final product</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">GOOD FOOD STARTS LONG BEFORE THE FIRST BITE.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Made to be experienced.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 06 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 06 — Hyderabad Foodies, Your Turn!</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Connect the brand with Hyderabad's young audience through a friends' dining experience.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Friends entering outlet</li><li>Exploring menu</li><li>Ordering items</li><li>Food arriving</li><li>Sharing &amp; reactions</li><li>Group shot</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">EVERY FOOD LOVER NEEDS A DÖNER PARTNER.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Tag your food partner!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 07 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 07 — Hyderabad's First Reactions</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Build social proof through genuine reactions from customers trying Doner Club for the first time.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Customer receives order</li><li>First bite</li><li>Reaction close-up</li><li>Quick interview</li><li>One-word review</li><li>Final restaurant shot</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">WE LET HYDERABAD TRY IT FIRST.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Your turn to try!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REEL 08 -->
+      <div class="reel-card">
+        <div class="reel-card-top">
+          <h3>Reel 08 — Your Next Food Obsession</h3>
+          <span class="tag tag-real">Real</span>
+        </div>
+        <div class="reel-card-body">
+          <p class="reel-concept">Encourage visits and orders through a high-energy product promotional video.</p>
+          <div class="shots-label">Shot Breakdown</div>
+          <ul class="shots-list">
+            <li>Hero product reveal</li><li>Different menu items</li><li>Food close-ups</li><li>Meal combinations</li><li>Customers dining</li><li>Location &amp; ordering</li>
+          </ul>
+          <div class="reel-hooks">
+            <div class="hook-row">
+              <span class="hook-key">Hook</span>
+              <span class="hook-val">YOUR NEXT FOOD OBSESSION HAS A NAME.</span>
+            </div>
+            <div class="hook-row hook-cta">
+              <span class="hook-key">CTA</span>
+              <span class="hook-val">Find your favourite at Doner Club.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: AI VIDEOS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">AI-Generated Videos (02)</span>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-card-header">
+        <h3>AI Video 01 — Hyderabad, Something Is Coming!</h3>
+        <span class="tag tag-ai">AI</span>
+      </div>
+      <p class="ai-card-meta">Objective: Create curiosity before the outlet launch. Concept: A giant Döner appears in the Hyderabad skyline, creating a surprising visual moment.</p>
+      <ol class="ai-scenes">
+        <li>Establishing shot of Hyderabad.</li>
+        <li>Camera moves towards the skyline.</li>
+        <li>A giant Döner appears in the sky.</li>
+        <li>People look up in surprise.</li>
+        <li>Cinematic close-up of the Döner.</li>
+        <li>Doner Club logo appears.</li>
+      </ol>
+      <div class="ai-copy">
+        <div class="ai-copy-label">On-Screen Copy</div>
+        <p>"Hyderabad, something delicious is coming!"</p>
+      </div>
+      <p class="ai-end"><strong>End Frame:</strong> DONER CLUB — COMING SOON.</p>
+      <p class="ai-end" style="margin-top:8px; font-size:12px;">Execution: AI-generated cinematic visuals with accurate brand logo integration.</p>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-card-header">
+        <h3>AI Video 02 — The Döner Love Story</h3>
+        <span class="tag tag-ai">AI</span>
+      </div>
+      <p class="ai-card-meta">Objective: Create entertaining and shareable content. Concept: A funny relationship-style storyline between a person and a Döner wrap.</p>
+      <ol class="ai-scenes">
+        <li>A character walks past Doner Club.</li>
+        <li>The character notices a delicious Döner wrap.</li>
+        <li>Everything goes into slow motion.</li>
+        <li>The character takes the first bite.</li>
+        <li>A funny emotional reaction.</li>
+        <li>Brand logo reveal.</li>
+      </ol>
+      <div class="ai-copy">
+        <div class="ai-copy-label">On-Screen Copy</div>
+        <p>"It's not a phase. It's a love story."</p>
+      </div>
+      <p class="ai-end"><strong>End Frame:</strong> ONCE YOU TRY IT, YOU'RE IN THE CLUB.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: CREATIVES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Creative Designs (06)</span>
+    </div>
+    <div class="creative-grid">
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 01</div>
+        <div class="creative-card-body">
+          <h3>Coming Soon Poster</h3>
+          <p class="creative-objective">Build pre-launch awareness.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">HYDERABAD, MEET YOUR NEW CRUSH.</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Body</div>
+            <div class="copy-body">A new Döner experience is coming to your city.</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">COMING SOON.</span>
+            <span class="creative-visual">Hero product, bold red bg, yellow type</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 02</div>
+        <div class="creative-card-body">
+          <h3>Inauguration Announcement</h3>
+          <p class="creative-objective">Announce the official opening.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">THE WAIT IS ALMOST OVER!</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Body</div>
+            <div class="copy-body">Doner Club is opening its doors in Hyderabad.</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">JOIN US FOR THE GRAND INAUGURATION.</span>
+            <span class="creative-visual">Include date &amp; confirmed location</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 03</div>
+        <div class="creative-card-body">
+          <h3>Hero Product Poster</h3>
+          <p class="creative-objective">Build product awareness.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">NOT YOUR USUAL WRAP.</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Body</div>
+            <div class="copy-body">Meet the Döner experience.</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">DISCOVER THE MENU.</span>
+            <span class="creative-visual">Premium product photo, strong headline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 04</div>
+        <div class="creative-card-body">
+          <h3>What's Inside? Carousel</h3>
+          <p class="creative-objective">Introduce the product through an informative carousel.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">THE MAGIC IS IN THE MAKING.</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Slides</div>
+            <div class="copy-body">The Döner experience · The meat · The bread · Fresh ingredients · The sauces · The final Döner</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">WHICH PART ARE YOU CRAVING?</span>
+            <span class="creative-visual">Close-up ingredient photography</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 05</div>
+        <div class="creative-card-body">
+          <h3>Grand Opening Offer</h3>
+          <p class="creative-objective">Generate first-time visits and trial purchases.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">LET'S MAKE THE FIRST BITE SPECIAL.</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Body</div>
+            <div class="copy-body">Celebrate our Hyderabad opening with an exclusive launch offer.</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">VISIT US AND ENJOY.</span>
+            <span class="creative-visual">Add confirmed offer &amp; T&amp;Cs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creative-card">
+        <div class="creative-card-badge">Creative 06</div>
+        <div class="creative-card-body">
+          <h3>Join the Club</h3>
+          <p class="creative-objective">Build brand recall and community engagement.</p>
+          <div class="creative-copy-row">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text">GOOD FOOD. GREAT MOOD. ONE CLUB.</div>
+          </div>
+          <div class="creative-copy-row">
+            <div class="copy-label">Body</div>
+            <div class="copy-body">Hyderabad, you're officially invited.</div>
+          </div>
+          <div class="creative-cta">
+            <span class="creative-cta-text">TAG YOUR FOOD PARTNER.</span>
+            <span class="creative-visual">Bold brand typography, brand-led visual</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: PUBLISHING SEQUENCE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Final Publishing Sequence</span>
+    </div>
+    <div class="pub-table-wrap">
+      <table class="pub-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Content</th>
+            <th>Format</th>
+            <th>Stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="pub-num">01</td><td class="pub-content">Hyderabad, Something Is Coming!</td><td><span class="tag tag-ai">AI Video</span></td><td><span class="stage-badge stage-teaser">Teaser</span></td></tr>
+          <tr><td class="pub-num">02</td><td class="pub-content">Grand Inauguration</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-launch">Launch</span></td></tr>
+          <tr><td class="pub-num">03</td><td class="pub-content">Coming Soon Poster</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-awareness">Awareness</span></td></tr>
+          <tr><td class="pub-num">04</td><td class="pub-content">Welcome to Doner Club</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-brand">Brand Introduction</span></td></tr>
+          <tr><td class="pub-num">05</td><td class="pub-content">Inauguration Announcement</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-launch">Launch Comms</span></td></tr>
+          <tr><td class="pub-num">06</td><td class="pub-content">What Makes a Döner?</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-product">Product Education</span></td></tr>
+          <tr><td class="pub-num">07</td><td class="pub-content">Hero Product Poster</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-awareness">Product Awareness</span></td></tr>
+          <tr><td class="pub-num">08</td><td class="pub-content">Giant Döner Has Arrived</td><td><span class="tag tag-ai">AI Video</span></td><td><span class="stage-badge stage-engagement">Engagement</span></td></tr>
+          <tr><td class="pub-num">09</td><td class="pub-content">Behind Every Döner</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-trust">Brand Trust</span></td></tr>
+          <tr><td class="pub-num">10</td><td class="pub-content">What's Inside? Carousel</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-product">Product Education</span></td></tr>
+          <tr><td class="pub-num">11</td><td class="pub-content">The First Bite</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-food">Food Appeal</span></td></tr>
+          <tr><td class="pub-num">12</td><td class="pub-content">Hyderabad Foodies</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-engagement">Engagement</span></td></tr>
+          <tr><td class="pub-num">13</td><td class="pub-content">Grand Opening Offer</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-conversion">Conversion</span></td></tr>
+          <tr><td class="pub-num">14</td><td class="pub-content">Hyderabad's First Reactions</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-social">Social Proof</span></td></tr>
+          <tr><td class="pub-num">15</td><td class="pub-content">Your Next Food Obsession</td><td><span class="tag tag-real">Real Video</span></td><td><span class="stage-badge stage-conversion">Product Conversion</span></td></tr>
+          <tr><td class="pub-num">16</td><td class="pub-content">Join the Club</td><td><span class="tag tag-creative">Creative</span></td><td><span class="stage-badge stage-community">Community</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PRODUCTION REQUIREMENTS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Production Requirements</span>
+    </div>
+    <div class="specs-grid">
+      <div>
+        <table class="specs-table">
+          <thead><tr><th>Asset</th><th>Format</th><th>Duration / Size</th></tr></thead>
+          <tbody>
+            <tr><td>Real videos</td><td>Vertical 9:16</td><td>15–30 sec</td></tr>
+            <tr><td>AI videos</td><td>Vertical 9:16</td><td>10–20 sec</td></tr>
+            <tr><td>Static creatives</td><td>4:5</td><td>1080 × 1350 px</td></tr>
+            <tr><td>Carousel</td><td>4:5</td><td>5–6 slides</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <ul class="identity-list">
+          <li><strong>Colours:</strong> Red, yellow and black.</li>
+          <li><strong>Typography:</strong> Bold, modern and easy to read.</li>
+          <li><strong>Food visuals:</strong> High-quality close-ups and cinematic lighting.</li>
+          <li><strong>Editing:</strong> Fast-paced cuts, smooth transitions, product-focused shots.</li>
+          <li><strong>Audio:</strong> Trending audio with strong food sound effects.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: MARKETING APPROACH -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">Overall Marketing Approach</span>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <h4>Awareness</h4>
+        <p>AI Coming Soon video and launch announcement.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Brand Introduction</h4>
+        <p>Inauguration, outlet walkthrough and brand identity.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Product Discovery</h4>
+        <p>Döner preparation, hero products and ingredients.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Engagement</h4>
+        <p>AI storytelling, friends' experiences and customer reactions.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Conversion</h4>
+        <p>Opening offers, menu promotions and location-based calls to action.</p>
+      </div>
+      <div class="approach-item">
+        <h4>Community Building</h4>
+        <p>Customer-generated content, reviews and repeat visits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: KPIs -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <span class="section-title">Key Performance Indicators</span>
+    </div>
+    <table class="kpi-table">
+      <thead>
+        <tr><th>Objective</th><th>KPI</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Brand awareness</td><td>Reach and impressions</td></tr>
+        <tr><td>Video performance</td><td>Views, watch time and completion rate</td></tr>
+        <tr><td>Engagement</td><td>Shares, saves and comments</td></tr>
+        <tr><td>Customer interest</td><td>Profile visits and WhatsApp enquiries</td></tr>
+        <tr><td>Store discovery</td><td>Google Maps direction requests</td></tr>
+        <tr><td>Sales</td><td>Store visits, orders and offer redemptions</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<!-- FINAL DIRECTION -->
+<div class="final-block">
+  <div class="sub">Final Campaign Direction</div>
+  <h2>Doner Club × Hyderabad<br>Make the City Crave It.</h2>
+  <p class="direction">Don't just introduce a new restaurant. Introduce a new food experience. Make Hyderabad curious, make them crave it, and give them a reason to visit.</p>
+  <div class="priority-box">
+    <strong>Production Priority:</strong> Complete the AI Coming Soon video first. Prepare the inauguration shoot for 5 November, then capture enough footage during the event to create the inauguration and future restaurant-experience content.
+  </div>
+</div>
+
+</body>
+</html>
