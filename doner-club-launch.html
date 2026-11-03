@@ -1,0 +1,425 @@
+<title>Doner Club Hyderabad Launch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: poster-like red hero, then a black "kitchen board" of stacked sections; content cards shaped like their real formats (9:16 reels, 4:5 posts). Single brand world, deliberately one theme. */
+:root {
+  --red: #D7261E;
+  --red-deep: #9E1711;
+  --yellow: #FFC72C;
+  --ink: #120E0C;
+  --char: #1E1916;
+  --char-2: #2A231F;
+  --line: #3A312C;
+  --paper: #F6EFE6;
+  --muted: #B3A79E;
+  --ai: #8FD3FF;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", ui-monospace, "Consolas", monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ink); color: var(--paper); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; line-height: 1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+/* Hero */
+.hero { background: var(--red); color: var(--yellow); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; right: -12%; top: -30%; width: 60%; aspect-ratio: 1; border-radius: 50%; border: 36px solid var(--red-deep); opacity: .55; pointer-events: none; }
+.hero .wrap { padding-block: 40px 44px; position: relative; z-index: 1; display: grid; gap: 28px; }
+.hero-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper); }
+.brand { font-family: var(--display); font-size: 22px; letter-spacing: .06em; color: var(--yellow); }
+.hero h1 { font-size: clamp(48px, 10vw, 128px); line-height: .92; max-width: 11ch; }
+.hero h1 span { color: var(--paper); }
+.hero-sub { font-size: 17px; color: var(--paper); max-width: 52ch; }
+.counts { display: flex; flex-wrap: wrap; gap: 10px; }
+.count { background: var(--ink); color: var(--paper); padding: 14px 18px 12px; display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+.count b { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1; color: var(--yellow); font-variant-numeric: tabular-nums; }
+.count span { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Sections */
+section { border-top: 1px solid var(--line); }
+section > .wrap { padding-block: 56px; display: grid; gap: 28px; }
+.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.sec-head h2 { font-size: clamp(32px, 5vw, 52px); }
+.sec-head h2 em { font-style: normal; color: var(--yellow); }
+.sec-head p { color: var(--muted); max-width: 46ch; }
+
+/* Overview */
+.overview { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; }
+.objective { font-size: clamp(19px, 2.2vw, 24px); line-height: 1.35; font-weight: 500; max-width: 34ch; }
+.objective strong { color: var(--yellow); font-weight: 800; }
+.goals { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.goals li { padding: 12px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 22px 1fr; gap: 10px; }
+.goals li::before { content: ""; width: 10px; height: 10px; background: var(--red); margin-top: 7px; }
+.audience { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-size: 13.5px; }
+.chip.hot { background: var(--yellow); color: var(--ink); border-color: var(--yellow); font-weight: 600; }
+
+/* Funnel */
+.funnel { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.stage { background: var(--char); padding: 18px 16px 20px; display: grid; gap: 10px; align-content: start; position: relative; }
+.stage .label { color: var(--yellow); }
+.stage h3 { font-size: 22px; }
+.stage p { font-size: 13.5px; color: var(--muted); }
+.stage .bar { height: 6px; background: var(--red); }
+
+/* Sequence */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: 600 13px var(--body); color: var(--paper); background: transparent; border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.filters button[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.f-real { background: var(--red); } .f-ai { background: var(--ai); } .f-creative { background: var(--yellow); }
+.seq { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; counter-reset: seq; }
+.seq li { min-width: 0; }
+.seq a { display: grid; grid-template-rows: auto 1fr auto; gap: 8px; height: 100%; padding: 14px 14px 12px; background: var(--char); color: inherit; text-decoration: none; border-top: 4px solid var(--c); transition: background .15s; }
+.seq a:hover { background: var(--char-2); }
+.seq .n { font-family: var(--display); font-size: 30px; line-height: 1; color: var(--c); font-variant-numeric: tabular-nums; }
+.seq .t { font-weight: 600; font-size: 14.5px; line-height: 1.3; }
+.seq .meta { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.seq li.dim a { opacity: .22; }
+
+/* Reels */
+.reels { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.reel { background: var(--char); display: grid; grid-template-rows: auto auto 1fr auto; min-width: 0; scroll-margin-top: 16px; }
+.reel .screen { aspect-ratio: 9 / 16; max-height: 300px; width: 100%; background: linear-gradient(180deg, var(--c) 0%, var(--ink) 120%); padding: 16px; display: grid; grid-template-rows: auto 1fr auto; position: relative; overflow: hidden; }
+.reel.ai .screen { background: linear-gradient(160deg, #1F3A4D 0%, var(--ink) 100%); }
+.screen .tag { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); }
+.screen .hook { align-self: center; font-family: var(--display); font-size: 27px; line-height: 1.02; color: var(--yellow); text-transform: uppercase; text-wrap: balance; }
+.reel.ai .screen .hook { color: var(--ai); }
+.screen .rail { height: 3px; background: rgba(246,239,230,.25); }
+.screen .rail i { display: block; height: 100%; width: 34%; background: var(--paper); }
+.reel .body { padding: 16px 16px 4px; display: grid; gap: 8px; }
+.reel h3 { font-size: 24px; }
+.reel .concept { font-size: 13.5px; color: var(--muted); }
+.shots { list-style: none; margin: 0; padding: 8px 16px 12px; display: grid; gap: 0; counter-reset: shot; }
+.shots li { counter-increment: shot; display: grid; grid-template-columns: 30px 1fr; gap: 6px; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 13.5px; }
+.shots li::before { content: counter(shot, decimal-leading-zero); font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 2px; }
+.cta { padding: 12px 16px 16px; display: grid; gap: 6px; }
+.cta .end { background: var(--paper); color: var(--ink); font-weight: 800; padding: 10px 12px; font-size: 14px; line-height: 1.3; }
+.cta .note { font-size: 12.5px; border-left: 3px solid var(--yellow); padding: 4px 0 4px 10px; color: var(--paper); }
+.cta .exec { font-size: 12.5px; color: var(--muted); }
+
+/* Creatives */
+.creatives { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.creative { display: grid; gap: 12px; align-content: start; min-width: 0; scroll-margin-top: 16px; }
+.poster { aspect-ratio: 4 / 5; width: 100%; max-width: 100%; background: var(--red); color: var(--yellow); padding: 22px; display: grid; grid-template-rows: auto 1fr auto auto; gap: 12px; position: relative; overflow: hidden; }
+.poster.alt { background: var(--yellow); color: var(--ink); }
+.poster.dark { background: var(--paper); color: var(--red); }
+.poster .tag { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: currentColor; opacity: .85; }
+.poster .head { align-self: center; font-family: var(--display); font-size: clamp(30px, 3.6vw, 44px); line-height: .96; text-transform: uppercase; text-wrap: balance; }
+.poster .sup { font-size: 14.5px; font-weight: 500; color: var(--paper); }
+.poster.alt .sup, .poster.dark .sup { color: var(--ink); }
+.poster .btn { justify-self: start; background: var(--ink); color: var(--paper); font-weight: 800; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; }
+.poster .slides { display: flex; gap: 4px; }
+.poster .slides i { flex: 1; height: 4px; background: currentColor; opacity: .35; }
+.poster .slides i:first-child { opacity: 1; }
+.creative .meta { display: grid; gap: 6px; font-size: 13.5px; }
+.creative .meta b { font-weight: 600; }
+.creative .dir { color: var(--muted); }
+.flag { color: var(--yellow); }
+
+/* Specs */
+.specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.spec { background: var(--char); padding: 18px; display: grid; grid-template-rows: 130px auto auto; gap: 10px; min-width: 0; }
+.spec .frame { display: grid; place-items: end start; }
+.spec .frame div { border: 2px solid var(--yellow); height: 100%; max-width: 100%; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; color: var(--yellow); }
+.spec h3 { font-size: 22px; }
+.spec p { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.identity { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+.swatches { display: flex; gap: 6px; }
+.sw { width: 74px; height: 96px; padding: 8px; display: flex; align-items: end; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.idlist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 0; }
+.idlist div { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 110px 1fr; gap: 12px; }
+.idlist dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); padding-top: 3px; }
+.idlist dd { margin: 0; font-size: 14px; }
+
+/* KPIs */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+th, td { text-align: left; padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-weight: 500; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-weight: 700; width: 32%; }
+td .kpis { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Finale */
+.finale { background: var(--yellow); color: var(--ink); border-top: 0; }
+.finale .wrap { padding-block: 60px; display: grid; gap: 22px; }
+.finale h2 { font-size: clamp(44px, 8vw, 104px); line-height: .92; color: var(--red); }
+.finale p { font-size: 18px; max-width: 56ch; font-weight: 500; }
+.priority { background: var(--ink); color: var(--paper); padding: 18px 20px; display: grid; gap: 12px; max-width: 760px; }
+.priority ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.priority li::marker { font-family: var(--mono); color: var(--yellow); }
+footer { padding-block: 22px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+@media (max-width: 980px) {
+  .funnel { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .seq { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .creatives { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .identity { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .overview { grid-template-columns: 1fr; }
+  .idlist { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .creatives { grid-template-columns: 1fr; }
+  .seq { grid-template-columns: 1fr 1fr; }
+  .idlist div { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top"><span class="brand">DONER CLUB</span><span>Hyderabad · Launch content plan · Grand inauguration 5 Nov</span></div>
+    <h1>Hyderabad, meet your <span>new crush.</span></h1>
+    <p class="hero-sub">Brand launch and digital content strategy: 16 posts that take the city from curiosity to first bite to coming back for more.</p>
+    <div class="counts">
+      <div class="count"><b>08</b><span>Real videos</span></div>
+      <div class="count"><b>02</b><span>AI videos</span></div>
+      <div class="count"><b>06</b><span>Creatives</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="overview">
+    <div class="wrap">
+      <div class="sec-head"><h2>Campaign <em>overview</em></h2></div>
+      <div class="overview">
+        <div style="display:grid;gap:22px;align-content:start;min-width:0">
+          <p class="label">Campaign objective</p>
+          <p class="objective">Introduce Doner Club to the Hyderabad market, <strong>build curiosity</strong> around the new outlet, establish product awareness and <strong>get people through the door</strong> to experience the brand.</p>
+          <p class="label">Target audience</p>
+          <div class="audience">
+            <span class="chip hot">Young adults 18–35</span>
+            <span class="chip">College students</span>
+            <span class="chip">Young professionals</span>
+            <span class="chip">Food enthusiasts</span>
+            <span class="chip">Friends &amp; families, casual dining</span>
+            <span class="chip">International &amp; QSR fans</span>
+          </div>
+        </div>
+        <div style="display:grid;gap:12px;align-content:start;min-width:0">
+          <p class="label">Key communication objectives</p>
+          <ul class="goals">
+            <li>Create awareness about Doner Club’s arrival in Hyderabad.</li>
+            <li>Introduce Döner as a distinctive food experience.</li>
+            <li>Showcase products, preparation and restaurant ambience.</li>
+            <li>Build trust through genuine customer experiences.</li>
+            <li>Encourage first-time visits and repeat purchases.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="sec-head"><h2>Marketing <em>approach</em></h2><p>Six stages, run in order. Each post in the sequence below belongs to one of them.</p></div>
+      <div class="funnel">
+        <div class="stage"><div class="bar"></div><span class="label">Stage 1</span><h3>Awareness</h3><p>AI Coming Soon video and launch announcement.</p></div>
+        <div class="stage"><div class="bar"></div><span class="label">Stage 2</span><h3>Brand intro</h3><p>Inauguration, outlet walkthrough and brand identity.</p></div>
+        <div class="stage"><div class="bar"></div><span class="label">Stage 3</span><h3>Product discovery</h3><p>Döner preparation, hero products and ingredients.</p></div>
+        <div class="stage"><div class="bar"></div><span class="label">Stage 4</span><h3>Engagement</h3><p>AI storytelling, friends’ experiences, customer reactions.</p></div>
+        <div class="stage"><div class="bar"></div><span class="label">Stage 5</span><h3>Conversion</h3><p>Opening offers, menu promotions, location-based CTAs.</p></div>
+        <div class="stage"><div class="bar"></div><span class="label">Stage 6</span><h3>Community</h3><p>Customer-generated content, reviews and repeat visits.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sequence">
+    <div class="wrap">
+      <div class="sec-head"><h2>Publishing <em>sequence</em></h2>
+        <div class="filters" role="group" aria-label="Filter by format">
+          <button type="button" id="f-all" data-f="all" aria-pressed="true">All 16</button>
+          <button type="button" id="f-real" data-f="real" aria-pressed="false"><span class="dot f-real"></span>Real video</button>
+          <button type="button" id="f-ai" data-f="ai" aria-pressed="false"><span class="dot f-ai"></span>AI video</button>
+          <button type="button" id="f-creative" data-f="creative" aria-pressed="false"><span class="dot f-creative"></span>Creative</button>
+        </div>
+      </div>
+      <ol class="seq" id="seq"></ol>
+    </div>
+  </section>
+
+  <section id="real">
+    <div class="wrap">
+      <div class="sec-head"><h2>Real-shoot <em>videos</em> · 08</h2><p>Vertical 9:16, 15–30 seconds. Each card shows the opening hook on screen, then the shot list in order.</p></div>
+      <div class="reels" id="reels"></div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <div class="wrap">
+      <div class="sec-head"><h2>AI-generated <em>videos</em> · 02</h2><p>Vertical 9:16, 10–20 seconds. Cinematic AI visuals with accurate logo integration.</p></div>
+      <div class="reels" id="aivids"></div>
+    </div>
+  </section>
+
+  <section id="creatives">
+    <div class="wrap">
+      <div class="sec-head"><h2>Creative <em>designs</em> · 06</h2><p>4:5 statics at 1080 × 1350 px. The carousel runs 5–6 slides.</p></div>
+      <div class="creatives" id="posters"></div>
+    </div>
+  </section>
+
+  <section id="production">
+    <div class="wrap">
+      <div class="sec-head"><h2>Production <em>requirements</em></h2></div>
+      <div class="specs">
+        <div class="spec"><div class="frame"><div style="aspect-ratio:9/16">9:16</div></div><h3>Real videos</h3><p>Vertical 9:16 · 15–30 sec</p></div>
+        <div class="spec"><div class="frame"><div style="aspect-ratio:9/16;border-color:var(--ai);color:var(--ai)">9:16</div></div><h3>AI videos</h3><p>Vertical 9:16 · 10–20 sec</p></div>
+        <div class="spec"><div class="frame"><div style="aspect-ratio:4/5">4:5</div></div><h3>Static creatives</h3><p>4:5 · 1080 × 1350 px</p></div>
+        <div class="spec"><div class="frame" style="display:flex;align-items:end;gap:4px"><div style="aspect-ratio:4/5">4:5</div><div style="aspect-ratio:4/5;opacity:.5;height:85%"></div><div style="aspect-ratio:4/5;opacity:.25;height:70%"></div></div><h3>Carousel</h3><p>4:5 · 5–6 slides</p></div>
+      </div>
+      <div class="identity">
+        <div style="display:grid;gap:10px">
+          <p class="label">Primary colours</p>
+          <div class="swatches">
+            <div class="sw" style="background:var(--red);color:var(--yellow)">Red</div>
+            <div class="sw" style="background:var(--yellow);color:var(--ink)">Yellow</div>
+            <div class="sw" style="background:#000;color:var(--paper);outline:1px solid var(--line)">Black</div>
+          </div>
+        </div>
+        <dl class="idlist">
+          <div><dt>Typography</dt><dd>Bold, modern and easy to read.</dd></div>
+          <div><dt>Food visuals</dt><dd>High-quality close-ups and cinematic lighting.</dd></div>
+          <div><dt>Editing</dt><dd>Fast-paced cuts, smooth transitions, product-focused shots.</dd></div>
+          <div><dt>Audio</dt><dd>Relevant trending audio with strong food sound effects.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="kpis">
+    <div class="wrap">
+      <div class="sec-head"><h2>Key performance <em>indicators</em></h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Objective</th><th scope="col">What we measure</th></tr></thead>
+          <tbody>
+            <tr><td>Brand awareness</td><td><div class="kpis"><span class="chip">Reach</span><span class="chip">Impressions</span></div></td></tr>
+            <tr><td>Video performance</td><td><div class="kpis"><span class="chip">Views</span><span class="chip">Watch time</span><span class="chip">Completion rate</span></div></td></tr>
+            <tr><td>Engagement</td><td><div class="kpis"><span class="chip">Shares</span><span class="chip">Saves</span><span class="chip">Comments</span></div></td></tr>
+            <tr><td>Customer interest</td><td><div class="kpis"><span class="chip">Profile visits</span><span class="chip">WhatsApp enquiries</span></div></td></tr>
+            <tr><td>Store discovery</td><td><div class="kpis"><span class="chip">Google Maps direction requests</span></div></td></tr>
+            <tr><td>Sales</td><td><div class="kpis"><span class="chip hot">Store visits</span><span class="chip hot">Orders</span><span class="chip hot">Offer redemptions</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale" id="direction">
+    <div class="wrap">
+      <p class="label" style="color:var(--ink)">Final campaign direction · Doner Club, Hyderabad</p>
+      <h2>Make the city crave it.</h2>
+      <p>Don’t just introduce a new restaurant. Introduce a new food experience. Make Hyderabad curious, make them crave it, and give them a reason to visit.</p>
+      <div class="priority">
+        <p class="label" style="color:var(--yellow)">Production priority</p>
+        <ol>
+          <li>Complete the AI Coming Soon video first.</li>
+          <li>Prepare the inauguration shoot for 5 November.</li>
+          <li>Capture enough footage at the event for the inauguration reel and the restaurant-experience content that follows.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>Doner Club · Hyderabad launch</span><span>16 posts · 3 formats · 6 stages</span></div></footer>
+
+<script>
+const reels = [
+  { id: "r1", title: "Grand Inauguration", concept: "Officially introduce the Hyderabad outlet through a cinematic video of the opening celebration.", shots: ["Exterior and Doner Club signage","Inauguration ceremony","Guests and visitors","Restaurant interior and ambience","Kitchen and food preparation","Food close-ups","Final brand reveal"], hook: "Hyderabad, we are open!", end: "Welcome to Doner Club.", note: "Shoot on 5 November. Do not display the inauguration date in the video." },
+  { id: "r2", title: "Welcome to Doner Club", concept: "Introduce the new outlet and its atmosphere through a cinematic walkthrough.", shots: ["Exterior signage reveal","Door-opening transition","Interior ambience","Seating and dining space","Kitchen activity","Food served on the table"], hook: "Your new food destination has arrived.", end: "Your table is waiting. Visit Doner Club, Hyderabad." },
+  { id: "r3", title: "What Makes a Döner?", concept: "Educate the audience about the product and introduce the Döner experience.", shots: ["Döner meat rotating on the grill","Chef slicing the meat","Bread preparation","Fresh ingredients","Sauce application","Final wrap assembly"], hook: "Not just another wrap. This is Döner!", end: "Discover the Döner experience." },
+  { id: "r4", title: "The First Bite", concept: "Create cravings through close-ups of the filling, texture and presentation.", shots: ["Wrap being prepared","Close-up of the filling","Sauce spread","Wrap cut into two halves","Customer takes the first bite","Genuine reaction"], hook: "One bite. That’s all it takes.", end: "Your first bite is waiting." },
+  { id: "r5", title: "Behind Every Döner", concept: "Build product confidence by showing the people and process behind the food.", shots: ["Chef preparing ingredients","Meat preparation","Kitchen workflow","Wrap assembly","Final product presentation"], hook: "Good food starts long before the first bite.", end: "Made to be experienced." },
+  { id: "r6", title: "Hyderabad Foodies, Your Turn!", concept: "Connect with Hyderabad’s young audience through a friends’ dining experience.", shots: ["Friends entering the outlet","Exploring the menu","Ordering their favourite items","Food arriving at the table","Sharing food and reactions","Group shot with branding"], hook: "Every food lover needs a Döner partner.", end: "Tag your food partner!" },
+  { id: "r7", title: "Hyderabad’s First Reactions", concept: "Build social proof through genuine reactions from first-time customers.", shots: ["Customer receiving the order","First bite","Reaction close-up","Quick customer interview","One-word review or rating","Final restaurant shot"], hook: "We let Hyderabad try it first.", end: "Your turn to try!" },
+  { id: "r8", title: "Your Next Food Obsession", concept: "Drive visits and orders with a high-energy product promo.", shots: ["Hero product reveal","Different menu items","Food close-ups","Meal combinations","Customers enjoying the food","Outlet location and ordering details"], hook: "Your next food obsession has a name.", end: "Find your favourite at Doner Club." }
+];
+const ais = [
+  { id: "a1", title: "Hyderabad, Something Is Coming!", concept: "Create curiosity before launch: a giant Döner appears in the Hyderabad skyline.", shots: ["Establishing shot of Hyderabad","Camera moves towards the skyline","A giant Döner appears in the sky","People look up in surprise","Cinematic close-up of the Döner","Doner Club logo appears"], hook: "Hyderabad, something delicious is coming!", end: "DONER CLUB · COMING SOON", exec: "AI-generated cinematic visuals with accurate brand logo integration." },
+  { id: "a2", title: "The Döner Love Story", concept: "Entertaining, shareable content: a funny relationship-style story between a person and a Döner wrap.", shots: ["A character walks past Doner Club","The character notices a Döner wrap","Everything goes into slow motion","The character takes the first bite","A funny emotional reaction","Brand logo reveal"], hook: "It’s not a phase. It’s a love story.", end: "Once you try it, you’re in the club." }
+];
+const creatives = [
+  { id: "c1", title: "Coming Soon Poster", obj: "Build pre-launch awareness.", head: "Hyderabad, meet your new crush.", sup: "A new Döner experience is coming to your city.", cta: "Coming soon", dir: "Hero product image, bold red background, yellow typography and minimal branding.", look: "" },
+  { id: "c2", title: "Inauguration Announcement", obj: "Announce the official opening.", head: "The wait is almost over!", sup: "Doner Club is opening its doors in Hyderabad.", cta: "Join us for the grand inauguration", dir: "Include 5 November and the confirmed outlet location.", look: "alt", flag: true },
+  { id: "c3", title: "Hero Product Poster", obj: "Build product awareness.", head: "Not your usual wrap.", sup: "Meet the Döner experience.", cta: "Discover the menu", dir: "Premium product photography with strong headline typography.", look: "dark" },
+  { id: "c4", title: "What’s Inside? Carousel", obj: "Introduce the product through an informative carousel.", head: "The magic is in the making.", sup: "The Döner experience · the meat · the bread · fresh ingredients · the sauces · the final Döner", cta: "Which part are you craving?", dir: "Close-up ingredient and preparation photography.", look: "", carousel: 6 },
+  { id: "c5", title: "Grand Opening Offer", obj: "Generate first-time visits and trial purchases.", head: "Let’s make the first bite special.", sup: "Celebrate our Hyderabad opening with an exclusive launch offer.", cta: "Visit us and enjoy", dir: "Add the confirmed offer, validity and terms before publishing.", look: "alt", flag: true },
+  { id: "c6", title: "Join the Club", obj: "Build brand recall and community engagement.", head: "Good food. Great mood. One club.", sup: "Hyderabad, you’re officially invited.", cta: "Tag your food partner", dir: "Bold brand typography and a strong brand-led visual.", look: "dark" }
+];
+const seq = [
+  ["Hyderabad, Something Is Coming!","ai","Teaser","a1"],
+  ["Grand Inauguration","real","Launch","r1"],
+  ["Coming Soon Poster","creative","Awareness","c1"],
+  ["Welcome to Doner Club","real","Brand introduction","r2"],
+  ["Inauguration Announcement","creative","Launch communication","c2"],
+  ["What Makes a Döner?","real","Product education","r3"],
+  ["Hero Product Poster","creative","Product awareness","c3"],
+  ["Giant Döner Has Arrived","ai","Engagement",""],
+  ["Behind Every Döner","real","Brand trust","r5"],
+  ["What’s Inside?","creative","Product education","c4"],
+  ["The First Bite","real","Food appeal","r4"],
+  ["Hyderabad Foodies","real","Engagement","r6"],
+  ["Grand Opening Offer","creative","Conversion","c5"],
+  ["Hyderabad’s First Reactions","real","Social proof","r7"],
+  ["Your Next Food Obsession","real","Product conversion","r8"],
+  ["Join the Club","creative","Community","c6"]
+];
+const fmt = { real: ["Real video","var(--red)"], ai: ["AI video","var(--ai)"], creative: ["Creative","var(--yellow)"] };
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const pad = n => String(n).padStart(2,"0");
+const postNo = id => { const i = seq.findIndex(s => s[3] === id); return i < 0 ? "" : "Post " + pad(i + 1); };
+
+function reelCard(r, i, ai) {
+  return `<article class="reel${ai ? " ai" : ""}" id="${r.id}" style="--c:${ai ? "var(--ai)" : "var(--red)"}">
+    <div class="screen"><div class="tag"><span>${ai ? "AI video" : "Reel"} ${pad(i + 1)}</span><span>${postNo(r.id)}</span></div>
+      <p class="hook">${esc(r.hook)}</p><div class="rail"><i></i></div></div>
+    <div class="body"><h3>${esc(r.title)}</h3><p class="concept">${esc(r.concept)}</p></div>
+    <ol class="shots">${r.shots.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
+    <div class="cta"><span class="label">${ai ? "End frame" : "Ending / CTA"}</span><p class="end">${esc(r.end)}</p>
+      ${r.note ? `<p class="note">${esc(r.note)}</p>` : ""}${r.exec ? `<p class="exec">${esc(r.exec)}</p>` : ""}</div>
+  </article>`;
+}
+document.getElementById("reels").innerHTML = reels.map((r, i) => reelCard(r, i, false)).join("");
+document.getElementById("aivids").innerHTML = ais.map((r, i) => reelCard(r, i, true)).join("");
+document.getElementById("posters").innerHTML = creatives.map((c, i) => `
+  <article class="creative" id="${c.id}">
+    <div class="poster ${c.look}">
+      <div class="tag"><span>Creative ${pad(i + 1)}</span><span>${postNo(c.id)}</span></div>
+      <p class="head">${esc(c.head)}</p>
+      <p class="sup">${esc(c.sup)}</p>
+      ${c.carousel ? `<div class="slides">${"<i></i>".repeat(c.carousel)}</div>` : ""}
+      <span class="btn">${esc(c.cta)}</span>
+    </div>
+    <div class="meta"><h3 style="font-size:22px">${esc(c.title)}</h3>
+      <p><b>Objective:</b> ${esc(c.obj)}</p>
+      <p class="dir${c.flag ? " flag" : ""}"><b>Visual direction:</b> ${esc(c.dir)}</p></div>
+  </article>`).join("");
+
+const seqEl = document.getElementById("seq");
+seqEl.innerHTML = seq.map(([t, f, stage, id], i) => `
+  <li data-f="${f}"><a href="${id ? "#" + id : "#ai"}" style="--c:${fmt[f][1]}">
+    <span class="n">${pad(i + 1)}</span><span class="t">${esc(t)}</span>
+    <span class="meta"><span>${fmt[f][0]}</span><span>${esc(stage)}</span></span></a></li>`).join("");
+
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  const f = b.dataset.f;
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  seqEl.querySelectorAll("li").forEach(li => li.classList.toggle("dim", f !== "all" && li.dataset.f !== f));
+}));
+</script>
