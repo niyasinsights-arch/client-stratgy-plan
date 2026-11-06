@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZALADA – Brand Content &amp; Marketing Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* Speakerbox Internal UI Kit: Google Sans, dark theme, orange accent #F97316 */
+  :root {
+    --bg: #111111;
+    --card: #1F2937;
+    --card-deep: #1a1a1a;
+    --field: #222222;
+    --border: #374151;
+    --border-soft: #444444;
+    --accent: #F97316;
+    --accent-dark: #EA580C;
+    --text: #E5E7EB;
+    --muted: #9CA3AF;
+    --dim: #6B7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Google Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-weight: 700; color: #FFFFFF; letter-spacing: -0.025em; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 0 24px 64px; }
+
+  /* Header */
+  header.cover {
+    text-align: center;
+    padding: 48px 0 40px;
+    border-bottom: 1px solid #1F2937;
+    margin-bottom: 40px;
+  }
+  header.cover .logo { height: 48px; margin: 0 auto 20px; display: block; }
+  header.cover .brand {
+    display: inline-block;
+    font-size: 13px; letter-spacing: 4px; font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 12px;
+  }
+  h1 { font-size: 40px; margin: 6px 0 10px; line-height: 1.15; }
+  .subtitle { color: var(--muted); font-size: 17px; margin: 0; }
+  .date { color: var(--dim); font-size: 14px; margin-top: 10px; }
+
+  /* Table of contents as a card */
+  nav.toc {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    padding: 24px 32px;
+    margin-bottom: 48px;
+  }
+  nav.toc strong { display: block; margin-bottom: 10px; color: #fff; font-size: 18px; }
+  nav.toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+  nav.toc li { margin: 4px 0; color: var(--dim); }
+  nav.toc a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  nav.toc a:hover { color: #FB923C; }
+
+  /* Section headings */
+  h2 {
+    font-size: 30px;
+    margin: 56px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+  }
+  h2::after {
+    content: ""; position: absolute; left: 0; bottom: -2px;
+    width: 64px; height: 2px; background: var(--accent);
+  }
+  h3 { font-size: 21px; margin: 32px 0 10px; }
+  p { margin: 8px 0 14px; }
+  strong { color: #fff; }
+  ul, ol { margin: 6px 0 16px; padding-left: 24px; }
+  li { margin: 4px 0; }
+  li::marker { color: var(--accent); }
+  a { color: var(--accent); }
+
+  /* Tables in card style */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 14px 0 24px;
+    font-size: 14.5px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+  th + th, td + td { border-left: 1px solid var(--border); }
+  tbody tr:last-child td { border-bottom: none; }
+  th {
+    background: var(--field);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  tbody tr:hover td { background: #243244; }
+  table.kv th { display: none; }
+  table.kv td:first-child { width: 28%; font-weight: 700; color: #fff; background: var(--field); }
+
+  /* Callout */
+  blockquote {
+    margin: 16px 0;
+    padding: 16px 20px;
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--accent);
+    background: var(--card-deep);
+    border-radius: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 32px; font-weight: 900; color: var(--accent);
+    letter-spacing: -0.025em; margin: 8px 0 20px;
+  }
+
+  /* Journey steps styled like the kit's toggle buttons */
+  .journey {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    background: var(--card);
+    padding: 8px;
+    border-radius: 999px;
+    width: max-content; max-width: 100%;
+    margin: 12px 0 22px;
+  }
+  .journey span {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid #4B5563;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .journey span:first-child { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .journey span:last-child { border-color: var(--accent); color: var(--accent); }
+  .journey .arrow { border: none; padding: 0 2px; color: var(--dim); }
+
+  /* Feature-list style checklist (kit's .included) */
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li { position: relative; padding-left: 32px; margin-bottom: 10px; }
+  .checklist li::before {
+    content: '✓'; position: absolute; left: 0; top: -2px;
+    font-size: 1.25rem; font-weight: bold; color: var(--accent);
+  }
+
+  /* Final vision as the kit's "recommended" plan card */
+  .vision {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 1rem;
+    padding: 32px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px -15px rgba(249, 115, 22, 0.3);
+    color: var(--text);
+  }
+  .vision strong { font-size: 22px; display: block; margin-bottom: 10px; }
+
+  footer {
+    text-align: center; margin-top: 56px; padding: 32px 0;
+    border-top: 1px solid #1F2937; color: #4B5563; font-size: 14px;
+  }
+
+  @media print {
+    body { background: #111111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { page-break-after: avoid; }
+    table, blockquote, .vision { page-break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 30px; }
+    nav.toc ol { columns: 1; }
+    table { font-size: 13px; display: block; overflow-x: auto; }
+    .journey { border-radius: 1rem; }
+  }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+<header class="cover">
+  <a href="https://www.speakerbox.agency/" target="_blank" rel="noopener noreferrer">
+    <img class="logo" src="https://res.cloudinary.com/dghxwxviy/image/upload/v1762510315/logoWhite_w9b4xl.svg" alt="Speakerbox Logo">
+  </a>
+  <div class="brand">ZALADA</div>
+  <h1>Brand Content &amp; Marketing Strategy</h1>
+  <p class="subtitle">Strategic Partnership | Content Direction | Customer Acquisition | Retention &amp; Community Building</p>
+  <p class="date">6 November 2026</p>
+</header>
+
+<nav class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#positioning">Brand positioning</a></li>
+    <li><a href="#content">Content marketing strategy</a></li>
+    <li><a href="#loyalty">Customer loyalty &amp; credit points</a></li>
+    <li><a href="#community">Community &amp; fitness challenges</a></li>
+    <li><a href="#acquisition">Acquisition, retention &amp; habit formation</a></li>
+    <li><a href="#kpis">Performance measurement</a></li>
+    <li><a href="#roadmap">Execution roadmap</a></li>
+    <li><a href="#considerations">Strategic considerations</a></li>
+    <li><a href="#vision">Final strategic vision</a></li>
+  </ol>
+</nav>
+
+<h2 id="overview">Overview</h2>
+<p><strong>Objective:</strong> Position Zalada as a convenient, modern and healthy food brand for Gen Z, working professionals, Infopark employees, interns and health-conscious adults.</p>
+<p>The strategy is not just to introduce healthy food products. It is to build curiosity, encourage first-time purchases, create healthy eating habits and convert first-time customers into regular, loyal customers.</p>
+<p><strong>Primary target audience</strong></p>
+<ul>
+  <li>Gen Z</li>
+  <li>College students and interns</li>
+  <li>Infopark employees and IT professionals</li>
+  <li>Working professionals</li>
+  <li>Health-conscious adults</li>
+  <li>People interested in fitness, nutrition and healthy eating</li>
+</ul>
+<p><strong>The four strategy areas</strong></p>
+<table>
+  <thead><tr><th>#</th><th>Area</th><th>Role in the strategy</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Content Marketing</td><td>Creates awareness and curiosity</td></tr>
+    <tr><td>2</td><td>Customer Loyalty &amp; Credit Points</td><td>Encourages repeat purchases</td></tr>
+    <tr><td>3</td><td>Community Engagement &amp; Fitness Challenges</td><td>Creates engagement beyond the product</td></tr>
+    <tr><td>4</td><td>Acquisition, Retention &amp; Habit Formation</td><td>Turns first-time buyers into loyal customers</td></tr>
+  </tbody>
+</table>
+
+<h2 id="positioning">Brand positioning</h2>
+<p class="tagline">ZALADA: Feel Good. Anytime.</p>
+<table class="kv">
+  <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Brand vision</td><td>To make healthy food choices more accessible, convenient and rewarding for everyday consumers.</td></tr>
+    <tr><td>Brand promise</td><td>Healthy food, convenient access, rewarding experiences and a healthier everyday lifestyle.</td></tr>
+    <tr><td>Central idea</td><td>Don't just sell healthy food. Build a healthy lifestyle around the brand.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="content">1. Content marketing strategy</h2>
+<h3>Initial content scope</h3>
+<table>
+  <thead><tr><th>Deliverable</th><th>Quantity</th></tr></thead>
+  <tbody>
+    <tr><td>Short-form videos (Reels)</td><td>6</td></tr>
+    <tr><td>AI-generated motion graphics / animated Reels</td><td>3</td></tr>
+    <tr><td>Carousels, comparison posts and informational content</td><td>As per content calendar and agreed scope</td></tr>
+  </tbody>
+</table>
+
+<h3>Content streams at a glance</h3>
+<table>
+  <thead><tr><th>Stream</th><th>Objective</th><th>Formats</th></tr></thead>
+  <tbody>
+    <tr><td>A. Food Comparison</td><td>Create curiosity about healthy eating by comparing everyday food choices with healthier alternatives</td><td>Comparison Reels, educational carousels, infographic posts, short-form videos</td></tr>
+    <tr><td>B. Food &amp; Menu Introduction</td><td>Introduce Zalada's menu and make customers want to try it</td><td>Product introduction Reels, food photography, menu carousels, AI motion graphics</td></tr>
+    <tr><td>C. Kitchen Hygiene &amp; Behind the Scenes</td><td>Build trust, credibility and confidence in food quality and preparation standards</td><td>Behind-the-scenes Reels, short interviews, documentary-style videos, storytelling</td></tr>
+    <tr><td>D. UGC &amp; Influencer Marketing</td><td>Create authentic awareness and social proof among the target audience</td><td>UGC Reels, influencer collaborations, testimonials, lifestyle videos, product reviews</td></tr>
+  </tbody>
+</table>
+
+<h3>A. Food comparison content</h3>
+<p><strong>Content ideas</strong></p>
+<ul>
+  <li>Regular biryani vs a healthier meal alternative</li>
+  <li>Fast food vs healthy food</li>
+  <li>High-calorie meals vs balanced meals</li>
+  <li>Protein-rich foods vs low-protein options</li>
+  <li>High-fat meals vs meals with balanced nutritional profiles</li>
+  <li>Healthy alternatives to popular Gen Z food cravings</li>
+</ul>
+<p><strong>What each comparison shows:</strong> calories per serving, protein, fat, fibre, nutritional benefits and portion-size comparison.</p>
+<blockquote><strong>Important:</strong> All nutritional comparisons should use verified values and comparable serving sizes. The goal is to educate, not to label foods as universally good or bad.</blockquote>
+
+<h3>B. Food and menu introduction</h3>
+<p><strong>Content ideas</strong></p>
+<ul>
+  <li>Introducing individual menu items</li>
+  <li>Ingredient highlights</li>
+  <li>Calorie and nutritional breakdown</li>
+  <li>Protein, fat and fibre information</li>
+  <li>Health benefits of ingredients</li>
+  <li>Food preparation and presentation</li>
+  <li>Recommended meals for breakfast, lunch and evening snacks</li>
+  <li>Healthy food options for busy working professionals</li>
+</ul>
+
+<h3>C. Kitchen hygiene and behind-the-scenes content</h3>
+<p><strong>Content ideas</strong></p>
+<ul>
+  <li>Behind-the-scenes kitchen operations</li>
+  <li>Food preparation process</li>
+  <li>Kitchen cleanliness</li>
+  <li>Staff hygiene practices</li>
+  <li>Ingredient handling and storage</li>
+  <li>Food packaging process</li>
+  <li>Freshness and quality-control procedures</li>
+  <li>Team introductions and kitchen stories</li>
+</ul>
+
+<h3>D. UGC and influencer marketing</h3>
+<p><strong>Potential creators</strong></p>
+<ul>
+  <li>Infopark micro-influencers</li>
+  <li>IT professionals</li>
+  <li>Fitness creators</li>
+  <li>Lifestyle content creators</li>
+  <li>College students and interns</li>
+  <li>Health and nutrition enthusiasts</li>
+</ul>
+<p><strong>Content ideas</strong></p>
+<ul>
+  <li>A day in my life with Zalada</li>
+  <li>Trying Zalada for the first time</li>
+  <li>Healthy lunch during office breaks</li>
+  <li>What I eat during my workday</li>
+  <li>Zalada food reviews</li>
+  <li>Healthy eating while working in Infopark</li>
+  <li>Office lunch alternatives</li>
+  <li>My experience with Zalada's food and vending machine</li>
+</ul>
+
+<h3>E. Reel ideas (6 Reels)</h3>
+<table>
+  <thead><tr><th>#</th><th>Reel</th><th>Stream</th><th>Hook (first 3 seconds)</th><th>Concept</th><th>CTA</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Biryani vs a balanced bowl</td><td>A. Food Comparison</td><td>"Same lunch break. Very different afternoon."</td><td>Split screen: a regular biryani serving and a Zalada meal, with verified calories, protein, fat and fibre per serving appearing on screen. Ends on "Both have a place. One keeps you going till 6."</td><td>Save this for your next lunch decision</td></tr>
+    <tr><td>2</td><td>Trying Zalada for the first time</td><td>D. UGC &amp; Influencer</td><td>"First time buying lunch from a vending machine."</td><td>An Infopark intern or student films their honest first try: finding the machine, ordering, opening the meal, first bite and reaction.</td><td>Tag someone who hasn't tried it yet</td></tr>
+    <tr><td>3</td><td>Before your lunch reaches the machine</td><td>C. Kitchen Hygiene</td><td>"Before your lunch reaches the machine, this happens."</td><td>Fast-cut behind-the-scenes: handwashing and gloves, washing vegetables, portioning, sealing, packing and loading the machine. Real staff, real kitchen.</td><td>Ask us anything about our kitchen</td></tr>
+    <tr><td>4</td><td>This week's menu in 20 seconds</td><td>B. Food &amp; Menu</td><td>"New menu. 20 seconds. Go."</td><td>Quick top-down shots of each item with its name and verified calories and protein on screen; tag each as breakfast, lunch or evening snack.</td><td>Comment which one you're trying first</td></tr>
+    <tr><td>5</td><td>5K Steps Challenge launch</td><td>Community challenges</td><td>"Walk 5,000 steps. Eat for less."</td><td>A creator or employee walks around Infopark with a step counter overlay ticking up, reaches 5,000, then collects a Zalada meal with the reward. Explains how to join in 3 lines.</td><td>Join through the link in bio</td></tr>
+    <tr><td>6</td><td>What I eat in an Infopark workday</td><td>D. UGC &amp; Influencer</td><td>"What I eat in a 9-hour IT workday."</td><td>An IT professional or fitness creator shows breakfast, lunch and evening snack across the day, with Zalada for the office meals.</td><td>Follow for more healthy workday ideas</td></tr>
+  </tbody>
+</table>
+
+<h3>F. AI motion graphic ideas (3 animated Reels)</h3>
+<table>
+  <thead><tr><th>#</th><th>Idea</th><th>Stream</th><th>Hook</th><th>Concept</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Protein vs low-protein meal</td><td>A. Food Comparison</td><td>"Why some lunches keep you full and some don't."</td><td>Two animated plates; nutrients fill up as bars (protein, fibre, fat) side by side, using verified values and the same serving size. Clear "AI animation" label.</td></tr>
+    <tr><td>2</td><td>Inside a Zalada meal</td><td>B. Food &amp; Menu</td><td>"Every ingredient in this bowl has a job."</td><td>Exploded-view animation of one menu item: each ingredient floats out with its role and nutrition figure, then the bowl reassembles. Ends on a real photo of the item.</td></tr>
+    <tr><td>3</td><td>How Zalada credit points work</td><td>Loyalty programme</td><td>"Eat healthy. Get rewarded. Here's how."</td><td>Animated journey: Register, Purchase, Earn, Track, Achieve, Redeem, with a points counter filling up each month. Ends on the website link.</td></tr>
+  </tbody>
+</table>
+
+<h3>G. Content ideas (carousels, comparison and informational posts)</h3>
+<table>
+  <thead><tr><th>#</th><th>Idea</th><th>Format</th><th>Stream</th><th>What it shows</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Fast food vs balanced meal</td><td>Comparison carousel</td><td>A. Food Comparison</td><td>Calories, protein, fat and fibre per comparable serving, slide by slide</td></tr>
+    <tr><td>2</td><td>Healthier swaps for Gen Z cravings</td><td>Comparison post</td><td>A. Food Comparison</td><td>Popular cravings (burgers, fries, shakes) next to a Zalada option, without labelling foods good or bad</td></tr>
+    <tr><td>3</td><td>Protein, fat and fibre in 1 minute</td><td>Infographic carousel</td><td>B. Food &amp; Menu</td><td>What each nutrient does and how much of it is in Zalada meals</td></tr>
+    <tr><td>4</td><td>Breakfast, lunch and evening snack picks</td><td>Menu carousel</td><td>B. Food &amp; Menu</td><td>Recommended Zalada meals for each time of day, for busy professionals</td></tr>
+    <tr><td>5</td><td>Our kitchen hygiene steps</td><td>Informational carousel</td><td>C. Kitchen Hygiene</td><td>Each step from ingredient storage to packaging, with real kitchen photos</td></tr>
+    <tr><td>6</td><td>Meet the team</td><td>Storytelling carousel</td><td>C. Kitchen Hygiene</td><td>The chef, nutritionist and kitchen staff, with one line each about what they do</td></tr>
+    <tr><td>7</td><td>Real customers, real reviews</td><td>Testimonial post</td><td>D. UGC &amp; Influencer</td><td>Quotes from Infopark employees and students, with photos and consent</td></tr>
+    <tr><td>8</td><td>How the credit point system works</td><td>Explainer carousel</td><td>Loyalty programme</td><td>Points earned per qualifying meal, monthly targets and rewards</td></tr>
+    <tr><td>9</td><td>Weekly challenge leaderboard</td><td>Community post</td><td>Community challenges</td><td>Top step-challenge participants of the week and the rewards they unlocked</td></tr>
+  </tbody>
+</table>
+<p>All nutrition figures used in these ideas must be verified values for comparable serving sizes before publishing.</p>
+
+<h2 id="loyalty">2. Customer loyalty and credit point strategy</h2>
+<p><strong>Objective:</strong> Encourage repeat purchases by rewarding customers for consistently choosing healthier food from Zalada, through a website-based registration and credit point system.</p>
+
+<h3>Customer journey</h3>
+<div class="journey">
+  <span>1. Register</span><span class="arrow">→</span>
+  <span>2. Purchase</span><span class="arrow">→</span>
+  <span>3. Earn</span><span class="arrow">→</span>
+  <span>4. Track</span><span class="arrow">→</span>
+  <span>5. Achieve</span><span class="arrow">→</span>
+  <span>6. Redeem</span>
+</div>
+<table>
+  <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+  <tbody>
+    <tr><td>1. Register</td><td>Customer creates an account on the Zalada website</td></tr>
+    <tr><td>2. Purchase</td><td>Customer buys healthy food from Zalada</td></tr>
+    <tr><td>3. Earn</td><td>Credit points are added based on qualifying purchases and food choices</td></tr>
+    <tr><td>4. Track</td><td>Customer monitors monthly progress through their account</td></tr>
+    <tr><td>5. Achieve</td><td>Customer reaches the monthly credit point target</td></tr>
+    <tr><td>6. Redeem</td><td>Customer unlocks additional benefits and rewards</td></tr>
+  </tbody>
+</table>
+
+<h3>A. Customer registration</h3>
+<ul>
+  <li>Customers register through the Zalada website.</li>
+  <li>Basic customer information is collected with their consent.</li>
+  <li>Each registered customer receives a unique account or ID.</li>
+  <li>Purchases and earned credit points are tracked through the website.</li>
+  <li>Customers can monitor their progress and rewards through their accounts.</li>
+</ul>
+
+<h3>B. Healthy food credit point system</h3>
+<p>Customers earn points based on their purchases and participation in Zalada's healthy eating programme. The system can consider:</p>
+<ul>
+  <li>Protein content of purchased meals</li>
+  <li>Fibre content</li>
+  <li>Nutritional balance</li>
+  <li>Healthier meal selections</li>
+  <li>Frequency of purchases</li>
+  <li>Consistency in choosing nutritious options</li>
+</ul>
+<p>For example, points for selected protein-rich meals, balanced food combinations or other qualifying menu items. <strong>The system should reward balanced choices, not high protein or low fat in isolation.</strong></p>
+
+<h3>C. Monthly achievement and rewards</h3>
+<ul>
+  <li>Monthly achievement targets are introduced.</li>
+  <li>Customers collect points through the month, tracked on the website.</li>
+  <li>Customers who hit the monthly target unlock additional rewards.</li>
+  <li>Rewards can include discounts, complimentary food items, bonus points or exclusive offers.</li>
+</ul>
+
+<h3>D. Website integration and tracking</h3>
+<p>The Zalada website is the central platform for the loyalty programme. Required features:</p>
+<ul class="checklist">
+  <li>Customer registration and login</li>
+  <li>Customer profile management</li>
+  <li>Purchase history</li>
+  <li>Credit point tracking</li>
+  <li>Monthly achievement dashboard</li>
+  <li>Reward and redemption system</li>
+  <li>Notifications about new offers and achievements</li>
+  <li>Customer progress reports</li>
+</ul>
+<p><strong>Expected outcome:</strong> A long-term relationship with customers, by making healthy food purchases rewarding and encouraging consistent engagement with the brand.</p>
+
+<h2 id="community">3. Community engagement and fitness challenges</h2>
+<p><strong>Objective:</strong> Build an active, health-conscious community around Zalada by connecting food, fitness and everyday lifestyle habits. Engagement goes beyond food purchases to simple health and fitness challenges.</p>
+
+<h3>A. Community formation</h3>
+<p>Health-focused communities on WhatsApp, Instagram or other suitable channels, for:</p>
+<ul>
+  <li>Infopark employees</li>
+  <li>IT professionals</li>
+  <li>College students and interns</li>
+  <li>Fitness enthusiasts</li>
+  <li>Walking and running groups</li>
+  <li>Health-conscious individuals</li>
+</ul>
+
+<h3>B. Daily and weekly fitness challenges</h3>
+<ul>
+  <li><strong>5K Steps Challenge:</strong> Participants who complete 5,000 steps in a day become eligible for a predefined Zalada reward, such as 25% off eligible menu items.</li>
+  <li><strong>10K Steps Challenge:</strong> Participants who complete 10,000 steps unlock a higher-level reward or additional benefits.</li>
+</ul>
+<p><strong>Other potential challenges:</strong> 7-day healthy eating, weekly walking, daily hydration, healthy breakfast, no-junk-food, 30-day wellness.</p>
+
+<h3>C. Reward and discount mechanism (illustrative)</h3>
+<table>
+  <thead><tr><th>Achievement</th><th>Suggested reward</th></tr></thead>
+  <tbody>
+    <tr><td>5,000 steps</td><td>25% discount</td></tr>
+    <tr><td>10,000 steps</td><td>Higher-tier reward</td></tr>
+    <tr><td>7-day challenge</td><td>Bonus credit points</td></tr>
+    <tr><td>30-day challenge</td><td>Exclusive rewards</td></tr>
+  </tbody>
+</table>
+<p>The exact discount structure, eligibility, redemption limits and reward values should be finalised based on Zalada's margins and business objectives.</p>
+
+<h3>D. Challenge tracking and verification</h3>
+<ol>
+  <li>Participants join through a registration link.</li>
+  <li>Daily challenges are announced through the community.</li>
+  <li>Participants submit step-count screenshots or use an approved activity-tracking integration.</li>
+  <li>Completed challenges are verified.</li>
+  <li>Eligible participants receive discount codes or reward credits.</li>
+  <li>Weekly winners and achievements are featured on Zalada's social media.</li>
+</ol>
+
+<h3>E. Community engagement content</h3>
+<ul>
+  <li>Weekly challenge announcements</li>
+  <li>Participant achievement highlights</li>
+  <li>Community leaderboards</li>
+  <li>Fitness influencer collaborations</li>
+  <li>User-generated challenge videos</li>
+  <li>Monthly winner announcements</li>
+  <li>Customer transformation and experience stories</li>
+</ul>
+<p><strong>Expected outcome:</strong> A community that associates Zalada with healthy living, daily movement and positive lifestyle choices, not only a food vending machine.</p>
+
+<h2 id="acquisition">4. Customer acquisition, retention and habit formation</h2>
+<p><strong>Goal:</strong> Turn curious first-time buyers into regular customers, and eventually a loyal customer community.</p>
+<p><strong>The brand journey</strong></p>
+<div class="journey">
+  <span>Curiosity</span><span class="arrow">→</span>
+  <span>First Purchase</span><span class="arrow">→</span>
+  <span>Engagement</span><span class="arrow">→</span>
+  <span>Habit Formation</span><span class="arrow">→</span>
+  <span>Repeat Purchase</span><span class="arrow">→</span>
+  <span>Brand Loyalty</span>
+</div>
+<table>
+  <thead><tr><th>Stage</th><th>Aim</th><th>Activities</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Curiosity</strong></td><td>Get them interested</td><td>Comparison Reels and educational carousels; food introduction videos; influencer and UGC collaborations; attractive food visuals; first-time customer offers; fitness and community challenges</td></tr>
+    <tr><td><strong>2. Habit formation</strong></td><td>Get them engaged</td><td>Credit point programme; monthly healthy eating targets; daily and weekly fitness challenges; community participation; consistent offers and rewards; website-based progress tracking</td></tr>
+    <tr><td><strong>3. Loyalty</strong></td><td>Keep them coming back</td><td>Monthly reward redemption; exclusive customer benefits; repeat purchase incentives; community recognition; personalised offers; regular customer engagement</td></tr>
+  </tbody>
+</table>
+<p>Zalada should not aim to sell healthy food once. It should help customers make better food choices part of their everyday lifestyle.</p>
+
+<h2 id="kpis">5. Performance measurement and success indicators</h2>
+<p>Track both marketing performance and actual customer behaviour.</p>
+<table>
+  <thead><tr><th>Area</th><th>Key performance indicators</th></tr></thead>
+  <tbody>
+    <tr><td>Social media</td><td>Reach, views, engagement, shares and saves</td></tr>
+    <tr><td>Content marketing</td><td>Reel retention, carousel engagement and profile visits</td></tr>
+    <tr><td>Influencer marketing</td><td>Views, engagement and referral purchases</td></tr>
+    <tr><td>Customer acquisition</td><td>Registrations and first-time purchases</td></tr>
+    <tr><td>Credit point programme</td><td>Active members and points redeemed</td></tr>
+    <tr><td>Community challenges</td><td>Participants and challenge completion rates</td></tr>
+    <tr><td>Customer retention</td><td>Repeat purchase rate and purchase frequency</td></tr>
+    <tr><td>Business growth</td><td>Monthly sales and average customer value</td></tr>
+  </tbody>
+</table>
+<p><strong>Core success indicators</strong></p>
+<ul>
+  <li>Increase awareness among Infopark employees and Gen Z</li>
+  <li>Generate curiosity about healthy food</li>
+  <li>Increase first-time product trials</li>
+  <li>Drive website registrations</li>
+  <li>Encourage participation in fitness challenges</li>
+  <li>Increase repeat purchases</li>
+  <li>Develop a loyal customer base</li>
+</ul>
+
+<h2 id="roadmap">6. Strategic execution roadmap</h2>
+<table>
+  <thead><tr><th>Phase</th><th>Focus</th><th>Activities</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Awareness</td><td>Launch brand introduction and food comparison content</td></tr>
+    <tr><td>2</td><td>Product education</td><td>Introduce menu items, nutritional information and kitchen hygiene</td></tr>
+    <tr><td>3</td><td>Social proof</td><td>Launch UGC and Infopark influencer collaborations</td></tr>
+    <tr><td>4</td><td>Customer engagement</td><td>Introduce credit points and registration</td></tr>
+    <tr><td>5</td><td>Community building</td><td>Launch 5K and 10K step challenges</td></tr>
+    <tr><td>6</td><td>Retention</td><td>Activate monthly rewards and repeat purchase incentives</td></tr>
+    <tr><td>7</td><td>Optimisation</td><td>Analyse performance and improve campaigns</td></tr>
+  </tbody>
+</table>
+
+<h2 id="considerations">7. Strategic considerations before implementation</h2>
+<table>
+  <thead><tr><th>Area</th><th>What needs to be finalised</th></tr></thead>
+  <tbody>
+    <tr><td>Nutrition accuracy</td><td>Verified nutritional values and serving sizes for every menu item</td></tr>
+    <tr><td>Credit point economics</td><td>Points per purchase, monthly thresholds and redemption limits</td></tr>
+    <tr><td>Website development</td><td>Registration, purchase tracking and rewards working together</td></tr>
+    <tr><td>Challenge verification</td><td>A fair way to verify step counts and prevent duplicate claims</td></tr>
+    <tr><td>Discount sustainability</td><td>Profit margins checked before offering 25% or higher discounts</td></tr>
+    <tr><td>Customer privacy</td><td>Consent for collecting personal information and tracking activity</td></tr>
+    <tr><td>Content consistency</td><td>One consistent brand voice, visual identity and nutritional communication</td></tr>
+  </tbody>
+</table>
+
+<h2 id="vision">Final strategic vision</h2>
+<div class="vision">
+  <strong>Don't just sell healthy food. Build a healthy lifestyle around the brand.</strong>
+  The content strategy creates awareness and curiosity. The food experience converts curiosity into first-time purchases. The credit point system encourages repeat purchases, while community challenges create engagement beyond the product itself. Together, they aim to transform Zalada from a healthy vending machine into an everyday healthy lifestyle brand.
+</div>
+
+<footer>Prepared by Speakerbox for Zalada</footer>
+</div>
+</body>
+</html>
